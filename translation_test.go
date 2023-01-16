@@ -1,11 +1,12 @@
 /*
- * Copyright 2020-2022 VMware, Inc.
+ * Copyright 2020-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
 package sgtn
 
 import (
+	"fmt"
 	"net/url"
 	"sync"
 	"testing"
@@ -683,4 +684,112 @@ func TestHTTP404(t *testing.T) {
 	assert.Nil(t, messages)
 
 	assert.True(t, gock.IsDone())
+}
+
+func TestMultipleComponents(t *testing.T) {
+	var tests = []struct {
+		desc       string
+		mocks      []string
+		locales    []string
+		components []string
+		size       int
+	}{
+		{"Get messages of a bundle by multiple components interface",
+			[]string{"componentMessages-zh-Hans-sunglow"},
+			[]string{"zh-Hans"}, []string{"sunglow"}, 1},
+		{"Get messages of a component by multiple components interface",
+			[]string{"productLocales", "componentMessages-fr-sunglow", "componentMessages-zh-Hans-sunglow", "componentMessages-en-US-sunglow"},
+			nil, []string{"sunglow"}, 3},
+		{"Get messages of a locale by multiple components interface",
+			[]string{"productComponents", "componentMessages-fr-sunglow", "componentMessages-fr-users"},
+			[]string{"fr"}, nil, 2},
+		{"Get messages of the product/version by multiple components interface",
+			[]string{
+				"productComponents", "productLocales",
+				"componentMessages-fr-sunglow", "componentMessages-zh-Hans-sunglow", "componentMessages-en-US-sunglow",
+				"componentMessages-fr-users", "componentMessages-zh-Hans-users", "componentMessages-en-US-users"},
+			nil, nil, 6},
+	}
+
+	defer gock.Off()
+
+	resetInst(&testCfg)
+	trans := GetTranslation()
+	for _, testData := range tests {
+		logger.Debug(fmt.Sprintf("------------ Start testing: %s", testData.desc))
+		for _, m := range testData.mocks {
+			EnableMockData(m)
+		}
+
+		messages, err := trans.GetComponentsMessages(name, version, testData.locales, testData.components)
+		if err != nil {
+			t.Errorf("%s failed: %v", testData.desc, err)
+			continue
+		}
+		if len(messages) != testData.size {
+			t.Errorf("%s = %d, want %d", testData.desc, len(messages), testData.size)
+		}
+
+		assert.True(t, gock.IsDone())
+
+		clearCache()
+	}
+}
+
+func TestMultipleComponentsAbnormal(t *testing.T) {
+	var tests = []struct {
+		desc        string
+		mocks       []string
+		locales     []string
+		components  []string
+		size        int
+		errorString string
+	}{
+		{"Abnormal: fail to get locale list",
+			[]string{"productLocales_400"},
+			nil, []string{"sunglow"}, 0,
+			`Error from server is HTTP code: 400, message: 400 Bad Request, business code: 0, message: `},
+		{"Abnormal: fail to get component list",
+			[]string{"productComponents_400"},
+			[]string{"en"}, nil, 0,
+			`Error from server is HTTP code: 400, message: 400 Bad Request, business code: 0, message: `},
+		{"Abnormal: partial translations are available is treated as successful",
+			[]string{
+				"productComponents", "productLocales",
+				"componentMessages-fr-sunglow", "componentMessages-zh-Hans-sunglow", "componentMessages-en-US-sunglow",
+				"componentMessages-fr-users", "componentMessages-zh-Hans-users"},
+			nil, nil, 5,
+			""},
+		{"Abnormal: empty result is an error",
+			[]string{"HTTP404"},
+			[]string{"zh-Hans"}, []string{"HTTP404"}, 0,
+			"no translations are available for {product 'SgtnTest', version '1.0.0', locales '[zh-Hans]', components '[HTTP404]'}"},
+	}
+
+	defer gock.Off()
+
+	newCfg := testCfg
+	newCfg.LocalBundles = ""
+	resetInst(&newCfg)
+	trans := GetTranslation()
+	for _, testData := range tests {
+		logger.Debug(fmt.Sprintf("------------ Start testing: %s", testData.desc))
+		for _, m := range testData.mocks {
+			EnableMockData(m)
+		}
+
+		messages, err := trans.GetComponentsMessages(name, version, testData.locales, testData.components)
+		if len(testData.errorString) == 0 {
+			assert.Nil(t, err)
+		} else {
+			assert.Equal(t, testData.errorString, err.Error())
+		}
+		if len(messages) != testData.size {
+			t.Errorf("%s = %d, want %d", testData.desc, len(messages), testData.size)
+		}
+
+		assert.True(t, gock.IsDone())
+
+		clearCache()
+	}
 }

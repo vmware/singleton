@@ -1,5 +1,5 @@
 /*
- * Copyright 2020-2022 VMware, Inc.
+ * Copyright 2020-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -123,7 +123,7 @@ func (d *bundleDAO) GetComponentMessages(name, version, locale, component string
 		return nil, errors.New("Wrong data from local bundle file")
 	}
 
-	return &defaultComponentMsgs{b.Messages}, nil
+	return &defaultComponentMsgs{b.Messages, locale, component}, nil
 }
 
 //!-bundleDAO

@@ -1,5 +1,5 @@
 /*
- * Copyright 2020-2022 VMware, Inc.
+ * Copyright 2020-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -18,4 +18,7 @@ type Translation interface {
 
 	// GetComponentMessages Get component messages
 	GetComponentMessages(name, version, locale, component string) (ComponentMsgs, error)
+
+	// GetComponentsMessages Get messages of multiple components
+	GetComponentsMessages(name, version string, locales, components []string) ([]ComponentMsgs, error)
 }

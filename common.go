@@ -1,5 +1,5 @@
 /*
- * Copyright 2020-2022 VMware, Inc.
+ * Copyright 2020-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -16,6 +16,10 @@ import (
 type ComponentMsgs interface {
 	// Get Get a message by key
 	Get(key string) (value string, found bool)
+
+	Component() string
+
+	Locale() string
 }
 
 // Logger The logger interface

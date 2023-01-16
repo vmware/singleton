@@ -1,16 +1,16 @@
 /*
- * Copyright 2020-2022 VMware, Inc.
+ * Copyright 2020-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
 package sgtn
 
 import (
+	"fmt"
 	"net"
 	"net/http"
 	"net/url"
 	"path"
-	"strings"
 	"sync/atomic"
 	"time"
 
@@ -51,7 +51,7 @@ func (s *serverDAO) Get(item *dataItem) (err error) {
 
 	switch item.id.iType {
 	case itemComponent:
-		data = new(queryProduct)
+		data = new(queryBundle)
 	case itemLocales:
 		data = new(queryLocales)
 	case itemComponents:
@@ -74,11 +74,8 @@ func (s *serverDAO) Get(item *dataItem) (err error) {
 
 	switch item.id.iType {
 	case itemComponent:
-		pData := data.(*queryProduct)
-		if len(pData.Bundles) != 1 || pData.Bundles[0].Messages == nil {
-			return errors.New(wrongServerData)
-		}
-		item.data = &defaultComponentMsgs{messages: pData.Bundles[0].Messages}
+		bData := data.(*queryBundle)
+		item.data = &defaultComponentMsgs{messages: bData.Messages, locale: item.id.Locale, component: item.id.Component}
 	case itemLocales:
 		localesData := data.(*queryLocales)
 		if localesData.Locales == nil {
@@ -107,21 +104,14 @@ func (s *serverDAO) prepareURL(item *dataItem) *url.URL {
 	urlToQuery := *s.svrURL
 	var myURL string
 
-	id := item.id
-	name, version, locale, component := id.Name, id.Version, id.Locale, id.Component
-
 	switch item.id.iType {
 	case itemComponent:
-		myURL = productTranslationGetConst
-		addURLParams(&urlToQuery, map[string]string{localesConst: locale, componentsConst: component})
+		myURL = fmt.Sprintf(bundleGetConst, item.id.Name, item.id.Version, item.id.Locale, item.id.Component)
 	case itemLocales:
-		myURL = productLocaleListGetConst
+		myURL = fmt.Sprintf(productLocaleListGetConst, item.id.Name, item.id.Version)
 	case itemComponents:
-		myURL = productComponentListGetConst
+		myURL = fmt.Sprintf(productComponentListGetConst, item.id.Name, item.id.Version)
 	}
-
-	myURL = strings.Replace(myURL, "{"+productNameConst+"}", name, 1)
-	myURL = strings.Replace(myURL, "{"+versionConst+"}", version, 1)
 
 	urlToQuery.Path = path.Join(urlToQuery.Path, myURL)
 
@@ -175,13 +165,6 @@ func (s *serverDAO) getHTTPHeaders() (newHeaders map[string]string) {
 //!- serverDAO
 
 //!+ common functions
-func addURLParams(u *url.URL, args map[string]string) {
-	values := u.Query()
-	for k, v := range args {
-		values.Add(k, v)
-	}
-	u.RawQuery = values.Encode()
-}
 
 var getDataFromServer = func(u *url.URL, header map[string]string, data interface{}) (*http.Response, error) {
 	type respResult struct {
@@ -238,19 +221,12 @@ func isBusinessSuccess(code int) bool {
 
 //!+ REST API Response structures
 type (
-	queryProduct struct {
-		Name       string   `json:"productName"`
-		Version    string   `json:"version"`
-		Locales    []string `json:"locales"`
-		Components []string `json:"components"`
-		Bundles    []struct {
-			Component string            `json:"component"`
-			Messages  map[string]string `json:"messages"`
-			Locale    string            `json:"locale"`
-		} `json:"bundles"`
-		URL    string `json:"url"`
-		Status string `json:"status"`
-		ID     int    `json:"id"`
+	queryBundle struct {
+		Name      string            `json:"productName"`
+		Version   string            `json:"version"`
+		Locale    string            `json:"locale"`
+		Component string            `json:"component"`
+		Messages  map[string]string `json:"messages"`
 	}
 
 	queryComponents struct {

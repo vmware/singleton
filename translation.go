@@ -1,5 +1,5 @@
 /*
- * Copyright 2020-2022 VMware, Inc.
+ * Copyright 2020-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -8,6 +8,7 @@ package sgtn
 import (
 	"fmt"
 	"strings"
+	"sync"
 
 	"github.com/pkg/errors"
 )
@@ -73,6 +74,44 @@ func (t *transInst) GetComponentMessages(name, version, locale, component string
 	if nil != item.data {
 		data, _ = item.data.(ComponentMsgs)
 	}
+	return
+}
+
+func (t *transInst) GetComponentsMessages(name, version string, locales, components []string) (msgs []ComponentMsgs, err error) {
+	if len(locales) == 0 {
+		locales, err = t.GetLocaleList(name, version)
+		if err != nil {
+			return nil, err
+		}
+	}
+	if len(components) == 0 {
+		components, err = t.GetComponentList(name, version)
+		if err != nil {
+			return nil, err
+		}
+	}
+
+	var wg sync.WaitGroup
+	wg.Add(len(locales) * len(components))
+	for _, locale := range locales {
+		for _, component := range components {
+			go func(locale, component string) {
+				defer wg.Done()
+
+				if bundleMsgs, bundleErr := t.GetComponentMessages(name, version, locale, component); bundleErr == nil {
+					msgs = append(msgs, bundleMsgs)
+				} else { // log a warning message if translation is unavailable.
+					logger.Warn(fmt.Sprintf("fail to get translation for {product '%s', version '%s', locale '%s', component '%s'}", name, version, locale, component))
+				}
+			}(locale, component)
+		}
+	}
+	wg.Wait()
+
+	if len(msgs) == 0 { // empty is an error, other cases are successful.
+		return nil, fmt.Errorf("no translations are available for {product '%s', version '%s', locales '%v', components '%v'}", name, version, locales, components)
+	}
+
 	return
 }
 

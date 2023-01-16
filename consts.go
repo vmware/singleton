@@ -1,5 +1,5 @@
 /*
- * Copyright 2020-2022 VMware, Inc.
+ * Copyright 2020-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -8,20 +8,13 @@ package sgtn
 // api url
 const (
 	apiRoot        = "/i18n/api/v2/translation"
-	aipProductRoot = apiRoot + "/products/{" + productNameConst + "}/versions/{" + versionConst + "}"
+	aipProductRoot = apiRoot + "/products/%s/versions/%s"
 
 	// product-based
 	productTranslationGetConst   = aipProductRoot
 	productLocaleListGetConst    = aipProductRoot + "/localelist"
 	productComponentListGetConst = aipProductRoot + "/componentlist"
-)
-
-// api param name
-const (
-	productNameConst = "productname"
-	versionConst     = "version"
-	componentsConst  = "components"
-	localesConst     = "locales"
+	bundleGetConst               = aipProductRoot + "/locales/%s/components/%s"
 )
 
 const (
