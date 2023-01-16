@@ -18,7 +18,7 @@ jar {
 dependencies {
 
     api project(":md-data-api")
-	  api project(":vip-common")
+    api project(":vip-common")
     compileOnly("org.springframework.boot:spring-boot")
     compileOnly("org.springframework.boot:spring-boot-starter-data-jpa")
     compileOnly("org.slf4j:slf4j-api:$slf4jVersion")
