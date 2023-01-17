@@ -1,5 +1,6 @@
 default:
-  hello: "Hello world"
+  helloworld: "Hello world"
+  hello: "Hello world in local source"
   welcome: "%{name}, welcome login %{place}!"
-  plural_key: "there %<{ \"cat_count\": { \"0\": \"no cat\", \"one\": \"is one cat\", \"other\": \"are %{cat_count} cats\" } }> in the %{place}"
-  source_changed_key: 'latest source which is changed. %{place_holder}'
+  plural_key: 'there %<{ "cat_count": { "0": "no cat", "one": "is one cat", "other": "are %{cat_count} cats" } }> in the %{place}'
+  source_changed_key: "latest source which is changed. %{place_holder}"
