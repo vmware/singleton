@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.messages.data.dao.model;
@@ -9,9 +9,6 @@ import java.nio.channels.ReadableByteChannel;
 
 public class ResultMessageChannel implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 3241337938771784142L;
 	
 

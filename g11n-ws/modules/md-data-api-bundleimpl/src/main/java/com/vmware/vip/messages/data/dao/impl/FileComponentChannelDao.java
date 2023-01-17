@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.messages.data.dao.impl;
@@ -49,7 +49,6 @@ public class FileComponentChannelDao implements IComponentChannelDao{
 					try {
 						resultChannels.add(new ResultMessageChannel(component, locale, FileChannel.open(file.toPath(), StandardOpenOption.READ)));
 					} catch (IOException e) {
-						logger.error(e.getMessage(), e);
 						throw new BundleException(e.getMessage(), e);
 					}
 				}
@@ -72,7 +71,6 @@ public class FileComponentChannelDao implements IComponentChannelDao{
 			try {
 				return FileChannel.open(file.toPath(), StandardOpenOption.READ);
 			} catch (IOException e) {
-				logger.error(e.getMessage(), e);
 				throw new BundleException(e.getMessage(), e);
 			}
 		}else {

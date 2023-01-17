@@ -1,9 +1,10 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.base;
 
+import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.Channels;
 import java.nio.channels.FileChannel;
@@ -38,36 +39,41 @@ public class StreamProductAction extends TranslationProductAction{
 	
 	public void writeMultTranslationResponse(String productName, String version, String components, String locales,
 			String pseudo, HttpServletResponse resp) throws Exception {
-		
+
 		String newVersion = super.getAvailableVersion(productName, version);
 		List<String> componentList = getcomponentList(productName, newVersion, components);
 		List<String> localeList = getlocaleList(productName, newVersion, locales, pseudo);
-		
+
 		List<ResultMessageChannel>  readChannels = multComponentService.getTranslationChannels(productName, newVersion, componentList, localeList);
 		if(readChannels.isEmpty()) {
             throw new L3APIException(ConstantsMsg.TRANS_IS_NOT_FOUND);
         }
-		
-		int expSize = componentList.size() * localeList.size();
+
 		StreamProductResp sr = new StreamProductResp(productName, newVersion, localeList, componentList, pseudo, false);
-		resp.setContentType("application/json;charset=UTF-8"); 
+		resp.setContentType(ConstantsKeys.CONTENT_TYPE_JSON);
 		WritableByteChannel wbc = Channels.newChannel(resp.getOutputStream());
-		boolean isPartContent = false;
-		 if(version.equals(newVersion)) {
-			 isPartContent = (readChannels.size() != expSize);
-			 if(isPartContent) {
-				 wbc.write(sr.getRespStartBytes(APIResponseStatus.MULTTRANSLATION_PART_CONTENT.getCode()));
-			 }else {
-				 wbc.write(sr.getRespStartBytes(APIResponseStatus.OK.getCode())); 
-			 }
-		 }else {
-			 wbc.write(sr.getRespStartBytes(APIResponseStatus.VERSION_FALLBACK_TRANSLATION.getCode()));
-		 }
-		 writeTranslationsToChanel(readChannels, wbc);
+
+		boolean isPartContent = writeResponseHeader(version.equals(newVersion), componentList.size() * localeList.size(), readChannels.size(), wbc, sr);
+		writeTranslationsToChanel(readChannels, wbc);
 		 if(isPartContent){
 			 wbc.write(ByteBuffer.wrap(addNullMessage(readChannels, componentList, localeList)));
 		 }
 		 wbc.write(sr.getEndBytes());
+	}
+
+	private boolean writeResponseHeader(boolean notVersionFallback, int expSize, int readChannelSize, WritableByteChannel wbc, StreamProductResp sr) throws IOException {
+		boolean isPartContent = false;
+		if(notVersionFallback) {
+			isPartContent = (readChannelSize != expSize);
+			if(isPartContent) {
+				wbc.write(sr.getRespStartBytes(APIResponseStatus.MULTTRANSLATION_PART_CONTENT.getCode()));
+			}else {
+				wbc.write(sr.getRespStartBytes(APIResponseStatus.OK.getCode()));
+			}
+		}else {
+			wbc.write(sr.getRespStartBytes(APIResponseStatus.VERSION_FALLBACK_TRANSLATION.getCode()));
+		}
+		return isPartContent;
 	}
 	
 	
