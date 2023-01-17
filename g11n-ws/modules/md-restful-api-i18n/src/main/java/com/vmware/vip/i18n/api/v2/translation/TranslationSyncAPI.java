@@ -34,9 +34,6 @@ import io.swagger.annotations.ApiOperation;
 @RestController("v2-TranslationSyncAPI")
 public class TranslationSyncAPI extends TranslationSyncAction {
 
-	@Value("${csp.api.auth.enable:false}")
-	private String cspAuthFlag;
-
 	/**
 	 * Synchronize the latest translation from GRM or other third party.
 	 * <p>
@@ -63,13 +60,6 @@ public class TranslationSyncAPI extends TranslationSyncAction {
 			@PathVariable(APIParamName.VERSION) String version,
 			HttpServletRequest request) throws Exception {
 
-		UpdateTranslationDTO translationData;
-		if (cspAuthFlag.equalsIgnoreCase("true")) {
-			translationData = (UpdateTranslationDTO) request.getAttribute(ConstantsKeys.UPDATEDTO);
-			request.removeAttribute(ConstantsKeys.UPDATEDTO);
-		}else{
-			translationData = updateTranslationDTO;
-		}
-		return super.updateTranslation(translationData, productName, version, request);
+		return super.updateTranslation(updateTranslationDTO, productName, version, request);
 	}
 }

@@ -129,9 +129,9 @@ public class SyncI18nSourceServiceImpl implements SyncI18nSourceService {
 						+ "\",\"locale\": \"" + locale + "\",\"messages\": " + cachedComDTO.getMessages().toJSONString()
 						+ "}],\"version\": \"" + cachedComDTO.getVersion() + "\"},\"requester\": \""
 						+ ConstantsKeys.VL10N + "\"}";
-				Map<String, String> header = null;
+				Map<String, String> header = new HashMap<String, String>();
+				header.put(ConstantsKeys.CSP_AUTH_TOKEN, ConstantsKeys.VL10N);
 				if (remoteVIPAuthEnable) {
-					header = new HashMap<String, String>();
 					header.put("appId", remoteVIPAuthAppId);
 					header.put("token", remoteVIPAuthAppToken);
 				}
