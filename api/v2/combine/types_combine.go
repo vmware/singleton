@@ -31,10 +31,10 @@ type (
 	translationWithPatternPostReq struct {
 		Combine int `form:"combine" binding:"oneof=1 2"`
 		translation.ReleaseID
-		Language   string   `form:"language" binding:"language"`
-		Region     string   `form:"region" binding:"omitempty,region"`
-		Components []string `form:"components" binding:"dive,component"`
-		Pseudo     string   `form:"pseudo" binding:"omitempty"`
+		Language   string      `form:"language" binding:"language"`
+		Region     string      `form:"region" binding:"omitempty,region"`
+		Components []string    `form:"components" binding:"dive,component"`
+		Pseudo     interface{} `form:"pseudo" binding:"omitempty"`
 		cldr.PatternScope
 	}
 )

@@ -6,6 +6,7 @@
 package combine
 
 import (
+	"errors"
 	"strconv"
 	"strings"
 
@@ -173,9 +174,24 @@ func getCombinedDataByPost(c *gin.Context) {
 		return
 	}
 
-	pseudo, err := strconv.ParseBool(params.Pseudo)
-	if err != nil && params.Pseudo != "" {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("%s isn't a boolean value", params.Pseudo))
+	var pseudo bool
+	var err error
+	switch v := params.Pseudo.(type) {
+	case nil:
+		pseudo = false
+	case string:
+		if v == "" {
+			pseudo = false
+		} else {
+			pseudo, err = strconv.ParseBool(v)
+		}
+	case bool:
+		pseudo = v
+	default:
+		err = errors.New("wrong type")
+	}
+	if err != nil {
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WrapErrorWithMessage(err, "%v is an invalid boolean value", params.Pseudo))
 		return
 	}
 
