@@ -1,4 +1,4 @@
-# Copyright 2022 VMware, Inc.
+# Copyright 2022-2023 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
 require 'pathname'
@@ -19,7 +19,7 @@ module SgtnClient
 
         total_messages = {}
 
-        (@source_bundle_path + component).glob('**/*.{yml, yaml}') do |f|
+        Pathname.glob(@source_bundle_path + component + '**/*.{yml, yaml}') do |f|
           bundle = YAML.load(File.read(f))
           messages = bundle&.first&.last # TODO: Warn about inconsistent source locale
           if messages.is_a?(Hash)
@@ -39,7 +39,7 @@ module SgtnClient
 
         @available_bundles ||= begin
           @source_bundle_path.children.select(&:directory?).reduce(Set.new) do |bundles, component|
-            component.glob('**/*.{yml, yaml}') do |_|
+            Pathname.glob(component + '**/*.{yml, yaml}') do |_|
               bundles << Common::BundleID.new(component.basename.to_s, LocaleUtil.get_source_locale)
               break bundles
             end || bundles

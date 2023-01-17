@@ -1,4 +1,4 @@
-# Copyright 2022 VMware, Inc.
+# Copyright 2022-2023 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
 module SgtnClient
@@ -8,9 +8,12 @@ module SgtnClient
     def get_bundle!(component, locale)
       error = nil
       localechain(locale) do |l|
-        return super(component, l)
-      rescue StandardError => e
-        error = e
+        begin
+          return super(component, l)
+        rescue StandardError => e
+          SgtnClient.logger.debug { (["[#{method(__callee__).owner}.#{__callee__}] {#{component}, #{locale}} #{e.message}"] + e.backtrace).join($/) }
+          error = e
+        end
       end
       raise error if error
     end
