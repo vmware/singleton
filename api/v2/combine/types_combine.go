@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -31,10 +31,10 @@ type (
 	translationWithPatternPostReq struct {
 		Combine int `form:"combine" binding:"oneof=1 2"`
 		translation.ReleaseID
-		Language   string   `form:"language" binding:"language"`
-		Region     string   `form:"region" binding:"omitempty,region"`
-		Components []string `form:"components" binding:"dive,component"`
-		Pseudo     string   `form:"pseudo" binding:"omitempty"`
+		Language   string      `form:"language" binding:"language"`
+		Region     string      `form:"region" binding:"omitempty,region"`
+		Components []string    `form:"components" binding:"dive,component"`
+		Pseudo     interface{} `form:"pseudo" binding:"omitempty"`
 		cldr.PatternScope
 	}
 )
