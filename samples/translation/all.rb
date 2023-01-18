@@ -52,9 +52,9 @@ formatting_cases["translate a string with placeholders - #{en_locale}"] = Sgtn.t
 
 # set locale
 Sgtn.locale = locale
-setting_locale["set loale to #{locale} before translating"] = Sgtn.t!(key, component)
+setting_locale["set locale to #{locale} before translating"] = Sgtn.t!(key, component)
 Sgtn.locale = en_locale
-setting_locale["set loale to #{en_locale} before translating"] = Sgtn.t!(key, component)
+setting_locale["set locale to #{en_locale} before translating"] = Sgtn.t!(key, component)
 ##########################################################
 
 ################## bundle translations ###################
@@ -62,7 +62,7 @@ bundle_translations = {}
 bundle_translations["#{locale} translations"] = Sgtn.get_translations!(component, locale)
 bundle_translations['English translations'] = Sgtn.get_translations!(component, en_locale)
 Sgtn.locale = locale
-bundle_translations["set loale to #{locale}"] = Sgtn.get_translations!(component)
+bundle_translations["set locale to #{locale}"] = Sgtn.get_translations!(component)
 bundle_translations['pseudo translations'] = Sgtn.get_translations!(component, Sgtn::PSEUDO_LOCALE)
 
 ##########################################################

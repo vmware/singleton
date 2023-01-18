@@ -7,10 +7,10 @@ test: &default
   version: 4.8.1
 
   # # Singleton server
-  vip_server:
+  vip_server: http://localhost:8091/
 
   # # translation bundle Path
-  translation_bundle: ./config/locales/l10n/bundles
+  # translation_bundle: ./config/locales/l10n/bundles
 
   # # source bundle Path
   source_bundle: ./config/locales/default

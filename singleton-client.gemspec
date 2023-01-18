@@ -16,9 +16,9 @@ Gem::Specification.new do |s|
   s.executables   = s.files.grep(%r{^bin/}).map { |f| File.basename(f) }
   s.require_paths = ['lib']
 
-  s.add_dependency('concurrent-ruby', '~> 1.1.10')
-  s.add_dependency('faraday', '~> 1.0.1')
-  s.add_dependency('faraday_middleware', '~> 1.2.0')
+  s.add_dependency('concurrent-ruby')
+  s.add_dependency('faraday', '1.0')
+  s.add_dependency('faraday_middleware', '1.0')
   s.add_dependency('i18n')
   s.add_dependency('logging')
   s.add_dependency('multi_json') # TODO
