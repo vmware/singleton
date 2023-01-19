@@ -23,7 +23,7 @@ class App < Sinatra::Application
   end
 
   get '/formatting/all' do
-    @Result = RunSample.run('formatting/all.rb', '@Result')
+    @Result = RunSample.run('formatting/all.rb', '@result')
     haml :display_hash, locals: {
       header: 'Got 1 matching payments',
       display_hash: { "success": true, "result": @Result }

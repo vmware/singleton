@@ -44,9 +44,8 @@ GEM
     faraday-retry (1.0.3)
     faraday_middleware (1.2.0)
       faraday (~> 1.0)
-    haml (6.1.1)
-      temple (>= 0.8.2)
-      thor
+    haml (5.2.2)
+      temple (>= 0.8.0)
       tilt
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
@@ -80,7 +79,6 @@ GEM
       rack-protection (= 3.0.5)
       tilt (~> 2.0)
     temple (0.9.1)
-    thor (1.2.1)
     tilt (2.0.11)
     twitter_cldr (6.11.4)
       camertron-eprun
@@ -96,7 +94,7 @@ PLATFORMS
 
 DEPENDENCIES
   coderay
-  haml
+  haml (~> 5.2.2)
   multi_json
   pry-byebug
   pry-inline
