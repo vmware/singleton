@@ -17,8 +17,8 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
 
   s.add_dependency('concurrent-ruby')
-  s.add_dependency('faraday', '1.0')
-  s.add_dependency('faraday_middleware', '1.0')
+  s.add_dependency('faraday')
+  s.add_dependency('faraday_middleware')
   s.add_dependency('i18n')
   s.add_dependency('logging')
   s.add_dependency('multi_json') # TODO

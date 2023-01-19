@@ -1,10 +1,11 @@
 source "https://rubygems.org"
 
 gem "singleton-client", :path => ".."
-# gem "singleton-client-test"
 gem "multi_json"
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 gem 'coderay'
 gem 'sinatra'
-gem 'pry'
+gem 'haml'
+gem 'pry-byebug'
+gem "pry-inline"

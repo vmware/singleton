@@ -29,7 +29,7 @@ module SgtnClient
           f.response :json # decode response bodies as JSON
           f.response :raise_error
           f.response :logger, config.logger, { log_level: :debug, headers: false, bodies: true }
-          # f.use :gzip
+          f.use :gzip
         end
       end
 
