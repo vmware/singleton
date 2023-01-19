@@ -68,5 +68,5 @@ bundle_translations['pseudo translations'] = Sgtn.get_translations!(component, S
 ##########################################################
 
 @result = { 'string translation' => string_translation, 'bundle translations' => bundle_translations }
-
-puts JSON.pretty_generate(@result)
+pp @result
+# puts JSON.pretty_generate(@result)
