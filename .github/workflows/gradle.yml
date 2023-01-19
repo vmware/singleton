@@ -157,6 +157,6 @@ jobs:
           cd java-client-sample
           sudo chmod +x gradlew 
           ./gradlew build
-          cp build/libs/sample-vip4java-1.0.jar .
+          cp build/libs/sample-vip4java-1.0.jar ..
           cd ..
           python test.py
