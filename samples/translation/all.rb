@@ -8,6 +8,7 @@ Sgtn.load_config('./config/sgtnclient.yml', 'test')
 Sgtn.pseudo_tag = '@&'
 
 key = 'helloworld'
+plural_key = 'plural_key'
 component = 'JAVA'
 locale = 'zh-CN'
 en_locale = 'en'
@@ -38,13 +39,13 @@ normal_cases['translate a nonexistent string, returning key'] = Sgtn.t('nonexist
 string_translation['pseudo translation'] = Sgtn.t!(key, component, Sgtn::PSEUDO_LOCALE)
 
 # translate a string with pluralization
-plural_cases['translate a plural string - 0'] = Sgtn.t!('plural_key', component, locale, cat_count: 0, place: '房间')
-plural_cases['translate a plural string - 1'] = Sgtn.t!('plural_key', component, locale, cat_count: 1, place: '盒子')
-plural_cases['translate a plural string - 2'] = Sgtn.t!('plural_key', component, locale, cat_count: 2, place: 'bush')
+plural_cases['translate a plural string - 0'] = Sgtn.t!(plural_key, component, locale, cat_count: 0, place: '房间')
+plural_cases['translate a plural string - 1'] = Sgtn.t!(plural_key, component, locale, cat_count: 1, place: '盒子')
+plural_cases['translate a plural string - 2'] = Sgtn.t!(plural_key, component, locale, cat_count: 2, place: 'bush')
 plural_cases['-----------------------'] = ''
-plural_cases['translate an English plural string - 0'] = Sgtn.t!('plural_key', component, en_locale, cat_count: 0, place: 'room')
-plural_cases['translate an English plural string - 1'] = Sgtn.t!('plural_key', component, en_locale, cat_count: 1, place: 'box')
-plural_cases['translate an English plural string - 2'] = Sgtn.t!('plural_key', component, en_locale, cat_count: 2, place: 'bush')
+plural_cases['translate an English plural string - 0'] = Sgtn.t!(plural_key, component, en_locale, cat_count: 0, place: 'room')
+plural_cases['translate an English plural string - 1'] = Sgtn.t!(plural_key, component, en_locale, cat_count: 1, place: 'box')
+plural_cases['translate an English plural string - 2'] = Sgtn.t!(plural_key, component, en_locale, cat_count: 2, place: 'bush')
 
 # format translation
 formatting_cases["translate a string with placeholders - #{locale}"] = Sgtn.t!('welcome', component, locale, place: '虚拟世界', name: '机器人')
@@ -68,5 +69,5 @@ bundle_translations['pseudo translations'] = Sgtn.get_translations!(component, S
 ##########################################################
 
 @result = { 'string translation' => string_translation, 'bundle translations' => bundle_translations }
-pp @result
-# puts JSON.pretty_generate(@result)
+
+puts JSON.pretty_generate(@result)
