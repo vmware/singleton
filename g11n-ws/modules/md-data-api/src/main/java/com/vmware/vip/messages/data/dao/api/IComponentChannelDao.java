@@ -4,7 +4,6 @@
  */
 package com.vmware.vip.messages.data.dao.api;
 
-import java.nio.channels.ReadableByteChannel;
 import java.util.List;
 
 import com.vmware.vip.messages.data.dao.exception.DataException;
