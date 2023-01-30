@@ -7,7 +7,6 @@ package com.vmware.vip.messages.data.dao.impl;
 import java.io.File;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
-import java.nio.channels.ReadableByteChannel;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +18,6 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import com.vmware.vip.common.constants.ConstantsFile;
-import com.vmware.vip.common.constants.ConstantsMsg;
 import com.vmware.vip.common.i18n.resourcefile.ResourceFilePathGetter;
 import com.vmware.vip.messages.data.bundle.BundleConfig;
 import com.vmware.vip.messages.data.dao.api.IComponentChannelDao;
@@ -54,28 +52,9 @@ public class FileComponentChannelDao implements IComponentChannelDao{
 				}
 			}
 		}
-		logger.info("fileSize: {}", resultChannels.size());
+		logger.debug("fileSize: {}", resultChannels.size());
 		
 		return resultChannels;
 	}
 
-	@Override
-	public ReadableByteChannel getTransReadableByteChannel(String productName, String version, String component,
-			String locale) throws DataException {
-		String subpath = ConstantsFile.L10N_BUNDLES_PATH + productName
-			     + File.separator + version + File.separator + component + File.separator
-				+ ResourceFilePathGetter.getLocalizedJSONFileName(locale);
-		String jsonfile = bundleConfig.getBasePathWithSeparator() + subpath;
-		File file = new File(jsonfile);
-		if (file.exists()) {
-			try {
-				return FileChannel.open(file.toPath(), StandardOpenOption.READ);
-			} catch (IOException e) {
-				throw new BundleException(e.getMessage(), e);
-			}
-		}else {
-			throw new BundleException(ConstantsMsg.FIFE_NOT_FOUND+": " + jsonfile);
-		}
-	}
-	
 }

@@ -13,9 +13,5 @@ import com.vmware.vip.messages.data.dao.model.ResultMessageChannel;
 public interface IComponentChannelDao {
 	public List<ResultMessageChannel> getTransReadableByteChannels(String productName, String version, List<String> components,
 			List<String> locales) throws DataException;
-	
-	public ReadableByteChannel getTransReadableByteChannel(String productName, String version, String component,
-			String locale) throws DataException;
-	
 
 }

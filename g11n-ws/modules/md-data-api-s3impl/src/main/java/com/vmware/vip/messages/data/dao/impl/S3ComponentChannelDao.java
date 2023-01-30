@@ -5,7 +5,6 @@
 package com.vmware.vip.messages.data.dao.impl;
 
 import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,28 +56,9 @@ public class S3ComponentChannelDao implements IComponentChannelDao {
                
 			}
 		}
-		logger.info("fileSize: {}", resultChannels.size());
+		logger.debug("fileSize: {}", resultChannels.size());
 
 		return resultChannels;
 	}
-
-	@Override
-	public ReadableByteChannel getTransReadableByteChannel(String productName, String version, String component,
-			String locale) throws DataException {
-		String filePath = S3Utils.genProductVersionS3Path(productName, version) + component + ConstantsChar.BACKSLASH
-				+ ResourceFilePathGetter.getLocalizedJSONFileName(locale);
-		if (s3Client.getS3Client().doesObjectExist(config.getBucketName(), filePath)) {
-			S3Object s3Obj = s3Client.getS3Client().getObject(config.getBucketName(), filePath);
-			if (s3Obj != null) {
-				S3ObjectInputStream s3is = s3Obj.getObjectContent();
-				return Channels.newChannel(s3is);
-			} else {
-				throw new DataException(S3OneComponentDaoImpl.S3_NOT_EXIST_STR + filePath);
-			}
-		}else {
-			throw new DataException(S3OneComponentDaoImpl.S3_NOT_EXIST_STR + filePath);
-		}
-	}
-
 
 }

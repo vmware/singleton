@@ -6,7 +6,6 @@ package com.vmware.vip.messages.data.dao.pgimpl;
 
 import java.io.ByteArrayInputStream;
 import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,16 +56,8 @@ public class PgComponentChannelDao implements IComponentChannelDao {
 			throw new DataException("this no component in DB return json");
 		}
 
-		logger.info("Message Size: {}", resultList.size());
+		logger.debug("Message Size: {}", resultList.size());
 		return resultList;
-	}
-
-	@Override
-	public ReadableByteChannel getTransReadableByteChannel(String productName, String version, String component,
-			String locale) throws DataException {
-		String resultStr = pgOneComponentApiImpl.get2JsonStr(productName, version, component, locale);
-		ByteArrayInputStream stringInputStream = new ByteArrayInputStream(resultStr.getBytes());
-		return Channels.newChannel(stringInputStream);
 	}
 
 }
