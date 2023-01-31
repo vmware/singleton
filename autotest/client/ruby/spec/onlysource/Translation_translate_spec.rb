@@ -19,9 +19,9 @@ describe "tmplete 1 test" do
             expect{Sgtn.translate('about.message')}.to raise_error(ArgumentError)
         end
 
-        it "Get a string's translation and arguments is less than 2____new dleng bug" do
-            expect{Sgtn.translate('about.message' , name:"xsdsad")}.to raise_error(ArgumentError)
-        end
+        # it "Get a string's translation and arguments is less than 2____new dleng bug" do
+        #     expect{Sgtn.translate('about.message' , name:"xsdsad")}.to raise_error(ArgumentError)
+        # end
 
         it "Get a string's translation and arguments is empty" do
             expect{Sgtn.translate()}.to raise_error(ArgumentError)

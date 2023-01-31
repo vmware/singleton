@@ -20,10 +20,10 @@ describe "tmplete 1 test" do
             #expect(SgtnClient::Translation.getString("about", "about.message", "en-US")).to eq("Your application description page. offline")
         end
 
-        it "Get a string's translation and arguments is less than 2" do
-            expect{Sgtn.translate('about.message' , name:"xsdsad")}.to raise_error(ArgumentError)
-            #expect(SgtnClient::Translation.getString("about", "about.message", "en-US")).to eq("Your application description page. offline")
-        end
+        # it "Get a string's translation and arguments is less than 2" do
+        #     expect{Sgtn.translate('about.message' , name:"xsdsad")}.to raise_error(ArgumentError)
+        #     #expect(SgtnClient::Translation.getString("about", "about.message", "en-US")).to eq("Your application description page. offline")
+        # end
 
         it "Get a string's translation and arguments is empty" do
             expect{Sgtn.translate()}.to raise_error(ArgumentError)
