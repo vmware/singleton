@@ -1,9 +1,6 @@
 test: &default
 
-  # Mode can be 'live' or 'sandbox'
-  mode: sandbox
-
-  # #Product Name
+  # # product Name
   product_name: test
 
   # # bundle version
@@ -19,11 +16,20 @@ test: &default
   source_bundle: ./config/locales/default
 
   # # memory cache's expration(minutes), default value is 24*60
-  #cache_expiry_period: 36
+  cache_expiry_period: 36
+
+  # # the path to log file, default target is STDOUT
+  log_file: ./unit_test.log
+
+  # # the lowest level to be logged, default value is INFO
+  log_level: DEBUG
+
+  # # tag for pseudo translation, default value is '@@'
+  pseudo_tag: "@@"
 
 development:
   <<: *default
 
 production:
   <<: *default
-  mode: live
+  log_level: INFO
