@@ -53,7 +53,7 @@ public class PgComponentChannelDao implements IComponentChannelDao {
 		}
 
 		if (resultList.size() == 0) {
-			throw new DataException("this no component in DB return json");
+			throw new DataException(String.format("there's no component under %s / %s!", productName, version));
 		}
 
 		logger.debug("Message Size: {}", resultList.size());

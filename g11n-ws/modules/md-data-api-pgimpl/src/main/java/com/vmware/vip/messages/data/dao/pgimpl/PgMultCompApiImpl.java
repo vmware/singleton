@@ -102,9 +102,9 @@ public class PgMultCompApiImpl implements IMultComponentDao {
 		}
 
 
-		if(results.size()==0) {
-			throw new DataException(String.format("there's no component under %s / %s!", productName, version));
-		}
+	if(results.size()==0) {
+		throw new DataException("this no components in DB when return ResultI18Message Object");
+	}
 
 		return results;
 
