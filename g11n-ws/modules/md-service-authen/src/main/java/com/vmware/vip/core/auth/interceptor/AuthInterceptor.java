@@ -55,13 +55,13 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 
 	private boolean validateCspToken(final String token, final HttpServletResponse response) throws IOException {
 		if(token == null) {
-			response.setContentType("application/json;charset=utf-8");
+			response.setContentType(ConstantsKeys.CONTENT_TYPE_JSON);
 			response.setStatus(HttpStatus.UNAUTHORIZED.value());
 			response.getWriter().write(this.buildRespBody(HttpStatus.UNAUTHORIZED.value(), ConstantsKeys.TOKEN_VALIDATION_ERROR));
 			return false;
 		}
 		if (!tokenService.isTokenValid(token)) {
-			response.setContentType("application/json;charset=utf-8");
+			response.setContentType(ConstantsKeys.CONTENT_TYPE_JSON);
 			response.setStatus(HttpStatus.FORBIDDEN.value());
 			response.getWriter().write(this.buildRespBody(HttpStatus.FORBIDDEN.value(), ConstantsKeys.TOKEN_INVALIDATION_ERROR));
 			return false;
