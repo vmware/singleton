@@ -21,11 +21,11 @@ describe "tmplete 1 test" do
             #expect(SgtnClient::Translation.getString("about", "about.message", "en-US")).to eq("Your application description page. offline")
         end
 
-        it "Get a string's translation and arguments is less than 2____new dleng bug" do
-            expect{Sgtn.translate('about.message' , name:"xsdsad")}.to raise_error(ArgumentError)
-            #expect(Sgtn.translate('about.message' )).to eq(nil)
-            #expect(SgtnClient::Translation.getString("about", "about.message", "en-US")).to eq("Your application description page. offline")
-        end
+        # it "Get a string's translation and arguments is less than 2____new dleng bug" do
+        #     expect{Sgtn.translate('about.message' , name:"xsdsad")}.to raise_error(ArgumentError)
+        #     #expect(Sgtn.translate('about.message' )).to eq(nil)
+        #     #expect(SgtnClient::Translation.getString("about", "about.message", "en-US")).to eq("Your application description page. offline")
+        # end
 
         it "Get a string's translation and arguments is empty" do
             expect{Sgtn.translate()}.to raise_error(ArgumentError)

@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 group :test do
     gem 'rspec'
-    gem 'rest-client'
+    gem 'rest-client', '1.6.14'
     gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
     #gem 'singleton-client-test', '0.7.0.22'
     gem "singleton-client", :path => "../../../../ruby_client/singleton"
