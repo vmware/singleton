@@ -123,7 +123,7 @@ func (d *bundleDAO) GetComponentMessages(name, version, locale, component string
 		return nil, errors.New("Wrong data from local bundle file")
 	}
 
-	return &defaultComponentMsgs{b.Messages, locale, component}, nil
+	return NewMapComponentMsgs(b.Messages, locale, component), nil
 }
 
 //!-bundleDAO

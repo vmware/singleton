@@ -75,7 +75,7 @@ func (s *serverDAO) Get(item *dataItem) (err error) {
 	switch item.id.iType {
 	case itemComponent:
 		bData := data.(*queryBundle)
-		item.data = &defaultComponentMsgs{messages: bData.Messages, locale: item.id.Locale, component: item.id.Component}
+		item.data = NewMapComponentMsgs(bData.Messages, item.id.Locale, item.id.Component)
 	case itemLocales:
 		localesData := data.(*queryLocales)
 		if localesData.Locales == nil {

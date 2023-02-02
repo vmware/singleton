@@ -6,25 +6,29 @@
 package sgtn
 
 type (
-	defaultComponentMsgs struct {
+	MapComponentMsgs struct {
 		messages          map[string]string
 		locale, component string
 	}
 )
 
-func (d *defaultComponentMsgs) Get(key string) (value string, found bool) {
+func NewMapComponentMsgs(messages map[string]string, locale, component string) *MapComponentMsgs {
+	return &MapComponentMsgs{messages: messages, locale: locale, component: component}
+}
+
+func (d *MapComponentMsgs) Get(key string) (value string, found bool) {
 	value, found = d.messages[key]
 	return
 }
 
-func (d *defaultComponentMsgs) Size() int {
+func (d *MapComponentMsgs) Size() int {
 	return len(d.messages)
 }
 
-func (d *defaultComponentMsgs) Locale() string {
+func (d *MapComponentMsgs) Locale() string {
 	return d.locale
 }
 
-func (d *defaultComponentMsgs) Component() string {
+func (d *MapComponentMsgs) Component() string {
 	return d.component
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2020-2022 VMware, Inc.
+ * Copyright 2020-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -47,7 +47,7 @@ func TestBundleGetCompMessages(t *testing.T) {
 	component := "sunglow"
 	msgs, err := inst.trans.GetComponentMessages(name, version, locale, component)
 	assert.Nil(t, err)
-	assert.Equal(t, 4, msgs.(*defaultComponentMsgs).Size())
+	assert.Equal(t, 4, msgs.(*MapComponentMsgs).Size())
 }
 
 func TestBundleDirNonexistent(t *testing.T) {

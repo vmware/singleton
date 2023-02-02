@@ -1,5 +1,5 @@
 /*
- * Copyright 2020-2022 VMware, Inc.
+ * Copyright 2020-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -122,7 +122,7 @@ func TestVersionFallback(t *testing.T) {
 	messages, err := inst.trans.GetComponentMessages(name, "1.0.1", "en", "sunglow")
 	assert.Nil(t, err)
 	assert.NotNil(t, messages)
-	assert.Equal(t, 7, messages.(*defaultComponentMsgs).Size())
+	assert.Equal(t, 7, messages.(*MapComponentMsgs).Size())
 
 	assert.True(t, gock.IsDone())
 }
