@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.validation;
@@ -11,6 +11,7 @@ import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ValidationMsg;
 import com.vmware.vip.common.exceptions.ValidationException;
 import com.vmware.vip.common.utils.RegExpValidatorUtils;
+import com.vmware.vip.common.utils.SourceFormatUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.servlet.HandlerMapping;
 
@@ -289,15 +290,22 @@ public class ParameterValidation implements IVlidation {
 		}
 	}
 
-	private void validateSourceformat(HttpServletRequest request)
+	public static void validateSourceformat(HttpServletRequest request)
 			throws ValidationException {
-		String sourceformat = request.getParameter(APIParamName.SOURCE_FORMAT) == null ? ConstantsKeys.EMPTY_STRING
+		String sourceFormat = request.getParameter(APIParamName.SOURCE_FORMAT) == null ? ConstantsKeys.EMPTY_STRING
 				: request.getParameter(APIParamName.SOURCE_FORMAT);
-		if (StringUtils.isEmpty(sourceformat)) {
-			return;
-		}
-		if (!ConstantsKeys.SOURCE_FORMAT_LIST.contains(sourceformat.toUpperCase())) {
-			throw new ValidationException(ValidationMsg.SOURCEFORMAT_NOT_VALIDE);
+		if (!StringUtils.isEmpty(sourceFormat)) {
+			sourceFormat = sourceFormat.toUpperCase();
+			if (SourceFormatUtils.isBase64Encode(sourceFormat)){
+				sourceFormat = SourceFormatUtils.formatSourceFormatStr(sourceFormat);
+				if (!StringUtils.isEmpty(sourceFormat) && !ConstantsKeys.SOURCE_FORMAT_LIST.contains(sourceFormat)) {
+					throw new ValidationException(ValidationMsg.SOURCEFORMAT_NOT_VALIDE);
+				}
+			}else{
+				if (!ConstantsKeys.SOURCE_FORMAT_LIST.contains(sourceFormat)) {
+					throw new ValidationException(ValidationMsg.SOURCEFORMAT_NOT_VALIDE);
+				}
+			}
 		}
 	}
 
