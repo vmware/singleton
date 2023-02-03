@@ -1,4 +1,4 @@
-//Copyright 2019-2022 VMware, Inc.
+//Copyright 2019-2023 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 
 buildscript {
@@ -53,10 +53,10 @@ subprojects{
    	       
         projectVersion = '0.0.1-SNAPSHOT'
         springWebVersion='5.3.21'
-        tomcatVersion= '9.0.68'
+        tomcatVersion= '9.0.71'
         httpclient='4.5.13'
         jacksonVersion = '2.14.0'
-    	sqliteVersion= '3.39.3.0'
+    	sqliteVersion= '3.40.0.0'
     	
     	ehCacheVersion = '3.9.2'
     	cacheApiVersion='1.1.1'
@@ -74,7 +74,7 @@ subprojects{
     	hibernateJpa21Api = "1.0.2"
     	log4j2Version="2.18.0"
     	slf4jVersion="1.7.32"
-    	esapiVersion="2.5.0.0"
+    	esapiVersion="2.5.1.0"
        
     	postgresqlVersion = "42.1.4"
     	druidVersion = "1.1.8"
