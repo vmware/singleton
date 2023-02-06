@@ -13,7 +13,7 @@ import (
 
 func TestGetInst(t *testing.T) {
 
-	resetInst(&testCfg)
+	resetInst(&testCfg, nil)
 	assert.Equal(t, testCfg.LocalBundles, inst.bundle.root)
 	// TODO: Test bundle
 
@@ -22,9 +22,9 @@ func TestGetInst(t *testing.T) {
 	}
 
 	// Verify translation manager
-	assert.NotNil(t, inst.trans)
+	assert.NotNil(t, translation)
 
-	s := inst.trans.(*transMgr).Translation.(*transInst).msgOrigin
+	s := translation.(*transMgr).Translation.(*transInst).msgOrigin
 	assert.NotNil(t, s)
 	assert.NotNil(t, cache)
 	assert.NotNil(t, cacheInfoMap)

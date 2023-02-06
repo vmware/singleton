@@ -29,7 +29,9 @@ import (
 	"gopkg.in/h2non/gock.v1"
 )
 
-var name, version = "SgtnTest", "1.0.0"
+var name, version, component = "SgtnTest", "1.0.0", "sunglow"
+var locale, localeDefault, localeSource = "zh-Hans", "fr", "en"
+
 var testCfg Config
 var mockData map[string]MockMapping
 
@@ -55,6 +57,7 @@ func TestMain(m *testing.M) {
 	mockData = ReadMockJSONs("testdata/mock/mappings")
 
 	m.Run()
+	os.Exit(0)
 }
 
 func PrintRespBody(url string, resp *http.Response) io.Reader {
@@ -62,7 +65,7 @@ func PrintRespBody(url string, resp *http.Response) io.Reader {
 	fmt.Printf("The response from server is:\n %#v\n", resp)
 	bodyBytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		fmt.Printf(err.Error())
+		fmt.Println(err.Error())
 		return resp.Body
 	}
 
@@ -161,7 +164,7 @@ func display(path string, v reflect.Value) {
 func ReadMockJSONs(rootpath string) map[string]MockMapping {
 	results := map[string]MockMapping{}
 
-	wf := func(path string, info os.FileInfo, err error) error {
+	wf := func(path string, info os.FileInfo, _ error) error {
 		if info.IsDir() {
 			return nil
 		}
@@ -282,9 +285,13 @@ func curFunName() string {
 	return frame.Function[strings.LastIndex(frame.Function, "/")+1:]
 }
 
-func resetInst(cfg *Config) {
+func resetInst(cfg *Config, f func()) {
+	mapSource = registeredSource{make(map[releaseID](map[string]ComponentMsgs))}
 	inst = &instance{}
 	cache = newCache()
+	if f != nil {
+		f()
+	}
 	Initialize(cfg)
 }
 

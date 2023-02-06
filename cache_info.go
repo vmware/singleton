@@ -10,6 +10,7 @@ import (
 	"time"
 )
 
+// TODO: to remove this global var
 var cacheInfoMap *sync.Map
 
 func initCacheInfoMap() {
@@ -26,11 +27,11 @@ type itemCacheInfo struct {
 	lastUpdate int64
 	age        int64
 	eTag       string
-	sync.RWMutex
+	sync.RWMutex // TODO: remove this
 }
 
 func newSingleCacheInfo() *itemCacheInfo {
-	return &itemCacheInfo{0, cacheDefaultExpires, "", sync.RWMutex{}}
+	return &itemCacheInfo{time.Now().Unix(), cacheDefaultExpires, "", sync.RWMutex{}}
 }
 
 func (i *itemCacheInfo) setTime(t int64) {
@@ -46,6 +47,10 @@ func (i *itemCacheInfo) setAge(d int64) {
 }
 
 func (i *itemCacheInfo) isExpired() bool {
+	if i == nil {
+		return false
+	}
+
 	i.RLock()
 	defer i.RUnlock()
 
@@ -56,7 +61,11 @@ func (i *itemCacheInfo) setETag(t string) {
 	i.eTag = t
 }
 func (i *itemCacheInfo) getETag() string {
-	return i.eTag
+	if i == nil {
+		return ""
+	} else {
+		return i.eTag
+	}
 }
 
 //!-itemCacheInfo

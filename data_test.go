@@ -33,18 +33,18 @@ func TestCC(t *testing.T) {
 
 	newCfg := testCfg
 	newCfg.LocalBundles = ""
-	resetInst(&newCfg)
+	resetInst(&newCfg, nil)
 	trans := GetTranslation()
 	for _, testData := range tests {
 		for _, m := range testData.mocks {
 			EnableMockData(m)
 		}
 
-		item := &dataItem{dataItemID{itemComponent, name, version, testData.locale, testData.component}, nil, nil}
+		item := &dataItem{dataItemID{itemComponent, name, version, testData.locale, testData.component}, nil, nil, nil}
 		info := getCacheInfo(item)
 		item.attrs = info
 
-		err := trans.(*transMgr).Translation.(*transInst).msgOrigin.(*cacheService).refresh(item, false)
+		err := trans.(*transMgr).Translation.(*transInst).msgOrigin.(*cacheService).Get(item)
 		if err != nil {
 			t.Errorf("%s failed: %v", testData.desc, err)
 			continue
@@ -63,10 +63,10 @@ func TestCC(t *testing.T) {
 }
 
 func TestFallbackToLocalBundles(t *testing.T) {
-	resetInst(&testCfg)
+	resetInst(&testCfg, nil)
 
 	locale, component := "fr", "sunglow"
-	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil}
+	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil, nil}
 	info := getCacheInfo(item)
 
 	msgs, err := GetTranslation().GetComponentMessages(name, version, locale, component)

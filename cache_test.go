@@ -15,10 +15,10 @@ func TestCacheExpireWhenNeverExpire(t *testing.T) {
 
 	newCfg := testCfg
 	newCfg.ServerURL = ""
-	resetInst(&newCfg)
+	resetInst(&newCfg, nil)
 
 	locale, component := "fr", "sunglow"
-	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil}
+	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil, nil}
 	info := getCacheInfo(item)
 
 	GetTranslation().GetComponentMessages(name, version, locale, component)
@@ -40,7 +40,7 @@ func TestCacheExpireWhenNeverExpire(t *testing.T) {
 
 func TestRegisterCache(t *testing.T) {
 	if cache == nil {
-		resetInst(&testCfg)
+		resetInst(&testCfg, nil)
 	}
 
 	oldCache := cache

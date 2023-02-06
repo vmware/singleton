@@ -8,7 +8,6 @@ package sgtn
 import (
 	"net"
 	"net/http"
-	"net/url"
 	"testing"
 	"time"
 
@@ -23,13 +22,13 @@ func TestGetLocaleCompAbnormal(t *testing.T) {
 	defer func() { getDataFromServer = saved }()
 
 	errMsg := "TestGetLocaleCompAbnormal"
-	getDataFromServer = func(u *url.URL, header map[string]string, data interface{}) (*http.Response, error) {
+	getDataFromServer = func(u string, header map[string]string, data interface{}) (*http.Response, error) {
 		return nil, errors.New(errMsg)
 	}
 
 	newCfg := testCfg
 	newCfg.LocalBundles = ""
-	resetInst(&newCfg)
+	resetInst(&newCfg, nil)
 
 	trans := GetTranslation()
 
@@ -70,10 +69,10 @@ func TestTimeout(t *testing.T) {
 	mockReq.Mock.Response().Delay(time.Microsecond * 11)
 
 	locale, component := "fr", "sunglow"
-	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil}
+	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil, nil}
 	item.attrs = getCacheInfo(item)
 
-	resetInst(&testCfg)
+	resetInst(&testCfg, nil)
 	sgtnServer := inst.server
 
 	// Get first time to set server stats as timeout
@@ -97,10 +96,10 @@ func TestTimeout2(t *testing.T) {
 	EnableMockDataWithTimes("componentMessages-fr-sunglow", 1)
 
 	locale, component := "fr", "sunglow"
-	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil}
+	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil, nil}
 	item.attrs = getCacheInfo(item)
 
-	resetInst(&testCfg)
+	resetInst(&testCfg, nil)
 	sgtnServer := inst.server
 
 	sgtnServer.status = serverTimeout
@@ -117,9 +116,9 @@ func TestVersionFallback(t *testing.T) {
 
 	newCfg := testCfg
 	newCfg.LocalBundles = ""
-	resetInst(&newCfg)
+	resetInst(&newCfg, nil)
 
-	messages, err := inst.trans.GetComponentMessages(name, "1.0.1", "en", "sunglow")
+	messages, err := translation.GetComponentMessages(name, "1.0.1", "en", "sunglow")
 	assert.Nil(t, err)
 	assert.NotNil(t, messages)
 	assert.Equal(t, 7, messages.(*MapComponentMsgs).Size())

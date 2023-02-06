@@ -43,7 +43,7 @@ func (t *transInst) GetLocaleList(name, version string) (data []string, err erro
 		return nil, errors.New(wrongPara)
 	}
 
-	item := &dataItem{dataItemID{itemLocales, name, version, "", ""}, nil, nil}
+	item := &dataItem{dataItemID{itemLocales, name, version, "", ""}, nil, nil, nil}
 	err = t.msgOrigin.Get(item)
 	if nil != item.data {
 		data, _ = item.data.([]string)
@@ -56,7 +56,7 @@ func (t *transInst) GetComponentList(name, version string) (data []string, err e
 		return nil, errors.New(wrongPara)
 	}
 
-	item := &dataItem{dataItemID{itemComponents, name, version, "", ""}, nil, nil}
+	item := &dataItem{dataItemID{itemComponents, name, version, "", ""}, nil, nil, nil}
 	err = t.msgOrigin.Get(item)
 	if nil != item.data {
 		data, _ = item.data.([]string)
@@ -69,7 +69,7 @@ func (t *transInst) GetComponentMessages(name, version, locale, component string
 		return nil, errors.New(wrongPara)
 	}
 
-	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil}
+	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil, nil}
 	err = t.msgOrigin.Get(item)
 	if nil != item.data {
 		data, _ = item.data.(ComponentMsgs)
@@ -91,8 +91,11 @@ func (t *transInst) GetComponentsMessages(name, version string, locales, compone
 		}
 	}
 
+	totalNumber := len(locales) * len(components)
+	msgs = make([]ComponentMsgs, 0, totalNumber)
+
 	var wg sync.WaitGroup
-	wg.Add(len(locales) * len(components))
+	wg.Add(totalNumber)
 	for _, locale := range locales {
 		for _, component := range components {
 			go func(locale, component string) {

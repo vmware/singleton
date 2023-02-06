@@ -5,12 +5,10 @@
 
 package sgtn
 
-type (
-	MapComponentMsgs struct {
-		messages          map[string]string
-		locale, component string
-	}
-)
+type MapComponentMsgs struct {
+	messages          map[string]string
+	locale, component string
+}
 
 func NewMapComponentMsgs(messages map[string]string, locale, component string) *MapComponentMsgs {
 	return &MapComponentMsgs{messages: messages, locale: locale, component: component}
@@ -19,6 +17,10 @@ func NewMapComponentMsgs(messages map[string]string, locale, component string) *
 func (d *MapComponentMsgs) Get(key string) (value string, found bool) {
 	value, found = d.messages[key]
 	return
+}
+
+func (d *MapComponentMsgs) Set(key, value string) {
+	d.messages[key] = value
 }
 
 func (d *MapComponentMsgs) Size() int {
@@ -31,4 +33,12 @@ func (d *MapComponentMsgs) Locale() string {
 
 func (d *MapComponentMsgs) Component() string {
 	return d.component
+}
+
+func (d *MapComponentMsgs) Range(f func(key, value string) bool) {
+	for key, value := range d.messages {
+		if !f(key, value) {
+			break
+		}
+	}
 }
