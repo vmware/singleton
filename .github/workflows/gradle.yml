@@ -135,11 +135,28 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '8'
+      - name: Set up Python3
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
       - name: Smoke Test
         run: |
+          pip install ddt datetime openpyxl zipfile37 JPype1
           git clone --branch=devops https://github.com/vmware/singleton.git devops
-          mv $GITHUB_WORKSPACE/devops/autotest/cldrpattern .
-          docker run -i -v $(pwd):/root/app python:3.7 sh -c 'pip install ddt datetime openpyxl && \
-          cd /root/app/cldrpattern && \
-          cp HTMLTestRunner.py /usr/lib/python3.7 && \
-          python test.py'
+          mv $GITHUB_WORKSPACE/devops/autotest/cldrpattern/* .
+          sudo cp HTMLTestRunner.py /usr/lib/python3.10
+          git clone --branch=g11n-java-client https://github.com/vmware/singleton.git g11n-java-client
+          cd g11n-java-client
+          ./gradlew clean build -x test
+          mkdir -p ../java-client-sample/lib
+          cp build/libs/singleton-client-java-0.1.0.jar ../java-client-sample/lib
+          cd ../
+          sudo chmod +x gradlew
+          ./gradlew build
+          cp build/libs/i18n-patterns-core-0.11.0.jar java-client-sample/lib
+          cd java-client-sample
+          sudo chmod +x gradlew 
+          ./gradlew build
+          cp build/libs/sample-vip4java-1.0.jar ..
+          cd ..
+          python test.py
