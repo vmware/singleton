@@ -24,7 +24,7 @@ import com.nimbusds.jwt.proc.DefaultJWTClaimsVerifier;
 import com.nimbusds.jwt.proc.DefaultJWTProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -35,16 +35,19 @@ import java.time.Instant;
 
 
 @Service
-public class CSPTokenService {
+public class CspValidateService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(CSPTokenService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CspValidateService.class);
 
+    @Value("${csp.auth.issuer:###}")
+    private String issuer;
+    @Value("${csp.auth.url:###}")
+    private String jwksUri;
+    @Value("${csp.auth.refresh-interval-sec:30}")
+    private int refreshIntervalSec;
     private Instant keyRotateEndpointLastAccess;
     private URL url;
     private JWKSet jwksInMem;
-
-    @Autowired
-    private CSPTokenConfig cspTokenConfig;
 
     /**
      * @param token to validate
@@ -62,7 +65,7 @@ public class CSPTokenService {
      * @param token to validate and extract it claims
      * @return the token claims
      */
-    public Claim getTokenClaims(final String token) {
+    public CspToken getTokenClaims(final String token) {
         if (jwksInMem == null || jwksInMem.getKeys() == null) {
             callCspJwksEndpoint();
         }
@@ -81,7 +84,7 @@ public class CSPTokenService {
         return null;
     }
 
-    private Claim validate(String token) throws ParseException, BadJOSEException, JOSEException {
+    private CspToken validate(String token) throws ParseException, BadJOSEException, JOSEException {
         if (token == null) return null;
 
         SignedJWT signedJWT = SignedJWT.parse(token);
@@ -95,9 +98,9 @@ public class CSPTokenService {
             }
         }
 
-        if ((matchKey == null) && !allowRefreshJwkset(cspTokenConfig.getRefreshIntervalSec())) {
+        if ((matchKey == null) && !allowRefreshJwkset(getRefreshIntervalSec())) {
             LOGGER.info("Trying to hit public key endpoint within {} sec, possibly a DoS (Denial of Service) attack",
-                    cspTokenConfig.getRefreshIntervalSec());
+                    getRefreshIntervalSec());
         }
 
         if (matchKey == null) return null;
@@ -116,23 +119,23 @@ public class CSPTokenService {
             public void verify(JWTClaimsSet claimsSet, SecurityContext c) throws BadJWTException {
                 final String issuer = claimsSet.getIssuer();
                 LOGGER.info("the remote issuer:{}", issuer);
-                if (!cspTokenConfig.getIssuer().equals(issuer)) {
+                if (!getIssuer().equals(issuer)) {
                     throw new BadJWTException("Invalid token issuer");
                 }
             }
         });
         jwtProcessor.getJWTClaimsSetVerifier().verify(claimSet, ctx);
 
-        Claim claim = new Claim();
-        claim.setSub(claimSet.getClaim("sub").toString());
-        claim.setExp(claimSet.getClaim("exp").toString());
-        claim.setIat(claimSet.getClaim("iat").toString());
-        claim.setAcct(claimSet.getClaim("acct").toString());
-        claim.setDomain(claimSet.getClaim("domain").toString());
-        claim.setContext(claimSet.getClaim("context").toString());
-        claim.setContextName(claimSet.getClaim("context_name").toString());
-        claim.setPerms(claimSet.getStringArrayClaim("perms"));
-        return claim;
+        CspToken cspToken = new CspToken();
+        cspToken.setSub(claimSet.getClaim("sub").toString());
+        cspToken.setExp(claimSet.getClaim("exp").toString());
+        cspToken.setIat(claimSet.getClaim("iat").toString());
+        cspToken.setAcct(claimSet.getClaim("acct").toString());
+        cspToken.setDomain(claimSet.getClaim("domain").toString());
+        cspToken.setContext(claimSet.getClaim("context").toString());
+        cspToken.setContextName(claimSet.getClaim("context_name").toString());
+        cspToken.setPerms(claimSet.getStringArrayClaim("perms"));
+        return cspToken;
     }
 
     //fetch alg for given CSP key set
@@ -147,7 +150,7 @@ public class CSPTokenService {
     private synchronized void callCspJwksEndpoint()
     {
         try {
-            url = new URL(cspTokenConfig.getJwksUri());
+            url = new URL(getJwksUri());
             jwksInMem = JWKSet.load(url);
             keyRotateEndpointLastAccess = Instant.now();
         } catch (final MalformedURLException e) {
@@ -166,5 +169,18 @@ public class CSPTokenService {
         }
         return false;
     }
+
+    public String getIssuer() {
+        return issuer;
+    }
+
+    public String getJwksUri() {
+        return jwksUri;
+    }
+
+    public int getRefreshIntervalSec() {
+        return refreshIntervalSec;
+    }
+
 }
 

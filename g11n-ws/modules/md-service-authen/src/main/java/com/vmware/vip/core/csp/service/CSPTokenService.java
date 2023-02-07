@@ -4,6 +4,7 @@
  */
 package com.vmware.vip.core.csp.service;
 
+import com.vmware.vip.core.login.VipAuthConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
@@ -44,7 +45,7 @@ public class CSPTokenService {
     private JWKSet jwksInMem;
 
     @Autowired
-    private CSPTokenConfig cspTokenConfig;
+    private VipAuthConfig vipAuthConfig;
 
     /**
      * @param token to validate
@@ -95,9 +96,9 @@ public class CSPTokenService {
             }
         }
 
-        if ((matchKey == null) && !allowRefreshJwkset(cspTokenConfig.getRefreshIntervalSec())) {
+        if ((matchKey == null) && !allowRefreshJwkset(vipAuthConfig.getRefreshIntervalSec())) {
             LOGGER.info("Trying to hit public key endpoint within {} sec, possibly a DoS (Denial of Service) attack",
-                    cspTokenConfig.getRefreshIntervalSec());
+                    vipAuthConfig.getRefreshIntervalSec());
         }
         if (matchKey == null){
             return null;
@@ -117,7 +118,7 @@ public class CSPTokenService {
             @Override
             public void verify(JWTClaimsSet claimsSet, SecurityContext c) throws BadJWTException {
                 final String issuer = claimsSet.getIssuer();
-                if (!cspTokenConfig.getIssuer().equals(issuer)) {
+                if (!vipAuthConfig.getIssuer().equals(issuer)) {
                     throw new BadJWTException("Invalid token issuer");
                 }
             }
@@ -148,7 +149,7 @@ public class CSPTokenService {
     private synchronized void callCspJwksEndpoint()
     {
         try {
-            url = new URL(cspTokenConfig.getJwksUri());
+            url = new URL(vipAuthConfig.getCspAuthUrl());
             jwksInMem = JWKSet.load(url);
             keyRotateEndpointLastAccess = Instant.now();
         } catch (final MalformedURLException e) {

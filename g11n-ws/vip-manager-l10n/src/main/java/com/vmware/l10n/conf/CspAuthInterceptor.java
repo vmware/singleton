@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -22,23 +21,22 @@ public class CspAuthInterceptor extends HandlerInterceptorAdapter {
 
 	private static Logger logger = LoggerFactory.getLogger(CspAuthInterceptor.class);
 
-	private final CSPTokenService cspTokenService;
-	private static final String CSP_AUTH_TOKEN = "csp-auth-token";
+	private final CspValidateService cspValidateService;
 
-	public CspAuthInterceptor(CSPTokenService cspTokenService) {
-		this.cspTokenService = cspTokenService;
+	public CspAuthInterceptor(CspValidateService cspValidateService) {
+		this.cspValidateService = cspValidateService;
 	}
 
 	@Override
 	public boolean preHandle(final HttpServletRequest request, final HttpServletResponse response, final Object handler)
 			throws Exception {
-		String token = request.getHeader(CSP_AUTH_TOKEN);
+		String token = request.getHeader(ConstantsKeys.CSP_AUTH_TOKEN);
 		if(token == null) {
 			response.setStatus(HttpStatus.UNAUTHORIZED.value());
 			response.getWriter().write(this.buildRespBody(HttpStatus.UNAUTHORIZED.value(), ConstantsKeys.TOKEN_VALIDATION_ERROR));
 			return false;
 		}
-		if (!cspTokenService.isTokenValid(token)) {
+		if (!cspValidateService.isTokenValid(token)) {
 			// The user is not authenticated.
 			response.setStatus(HttpStatus.FORBIDDEN.value());
 			response.getWriter().write(this.buildRespBody(HttpStatus.FORBIDDEN.value(), ConstantsKeys.TOKEN_INVALIDATION_ERROR));

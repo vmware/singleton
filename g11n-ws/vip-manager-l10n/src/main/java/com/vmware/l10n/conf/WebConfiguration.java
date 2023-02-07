@@ -34,7 +34,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 	private Integer sourceCollectReqSize;
 
 	@Autowired
-	private CSPTokenService cspTokenService;
+	private CspValidateService cspValidateService;
 
 	@Autowired
 	private AllowListDao allowlistDao;
@@ -44,7 +44,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 		// CSP authentication
 		if (cspAuthFlag.equalsIgnoreCase("true")) {
 			logger.info("add enable CSP authentication interceptor");
-			registry.addInterceptor(new CspAuthInterceptor(cspTokenService))
+			registry.addInterceptor(new CspAuthInterceptor(cspValidateService))
 			.addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v2/translation/**", L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v1/translation/**");
 		}
 		logger.info("add source collection validation interceptor");

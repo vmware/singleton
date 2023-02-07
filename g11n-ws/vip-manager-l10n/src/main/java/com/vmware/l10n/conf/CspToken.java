@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class Claim {
+public class CspToken {
     private String sub;
     private String iat;
     private String exp;
@@ -88,15 +88,15 @@ public class Claim {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Claim claim = (Claim) o;
-        return Objects.equals(sub, claim.sub) &&
-                Objects.equals(iat, claim.iat) &&
-                Objects.equals(exp, claim.exp) &&
-                Objects.equals(domain, claim.domain) &&
-                Objects.equals(context, claim.context) &&
-                Objects.equals(contextName, claim.contextName) &&
-                Objects.equals(acct, claim.acct) &&
-                Arrays.equals(perms, claim.perms);
+        CspToken cspToken = (CspToken) o;
+        return Objects.equals(sub, cspToken.sub) &&
+                Objects.equals(iat, cspToken.iat) &&
+                Objects.equals(exp, cspToken.exp) &&
+                Objects.equals(domain, cspToken.domain) &&
+                Objects.equals(context, cspToken.context) &&
+                Objects.equals(contextName, cspToken.contextName) &&
+                Objects.equals(acct, cspToken.acct) &&
+                Arrays.equals(perms, cspToken.perms);
     }
 
     @Override
@@ -107,7 +107,7 @@ public class Claim {
 
     @Override
     public String toString() {
-        return "Claim{" +
+        return "CspToken{" +
                 "sub='" + sub + '\'' +
                 ", iat='" + iat + '\'' +
                 ", exp='" + exp + '\'' +

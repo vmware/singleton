@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO;
 import com.vmware.vip.core.csp.service.CSPTokenService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -28,7 +27,6 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
   
 	private String allowSourceCollection;
 	private final CSPTokenService cspTokenService;
-	private static final String CSP_AUTH_TOKEN = "csp-auth-token";
 	private ObjectMapper objectMapper = new ObjectMapper();
 
 	public AuthInterceptor(String allowSourceCollection, CSPTokenService cspTokenService) {
@@ -50,7 +48,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 
 		if (StringUtils.equalsIgnoreCase(request.getParameter(ConstantsKeys.COLLECT_SOURCE), ConstantsKeys.TRUE)) {
 			if (allowSourceCollection.equalsIgnoreCase(ConstantsKeys.TRUE)) {
-		        return validateCspToken(request, response);
+		        return validateCspToken(token, response);
 
 			} else {
 				response.setStatus(HttpStatus.FORBIDDEN.value());
