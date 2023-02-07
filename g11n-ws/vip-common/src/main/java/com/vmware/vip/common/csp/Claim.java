@@ -2,7 +2,7 @@
  * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
-package com.vmware.vip.core.csp.service;
+package com.vmware.vip.common.csp;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

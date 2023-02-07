@@ -4,6 +4,7 @@
  */
 package com.vmware.vip.core.csp.service;
 
+import com.vmware.vip.common.csp.Claim;
 import com.vmware.vip.core.login.VipAuthConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -63,7 +64,7 @@ public class CSPTokenService {
      * @param token to validate and extract it claims
      * @return the token claims
      */
-    public Claim  getTokenClaims(final String token) {
+    public Claim getTokenClaims(final String token) {
         if (jwksInMem == null || jwksInMem.getKeys() == null) {
             callCspJwksEndpoint();
         }

@@ -22,6 +22,7 @@ import com.nimbusds.jwt.proc.BadJWTException;
 import com.nimbusds.jwt.proc.ConfigurableJWTProcessor;
 import com.nimbusds.jwt.proc.DefaultJWTClaimsVerifier;
 import com.nimbusds.jwt.proc.DefaultJWTProcessor;
+import com.vmware.vip.common.csp.Claim;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -65,7 +66,7 @@ public class CspValidateService {
      * @param token to validate and extract it claims
      * @return the token claims
      */
-    public CspToken getTokenClaims(final String token) {
+    public Claim getTokenClaims(final String token) {
         if (jwksInMem == null || jwksInMem.getKeys() == null) {
             callCspJwksEndpoint();
         }
@@ -84,12 +85,12 @@ public class CspValidateService {
         return null;
     }
 
-    private CspToken validate(String token) throws ParseException, BadJOSEException, JOSEException {
-        if (token == null) return null;
-
+    private Claim  validate(String token) throws ParseException, BadJOSEException, JOSEException {
+        if (token == null) {
+            return null;
+        }
         SignedJWT signedJWT = SignedJWT.parse(token);
         String tokenKid = signedJWT.getHeader().getKeyID();
-
         JWK matchKey = null;
         for (JWK key : jwksInMem.getKeys()) {
             if (key.getKeyID().equals(tokenKid)) {
@@ -102,23 +103,24 @@ public class CspValidateService {
             LOGGER.info("Trying to hit public key endpoint within {} sec, possibly a DoS (Denial of Service) attack",
                     getRefreshIntervalSec());
         }
-
-        if (matchKey == null) return null;
+        if (matchKey == null){
+            return null;
+        }
         JWSAlgorithm alg = getKeyAlg(matchKey);
         ResourceRetriever resourceRetriever = new DefaultResourceRetriever(2000, 2000);
-
         ConfigurableJWTProcessor jwtProcessor = new DefaultJWTProcessor();
         JWKSource keySource = new RemoteJWKSet(url, resourceRetriever);
+
         JWSKeySelector keySelector = new JWSVerificationKeySelector(alg, keySource);
         jwtProcessor.setJWSKeySelector(keySelector);
 
         SecurityContext ctx = null;
         JWTClaimsSet claimSet = jwtProcessor.process(token, ctx);
+
         jwtProcessor.setJWTClaimsSetVerifier(new DefaultJWTClaimsVerifier() {
             @Override
             public void verify(JWTClaimsSet claimsSet, SecurityContext c) throws BadJWTException {
                 final String issuer = claimsSet.getIssuer();
-                LOGGER.info("the remote issuer:{}", issuer);
                 if (!getIssuer().equals(issuer)) {
                     throw new BadJWTException("Invalid token issuer");
                 }
@@ -126,16 +128,16 @@ public class CspValidateService {
         });
         jwtProcessor.getJWTClaimsSetVerifier().verify(claimSet, ctx);
 
-        CspToken cspToken = new CspToken();
-        cspToken.setSub(claimSet.getClaim("sub").toString());
-        cspToken.setExp(claimSet.getClaim("exp").toString());
-        cspToken.setIat(claimSet.getClaim("iat").toString());
-        cspToken.setAcct(claimSet.getClaim("acct").toString());
-        cspToken.setDomain(claimSet.getClaim("domain").toString());
-        cspToken.setContext(claimSet.getClaim("context").toString());
-        cspToken.setContextName(claimSet.getClaim("context_name").toString());
-        cspToken.setPerms(claimSet.getStringArrayClaim("perms"));
-        return cspToken;
+        Claim claim = new Claim();
+        claim.setSub(claimSet.getClaim("sub").toString());
+        claim.setExp(claimSet.getClaim("exp").toString());
+        claim.setIat(claimSet.getClaim("iat").toString());
+        claim.setAcct(claimSet.getClaim("acct").toString());
+        claim.setDomain(claimSet.getClaim("domain").toString());
+        claim.setContext(claimSet.getClaim("context").toString());
+        claim.setContextName(claimSet.getClaim("context_name").toString());
+        claim.setPerms(claimSet.getStringArrayClaim("perms"));
+        return claim;
     }
 
     //fetch alg for given CSP key set
