@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.source.controller;
@@ -8,6 +8,7 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.vmware.vip.common.utils.SourceFormatUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.json.simple.JSONArray;
@@ -130,7 +131,11 @@ public class SourceController {
 				String s = kscDTO.getSource();
 				String c = kscDTO.getCommentForSource();
 				String sf = kscDTO.getSourceFormat();
-				
+				if (!StringUtils.isEmpty(sf) && SourceFormatUtils.isBase64Encode(sf)){
+					s = SourceFormatUtils.decodeSourceBase64Str(s);
+					sf = SourceFormatUtils.formatSourceFormatStr(sf);
+				}
+
 				final StringSourceDTO stringSourceDTO = createSourceDTO(
 						productName, version, component, k, s, c, sf);
 				if (!sourceService.cacheSource(stringSourceDTO)) {
@@ -139,6 +144,10 @@ public class SourceController {
 			}
 		} else {
 			LOGGER.info(key);
+			if (!StringUtils.isEmpty(sourceFormat) && SourceFormatUtils.isBase64Encode(sourceFormat)){
+				sourceStr = SourceFormatUtils.decodeSourceBase64Str(sourceStr);
+				sourceFormat = SourceFormatUtils.formatSourceFormatStr(sourceFormat);
+			}
 			final StringSourceDTO stringSourceDTO = createSourceDTO(
 					productName, version, component, key, sourceStr,
 					commentForSource, sourceFormat);

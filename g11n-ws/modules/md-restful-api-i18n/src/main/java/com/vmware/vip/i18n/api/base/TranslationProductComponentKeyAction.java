@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.base;
@@ -11,6 +11,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.vmware.vip.common.utils.SourceFormatUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -193,9 +194,14 @@ public class TranslationProductComponentKeyAction extends BaseAction {
 	protected void validateSourceSetAndKey(List<KeySourceCommentDTO> sourceSet) throws ValidationException {
 	
 		for(KeySourceCommentDTO ksc:sourceSet) {
-			String sft = ksc.getSourceFormat();
+			String sft = ksc.getSourceFormat().toUpperCase();
 			String key = ksc.getKey();
-			if (!StringUtils.isEmpty(sft) && !ConstantsKeys.SOURCE_FORMAT_LIST.contains(sft.toUpperCase())) {
+
+			if (!StringUtils.isEmpty(sft) && SourceFormatUtils.isBase64Encode(sft)){
+				sft = SourceFormatUtils.formatSourceFormatStr(sft);
+			}
+
+			if (!StringUtils.isEmpty(sft) && !ConstantsKeys.SOURCE_FORMAT_LIST.contains(sft)) {
 				
 				throw new ValidationException(String.format(ValidationMsg.SOURCEFORMAT_NOT_VALIDE_FORMAT, sft, key));
 			}

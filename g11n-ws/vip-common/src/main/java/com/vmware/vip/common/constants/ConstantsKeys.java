@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.common.constants;
@@ -106,6 +106,7 @@ public class ConstantsKeys {
    public static final String SCOPE_FILTER_MATCH = "(^[a-zA-Z]+[,-_a-zA-Z0-9]+[a-zA-Z0-9]+$)|(^[\\^\\(]+[,-_a-zA-Z0-9]+[\\)]+$)";
 
    public final static Set<String> SOURCE_FORMAT_LIST = new HashSet<String>(Arrays.asList("STRING", "SVG", "MD", "HTML"));
+   public final static String SOURCE_FORMAT_BASE64 = "BASE64";
    public static final String CSP_AUTH_TOKEN = "csp-auth-token";
 
 }

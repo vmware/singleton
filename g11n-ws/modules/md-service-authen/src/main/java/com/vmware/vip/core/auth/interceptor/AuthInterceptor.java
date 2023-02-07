@@ -39,19 +39,19 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(final HttpServletRequest request, final HttpServletResponse response, final Object handler)
 			throws Exception {
+		final String token = request.getHeader(ConstantsKeys.CSP_AUTH_TOKEN);
 		if (request.getMethod().equalsIgnoreCase(HttpMethod.PUT.name())){
-			UpdateTranslationDTO updateTranslationDTO = objectMapper.readValue(request.getInputStream(), UpdateTranslationDTO.class);
-            request.setAttribute(ConstantsKeys.UPDATEDTO, updateTranslationDTO);
-		    if (updateTranslationDTO.getRequester().equals(ConstantsKeys.VL10N)){
+		    if (!StringUtils.isEmpty(token) && token.equals(ConstantsKeys.VL10N)){
                 return true;
 			}else{
-				return validateCspToken(request, response);
+				return validateCspToken(token, response);
 			}
-
 		}
+
 		if (StringUtils.equalsIgnoreCase(request.getParameter(ConstantsKeys.COLLECT_SOURCE), ConstantsKeys.TRUE)) {
 			if (allowSourceCollection.equalsIgnoreCase(ConstantsKeys.TRUE)) {
 		        return validateCspToken(request, response);
+
 			} else {
 				response.setStatus(HttpStatus.FORBIDDEN.value());
 				response.getWriter().write(this.buildRespBody(HttpStatus.FORBIDDEN.value(), ConstantsKeys.SOURCE_COLLECTION_ERROR));
@@ -61,13 +61,14 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 		return true;
 	}
 
-	private boolean validateCspToken(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
-		final String token = request.getHeader(ConstantsKeys.CSP_AUTH_TOKEN);
+	private boolean validateCspToken(final String token, final HttpServletResponse response) throws IOException {
 		if(token == null) {
+			response.setContentType(ConstantsKeys.CONTENT_TYPE_JSON);
 			response.setStatus(HttpStatus.UNAUTHORIZED.value());
 			response.getWriter().write(this.buildRespBody(HttpStatus.UNAUTHORIZED.value(), ConstantsKeys.TOKEN_VALIDATION_ERROR));
 			return false;
 		}
+    
 		if (!cspTokenService.isTokenValid(token)) {
 			// The user is not authenticated.
 			response.setStatus(HttpStatus.FORBIDDEN.value());

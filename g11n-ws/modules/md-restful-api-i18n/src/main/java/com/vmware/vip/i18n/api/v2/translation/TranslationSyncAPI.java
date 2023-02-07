@@ -1,13 +1,11 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.v2.translation;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.vmware.vip.common.constants.ConstantsKeys;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,9 +31,6 @@ import io.swagger.annotations.ApiOperation;
  */
 @RestController("v2-TranslationSyncAPI")
 public class TranslationSyncAPI extends TranslationSyncAction {
-
-	@Value("${csp.api.auth.enable:false}")
-	private String cspAuthFlag;
 
 	/**
 	 * Synchronize the latest translation from GRM or other third party.
@@ -63,13 +58,6 @@ public class TranslationSyncAPI extends TranslationSyncAction {
 			@PathVariable(APIParamName.VERSION) String version,
 			HttpServletRequest request) throws Exception {
 
-		UpdateTranslationDTO translationData;
-		if (cspAuthFlag.equalsIgnoreCase("true")) {
-			translationData = (UpdateTranslationDTO) request.getAttribute(ConstantsKeys.UPDATEDTO);
-			request.removeAttribute(ConstantsKeys.UPDATEDTO);
-		}else{
-			translationData = updateTranslationDTO;
-		}
-		return super.updateTranslation(translationData, productName, version, request);
+		return super.updateTranslation(updateTranslationDTO, productName, version, request);
 	}
 }

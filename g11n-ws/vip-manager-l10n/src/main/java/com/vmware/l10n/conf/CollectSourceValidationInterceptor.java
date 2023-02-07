@@ -10,6 +10,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.vmware.vip.common.utils.SourceFormatUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -65,7 +66,7 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 	/**
 	 * 
 	 * @param request
-	 * @param language types that can collect source 
+	 * @param allowList types that can collect source product list
 	 * @throws ValidationException
 	 */
 	private static void validate(HttpServletRequest request, Map<String, List<String>> allowList) throws ValidationException {
@@ -166,13 +167,20 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 
 	public static void validateSourceformat(HttpServletRequest request)
 			throws ValidationException {
-		String sourceformat = request.getParameter(APIParamName.SOURCE_FORMAT) == null ? ConstantsKeys.EMPTY_STRING
+		String sourceFormat = request.getParameter(APIParamName.SOURCE_FORMAT) == null ? ConstantsKeys.EMPTY_STRING
 				: request.getParameter(APIParamName.SOURCE_FORMAT);
-		if (StringUtils.isEmpty(sourceformat)) {
-			return;
-		}
-		if (!ConstantsKeys.SOURCE_FORMAT_LIST.contains(sourceformat.toUpperCase())) {
-			throw new ValidationException(ValidationMsg.SOURCEFORMAT_NOT_VALIDE);
+		if (!StringUtils.isEmpty(sourceFormat)) {
+			sourceFormat = sourceFormat.toUpperCase();
+			if (SourceFormatUtils.isBase64Encode(sourceFormat)){
+				sourceFormat = SourceFormatUtils.formatSourceFormatStr(sourceFormat);
+				if (!StringUtils.isEmpty(sourceFormat) && !ConstantsKeys.SOURCE_FORMAT_LIST.contains(sourceFormat)) {
+					throw new ValidationException(ValidationMsg.SOURCEFORMAT_NOT_VALIDE);
+				}
+			}else{
+				if (!ConstantsKeys.SOURCE_FORMAT_LIST.contains(sourceFormat)) {
+					throw new ValidationException(ValidationMsg.SOURCEFORMAT_NOT_VALIDE);
+				}
+			}
 		}
 	}
 

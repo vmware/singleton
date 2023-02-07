@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.common.constants;
@@ -24,8 +24,8 @@ public final class ValidationMsg {
 	public final static String PSEUDO_NOT_VALIDE = "Incorrect pseudo(only allows true, false)";
 	public final static String NUMBER_NOT_VALIDE = "Incorrect number";
 	public final static String SCALE_NOT_VALIDE = "Scale is empty or scale < 0";
-	public final static String SOURCEFORMAT_NOT_VALIDE = "Incorrect sourceformat(only allows empty, MD, HTML, SVG)";
-	public final static String SOURCEFORMAT_NOT_VALIDE_FORMAT = "Incorrect source format '%s' for key '%s' (only allows empty, STRING, MD, HTML, SVG)";
+	public final static String SOURCEFORMAT_NOT_VALIDE = "Incorrect sourceformat(only allows empty, STRING, MD, HTML, SVG, BASE64)";
+	public final static String SOURCEFORMAT_NOT_VALIDE_FORMAT = "Incorrect source format '%s' for key '%s' (only allows empty, STRING, MD, HTML, SVG, BASE64)";
 	public final static String INVALID_URL = "Invalid URL or no mapping resources";
 	public final static String PATTERN_NOT_VALIDE = "Incorrect pattern(only allows letter)";
 	public final static String PRODUCTNAME_NOT_SUPPORTED = "The product '%s' is NOT supported yet!";
