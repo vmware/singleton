@@ -70,10 +70,8 @@ func TestTimeout(t *testing.T) {
 
 	locale, component := "fr", "sunglow"
 	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil, nil}
-	item.attrs = getCacheInfo(item)
 
-	resetInst(&testCfg, nil)
-	sgtnServer := inst.server
+	sgtnServer, _ := newServer(testCfg.ServerURL)
 
 	// Get first time to set server stats as timeout
 	err := sgtnServer.Get(item)
@@ -97,10 +95,7 @@ func TestTimeout2(t *testing.T) {
 
 	locale, component := "fr", "sunglow"
 	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil, nil}
-	item.attrs = getCacheInfo(item)
-
-	resetInst(&testCfg, nil)
-	sgtnServer := inst.server
+	sgtnServer, _ := newServer(testCfg.ServerURL)
 
 	sgtnServer.status = serverTimeout
 	sgtnServer.lastErrorMoment = time.Now().Unix() - serverRetryInterval - 1

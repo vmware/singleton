@@ -84,9 +84,9 @@ func (d *bundleDAO) GetLocaleList(name, version string) ([]string, error) {
 	}
 
 	lSlice := make([]string, 0, len(fileNames))
-	for k := range fileNames {
-		if strings.HasPrefix(k, bundlePrefix) && strings.HasSuffix(k, bundleSuffix) {
-			localeToSave := k[len(bundlePrefix) : len(k)-len(bundleSuffix)-1]
+	for fileName := range fileNames {
+		if strings.HasPrefix(fileName, bundlePrefix) && strings.HasSuffix(fileName, bundleSuffix) {
+			localeToSave := fileName[len(bundlePrefix) : len(fileName)-len(bundleSuffix)]
 			if !strings.EqualFold(localeToSave, localeLatest) {
 				lSlice = append(lSlice, localeToSave)
 			}
@@ -125,7 +125,7 @@ func (d *bundleDAO) GetComponentMessages(name, version, locale, component string
 		return nil, errors.New("Wrong data from local bundle file")
 	}
 
-	return &MapComponentMsgs{messages: b.Messages, locale: locale, component: component}, nil
+	return &MapComponentMsgs{messages: b.Messages, locale: convertLocale(locale), component: component}, nil
 }
 
 //!-bundleDAO

@@ -96,13 +96,16 @@ func (t *transInst) GetComponentsMessages(name, version string, locales, compone
 
 	var wg sync.WaitGroup
 	wg.Add(totalNumber)
+	var muList sync.Mutex = sync.Mutex{}
 	for _, locale := range locales {
 		for _, component := range components {
 			go func(locale, component string) {
 				defer wg.Done()
 
 				if bundleMsgs, bundleErr := t.GetComponentMessages(name, version, locale, component); bundleErr == nil {
+					muList.Lock()
 					msgs = append(msgs, bundleMsgs)
+					muList.Unlock()
 				} else { // log a warning message if translation is unavailable.
 					logger.Warn(fmt.Sprintf("fail to get translation for {product '%s', version '%s', locale '%s', component '%s'}", name, version, locale, component))
 				}

@@ -30,7 +30,7 @@ import (
 )
 
 var name, version, component = "SgtnTest", "1.0.0", "sunglow"
-var locale, localeDefault, localeSource = "zh-Hans", "fr", "en"
+var locale = "zh-Hans"
 
 var testCfg Config
 var mockData map[string]MockMapping
@@ -196,6 +196,11 @@ func ReadMockJSONs(rootpath string) map[string]MockMapping {
 	return results
 }
 
+type TimesMock struct {
+	name string
+	time int
+}
+
 type MockMappings struct {
 	Mappings []MockMapping `json:"mappings"`
 }
@@ -219,6 +224,24 @@ type MockMapping struct {
 
 	Headers struct {
 	} `json:"headers"`
+}
+
+func EnableTimesMock(mocks []TimesMock) {
+	for _, m := range mocks {
+		EnableMockDataWithTimes(m.name, m.time)
+	}
+}
+func EnableMultipleMockData(keys []string) (req *gock.Request) {
+	for _, key := range keys {
+		req = EnableMockDataWithTimes(key, 1)
+	}
+	return
+}
+func EnableMultipleMockDataWithTimes(keys []string, times int) (req *gock.Request) {
+	for _, key := range keys {
+		req = EnableMockDataWithTimes(key, times)
+	}
+	return
 }
 
 func EnableMockData(key string) *gock.Request {
@@ -274,7 +297,6 @@ func fileExist(filepath string) (bool, error) {
 func clearCache() {
 	logger.Debug("clearcache")
 	cache = newCache()
-	initCacheInfoMap()
 }
 
 func curFunName() string {
@@ -295,6 +317,6 @@ func resetInst(cfg *Config, f func()) {
 	Initialize(cfg)
 }
 
-func expireCache(info *itemCacheInfo, cacheExpiredTime int64) {
-	info.setTime(atomic.LoadInt64(&info.lastUpdate) - cacheExpiredTime)
+func expireCache(info *itemCacheInfo) {
+	info.setTime(atomic.LoadInt64(&info.lastUpdate) - info.age)
 }

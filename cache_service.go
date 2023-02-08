@@ -15,10 +15,10 @@ type cacheService struct {
 func (s *cacheService) Get(item *dataItem) (err error) {
 	data, ok := cache.Get(item.id)
 	if ok {
-		itemInCache := data.(*dataItem)
-		item.data = itemInCache.data
+		*item = *data.(*dataItem) //TODO: assign data only
 		if s.messageOrigin.IsExpired(item) {
-			go s.messageOrigin.Get(&dataItem{id: item.id, data: itemInCache.data, attrs: itemInCache.attrs})
+			//TODO: don't assign data and run tests
+			go s.messageOrigin.Get(&dataItem{id: item.id, data: item.data, attrs: item.attrs})
 		}
 
 		return nil

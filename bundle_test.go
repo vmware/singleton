@@ -52,6 +52,7 @@ func TestBundleGetCompMessages(t *testing.T) {
 
 func TestBundleDirNonexistent(t *testing.T) {
 	newCfg := testCfg
+	newCfg.ServerURL = ""
 	newCfg.LocalBundles = "Path Not Exist"
 	resetInst(&newCfg, nil)
 

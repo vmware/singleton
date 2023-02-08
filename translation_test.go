@@ -7,7 +7,6 @@ package sgtn
 
 import (
 	"fmt"
-	"net/url"
 	"sync"
 	"testing"
 	"time"
@@ -27,7 +26,7 @@ func TestGetCompMessages(t *testing.T) {
 		expected  int
 		err       string
 	}{
-		{"Get messages of a component normally", []string{"componentMessages-zh-Hans-sunglow"}, "zh-Hans", "sunglow", 7, ""},
+		{"Get messages of a component normally", []string{"componentMessages-zh-Hans-sunglow", "componentMessages-en-sunglow", "componentMessages-latest-sunglow"}, "zh-Hans", "sunglow", 7, ""},
 	}
 
 	defer gock.Off()
@@ -181,10 +180,14 @@ func TestRefreshCache2(t *testing.T) {
 
 	defer gock.Off()
 
-	resetInst(&testCfg, nil)
+	newCfg := testCfg
+	newCfg.LocalBundles = ""
+	resetInst(&newCfg, nil)
 	trans := GetTranslation()
 	for _, testData := range tests {
-		EnableMockDataWithTimes(testData.mocks[0], 100).Response.Delay(time.Microsecond) // Delay to simulate concurrency
+		for _, m := range testData.mocks {
+			EnableMockDataWithTimes(m, 100).Response.Delay(time.Microsecond) // Delay to simulate concurrency
+		}
 
 		var wg sync.WaitGroup
 		for i := 0; i < 100; i++ {
@@ -220,6 +223,8 @@ func TestGetStringFallback(t *testing.T) {
 		"TestFallbackDefault",
 		[]string{
 			"componentMessages-fr-users",
+			"componentMessages-en-users",
+			"componentMessages-latest-users",
 		},
 	}
 
@@ -248,24 +253,7 @@ func TestGetStringFallback(t *testing.T) {
 }
 
 func TestGetStringAbnormal(t *testing.T) {
-	test := struct {
-		desc  string
-		mocks []string
-	}{
-		"TestFallbackDefault",
-		[]string{
-			"componentMessages-fr-users",
-			"componentMessages-zh-Hans-sunglow",
-			"componentMessages-fr-sunglow",
-			"componentMessages-zh-Hans-comp-notexist",
-		},
-	}
-
 	defer gock.Off()
-
-	for m := 0; m < len(test.mocks); m++ {
-		EnableMockData(test.mocks[m])
-	}
 
 	newCfg := testCfg
 	newCfg.LocalBundles = ""
@@ -275,28 +263,36 @@ func TestGetStringAbnormal(t *testing.T) {
 	localeZhhans := "zh-Hans"
 	defaultLocaleFr := "fr"
 	compSunglow := "sunglow"
+	compNonexistent := "comp-notexist"
+	compUsers := "users"
 	key := "MyKey"
+	keyNonexistent := "nonexistent"
 	arg := "MyArg"
 
 	// original locale has component, but doesn't have Key
-	keyNonexistent := "nonexistent"
+	EnableMultipleMockData([]string{"componentMessages-zh-Hans-sunglow", "componentMessages-fr-sunglow"})
+	EnableMockDataWithTimes("componentMessages-en-sunglow", 2)
+	EnableMockDataWithTimes("componentMessages-latest-sunglow", 3)
 	message2, err2 := trans.GetStringMessage(name, version, localeZhhans, compSunglow, keyNonexistent, arg)
-	assert.Contains(t, err2.Error(), defaultLocaleFr)
+	assert.Contains(t, err2.Error(), "locale: "+inst.cfg.GetSourceLocale())
 	assert.Contains(t, err2.Error(), compSunglow)
 	assert.Contains(t, err2.Error(), "fail to get message")
 	assert.Equal(t, keyNonexistent, message2)
+	assert.True(t, gock.IsDone())
 
 	// original locale doesn't have component.
 	// default locale has component, but doesn't have Key
-	compUsers := "users"
+	EnableMultipleMockData([]string{ "componentMessages-fr-users"})
+	EnableMockDataWithTimes("componentMessages-en-users", 1)
+	EnableMockDataWithTimes("componentMessages-latest-users", 2)
 	message3, err3 := trans.GetStringMessage(name, version, localeZhhans, compUsers, keyNonexistent, arg)
-	assert.Contains(t, err3.Error(), defaultLocaleFr)
+	assert.Contains(t, err3.Error(), "locale: "+inst.cfg.GetSourceLocale())
 	assert.Contains(t, err3.Error(), compUsers)
 	assert.Contains(t, err3.Error(), "fail to get message")
 	assert.Equal(t, keyNonexistent, message3)
+	assert.True(t, gock.IsDone())
 
 	// Both locales doesn't have the component
-	compNonexistent := "comp-notexist"
 	message4, err4 := trans.GetStringMessage(name, version, localeZhhans, compNonexistent, key, arg)
 	assert.NotNil(t, err4)
 	assert.NotContains(t, err4.Error(), "fail to get message")
@@ -391,10 +387,8 @@ func TestGetCompMessagesWrongServer(t *testing.T) {
 
 	newCfg := testCfg
 	newCfg.LocalBundles = ""
+	newCfg.ServerURL = "wrongserver"
 	resetInst(&newCfg, nil)
-	wrongServer, err := url.Parse("wrongserver")
-	assert.Nil(t, err)
-	inst.server.svrURL = wrongServer
 
 	var tests = []struct {
 		desc      string
@@ -506,17 +500,17 @@ func TestAddHTTPHeader(t *testing.T) {
 	defer gock.Off()
 
 	newCfg := testCfg
+	newCfg.LocalBundles = ""
 	resetInst(&newCfg, nil)
+	SetHTTPHeaders(map[string]string{
+		"user": "test_user",
+		"pass": "goodpadd",
+	})
 	trans := GetTranslation()
 	for _, testData := range tests {
 		for _, m := range testData.mocks {
 			EnableMockData(m)
 		}
-
-		SetHTTPHeaders(map[string]string{
-			"user": "test_user",
-			"pass": "goodpadd",
-		})
 
 		messages, err := trans.GetComponentMessages(name, version, testData.locale, testData.component)
 		assert.Nil(t, err)
@@ -546,9 +540,7 @@ func TestGetComponentList(t *testing.T) {
 	newCfg.LocalBundles = ""
 	resetInst(&newCfg, nil)
 	trans := GetTranslation()
-	item := &dataItem{dataItemID{itemComponents, name, version, "", ""}, nil, nil, nil}
-	info := getCacheInfo(item)
-	info.setAge(100)
+	itemID := dataItemID{itemComponents, name, version, "", ""}
 	for _, testData := range tests {
 
 		EnableMockData(testData.mocks[0])
@@ -571,7 +563,8 @@ func TestGetComponentList(t *testing.T) {
 
 		// Expire cache and get again
 		EnableMockData(testData.mocks[1])
-		expireCache(info, info.age)
+		cachedItem, _ := cache.Get(itemID)
+		expireCache(cachedItem.(*dataItem).attrs)
 		components, err = trans.GetComponentList(name, version)
 		time.Sleep(time.Millisecond * 10)
 		if err != nil {
@@ -613,10 +606,7 @@ func TestGetLocaleList(t *testing.T) {
 	for _, testData := range tests {
 		EnableMockData(testData.mocks[0])
 
-		item := &dataItem{dataItemID{itemLocales, name, version, "", ""}, nil, nil, nil}
-		info := getCacheInfo(item)
-		info.setAge(100)
-
+		itemID := dataItemID{itemLocales, name, version, "", ""}
 		locales, err := trans.GetLocaleList(name, version)
 		if err != nil {
 			t.Errorf("%s failed: %v", testData.desc, err)
@@ -636,7 +626,8 @@ func TestGetLocaleList(t *testing.T) {
 
 		// Expire cache and get again
 		EnableMockData(testData.mocks[1])
-		expireCache(info, info.age)
+		cachedItem, _ := cache.Get(itemID)
+		expireCache(cachedItem.(*dataItem).attrs)
 		locales, err = trans.GetLocaleList(name, version)
 		time.Sleep(time.Millisecond * 10)
 		if err != nil {
@@ -689,37 +680,39 @@ func TestHTTP404(t *testing.T) {
 func TestMultipleComponents(t *testing.T) {
 	var tests = []struct {
 		desc       string
-		mocks      []string
+		mocks      []TimesMock
 		locales    []string
 		components []string
 		size       int
 	}{
 		{"Get messages of a bundle by multiple components interface",
-			[]string{"componentMessages-zh-Hans-sunglow"},
+			[]TimesMock{{"componentMessages-zh-Hans-sunglow", 1}},
 			[]string{"zh-Hans"}, []string{"sunglow"}, 1},
 		{"Get messages of a component by multiple components interface",
-			[]string{"productLocales", "componentMessages-fr-sunglow", "componentMessages-zh-Hans-sunglow", "componentMessages-en-US-sunglow"},
+			[]TimesMock{{"productLocales", 1}, {"componentMessages-fr-sunglow", 1}, {"componentMessages-zh-Hans-sunglow", 1},
+				{"componentMessages-en-sunglow", 2}, {"componentMessages-latest-sunglow", 3}},
 			nil, []string{"sunglow"}, 3},
 		{"Get messages of a locale by multiple components interface",
-			[]string{"productComponents", "componentMessages-fr-sunglow", "componentMessages-fr-users"},
+			[]TimesMock{{"productComponents", 1}, {"componentMessages-fr-sunglow", 1}, {"componentMessages-fr-users", 1}},
 			[]string{"fr"}, nil, 2},
 		{"Get messages of the product/version by multiple components interface",
-			[]string{
-				"productComponents", "productLocales",
-				"componentMessages-fr-sunglow", "componentMessages-zh-Hans-sunglow", "componentMessages-en-US-sunglow",
-				"componentMessages-fr-users", "componentMessages-zh-Hans-users", "componentMessages-en-US-users"},
+			[]TimesMock{
+				{"productComponents", 1}, {"productLocales", 1},
+				{"componentMessages-fr-sunglow", 1}, {"componentMessages-zh-Hans-sunglow", 1}, {"componentMessages-en-sunglow", 2}, {"componentMessages-latest-sunglow", 3},
+				{"componentMessages-fr-users", 1}, {"componentMessages-zh-Hans-users", 1}, {"componentMessages-en-users", 2}, {"componentMessages-latest-users", 3}},
 			nil, nil, 6},
 	}
 
 	defer gock.Off()
 
-	resetInst(&testCfg, nil)
+	newCfg := testCfg
+	newCfg.LocalBundles = ""
+	resetInst(&newCfg, nil)
 	trans := GetTranslation()
 	for _, testData := range tests {
 		logger.Debug(fmt.Sprintf("------------ Start testing: %s", testData.desc))
-		for _, m := range testData.mocks {
-			EnableMockData(m)
-		}
+
+		EnableTimesMock(testData.mocks)
 
 		messages, err := trans.GetComponentsMessages(name, version, testData.locales, testData.components)
 		if err != nil {
@@ -756,9 +749,8 @@ func TestMultipleComponentsAbnormal(t *testing.T) {
 		{"Abnormal: partial translations are available is treated as successful",
 			[]string{
 				"productComponents", "productLocales",
-				"componentMessages-fr-sunglow", "componentMessages-zh-Hans-sunglow", "componentMessages-en-US-sunglow",
-				"componentMessages-fr-users", "componentMessages-zh-Hans-users"},
-			nil, nil, 5,
+				"componentMessages-fr-sunglow"},
+			nil, nil, 1,
 			""},
 		{"Abnormal: empty result is an error",
 			[]string{"HTTP404"},

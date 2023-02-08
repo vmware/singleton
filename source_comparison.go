@@ -70,6 +70,7 @@ func (sc *sourceComparison) getTranslation(item *dataItem) (err error) {
 	wg.Add(2)
 
 	go func() {
+		defer wg.Done()
 		// TODO: if failing to get old source, then need to add new messages in source item
 		if oldSourceErr := item.origin.Get(oldSourceItem); oldSourceErr != nil {
 			// TODO: log error
@@ -77,6 +78,7 @@ func (sc *sourceComparison) getTranslation(item *dataItem) (err error) {
 		}
 	}()
 	go func() {
+		defer wg.Done()
 		if newSourceErr := sc.source.Get(newSourceItem); newSourceErr != nil {
 			// TODO: log error
 			logger.Error(newSourceErr.Error())

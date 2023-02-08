@@ -42,3 +42,11 @@ func (d *MapComponentMsgs) Range(f func(key, value string) bool) {
 		}
 	}
 }
+
+func (d *MapComponentMsgs) Clone() ComponentMsgs {
+	messages := make(map[string]string, len(d.messages))
+	for key, value := range d.messages {
+		messages[key] = value
+	}
+	return NewMapComponentMsgs(messages, d.locale, d.component)
+}

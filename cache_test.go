@@ -19,11 +19,12 @@ func TestCacheExpireWhenNeverExpire(t *testing.T) {
 
 	locale, component := "fr", "sunglow"
 	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil, nil}
-	info := getCacheInfo(item)
 
 	GetTranslation().GetComponentMessages(name, version, locale, component)
 
 	// value is initial value(cacheDefaultExpires) because only local bundles are available. No chance to change this.
+	cachedItem, _ := cache.Get(item.id)
+	info := cachedItem.(*dataItem).attrs
 	assert.Equal(t, int64(cacheDefaultExpires), info.age)
 
 	// Rename dir to make sure getting from cache

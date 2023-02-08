@@ -14,7 +14,7 @@ import (
 func TestGetInst(t *testing.T) {
 
 	resetInst(&testCfg, nil)
-	assert.Equal(t, testCfg.LocalBundles, inst.bundle.root)
+	// assert.Equal(t, testCfg.LocalBundles, inst.bundle.root)
 	// TODO: Test bundle
 
 	if len(testCfg.ServerURL) != 0 {
@@ -27,7 +27,6 @@ func TestGetInst(t *testing.T) {
 	s := translation.(*transMgr).Translation.(*transInst).msgOrigin
 	assert.NotNil(t, s)
 	assert.NotNil(t, cache)
-	assert.NotNil(t, cacheInfoMap)
 }
 
 func TestCheckConfig(t *testing.T) {

@@ -6,6 +6,7 @@
 package sgtn
 
 import (
+	"fmt"
 	"io/ioutil"
 	"net/http"
 
@@ -22,7 +23,7 @@ var (
 )
 
 func httpget(urlToGet string, header map[string]string, body *[]byte) (*http.Response, error) {
-	logger.Info("URL to get is: " + urlToGet)
+	logger.Info(fmt.Sprintf("Get URL %s with headers %v", urlToGet, header))
 
 	req, err := newHTTPRequest(http.MethodGet, urlToGet, nil)
 	if err != nil {

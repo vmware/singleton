@@ -62,8 +62,6 @@ func (ol messageOriginList) IsExpired(item *dataItem) bool {
 	for _, o := range ol {
 		if o.IsExpired(item) {
 			return true
-		} else if (o != ol[0] && item.attrs.isExpired()) { // Not the first one, need to expire forcelly
-			return true
 		}
 		if item.origin == o { // for components and locales, origin is the last successful one in the chain
 			return false

@@ -6,10 +6,12 @@
 package sgtn
 
 import (
+	"fmt"
 	"net/http"
 	"sync"
 	"time"
 
+	"github.com/emirpasic/gods/sets/linkedhashset"
 	"github.com/pkg/errors"
 )
 
@@ -46,7 +48,7 @@ func Initialize(cfg *Config) {
 }
 
 func (i *instance) doInitialize() {
-	logger.Info("Initializing Singleton client")
+	logger.Info(fmt.Sprintf("Initializing Singleton client with configuration: %#+v", i.cfg))
 
 	if cache == nil {
 		RegisterCache(newCache())
@@ -71,6 +73,7 @@ func createTranslation(cfg Config) Translation {
 		if err != nil {
 			panic(err)
 		}
+		inst.server = server // TODO:
 		transOrigins = append(transOrigins, server)
 		sourceOrigins = append(sourceOrigins, &InTranslationSource{server})
 	}
@@ -96,7 +99,13 @@ func createTranslation(cfg Config) Translation {
 
 	transImpl := transInst{origin}
 
-	fallbackLocales := uniqueStrings([]string{cfg.DefaultLocale}, []string{cfg.GetSourceLocale()})
+	localeSet := linkedhashset.New(cfg.DefaultLocale, cfg.GetSourceLocale())
+	fallbackLocales := []string{}
+	for _, locale := range localeSet.Values() {
+		if locale != "" {
+			fallbackLocales = append(fallbackLocales, locale.(string))
+		}
+	}
 	return newTransMgr(&transImpl, fallbackLocales)
 }
 

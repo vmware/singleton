@@ -50,41 +50,43 @@ func (s *serverDAO) Get(item *dataItem) (err error) {
 	var data interface{}
 	info := item.attrs
 
+	var urlToQuery string
 	switch item.id.iType {
 	case itemComponent:
 		data = new(queryBundle)
+		urlToQuery = s.svrURL.String() + fmt.Sprintf(bundleGetConst, item.id.Name, item.id.Version, item.id.Locale, item.id.Component)
 	case itemLocales:
 		data = new(queryLocales)
+		urlToQuery = s.svrURL.String() + fmt.Sprintf(productLocaleListGetConst, item.id.Name, item.id.Version)
 	case itemComponents:
 		data = new(queryComponents)
+		urlToQuery = s.svrURL.String() + fmt.Sprintf(productComponentListGetConst, item.id.Name, item.id.Version)
 	default:
 		return errors.Errorf(invalidItemType, item.id.iType)
 	}
 
-	urlToQuery := s.prepareURL(item)
-
 	headers := s.getHTTPHeaders()
 	headers[httpHeaderIfNoneMatch] = info.getETag()
 	resp, err := s.sendRequest(urlToQuery, headers, data)
-	if isSuccess(err) {
-		info := newSingleCacheInfo()
-		if resp != nil {
-			updateCacheControl(resp.Header, info)
-			if err == nil { // http code 200
-				info.setETag(resp.Header.Get(httpHeaderETag))
-			}
-		}
-		item.attrs = info
-	}
-
-	if err != nil {
+	if !isSuccess(err) {
 		return err
+	}
+	item.attrs = newSingleCacheInfo()
+	item.origin = s
+	updateCacheControl(resp.Header, item.attrs)
+	if err == nil { // http code 200
+		item.attrs.setETag(resp.Header.Get(httpHeaderETag))
+	} else { // http code 304
+		item.attrs.setETag(info.eTag)
+		// clone to do source comparison
+		item.data = item.data.(ComponentMsgs).Clone()
+		return nil
 	}
 
 	switch item.id.iType {
 	case itemComponent:
 		bData := data.(*queryBundle)
-		item.data = &MapComponentMsgs{messages: bData.Messages, locale: item.id.Locale, component: item.id.Component}
+		item.data = &MapComponentMsgs{messages: bData.Messages, locale: convertLocale(item.id.Locale), component: item.id.Component}
 	case itemLocales:
 		localesData := data.(*queryLocales)
 		if localesData.Locales == nil {
@@ -101,26 +103,11 @@ func (s *serverDAO) Get(item *dataItem) (err error) {
 		return errors.Errorf(invalidItemType, item.id.iType)
 	}
 
-	item.origin = s
-
 	return nil
 }
 
 func (s *serverDAO) IsExpired(item *dataItem) bool {
 	return item.attrs.isExpired()
-}
-
-func (s *serverDAO) prepareURL(item *dataItem) string {
-	switch item.id.iType {
-	case itemComponent:
-		return s.svrURL.String() + fmt.Sprintf(bundleGetConst, item.id.Name, item.id.Version, item.id.Locale, item.id.Component)
-	case itemLocales:
-		return s.svrURL.String() + fmt.Sprintf(productLocaleListGetConst, item.id.Name, item.id.Version)
-	case itemComponents:
-		return s.svrURL.String() + fmt.Sprintf(productComponentListGetConst, item.id.Name, item.id.Version)
-	}
-
-	return ""
 }
 
 func (s *serverDAO) sendRequest(u string, header map[string]string, data interface{}) (*http.Response, error) {
@@ -141,11 +128,9 @@ func (s *serverDAO) sendRequest(u string, header map[string]string, data interfa
 				atomic.StoreInt64(&s.lastErrorMoment, time.Now().Unix())
 			}
 		}
-
-		return resp, err
 	}
 
-	return resp, nil
+	return resp, err
 }
 
 func (s *serverDAO) setHTTPHeaders(h map[string]string) {

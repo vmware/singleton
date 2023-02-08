@@ -23,7 +23,11 @@ type ComponentMsgs interface {
 
 	Locale() string
 
+	Size() int
+
 	Range(func(key, value string) bool)
+
+	Clone() ComponentMsgs
 }
 
 // Logger The logger interface
@@ -123,4 +127,12 @@ func uniqueStrings(slices ...[]string) []string {
 	}
 
 	return result
+}
+
+func convertLocale(locale string) string {
+	if locale == localeLatest {
+		return inst.cfg.GetSourceLocale()
+	} else {
+		return locale
+	}
 }
