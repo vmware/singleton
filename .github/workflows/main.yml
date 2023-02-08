@@ -56,23 +56,14 @@ jobs:
           ruby-version: 3.0.0
       - name: Install dependencies
         run: bundle install
-      - name: Run tests
-        run: bundle exec rake
       - name: Unit test
         run: |
-          gem build singleton-ruby.gemspec
-          mkdir spec/log
-          touch spec/log/http.log
-          rake spec
-      - name: Coverage
-        run: |
-          COVERAGE=true bundle exec rspec './spec/spec_helper.rb' 
-          cd coverage
+          COVERAGE=true bundle exec rspec
       - name: Upload Codecov report for ruby-client
-        uses: codecov/codecov-action@v1
+        uses: codecov/codecov-action@v2
         with:
           files: ./coverage/coverage.json
-          flags: coverage
+          flags: g11n-ruby-client
 
   security-analysis:
     name: Security Analysis
@@ -100,6 +91,28 @@ jobs:
         uses: github/codeql-action/autobuild@v1
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
+
+  codacy-analysis-cli:
+    name: Codacy Analysis CLI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@main
+      - name: Run Codacy Analysis CLI
+        uses: codacy/codacy-analysis-cli-action@master  
+        with:
+          output: results.sarif
+          format: sarif
+          # Adjust severity of non-security issues
+          gh-code-scanning-compat: true
+          # Force 0 exit code to allow SARIF file generation
+          # This will handover control about PR rejection to the GitHub side
+          max-allowed-issues: 2147483647  
+      # Upload the SARIF file generated in the previous step  
+      - name: Upload SARIF results file
+        uses: github/codeql-action/upload-sarif@main
+        with:
+          sarif_file: results.sarif
 
   smoke-test:
     name: Smoke Test
@@ -142,4 +155,5 @@ jobs:
           cp -r $GITHUB_WORKSPACE/devops/autotest/client/ruby/l10n/bundles/* $GITHUB_WORKSPACE/l10n/bundles
           cd $GITHUB_WORKSPACE/devops/autotest/client/ruby
           sed -i 's|path => "../../../../ruby_client/singleton|path => "/home/runner/work/singleton/singleton|g' Gemfile
-          bundle exec rspec './spec/Config_spec.rb' './spec/Datetime_spec.rb' './spec/SimpleT_offline_spec.rb' './spec/SimpleT_spec .rb' './spec/Translation_offline_spec.rb' './spec/Translation_spec.rb'
+          bundle install
+          bundle exec rspec spec
