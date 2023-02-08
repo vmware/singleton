@@ -16,14 +16,14 @@ import (
 )
 
 var (
-	inst        *instance = &instance{} // TODO: change to non-pointer
-	logger      Logger
-	translation Translation
+	inst   *instance
+	logger Logger
 )
 
 // instance Singleton instance
 type instance struct {
 	cfg            Config
+	trans          Translation
 	server         *serverDAO
 	bundle         *bundleDAO
 	initializeOnce sync.Once
@@ -43,6 +43,7 @@ func Initialize(cfg *Config) {
 		panic(err)
 	}
 
+	inst = &instance{}
 	inst.cfg = *cfg
 	inst.initializeOnce.Do(inst.doInitialize)
 }
@@ -54,7 +55,7 @@ func (i *instance) doInitialize() {
 		RegisterCache(newCache())
 	}
 
-	translation = createTranslation(i.cfg)
+	inst.trans = createTranslation(i.cfg)
 }
 
 func createTranslation(cfg Config) Translation {
@@ -126,7 +127,7 @@ func GetTranslation() Translation {
 		panic(errors.New(uninitialized))
 	}
 
-	return translation
+	return inst.trans
 }
 
 // SetHTTPHeaders Set customized HTTP headers

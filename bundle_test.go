@@ -19,7 +19,7 @@ func TestBundleGetComponentList(t *testing.T) {
 	newCfg.ServerURL = ""
 	resetInst(&newCfg, nil)
 
-	comps, err := translation.GetComponentList(name, version)
+	comps, err := inst.trans.GetComponentList(name, version)
 
 	assert.Nil(t, err)
 	assert.Equal(t, 2, len(comps))
@@ -31,7 +31,7 @@ func TestBundleGetLocaleList(t *testing.T) {
 	newCfg.ServerURL = ""
 	resetInst(&newCfg, nil)
 
-	locales, err := translation.GetLocaleList(name, version)
+	locales, err := inst.trans.GetLocaleList(name, version)
 	logger.Debug(fmt.Sprintf("%#v\n", locales))
 	assert.Nil(t, err)
 	assert.Equal(t, 16, len(locales))
@@ -45,7 +45,7 @@ func TestBundleGetCompMessages(t *testing.T) {
 
 	locale := "fr"
 	component := "sunglow"
-	msgs, err := translation.GetComponentMessages(name, version, locale, component)
+	msgs, err := inst.trans.GetComponentMessages(name, version, locale, component)
 	assert.Nil(t, err)
 	assert.Equal(t, 4, msgs.(*MapComponentMsgs).Size())
 }
@@ -56,7 +56,7 @@ func TestBundleDirNonexistent(t *testing.T) {
 	newCfg.LocalBundles = "Path Not Exist"
 	resetInst(&newCfg, nil)
 
-	_, err := translation.GetComponentList(name, version)
+	_, err := inst.trans.GetComponentList(name, version)
 	_, ok := err.(*os.PathError)
 	assert.True(t, ok, "error isn't an PATH error: %s", err)
 }

@@ -25,23 +25,10 @@ func (s *cacheService) Get(item *dataItem) (err error) {
 	}
 
 	return s.messageOrigin.Get(item)
-	// err = s.origin.Get(item)
-	// if err == nil {
-	// 	if s.IsExpired(item) {
-	// 		cache.Set(item.id, item)
-	// 		// cache.Set(item.id, item.data) //TODO
-	// 	}
-	// } else {
-	// 	return errors.New(fmt.Sprintf("Fail to get: %+v", item.id))
-	// }
-
-	// return err
 }
 
 // !-cacheService
 
-// TODO: maybe this isn't necessary because item is changed directly. Is it safe? Seems item only need to be saved into cache once in  cache service?
-// TODO: need to consider creating a new dataitem in dao classes.
 type saveToCache struct {
 	messageOrigin
 }

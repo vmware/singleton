@@ -113,7 +113,7 @@ func TestVersionFallback(t *testing.T) {
 	newCfg.LocalBundles = ""
 	resetInst(&newCfg, nil)
 
-	messages, err := translation.GetComponentMessages(name, "1.0.1", "en", "sunglow")
+	messages, err := inst.trans.GetComponentMessages(name, "1.0.1", "en", "sunglow")
 	assert.Nil(t, err)
 	assert.NotNil(t, messages)
 	assert.Equal(t, 7, messages.(*MapComponentMsgs).Size())

@@ -22,9 +22,9 @@ func TestGetInst(t *testing.T) {
 	}
 
 	// Verify translation manager
-	assert.NotNil(t, translation)
+	assert.NotNil(t, inst.trans)
 
-	s := translation.(*transMgr).Translation.(*transInst).msgOrigin
+	s := inst.trans.(*transMgr).Translation.(*transInst).msgOrigin
 	assert.NotNil(t, s)
 	assert.NotNil(t, cache)
 }
