@@ -29,9 +29,6 @@ type instance struct {
 	initializeOnce sync.Once
 }
 
-// TODO: use init to initialize global vars instead of initializing when creating
-// TODO: log stacktrace
-
 func init() {
 	SetLogger(newLogger())
 	httpclient = &http.Client{Timeout: time.Second * servertimeout}
@@ -59,7 +56,6 @@ func (i *instance) doInitialize() {
 }
 
 func createTranslation(cfg Config) Translation {
-	// TODO: check pointer and non-pointer
 	var transOrigins messageOriginList
 	var sourceOrigins messageOriginList
 

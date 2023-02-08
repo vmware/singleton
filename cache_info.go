@@ -11,9 +11,9 @@ import (
 
 //!+itemCacheInfo
 type itemCacheInfo struct {
-	lastUpdate   int64
-	age          int64
-	eTag         string
+	lastUpdate int64
+	age        int64
+	eTag       string
 }
 
 func newSingleCacheInfo() *itemCacheInfo {
