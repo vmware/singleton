@@ -1,4 +1,4 @@
-//Copyright 2019-2022 VMware, Inc.
+//Copyright 2019-2023 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java-library'
 apply plugin: 'io.spring.dependency-management'
@@ -16,6 +16,7 @@ dependencies {
     api("com.vmware.singleton:singleton-i18n-patterns-core:+")
     api("com.ibm.icu:icu4j:$icu4jVersion")
     compileOnly("org.springframework:spring-context")
+    compileOnly("org.springframework.boot:spring-boot-starter-data-jpa")
     compileOnly("org.slf4j:slf4j-api:$slf4jVersion")
 }
 

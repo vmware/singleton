@@ -41,9 +41,7 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
    @Autowired
    private S3Config config;
 
-   private static final String S3_NOT_EXIST_STR = "S3 File doesn't exist: ";
-   private static final String S3_NOT_EXIST_ERR = "File's name doesn't exist!";
-
+   static final String S3_NOT_EXIST_STR = "S3 File doesn't exist: ";
    private static Logger logger = LoggerFactory.getLogger(S3OneComponentDaoImpl.class);
 
    /**
@@ -60,7 +58,7 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
       } catch (IOException e) {
          String errorLog = ConstantsKeys.FATA_ERROR + e.getMessage();
          logger.error(errorLog, e);
-         throw new DataException(S3_NOT_EXIST_ERR);
+         throw new DataException(S3_NOT_EXIST_STR);
       }
       if (result != null) {
          result.setProduct(productName);
@@ -68,7 +66,7 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
          result.setComponent(component);
          result.setLocale(locale);
       } else {
-         throw new DataException(S3_NOT_EXIST_ERR);
+         throw new DataException(S3_NOT_EXIST_STR);
       }
       return result;
    }

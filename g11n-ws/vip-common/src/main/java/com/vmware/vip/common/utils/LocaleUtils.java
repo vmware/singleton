@@ -1,17 +1,15 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.common.utils;
 
 import java.util.ArrayList;
+import java.util.IllformedLocaleException;
 import java.util.List;
 import java.util.Locale;
 
 import org.apache.commons.lang3.StringUtils;
-
-import sun.util.locale.LanguageTag;
-import sun.util.locale.ParseStatus;
 
 /**
  * This class is used for locale and language tag conversion
@@ -27,12 +25,12 @@ public class LocaleUtils {
 	 * @return true if the format is fine
 	 */
 	public static boolean isLanguageTag(String languageTag) {
-		ParseStatus sts = new ParseStatus();
-		LanguageTag.parse(languageTag, sts);
-		if (sts.isError()) {
+		try {
+			new Locale.Builder().setLanguageTag(languageTag).build();
+			return true;
+		} catch (IllformedLocaleException e) {
 			return false;
 		}
-		return true;
 	}
 
 	/**

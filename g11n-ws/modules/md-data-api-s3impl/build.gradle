@@ -1,4 +1,4 @@
-//Copyright 2019-2022 VMware, Inc.
+//Copyright 2019-2023 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java-library'
 apply plugin: 'org.springframework.boot'
@@ -20,6 +20,7 @@ dependencies {
     api project(":md-data-api")
     api project(":vip-common")
     compileOnly("org.springframework.boot:spring-boot")
+    compileOnly("org.springframework.boot:spring-boot-starter-data-jpa")
     compileOnly("org.slf4j:slf4j-api:$slf4jVersion")
     implementation ("com.amazonaws:aws-java-sdk-s3:$awsS3Version")
     implementation ("com.amazonaws:aws-java-sdk-sts:$awsS3Version")
