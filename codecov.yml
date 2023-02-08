@@ -1,0 +1,22 @@
+coverage:
+  precision: 2        
+  round: down         
+  range: 20...80     
+  status:
+    project:                   
+      default:                 
+        enabled: yes           
+        target: 80%                 
+        if_no_uploads: error   
+        if_not_found: failure  
+        if_ci_failed: error   
+    patch:
+      default:
+        enabled: true            
+        target: 80%                      
+        if_no_uploads: error     
+        if_not_found: failure
+        if_ci_failed: error
+
+
+
