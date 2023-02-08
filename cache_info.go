@@ -29,7 +29,7 @@ func (i *itemCacheInfo) setAge(d int64) {
 }
 
 func (i *itemCacheInfo) isExpired() bool {
-	if i == nil { // TODO: remove
+	if i == nil {
 		return false
 	}
 

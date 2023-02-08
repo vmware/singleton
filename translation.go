@@ -96,7 +96,7 @@ func (t *transInst) GetComponentsMessages(name, version string, locales, compone
 
 	var wg sync.WaitGroup
 	wg.Add(totalNumber)
-	var muList sync.Mutex = sync.Mutex{}
+	muList := sync.Mutex{}
 	for _, locale := range locales {
 		for _, component := range components {
 			go func(locale, component string) {

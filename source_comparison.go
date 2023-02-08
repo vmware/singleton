@@ -31,32 +31,6 @@ func (sc *sourceComparison) Get(item *dataItem) (err error) {
 	}
 }
 
-// func (sc *sourceComparison) getList(item *dataItem) error {
-// 	var sourceErr, err error
-// 	sourceItem := &dataItem{id: item.id}
-// 	if sourceErr = sc.source.Get(sourceItem); sourceErr != nil {
-// 		// TODO: log error
-// 		logger.Error(sourceErr.Error())
-// 	}
-
-// 	if err = sc.messageOrigin.Get(item); err != nil {
-// 		// TODO: log error
-// 		logger.Error(err.Error())
-// 	}
-
-// 	if sourceErr != nil && err != nil {
-// 		return sourceErr
-// 	} else {
-// 		if sourceErr == nil && err == nil {
-// 			item.data = uniqueStrings(sourceItem.data.([]string), item.data.([]string))
-// 		} else if err != nil {
-// 			*item = *sourceItem
-// 		}
-
-// 		return nil
-// 	}
-// }
-
 func (sc *sourceComparison) getTranslation(item *dataItem) (err error) {
 	if err = sc.messageOrigin.Get(item); err != nil {
 		return
@@ -71,16 +45,13 @@ func (sc *sourceComparison) getTranslation(item *dataItem) (err error) {
 
 	go func() {
 		defer wg.Done()
-		// TODO: if failing to get old source, then need to add new messages in source item
 		if oldSourceErr := item.origin.Get(oldSourceItem); oldSourceErr != nil {
-			// TODO: log error
 			logger.Error(oldSourceErr.Error())
 		}
 	}()
 	go func() {
 		defer wg.Done()
 		if newSourceErr := sc.source.Get(newSourceItem); newSourceErr != nil {
-			// TODO: log error
 			logger.Error(newSourceErr.Error())
 		}
 	}()

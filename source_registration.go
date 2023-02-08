@@ -28,20 +28,6 @@ func (s *registeredSource) GetComponentList(name, version string) ([]string, err
 	return componentNames, nil
 }
 
-// GetStringMessage Get a message with optional arguments
-// func (s *registeredSource) GetStringMessage(name, version, component, key string, args ...string) (string, error) {
-// 	msgs, err := s.GetComponentMessages(name, version, component)
-// 	if err != nil {
-// 		return "", err
-// 	}
-
-// 	if v, found := msgs.Get(key); found {
-// 		return v, nil
-// 	} else {
-// 		return v, errors.Errorf(errorKeyNonexistent, key)
-// 	}
-// }
-
 // GetComponentMessages Get component messages
 func (s *registeredSource) GetComponentMessages(name, version, component string) (ComponentMsgs, error) {
 	componentMap, err := s.getRelease(name, version)

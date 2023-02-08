@@ -22,7 +22,7 @@ type singleLoader struct {
 }
 
 func (l *singleLoader) Get(item *dataItem) error {
-	actual, loaded := l.carriers.LoadOrStore(item.id, carrier{ch: make(chan struct{}), item: item}) //TODO: need to initialize ch?
+	actual, loaded := l.carriers.LoadOrStore(item.id, carrier{ch: make(chan struct{}), item: item})
 	w := actual.(carrier)
 	if !loaded {
 		defer func() {
