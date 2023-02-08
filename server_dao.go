@@ -12,6 +12,7 @@ import (
 	"net/url"
 	"regexp"
 	"strconv"
+	"strings"
 	"sync/atomic"
 	"time"
 
@@ -26,6 +27,10 @@ const (
 )
 
 func newServer(serverURL string) (*serverDAO, error) {
+	// Add slash for URL.
+	if !strings.HasSuffix(serverURL, "/") {
+		serverURL += "/"
+	}
 	svrURL, err := url.Parse(serverURL)
 	if err != nil {
 		return nil, err
