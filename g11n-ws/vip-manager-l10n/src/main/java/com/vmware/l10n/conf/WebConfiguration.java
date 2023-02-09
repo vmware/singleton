@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.conf;
@@ -34,7 +34,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 	private Integer sourceCollectReqSize;
 
 	@Autowired
-	private TokenService tokenService;
+	private CspValidateService cspValidateService;
 
 	@Autowired
 	private AllowListDao allowlistDao;
@@ -44,7 +44,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 		// CSP authentication
 		if (cspAuthFlag.equalsIgnoreCase("true")) {
 			logger.info("add enable CSP authentication interceptor");
-			registry.addInterceptor(new CspAuthInterceptor(tokenService))
+			registry.addInterceptor(new CspAuthInterceptor(cspValidateService))
 			.addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v2/translation/**", L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v1/translation/**");
 		}
 		logger.info("add source collection validation interceptor");

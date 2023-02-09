@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.conf;
@@ -20,23 +20,23 @@ import com.vmware.vip.common.i18n.status.Response;
 public class CspAuthInterceptor extends HandlerInterceptorAdapter {
 
 	private static Logger logger = LoggerFactory.getLogger(CspAuthInterceptor.class);
-	private final TokenService tokenService;
-	private static final String CSP_AUTH_TOKEN = "csp-auth-token";
 
-	public CspAuthInterceptor(TokenService tokenService) {
-		this.tokenService = tokenService;
+	private final CspValidateService cspValidateService;
+
+	public CspAuthInterceptor(CspValidateService cspValidateService) {
+		this.cspValidateService = cspValidateService;
 	}
 
 	@Override
 	public boolean preHandle(final HttpServletRequest request, final HttpServletResponse response, final Object handler)
 			throws Exception {
-		String token = request.getHeader(CSP_AUTH_TOKEN);
+		String token = request.getHeader(ConstantsKeys.CSP_AUTH_TOKEN);
 		if(token == null) {
 			response.setStatus(HttpStatus.UNAUTHORIZED.value());
 			response.getWriter().write(this.buildRespBody(HttpStatus.UNAUTHORIZED.value(), ConstantsKeys.TOKEN_VALIDATION_ERROR));
 			return false;
 		}
-		if (!tokenService.isTokenValid(token)) {
+		if (!cspValidateService.isTokenValid(token)) {
 			// The user is not authenticated.
 			response.setStatus(HttpStatus.FORBIDDEN.value());
 			response.getWriter().write(this.buildRespBody(HttpStatus.FORBIDDEN.value(), ConstantsKeys.TOKEN_INVALIDATION_ERROR));

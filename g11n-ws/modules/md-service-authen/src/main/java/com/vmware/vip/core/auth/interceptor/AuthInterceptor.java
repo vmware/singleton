@@ -4,9 +4,11 @@
  */
 package com.vmware.vip.core.auth.interceptor;
 
-import com.vmware.vip.common.constants.ConstantsKeys;
-import com.vmware.vip.common.i18n.status.Response;
-import com.vmware.vip.core.csp.service.TokenService;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import com.vmware.vip.core.csp.service.CSPTokenService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,19 +16,19 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.time.LocalDateTime;
+import com.vmware.vip.common.constants.ConstantsKeys;
+import com.vmware.vip.common.i18n.status.Response;
 
 public class AuthInterceptor extends HandlerInterceptorAdapter {
 
 	private static Logger logger = LoggerFactory.getLogger(AuthInterceptor.class);
+  
 	private String allowSourceCollection;
-	private final TokenService tokenService;
-	public AuthInterceptor(String allowSourceCollection, TokenService tokenService) {
+	private final CSPTokenService cspTokenService;
+
+	public AuthInterceptor(String allowSourceCollection, CSPTokenService cspTokenService) {
 		this.allowSourceCollection = allowSourceCollection;
-		this.tokenService = tokenService;
+		this.cspTokenService = cspTokenService;
 	}
 
 	@Override
@@ -43,7 +45,8 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 
 		if (StringUtils.equalsIgnoreCase(request.getParameter(ConstantsKeys.COLLECT_SOURCE), ConstantsKeys.TRUE)) {
 			if (allowSourceCollection.equalsIgnoreCase(ConstantsKeys.TRUE)) {
-				return validateCspToken(token,response);
+		        return validateCspToken(token, response);
+
 			} else {
 				response.setStatus(HttpStatus.FORBIDDEN.value());
 				response.getWriter().write(this.buildRespBody(HttpStatus.FORBIDDEN.value(), ConstantsKeys.SOURCE_COLLECTION_ERROR));
@@ -60,8 +63,9 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 			response.getWriter().write(this.buildRespBody(HttpStatus.UNAUTHORIZED.value(), ConstantsKeys.TOKEN_VALIDATION_ERROR));
 			return false;
 		}
-		if (!tokenService.isTokenValid(token)) {
-			response.setContentType(ConstantsKeys.CONTENT_TYPE_JSON);
+    
+		if (!cspTokenService.isTokenValid(token)) {
+			// The user is not authenticated.
 			response.setStatus(HttpStatus.FORBIDDEN.value());
 			response.getWriter().write(this.buildRespBody(HttpStatus.FORBIDDEN.value(), ConstantsKeys.TOKEN_INVALIDATION_ERROR));
 			return false;
