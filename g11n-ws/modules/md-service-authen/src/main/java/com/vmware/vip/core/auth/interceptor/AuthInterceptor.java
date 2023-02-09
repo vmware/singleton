@@ -8,8 +8,6 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vmware.vip.core.csp.service.CSPTokenService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -27,7 +25,6 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
   
 	private String allowSourceCollection;
 	private final CSPTokenService cspTokenService;
-	private ObjectMapper objectMapper = new ObjectMapper();
 
 	public AuthInterceptor(String allowSourceCollection, CSPTokenService cspTokenService) {
 		this.allowSourceCollection = allowSourceCollection;
