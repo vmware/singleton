@@ -10,9 +10,12 @@ import com.vmware.vip.common.constants.ConstantsMsg;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.core.messages.exception.L3APIException;
 import com.vmware.vip.core.messages.service.multcomponent.IMultComponentService;
+import com.vmware.vip.core.messages.service.multcomponent.TranslationDTO;
 import com.vmware.vip.core.messages.service.product.IProductService;
 import com.vmware.vip.messages.data.dao.model.ResultMessageChannel;
 import org.apache.commons.lang3.StringUtils;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletResponse;
@@ -23,6 +26,7 @@ import java.nio.channels.FileChannel;
 import java.nio.channels.ReadableByteChannel;
 import java.nio.channels.WritableByteChannel;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class StreamProductAction extends TranslationProductAction {
@@ -42,6 +46,11 @@ public class StreamProductAction extends TranslationProductAction {
         List<String> componentList = getcomponentList(productName, newVersion, components);
         List<String> localeList = getlocaleList(productName, newVersion, locales, pseudo);
 
+        if (Boolean.valueOf(pseudo)){
+            writePseudoTranslationsToChannel(productName, newVersion, componentList, localeList, version, resp);
+            return;
+        }
+
         List<ResultMessageChannel> readChannels = multComponentService.getTranslationChannels(productName, newVersion, componentList, localeList);
         if (readChannels.isEmpty()) {
             throw new L3APIException(ConstantsMsg.TRANS_IS_NOT_FOUND);
@@ -59,9 +68,9 @@ public class StreamProductAction extends TranslationProductAction {
         wbc.write(sr.getEndBytes());
     }
 
-	/**
-	 * write the response header bytes to channel
-	 */
+    /**
+     * write the response header bytes to channel
+     */
     private boolean writeResponseHeader(boolean notVersionFallback, int expSize, int readChannelSize, WritableByteChannel wbc, StreamProductResp sr) throws IOException {
         boolean isPartContent = false;
         if (notVersionFallback) {
@@ -169,6 +178,65 @@ public class StreamProductAction extends TranslationProductAction {
             }
             transferTo(readChannels.get(idx).getReadableByteChannel(), wbc, buf);
         }
+    }
+
+    private void writePseudoTranslationsToChannel(String productName, String versionStr, List<String> components, List<String> locales, String reqVersion, HttpServletResponse resp) throws L3APIException, IOException {
+        TranslationDTO translationDTO = new TranslationDTO();
+        translationDTO.setPseudo(true);
+        translationDTO.setProductName(productName);
+        translationDTO.setVersion(versionStr);
+        translationDTO.setComponents(components);
+        translationDTO.setLocales(locales);
+        JSONArray result = multComponentService.getMultiComponentsTranslation(translationDTO).getBundles();
+
+        StreamProductResp sr = new StreamProductResp(productName, versionStr, locales, components, "true", false);
+        resp.setContentType(ConstantsKeys.CONTENT_TYPE_JSON);
+        WritableByteChannel wbc = Channels.newChannel(resp.getOutputStream());
+
+        boolean isPartContent = writeResponseHeader(reqVersion.equals(versionStr), components.size() * locales.size(), result.size(), wbc, sr);
+        List<JSONObject> resultList = formatResultBundles(components, locales, result, isPartContent);
+        wbc.write(ByteBuffer.wrap(resultList.get(0).toJSONString().getBytes()));
+        ByteBuffer buf = ByteBuffer.wrap(byteComm);
+        for (int i =1; i<resultList.size(); i++){
+            wbc.write(buf);
+            wbc.write(ByteBuffer.wrap(resultList.get(0).toJSONString().getBytes()));
+            buf.rewind();
+        }
+        wbc.write(sr.getEndBytes());
+    }
+
+    private List<JSONObject> formatResultBundles(List<String> components, List<String> locales, JSONArray result, boolean isPartContent){
+        List<JSONObject> resultList = new ArrayList<JSONObject>();
+        if (isPartContent){
+            for (String component : components) {
+                for (String locale : locales) {
+                    resultList.add(addNullBundle(component, locale, result));
+                }
+            }
+        }else {
+            Iterator<JSONObject> objectIterator =  result.iterator();
+            while(objectIterator.hasNext()) {
+                resultList.add(objectIterator.next());
+            }
+        }
+        return resultList;
+    }
+    private JSONObject addNullBundle(String component, String locale, JSONArray result){
+
+        Iterator<JSONObject> objectIterator =  result.iterator();
+        while(objectIterator.hasNext()) {
+            JSONObject object = objectIterator.next();
+            String fileLocale = (String) object.get(ConstantsKeys.lOCALE);
+            String fileComponent = (String) object.get(ConstantsKeys.COMPONENT);
+            if(locale.equals(fileLocale)&& component.equals(fileComponent)) {
+                return object;
+            }
+        }
+        JSONObject nullObj = new JSONObject();
+        nullObj.put("locale", locale);
+        nullObj.put("component", component);
+        nullObj.put("messages", null);
+        return nullObj;
     }
 
 }
