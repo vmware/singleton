@@ -272,9 +272,11 @@ func TestGetStringAbnormal(t *testing.T) {
 	// original locale has component, but doesn't have Key
 	EnableMultipleMockData([]string{"componentMessages-zh-Hans-sunglow", "componentMessages-fr-sunglow"})
 	EnableMockDataWithTimes("componentMessages-en-sunglow", 2)
-	EnableMockDataWithTimes("componentMessages-latest-sunglow", 3)
+	// EnableMockDataWithTimes("componentMessages-latest-sunglow", 3)
+	EnableMockDataWithTimes("componentMessages-latest-sunglow", 2)
 	message2, err2 := trans.GetStringMessage(name, version, localeZhhans, compSunglow, keyNonexistent, arg)
-	assert.Contains(t, err2.Error(), "locale: "+inst.cfg.GetSourceLocale())
+	// assert.Contains(t, err2.Error(), "locale: "+inst.cfg.GetSourceLocale())
+	assert.Contains(t, err2.Error(), "locale: "+localeDefault)
 	assert.Contains(t, err2.Error(), compSunglow)
 	assert.Contains(t, err2.Error(), "fail to get message")
 	assert.Equal(t, keyNonexistent, message2)
@@ -282,11 +284,13 @@ func TestGetStringAbnormal(t *testing.T) {
 
 	// original locale doesn't have component.
 	// default locale has component, but doesn't have Key
-	EnableMultipleMockData([]string{ "componentMessages-fr-users"})
+	EnableMultipleMockData([]string{"componentMessages-fr-users"})
 	EnableMockDataWithTimes("componentMessages-en-users", 1)
-	EnableMockDataWithTimes("componentMessages-latest-users", 2)
+	// EnableMockDataWithTimes("componentMessages-latest-users", 2)
+	EnableMockDataWithTimes("componentMessages-latest-users", 1)
 	message3, err3 := trans.GetStringMessage(name, version, localeZhhans, compUsers, keyNonexistent, arg)
-	assert.Contains(t, err3.Error(), "locale: "+inst.cfg.GetSourceLocale())
+	// assert.Contains(t, err3.Error(), "locale: "+inst.cfg.GetSourceLocale())
+	assert.Contains(t, err3.Error(), "locale: "+localeDefault)
 	assert.Contains(t, err3.Error(), compUsers)
 	assert.Contains(t, err3.Error(), "fail to get message")
 	assert.Equal(t, keyNonexistent, message3)
