@@ -78,6 +78,10 @@ func (t *transInst) GetComponentMessages(name, version, locale, component string
 }
 
 func (t *transInst) GetComponentsMessages(name, version string, locales, components []string) (msgs []ComponentMsgs, err error) {
+	if name == "" || version == "" {
+		return nil, errors.New(wrongPara)
+	}
+
 	if len(locales) == 0 {
 		locales, err = t.GetLocaleList(name, version)
 		if err != nil {

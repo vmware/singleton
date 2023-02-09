@@ -91,12 +91,12 @@ func createTranslation(cfg Config) Translation {
 	}
 
 	origin = &saveToCache{messageOrigin: origin}
-	origin = &singleLoader{messageOrigin: origin}
+	// origin = &singleLoader{messageOrigin: origin}
 	origin = &cacheService{origin}
 
 	transImpl := transInst{origin}
 
-	localeSet := linkedhashset.New(cfg.DefaultLocale/*, cfg.GetSourceLocale()*/)
+	localeSet := linkedhashset.New(cfg.DefaultLocale /*, cfg.GetSourceLocale()*/)
 	fallbackLocales := []string{}
 	for _, locale := range localeSet.Values() {
 		if locale != "" {
@@ -155,6 +155,8 @@ func SetLogger(l Logger) {
 }
 
 func RegisterSource(name, version string, sources []ComponentMsgs) {
+	logger.Info(fmt.Sprintf("Register source to %s/%s", name, version))
+
 	id := releaseID{name, version}
 	release, ok := mapSource.releases[id]
 	if !ok {

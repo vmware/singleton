@@ -30,7 +30,7 @@ import (
 )
 
 var name, version, component = "SgtnTest", "1.0.0", "sunglow"
-var locale = "zh-Hans"
+var locale, localeDefault = "zh-Hans", "fr"
 
 var testCfg Config
 var mockData map[string]MockMapping

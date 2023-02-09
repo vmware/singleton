@@ -33,6 +33,7 @@ func (l *singleLoader) Get(item *dataItem) error {
 		logger.Info(fmt.Sprintf("Start fetching ID: %+v", item.id))
 
 		w.err = l.messageOrigin.Get(item)
+		w.item = item
 		return w.err
 	} else { // For the routines waiting
 		<-w.ch
