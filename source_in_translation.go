@@ -5,11 +5,11 @@
 
 package sgtn
 
-type InTranslationSource struct {
+type sourceInTranslation struct {
 	messageOrigin
 }
 
-func (s *InTranslationSource) Get(item *dataItem) (err error) {
+func (s *sourceInTranslation) Get(item *dataItem) (err error) {
 	switch item.id.iType {
 	case itemComponent:
 		item.id.Locale = localeLatest
@@ -23,6 +23,8 @@ func (s *InTranslationSource) Get(item *dataItem) (err error) {
 		err = s.messageOrigin.Get(item)
 	}
 
-	item.origin = s
+	if err == nil {
+		item.origin = s
+	}
 	return
 }

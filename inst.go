@@ -72,12 +72,12 @@ func createTranslation(cfg Config) Translation {
 		}
 		inst.server = server // TODO:
 		transOrigins = append(transOrigins, server)
-		sourceOrigins = append(sourceOrigins, &InTranslationSource{server})
+		sourceOrigins = append(sourceOrigins, &sourceInTranslation{server})
 	}
 	if cfg.LocalBundles != "" {
 		bundleTranslation := &bundleDAO{cfg.LocalBundles}
 		transOrigins = append(transOrigins, bundleTranslation)
-		sourceOrigins = append(sourceOrigins, &InTranslationSource{bundleTranslation})
+		sourceOrigins = append(sourceOrigins, &sourceInTranslation{bundleTranslation})
 	}
 
 	var origin messageOrigin
@@ -85,7 +85,7 @@ func createTranslation(cfg Config) Translation {
 	if len(transOrigins) > 0 && len(sourceOrigins) > 0 {
 		origin = &sourceComparison{source: sourceOrigins, messageOrigin: transOrigins}
 	} else if len(sourceOrigins) > 0 {
-		origin = sourceOrigins
+		origin = &sourceComparison{source: sourceOrigins}
 	} else if len(transOrigins) > 0 {
 		origin = transOrigins
 	}

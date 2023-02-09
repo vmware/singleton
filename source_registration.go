@@ -21,8 +21,8 @@ func (s *registeredSource) GetComponentList(name, version string) ([]string, err
 
 	i := 0
 	componentNames := make([]string, len(componentMap))
-	for k := range componentMap {
-		componentNames[i] = k
+	for component := range componentMap {
+		componentNames[i] = component
 		i++
 	}
 	return componentNames, nil

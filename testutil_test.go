@@ -30,8 +30,10 @@ import (
 )
 
 var name, version, component = "SgtnTest", "1.0.0", "sunglow"
-var locale, localeDefault = "zh-Hans", "fr"
+var locale, localeDefault, localeSource, localeUnsupported = "zh-Hans", "fr", localeEn, "xxx"
+var nonexistentComponent = "comp-notexist"
 
+var ServerURL = "https://SingletonServer:8090"
 var testCfg Config
 var mockData map[string]MockMapping
 
