@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.login;
@@ -36,6 +36,12 @@ public class VipAuthConfig {
 	
 	@Value("${csp.auth.url:###}")
 	private String cspAuthUrl;
+
+	@Value("${csp.auth.issuer:###}")
+	private String issuer;
+
+	@Value("${csp.auth.refresh-interval-sec:30}")
+	private int refreshIntervalSec;
 	
 	@Value("${vipservice.authority.ldap.searchbase:###}")
 	private String searchbase; 
@@ -145,9 +151,22 @@ public class VipAuthConfig {
 		}
 		return this.publicKey;
 	}
-	
-	
-	
-	
+
+
+	public String getIssuer() {
+		return issuer;
+	}
+
+	public void setIssuer(String issuer) {
+		this.issuer = issuer;
+	}
+
+	public int getRefreshIntervalSec() {
+		return refreshIntervalSec;
+	}
+
+	public void setRefreshIntervalSec(int refreshIntervalSec) {
+		this.refreshIntervalSec = refreshIntervalSec;
+	}
 
 }
