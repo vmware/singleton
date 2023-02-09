@@ -16,7 +16,7 @@ import (
 type Config struct {
 	ServerURL     string `json:"online_service_url"`
 	LocalBundles  string `json:"offline_resources_base_url"`
-	LocalSource   string `json:"source_base_url"`
+	localSource   string //`json:"source_base_url"`
 	DefaultLocale string `json:"default_locale"`
 	SourceLocale  string `json:"source_locale"`
 }

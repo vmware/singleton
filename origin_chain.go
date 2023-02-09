@@ -23,7 +23,6 @@ func (ol messageOriginList) getComponentMessages(item *dataItem) (err error) {
 		if err = o.Get(item); err == nil {
 			return
 		} else {
-			// TODO: change error message. save all error messsages as const
 			logger.Error(fmt.Sprintf(originQueryFailure, o, err.Error()))
 			if e, ok := err.(stackTracer); ok {
 				logger.Error(fmt.Sprintf("%+v", e.StackTrace()))
