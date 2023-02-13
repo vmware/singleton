@@ -337,7 +337,188 @@
 					}
 				}
 		  }
-		}
-		
+		},
+
+	  {
+		  "request" : {
+			  "url" : "/i18n/api/v2/translation/products/JavaclientTest/versions/1.0.0?locales=ar,fr,zh-CN&components=JAVA,USER",
+			  "method" : "GET"
+		  },
+		  "response" : {
+			  "status" : 200,
+			  "jsonBody" :
+			  {
+				  "response": {
+					  "code": 207,
+					  "message": "Part of the translation is available",
+					  "serverTime": ""
+				  },
+				  "signature": "",
+				  "data": {
+					  "productName": "JavaclientTest",
+					  "version": "1.0.0",
+					  "dataOrigin": "",
+					  "pseudo": false,
+					  "machineTranslation": false,
+					  "locales": [
+						  "ar",
+						  "fr",
+						  "zh-Hans"
+					  ],
+					  "components": [
+						  "JAVA",
+						  "USER"
+					  ],
+					  "bundles": [
+						  {
+							  "component": "JAVA",
+							  "messages": {
+								  "LeadTest": "[{0}] Alerte de test",
+								  "table.host": "Hôte",
+								  "global_text_username": "Nom d'utilisateur"
+							  },
+							  "locale": "fr"
+						  },
+						  {
+							  "component": "JAVA",
+							  "messages": {
+								  "LeadTest": "[{0}] 测试警示",
+								  "table.host": "主机",
+								  "global_text_username": "用户名"
+							  },
+							  "locale": "zh-Hans"
+						  },
+						  {
+							  "component": "JAVA",
+							  "messages": null,
+							  "locale": "ar"
+						  },
+						  {
+							  "component": "USER",
+							  "messages": {
+								  "user-1": "valeur-1",
+								  "user-2": "valeur-2"
+							  },
+							  "locale": "fr"
+						  },
+						  {
+							  "component": "USER",
+							  "messages": {
+								  "user-1": "值-1",
+								  "user-2": "值-2"
+							  },
+							  "locale": "zh-Hans"
+						  },
+						  {
+							  "component": "USER",
+							  "messages": null,
+							  "locale": "ar"
+						  }
+					  ],
+					  "url": "",
+					  "id": 0
+				  }
+			  }
+		  }
+	  },
+
+	  {
+		  "request" : {
+			  "url" : "/i18n/api/v2/translation/products/JavaclientTest/versions/1.0.0?locales=en&components=JAVA,USER",
+			  "method" : "GET"
+		  },
+		  "response" : {
+			  "status" : 200,
+			  "jsonBody" :
+			  {
+				  "response": {
+					  "code": 207,
+					  "message": "Part of the translation is available",
+					  "serverTime": ""
+				  },
+				  "signature": "",
+				  "data": {
+					  "productName": "JavaclientTest",
+					  "version": "1.0.0",
+					  "dataOrigin": "",
+					  "pseudo": false,
+					  "machineTranslation": false,
+					  "locales": [
+						  "en"
+					  ],
+					  "components": [
+						  "JAVA",
+						  "USER"
+					  ],
+					  "bundles": [
+						  {
+							  "component": "JAVA",
+							  "messages": {
+								  "LeadTest": "[{0}] Test alert",
+								  "table.host": "Host",
+								  "global_text_username": "User name",
+								  "sample.plural.key1": "{0, plural, one{There is one file on disk \"{1}\".} other{There are # files on disk \"{1}\".}}"
+							  },
+							  "locale": "en"
+						  },
+						  {
+							  "component": "USER",
+							  "messages": null,
+							  "locale": "en"
+						  }
+					  ],
+					  "url": "",
+					  "id": 0
+				  }
+			  }
+		  }
+	  },
+
+	  {
+		  "request" : {
+			  "url" : "/i18n/api/v2/translation/products/JavaclientTest/versions/1.0.0?locales=latest&components=USER",
+			  "method" : "GET"
+		  },
+		  "response" : {
+			  "status" : 200,
+			  "jsonBody" :
+			  {
+				  "response": {
+					  "code": 200,
+					  "message": "OK",
+					  "serverTime": ""
+				  },
+				  "signature": "",
+				  "data": {
+					  "productName": "JavaclientTest",
+					  "version": "1.0.0",
+					  "dataOrigin": "",
+					  "pseudo": false,
+					  "machineTranslation": false,
+					  "locales": [
+						  "latest"
+					  ],
+					  "components": [
+						  "USER"
+					  ],
+					  "bundles": [
+						  {
+							  "component": "USER",
+							  "messages": {
+								  "user-1": "value-1",
+								  "user-2": "value-2"
+							  },
+							  "locale": "latest"
+						  }
+					  ],
+					  "url": "",
+					  "id": 0
+				  }
+			  }
+		  }
+	  }
+
+
+
   ]
 }

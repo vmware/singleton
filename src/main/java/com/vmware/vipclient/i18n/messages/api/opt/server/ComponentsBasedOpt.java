@@ -63,9 +63,7 @@ public class ComponentsBasedOpt extends BaseOpt implements Opt {
 
         int statusCode = this.getResponseCode(this.responseJsonObj);
         if (!this.isSuccess(statusCode))
-            throw new VIPJavaClientException(
-                    String.format(ConstantsMsg.SERVER_RETURN_ERROR, statusCode, this.getResponseMessage(this.responseJsonObj)));
-
-        return this.responseJsonObj;
+            logger.warn(String.format(ConstantsMsg.SERVER_RETURN_ERROR, statusCode, this.getResponseMessage(this.responseJsonObj)));
+        return getDataPart(this.responseJsonObj);
     }
 }

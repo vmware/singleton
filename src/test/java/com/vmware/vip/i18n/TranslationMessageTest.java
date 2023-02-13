@@ -523,6 +523,7 @@ public class TranslationMessageTest extends BaseTestClass {
         Locale locale2 = Locale.forLanguageTag("fr");
         Locale locale3 = Locale.forLanguageTag("zh-Hans");
         Locale locale4 = Locale.forLanguageTag("zh-CN");
+        Locale locale5 = Locale.forLanguageTag("ar");
 
         // Get 1 component and 1 locale
         Map<Locale, Map<String, Map<String, String>>> result = translation.getStrings(Sets.newHashSet(locale2),
@@ -568,6 +569,16 @@ public class TranslationMessageTest extends BaseTestClass {
         Assert.assertEquals(2, result2.get(locale4).size()); // 2 components
         Assert.assertEquals(2, result2.get(locale4).get(component2).size()); // 2 messages
         Assert.assertEquals("值-1", result2.get(locale4).get(component2).get("user-1"));
+
+        // Get 2 components and 3 locales. One is not supported locale 'ar' to test locale fallback.
+        // 'ar' falls back to 'en'.
+        clearTranslationCache();
+        result2 = translation.getStrings(
+                Stream.of(locale2, locale4, locale5).collect(Collectors.toSet()), Sets.newHashSet(component1, component2));
+        Assert.assertEquals(3, result2.size()); // 3 locales
+        Assert.assertEquals(2, result2.get(locale5).size()); // 2 components
+        Assert.assertEquals(2, result2.get(locale5).get(component2).size()); // 2 messages
+        Assert.assertEquals("value-1", result2.get(locale5).get(component2).get("user-1"));
 
         // more cases to test cache
         // more cases to test the message sending to server
