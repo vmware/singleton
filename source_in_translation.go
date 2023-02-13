@@ -16,8 +16,8 @@ func (s *sourceInTranslation) Get(item *dataItem) (err error) {
 		err = s.messageOrigin.Get(item)
 		item.id.Locale = inst.cfg.GetSourceLocale()
 	case itemLocales:
-		// usually locale list is from translation. This is used when only source exists.
 		// cache information never expires because source locale is the only one locale.
+		// this case is impossible because locales will come from translation.
 		item.data = []string{inst.cfg.GetSourceLocale()}
 	case itemComponents:
 		err = s.messageOrigin.Get(item)

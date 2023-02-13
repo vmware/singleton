@@ -15,15 +15,18 @@ import (
 
 type SourceComparison_TestSuite struct {
 	suite.Suite
+	messages ComponentMsgs
 }
 
 func (suite *SourceComparison_TestSuite) SetupSuite() {
-	messages := NewMapComponentMsgs(RegisteredMap, localeEn, ComponentToRegister)
-	resetInst(&RegisteredSource_Server_Config, func() { RegisterSource(name, version, []ComponentMsgs{messages}) })
+	suite.messages = NewMapComponentMsgs(RegisteredMap, localeEn, ComponentToRegister)
+	resetInst(&RegisteredSource_Server_Config, func() { RegisterSource(name, version, []ComponentMsgs{suite.messages}) })
 }
 
 func (suite *SourceComparison_TestSuite) TestSourceComparison() {
 	defer gock.Off()
+
+	resetInst(&RegisteredSource_Server_Config, func() { RegisterSource(name, version, []ComponentMsgs{suite.messages}) })
 
 	var tests = []struct {
 		desc      string
@@ -68,6 +71,22 @@ func (suite *SourceComparison_TestSuite) TestGetLocaleList() {
 		suite.EqualValues(testData.expectedLocaleList, localeList)
 		suite.True(gock.IsDone())
 	}
+}
+
+func (suite *SourceComparison_TestSuite) TestOldSourceIsEmpty() {
+	defer gock.Off()
+
+	resetInst(&RegisteredSource_Server_Config, func() { RegisterSource(name, version, []ComponentMsgs{suite.messages}) })
+
+	EnableMockData("componentMessages-zh-Hans-sunglow")
+	msg, err := GetTranslation().GetStringMessage(name, version, locale, ComponentToRegister, Key)
+	suite.Nil(err)
+	suite.Equal(Value, msg)
+	msg, err = GetTranslation().GetStringMessage(name, version, locale, ComponentToRegister, UpdatedKey)
+	suite.Nil(err)
+	suite.Equal(OldZhValue, msg)
+
+	suite.True(gock.IsDone())
 }
 
 func TestSourceComparison_TestSuite(t *testing.T) {

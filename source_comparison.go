@@ -77,16 +77,21 @@ func (sc *sourceComparison) getTranslation(item *dataItem) (err error) {
 }
 
 func (sc *sourceComparison) doComparison(transBundle, oldSource, newSource ComponentMsgs) ComponentMsgs {
-	newSource.Range(func(key, newSourceMessage string) bool {
-		if oldSource != nil {
+	if oldSource != nil {
+		newSource.Range(func(key, newSourceMessage string) bool {
 			if oldSourceMessage, _ := oldSource.Get(key); oldSourceMessage != newSourceMessage {
 				transBundle.Set(key, newSourceMessage)
 			}
-		} else if _, ok := transBundle.Get(key); !ok {
-			transBundle.Set(key, newSourceMessage)
-		}
-		return true
-	})
+			return true
+		})
+	} else {
+		newSource.Range(func(key, newSourceMessage string) bool {
+			if _, ok := transBundle.Get(key); !ok {
+				transBundle.Set(key, newSourceMessage)
+			}
+			return true
+		})
+	}
 
 	return transBundle
 }

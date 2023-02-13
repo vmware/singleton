@@ -16,7 +16,7 @@ import (
 var RegisteredSource_Server_Config = Config{ServerURL: ServerURL, DefaultLocale: localeDefault, SourceLocale: localeEn}
 
 type RegisteredSource_Server_TestSuite struct {
-	*RegisterSource_TestSuite
+	suite.Suite
 }
 
 func (suite *RegisteredSource_Server_TestSuite) SetupSuite() {
@@ -77,41 +77,5 @@ func (suite *RegisteredSource_Server_TestSuite) TestGetLocaleList() {
 }
 
 func TestRegisteredSource_Server_TestSuite(t *testing.T) {
-	suite.Run(t, &RegisteredSource_Server_TestSuite{RegisterSource_TestSuite: new(RegisterSource_TestSuite)})
+	suite.Run(t, new(RegisteredSource_Server_TestSuite))
 }
-
-// func TestLocalSource(t *testing.T) {
-// 	var tests = []struct {
-// 		desc      string
-// 		locale    string
-// 		component string
-// 		expected  int
-// 		err       string
-// 	}{
-// 		{"Get messages of a component normally", "en", "sunglow", 4, ""},
-// 	}
-
-// 	cfg := testCfg
-// 	cfg.ServerURL = ""
-// 	cfg.LocalBundles = ""
-// 	cfg.localSource = "testdata/sources"
-// 	resetInst(&cfg, nil)
-// 	trans := GetTranslation()
-// 	for _, testData := range tests {
-// 		messages, err := trans.GetComponentMessages(name, version, testData.locale, testData.component)
-// 		if err != nil {
-// 			t.Errorf("%s failed: %v", testData.desc, err)
-// 			continue
-// 		}
-// 		if messages.(*MapComponentMsgs).Size() != testData.expected {
-// 			t.Errorf("%s = %d, want %d", testData.desc, messages.(*MapComponentMsgs).Size(), testData.expected)
-// 		}
-
-// 		messagesInCache, found := cache.Get(dataItemID{itemComponent, name, version, testData.locale, testData.component})
-// 		assert.True(t, found)
-// 		assert.NotNil(t, messagesInCache)
-// 		assert.Equal(t, testData.expected, messagesInCache.(*dataItem).data.(*MapComponentMsgs).Size())
-// 	}
-
-// 	assert.True(t, gock.IsDone())
-// }

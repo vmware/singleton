@@ -84,7 +84,8 @@ func (s *serverDAO) Get(item *dataItem) (err error) {
 	} else { // http code 304
 		item.attrs.setETag(info.eTag)
 		// clone to do source comparison
-		item.data = item.data.(ComponentMsgs).Clone()
+		cachedItem, _ := cache.Get(item.id)
+		item.data = cachedItem.(*dataItem).data.(ComponentMsgs).Clone()
 		return nil
 	}
 

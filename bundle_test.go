@@ -59,4 +59,12 @@ func TestBundleDirNonexistent(t *testing.T) {
 	_, err := inst.trans.GetComponentList(name, version)
 	_, ok := err.(*os.PathError)
 	assert.True(t, ok, "error isn't an PATH error: %s", err)
+
+	_, err = inst.trans.GetLocaleList(name, version)
+	_, ok = err.(*os.PathError)
+	assert.True(t, ok, "error isn't an PATH error: %s", err)
+
+	_, err = inst.trans.GetComponentMessages(name, version, locale, component)
+	_, ok = err.(*os.PathError)
+	assert.True(t, ok, "error isn't an PATH error: %s", err)
 }

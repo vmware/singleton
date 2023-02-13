@@ -6,6 +6,7 @@
 package sgtn
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/suite"
@@ -95,6 +96,18 @@ func (suite *RegisterSource_TestSuite) TestGetLocaleList() {
 		suite.Nil(err, "%s: failed to get locale list", testData.desc)
 		suite.EqualValues(testData.expectedLocaleList, localeList)
 	}
+}
+
+func (suite *RegisterSource_TestSuite) TestGetNonexistentRelease() {
+	nonExistentVersion := version + "-nonexistent"
+	expectedError := fmt.Sprintf(errorReleaseNonexistent, name, nonExistentVersion)
+	messages, err := GetTranslation().GetComponentMessages(name, nonExistentVersion, inst.cfg.GetSourceLocale(), component)
+	suite.Equal(expectedError, err.Error())
+	suite.Nil(messages)
+
+	components, err := GetTranslation().GetComponentList(name, nonExistentVersion)
+	suite.Equal(expectedError, err.Error())
+	suite.Nil(components)
 }
 
 func TestRegisterSourceTestSuite(t *testing.T) {

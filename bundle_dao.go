@@ -74,6 +74,9 @@ func (d *bundleDAO) GetComponentList(name, version string) ([]string, error) {
 func (d *bundleDAO) GetLocaleList(name, version string) ([]string, error) {
 	fileNames := map[string]struct{}{}
 	err := filepath.Walk(d.root, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
 		if !info.IsDir() {
 			fileNames[info.Name()] = struct{}{}
 		}
