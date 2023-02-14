@@ -22,11 +22,12 @@ func (ol messageOriginList) getComponentMessages(item *dataItem) (err error) {
 	for _, o := range ol {
 		if err = o.Get(item); err == nil {
 			return
-		} else {
-			logger.Error(fmt.Sprintf(originQueryFailure, o, err.Error()))
-			if e, ok := err.(stackTracer); ok {
-				logger.Error(fmt.Sprintf("%+v", e.StackTrace()))
-			}
+		}
+
+		// log error message
+		logger.Error(fmt.Sprintf(originQueryFailure, o, err.Error()))
+		if e, ok := err.(stackTracer); ok {
+			logger.Error(fmt.Sprintf("%+v", e.StackTrace()))
 		}
 	}
 

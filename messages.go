@@ -15,5 +15,4 @@ const (
 	wrongServerData           = "Wrong data from server"
 	errorReleaseNonexistent   = "Can't find '%s/%s'"
 	errorComponentNonexistent = "Component '%s' not found"
-	errorKeyNonexistent       = "Key '%s' not found"
 )

@@ -42,9 +42,9 @@ func (i *itemCacheInfo) setETag(t string) {
 func (i *itemCacheInfo) getETag() string {
 	if i == nil {
 		return ""
-	} else {
-		return i.eTag
 	}
+
+	return i.eTag
 }
 
 //!-itemCacheInfo

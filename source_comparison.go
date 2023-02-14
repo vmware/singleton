@@ -21,18 +21,16 @@ func (sc *sourceComparison) Get(item *dataItem) (err error) {
 	case itemComponent:
 		if item.id.Locale == inst.cfg.GetSourceLocale() {
 			return sc.source.Get(item)
-		} else {
-			if sc.messageOrigin == nil {
-				return errors.Errorf("unsupported locale %s", item.id.Locale)
-			}
-			return sc.getTranslation(item)
 		}
+		if sc.messageOrigin == nil {
+			return errors.Errorf("unsupported locale %s", item.id.Locale)
+		}
+		return sc.getTranslation(item)
 	case itemLocales:
 		if sc.messageOrigin == nil {
 			return sc.source.Get(item)
-		} else {
-			return sc.messageOrigin.Get(item)
 		}
+		return sc.messageOrigin.Get(item)
 	case itemComponents: // get component list from source
 		return sc.source.Get(item)
 	default:

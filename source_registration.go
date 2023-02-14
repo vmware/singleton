@@ -7,7 +7,7 @@ package sgtn
 
 import "github.com/pkg/errors"
 
-var mapSource registeredSource = registeredSource{make(map[releaseID](map[string]ComponentMsgs))}
+var mapSource = registeredSource{make(map[releaseID](map[string]ComponentMsgs))}
 
 type registeredSource struct {
 	releases map[releaseID](map[string]ComponentMsgs)
@@ -25,6 +25,7 @@ func (s *registeredSource) GetComponentList(name, version string) ([]string, err
 		componentNames[i] = component
 		i++
 	}
+
 	return componentNames, nil
 }
 
@@ -35,17 +36,19 @@ func (s *registeredSource) GetComponentMessages(name, version, component string)
 		return nil, err
 	}
 
-	if msgs, foundComponent := componentMap[component]; !foundComponent {
+	msgs, foundComponent := componentMap[component]
+	if !foundComponent {
 		return nil, errors.Errorf(errorComponentNonexistent, component)
-	} else {
-		return msgs, nil
 	}
+
+	return msgs, nil
 }
 
 func (s *registeredSource) getRelease(name, version string) (map[string]ComponentMsgs, error) {
-	if componentMap, found := s.releases[releaseID{name, version}]; !found {
+	componentMap, found := s.releases[releaseID{name, version}]
+	if !found {
 		return nil, errors.Errorf(errorReleaseNonexistent, name, version)
-	} else {
-		return componentMap, nil
 	}
+
+	return componentMap, nil
 }

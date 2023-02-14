@@ -35,9 +35,10 @@ func (l *singleLoader) Get(item *dataItem) error {
 		w.err = l.messageOrigin.Get(item)
 		w.item = item
 		return w.err
-	} else { // For the routines waiting
-		<-w.ch
-		*item = *w.item
-		return w.err
 	}
+
+	// For the routines waiting
+	<-w.ch
+	*item = *w.item
+	return w.err
 }

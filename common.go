@@ -132,7 +132,7 @@ func uniqueStrings(slices ...[]string) []string {
 func convertLocale(locale string) string {
 	if locale == localeLatest {
 		return inst.cfg.GetSourceLocale()
-	} else {
-		return locale
 	}
+
+	return locale
 }
