@@ -1,3 +1,7 @@
+/*
+ * Copyright 2019-2023 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
 package com.vmware.l10agent.utils;
 
 import com.vmware.vip.common.utils.RegExpValidatorUtils;

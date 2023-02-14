@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10agent.schedule;
@@ -254,7 +254,11 @@ public class SourceRequestCron {
 			for (Entry<String, List<String>> entry : allowList.entrySet()) {
 				String product = entry.getKey();
 				for (String version : entry.getValue()) {
-					processS3SycSource(product, version);
+					try {
+						processS3SycSource(product, version);
+					}catch (Exception e){
+						logger.error(e.getMessage(), e);
+					}
 				}
 			}
 		}
