@@ -13,23 +13,23 @@ import (
 )
 
 var (
-	OnlyRegisteredSource_Config = Config{DefaultLocale: localeDefault, SourceLocale: localeEn}
+	OnlyRegisteredSourceConfig = Config{DefaultLocale: localeDefault, SourceLocale: localeEn}
 	Key, Value                  = "RegisteredKey", "Value"
 	UpdatedKey, UpdatedValue    = "message", "UpdatedValue"
 	RegisteredMap               = map[string]string{Key: Value, UpdatedKey: UpdatedValue}
 	ComponentToRegister         = component
 )
 
-type RegisterSource_TestSuite struct {
+type RegisterSourceTestSuite struct {
 	suite.Suite
 }
 
-func (suite *RegisterSource_TestSuite) SetupSuite() {
+func (suite *RegisterSourceTestSuite) SetupSuite() {
 	messages := NewMapComponentMsgs(RegisteredMap, localeEn, ComponentToRegister)
-	resetInst(&OnlyRegisteredSource_Config, func() { RegisterSource(name, version, []ComponentMsgs{messages}) })
+	resetInst(&OnlyRegisteredSourceConfig, func() { RegisterSource(name, version, []ComponentMsgs{messages}) })
 }
 
-func (suite *RegisterSource_TestSuite) TestGetComponentMessages() {
+func (suite *RegisterSourceTestSuite) TestGetComponentMessages() {
 	var tests = []struct {
 		desc      string
 		locale    string
@@ -52,7 +52,7 @@ func (suite *RegisterSource_TestSuite) TestGetComponentMessages() {
 	}
 }
 
-func (suite *RegisterSource_TestSuite) TestGetStringMessage() {
+func (suite *RegisterSourceTestSuite) TestGetStringMessage() {
 	var tests = []struct {
 		desc      string
 		locale    string
@@ -68,7 +68,7 @@ func (suite *RegisterSource_TestSuite) TestGetStringMessage() {
 	}
 }
 
-func (suite *RegisterSource_TestSuite) TestGetComponentList() {
+func (suite *RegisterSourceTestSuite) TestGetComponentList() {
 	var tests = []struct {
 		desc                  string
 		expectedComponentList []string
@@ -83,7 +83,7 @@ func (suite *RegisterSource_TestSuite) TestGetComponentList() {
 	}
 }
 
-func (suite *RegisterSource_TestSuite) TestGetLocaleList() {
+func (suite *RegisterSourceTestSuite) TestGetLocaleList() {
 	var tests = []struct {
 		desc               string
 		expectedLocaleList []string
@@ -98,7 +98,7 @@ func (suite *RegisterSource_TestSuite) TestGetLocaleList() {
 	}
 }
 
-func (suite *RegisterSource_TestSuite) TestGetNonexistentRelease() {
+func (suite *RegisterSourceTestSuite) TestGetNonexistentRelease() {
 	nonExistentVersion := version + "-nonexistent"
 	expectedError := fmt.Sprintf(errorReleaseNonexistent, name, nonExistentVersion)
 	messages, err := GetTranslation().GetComponentMessages(name, nonExistentVersion, inst.cfg.GetSourceLocale(), component)
@@ -111,5 +111,5 @@ func (suite *RegisterSource_TestSuite) TestGetNonexistentRelease() {
 }
 
 func TestRegisterSourceTestSuite(t *testing.T) {
-	suite.Run(t, new(RegisterSource_TestSuite))
+	suite.Run(t, new(RegisterSourceTestSuite))
 }

@@ -16,6 +16,8 @@ import (
 	"gopkg.in/h2non/gock.v1"
 )
 
+var OnlyServerConfig = Config{ServerURL: "https://SingletonServer:8090/", DefaultLocale: localeDefault}
+
 func TestGetLocaleCompAbnormal(t *testing.T) {
 
 	saved := getDataFromServer

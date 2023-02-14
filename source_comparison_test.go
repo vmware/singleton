@@ -13,20 +13,20 @@ import (
 	"gopkg.in/h2non/gock.v1"
 )
 
-type SourceComparison_TestSuite struct {
+type SourceComparisonTestSuite struct {
 	suite.Suite
 	messages ComponentMsgs
 }
 
-func (suite *SourceComparison_TestSuite) SetupSuite() {
+func (suite *SourceComparisonTestSuite) SetupSuite() {
 	suite.messages = NewMapComponentMsgs(RegisteredMap, localeEn, ComponentToRegister)
-	resetInst(&RegisteredSource_Server_Config, func() { RegisterSource(name, version, []ComponentMsgs{suite.messages}) })
+	resetInst(&RegisteredSourceServerConfig, func() { RegisterSource(name, version, []ComponentMsgs{suite.messages}) })
 }
 
-func (suite *SourceComparison_TestSuite) TestSourceComparison() {
+func (suite *SourceComparisonTestSuite) TestSourceComparison() {
 	defer gock.Off()
 
-	resetInst(&RegisteredSource_Server_Config, func() { RegisterSource(name, version, []ComponentMsgs{suite.messages}) })
+	resetInst(&RegisteredSourceServerConfig, func() { RegisterSource(name, version, []ComponentMsgs{suite.messages}) })
 
 	var tests = []struct {
 		desc      string
@@ -52,7 +52,7 @@ func (suite *SourceComparison_TestSuite) TestSourceComparison() {
 	}
 }
 
-func (suite *SourceComparison_TestSuite) TestGetLocaleList() {
+func (suite *SourceComparisonTestSuite) TestGetLocaleList() {
 	defer gock.Off()
 
 	var tests = []struct {
@@ -73,10 +73,10 @@ func (suite *SourceComparison_TestSuite) TestGetLocaleList() {
 	}
 }
 
-func (suite *SourceComparison_TestSuite) TestOldSourceIsEmpty() {
+func (suite *SourceComparisonTestSuite) TestOldSourceIsEmpty() {
 	defer gock.Off()
 
-	resetInst(&RegisteredSource_Server_Config, func() { RegisterSource(name, version, []ComponentMsgs{suite.messages}) })
+	resetInst(&RegisteredSourceServerConfig, func() { RegisterSource(name, version, []ComponentMsgs{suite.messages}) })
 
 	EnableMockData("componentMessages-zh-Hans-sunglow")
 	msg, err := GetTranslation().GetStringMessage(name, version, locale, ComponentToRegister, Key)
@@ -89,6 +89,6 @@ func (suite *SourceComparison_TestSuite) TestOldSourceIsEmpty() {
 	suite.True(gock.IsDone())
 }
 
-func TestSourceComparison_TestSuite(t *testing.T) {
-	suite.Run(t, new(SourceComparison_TestSuite))
+func TestSourceComparisonTestSuite(t *testing.T) {
+	suite.Run(t, new(SourceComparisonTestSuite))
 }

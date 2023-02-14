@@ -91,7 +91,7 @@ func createTranslation(cfg Config) Translation {
 	}
 
 	origin = &saveToCache{messageOrigin: origin}
-	// origin = &singleLoader{messageOrigin: origin}
+	origin = &singleLoader{messageOrigin: origin}
 	origin = &cacheService{origin}
 
 	transImpl := transInst{origin}

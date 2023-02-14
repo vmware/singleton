@@ -13,18 +13,18 @@ import (
 	"gopkg.in/h2non/gock.v1"
 )
 
-var RegisteredSource_Server_Config = Config{ServerURL: ServerURL, DefaultLocale: localeDefault, SourceLocale: localeEn}
+var RegisteredSourceServerConfig = Config{ServerURL: ServerURL, DefaultLocale: localeDefault, SourceLocale: localeEn}
 
-type RegisteredSource_Server_TestSuite struct {
+type RegisteredSourceServerTestSuite struct {
 	suite.Suite
 }
 
-func (suite *RegisteredSource_Server_TestSuite) SetupSuite() {
+func (suite *RegisteredSourceServerTestSuite) SetupSuite() {
 	messages := NewMapComponentMsgs(RegisteredMap, localeEn, ComponentToRegister)
-	resetInst(&RegisteredSource_Server_Config, func() { RegisterSource(name, version, []ComponentMsgs{messages}) })
+	resetInst(&RegisteredSourceServerConfig, func() { RegisterSource(name, version, []ComponentMsgs{messages}) })
 }
 
-func (suite *RegisteredSource_Server_TestSuite) TestGetComponentMessages() {
+func (suite *RegisteredSourceServerTestSuite) TestGetComponentMessages() {
 	defer gock.Off()
 
 	var tests = []struct {
@@ -55,7 +55,7 @@ func (suite *RegisteredSource_Server_TestSuite) TestGetComponentMessages() {
 	}
 }
 
-func (suite *RegisteredSource_Server_TestSuite) TestGetLocaleList() {
+func (suite *RegisteredSourceServerTestSuite) TestGetLocaleList() {
 	defer gock.Off()
 
 	var tests = []struct {
@@ -76,6 +76,6 @@ func (suite *RegisteredSource_Server_TestSuite) TestGetLocaleList() {
 	}
 }
 
-func TestRegisteredSource_Server_TestSuite(t *testing.T) {
-	suite.Run(t, new(RegisteredSource_Server_TestSuite))
+func TestRegisteredSourceServerTestSuite(t *testing.T) {
+	suite.Run(t, new(RegisteredSourceServerTestSuite))
 }
