@@ -154,7 +154,7 @@ func SetLogger(l Logger) {
 	logger = l
 }
 
-// Send source strings to Singleton client programmatically
+// RegisterSource is the way sending source strings to Singleton client programmatically
 func RegisterSource(name, version string, sources []ComponentMsgs) {
 	logger.Info(fmt.Sprintf("Register source to %s/%s", name, version))
 

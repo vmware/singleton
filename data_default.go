@@ -42,7 +42,7 @@ func (d *MapComponentMsgs) Component() string {
 	return d.component
 }
 
-// Traverse the messages
+// Range traverses the messages
 func (d *MapComponentMsgs) Range(f func(key, value string) bool) {
 	for key, value := range d.messages {
 		if !f(key, value) {
