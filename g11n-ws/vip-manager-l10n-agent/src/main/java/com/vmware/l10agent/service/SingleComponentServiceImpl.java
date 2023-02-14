@@ -221,37 +221,36 @@ public class SingleComponentServiceImpl implements SingleComponentService{
      */
 	@Override
 	public boolean synchComponentFile2Internal(RecordModel record) {
-		// TODO Auto-generated method stub
+
       ComponentSourceModel model =  getSourceComponentFile(record);
-		 
-		 for(Entry<String, Object > entry: model.getMessages().entrySet()) {
-			 try {
-				boolean result = synchkey2VipL10n(record, entry.getKey(), (String)entry.getValue(), null, null);
-			    if(!result) {
-			    	result = synchkey2VipI18n(record, entry.getKey(), (String)entry.getValue(), null, null);
-			    	if(!result) {
-			    		try {
-			    			if(record.getStatus()<5) {
-			    				record.setStatus(record.getStatus()+1);
-			    				TaskSysnQueues.SendComponentTasks.put(record);
-			    			}
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-						    Thread.currentThread().interrupt();
-			
-							logger.info(e.getMessage(), e);
-						}
-				    	return result;
-			    	}
-			    }
-			 } catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
-				logger.error(e.getMessage(), e);
-				return false;
-			}
-		 }
-		  
-		
+      if (model != null) {
+		  for (Entry<String, Object> entry : model.getMessages().entrySet()) {
+			  try {
+				  boolean result = synchkey2VipL10n(record, entry.getKey(), (String) entry.getValue(), null, null);
+				  if (!result) {
+					  result = synchkey2VipI18n(record, entry.getKey(), (String) entry.getValue(), null, null);
+					  if (!result) {
+						  try {
+							  if (record.getStatus() < 5) {
+								  record.setStatus(record.getStatus() + 1);
+								  TaskSysnQueues.SendComponentTasks.put(record);
+							  }
+						  } catch (InterruptedException e) {
+
+							  Thread.currentThread().interrupt();
+
+							  logger.info(e.getMessage(), e);
+						  }
+						  return result;
+					  }
+				  }
+			  } catch (UnsupportedEncodingException e) {
+
+				  logger.error(e.getMessage(), e);
+				  return false;
+			  }
+		  }
+	  }
 		return true;
 	}
 	

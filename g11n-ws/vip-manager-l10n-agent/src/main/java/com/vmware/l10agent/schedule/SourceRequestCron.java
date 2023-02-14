@@ -15,6 +15,8 @@ import java.util.Set;
 
 import javax.annotation.PostConstruct;
 
+import com.vmware.l10agent.utils.ValidationUtils;
+import com.vmware.vip.common.constants.ValidationMsg;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -187,8 +189,10 @@ public class SourceRequestCron {
 			    set.add(record);
 			}
 	       for(RecordModel record : set) {
-	   		   writeLocalResource(record); 
-	    	   syncResource(record);
+			   boolean flag = writeLocalResource(record);
+			   if (flag){
+				   syncResource(record);
+			   }
 			}
 	}
 
@@ -202,8 +206,8 @@ public class SourceRequestCron {
 		}
 	}
 	
-	private void writeLocalResource(RecordModel record) {
-		logger.error("query record content-{}-{}-{}-{}",record.getProduct(), record.getVersion(), record.getComponent(), record.getLocale());
+	private boolean writeLocalResource(RecordModel record) {
+		logger.info("query record content-{}-{}-{}-{}",record.getProduct(), record.getVersion(), record.getComponent(), record.getLocale());
 		ComponentSourceModel component = recordService.getComponentByRemote(record);
 		if (component != null && !component.getMessages().isEmpty() ) {
 			boolean write = singleComponentService.writerComponentFile(component);
@@ -217,6 +221,10 @@ public class SourceRequestCron {
 				}
 			
 			}
+			return write;
+		}else {
+			logger.warn("get record content is null-{}-{}-{}-{}",record.getProduct(), record.getVersion(), record.getComponent(), record.getLocale());
+			return false;
 		}
     }
 	
@@ -290,12 +298,33 @@ public class SourceRequestCron {
 				String result = ResouceFileUtils.readerFile2String(file);
 				@SuppressWarnings("unchecked")
 				HashMap<String,List<String>> arry = JSON.parseObject(result, HashMap.class);
+
+				for (Entry<String, List<String>> entry : arry.entrySet()) {
+					String productName = entry.getKey();
+					if(ValidationUtils.validateProductName(productName)){
+						List<String> versionStrs = entry.getValue();
+						for (String versionStr : versionStrs) {
+							if (ValidationUtils.validateVersion(versionStr)){
+								logger.info("sync source List: {}--{}", productName, versionStr);
+							}else {
+								logger.error(ValidationMsg.VERSION_NOT_VALIDE+": {}/{}", productName, versionStr);
+								versionStrs.remove(versionStr);
+							}
+						}
+					}else {
+						logger.error(ValidationMsg.PRODUCTNAME_NOT_VALIDE+"--{}", productName);
+						arry.remove(productName);
+
+					}
+				}
+
 				return arry;
 			} catch (IOException e) {
-				e.printStackTrace();
+				logger.error(e.getMessage(), e);
 			}
+		}else {
+			logger.error("-----------------Not find sync s3 list file!--------------");
 		}
-		logger.error("Not find sync s3 list file!");
 		return null;
 	}
 	

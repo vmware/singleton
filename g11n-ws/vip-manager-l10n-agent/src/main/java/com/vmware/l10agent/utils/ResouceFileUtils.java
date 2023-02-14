@@ -17,6 +17,8 @@ import java.util.Map;
 import com.alibaba.fastjson.JSONObject;
 import com.vmware.l10agent.base.PropertyContantKeys;
 import com.vmware.l10agent.model.ComponentSourceModel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -26,6 +28,7 @@ import com.vmware.l10agent.model.ComponentSourceModel;
  *
  */
 public class ResouceFileUtils {
+	private static Logger LOG = LoggerFactory.getLogger(ResouceFileUtils.class);
 	public static String getLocalizedJSONFileName(String locale) {
 		return PropertyContantKeys.DEFAULT_MSG_FILE_NAME +"_"
 				+ locale + PropertyContantKeys.DEFAULT_SOURCE_TYPE;
@@ -36,7 +39,7 @@ public class ResouceFileUtils {
 	public static void writerResouce(File file, ComponentSourceModel compnent) throws IOException {
 		try(BufferedWriter bw = Files.newBufferedWriter(file.toPath(), StandardCharsets.UTF_8)){
 		    String jsonStr = JSONObject.toJSONString(compnent);
-		    //System.out.println(jsonStr);;
+		    LOG.info("Write local source: {}", jsonStr);
 		    bw.write(jsonStr);
 		    bw.flush();
 		}
