@@ -1,10 +1,11 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.record.service;
 
 import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vmware.l10n.record.dao.SqlLiteDao;
@@ -26,6 +27,8 @@ import java.util.List;
 @Service
 public class RecordServiceImpl implements RecordService{
 	private static Logger logger = LoggerFactory.getLogger(RecordServiceImpl.class);
+
+	private ObjectMapper mapper = new ObjectMapper().disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 
 	@Autowired
 	private SqlLiteDao sqlLite;
@@ -64,7 +67,7 @@ public class RecordServiceImpl implements RecordService{
 	 */
 	@Override
 	public ComponentSourceModel getComponentSource(String product, String version, String component, String locale) {
-		// TODO Auto-generated method stub
+
 		SingleComponentDTO singleComponentDTO = new SingleComponentDTO();
 		singleComponentDTO.setProductName(product);
 		singleComponentDTO.setVersion(version);
@@ -73,25 +76,24 @@ public class RecordServiceImpl implements RecordService{
 
 
 		String componentJSON = sourceDao.getFromBundle(singleComponentDTO);
-		
 		if (!StringUtils.isEmpty(componentJSON)) {
-			  ObjectMapper mapper = new ObjectMapper();
+
 			  ComponentSourceModel source = null;
 			  try {
-				 source= mapper.readValue(componentJSON, ComponentSourceModel.class);
+				 source= this.mapper.readValue(componentJSON, ComponentSourceModel.class);
 				 source.setProduct(product);
 				 source.setVersion(version);
 				 source.setComponent(component);
 				 source.setLocale(locale);
 				 
 			} catch (JsonParseException e) {
-				// TODO Auto-generated catch block
+
 				logger.error(e.getMessage(), e);
 			} catch (JsonMappingException e) {
-				// TODO Auto-generated catch block
+
 				logger.error(e.getMessage(), e);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+
 				logger.error(e.getMessage(), e);
 			}
 			return source;
