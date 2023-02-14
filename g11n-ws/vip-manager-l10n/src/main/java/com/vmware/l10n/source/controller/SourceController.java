@@ -131,9 +131,9 @@ public class SourceController {
 				String s = kscDTO.getSource();
 				String c = kscDTO.getCommentForSource();
 				String sf = kscDTO.getSourceFormat();
-				if (!StringUtils.isEmpty(sf) && SourceFormatUtils.isBase64Encode(sf)){
+				if (!StringUtils.isEmpty(sf) && SourceFormatUtils.isBase64Encode(sf.toUpperCase())){
 					s = SourceFormatUtils.decodeSourceBase64Str(s);
-					sf = SourceFormatUtils.formatSourceFormatStr(sf);
+					sf = SourceFormatUtils.formatSourceFormatStr(sf.toUpperCase());
 				}
 
 				final StringSourceDTO stringSourceDTO = createSourceDTO(
@@ -144,9 +144,9 @@ public class SourceController {
 			}
 		} else {
 			LOGGER.info(key);
-			if (!StringUtils.isEmpty(sourceFormat) && SourceFormatUtils.isBase64Encode(sourceFormat)){
+			if (!StringUtils.isEmpty(sourceFormat) && SourceFormatUtils.isBase64Encode(sourceFormat.toUpperCase())){
 				sourceStr = SourceFormatUtils.decodeSourceBase64Str(sourceStr);
-				sourceFormat = SourceFormatUtils.formatSourceFormatStr(sourceFormat);
+				sourceFormat = SourceFormatUtils.formatSourceFormatStr(sourceFormat.toUpperCase());
 			}
 			final StringSourceDTO stringSourceDTO = createSourceDTO(
 					productName, version, component, key, sourceStr,
