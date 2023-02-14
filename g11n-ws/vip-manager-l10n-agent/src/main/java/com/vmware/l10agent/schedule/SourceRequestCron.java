@@ -223,7 +223,7 @@ public class SourceRequestCron {
 			}
 			return write;
 		}else {
-			logger.warn("get record content is null-{}-{}-{}-{}",record.getProduct(), record.getVersion(), record.getComponent(), record.getLocale());
+			logger.warn("get source content is null-{}-{}-{}-{}",record.getProduct(), record.getVersion(), record.getComponent(), record.getLocale());
 			return false;
 		}
     }
