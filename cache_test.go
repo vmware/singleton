@@ -1,5 +1,5 @@
 /*
- * Copyright 2020-2022 VMware, Inc.
+ * Copyright 2020-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -15,15 +15,16 @@ func TestCacheExpireWhenNeverExpire(t *testing.T) {
 
 	newCfg := testCfg
 	newCfg.ServerURL = ""
-	resetInst(&newCfg)
+	resetInst(&newCfg, nil)
 
 	locale, component := "fr", "sunglow"
-	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil}
-	info := getCacheInfo(item)
+	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil, nil}
 
 	GetTranslation().GetComponentMessages(name, version, locale, component)
 
 	// value is initial value(cacheDefaultExpires) because only local bundles are available. No chance to change this.
+	cachedItem, _ := cache.Get(item.id)
+	info := cachedItem.(*dataItem).attrs
 	assert.Equal(t, int64(cacheDefaultExpires), info.age)
 
 	// Rename dir to make sure getting from cache
@@ -35,12 +36,12 @@ func TestCacheExpireWhenNeverExpire(t *testing.T) {
 	// Run again to get from cache
 	msgs, err := GetTranslation().GetComponentMessages(name, version, locale, component)
 	assert.Nil(t, err)
-	assert.Equal(t, 4, msgs.(*defaultComponentMsgs).Size())
+	assert.Equal(t, 4, msgs.(*MapComponentMsgs).Size())
 }
 
 func TestRegisterCache(t *testing.T) {
 	if cache == nil {
-		resetInst(&testCfg)
+		resetInst(&testCfg, nil)
 	}
 
 	oldCache := cache

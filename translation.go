@@ -43,7 +43,7 @@ func (t *transInst) GetLocaleList(name, version string) (data []string, err erro
 		return nil, errors.New(wrongPara)
 	}
 
-	item := &dataItem{dataItemID{itemLocales, name, version, "", ""}, nil, nil}
+	item := &dataItem{dataItemID{itemLocales, name, version, "", ""}, nil, nil, nil}
 	err = t.msgOrigin.Get(item)
 	if nil != item.data {
 		data, _ = item.data.([]string)
@@ -56,7 +56,7 @@ func (t *transInst) GetComponentList(name, version string) (data []string, err e
 		return nil, errors.New(wrongPara)
 	}
 
-	item := &dataItem{dataItemID{itemComponents, name, version, "", ""}, nil, nil}
+	item := &dataItem{dataItemID{itemComponents, name, version, "", ""}, nil, nil, nil}
 	err = t.msgOrigin.Get(item)
 	if nil != item.data {
 		data, _ = item.data.([]string)
@@ -69,7 +69,7 @@ func (t *transInst) GetComponentMessages(name, version, locale, component string
 		return nil, errors.New(wrongPara)
 	}
 
-	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil}
+	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil, nil}
 	err = t.msgOrigin.Get(item)
 	if nil != item.data {
 		data, _ = item.data.(ComponentMsgs)
@@ -78,6 +78,10 @@ func (t *transInst) GetComponentMessages(name, version, locale, component string
 }
 
 func (t *transInst) GetComponentsMessages(name, version string, locales, components []string) (msgs []ComponentMsgs, err error) {
+	if name == "" || version == "" {
+		return nil, errors.New(wrongPara)
+	}
+
 	if len(locales) == 0 {
 		locales, err = t.GetLocaleList(name, version)
 		if err != nil {
@@ -91,15 +95,21 @@ func (t *transInst) GetComponentsMessages(name, version string, locales, compone
 		}
 	}
 
+	totalNumber := len(locales) * len(components)
+	msgs = make([]ComponentMsgs, 0, totalNumber)
+
 	var wg sync.WaitGroup
-	wg.Add(len(locales) * len(components))
+	wg.Add(totalNumber)
+	muList := sync.Mutex{}
 	for _, locale := range locales {
 		for _, component := range components {
 			go func(locale, component string) {
 				defer wg.Done()
 
 				if bundleMsgs, bundleErr := t.GetComponentMessages(name, version, locale, component); bundleErr == nil {
+					muList.Lock()
 					msgs = append(msgs, bundleMsgs)
+					muList.Unlock()
 				} else { // log a warning message if translation is unavailable.
 					logger.Warn(fmt.Sprintf("fail to get translation for {product '%s', version '%s', locale '%s', component '%s'}", name, version, locale, component))
 				}

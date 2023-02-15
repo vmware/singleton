@@ -1,16 +1,17 @@
 /*
- * Copyright 2020-2022 VMware, Inc.
+ * Copyright 2020-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
 package sgtn
 
 import (
+	"fmt"
 	"net/http"
-	"strings"
 	"sync"
 	"time"
 
+	"github.com/emirpasic/gods/sets/linkedhashset"
 	"github.com/pkg/errors"
 )
 
@@ -45,37 +46,69 @@ func Initialize(cfg *Config) {
 }
 
 func (i *instance) doInitialize() {
-	logger.Info("Initializing Singleton client")
+	logger.Info(fmt.Sprintf("Initializing Singleton client with configuration: %#+v", i.cfg))
 
-	var originList messageOriginList
-	if len(i.cfg.ServerURL) != 0 {
-		server, err := newServer(i.cfg.ServerURL)
-		if err != nil {
-			panic(err)
-		}
-		i.server = server
-		originList = append(originList, server)
-	}
-	if strings.TrimSpace(i.cfg.LocalBundles) != "" {
-		i.bundle = &bundleDAO{i.cfg.LocalBundles}
-		originList = append(originList, i.bundle)
-	}
-	cacheService := newCacheService(originList)
-
-	transImpl := transInst{cacheService}
-	var fallbackChains []string
-	fallbackChains = append(fallbackChains, i.cfg.DefaultLocale)
-	i.trans = newTransMgr(&transImpl, fallbackChains)
-
-	initCacheInfoMap()
 	if cache == nil {
 		RegisterCache(newCache())
 	}
+
+	inst.trans = createTranslation(i.cfg)
+}
+
+func createTranslation(cfg Config) Translation {
+	var transOrigins messageOriginList
+	var sourceOrigins messageOriginList
+
+	if len(mapSource.releases) > 0 {
+		sourceOrigins = append(sourceOrigins, sourceAsOrigin{&mapSource})
+	}
+	if cfg.localSource != "" {
+		sourceOrigins = append(sourceOrigins, sourceAsOrigin{newLocalSource(cfg.localSource)})
+	}
+	if cfg.ServerURL != "" {
+		server, err := newServer(cfg.ServerURL)
+		if err != nil {
+			panic(err)
+		}
+		inst.server = server // TODO:
+		transOrigins = append(transOrigins, server)
+		sourceOrigins = append(sourceOrigins, &sourceInTranslation{server})
+	}
+	if cfg.LocalBundles != "" {
+		bundleTranslation := &bundleDAO{cfg.LocalBundles}
+		transOrigins = append(transOrigins, bundleTranslation)
+		sourceOrigins = append(sourceOrigins, &sourceInTranslation{bundleTranslation})
+	}
+
+	var origin messageOrigin
+
+	if len(transOrigins) > 0 && len(sourceOrigins) > 0 {
+		origin = &sourceComparison{source: sourceOrigins, messageOrigin: transOrigins}
+	} else if len(sourceOrigins) > 0 {
+		origin = &sourceComparison{source: sourceOrigins}
+	} else if len(transOrigins) > 0 {
+		origin = transOrigins
+	}
+
+	origin = &saveToCache{messageOrigin: origin}
+	origin = &singleLoader{messageOrigin: origin}
+	origin = &cacheService{origin}
+
+	transImpl := transInst{origin}
+
+	localeSet := linkedhashset.New(cfg.DefaultLocale /*, cfg.GetSourceLocale()*/)
+	fallbackLocales := []string{}
+	for _, locale := range localeSet.Values() {
+		if locale != "" {
+			fallbackLocales = append(fallbackLocales, locale.(string))
+		}
+	}
+	return newTransMgr(&transImpl, fallbackLocales)
 }
 
 func checkConfig(cfg *Config) error {
 	switch {
-	case cfg.LocalBundles == "" && cfg.ServerURL == "":
+	case cfg.LocalBundles == "" && cfg.ServerURL == "" && len(mapSource.releases) == 0 && cfg.localSource == "":
 		return errors.New(originNotProvided)
 	case cfg.DefaultLocale == "":
 		return errors.New(defaultLocaleNotProvided)
@@ -119,4 +152,19 @@ func RegisterCache(c Cache) {
 // SetLogger Set a global logger. There is a default console logger
 func SetLogger(l Logger) {
 	logger = l
+}
+
+// RegisterSource is the way sending source strings to Singleton client programmatically
+func RegisterSource(name, version string, sources []ComponentMsgs) {
+	logger.Info(fmt.Sprintf("Register source to %s/%s", name, version))
+
+	id := releaseID{name, version}
+	release, ok := mapSource.releases[id]
+	if !ok {
+		release = map[string]ComponentMsgs{}
+		mapSource.releases[id] = release
+	}
+	for _, comp := range sources {
+		release[comp.Component()] = comp
+	}
 }

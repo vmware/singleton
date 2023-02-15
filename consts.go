@@ -7,7 +7,7 @@ package sgtn
 
 // api url
 const (
-	apiRoot        = "/i18n/api/v2/translation"
+	apiRoot        = "i18n/api/v2/translation"
 	aipProductRoot = apiRoot + "/products/%s/versions/%s"
 
 	// product-based

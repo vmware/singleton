@@ -17,9 +17,17 @@ type ComponentMsgs interface {
 	// Get Get a message by key
 	Get(key string) (value string, found bool)
 
+	Set(key, value string)
+
 	Component() string
 
 	Locale() string
+
+	Size() int
+
+	Range(func(key, value string) bool)
+
+	Clone() ComponentMsgs
 }
 
 // Logger The logger interface
@@ -28,6 +36,10 @@ type Logger interface {
 	Info(message string)
 	Warn(message string)
 	Error(message string)
+}
+
+type releaseID struct {
+	Name, Version string
 }
 
 type dataItemID struct {
@@ -63,10 +75,16 @@ const (
 	itemComponents
 )
 
+const (
+	localeLatest = "latest"
+	localeEn     = "en"
+)
+
 type dataItem struct {
-	id    dataItemID
-	data  interface{}
-	attrs interface{}
+	id     dataItemID
+	data   interface{}
+	origin messageOrigin
+	attrs  *itemCacheInfo
 }
 
 //!- dataItem
@@ -89,4 +107,32 @@ func indexIgnoreCase(slices []string, item string) int {
 	}
 
 	return -1
+}
+
+func uniqueStrings(slices ...[]string) []string {
+	uniqueMap := map[string]bool{}
+
+	for _, strSlice := range slices {
+		for _, str := range strSlice {
+			uniqueMap[str] = true
+		}
+	}
+
+	// Create a slice with the capacity of unique items
+	// This capacity make appending flow much more efficient
+	result := make([]string, 0, len(uniqueMap))
+
+	for key := range uniqueMap {
+		result = append(result, key)
+	}
+
+	return result
+}
+
+func convertLocale(locale string) string {
+	if locale == localeLatest {
+		return inst.cfg.GetSourceLocale()
+	}
+
+	return locale
 }

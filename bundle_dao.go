@@ -7,6 +7,7 @@ package sgtn
 
 import (
 	"io/ioutil"
+	"os"
 	"path/filepath"
 	"strings"
 
@@ -43,6 +44,10 @@ func (d *bundleDAO) Get(item *dataItem) (err error) {
 		err = errors.Errorf(invalidItemType, item.id.iType)
 	}
 
+	if err == nil {
+		item.origin = d
+		item.attrs = newSingleCacheInfo()
+	}
 	return
 }
 
@@ -56,39 +61,39 @@ func (d *bundleDAO) GetComponentList(name, version string) ([]string, error) {
 		return nil, err
 	}
 
-	comps := make([]string, len(fis))
-	for i, fi := range fis {
+	comps := make([]string, 0, len(fis))
+	for _, fi := range fis {
 		if fi.IsDir() {
-			comps[i] = fi.Name()
+			comps = append(comps, fi.Name())
 		}
 	}
 
 	return comps, nil
 }
+
 func (d *bundleDAO) GetLocaleList(name, version string) ([]string, error) {
-	comps, err := d.GetComponentList(name, version)
+	fileNames := map[string]struct{}{}
+	err := filepath.Walk(d.root, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+		if !info.IsDir() {
+			fileNames[info.Name()] = struct{}{}
+		}
+		return nil
+	})
 	if err != nil {
 		return nil, err
 	}
 
-	locales := map[string]struct{}{}
-	for _, component := range comps {
-		fPath := filepath.Join(d.root, name, version, component)
-		fis, err := ioutil.ReadDir(fPath)
-		if err != nil {
-			return nil, err
-		}
-
-		for _, fi := range fis {
-			if !fi.IsDir() {
-				locales[strings.ToLower(fi.Name())] = struct{}{}
+	lSlice := make([]string, 0, len(fileNames))
+	for fileName := range fileNames {
+		if strings.HasPrefix(fileName, bundlePrefix) && strings.HasSuffix(fileName, bundleSuffix) {
+			localeToSave := fileName[len(bundlePrefix) : len(fileName)-len(bundleSuffix)]
+			if !strings.EqualFold(localeToSave, localeLatest) {
+				lSlice = append(lSlice, localeToSave)
 			}
 		}
-	}
-
-	lSlice := make([]string, 0, len(locales))
-	for k := range locales {
-		lSlice = append(lSlice, strings.TrimSuffix(strings.TrimPrefix(k, bundlePrefix), bundleSuffix))
 	}
 
 	return lSlice, nil
@@ -103,7 +108,7 @@ func (d *bundleDAO) GetComponentMessages(name, version, locale, component string
 
 	filename := bundlePrefix + locale + bundleSuffix
 	for _, f := range files {
-		if !f.IsDir() && strings.ToLower(filename) == strings.ToLower(f.Name()) {
+		if !f.IsDir() && strings.EqualFold(filename, f.Name()) {
 			filename = f.Name()
 			break
 		}
@@ -123,7 +128,7 @@ func (d *bundleDAO) GetComponentMessages(name, version, locale, component string
 		return nil, errors.New("Wrong data from local bundle file")
 	}
 
-	return &defaultComponentMsgs{b.Messages, locale, component}, nil
+	return &MapComponentMsgs{messages: b.Messages, locale: convertLocale(locale), component: component}, nil
 }
 
 //!-bundleDAO

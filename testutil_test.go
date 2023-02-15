@@ -1,5 +1,5 @@
 /*
- * Copyright 2020-2022 VMware, Inc.
+ * Copyright 2020-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -29,7 +29,12 @@ import (
 	"gopkg.in/h2non/gock.v1"
 )
 
-var name, version = "SgtnTest", "1.0.0"
+var name, version, component = "SgtnTest", "1.0.0", "sunglow"
+var locale, localeDefault, localeSource, localeUnsupported = "zh-Hans", "fr", localeEn, "xxx"
+var OldZhValue = "消息"
+var nonexistentComponent = "comp-notexist"
+
+var ServerURL = "https://SingletonServer:8090"
 var testCfg Config
 var mockData map[string]MockMapping
 
@@ -55,6 +60,7 @@ func TestMain(m *testing.M) {
 	mockData = ReadMockJSONs("testdata/mock/mappings")
 
 	m.Run()
+	os.Exit(0)
 }
 
 func PrintRespBody(url string, resp *http.Response) io.Reader {
@@ -62,7 +68,7 @@ func PrintRespBody(url string, resp *http.Response) io.Reader {
 	fmt.Printf("The response from server is:\n %#v\n", resp)
 	bodyBytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		fmt.Printf(err.Error())
+		fmt.Println(err.Error())
 		return resp.Body
 	}
 
@@ -161,7 +167,7 @@ func display(path string, v reflect.Value) {
 func ReadMockJSONs(rootpath string) map[string]MockMapping {
 	results := map[string]MockMapping{}
 
-	wf := func(path string, info os.FileInfo, err error) error {
+	wf := func(path string, info os.FileInfo, _ error) error {
 		if info.IsDir() {
 			return nil
 		}
@@ -193,6 +199,11 @@ func ReadMockJSONs(rootpath string) map[string]MockMapping {
 	return results
 }
 
+type TimesMock struct {
+	name string
+	time int
+}
+
 type MockMappings struct {
 	Mappings []MockMapping `json:"mappings"`
 }
@@ -216,6 +227,24 @@ type MockMapping struct {
 
 	Headers struct {
 	} `json:"headers"`
+}
+
+func EnableTimesMock(mocks []TimesMock) {
+	for _, m := range mocks {
+		EnableMockDataWithTimes(m.name, m.time)
+	}
+}
+func EnableMultipleMockData(keys []string) (req *gock.Request) {
+	for _, key := range keys {
+		req = EnableMockDataWithTimes(key, 1)
+	}
+	return
+}
+func EnableMultipleMockDataWithTimes(keys []string, times int) (req *gock.Request) {
+	for _, key := range keys {
+		req = EnableMockDataWithTimes(key, times)
+	}
+	return
 }
 
 func EnableMockData(key string) *gock.Request {
@@ -271,7 +300,6 @@ func fileExist(filepath string) (bool, error) {
 func clearCache() {
 	logger.Debug("clearcache")
 	cache = newCache()
-	initCacheInfoMap()
 }
 
 func curFunName() string {
@@ -282,12 +310,16 @@ func curFunName() string {
 	return frame.Function[strings.LastIndex(frame.Function, "/")+1:]
 }
 
-func resetInst(cfg *Config) {
+func resetInst(cfg *Config, f func()) {
+	mapSource = registeredSource{make(map[releaseID](map[string]ComponentMsgs))}
 	inst = &instance{}
 	cache = newCache()
+	if f != nil {
+		f()
+	}
 	Initialize(cfg)
 }
 
-func expireCache(info *itemCacheInfo, cacheExpiredTime int64) {
-	info.setTime(atomic.LoadInt64(&info.lastUpdate) - cacheExpiredTime)
+func expireCache(info *itemCacheInfo) {
+	info.setTime(atomic.LoadInt64(&info.lastUpdate) - info.age)
 }

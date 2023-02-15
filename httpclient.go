@@ -1,11 +1,12 @@
 /*
- * Copyright 2020-2022 VMware, Inc.
+ * Copyright 2020-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
 package sgtn
 
 import (
+	"fmt"
 	"io/ioutil"
 	"net/http"
 
@@ -22,7 +23,7 @@ var (
 )
 
 func httpget(urlToGet string, header map[string]string, body *[]byte) (*http.Response, error) {
-	logger.Info("URL to get is: " + urlToGet)
+	logger.Info(fmt.Sprintf("Get URL %s with headers %v", urlToGet, header))
 
 	req, err := newHTTPRequest(http.MethodGet, urlToGet, nil)
 	if err != nil {

@@ -10,7 +10,9 @@ import (
 	"net"
 	"net/http"
 	"net/url"
-	"path"
+	"regexp"
+	"strconv"
+	"strings"
 	"sync/atomic"
 	"time"
 
@@ -25,6 +27,10 @@ const (
 )
 
 func newServer(serverURL string) (*serverDAO, error) {
+	// Add slash for URL.
+	if !strings.HasSuffix(serverURL, "/") {
+		serverURL += "/"
+	}
 	svrURL, err := url.Parse(serverURL)
 	if err != nil {
 		return nil, err
@@ -47,35 +53,46 @@ type serverDAO struct {
 
 func (s *serverDAO) Get(item *dataItem) (err error) {
 	var data interface{}
-	info := item.attrs.(*itemCacheInfo)
+	info := item.attrs
 
+	var urlToQuery string
 	switch item.id.iType {
 	case itemComponent:
 		data = new(queryBundle)
+		urlToQuery = s.svrURL.String() + fmt.Sprintf(bundleGetConst, item.id.Name, item.id.Version, item.id.Locale, item.id.Component)
 	case itemLocales:
 		data = new(queryLocales)
+		urlToQuery = s.svrURL.String() + fmt.Sprintf(productLocaleListGetConst, item.id.Name, item.id.Version)
 	case itemComponents:
 		data = new(queryComponents)
+		urlToQuery = s.svrURL.String() + fmt.Sprintf(productComponentListGetConst, item.id.Name, item.id.Version)
 	default:
 		return errors.Errorf(invalidItemType, item.id.iType)
 	}
 
-	urlToQuery := s.prepareURL(item)
-
 	headers := s.getHTTPHeaders()
 	headers[httpHeaderIfNoneMatch] = info.getETag()
 	resp, err := s.sendRequest(urlToQuery, headers, data)
-	if resp != nil {
-		item.attrs = resp.Header
-	}
-	if err != nil {
+	if !isSuccess(err) {
 		return err
+	}
+	item.attrs = newSingleCacheInfo()
+	item.origin = s
+	updateCacheControl(resp.Header, item.attrs)
+	if err == nil { // http code 200
+		item.attrs.setETag(resp.Header.Get(httpHeaderETag))
+	} else { // http code 304
+		item.attrs.setETag(info.eTag)
+		// clone to do source comparison
+		cachedItem, _ := cache.Get(item.id)
+		item.data = cachedItem.(*dataItem).data.(ComponentMsgs).Clone()
+		return nil
 	}
 
 	switch item.id.iType {
 	case itemComponent:
 		bData := data.(*queryBundle)
-		item.data = &defaultComponentMsgs{messages: bData.Messages, locale: item.id.Locale, component: item.id.Component}
+		item.data = &MapComponentMsgs{messages: bData.Messages, locale: convertLocale(item.id.Locale), component: item.id.Component}
 	case itemLocales:
 		localesData := data.(*queryLocales)
 		if localesData.Locales == nil {
@@ -96,29 +113,10 @@ func (s *serverDAO) Get(item *dataItem) (err error) {
 }
 
 func (s *serverDAO) IsExpired(item *dataItem) bool {
-	info := getCacheInfo(item)
-	return info.isExpired()
+	return item.attrs.isExpired()
 }
 
-func (s *serverDAO) prepareURL(item *dataItem) *url.URL {
-	urlToQuery := *s.svrURL
-	var myURL string
-
-	switch item.id.iType {
-	case itemComponent:
-		myURL = fmt.Sprintf(bundleGetConst, item.id.Name, item.id.Version, item.id.Locale, item.id.Component)
-	case itemLocales:
-		myURL = fmt.Sprintf(productLocaleListGetConst, item.id.Name, item.id.Version)
-	case itemComponents:
-		myURL = fmt.Sprintf(productComponentListGetConst, item.id.Name, item.id.Version)
-	}
-
-	urlToQuery.Path = path.Join(urlToQuery.Path, myURL)
-
-	return &urlToQuery
-}
-
-func (s *serverDAO) sendRequest(u *url.URL, header map[string]string, data interface{}) (*http.Response, error) {
+func (s *serverDAO) sendRequest(u string, header map[string]string, data interface{}) (*http.Response, error) {
 	if atomic.LoadUint32(&s.status) == serverTimeout {
 		if time.Now().Unix()-atomic.LoadInt64(&s.lastErrorMoment) < serverRetryInterval {
 			return nil, errors.New("Server times out")
@@ -136,11 +134,9 @@ func (s *serverDAO) sendRequest(u *url.URL, header map[string]string, data inter
 				atomic.StoreInt64(&s.lastErrorMoment, time.Now().Unix())
 			}
 		}
-
-		return resp, err
 	}
 
-	return resp, nil
+	return resp, err
 }
 
 func (s *serverDAO) setHTTPHeaders(h map[string]string) {
@@ -166,7 +162,7 @@ func (s *serverDAO) getHTTPHeaders() (newHeaders map[string]string) {
 
 //!+ common functions
 
-var getDataFromServer = func(u *url.URL, header map[string]string, data interface{}) (*http.Response, error) {
+var getDataFromServer = func(u string, header map[string]string, data interface{}) (*http.Response, error) {
 	type respResult struct {
 		Code       int    `json:"code"`
 		Message    string `json:"message"`
@@ -179,7 +175,7 @@ var getDataFromServer = func(u *url.URL, header map[string]string, data interfac
 	}{}
 
 	var bodyBytes []byte
-	resp, err := httpget(u.String(), header, &bodyBytes)
+	resp, err := httpget(u, header, &bodyBytes)
 	if err != nil {
 		return resp, err
 	}
@@ -218,6 +214,37 @@ func isBusinessSuccess(code int) bool {
 }
 
 //!- common functions
+
+var cacheControlRE = regexp.MustCompile(`(?i)\bmax-age\b\s*=\s*\b(\d+)\b`)
+
+func updateCacheControl(headers http.Header, info *itemCacheInfo) {
+	if len(headers) == 0 || info == nil {
+		return
+	}
+
+	cc := headers.Get(httpHeaderCacheControl)
+	results := cacheControlRE.FindStringSubmatch(cc)
+	if len(results) == 2 {
+		age, parseErr := strconv.ParseInt(results[1], 10, 64)
+		if parseErr == nil {
+			info.setAge(age)
+			return
+		}
+	}
+
+	logger.Warn("Wrong cache control: " + cc)
+}
+
+func isSuccess(err error) bool {
+	if err != nil {
+		myErr, ok := err.(*serverError)
+		if !ok || myErr.code != http.StatusNotModified {
+			return false
+		}
+	}
+
+	return true
+}
 
 //!+ REST API Response structures
 type (

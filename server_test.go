@@ -1,5 +1,5 @@
 /*
- * Copyright 2020-2022 VMware, Inc.
+ * Copyright 2020-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -8,7 +8,6 @@ package sgtn
 import (
 	"net"
 	"net/http"
-	"net/url"
 	"testing"
 	"time"
 
@@ -17,19 +16,21 @@ import (
 	"gopkg.in/h2non/gock.v1"
 )
 
+var OnlyServerConfig = Config{ServerURL: "https://SingletonServer:8090/", DefaultLocale: localeDefault}
+
 func TestGetLocaleCompAbnormal(t *testing.T) {
 
 	saved := getDataFromServer
 	defer func() { getDataFromServer = saved }()
 
 	errMsg := "TestGetLocaleCompAbnormal"
-	getDataFromServer = func(u *url.URL, header map[string]string, data interface{}) (*http.Response, error) {
+	getDataFromServer = func(u string, header map[string]string, data interface{}) (*http.Response, error) {
 		return nil, errors.New(errMsg)
 	}
 
 	newCfg := testCfg
 	newCfg.LocalBundles = ""
-	resetInst(&newCfg)
+	resetInst(&newCfg, nil)
 
 	trans := GetTranslation()
 
@@ -70,11 +71,9 @@ func TestTimeout(t *testing.T) {
 	mockReq.Mock.Response().Delay(time.Microsecond * 11)
 
 	locale, component := "fr", "sunglow"
-	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil}
-	item.attrs = getCacheInfo(item)
+	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil, nil}
 
-	resetInst(&testCfg)
-	sgtnServer := inst.server
+	sgtnServer, _ := newServer(testCfg.ServerURL)
 
 	// Get first time to set server stats as timeout
 	err := sgtnServer.Get(item)
@@ -97,11 +96,8 @@ func TestTimeout2(t *testing.T) {
 	EnableMockDataWithTimes("componentMessages-fr-sunglow", 1)
 
 	locale, component := "fr", "sunglow"
-	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil}
-	item.attrs = getCacheInfo(item)
-
-	resetInst(&testCfg)
-	sgtnServer := inst.server
+	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil, nil}
+	sgtnServer, _ := newServer(testCfg.ServerURL)
 
 	sgtnServer.status = serverTimeout
 	sgtnServer.lastErrorMoment = time.Now().Unix() - serverRetryInterval - 1
@@ -117,12 +113,12 @@ func TestVersionFallback(t *testing.T) {
 
 	newCfg := testCfg
 	newCfg.LocalBundles = ""
-	resetInst(&newCfg)
+	resetInst(&newCfg, nil)
 
 	messages, err := inst.trans.GetComponentMessages(name, "1.0.1", "en", "sunglow")
 	assert.Nil(t, err)
 	assert.NotNil(t, messages)
-	assert.Equal(t, 7, messages.(*defaultComponentMsgs).Size())
+	assert.Equal(t, 7, messages.(*MapComponentMsgs).Size())
 
 	assert.True(t, gock.IsDone())
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2020-2022 VMware, Inc.
+ * Copyright 2020-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -13,8 +13,8 @@ import (
 
 func TestGetInst(t *testing.T) {
 
-	resetInst(&testCfg)
-	assert.Equal(t, testCfg.LocalBundles, inst.bundle.root)
+	resetInst(&testCfg, nil)
+	// assert.Equal(t, testCfg.LocalBundles, inst.bundle.root)
 	// TODO: Test bundle
 
 	if len(testCfg.ServerURL) != 0 {
@@ -27,7 +27,6 @@ func TestGetInst(t *testing.T) {
 	s := inst.trans.(*transMgr).Translation.(*transInst).msgOrigin
 	assert.NotNil(t, s)
 	assert.NotNil(t, cache)
-	assert.NotNil(t, cacheInfoMap)
 }
 
 func TestCheckConfig(t *testing.T) {

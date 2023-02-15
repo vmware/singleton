@@ -52,14 +52,14 @@
       }
     },
     {
-      "id": "componentMessages-en-US-sunglow",
+      "id": "componentMessages-en-sunglow",
       "request": {
-        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/locales/en-US/components/sunglow",
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/locales/en/components/sunglow",
         "method": "GET"
       },
       "response": {
         "status": 200,
-        "bodyFileName": "componentMessages-en-US-sunglow.json"
+        "bodyFileName": "componentMessages-en-sunglow.json"
       }
     },
     {
@@ -74,6 +74,17 @@
       }
     },
     {
+      "id": "componentMessages-latest-sunglow",
+      "request": {
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/locales/latest/components/sunglow",
+        "method": "GET"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "componentMessages-latest-sunglow.json"
+      }
+    },
+    {
       "id": "componentMessages-zh-Hans-users",
       "request": {
         "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/locales/zh-Hans/components/users",
@@ -85,14 +96,14 @@
       }
     },
     {
-      "id": "componentMessages-en-US-users",
+      "id": "componentMessages-en-users",
       "request": {
-        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/locales/en-US/components/users",
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/locales/en/components/users",
         "method": "GET"
       },
       "response": {
         "status": 200,
-        "bodyFileName": "componentMessages-en-US-users.json"
+        "bodyFileName": "componentMessages-en-users.json"
       }
     },
     {
@@ -107,9 +118,42 @@
       }
     },
     {
+      "id": "componentMessages-latest-users",
+      "request": {
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/locales/latest/components/users",
+        "method": "GET"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "componentMessages-latest-users.json"
+      }
+    },
+    {
       "id": "componentMessages-zh-Hans-comp-notexist",
       "request": {
         "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/locales/zh-Hans/components/comp-notexist",
+        "method": "GET"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "componentMessages-zh-Hans-comp-notexist.json"
+      }
+    },
+    {
+      "id": "componentMessages-latest-comp-notexist",
+      "request": {
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/locales/latest/components/comp-notexist",
+        "method": "GET"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "componentMessages-zh-Hans-comp-notexist.json"
+      }
+    },
+    {
+      "id": "componentMessages-xxx-sunglow",
+      "request": {
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/locales/xxx/components/sunglow",
         "method": "GET"
       },
       "response": {
@@ -203,7 +247,7 @@
     {
       "id": "componentMessages-versionfallback",
       "request": {
-        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.1/locales/en/components/sunglow",
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.1/locales/latest/components/sunglow",
         "method": "GET"
       },
       "response": {
