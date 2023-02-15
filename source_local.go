@@ -35,7 +35,7 @@ func (s *localSource) GetComponentMessages(name, version, component string) (Com
 		return nil, err
 	}
 	if len(b.Messages) == 0 {
-		return nil, errors.Errorf("Wrong data from local bundle file %s", fp) // TODO: use common error message
+		return nil, errors.Errorf("Wrong data from local bundle file %s", fp)
 	}
 
 	return &MapComponentMsgs{messages: b.Messages, locale: inst.cfg.GetSourceLocale(), component: component}, nil

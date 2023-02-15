@@ -232,7 +232,6 @@ func updateCacheControl(headers http.Header, info *itemCacheInfo) {
 		}
 	}
 
-	info.setAge(cacheDefaultExpires)
 	logger.Warn("Wrong cache control: " + cc)
 }
 
