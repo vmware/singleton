@@ -1,8 +1,8 @@
-How to use custom log configuration file in Singleton service
+# How to use custom log configuration file in Singleton service
 
-1. The custom log configuration sample
-If you want to use custom log configuration file,  you can change the configuration sample as following:
-
+## 1.The custom log configuration sample
+If you want to use custom log configuration file, you can change the configuration sample as following:
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="OFF">
 <!-- Logging Properties -->
@@ -80,15 +80,17 @@ If you want to use custom log configuration file,  you can change the configura
 		</Root>
 	</Loggers>
 </Configuration>
-
+```
 
 According your requirement, you can change the following item as following：
 
- <SizeBasedTriggeringPolicy size="64 MB"/>   You can change the single log size
-<IfAccumulatedFileCount exceeds="5"/>  You can change delete strategy how many keep the last created logs file
-<IfAccumulatedFileSize exceeds="1GB"/>   You can define which total log files exceeds size, the oldest log file in chronological order will be deleted 
-How to start the singleton service with custom log configuration file
- You can use the following command start the singleton service:
++ *`<SizeBasedTriggeringPolicy size="64 MB"/>`* You can change the single log size
++ *`<IfAccumulatedFileCount exceeds="5"/>`*  You can change delete strategy how many keep the last created logs file
++ *<`IfAccumulatedFileSize exceeds="1GB"/>`* You can define which total log files exceeds size, the oldest log file in chronological order will be deleted 
 
-java -jar singleton-xxx.jar --logging.config=file:./log4j2-spring.xml
-The file:./log4j2-spring.xml  is your log configuration location. You can use relative address or absolute address.
+## How to start the singleton service with custom log configuration file
+ You can use the following command start the singleton service:
+
+`java -jar singleton-xxx.jar --logging.config=file:./log4j2-spring.xml`
+
+The file:./log4j2-spring.xml is your log configuration location. You can use relative address or absolute address.
