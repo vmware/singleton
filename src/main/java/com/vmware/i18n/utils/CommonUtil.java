@@ -81,15 +81,7 @@ public class CommonUtil {
      */
     public static boolean isLanguageTag(String languageTag) {
         Locale locale = Locale.forLanguageTag(languageTag);
-        if(locale == null)
-            return false;
-        return true;
-        /*ParseStatus sts = new ParseStatus();
-        LanguageTag.parse(languageTag, sts);
-        if (sts.isError()) {
-            return false;
-        }
-        return true;*/
+        return locale != null;
     }
 
     /**
