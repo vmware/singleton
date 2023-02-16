@@ -1,9 +1,10 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.conf;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -28,12 +29,18 @@ import com.vmware.vip.common.utils.RegExpValidatorUtils;
 public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapter {
 	
 	private static Logger LOGGER = LoggerFactory.getLogger(CollectSourceValidationInterceptor.class);
-	
-	public CollectSourceValidationInterceptor(Map<String, List<String>> allowListMap) {
-		this.allowList = allowListMap;
-	}
 
 	private Map<String, List<String>> allowList;
+	private List<String> clientRequestIds;
+	public CollectSourceValidationInterceptor(Map<String, List<String>> allowListMap, String clientReqIdsStr) {
+		super();
+		try {
+			this.clientRequestIds = Arrays.asList(clientReqIdsStr.split(ConstantsChar.COMMA));
+		} catch (Exception e) {
+			this.clientRequestIds = null;
+		}
+		this.allowList = allowListMap;
+	}
 	
 	/**
 	 * Collect new source and send to l10n server
@@ -50,13 +57,13 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
-		String logOfUrl = "The request url is: " + request.getRequestURL();
-		String logOfQueryStr = "The request query string is: " + request.getQueryString();
-		LOGGER.debug(logOfUrl);
-		LOGGER.debug(logOfQueryStr);
-		
-		validate(request, this.allowList); 
-		String startHandle = "[thread-" + Thread.currentThread().getId() + "] Start to handle request...";
+		String singletonRequestID = getRequestId(request, this.clientRequestIds);
+		String logOfUrl = singletonRequestID + "The request url is: " + request.getRequestURL();
+		String logOfQueryStr = singletonRequestID + "The request query string is: " + request.getQueryString();
+
+		validate(request, this.allowList);
+
+		String startHandle = singletonRequestID + "[thread-" + Thread.currentThread().getId() + "] Start to handle request...";
 		LOGGER.info(startHandle);
 		LOGGER.info(logOfUrl);
 		LOGGER.info(logOfQueryStr);
@@ -231,6 +238,20 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 		}else {
 			throw new ValidationException(String.format(ValidationMsg.PRODUCTNAME_NOT_SUPPORTED, productName));
 		}
+	}
+
+	private String getRequestId(HttpServletRequest request, List<String> headerNames) {
+		StringBuilder singletonReqIds = new StringBuilder("");
+		if (headerNames != null) {
+			for (String headerName : headerNames) {
+				String reqIdStr = request.getHeader(headerName);
+				if (!StringUtils.isEmpty(reqIdStr)) {
+					singletonReqIds.append("[clientRequestHeader- ").append(headerName).append(": ")
+							.append(reqIdStr).append("] ");
+				}
+			}
+		}
+		return singletonReqIds.toString();
 	}
 
 }

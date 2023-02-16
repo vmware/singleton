@@ -33,6 +33,9 @@ public class WebConfiguration implements WebMvcConfigurer {
 	@Value("${source.collect.request.max-size}")
 	private Integer sourceCollectReqSize;
 
+	@Value("${config.client.requestIds:}")
+	private String requestIdsStr;
+
 	@Autowired
 	private CspValidateService cspValidateService;
 
@@ -48,7 +51,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 			.addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v2/translation/**", L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v1/translation/**");
 		}
 		logger.info("add source collection validation interceptor");
-		registry.addInterceptor(new CollectSourceValidationInterceptor(allowlistDao.getAllowList()))
+		registry.addInterceptor(new CollectSourceValidationInterceptor(allowlistDao.getAllowList(), requestIdsStr))
 		.addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v2/translation/**", L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v1/translation/**");
 		registry.addInterceptor(new CollectSourceReqBodyInterceptor(this.sourceCollectReqSize))
 		.addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v2/translation/products/**");
