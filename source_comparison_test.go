@@ -73,6 +73,9 @@ func (suite *SourceComparisonTestSuite) TestGetLocaleList() {
 	}
 }
 
+func (suite *SourceComparisonTestSuite) TestGetComponentList() {
+}
+
 func (suite *SourceComparisonTestSuite) TestOldSourceIsEmpty() {
 	defer gock.Off()
 
@@ -87,6 +90,36 @@ func (suite *SourceComparisonTestSuite) TestOldSourceIsEmpty() {
 	suite.Equal(OldZhValue, msg)
 
 	suite.True(gock.IsDone())
+}
+
+func (suite *SourceComparisonTestSuite) TestIsExpired() {
+	sourceComparison := &sourceComparison{&MockedOriginForOriginChain{}, &MockedOriginForOriginChain{}}
+
+	itemSourceComponent := &dataItem{id: enComponentID}
+	itemComponent := &dataItem{id: componentID}
+	itemComponents := &dataItem{id: componentsID}
+	itemLocales := &dataItem{id: localesID}
+
+	returnValue := true
+	sourceComparison.source.(*MockedOriginForOriginChain).On("IsExpired", itemSourceComponent).Once().Return(returnValue)
+	expired := sourceComparison.IsExpired(itemSourceComponent)
+	suite.Equal(returnValue, expired, "source expiration")
+	sourceComparison.source.(*MockedOriginForOriginChain).AssertExpectations(suite.T())
+
+	sourceComparison.messageOrigin.(*MockedOriginForOriginChain).On("IsExpired", itemComponent).Once().Return(returnValue)
+	expired = sourceComparison.IsExpired(itemComponent)
+	suite.Equal(returnValue, expired, "translation expiration")
+	sourceComparison.messageOrigin.(*MockedOriginForOriginChain).AssertExpectations(suite.T())
+
+	sourceComparison.messageOrigin.(*MockedOriginForOriginChain).On("IsExpired", itemComponents).Once().Return(returnValue)
+	expired = sourceComparison.IsExpired(itemComponents)
+	suite.Equal(returnValue, expired, "component list expiration")
+	sourceComparison.messageOrigin.(*MockedOriginForOriginChain).AssertExpectations(suite.T())
+
+	sourceComparison.messageOrigin.(*MockedOriginForOriginChain).On("IsExpired", itemLocales).Once().Return(returnValue)
+	expired = sourceComparison.IsExpired(itemLocales)
+	suite.Equal(returnValue, expired, "locale list expiration")
+	sourceComparison.messageOrigin.(*MockedOriginForOriginChain).AssertExpectations(suite.T())
 }
 
 func TestSourceComparisonTestSuite(t *testing.T) {

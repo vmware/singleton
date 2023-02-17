@@ -34,6 +34,11 @@ var locale, localeDefault, localeSource, localeUnsupported = "zh-Hans", "fr", lo
 var OldZhValue = "消息"
 var nonexistentComponent = "comp-notexist"
 
+var enComponentID = dataItemID{iType: itemComponent, Name: name, Version: version, Locale: localeEn, Component: component}
+var componentID = dataItemID{iType: itemComponent, Name: name, Version: version, Locale: locale, Component: component}
+var componentsID = dataItemID{iType: itemComponents, Name: name, Version: version}
+var localesID = dataItemID{iType: itemLocales, Name: name, Version: version}
+
 var ServerURL = "https://SingletonServer:8090"
 var testCfg Config
 var mockData map[string]MockMapping
@@ -322,4 +327,13 @@ func resetInst(cfg *Config, f func()) {
 
 func expireCache(info *itemCacheInfo) {
 	info.setTime(atomic.LoadInt64(&info.lastUpdate) - info.age)
+}
+
+func getCacheService() *cacheService {
+	return GetTranslation().(*transMgr).Translation.(*transInst).msgOrigin.(*cacheService)
+}
+
+func getCacheInfo(id dataItemID) *itemCacheInfo {
+	cachedItem, _ := cache.Get(id)
+	return cachedItem.(*dataItem).attrs
 }

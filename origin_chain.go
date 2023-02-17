@@ -25,9 +25,9 @@ func (ol messageOriginList) getComponentMessages(item *dataItem) (err error) {
 		}
 
 		// log error message
-		logger.Error(fmt.Sprintf(originQueryFailure, o, err.Error()))
+		logger.Warn(fmt.Sprintf(originQueryFailure, o, err.Error()))
 		if e, ok := err.(stackTracer); ok {
-			logger.Error(fmt.Sprintf("%+v", e.StackTrace()))
+			logger.Warn(fmt.Sprintf("%+v", e.StackTrace()))
 		}
 	}
 

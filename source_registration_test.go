@@ -14,10 +14,10 @@ import (
 
 var (
 	OnlyRegisteredSourceConfig = Config{DefaultLocale: localeDefault, SourceLocale: localeEn}
-	Key, Value                  = "RegisteredKey", "Value"
-	UpdatedKey, UpdatedValue    = "message", "UpdatedValue"
-	RegisteredMap               = map[string]string{Key: Value, UpdatedKey: UpdatedValue}
-	ComponentToRegister         = component
+	Key, Value                 = "RegisteredKey", "Value"
+	UpdatedKey, UpdatedValue   = "message", "UpdatedValue"
+	RegisteredMap              = map[string]string{Key: Value, UpdatedKey: UpdatedValue}
+	ComponentToRegister        = component
 )
 
 type RegisterSourceTestSuite struct {
@@ -27,6 +27,7 @@ type RegisterSourceTestSuite struct {
 func (suite *RegisterSourceTestSuite) SetupSuite() {
 	messages := NewMapComponentMsgs(RegisteredMap, localeEn, ComponentToRegister)
 	resetInst(&OnlyRegisteredSourceConfig, func() { RegisterSource(name, version, []ComponentMsgs{messages}) })
+	// suite.origin = GetTranslation().(*transMgr).Translation.(*transInst).msgOrigin.(*cacheService).messageOrigin.(*singleLoader).messageOrigin.(*saveToCache).messageOrigin.(*sourceComparison).source.(messageOriginList)[0]
 }
 
 func (suite *RegisterSourceTestSuite) TestGetComponentMessages() {
@@ -46,6 +47,9 @@ func (suite *RegisterSourceTestSuite) TestGetComponentMessages() {
 		if testData.errorMsg == "" {
 			suite.Nil(err, "%s failed: %v", testData.desc, err)
 			suite.Equalf(testData.expected, messages.Size(), "%s: different string numbers are found.", testData.desc)
+			cachedItem, _ := cache.Get(dataItemID{itemComponent, name, version, testData.locale, testData.component})
+			suite.IsType(sourceAsOrigin{}, cachedItem.(*dataItem).origin)
+			suite.False(getCacheService().IsExpired(cachedItem.(*dataItem)), testData.desc)
 		} else {
 			suite.Contains(err.Error(), testData.errorMsg)
 		}

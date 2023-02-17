@@ -72,7 +72,6 @@ func TestFallbackToLocalBundles(t *testing.T) {
 	assert.Equal(t, 4, msgs.(*MapComponentMsgs).Size())
 
 	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil, nil}
-	cachedItem, _ := cache.Get(item.id)
-	info := cachedItem.(*dataItem).attrs
+	info := getCacheInfo(item.id)
 	assert.Equal(t, int64(cacheDefaultExpires), info.age) // Set max age to cacheDefaultExpires when server is unavailable temporarily.
 }
