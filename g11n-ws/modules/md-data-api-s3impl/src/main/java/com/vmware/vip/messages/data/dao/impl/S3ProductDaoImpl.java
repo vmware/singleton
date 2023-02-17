@@ -1,5 +1,5 @@
 /**
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.messages.data.dao.impl;
@@ -66,7 +66,7 @@ public class S3ProductDaoImpl implements IProductDao {
       for (S3ObjectSummary s3os : objects) {
          String resultKey =
                (s3os.getKey().replace(filePathPrefix, "")).split(ConstantsChar.BACKSLASH)[0];
-         if (!componentList.contains(resultKey) && (!resultKey.endsWith(ConstantsFile.FILE_TPYE_JSON))) {
+         if (!resultKey.equals("") && (!componentList.contains(resultKey)) && (!resultKey.endsWith(ConstantsFile.FILE_TPYE_JSON))) {
             componentList.add(resultKey);
          }
       }
