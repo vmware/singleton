@@ -66,7 +66,7 @@ public class S3ProductDaoImpl implements IProductDao {
       for (S3ObjectSummary s3os : objects) {
          String resultKey =
                (s3os.getKey().replace(filePathPrefix, "")).split(ConstantsChar.BACKSLASH)[0];
-         if (!componentList.contains(resultKey) && (!resultKey.endsWith(ConstantsFile.FILE_TPYE_JSON))) {
+         if (!resultKey.equals("") && (!componentList.contains(resultKey)) && (!resultKey.endsWith(ConstantsFile.FILE_TPYE_JSON))) {
             componentList.add(resultKey);
          }
       }
