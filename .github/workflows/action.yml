@@ -71,7 +71,7 @@ jobs:
       - name: Upload Codecov report for Python-client
         uses: codecov/codecov-action@v2
         with:
-          files: ./coverage.xml
+          files: sgtn4python/test/coverage.xml
           flags: coverage
 
   security-analysis:
