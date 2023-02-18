@@ -37,7 +37,7 @@ jobs:
         uses: ./.github/actions/get-commit-range-action
       - name: Check header
         run: |
-          git clone --branch=devops https://github.com/aleksbogdanov12/singleton.git devops
+          git clone --branch=devops https://github.com/singleton/singleton.git devops
           cp $GITHUB_WORKSPACE/devops/check_headers.py .
           chmod +x check_headers.py
           git diff ${{ steps.get-commit-range-action.outputs.commit-range }} --stat
