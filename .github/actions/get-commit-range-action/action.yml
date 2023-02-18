@@ -1,0 +1,25 @@
+name: 'Get commit range'
+outputs:
+  commit-range:
+    description: "Commit range"
+    value: ${{ steps.get-commit-range-id.outputs.commit-range }}
+runs:
+  using: "composite"
+  steps:
+    - name: Extract commit id range
+      id: get-commit-range-id
+      shell: bash
+      run: |
+        echo "event name: ${{ github.event_name }}"
+        if [ x${{ github.event_name }} = xpush ]; then
+          LAST_COMMIT_ID=$GITHUB_SHA
+          BASE_COMMIT_ID=${{ github.event.before }}
+          COMMIT_RANGE="${BASE_COMMIT_ID:0:7} ${LAST_COMMIT_ID:0:7}"
+        fi
+        if [ x${{ github.event_name }} = xpull_request ]; then
+          LAST_COMMIT_ID=${{ github.event.pull_request.head.sha }}
+          BASE_COMMIT_ID=${{ github.event.pull_request.base.sha }}
+          COMMIT_RANGE="${BASE_COMMIT_ID:0:7} ${LAST_COMMIT_ID:0:7}"
+        fi
+        echo "::set-output name=commit-range::$(echo $COMMIT_RANGE)"
+        echo 'The commit id range is' ${COMMIT_RANGE}
