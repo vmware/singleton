@@ -103,6 +103,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@main
+      - name: Install dependecies
+        uses: actions/setup-python@v2
       - name: Run Codacy Analysis CLI
         uses: codacy/codacy-analysis-cli-action@master  
         with:
@@ -118,6 +120,7 @@ jobs:
         uses: github/codeql-action/upload-sarif@main
         with:
           sarif_file: results.sarif
+
           
   smoke-test:
     name: Smoke Test
