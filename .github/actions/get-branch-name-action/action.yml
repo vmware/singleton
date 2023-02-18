@@ -17,5 +17,5 @@ runs:
         if [ ${{ github.event_name }} = pull_request ]; then
           BRANCH_NAME=${GITHUB_HEAD_REF}
         fi
-        echo "::set-output name=branch-name::$(echo $BRANCH_NAME)"
+        echo "branch-name=$(echo $BRANCH_NAME)" >> $GITHUB_OUTPUT
         echo "The branch name is ${BRANCH_NAME}."
