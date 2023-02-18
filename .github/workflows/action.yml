@@ -82,21 +82,41 @@ jobs:
       contents: read
       security-events: write
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v2
       - name: Setup Python environment
         uses: actions/setup-python@v2
         with:
-          python-version: '3.x'
+          python-version: 3.x
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v1
+        uses: github/codeql-action/init@v2
         with:
           languages: python
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v1
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v1
+        uses: github/codeql-action/analyze@v2
 
+  codacy-analysis-cli:
+    name: Codacy Analysis CLI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@main
+      - name: Run Codacy Analysis CLI
+        uses: codacy/codacy-analysis-cli-action@master  
+        with:
+          output: results.sarif
+          format: sarif
+          # Adjust severity of non-security issues
+          gh-code-scanning-compat: true
+          # Force 0 exit code to allow SARIF file generation
+          # This will handover control about PR rejection to the GitHub side
+          max-allowed-issues: 2147483647  
+      # Upload the SARIF file generated in the previous step  
+      - name: Upload SARIF results file
+        uses: github/codeql-action/upload-sarif@main
+        with:
+          sarif_file: results.sarif
+          
   smoke-test:
     name: Smoke Test
     runs-on: ubuntu-latest
