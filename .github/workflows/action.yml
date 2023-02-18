@@ -128,9 +128,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+        uses: ruby/setup-python@v2
         with:
-          ruby-version: 3.0.0
+          python-version: 3.x
       - name: Install dependencies
         run: bundle install
       - name: Set up JDK 8
