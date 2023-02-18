@@ -21,5 +21,5 @@ runs:
           BASE_COMMIT_ID=${{ github.event.pull_request.base.sha }}
           COMMIT_RANGE="${BASE_COMMIT_ID:0:7} ${LAST_COMMIT_ID:0:7}"
         fi
-        echo "::set-output name=commit-range::$(echo $COMMIT_RANGE)"
+        echo "commit-range=$(echo $COMMIT_RANGE)" >> $GITHUB_OUTPUT
         echo 'The commit id range is' ${COMMIT_RANGE}
