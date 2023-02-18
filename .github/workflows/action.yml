@@ -58,6 +58,7 @@ jobs:
           python-version: '3.x'
       - name: Unit test    
         run: |
+          pip install coverage
           cd sgtn4python/test
           str=$(printf '=%.0s' {1..50})
           echo $str Unit Test Start $str
