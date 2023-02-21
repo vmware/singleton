@@ -121,6 +121,7 @@ public class CspValidateService {
             @Override
             public void verify(JWTClaimsSet claimsSet, SecurityContext c) throws BadJWTException {
                 final String issuer = claimsSet.getIssuer();
+                System.out.println("key issue:"+ issuer);
                 if (!getIssuer().equals(issuer)) {
                     throw new BadJWTException("Invalid token issuer");
                 }
@@ -132,11 +133,19 @@ public class CspValidateService {
         claim.setSub(claimSet.getClaim("sub").toString());
         claim.setExp(claimSet.getClaim("exp").toString());
         claim.setIat(claimSet.getClaim("iat").toString());
-        claim.setAcct(claimSet.getClaim("acct").toString());
-        claim.setDomain(claimSet.getClaim("domain").toString());
-        claim.setContext(claimSet.getClaim("context").toString());
         claim.setContextName(claimSet.getClaim("context_name").toString());
-        claim.setPerms(claimSet.getStringArrayClaim("perms"));
+        if (claimSet.getClaim("acct") != null){
+            claim.setAcct(claimSet.getClaim("acct").toString());
+        }
+        if (claimSet.getClaim("domain") != null){
+            claim.setDomain(claimSet.getClaim("domain").toString());
+        }
+        if (claimSet.getClaim("context") != null){
+            claim.setContext(claimSet.getClaim("context").toString());
+        }
+        if (claimSet.getStringArrayClaim("perms") != null){
+            claim.setPerms(claimSet.getStringArrayClaim("perms"));
+        }
         return claim;
     }
 
