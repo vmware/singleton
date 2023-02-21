@@ -96,13 +96,13 @@ func createTranslation(cfg Config) Translation {
 
 	transImpl := transInst{origin}
 
-	localeSet := linkedhashset.New(cfg.DefaultLocale /*, cfg.GetSourceLocale()*/)
 	fallbackLocales := []string{}
-	for _, locale := range localeSet.Values() {
+	linkedhashset.New(cfg.DefaultLocale/*, cfg.GetSourceLocale()*/).Each(func(_ int, locale interface{}) {
 		if locale != "" {
 			fallbackLocales = append(fallbackLocales, locale.(string))
 		}
-	}
+	})
+
 	return newTransMgr(&transImpl, fallbackLocales)
 }
 
