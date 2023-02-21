@@ -110,7 +110,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@main
       - name: Run Codacy Analysis CLI
-        uses: codacy/codacy-analysis-cli-action@g11n-python-client  
+        uses: codacy/codacy-analysis-cli-action@main
         with:
           output: results.sarif
           format: sarif
@@ -121,6 +121,6 @@ jobs:
           max-allowed-issues: 2147483647  
       # Upload the SARIF file generated in the previous step  
       - name: Upload SARIF results file
-        uses: github/codeql-action/upload-sarif@g11n-python-client
+        uses: github/codeql-action/upload-sarif@main
         with:
           sarif_file: results.sarif
