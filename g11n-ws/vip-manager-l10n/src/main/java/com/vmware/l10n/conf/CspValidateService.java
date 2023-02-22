@@ -121,7 +121,6 @@ public class CspValidateService {
             @Override
             public void verify(JWTClaimsSet claimsSet, SecurityContext c) throws BadJWTException {
                 final String issuer = claimsSet.getIssuer();
-                System.out.println("key issue:"+ issuer);
                 if (!getIssuer().equals(issuer)) {
                     throw new BadJWTException("Invalid token issuer");
                 }
