@@ -62,6 +62,10 @@ public class MultComponentService implements IMultComponentService {
 		// handle pseudo
 		if (translationDTO.getPseudo()) {
 			pseudoConfig.setEnabled(translationDTO.getPseudo());
+			if (translationDTO.getBundles().isEmpty()){
+				throw new L3APIException("Faild to get translation from data for " + translationDTO.getProductName()
+						+ ConstantsChar.BACKSLASH + translationDTO.getVersion());
+			}
 			return PseudoMessagesUtils.getPseudoMessages2(result, pseudoConfig);
 		}
 		return result;
