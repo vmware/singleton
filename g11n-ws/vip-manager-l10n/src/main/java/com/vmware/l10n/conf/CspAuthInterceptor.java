@@ -32,12 +32,14 @@ public class CspAuthInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {
 		String token = request.getHeader(ConstantsKeys.CSP_AUTH_TOKEN);
 		if(token == null) {
+			response.setContentType(ConstantsKeys.CONTENT_TYPE_JSON);
 			response.setStatus(HttpStatus.UNAUTHORIZED.value());
 			response.getWriter().write(this.buildRespBody(HttpStatus.UNAUTHORIZED.value(), ConstantsKeys.TOKEN_VALIDATION_ERROR));
 			return false;
 		}
 		if (!cspValidateService.isTokenValid(token)) {
 			// The user is not authenticated.
+			response.setContentType(ConstantsKeys.CONTENT_TYPE_JSON);
 			response.setStatus(HttpStatus.FORBIDDEN.value());
 			response.getWriter().write(this.buildRespBody(HttpStatus.FORBIDDEN.value(), ConstantsKeys.TOKEN_INVALIDATION_ERROR));
 			return false;
