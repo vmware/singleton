@@ -56,7 +56,7 @@ func (d *bundleDAO) IsExpired(*dataItem) bool {
 }
 
 func (d *bundleDAO) GetComponentList(name, version string) ([]string, error) {
-	fis, err := ioutil.ReadDir(filepath.Join(d.root, name, version))
+	fis, err := ioutil.ReadDir(d.getReleasePath(name, version))
 	if err != nil {
 		return nil, err
 	}
@@ -73,7 +73,7 @@ func (d *bundleDAO) GetComponentList(name, version string) ([]string, error) {
 
 func (d *bundleDAO) GetLocaleList(name, version string) ([]string, error) {
 	fileNames := map[string]struct{}{}
-	err := filepath.Walk(d.root, func(path string, info os.FileInfo, err error) error {
+	err := filepath.Walk(d.getReleasePath(name, version), func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}
@@ -129,6 +129,10 @@ func (d *bundleDAO) GetComponentMessages(name, version, locale, component string
 	}
 
 	return &MapComponentMsgs{messages: b.Messages, locale: convertLocale(locale), component: component}, nil
+}
+
+func (d *bundleDAO) getReleasePath(name, version string) string {
+	return filepath.Join(d.root, name, version)
 }
 
 //!-bundleDAO
