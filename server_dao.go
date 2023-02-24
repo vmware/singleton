@@ -232,7 +232,7 @@ func updateCacheControl(headers http.Header, info *itemCacheInfo) {
 		}
 	}
 
-	logger.Warn("Wrong cache control: " + cc)
+	logger.Warn("Wrong cache control from server: " + cc)
 }
 
 func isSuccess(err error) bool {

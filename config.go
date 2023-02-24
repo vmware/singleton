@@ -14,11 +14,11 @@ import (
 
 // Config Singleton configuration
 type Config struct {
-	ServerURL     string `json:"online_service_url"`
-	LocalBundles  string `json:"offline_resources_base_url"`
-	localSource   string //`json:"source_base_url"`
-	DefaultLocale string `json:"default_locale"`
-	SourceLocale  string `json:"source_locale"`
+	ServerURL         string `json:"online_service_url"`
+	LocalBundles      string `json:"offline_resources_base_url"`
+	LocalSourceBundle string `json:"source_bundle"`
+	DefaultLocale     string `json:"default_locale"`
+	SourceLocale      string `json:"source_locale"`
 }
 
 // GetSourceLocale returns the source locale, if SourceLocale is unset, return English

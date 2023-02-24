@@ -6,6 +6,7 @@
 package sgtn
 
 import (
+	"fmt"
 	"sync"
 
 	"github.com/pkg/errors"
@@ -53,13 +54,13 @@ func (sc *sourceComparison) getTranslation(item *dataItem) (err error) {
 	go func() {
 		defer wg.Done()
 		if oldSourceErr := item.origin.Get(oldSourceItem); oldSourceErr != nil {
-			logger.Error(oldSourceErr.Error())
+			logger.Error(fmt.Sprintf("failed to get old source. error: %+v", oldSourceErr))
 		}
 	}()
 	go func() {
 		defer wg.Done()
 		if newSourceErr := sc.source.Get(newSourceItem); newSourceErr != nil {
-			logger.Error(newSourceErr.Error())
+			logger.Error(fmt.Sprintf("failed to get source. error: %+v", newSourceErr))
 		}
 	}()
 

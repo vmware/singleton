@@ -31,6 +31,7 @@ import (
 
 var name, version, component = "SgtnTest", "1.0.0", "sunglow"
 var locale, localeDefault, localeSource, localeUnsupported = "zh-Hans", "fr", localeEn, "xxx"
+var key = "message"
 var OldZhValue = "消息"
 var nonexistentComponent = "comp-notexist"
 
@@ -40,6 +41,7 @@ var componentsID = dataItemID{iType: itemComponents, Name: name, Version: versio
 var localesID = dataItemID{iType: itemLocales, Name: name, Version: version}
 
 var ServerURL = "https://SingletonServer:8090"
+var LocalSourceBundle = "testdata/sources"
 var testCfg Config
 var mockData map[string]MockMapping
 
@@ -61,6 +63,7 @@ func TestMain(m *testing.M) {
 		panic(err)
 	}
 	testCfg = *cfg
+	testCfg.LocalSourceBundle = ""
 
 	mockData = ReadMockJSONs("testdata/mock/mappings")
 
@@ -333,7 +336,11 @@ func getCacheService() *cacheService {
 	return GetTranslation().(*transMgr).Translation.(*transInst).msgOrigin.(*cacheService)
 }
 
-func getCacheInfo(id dataItemID) *itemCacheInfo {
+func getCachedItem(id dataItemID) *dataItem {
 	cachedItem, _ := cache.Get(id)
-	return cachedItem.(*dataItem).attrs
+	return cachedItem.(*dataItem)
+}
+
+func getCacheInfo(id dataItemID) *itemCacheInfo {
+	return getCachedItem(id).attrs
 }

@@ -6,13 +6,13 @@
 package sgtn
 
 const (
-	invalidItemType           = "Invalid item type: %d"
-	originQueryFailure        = "Fail to get from %T, error is: %s"
-	uninitialized             = "Client isn't initialized"
-	originNotProvided         = "Neither Server URL nor Local Bundles is provided"
+	invalidItemType           = "invalid item type: %d"
+	originQueryFailure        = "fail to get from %T, error is: %+v"
+	uninitialized             = "client isn't initialized"
+	originNotProvided         = "no translation bundles are provided"
 	defaultLocaleNotProvided  = "default_locale isn't provided"
-	wrongPara                 = "Wrong parameters"
-	wrongServerData           = "Wrong data from server"
-	errorReleaseNonexistent   = "Can't find '%s/%s'"
-	errorComponentNonexistent = "Component '%s' not found"
+	wrongPara                 = "wrong parameters"
+	wrongServerData           = "wrong data from server"
+	errorReleaseNonexistent   = "can't find %q/%q"
+	errorComponentNonexistent = "component %q not found"
 )

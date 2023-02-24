@@ -24,11 +24,7 @@ func (ol messageOriginList) getComponentMessages(item *dataItem) (err error) {
 			return
 		}
 
-		// log error message
-		logger.Warn(fmt.Sprintf(originQueryFailure, o, err.Error()))
-		if e, ok := err.(stackTracer); ok {
-			logger.Warn(fmt.Sprintf("%+v", e.StackTrace()))
-		}
+		logger.Warn(fmt.Sprintf(originQueryFailure, o, err))
 	}
 
 	return
@@ -41,11 +37,7 @@ func (ol messageOriginList) getList(item *dataItem) (returnError error) {
 			tempList = append(tempList, item.data.([]string))
 		} else {
 			returnError = err
-			// TODO: change error message
-			logger.Error(fmt.Sprintf(originQueryFailure, o, err.Error()))
-			if e, ok := err.(stackTracer); ok {
-				logger.Error(fmt.Sprintf("%+v", e.StackTrace()))
-			}
+			logger.Error(fmt.Sprintf(originQueryFailure, o, err))
 		}
 	}
 
