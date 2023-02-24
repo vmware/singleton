@@ -74,7 +74,7 @@ public class VersionService implements IVersionService{
             dropVersionDTO = productService.getVersionInfo(productName, version);
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
-            throw new AboutAPIException("[FATAL ERROR]Failed to get version info for "+ productName + ConstantsChar.BACKSLASH + version, e);
+            throw new AboutAPIException("Failed to get version info for "+ productName + ConstantsChar.BACKSLASH + version, e);
         }
         bundleVersionDTO.setChangeId(dropVersionDTO.getDropId());
         return bundleVersionDTO;
