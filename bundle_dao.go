@@ -58,7 +58,7 @@ func (d *bundleDAO) IsExpired(*dataItem) bool {
 func (d *bundleDAO) GetComponentList(name, version string) ([]string, error) {
 	fis, err := ioutil.ReadDir(d.getReleasePath(name, version))
 	if err != nil {
-		return nil, err
+		return nil, errors.WithStack(err)
 	}
 
 	comps := make([]string, 0, len(fis))
@@ -83,7 +83,7 @@ func (d *bundleDAO) GetLocaleList(name, version string) ([]string, error) {
 		return nil
 	})
 	if err != nil {
-		return nil, err
+		return nil, errors.WithStack(err)
 	}
 
 	lSlice := make([]string, 0, len(fileNames))
@@ -103,7 +103,7 @@ func (d *bundleDAO) GetComponentMessages(name, version, locale, component string
 	compDirPath := filepath.Join(d.root, name, version, component)
 	files, err := ioutil.ReadDir(compDirPath)
 	if err != nil {
-		return nil, err
+		return nil, errors.WithStack(err)
 	}
 
 	filename := bundlePrefix + locale + bundleSuffix
@@ -116,13 +116,13 @@ func (d *bundleDAO) GetComponentMessages(name, version, locale, component string
 
 	contents, err := ioutil.ReadFile(filepath.Join(compDirPath, filename))
 	if err != nil {
-		return nil, err
+		return nil, errors.WithStack(err)
 	}
 
 	b := new(bundleFile)
 	err = json.Unmarshal(contents, b)
 	if err != nil {
-		return nil, err
+		return nil, errors.WithStack(err)
 	}
 	if len(b.Messages) == 0 {
 		return nil, errors.New("Wrong data from local bundle file")
