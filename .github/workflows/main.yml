@@ -59,12 +59,11 @@ jobs:
       - name: Unit test
         run: |
           python -m pip install --upgrade pip
-          pip install coverage
           pip install coverage pyyaml
           cd sgtn4python/test
           str=$(printf '=%.0s' {1..50})
           echo $str Unit Test Start $str
-          coverage run --source='.',I18N,sgtn_bykey,sgtn_client,sgtn_debug,stgn_icu,sgtn_locale,sgtn_properties,sgtn_py_base,sgtn_py2_base,sgtn_py3_base,sgtn_py37_base,sgtn_util --omit='test_*.py','__init__.py' -m unittest
+          coverage run --source=async_util,I18N,sgtn_bykey,sgtn_client,sgtn_debug,stgn_icu,sgtn_locale,sgtn_properties,sgtn_py_base,sgtn_py2_base,sgtn_py3_base,sgtn_py37_base,sgtn_util,util --omit='test_*.py','__init__.py' -m unittest
           coverage report -m
           coverage xml -o coverage.xml
           echo $str Unit Test End $str
