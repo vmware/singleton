@@ -35,7 +35,7 @@ func (sc *sourceComparison) Get(item *dataItem) (err error) {
 	case itemComponents: // get component list from source
 		return sc.source.Get(item)
 	default:
-		return nil
+		return errors.Errorf(invalidItemType, item.id.iType)
 	}
 }
 

@@ -5,7 +5,11 @@
 
 package sgtn
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/pkg/errors"
+)
 
 func (ol messageOriginList) Get(item *dataItem) (err error) {
 	switch item.id.iType {
@@ -14,7 +18,7 @@ func (ol messageOriginList) Get(item *dataItem) (err error) {
 	case itemLocales, itemComponents:
 		return ol.getList(item)
 	default:
-		return nil
+		return errors.Errorf(invalidItemType, item.id.iType)
 	}
 }
 

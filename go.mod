@@ -9,5 +9,5 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/rs/zerolog v1.18.0
 	github.com/stretchr/testify v1.8.0
-	gopkg.in/h2non/gock.v1 v1.0.15
+	gopkg.in/h2non/gock.v1 v1.1.2
 )
