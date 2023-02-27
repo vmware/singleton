@@ -47,9 +47,9 @@ func (suite *RegisterSourceTestSuite) TestGetComponentMessages() {
 		if testData.errorMsg == "" {
 			suite.Nil(err, "%s failed: %v", testData.desc, err)
 			suite.Equalf(testData.expected, messages.Size(), "%s: different string numbers are found.", testData.desc)
-			cachedItem, _ := cache.Get(dataItemID{itemComponent, name, version, testData.locale, testData.component})
-			suite.IsType(sourceAsOrigin{}, cachedItem.(*dataItem).origin)
-			suite.False(getCacheService().IsExpired(cachedItem.(*dataItem)), testData.desc)
+			cachedItem := getCachedItem(dataItemID{itemComponent, name, version, testData.locale, testData.component})
+			suite.IsType(sourceAsOrigin{}, cachedItem.origin)
+			suite.False(getCacheService().IsExpired(cachedItem), testData.desc)
 		} else {
 			suite.Contains(err.Error(), testData.errorMsg)
 		}
