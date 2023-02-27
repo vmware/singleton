@@ -25,6 +25,8 @@ var mockIsExpiredFunc = func(*dataItem, bool) {}
 
 type MockedOriginForOriginChain struct {
 	mock.Mock
+	GetFunc       func(item *dataItem, returnError error)
+	IsExpiredFunc func(*dataItem, bool)
 }
 
 func (m *MockedOriginForOriginChain) Get(item *dataItem) error {
@@ -43,13 +45,17 @@ func (m *MockedOriginForOriginChain) IsExpired(item *dataItem) bool {
 	return returnValue
 }
 
+func NewMockedOriginForOriginChain() *MockedOriginForOriginChain {
+	return &MockedOriginForOriginChain{GetFunc: mockGetFunc, IsExpiredFunc: mockIsExpiredFunc}
+}
+
 type OriginChainTestSuite struct {
 	suite.Suite
 	messageOriginList
 }
 
 func (suite *OriginChainTestSuite) SetupSuite() {
-	testObj1, testObj2 := new(MockedOriginForOriginChain), new(MockedOriginForOriginChain)
+	testObj1, testObj2 := NewMockedOriginForOriginChain(), NewMockedOriginForOriginChain()
 	suite.messageOriginList = messageOriginList{testObj1, testObj2}
 }
 

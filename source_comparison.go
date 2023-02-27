@@ -24,7 +24,7 @@ func (sc *sourceComparison) Get(item *dataItem) (err error) {
 			return sc.source.Get(item)
 		}
 		if sc.messageOrigin == nil {
-			return errors.Errorf("unsupported locale %s", item.id.Locale)
+			return errors.Errorf("unsupported locale %q", item.id.Locale)
 		}
 		return sc.getTranslation(item)
 	case itemLocales:
