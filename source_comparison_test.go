@@ -26,14 +26,18 @@ func (m *MockedOrigin) Get(item *dataItem) error {
 	returnValue := args.Error(0)
 	item.origin = m
 	item.attrs = newSingleCacheInfo()
-	m.GetFunc(item, returnValue)
+	if m.GetFunc != nil {
+		m.GetFunc(item, returnValue)
+	}
 	return returnValue
 }
 
 func (m *MockedOrigin) IsExpired(item *dataItem) bool {
 	args := m.Called(item)
 	returnValue := args.Bool(0)
-	m.IsExpiredFunc(item, returnValue)
+	if m.IsExpiredFunc != nil {
+		m.IsExpiredFunc(item, returnValue)
+	}
 	return returnValue
 }
 
@@ -56,29 +60,29 @@ func (suite *SourceComparisonTestSuite) TestSourceComparison() {
 
 	resetInst(&RegisteredSourceServerConfig, func() { RegisterSource(name, version, []ComponentMsgs{suite.messages}) })
 
+	EnableMultipleMockData([]string{"componentMessages-zh-Hans-sunglow", "componentMessages-en-sunglow"})
+
 	var tests = []struct {
-		desc      string
-		locale    string
-		component string
-		mocks     []string
-		expected  int
-		errorMsg  string
+		desc                                  string
+		locale, component, key, expectedValue string
+		expectedSize                          int
 	}{
-		{"SourceComparison", locale, ComponentToRegister, []string{"componentMessages-zh-Hans-sunglow", "componentMessages-en-sunglow"}, 8, ""},
-		{"Get source locale without comparison", inst.cfg.GetSourceLocale(), ComponentToRegister, []string{}, 2, ""},
+		{"a new key is added", locale, ComponentToRegister, RegisteredKey, RegisteredValue, 8},
+		{"a key is updated", locale, ComponentToRegister, UpdatedKey, UpdatedValue, 8},
+		{"a key is upchanged", locale, ComponentToRegister, UnchangedKey, "测试一个参数{0}", 8},
+		{"source locale without comparison", inst.cfg.GetSourceLocale(), ComponentToRegister, UnchangedKey, UnchangedValue, len(RegisteredMap)},
 	}
 
 	for _, testData := range tests {
-		EnableMultipleMockData(testData.mocks)
-		msg, err := GetTranslation().GetStringMessage(name, version, testData.locale, testData.component, Key)
-		suite.Nil(err)
-		suite.Equal(Value, msg)
-		msg, err = GetTranslation().GetStringMessage(name, version, testData.locale, testData.component, UpdatedKey)
-		suite.Nil(err)
-		suite.Equal(UpdatedValue, msg)
 
-		suite.True(gock.IsDone())
+		messages, _ := GetTranslation().GetComponentMessages(name, version, testData.locale, testData.component)
+		suite.Equal(testData.expectedSize, messages.Size())
+
+		msg, err := GetTranslation().GetStringMessage(name, version, testData.locale, testData.component, testData.key)
+		suite.Nil(err)
+		suite.Equal(testData.expectedValue, msg)
 	}
+	suite.True(gock.IsDone())
 }
 
 func (suite *SourceComparisonTestSuite) TestGetLocaleList() {
@@ -119,9 +123,7 @@ func (suite *SourceComparisonTestSuite) TestGetLocaleList() {
 }
 
 func (suite *SourceComparisonTestSuite) TestGetComponentList() {
-	mockedSource := MockedOrigin{}
-	mockedTranslation := mockedSource
-	sourceAndTranslation := &sourceComparison{&mockedSource, &mockedTranslation}
+	sourceAndTranslation := &sourceComparison{&MockedOrigin{}, &MockedOrigin{}}
 
 	var tests = []struct {
 		desc       string
@@ -149,15 +151,27 @@ func (suite *SourceComparisonTestSuite) TestGetComponentList() {
 	}
 }
 
+func (suite *SourceComparisonTestSuite) TestNewSourceIsEmpty() {
+	item := &dataItem{id: componentID}
+	sourceAndTranslation := &sourceComparison{&bundleDAO{testCfg.LocalBundles}, &MockedOrigin{}}
+	sourceAndTranslation.source.(*MockedOrigin).On("Get", mock.AnythingOfType("*sgtn.dataItem")).Once().Return(errors.New("failed"))
+
+	err := sourceAndTranslation.Get(item)
+	suite.Nil(err)
+	message, _ := item.data.(ComponentMsgs).Get(key)
+	suite.Equal("消息", message)
+	sourceAndTranslation.source.(*MockedOrigin).AssertExpectations(suite.T())
+}
+
 func (suite *SourceComparisonTestSuite) TestOldSourceIsEmpty() {
 	defer gock.Off()
 
 	resetInst(&RegisteredSourceServerConfig, func() { RegisterSource(name, version, []ComponentMsgs{suite.messages}) })
 
 	EnableMockData("componentMessages-zh-Hans-sunglow")
-	msg, err := GetTranslation().GetStringMessage(name, version, locale, ComponentToRegister, Key)
+	msg, err := GetTranslation().GetStringMessage(name, version, locale, ComponentToRegister, RegisteredKey)
 	suite.Nil(err)
-	suite.Equal(Value, msg)
+	suite.Equal(RegisteredValue, msg)
 	msg, err = GetTranslation().GetStringMessage(name, version, locale, ComponentToRegister, UpdatedKey)
 	suite.Nil(err)
 	suite.Equal(OldZhValue, msg)

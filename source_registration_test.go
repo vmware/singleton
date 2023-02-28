@@ -13,11 +13,12 @@ import (
 )
 
 var (
-	OnlyRegisteredSourceConfig = Config{DefaultLocale: localeDefault, SourceLocale: localeEn}
-	Key, Value                 = "RegisteredKey", "Value"
-	UpdatedKey, UpdatedValue   = "message", "UpdatedValue"
-	RegisteredMap              = map[string]string{Key: Value, UpdatedKey: UpdatedValue}
-	ComponentToRegister        = component
+	OnlyRegisteredSourceConfig     = Config{DefaultLocale: localeDefault, SourceLocale: localeEn}
+	RegisteredKey, RegisteredValue = "RegisteredKey", "RegisteredValue"
+	UpdatedKey, UpdatedValue       = "message", "UpdatedValue"
+	UnchangedKey, UnchangedValue   = "one.arg", "test one argument {0}"
+	RegisteredMap                  = map[string]string{RegisteredKey: RegisteredValue, UpdatedKey: UpdatedValue, UnchangedKey: UnchangedValue}
+	ComponentToRegister            = component
 )
 
 type RegisterSourceTestSuite struct {
@@ -66,9 +67,9 @@ func (suite *RegisterSourceTestSuite) TestGetStringMessage() {
 	}
 
 	for _, testData := range tests {
-		msg, err := GetTranslation().GetStringMessage(name, version, testData.locale, testData.component, Key)
+		msg, err := GetTranslation().GetStringMessage(name, version, testData.locale, testData.component, RegisteredKey)
 		suite.Nil(err)
-		suite.Equal(Value, msg)
+		suite.Equal(RegisteredValue, msg)
 	}
 }
 
