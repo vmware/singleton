@@ -33,7 +33,7 @@ func (t *transMgr) GetStringMessage(name, version, locale, component, key string
 			}
 			return msg, nil
 		} else {
-			err = fmt.Errorf("didn't find key %q", key)
+			err = fmt.Errorf(notFoundKey, key)
 		}
 	}
 
