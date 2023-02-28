@@ -93,78 +93,7 @@ func TestGetStringMessage(t *testing.T) {
 	assert.True(t, gock.IsDone())
 }
 
-// func TestRefreshCache(t *testing.T) {
-
-// 	var tests = []struct {
-// 		desc      string
-// 		mocks     []string
-// 		locale    string
-// 		component string
-// 		expected  int
-// 		err       string
-// 	}{
-// 		{"RefreshCache", []string{"RefreshCache", "RefreshCacheSecondTime"}, "RefreshCache", "sunglow", 6, ""},
-// 	}
-
-// 	defer gock.Off()
-
-// 	newCfg := testCfg
-// 	newCfg.LocalBundles = ""
-// 	resetInst(&newCfg, nil)
-// 	trans := GetTranslation()
-// 	for _, testData := range tests {
-// 		EnableMockData(testData.mocks[0])
-// 		item := &dataItem{dataItemID{itemComponent, name, version, testData.locale, testData.component}, nil, nil, nil}
-// 		info := getCacheInfo(item)
-// 		status := trans.(*transMgr).Translation.(*transInst).msgOrigin.(*cacheService).getStatus(item)
-// 		info.setAge(100)
-
-// 		// Get component messages first to populate cache
-// 		messages, err := trans.GetComponentMessages(name, version, testData.locale, testData.component)
-// 		if messages.(*MapComponentMsgs).Size() != testData.expected {
-// 			t.Errorf("%s = %d, want %d", testData.desc, messages.(*MapComponentMsgs).Size(), testData.expected)
-// 		}
-
-// 		// Make sure mock data is consumed
-// 		assert.True(t, gock.IsDone())
-// 		gock.Clean()
-
-// 		// Check the data in cache
-// 		messagesInCache, found := cache.Get(dataItemID{itemComponent, name, version, testData.locale, testData.component})
-// 		assert.True(t, found)
-// 		assert.NotNil(t, messagesInCache)
-// 		assert.Equal(t, testData.expected, messagesInCache.(*MapComponentMsgs).Size())
-
-// 		// Getting before time out, no communication to server because mock is enabled
-// 		messages, err = trans.GetComponentMessages(name, version, testData.locale, testData.component)
-// 		assert.Nil(t, err)
-// 		if messages.(*MapComponentMsgs).Size() != testData.expected {
-// 			t.Errorf("%s = %d, want %d", testData.desc, messages.(*MapComponentMsgs).Size(), testData.expected)
-// 		}
-
-// 		// Enable mock, time out cache and fetch(refresh) again. This time the data is same as before
-// 		EnableMockData(testData.mocks[1])
-// 		expireCache(info, info.age)
-// 		messages, err = trans.GetComponentMessages(name, version, testData.locale, testData.component)
-// 		assert.Nil(t, err)
-// 		assert.Equal(t, testData.expected, messages.(*MapComponentMsgs).Size())
-
-// 		// Start the go routine of refreshing cache, and wait for finish. Data entry number changes to 7.
-// 		time.Sleep(10 * time.Millisecond)
-// 		status.waitUpdate()
-// 		// Make sure mock data is consumed
-// 		assert.True(t, gock.IsDone())
-
-// 		// Check the data in cache
-// 		messagesInCache, found = cache.Get(dataItemID{itemComponent, name, version, testData.locale, testData.component})
-// 		assert.True(t, found)
-// 		assert.Equal(t, 7, messagesInCache.(ComponentMsgs).(*MapComponentMsgs).Size())
-// 	}
-
-// 	assert.True(t, gock.IsDone())
-// }
-
-// Refresh simultaneously. Hard to test. This is only for improve coverage
+// Refresh simultaneously. Hard to test. This is only to improve coverage
 func TestRefreshCache2(t *testing.T) {
 
 	var tests = []struct {
@@ -567,8 +496,7 @@ func TestGetComponentList(t *testing.T) {
 
 		// Expire cache and get again
 		EnableMockData(testData.mocks[1])
-		cachedItem, _ := cache.Get(itemID)
-		expireCache(cachedItem.(*dataItem).attrs)
+		expireCache(getCacheInfo(itemID))
 		components, err = trans.GetComponentList(name, version)
 		time.Sleep(time.Millisecond * 10)
 		if err != nil {
@@ -630,8 +558,7 @@ func TestGetLocaleList(t *testing.T) {
 
 		// Expire cache and get again
 		EnableMockData(testData.mocks[1])
-		cachedItem, _ := cache.Get(itemID)
-		expireCache(cachedItem.(*dataItem).attrs)
+		expireCache(getCacheInfo(itemID))
 		locales, err = trans.GetLocaleList(name, version)
 		time.Sleep(time.Millisecond * 10)
 		if err != nil {

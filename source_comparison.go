@@ -6,6 +6,7 @@
 package sgtn
 
 import (
+	"fmt"
 	"sync"
 
 	"github.com/pkg/errors"
@@ -23,7 +24,7 @@ func (sc *sourceComparison) Get(item *dataItem) (err error) {
 			return sc.source.Get(item)
 		}
 		if sc.messageOrigin == nil {
-			return errors.Errorf("unsupported locale %s", item.id.Locale)
+			return errors.Errorf("unsupported locale %q", item.id.Locale)
 		}
 		return sc.getTranslation(item)
 	case itemLocales:
@@ -34,7 +35,7 @@ func (sc *sourceComparison) Get(item *dataItem) (err error) {
 	case itemComponents: // get component list from source
 		return sc.source.Get(item)
 	default:
-		return nil
+		return errors.Errorf(invalidItemType, item.id.iType)
 	}
 }
 
@@ -53,13 +54,13 @@ func (sc *sourceComparison) getTranslation(item *dataItem) (err error) {
 	go func() {
 		defer wg.Done()
 		if oldSourceErr := item.origin.Get(oldSourceItem); oldSourceErr != nil {
-			logger.Error(oldSourceErr.Error())
+			logger.Error(fmt.Sprintf("failed to get old source. error: %+v", oldSourceErr))
 		}
 	}()
 	go func() {
 		defer wg.Done()
 		if newSourceErr := sc.source.Get(newSourceItem); newSourceErr != nil {
-			logger.Error(newSourceErr.Error())
+			logger.Error(fmt.Sprintf("failed to get source. error: %+v", newSourceErr))
 		}
 	}()
 

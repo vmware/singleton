@@ -7,8 +7,10 @@ package sgtn
 
 import (
 	"testing"
+	"time"
 
 	"github.com/stretchr/testify/assert"
+	"gopkg.in/h2non/gock.v1"
 )
 
 func TestCacheExpireWhenNeverExpire(t *testing.T) {
@@ -23,8 +25,7 @@ func TestCacheExpireWhenNeverExpire(t *testing.T) {
 	GetTranslation().GetComponentMessages(name, version, locale, component)
 
 	// value is initial value(cacheDefaultExpires) because only local bundles are available. No chance to change this.
-	cachedItem, _ := cache.Get(item.id)
-	info := cachedItem.(*dataItem).attrs
+	info := getCacheInfo(item.id)
 	assert.Equal(t, int64(cacheDefaultExpires), info.age)
 
 	// Rename dir to make sure getting from cache
@@ -54,4 +55,75 @@ func TestRegisterCache(t *testing.T) {
 	RegisterCache(newCache)
 	//Check cache is changed because cache is nil before registration.
 	assert.Equal(t, newCache, cache)
+}
+
+func TestRefreshCache(t *testing.T) {
+
+	var tests = []struct {
+		desc      string
+		mocks     []string
+		locale    string
+		component string
+		expected  int
+		err       string
+	}{
+		{"RefreshCache", []string{"RefreshCache", "RefreshCacheSecondTime"}, "RefreshCache", "sunglow", 6, ""},
+	}
+
+	defer gock.Off()
+
+	newCfg := testCfg
+	newCfg.LocalBundles = ""
+	resetInst(&newCfg, nil)
+	trans := GetTranslation()
+	for _, testData := range tests {
+		EnableMockData(testData.mocks[0])
+		id := dataItemID{itemComponent, name, version, testData.locale, testData.component}
+
+		// Get component messages first to populate cache
+		messages, err := trans.GetComponentMessages(name, version, testData.locale, testData.component)
+		assert.Nil(t, err, testData.desc)
+		if messages.(*MapComponentMsgs).Size() != testData.expected {
+			t.Errorf("%s = %d, want %d", testData.desc, messages.(*MapComponentMsgs).Size(), testData.expected)
+		}
+
+		// Make sure mock data is consumed
+		assert.True(t, gock.IsDone())
+		gock.Clean()
+
+		// Check the data in cache
+		messagesInCache, found := cache.Get(id)
+		assert.True(t, found)
+		assert.NotNil(t, messagesInCache)
+		assert.Equal(t, testData.expected, messagesInCache.(*dataItem).data.(*MapComponentMsgs).Size())
+
+		// Getting before time out, no communication to server because mock is enabled
+		messages, err = trans.GetComponentMessages(name, version, testData.locale, testData.component)
+		assert.Nil(t, err)
+		if messages.(*MapComponentMsgs).Size() != testData.expected {
+			t.Errorf("%s = %d, want %d", testData.desc, messages.(*MapComponentMsgs).Size(), testData.expected)
+		}
+
+		// Enable mock, time out cache and fetch(refresh) again. This time the data is same as before
+		EnableMockData(testData.mocks[1])
+		expireCache(getCacheInfo(id))
+		messages, err = trans.GetComponentMessages(name, version, testData.locale, testData.component)
+		assert.Nil(t, err)
+		assert.Equal(t, testData.expected, messages.(*MapComponentMsgs).Size())
+
+		// Start the go routine of refreshing cache, and wait for finish. Data entry number changes to 7.
+		for getCacheInfo(id).isExpired() {
+			time.Sleep(time.Microsecond)
+		}
+
+		// Make sure mock data is consumed
+		assert.True(t, gock.IsDone())
+
+		// Check the data in cache
+		messagesInCache, found = cache.Get(id)
+		assert.True(t, found)
+		assert.Equal(t, 7, messagesInCache.(*dataItem).data.(ComponentMsgs).(*MapComponentMsgs).Size())
+	}
+
+	assert.True(t, gock.IsDone())
 }

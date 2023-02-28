@@ -62,15 +62,15 @@ func createTranslation(cfg Config) Translation {
 	if len(mapSource.releases) > 0 {
 		sourceOrigins = append(sourceOrigins, sourceAsOrigin{&mapSource})
 	}
-	if cfg.localSource != "" {
-		sourceOrigins = append(sourceOrigins, sourceAsOrigin{newLocalSource(cfg.localSource)})
+	if cfg.LocalSourceBundle != "" {
+		sourceOrigins = append(sourceOrigins, sourceAsOrigin{newLocalSource(cfg.LocalSourceBundle)})
 	}
 	if cfg.ServerURL != "" {
 		server, err := newServer(cfg.ServerURL)
 		if err != nil {
 			panic(err)
 		}
-		inst.server = server // TODO:
+		inst.server = server
 		transOrigins = append(transOrigins, server)
 		sourceOrigins = append(sourceOrigins, &sourceInTranslation{server})
 	}
@@ -108,7 +108,7 @@ func createTranslation(cfg Config) Translation {
 
 func checkConfig(cfg *Config) error {
 	switch {
-	case cfg.LocalBundles == "" && cfg.ServerURL == "" && len(mapSource.releases) == 0 && cfg.localSource == "":
+	case cfg.LocalBundles == "" && cfg.ServerURL == "" && len(mapSource.releases) == 0 && cfg.LocalSourceBundle == "":
 		return errors.New(originNotProvided)
 	case cfg.DefaultLocale == "":
 		return errors.New(defaultLocaleNotProvided)

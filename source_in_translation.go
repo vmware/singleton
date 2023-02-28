@@ -12,13 +12,12 @@ type sourceInTranslation struct {
 func (s *sourceInTranslation) Get(item *dataItem) (err error) {
 	switch item.id.iType {
 	case itemComponent:
+		defer func() { item.id.Locale = inst.cfg.GetSourceLocale() }()
 		item.id.Locale = localeLatest
 		err = s.messageOrigin.Get(item)
-		item.id.Locale = inst.cfg.GetSourceLocale()
-	case itemLocales:
-		// cache information never expires because source locale is the only one locale.
+	// case itemLocales:
 		// this case is impossible because locales will come from translation.
-		item.data = []string{inst.cfg.GetSourceLocale()}
+		// item.data = []string{inst.cfg.GetSourceLocale()}
 	case itemComponents:
 		err = s.messageOrigin.Get(item)
 	}
