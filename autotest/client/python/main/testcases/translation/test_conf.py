@@ -1,9 +1,11 @@
+import importlib
 from pathlib import Path
 import yaml
 import pytest
-
-from sgtnclient import I18N
-
+import sys
+# from sgtnclient import I18N
+#
+from autotest.client.python.main.sgtnclient import I18N
 
 PRODUCT = 'PythonClient'
 VERSION = '1.0.0'
@@ -13,20 +15,28 @@ CONFIG_FILE = 'config_only.yml'
 _RESOURCES_ = Path(__file__).parent.joinpath('config')
 
 
+def reset_i18n():
+    sgtn_client = sys.modules.get("sgtn_client", None)
+    if sgtn_client:
+        sgtn_client.SingletonReleaseManager._instance = None
+    I18N._release_manager = None
+
+
 class TestConfig:
 
     def test_l1(self):
         """config success"""
-
         file: Path = _RESOURCES_.joinpath(CONFIG_FILE)
         I18N.add_config_file(file)
         rel = I18N.get_release(PRODUCT, VERSION)
+        print(id(rel))
         conf = rel.get_config()
-
         assert conf.get_config_data() == yaml.safe_load(file.read_bytes())
+
 
     def test_l2(self):
         """config update success"""
+        I18N = importlib.import_module("autotest.client.python.main.sgtnclient.I18N")
         extra_config: dict = {'product': 'PythonClient', 'l10n_version': '2.0.0',
                               'online_service_url': 'http://localhost:8091', 'try_delay': 10,
                               'cache_expired_time': 600}
@@ -42,6 +52,7 @@ class TestConfig:
 
         I18N.set_current_locale(LOCALE)
         rel = I18N.get_release(PRODUCT, VERSION)
+        print(id(rel))
         conf = rel.get_config()
         conf.get_info()
         conf.get_config_data()
