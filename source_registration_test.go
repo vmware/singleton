@@ -13,11 +13,12 @@ import (
 )
 
 var (
-	OnlyRegisteredSourceConfig = Config{DefaultLocale: localeDefault, SourceLocale: localeEn}
-	Key, Value                  = "RegisteredKey", "Value"
-	UpdatedKey, UpdatedValue    = "message", "UpdatedValue"
-	RegisteredMap               = map[string]string{Key: Value, UpdatedKey: UpdatedValue}
-	ComponentToRegister         = component
+	OnlyRegisteredSourceConfig     = Config{DefaultLocale: localeDefault, SourceLocale: localeEn}
+	RegisteredKey, RegisteredValue = "RegisteredKey", "RegisteredValue"
+	UpdatedKey, UpdatedValue       = "message", "UpdatedValue"
+	UnchangedKey, UnchangedValue   = "one.arg", "test one argument {0}"
+	RegisteredMap                  = map[string]string{RegisteredKey: RegisteredValue, UpdatedKey: UpdatedValue, UnchangedKey: UnchangedValue}
+	ComponentToRegister            = component
 )
 
 type RegisterSourceTestSuite struct {
@@ -27,6 +28,7 @@ type RegisterSourceTestSuite struct {
 func (suite *RegisterSourceTestSuite) SetupSuite() {
 	messages := NewMapComponentMsgs(RegisteredMap, localeEn, ComponentToRegister)
 	resetInst(&OnlyRegisteredSourceConfig, func() { RegisterSource(name, version, []ComponentMsgs{messages}) })
+	// suite.origin = GetTranslation().(*transMgr).Translation.(*transInst).msgOrigin.(*cacheService).messageOrigin.(*singleLoader).messageOrigin.(*saveToCache).messageOrigin.(*sourceComparison).source.(messageOriginList)[0]
 }
 
 func (suite *RegisterSourceTestSuite) TestGetComponentMessages() {
@@ -46,6 +48,9 @@ func (suite *RegisterSourceTestSuite) TestGetComponentMessages() {
 		if testData.errorMsg == "" {
 			suite.Nil(err, "%s failed: %v", testData.desc, err)
 			suite.Equalf(testData.expected, messages.Size(), "%s: different string numbers are found.", testData.desc)
+			cachedItem := getCachedItem(dataItemID{itemComponent, name, version, testData.locale, testData.component})
+			suite.IsType(sourceAsOrigin{}, cachedItem.origin)
+			suite.False(getCacheService().IsExpired(cachedItem), testData.desc)
 		} else {
 			suite.Contains(err.Error(), testData.errorMsg)
 		}
@@ -62,9 +67,9 @@ func (suite *RegisterSourceTestSuite) TestGetStringMessage() {
 	}
 
 	for _, testData := range tests {
-		msg, err := GetTranslation().GetStringMessage(name, version, testData.locale, testData.component, Key)
+		msg, err := GetTranslation().GetStringMessage(name, version, testData.locale, testData.component, RegisteredKey)
 		suite.Nil(err)
-		suite.Equal(Value, msg)
+		suite.Equal(RegisteredValue, msg)
 	}
 }
 

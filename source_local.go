@@ -5,14 +5,6 @@
 
 package sgtn
 
-import (
-	"io/ioutil"
-	"path/filepath"
-
-	json "github.com/json-iterator/go"
-	"github.com/pkg/errors"
-)
-
 type localSource struct {
 	*bundleDAO
 	root string
@@ -23,20 +15,5 @@ func newLocalSource(root string) *localSource {
 }
 
 func (s *localSource) GetComponentMessages(name, version, component string) (ComponentMsgs, error) {
-	fp := filepath.Join(s.root, name, version, component, "messages.json")
-	contents, err := ioutil.ReadFile(fp)
-	if err != nil {
-		return nil, err
-	}
-
-	b := new(bundleFile)
-	err = json.Unmarshal(contents, b)
-	if err != nil {
-		return nil, err
-	}
-	if len(b.Messages) == 0 {
-		return nil, errors.Errorf("Wrong data from local bundle file %s", fp)
-	}
-
-	return &MapComponentMsgs{messages: b.Messages, locale: inst.cfg.GetSourceLocale(), component: component}, nil
+	return s.bundleDAO.GetComponentMessages(name, version, inst.cfg.GetSourceLocale(), component)
 }
