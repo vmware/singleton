@@ -118,7 +118,7 @@ class Test(unittest.TestCase):
                 self.assertEqual(currencyResult, "US$201,703.54")
             if (case['zipdir'] == 'datetime'):
                 dtResult = javaInstance.dateTime()
-                self.assertEqual(dtResult, '2017年11月20日 GMT+8 下午1:39:24')
+                self.assertEqual(dtResult, case['expected'])
             if (case['zipdir'] == 'plural'):
                 pluralResult = javaInstance.plural()
                 self.assertEqual(pluralResult, case['expected'])
