@@ -42,7 +42,7 @@ func TestCC(t *testing.T) {
 		}
 
 		item := &dataItem{dataItemID{itemComponent, name, version, testData.locale, testData.component}, nil, nil, nil}
-		err := trans.(*transMgr).Translation.(*transInst).msgOrigin.(*cacheService).Get(item)
+		err := trans.(*transMgr).transInst.msgOrigin.(*cacheService).Get(item)
 		time.Sleep(10 * time.Millisecond)
 		if err != nil {
 			t.Errorf("%s failed: %v", testData.desc, err)

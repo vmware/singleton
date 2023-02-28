@@ -116,7 +116,7 @@ func TestGetStringMessage(t *testing.T) {
 // 		EnableMockData(testData.mocks[0])
 // 		item := &dataItem{dataItemID{itemComponent, name, version, testData.locale, testData.component}, nil, nil, nil}
 // 		info := getCacheInfo(item)
-// 		status := trans.(*transMgr).Translation.(*transInst).msgOrigin.(*cacheService).getStatus(item)
+// 		status := trans.(*transMgr).transInst.msgOrigin.(*cacheService).getStatus(item)
 // 		info.setAge(100)
 
 // 		// Get component messages first to populate cache

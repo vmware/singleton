@@ -34,7 +34,7 @@ type SingleLoaderTestSuite struct {
 func (suite *SingleLoaderTestSuite) SetupSuite() {
 	messages := NewMapComponentMsgs(RegisteredMap, localeEn, ComponentToRegister)
 	resetInst(&OnlyRegisteredSourceConfig, func() { RegisterSource(name, version, []ComponentMsgs{messages}) })
-	suite.singleLoader = GetTranslation().(*transMgr).Translation.(*transInst).msgOrigin.(*cacheService).messageOrigin.(*singleLoader)
+	suite.singleLoader = GetTranslation().(*transMgr).transInst.msgOrigin.(*cacheService).messageOrigin.(*singleLoader)
 }
 
 func (suite *SingleLoaderTestSuite) TestConcurrentGet() {
@@ -106,7 +106,7 @@ func (suite *SingleLoaderTestSuite) TestConcurrentGet() {
 // 		EnableMockData(testData.mocks[0])
 // 		item := &dataItem{dataItemID{itemComponent, name, version, testData.locale, testData.component}, nil, nil, nil}
 // 		info := getCacheInfo(item)
-// 		status := trans.(*transMgr).Translation.(*transInst).msgOrigin.(*cacheService).getStatus(item)
+// 		status := trans.(*transMgr).transInst.msgOrigin.(*cacheService).getStatus(item)
 // 		info.setAge(100)
 
 // 		// Get component messages first to populate cache

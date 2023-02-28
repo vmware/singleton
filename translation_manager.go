@@ -7,35 +7,100 @@ package sgtn
 
 import (
 	"fmt"
+	"strings"
+	"sync"
+
+	"github.com/pkg/errors"
 )
 
 type transMgr struct {
-	Translation
+	*transInst
 	fallbackChain []string
 }
 
-func newTransMgr(t Translation, fblocales []string) *transMgr {
-	return &transMgr{Translation: t, fallbackChain: fblocales}
+func newTransMgr(t *transInst, fblocales []string) *transMgr {
+	return &transMgr{transInst: t, fallbackChain: fblocales}
 }
 
 // GetStringMessage Get a message with optional arguments
 func (t *transMgr) GetStringMessage(name, version, locale, component, key string, args ...string) (string, error) {
-	message, err := t.Translation.GetStringMessage(name, version, locale, component, key, args...)
-	if err == nil {
-		return message, nil
-	}
-
-	i := indexIgnoreCase(t.fallbackChain, locale)
-	for m := i + 1; m < len(t.fallbackChain); m++ {
-		logger.Warn(fmt.Sprintf("fall back to locale '%s'", t.fallbackChain[m]))
-		message, err = t.Translation.GetStringMessage(name, version, t.fallbackChain[m], component, key, args...)
-		if err == nil {
-			return message, nil
+	if bundleData, err := t.getComponentMessages(name, version, locale, component); err == nil {
+		if msg, ok := bundleData.Get(key); ok {
+			for i, arg := range args {
+				placeholder := fmt.Sprintf("{%d}", i)
+				msg = strings.Replace(msg, placeholder, arg, 1)
+			}
+			return msg, nil
 		}
 	}
-	if err != nil {
-		return key, err
+
+	return key, fmt.Errorf("failed to get message for locale: %q, component: %q, key: %q", locale, component, key)
+}
+
+// getComponentMessages Get messages of a component with locale fallback
+func (t *transMgr) getComponentMessages(name, version, locale, component string) (data ComponentMsgs, err error) {
+	bundleData, err := t.transInst.GetComponentMessages(name, version, locale, component)
+	if err == nil {
+		return bundleData, nil
 	}
 
-	return message, nil
+	for _, fallbackLocale := range t.fallbackChain {
+		if fallbackLocale != locale {
+			bundleData, err = t.transInst.GetComponentMessages(name, version, fallbackLocale, component)
+			if err == nil {
+				return bundleData, nil
+			}
+		}
+	}
+
+	return nil, err
+}
+
+// GetComponentsMessages Get messages of multiple components
+func (t *transMgr) GetComponentsMessages(name, version string, locales, components []string) (msgs []ComponentMsgs, err error) {
+	if name == "" || version == "" {
+		return nil, errors.New(wrongPara)
+	}
+
+	if len(locales) == 0 {
+		locales, err = t.GetLocaleList(name, version)
+		if err != nil {
+			return nil, err
+		}
+	}
+	if len(components) == 0 {
+		components, err = t.GetComponentList(name, version)
+		if err != nil {
+			return nil, err
+		}
+	}
+
+	totalNumber := len(locales) * len(components)
+	msgs = make([]ComponentMsgs, 0, totalNumber)
+
+	var wg sync.WaitGroup
+	wg.Add(totalNumber)
+	muList := sync.Mutex{}
+	for _, locale := range locales {
+		for _, component := range components {
+			go func(locale, component string) {
+				defer wg.Done()
+
+				if bundleMsgs, bundleErr := t.GetComponentMessages(name, version, locale, component); bundleErr == nil {
+					muList.Lock()
+					msgs = append(msgs, bundleMsgs)
+					muList.Unlock()
+				} else { // log a warning message if translation is unavailable.
+					logger.Warn(fmt.Sprintf("failed to get translation for {product: %q, version: %q, locale: %q, component: %q}", name, version, locale, component))
+				}
+			}(locale, component)
+		}
+	}
+	wg.Wait()
+
+	if len(msgs) == 0 { // empty is an error, other cases are successful.
+		return nil, fmt.Errorf("no translations are available for {product: %q, version: %q, locales: %v, components: %v}", name, version, locales, components)
+	}
+
+	return
 }
