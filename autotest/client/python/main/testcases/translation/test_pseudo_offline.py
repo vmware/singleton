@@ -9,7 +9,6 @@ COMPONENT = 'about'
 LOCALE = 'fr'
 Config_files = 'sample_offline_disk.yml'
 
-# singleton\test\TRANSLATION
 __TRANSLATION__ = Path(__file__).parent
 __CONFIG__ = __TRANSLATION__.joinpath('config')
 __RESOURCES__ = __TRANSLATION__.joinpath('resources')

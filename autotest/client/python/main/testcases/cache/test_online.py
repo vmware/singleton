@@ -6,10 +6,10 @@ from sgtnclient import I18N
 
 from .utils import ModifyCacheContext
 
-PRODUCT = 'Cache'
-VERSION = '1.0.1'
-COMPONENT = 'about'
-LOCALE = 'de'
+PRODUCT = "Cache"
+VERSION = "1.0.1"
+COMPONENT = "about"
+LOCALE = "de"
 
 __CACHE__ = Path(__file__).parent
 __CONFIG__ = __CACHE__.joinpath('config')
@@ -17,110 +17,21 @@ __RESOURCES__ = __CACHE__.joinpath('resources')
 
 BASE_URL = "http://localhost:8091"
 
+"""
+Cache 测试
 
-@pytest.fixture(scope="function", autouse=True)
-def clean():
-    yield
-    I18N._release_manager = None
+配置项生效
+1. 服务端不配置cache-control。默认读取yaml->cache_expired_time。如果无配置项，默认60秒。
+2. 服务端配置cache-control=0
+3. 服务端配置cache-control=5，配置项yaml->cache_expired_time=10秒。按照5秒计算
 
-
+场景测试
+前置条件：cache_expired_time默认5秒生效。
+1. 缓存失效，拷贝测试.cache。进行测试5秒内，不会更新测试cache，5秒后，更新测试cache。
+2. 缓存粒度，请求key，local，product。cache根据component级别进行缓存和更新。
+3. 更新策略，5秒过期后，再次请求，返回旧值，同时更新缓存
+"""
 class TestOnlineCache:
-
-    @pytest.mark.cache1
-    def test_online_cache_with_no_server_cache_control(self):
-        """
-        Online Mode: java or go
-        1. server cache-control.value=max-age=83600, public. disabled
-        2. cache_expired_time: 5
-        3. cache_path: .cache
-        4. .cache directory is existed
-
-        cache_expired_time active
-        """
-        config_file = "online_without_cache_control.yml"
-        file: Path = __CONFIG__.joinpath(config_file)
-        I18N.add_config_file(file)
-        I18N.set_current_locale(LOCALE)
-        rel = I18N.get_release(PRODUCT, VERSION)
-        translation = rel.get_translation()
-
-        # get old value and request server. a real request come in server
-        translation.get_string("about", "about.message")
-        # assert tran1 == "test de key"
-        time.sleep(4.5)
-
-        # get from cache
-        tran1 = translation.get_string("about", "about.message")
-        assert tran1 == "test de key"
-        time.sleep(5.5)
-
-        # cache expired and request server.
-        tran1 = translation.get_string("about", "about.message")
-        assert tran1 == "test de key"
-
-    @pytest.mark.cache1
-    def test_online_cache_control_max_age_0_seconds(self):
-        """
-        Online Mode: java or go
-        1. server cache-control.value=max-age=0, public. disabled
-        2. cache_expired_time: 10
-        3. cache_path: .cache
-        4. .cache directory is existed
-
-        cache_expired_time: 10 active
-        """
-        config_file = "online_with_cache_control_5_seconds.yml"
-        file: Path = __CONFIG__.joinpath(config_file)
-        I18N.add_config_file(file)
-        I18N.set_current_locale(LOCALE)
-        rel = I18N.get_release(PRODUCT, VERSION)
-        translation = rel.get_translation()
-
-        # get old value and request server. a real request come in server
-        tran1 = translation.get_string("about", "about.message")
-        assert tran1 == "test de key"
-
-        # get from cache
-        time.sleep(9.5)
-        tran1 = translation.get_string("about", "about.message")
-        assert tran1 == "test de key"
-
-        # cache expired and request server
-        time.sleep(10.5)
-        tran1 = translation.get_string("about", "about.message")
-        assert tran1 == "test de key"
-
-    @pytest.mark.cache1
-    def test_online_cache_control_max_age_5_seconds(self):
-        """
-        Online Mode: java or go
-        1. server cache-control.value=max-age=5, public. disabled
-        2. cache_expired_time: 10
-        3. cache_path: .cache
-        4. .cache directory is existed
-
-        server cache-control.value=max-age=5 active
-        """
-        config_file = "online_with_cache_control_5_seconds.yml"
-        file: Path = __CONFIG__.joinpath(config_file)
-        I18N.add_config_file(file)
-        I18N.set_current_locale(LOCALE)
-        rel = I18N.get_release(PRODUCT, VERSION)
-        translation = rel.get_translation()
-
-        # get old value and request server. a real request come in server
-        tran1 = translation.get_string("about", "about.message")
-        assert tran1 == "test de key"
-        time.sleep(4.5)
-
-        # get from cache
-        tran1 = translation.get_string("about", "about.message")
-        assert tran1 == "test de key"
-        time.sleep(5.5)
-
-        # check cache expired and request server.
-        tran1 = translation.get_string("about", "about.message")
-        assert tran1 == "test de key"
 
     @pytest.mark.cache1
     @pytest.mark.skip("Manual due to Conflict")

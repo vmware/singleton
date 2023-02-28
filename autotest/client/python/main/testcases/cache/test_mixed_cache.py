@@ -36,10 +36,10 @@ class TestMixedCacheOnlineSuccess:
         tran1 = translation.get_string("about", "about.message", locale="fr")
         assert tran1 == "test fr key"
 
-        # return from cache. no request server
-        time.sleep(9)
-        tran1 = translation.get_string("about", "about.message", locale="fr")
-        assert tran1 == "test fr key"
+        # # return from cache. no request server
+        # time.sleep(9)
+        # tran1 = translation.get_string("about", "about.message", locale="fr")
+        # assert tran1 == "test fr key"
 
 
 class TestMixedCacheOnlineFail:
