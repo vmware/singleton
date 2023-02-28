@@ -24,17 +24,20 @@ func newTransMgr(t *transInst, fblocales []string) *transMgr {
 
 // GetStringMessage Get a message with optional arguments
 func (t *transMgr) GetStringMessage(name, version, locale, component, key string, args ...string) (string, error) {
-	if bundleData, err := t.getComponentMessages(name, version, locale, component); err == nil {
+	bundleData, err := t.getComponentMessages(name, version, locale, component)
+	if err == nil {
 		if msg, ok := bundleData.Get(key); ok {
 			for i, arg := range args {
 				placeholder := fmt.Sprintf("{%d}", i)
 				msg = strings.Replace(msg, placeholder, arg, 1)
 			}
 			return msg, nil
+		} else {
+			err = fmt.Errorf("didn't find key %q", key)
 		}
 	}
 
-	return key, fmt.Errorf("failed to get message for locale: %q, component: %q, key: %q", locale, component, key)
+	return key, err
 }
 
 // getComponentMessages Get messages of a component with locale fallback
