@@ -1,0 +1,41 @@
+//Copyright 2019-2022 VMware, Inc.
+//SPDX-License-Identifier: EPL-2.0
+apply plugin: 'java-library'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+archivesBaseName = 'md-restful-api-db'
+
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart',
+                   'Implementation-Version': version
+    }
+}
+
+configurations {
+    jar
+      providedRuntime
+   // remove default logger
+   all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+}
+
+dependencies {
+    api project(":md-data-api")
+	api project(":md-data-api-pgimpl")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation('org.springframework.boot:spring-boot-starter-log4j2')
+    implementation ("commons-collections:commons-collections:$commonsCollectionsVersion")
+    //swagger UI -START  
+    implementation("io.springfox:springfox-boot-starter:$swaggerVersion")
+    //swagger UI -END
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation ("junit:junit:$junitVersion")
+}
+
+test {
+    exclude 'com/vmware/vip/test/**'
+    systemProperties 'property': 'value'
+}
+

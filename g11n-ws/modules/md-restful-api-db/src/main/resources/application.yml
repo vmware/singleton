@@ -1,0 +1,35 @@
+spring:
+  profiles:
+     active: db_dev
+  application:
+    name: VIPDBServer
+logging:
+  level: 
+    root: info
+    com.vmware: debug
+eureka:
+  instance:
+    hostname: localhost
+    preferIpAddress: true
+    #instance_id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8090/eureka/
+    enabled: true
+    
+management:
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include: info, health
+info:  
+  app:  
+    name: "@project.name@" 
+    description: "@project.description@"  
+    version: "@project.version@"  
+    spring-boot-version: 2.0.0.M7
+server: 
+  port: 9080
+
+      

@@ -1,0 +1,69 @@
+//Copyright 2019-2022 VMware, Inc.
+//SPDX-License-Identifier: EPL-2.0
+apply plugin: 'java-library'
+description = 'translation fetcher module'
+
+configurations {
+    jar
+}
+
+dependencies {
+	api("org.quartz-scheduler:quartz:2.2.2")
+	api("org.quartz-scheduler:quartz-jobs:2.2.2")
+    api("commons-io:commons-io:$commonsIoVersion")
+    api("org.apache.commons:commons-lang3:$commonsLangVersion")
+    api project(":vip-common")
+	testImplementation("junit:junit:$junitVersion")
+}
+
+jar {
+    baseName = 'translation-fetcher'
+    version = "$branchName"
+    classifier = "$buildNumber"
+    /**
+    from {
+         configurations.api.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    manifest {
+        attributes 'Main-Class': 'com.vmware.vip.fetcher.translation.TranslationConverterMain'
+    }
+    **/
+}
+
+task createfatJar(type: Jar) {
+  duplicatesStrategy 'exclude'
+  manifest {
+    attributes 'Main-Class': 'com.vmware.vip.fetcher.translation.TranslationConverterMain'
+  }
+  archiveClassifier = "all"
+  from {
+    configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+  with jar
+}
+
+task fetchTranslation(type: JavaExec, dependsOn: classes) {
+    if (project.hasProperty('jenkinsJobName')) {
+        args(project.getProperty('jenkinsJobName'))
+    }
+    if (project.hasProperty('productName')) {
+        args(project.getProperty('productName'))
+    }
+    if (project.hasProperty('productVersion')) {
+        args(project.getProperty('productVersion'))
+    }
+    main = 'com.vmware.vip.fetcher.translation.GitTranslationFetcherMain'
+    classpath sourceSets.main.runtimeClasspath
+}
+
+task copyTFJars(type :Copy, dependsOn: jar) {
+    from "$buildDir/libs"
+    into "$rootDir/../publish/"
+    include "**/*.jar"
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+assemble.dependsOn.add copyTFJars

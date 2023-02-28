@@ -1,0 +1,47 @@
+//Copyright 2019-2022 VMware, Inc.
+//SPDX-License-Identifier: EPL-2.0
+rootProject.name = 'singleton'
+include ':vip-common'
+include ':vip-manager-i18n'
+include ':vip-manager-l10n'
+include ':vip-manager-l10n-agent'
+include ':md-data-api'
+include ':md-data-api-pgimpl'
+include ':md-data-initdb'
+include ':md-data-api-bundleimpl'
+include ':md-restful-api'
+include ':md-restful-api-i18n'
+include ':md-restful-api-db'
+include ':md-data-api-mt'
+include ':md-service-authen'
+include 'md-service-about'
+include ':md-service-i18n-l2'
+include ':md-service-i18n-l3'
+include ':md-restful-synch'
+include ':md-restful-l10n-synch'
+include ':tool-trans-fetcher'
+include ':vip-resources'
+include ':md-data-api-s3impl'
+include ':vip-manager-lite-i18n'
+project(':vip-manager-lite-i18n').projectDir       = "$rootDir/vip-manager-lite-i18n" as File
+project(':md-data-api-s3impl').projectDir     = "$rootDir/modules/md-data-api-s3impl" as File
+project(':vip-common').projectDir             = "$rootDir/vip-common" as File
+project(':vip-manager-i18n').projectDir       = "$rootDir/vip-manager-i18n" as File
+project(':vip-manager-l10n').projectDir       = "$rootDir/vip-manager-l10n" as File
+project(':vip-manager-l10n-agent').projectDir = "$rootDir/vip-manager-l10n-agent" as File
+project(':md-service-i18n-l2').projectDir     = "$rootDir/modules/md-service-i18n-l2" as File
+project(':md-service-i18n-l3').projectDir     = "$rootDir/modules/md-service-i18n-l3" as File
+project(':md-service-authen').projectDir      = "$rootDir/modules/md-service-authen" as File
+project(':md-service-about').projectDir      = "$rootDir/modules/md-service-about" as File
+project(':md-restful-api-db').projectDir      = "$rootDir/modules/md-restful-api-db" as File
+project(':md-restful-api-i18n').projectDir    = "$rootDir/modules/md-restful-api-i18n" as File
+project(':md-restful-api').projectDir         = "$rootDir/modules/md-restful-api" as File
+project(':md-restful-synch').projectDir       = "$rootDir/modules/md-restful-synch" as File
+project(':md-restful-l10n-synch').projectDir  = "$rootDir/modules/md-restful-l10n-synch" as File
+project(':md-data-api-mt').projectDir         = "$rootDir/modules/md-data-api-mt" as File
+project(':md-data-api-bundleimpl').projectDir = "$rootDir/modules/md-data-api-bundleimpl" as File
+project(':md-data-api-pgimpl').projectDir     = "$rootDir/modules/md-data-api-pgimpl" as File
+project(':md-data-initdb').projectDir         = "$rootDir/modules/md-data-initdb" as File
+project(':md-data-api').projectDir            = "$rootDir/modules/md-data-api" as File
+project(':tool-trans-fetcher').projectDir     = "$rootDir/tools/tool-trans-fetcher" as File
+project(':vip-resources').projectDir          = "$rootDir/vip-resources" as File

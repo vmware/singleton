@@ -1,0 +1,44 @@
+//Copyright 2019-2023 VMware, Inc.
+//SPDX-License-Identifier: EPL-2.0
+apply plugin: 'java-library'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'org.springframework.boot'
+
+description = 'locale-libs'
+
+configurations {
+    jar
+}
+
+dependencies {
+    api project(":vip-common")
+    api project(":md-service-i18n-l3")
+    api("com.vmware.singleton:singleton-i18n-patterns-core:+")
+    api("com.ibm.icu:icu4j:$icu4jVersion")
+    compileOnly("org.springframework:spring-context")
+    compileOnly("org.springframework.boot:spring-boot-starter-data-jpa")
+    compileOnly("org.slf4j:slf4j-api:$slf4jVersion")
+}
+
+bootJar {
+  enabled = false
+}
+
+
+jar {
+    baseName = 'locale-libs'
+    version = "$branchName"
+    classifier = "$buildNumber"
+}
+
+task copyCommonJars(type :Copy, dependsOn: jar) {
+    from "$buildDir/libs"
+    into "$rootDir/../publish/"
+    include "**/*.jar"
+}
+ 
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+assemble.dependsOn.add copyCommonJars

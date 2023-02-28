@@ -1,0 +1,58 @@
+//Copyright 2019-2022 VMware, Inc.
+//SPDX-License-Identifier: EPL-2.0
+apply plugin: 'java-library'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+description = 'l10n manager agent'
+
+configurations {
+    bootJar
+      providedRuntime
+   // remove default logger
+   all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+}
+
+dependencies {
+    api project(":vip-common")
+    api project(":md-restful-api")
+    api ("org.springframework.boot:spring-boot-starter")
+    api ("org.springframework.boot:spring-boot-starter-log4j2")
+    api ("com.alibaba:fastjson:1.2.75")
+    implementation("org.apache.logging.log4j:log4j-api:$log4j2Version")
+    implementation("org.apache.logging.log4j:log4j-core:$log4j2Version")
+    implementation("org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version")
+    implementation("org.slf4j:slf4j-api:$slf4jVersion")
+    implementation("org.slf4j:jul-to-slf4j:$slf4jVersion")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+}
+
+bootJar {
+    baseName = 'vip-manager-l10n-agent'
+    version =  "$branchName"
+    classifier = "$buildNumber"
+}
+
+jar {
+    classifier = ''
+	enabled = false
+}
+
+task copyCommonJars(type :Copy, dependsOn: bootJar) {
+    from "$buildDir/libs"
+    into "$rootDir/../publish/"
+    println "The build was output to -> $rootDir/../publish/"
+    include "**/*.jar","**/*.war"    
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+test {
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+assemble.dependsOn.add copyCommonJars

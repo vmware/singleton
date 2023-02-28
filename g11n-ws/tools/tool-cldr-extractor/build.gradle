@@ -1,0 +1,100 @@
+//Copyright 2019-2022 VMware, Inc.
+//SPDX-License-Identifier: EPL-2.0
+apply plugin: 'java'
+
+description = 'VIP i18n pattern CLDR data extract tools'
+
+ext {
+    javaLevel = 1.8
+    cldrVersion = '32.0.0'
+    projectVersion = '0.10.38'
+    deployPath="$rootDir/../publish/"
+    sourceCompatibility = javaLevel
+    version = '1.0'
+}
+
+configurations {
+    jar
+}
+
+jar {
+    baseName = "i18n-patterns-core"
+    version = "$projectVersion"
+    classifier = ''
+    exclude('**/cldr/data/*')
+}
+
+repositories {
+    mavenLocal()
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'commons-collections', name: 'commons-collections', version: '3.2.2'
+    implementation('com.googlecode.json-simple:json-simple:1.1.1'){
+          exclude group: 'junit'
+    }
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.6.1'
+    implementation group: 'commons-io', name: 'commons-io', version: '2.4'
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.26'
+    testImplementation group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.26'
+    testImplementation group: 'log4j', name: 'log4j', version: '1.2.17'
+	  testImplementation group: 'junit', name: 'junit', version: '4.+'
+
+}
+
+test {
+    systemProperties 'property': 'value'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+task copyLibs(type :Copy, dependsOn: jar) {
+    from "$buildDir/libs"
+    into "$rootDir/../../../publish/"
+    println "The build was output to -> $rootDir/../../../publish/"
+    include "**/*.jar"
+}
+
+task copyResources(type: Copy) {
+	File dir = new File("${buildDir}/classes/main");
+	dir.deleteDir();
+    from "${projectDir}/src/main/resources"
+    into "${buildDir}/classes/main"
+}
+processTestResources.dependsOn copyResources
+
+task download(type: JavaExec, dependsOn: classes){
+	main 'com.vmware.i18n.PatternParseMain'
+	classpath sourceSets.main.runtimeClasspath
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    baseName = "i18n-patterns-core"
+    version = "$projectVersion"
+    classifier = 'sources'
+    from sourceSets.main.allJava
+}
+ 
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    baseName = "i18n-patterns-core"
+    version = "$projectVersion"
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+ 
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
+}
+ 
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+assemble.dependsOn.add download
+assemble.dependsOn.add copyLibs

@@ -1,0 +1,151 @@
+//Copyright 2019-2023 VMware, Inc.
+//SPDX-License-Identifier: EPL-2.0
+apply plugin: 'java-library'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+description = 'l10n manager'
+
+
+configurations {
+    // remove default logger
+    all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+}
+
+dependencies {
+    api project(":vip-common")
+    api project(":md-restful-api")
+    if (project.hasProperty('datatype') && project.getProperty('datatype') == 'bundle' && project.getProperty('syncdata') == 'true') {
+        api project(":md-restful-l10n-synch")
+    }
+    implementation("org.apache.commons:commons-lang3:$commonsLangVersion")
+    implementation("commons-io:commons-io:$commonsIoVersion")
+    implementation("commons-codec:commons-codec:$commonsCodecVersion")
+    implementation("com.googlecode.json-simple:json-simple:$jsonSimpleVersion"){
+          exclude group: 'junit'
+    }
+    
+    implementation('org.springframework.boot:spring-boot-starter-log4j2') {
+        exclude group: "org.apache.logging.log4j"
+    }
+    implementation("org.apache.logging.log4j:log4j-api:$log4j2Version")
+    implementation("org.apache.logging.log4j:log4j-core:$log4j2Version")
+    implementation("org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version")
+    implementation("org.slf4j:slf4j-api:$slf4jVersion")
+    implementation("org.slf4j:jul-to-slf4j:$slf4jVersion")
+    
+    implementation("org.springframework.boot:spring-boot-starter-web") {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+    }
+    implementation("org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion")
+    implementation("org.apache.tomcat:tomcat-annotations-api:$tomcatVersion")
+    
+    implementation("org.xerial:sqlite-jdbc:$sqliteVersion")
+    implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
+    implementation("org.yaml:snakeyaml:$snakeyam")
+    implementation("io.jsonwebtoken:jjwt:$jjwtVersion")
+    implementation("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$hibernateJpa21Api")
+    implementation("org.ehcache:ehcache:$ehCacheVersion")
+    implementation("javax.cache:cache-api:$cacheApiVersion")
+    implementation("com.nimbusds:nimbus-jose-jwt:9.27")
+    
+    //swagger UI -START  
+    implementation("io.springfox:springfox-boot-starter:$swaggerVersion")
+    //swagger UI -END    
+    implementation("org.apache.httpcomponents:httpclient:$httpclient")
+    implementation ("com.amazonaws:aws-java-sdk-s3:$awsS3Version")
+    implementation ("com.amazonaws:aws-java-sdk-sts:$awsS3Version")
+    implementation ("com.amazonaws:aws-java-sdk-iam:$awsS3Version")
+    //actuator start
+    implementation ('org.springframework.boot:spring-boot-starter-actuator')
+    //actuator end
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("junit:junit:$junitVersion")
+   
+}
+
+bootJar {
+    baseName = 'vip-manager-l10n'
+    version = "$branchName"
+    classifier = "$buildNumber"
+}
+
+task copyCommonJars(type: Copy, dependsOn: bootJar) {
+    from "$buildDir/libs"
+    into "$rootDir/../publish/"
+    println "The build was output to -> $rootDir/../publish/"
+    include "**/*.jar", "**/*.war"
+}
+
+bootJar.doFirst {
+    def propPath = "${buildDir}/resources/main/application.properties"
+    println propPath
+    if (project.hasProperty('datatype') && project.getProperty('datatype') == 's3') {
+        def updatedS3Content = new File(propPath).getText('UTF-8').replaceFirst("spring.profiles.active=bundle", "spring.profiles.active=s3")
+        new File(propPath).write(updatedS3Content, 'UTF-8')
+    }
+}
+
+jar {
+    classifier = ''
+	enabled = false
+}
+
+task profile {
+    if (project.hasProperty('profileType')) {
+        def profileType = project.getProperty('profileType')
+        ant.propertyfile(file: file("$rootDir/vip-manager-l10n/src/main/resources/application.properties")) {
+            entry(key: "spring.profiles.active", value: profileType)
+        }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+assemble.dependsOn.add copyCommonJars
+
+if (JavaVersion.current().isJava8Compatible()) {
+    allprojects {
+        tasks.withType(Javadoc) {
+            options.addStringOption('Xdoclint:none', '-quiet')
+        }
+    }
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allJava
+}
+ 
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+ 
+tasks.withType(Javadoc) {
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
+}
+ 
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.enabled false
+        xml.destination file("${buildDir}/reports/jacoco.xml")
+    }
+}
+
+test {
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+

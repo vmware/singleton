@@ -1,0 +1,167 @@
+//Copyright 2019-2022 VMware, Inc.
+//SPDX-License-Identifier: EPL-2.0
+apply plugin: 'java-library'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+sourceCompatibility = 1.8
+description = 'singleton lite manager'
+
+archivesBaseName = 'singleton-lite'
+
+configurations {
+	bootJar
+    war
+    providedRuntime
+   // remove default logger
+   all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+}
+ // default encoding is utf-8
+[compileJava,compileTestJava,javadoc]*.options*.encoding = 'UTF-8'
+
+sourceSets {
+test {
+    java.srcDirs = ['src/test/java']
+    java.outputDir = file('build/classes/test')
+    output.resourcesDir = file('build/classes/test')
+    resources.srcDirs = ['src/test/resources']
+  }
+}
+
+
+
+
+dependencies {
+   if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
+        api project(":md-data-api-pgimpl")
+    }else if (project.hasProperty('datatype') && project.getProperty('datatype') == 's3') {
+        api project(":md-data-api-s3impl")
+    }else {
+        api project(":md-data-api-bundleimpl")
+    }
+    api project(":vip-common")
+    api project(":md-restful-api-i18n")
+    implementation("org.apache.commons:commons-lang3:$commonsLangVersion")
+    implementation("commons-io:commons-io:$commonsIoVersion")
+    implementation("com.googlecode.json-simple:json-simple:$jsonSimpleVersion"){
+          exclude group: 'junit'
+    }
+    implementation("org.ehcache:ehcache:$ehCacheVersion")
+    implementation("javax.cache:cache-api:$cacheApiVersion")
+    implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
+
+    compileOnly("com.google.guava:guava:$guavaVersion")
+	implementation("commons-codec:commons-codec:$commonsCodecVersion")
+    implementation("com.ibm.icu:icu4j:$icu4jVersion")
+    api group: 'org.webjars.bower', name: 'cldr-data', version: '28.0.1'
+    api("org.springframework:spring-webmvc:$springWebVersion")
+    api ("org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion")
+    api ("org.apache.tomcat:tomcat-annotations-api:$tomcatVersion")
+    api('org.springframework.boot:spring-boot-autoconfigure')
+      api ('org.springframework.boot:spring-boot-starter-log4j2'){
+              exclude group: "org.apache.logging.log4j"
+    }
+    implementation("org.apache.logging.log4j:log4j-api:$log4j2Version")
+    implementation("org.apache.logging.log4j:log4j-core:$log4j2Version")
+    implementation("org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version")
+    implementation("org.slf4j:slf4j-api:$slf4jVersion")
+    implementation("org.slf4j:jul-to-slf4j:$slf4jVersion")
+    implementation("org.yaml:snakeyaml:$snakeyam")
+    implementation("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$hibernateJpa21Api")
+    implementation("org.apache.httpcomponents:httpclient:$httpclient")
+    
+    implementation ('org.springframework.boot:spring-boot-starter-actuator')
+      //jdk 11
+    runtimeOnly 'javax.xml.bind:jaxb-api:2.4.0-b180830.0359'
+    runtimeOnly 'javax.activation:activation:1.1.1'
+    runtimeOnly 'com.sun.xml.bind:jaxb-impl:3.0.2'
+    runtimeOnly 'com.sun.xml.bind:jaxb-core:3.0.2'
+    //end jdk 11
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.asciidoctor:asciidoctorj:1.5.6")
+    testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
+    testImplementation("junit:junit:$junitVersion")
+}
+
+processResources {
+    excludes =[]
+     if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
+        println "begin to exclude pgdb builder configuration file"
+        excludes=['**/application-s3.properties', '**/application-bundle.properties']
+    }else if(project.hasProperty('datatype') && project.getProperty('datatype') == 'bundle'){
+        println "begin to exclude bundle builder configuration file"
+        excludes=['**/application-s3.properties', '**/application-pgdb.properties']
+    }else if(project.hasProperty('datatype') && project.getProperty('datatype') == 's3'){
+       println "begin to exclude S3 builder configuration file"
+       excludes=['**/application-bundle.properties', '**/application-pgdb.properties']
+      
+    }
+}
+
+task copyLibs(type :Copy, dependsOn: bootJar) {
+    from "$buildDir/libs"
+    into "$rootDir/../publish/"
+    println "The build was output to -> $rootDir/../publish/"
+    include "**/*.jar"
+}
+
+bootJar.doFirst {
+      def propPath = "${buildDir}/resources/main/application.properties"
+       println propPath
+     if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
+       def updatedPgdbContent = new File(propPath).getText('UTF-8').replaceFirst("spring.profiles.active=bundle", "spring.profiles.active=pgdb")
+       new File(propPath).write(updatedPgdbContent, 'UTF-8')
+	  }else if (project.hasProperty('datatype') && project.getProperty('datatype') == 's3') {
+       def updatedS3Content = new File(propPath).getText('UTF-8').replaceFirst("spring.profiles.active=bundle", "spring.profiles.active=s3")
+       new File(propPath).write(updatedS3Content, 'UTF-8')
+	  }
+	
+}
+
+bootJar{
+  classifier = 'boot'
+  enabled = true  
+}
+
+jar {
+    classifier = ''
+	enabled = false
+}
+
+assemble.dependsOn.add copyLibs
+
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.enabled false
+        xml.destination file("${buildDir}/reports/jacoco.xml")
+    }
+}
+
+test {
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allJava
+}
+ 
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+ 
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
+}
+ 
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}

@@ -1,0 +1,43 @@
+//Copyright 2019-2022 VMware, Inc.
+//SPDX-License-Identifier: EPL-2.0
+apply plugin: 'java-library'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+archivesBaseName = 'md-data-api-pgimpl'
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart',
+                   'Implementation-Version': version
+    }
+}
+
+configurations {
+    providedRuntime
+   // remove default logger
+   all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+}
+
+dependencies {
+    api project(":md-data-api")
+    implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
+    implementation("org.springframework.boot:spring-boot-starter-log4j2"){
+              exclude group: 'org.apache.logging.log4j'
+    }
+    implementation("org.apache.logging.log4j:log4j-api:$log4j2Version")
+    implementation("org.springframework.boot:spring-boot-starter-jdbc"){
+              exclude module: "tomcat-jdbc"
+    }
+    api("org.postgresql:postgresql:$postgresqlVersion")
+    api("com.alibaba:druid:$druidVersion") 
+    implementation("commons-collections:commons-collections:$commonsCollectionsVersion")
+}
+
+bootJar {
+    enabled = false
+}
+jar {
+    classifier = ''
+	enabled = true
+}

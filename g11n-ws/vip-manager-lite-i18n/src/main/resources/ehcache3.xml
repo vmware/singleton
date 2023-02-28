@@ -1,0 +1,80 @@
+<!--
+Copyright 2019-2022 VMware, Inc.
+SPDX-License-Identifier: EPL-2.0
+-->
+<config xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+	xmlns='http://www.ehcache.org/v3'
+	xmlns:jsr107='http://www.ehcache.org/v3/jsr107'
+	xsi:schemaLocation="
+        http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core-3.0.xsd
+        http://www.ehcache.org/v3/jsr107 http://www.ehcache.org/schema/ehcache-107-ext-3.0.xsd">
+
+	<!-- For details about each config item, please refer to official doc: http://www.ehcache.org/documentation/3.6/xml.html -->
+	<persistence directory="${user.dir}/ehcache/" />
+	<cache-template name="default">
+		<!--config the type of cache item index and value -->
+		<key-type>java.lang.String</key-type>      <!--cache item index type, default is java.lang.Object -->
+		<value-type>java.lang.String</value-type>   <!--cache item value type, default is java.lang.Object -->
+
+		<!--config cache expiry -->
+		<expiry>
+			<!--<tti unit="minutes">200</tti> use TTI(time to idle) strategy -->
+			<ttl unit="minutes">1</ttl>  <!--use TTL(time to live) strategy -->
+		</expiry>
+
+		<!-- <eviction-advisor>LRU</eviction-advisor> -->
+
+		<!--config the storage tiers and their capacity -->
+		<resources>
+			<heap unit="entries">1</heap>     <!--cache item count in heap -->
+			<!-- <offheap unit="MB">20</offheap> -->  <!--speed is lower than heap, but faster than disk -->
+			<!-- <disk unit="MB" persistent="true">100</disk> -->   <!--disk storage, speed is the lowest -->
+		</resources>
+	</cache-template>
+
+	<cache alias="ONECOMPONENT" uses-template="default">
+		<key-type>java.lang.String</key-type>      <!--cache item index type, default is java.lang.Object -->
+		<value-type>com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO</value-type>   <!--cache item value type, default is java.lang.Object -->
+		<expiry>
+			<tti unit="hours">1</tti>
+		</expiry>
+		<resources>
+			<heap unit="entries">2</heap>     <!--cache item count in heap -->
+			<!-- <offheap unit="MB">20</offheap> -->  <!--speed is lower than heap, but faster than disk -->
+			<!-- <disk unit="MB" persistent="true">100</disk> -->   <!--disk storage, speed is the lowest -->
+		</resources>
+	</cache>
+
+	<cache alias="REGION" uses-template="default">
+		<key-type>java.lang.String</key-type>
+		<value-type>com.vmware.i18n.l2.service.locale.TerritoryDTO</value-type>
+		<expiry>
+			<tti unit="hours">1</tti>
+			<!--<ttl unit="hours">24</ttl> -->
+		</expiry>
+		<resources>
+			<heap unit="entries">2</heap>     <!--cache item count in heap -->
+			<!-- <offheap unit="MB">20</offheap> -->  <!--speed is lower than heap, but faster than disk -->
+			<!-- <disk unit="MB" persistent="true">100</disk> -->   <!--disk storage, speed is the lowest -->
+		</resources>
+		
+	</cache>
+
+	<cache alias="LANGUAGE" uses-template="default">
+		<key-type>java.lang.String</key-type>
+		<value-type>java.util.HashMap</value-type>
+		<expiry>
+			<tti unit="hours">1</tti>
+			<!--<ttl unit="hours">24</ttl> -->
+		</expiry>
+	</cache>
+
+	<cache alias="PATTERN" uses-template="default">
+		<key-type>java.lang.String</key-type>
+		<value-type>java.lang.String</value-type>
+		<expiry>
+			<tti unit="hours">1</tti>
+			<!--<ttl unit="hours">24</ttl> -->
+		</expiry>
+	</cache>
+</config>

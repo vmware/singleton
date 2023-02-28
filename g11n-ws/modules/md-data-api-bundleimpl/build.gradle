@@ -1,0 +1,29 @@
+//Copyright 2019-2022 VMware, Inc.
+//SPDX-License-Identifier: EPL-2.0
+apply plugin: 'java-library'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+archivesBaseName = 'md-data-api-bundleimpl'
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart',
+                   'Implementation-Version': version
+    }
+}
+
+dependencies {
+    api project(":md-data-api")
+	api project(":vip-common")
+	implementation("org.springframework.boot:spring-boot")
+	implementation("org.slf4j:slf4j-api:$slf4jVersion")
+}
+
+bootJar {
+    enabled = false
+}
+jar {
+    classifier = ''
+	enabled = true
+}
