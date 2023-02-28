@@ -333,7 +333,7 @@ func expireCache(info *itemCacheInfo) {
 }
 
 func getCacheService() *cacheService {
-	return GetTranslation().(*transMgr).Translation.(*transInst).msgOrigin.(*cacheService)
+	return GetTranslation().(*transMgr).transInst.msgOrigin.(*cacheService)
 }
 
 func getCachedItem(id dataItemID) *dataItem {

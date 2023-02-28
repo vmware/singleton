@@ -28,7 +28,7 @@ type RegisterSourceTestSuite struct {
 func (suite *RegisterSourceTestSuite) SetupSuite() {
 	messages := NewMapComponentMsgs(RegisteredMap, localeEn, ComponentToRegister)
 	resetInst(&OnlyRegisteredSourceConfig, func() { RegisterSource(name, version, []ComponentMsgs{messages}) })
-	// suite.origin = GetTranslation().(*transMgr).Translation.(*transInst).msgOrigin.(*cacheService).messageOrigin.(*singleLoader).messageOrigin.(*saveToCache).messageOrigin.(*sourceComparison).source.(messageOriginList)[0]
+	// suite.origin = GetTranslation().(*transMgr).transInst.msgOrigin.(*cacheService).messageOrigin.(*singleLoader).messageOrigin.(*saveToCache).messageOrigin.(*sourceComparison).source.(messageOriginList)[0]
 }
 
 func (suite *RegisterSourceTestSuite) TestGetComponentMessages() {
