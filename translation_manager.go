@@ -32,9 +32,9 @@ func (t *transMgr) GetStringMessage(name, version, locale, component, key string
 				msg = strings.Replace(msg, placeholder, arg, 1)
 			}
 			return msg, nil
-		} else {
-			err = fmt.Errorf(notFoundKey, key)
 		}
+
+		err = fmt.Errorf(notFoundKey, key)
 	}
 
 	return key, err
@@ -94,7 +94,7 @@ func (t *transMgr) GetComponentsMessages(name, version string, locales, componen
 					msgs = append(msgs, bundleMsgs)
 					muList.Unlock()
 				} else { // log a warning message if translation is unavailable.
-					logger.Warn(fmt.Sprintf("failed to get translation for {product: %q, version: %q, locale: %q, component: %q}", name, version, locale, component))
+					logger.Warn(fmt.Sprintf("failed to get translation for {product:%q, version:%q, locale:%q, component:%q}", name, version, locale, component))
 				}
 			}(locale, component)
 		}
@@ -102,7 +102,7 @@ func (t *transMgr) GetComponentsMessages(name, version string, locales, componen
 	wg.Wait()
 
 	if len(msgs) == 0 { // empty is an error, other cases are successful.
-		return nil, fmt.Errorf("no translations are available for {product: %q, version: %q, locales: %v, components: %v}", name, version, locales, components)
+		return nil, fmt.Errorf("no translations are available for {product:%q, version:%q, locales:%v, components:%v}", name, version, locales, components)
 	}
 
 	return

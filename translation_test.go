@@ -199,32 +199,24 @@ func TestGetStringAbnormal(t *testing.T) {
 	arg := "MyArg"
 
 	// original locale has component, but doesn't have Key
-	EnableMultipleMockData([]string{"componentMessages-zh-Hans-sunglow"})
-	EnableMockDataWithTimes("componentMessages-en-sunglow", 1)
-	// EnableMockDataWithTimes("componentMessages-latest-sunglow", 3)
-	EnableMockDataWithTimes("componentMessages-latest-sunglow", 1)
+	EnableMultipleMockData([]string{"componentMessages-zh-Hans-sunglow", "componentMessages-en-sunglow", "componentMessages-latest-sunglow"})
 	message2, err2 := trans.GetStringMessage(name, version, localeZhhans, compSunglow, keyNonexistent, arg)
-	// assert.Contains(t, err2.Error(), "locale: "+inst.cfg.GetSourceLocale())
-	assert.Contains(t, err2.Error(), "didn't find key ")
+	assert.EqualError(t, err2, fmt.Sprintf(notFoundKey, keyNonexistent))
 	assert.Equal(t, keyNonexistent, message2)
 	assert.True(t, gock.IsDone())
 
 	// original locale doesn't have component.
 	// default locale has component, but doesn't have Key
-	EnableMultipleMockData([]string{"componentMessages-fr-users"})
-	EnableMockDataWithTimes("componentMessages-en-users", 1)
-	// EnableMockDataWithTimes("componentMessages-latest-users", 2)
-	EnableMockDataWithTimes("componentMessages-latest-users", 1)
+	EnableMultipleMockData([]string{"componentMessages-fr-users", "componentMessages-en-users", "componentMessages-latest-users"})
 	message3, err3 := trans.GetStringMessage(name, version, localeZhhans, compUsers, keyNonexistent, arg)
-	// assert.Contains(t, err3.Error(), "locale: "+inst.cfg.GetSourceLocale())
-	assert.Contains(t, err3.Error(), "didn't find key ")
+	assert.EqualError(t, err3, fmt.Sprintf(notFoundKey, keyNonexistent))
 	assert.Equal(t, keyNonexistent, message3)
 	assert.True(t, gock.IsDone())
 
 	// Both locales doesn't have the component
 	message4, err4 := trans.GetStringMessage(name, version, localeZhhans, compNonexistent, key, arg)
 	assert.NotNil(t, err4)
-	assert.NotContains(t, err4.Error(), "didn't find key")
+	assert.NotEqualValues(t, err4, fmt.Sprintf(notFoundKey, key))
 	assert.Equal(t, key, message4)
 
 	// Get default locale directly. Default locale doesn't have the component
@@ -236,7 +228,7 @@ func TestGetStringAbnormal(t *testing.T) {
 	// Get default locale directly. Default locale doesn't have the key
 	message6, err6 := trans.GetStringMessage(name, version, defaultLocaleFr, compUsers, keyNonexistent, arg)
 	assert.NotNil(t, err6)
-	assert.Contains(t, err6.Error(), "didn't find key ")
+	assert.EqualError(t, err6, fmt.Sprintf(notFoundKey, keyNonexistent))
 	assert.Equal(t, keyNonexistent, message6)
 
 	assert.True(t, gock.IsDone())
