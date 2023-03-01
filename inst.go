@@ -97,7 +97,7 @@ func createTranslation(cfg Config) Translation {
 	transImpl := transInst{origin}
 
 	fallbackLocales := []string{}
-	linkedhashset.New(cfg.DefaultLocale /*, cfg.GetSourceLocale()*/).Each(func(_ int, locale interface{}) {
+	linkedhashset.New(cfg.DefaultLocale, cfg.SourceLocale).Each(func(_ int, locale interface{}) {
 		if locale != "" {
 			fallbackLocales = append(fallbackLocales, locale.(string))
 		}
@@ -112,6 +112,8 @@ func checkConfig(cfg *Config) error {
 		return errors.New(originNotProvided)
 	case cfg.DefaultLocale == "":
 		return errors.New(defaultLocaleNotProvided)
+	case cfg.SourceLocale == "":
+		return errors.New(sourceLocaleNotProvided)
 	default:
 		return nil
 	}

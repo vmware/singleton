@@ -674,7 +674,7 @@ func TestMultipleComponentsAbnormal(t *testing.T) {
 		{"Abnormal: empty result is an error",
 			[]string{"HTTP404"},
 			[]string{"zh-Hans"}, []string{"HTTP404"}, 0,
-			"no translations are available for {product: \"SgtnTest\", version: \"1.0.0\", locales: [zh-Hans], components: [HTTP404]}"},
+			"no translations are available for {product:\"SgtnTest\", version:\"1.0.0\", locales:[zh-Hans], components:[HTTP404]}"},
 	}
 
 	defer gock.Off()

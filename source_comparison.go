@@ -20,7 +20,7 @@ type sourceComparison struct {
 func (sc *sourceComparison) Get(item *dataItem) (err error) {
 	switch item.id.iType {
 	case itemComponent:
-		if item.id.Locale == inst.cfg.GetSourceLocale() {
+		if item.id.Locale == inst.cfg.SourceLocale {
 			return sc.source.Get(item)
 		}
 		if sc.messageOrigin == nil {
@@ -45,7 +45,7 @@ func (sc *sourceComparison) getTranslation(item *dataItem) (err error) {
 	}
 
 	oldSourceItem := &dataItem{id: item.id}
-	oldSourceItem.id.Locale = inst.cfg.GetSourceLocale()
+	oldSourceItem.id.Locale = inst.cfg.SourceLocale
 	newSourceItem := &dataItem{id: item.id}
 
 	var wg sync.WaitGroup
@@ -96,7 +96,7 @@ func (sc *sourceComparison) doComparison(transBundle, oldSource, newSource Compo
 }
 
 func (sc *sourceComparison) IsExpired(item *dataItem) bool {
-	if item.id.iType == itemComponent && item.id.Locale == inst.cfg.GetSourceLocale() {
+	if item.id.iType == itemComponent && item.id.Locale == inst.cfg.SourceLocale {
 		return sc.source.IsExpired(item)
 	}
 

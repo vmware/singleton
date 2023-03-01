@@ -36,6 +36,7 @@ var OldZhValue = "消息"
 var nonexistentComponent = "comp-notexist"
 
 var enComponentID = dataItemID{iType: itemComponent, Name: name, Version: version, Locale: localeEn, Component: component}
+var defaultLocaleComponentID = dataItemID{iType: itemComponent, Name: name, Version: version, Locale: localeDefault, Component: component}
 var componentID = dataItemID{iType: itemComponent, Name: name, Version: version, Locale: locale, Component: component}
 var componentsID = dataItemID{iType: itemComponents, Name: name, Version: version}
 var localesID = dataItemID{iType: itemLocales, Name: name, Version: version}

@@ -16,7 +16,7 @@ func (o sourceAsOrigin) Get(item *dataItem) (err error) {
 	case itemComponent:
 		item.data, err = o.source.GetComponentMessages(id.Name, id.Version, id.Component)
 	case itemLocales:
-		item.data, err = []string{inst.cfg.GetSourceLocale()}, nil
+		item.data, err = []string{inst.cfg.SourceLocale}, nil
 	case itemComponents:
 		item.data, err = o.source.GetComponentList(id.Name, id.Version)
 	}

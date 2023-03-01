@@ -16,4 +16,5 @@ const (
 	errorReleaseNonexistent   = "can't find %q/%q"
 	errorComponentNonexistent = "component %q not found"
 	notFoundKey               = "didn't find key %q"
+	sourceLocaleNotProvided   = "source_locale isn't provided"
 )

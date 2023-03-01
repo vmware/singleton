@@ -106,7 +106,7 @@ func (suite *RegisterSourceTestSuite) TestGetLocaleList() {
 func (suite *RegisterSourceTestSuite) TestGetNonexistentRelease() {
 	nonExistentVersion := version + "-nonexistent"
 	expectedError := fmt.Sprintf(errorReleaseNonexistent, name, nonExistentVersion)
-	messages, err := GetTranslation().GetComponentMessages(name, nonExistentVersion, inst.cfg.GetSourceLocale(), component)
+	messages, err := GetTranslation().GetComponentMessages(name, nonExistentVersion, inst.cfg.SourceLocale, component)
 	suite.Equal(expectedError, err.Error())
 	suite.Nil(messages)
 

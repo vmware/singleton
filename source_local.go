@@ -15,5 +15,5 @@ func newLocalSource(root string) *localSource {
 }
 
 func (s *localSource) GetComponentMessages(name, version, component string) (ComponentMsgs, error) {
-	return s.bundleDAO.GetComponentMessages(name, version, inst.cfg.GetSourceLocale(), component)
+	return s.bundleDAO.GetComponentMessages(name, version, inst.cfg.SourceLocale, component)
 }
