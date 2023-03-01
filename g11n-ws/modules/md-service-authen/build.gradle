@@ -34,7 +34,9 @@ dependencies {
 	implementation("org.owasp.esapi:esapi:$esapiVersion"){
 	      exclude group: "org.apache.httpcomponents.client5"
 	      exclude group: "org.apache.httpcomponents.core5"
+          exclude group: "commons-fileupload"
 	}
+    implementation("commons-fileupload:commons-fileupload:1.5")
 	compileOnly("io.jsonwebtoken:jjwt:$jjwtVersion")
     implementation("com.nimbusds:nimbus-jose-jwt:9.27")
 }
