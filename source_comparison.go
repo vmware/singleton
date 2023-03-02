@@ -14,7 +14,18 @@ import (
 
 type sourceComparison struct {
 	messageOrigin
-	source messageOrigin
+	source     messageOrigin
+	originList messageOrigin
+}
+
+func newSourceComparison(source, trans messageOrigin) *sourceComparison {
+	o := sourceComparison{source: source, messageOrigin: trans}
+	// if trans == nil {
+	// 	o.originList = source
+	// } else {
+	o.originList = messageOriginList{source, trans}
+	// }
+	return &o
 }
 
 func (sc *sourceComparison) Get(item *dataItem) (err error) {
@@ -27,11 +38,8 @@ func (sc *sourceComparison) Get(item *dataItem) (err error) {
 			return errors.Errorf("unsupported locale %q", item.id.Locale)
 		}
 		return sc.getTranslation(item)
-	case itemLocales:
-		if sc.messageOrigin == nil {
-			return sc.source.Get(item)
-		}
-		return sc.messageOrigin.Get(item)
+	case itemLocales: // get locales from source and translation
+		return sc.originList.Get(item)
 	case itemComponents: // get component list from source
 		return sc.source.Get(item)
 	default:
