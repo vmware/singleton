@@ -166,27 +166,24 @@ public class ComponentsService {
             Map<Locale, Map<String, Map<String, String>>> localeDataMap = getTranslation(componentsToFallback, localeSet, fallbackLocalesIter);
             Map<String, Map<String, String>> componentsMap = localeDataMap.get(fallbackLocale);
             if (componentsMap != null && !componentsMap.isEmpty()) {
-                final SortedSet<String> localesToFallback2 = new TreeSet<>();
-                final SortedSet<String> componentsToFallback2 = new TreeSet<>();
-
-                final Iterator<?> localeIter = localesToFallback.iterator();
-                while (localeIter.hasNext()) {
-                    String locale = (String) localeIter.next();
+                final SortedSet<String> localesToFallbackAgain = new TreeSet<>();
+                final SortedSet<String> componentsToFallbackAgain = new TreeSet<>();
+                for (String locale : localesToFallback) {
                     for (String component : componentsToFallback) {
                         Map<String, String> componentMap = componentsMap.get(component);
                         if (componentMap != null) {
                             if (dataMap.get(locale).get(component) == null)
                                 dataMap.get(locale).put(component, componentMap);
                         } else {
-                            localesToFallback2.add(locale);
-                            componentsToFallback2.add(component);
+                            localesToFallbackAgain.add(locale);
+                            componentsToFallbackAgain.add(component);
                         }
                     }
                 }
-                if(!componentsToFallback2.isEmpty())
-                    throw new VIPJavaClientException(FormatUtils.format(ConstantsMsg.GET_MESSAGES_FAILED_ALL, componentsToFallback2.toString(), localesToFallback2.toString()));
+                if(!componentsToFallbackAgain.isEmpty())
+                    throw new VIPJavaClientException(FormatUtils.format(ConstantsMsg.GET_MESSAGES_FAILED_ALL, componentsToFallbackAgain.toString(), localesToFallbackAgain.toString()));
             } else {
-                getFallbackLocaleMessages(fallbackLocalesIter, componentsToFallback, localesToFallback, dataMap);
+                throw new VIPJavaClientException(FormatUtils.format(ConstantsMsg.GET_MESSAGES_FAILED_ALL, componentsToFallback.toString(), localeSet.toString()));
             }
         }
     }
