@@ -82,14 +82,6 @@ func DoAndCheck(ctx context.Context, done chan struct{}, doer func() error, chec
 	return
 }
 
-func ToGenericArray(x []string) []interface{} {
-	s := make([]interface{}, len(x))
-	for i, v := range x {
-		s[i] = v
-	}
-	return s
-}
-
 func IsZeroOfUnderlyingType(x interface{}) bool {
 	return reflect.DeepEqual(x, reflect.Zero(reflect.TypeOf(x)).Interface())
 }
