@@ -27,9 +27,11 @@ public class PropertyConfigs {
 	@Value("${source.bundle.file.basepath}")
 	private String sourceFileBasepath;
 
-	
 	@Value("${remote.l10n.base.url}")
 	private String remoteBaseL10Url;
+
+	@Value("${remote.l10n.user-agent:NoAgent}")
+	private String userAgent;
 	
 	@Value("${vip.i18n.base.url}")
 	private String vipBasei18nUrl;
@@ -184,5 +186,6 @@ public class PropertyConfigs {
 		return syncListPath;
 	}
 
+	public String getUserAgent() { return userAgent; }
 
 }
