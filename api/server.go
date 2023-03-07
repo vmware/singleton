@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -119,6 +119,7 @@ func StartServer() {
 	}
 }
 
+// WaitForSignals ...
 func WaitForSignals() {
 	// Wait for interrupt signal to gracefully shutdown the server with
 	// a timeout of 5 seconds.
@@ -130,6 +131,7 @@ func WaitForSignals() {
 	<-quit
 }
 
+// ShutdownServer ...
 func ShutdownServer() {
 	logger.Log.Info("Shutting down server...")
 
