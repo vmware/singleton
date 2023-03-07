@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -145,11 +145,46 @@ func TestTransCacheParallelly(t *testing.T) {
 
 	id := &translation.BundleID{Name: Name, Version: Version, Locale: Locale, Component: Component}
 	returnBundle, returnErr := &translation.Bundle{}, error(nil)
-	mockOrigin.On("GetBundle", ctx, id).Once().Return(returnBundle, returnErr).After(time.Microsecond)
+	mockOrigin.On("GetBundle", ctx, id).Once().Return(returnBundle, returnErr).After(time.Millisecond)
 	mockCache.On("Get", mock.AnythingOfType("string")).Times(loopCount).Return(nil, assert.AnError)
 	mockCache.On("Set", mock.AnythingOfType("string"), returnBundle).Once().Return(nil)
 	mockCache.On("Wait").Once().Return()
 	mockCache.On("Get", mock.AnythingOfType("string")).Times(loopCount-1).Return(returnBundle, nil)
+
+	for i := 0; i < loopCount; i++ {
+		go func(n int) {
+			defer finishGroup.Done()
+
+			startGroup.Done()
+			startGroup.Wait()
+			bundle, err := cacheMgr.GetBundle(ctx, id)
+			assert.Equal(t, returnErr, err)
+			assert.Equal(t, returnBundle, bundle)
+		}(i)
+	}
+	finishGroup.Wait()
+	mockOrigin.AssertExpectations(t)
+	mockCache.AssertExpectations(t)
+}
+
+// TestTransCacheParallelly1 cache is in wrong state
+func TestTransCacheParallelly1(t *testing.T) {
+	var mockOrigin, mockCache = &MockOrigin{}, &MockCache{}
+	ctx := context.TODO()
+	cacheMgr := translationcache.NewCacheManager(mockOrigin, mockCache)
+
+	loopCount := 10
+	var startGroup, finishGroup sync.WaitGroup
+	startGroup.Add(loopCount)
+	finishGroup.Add(loopCount)
+
+	id := &translation.BundleID{Name: Name, Version: Version, Locale: Locale, Component: Component}
+	returnBundle, returnErr := &translation.Bundle{}, error(nil)
+	mockOrigin.On("GetBundle", ctx, id).Times(1).Return(returnBundle, returnErr).After(time.Millisecond)
+	mockOrigin.On("GetBundle", ctx, id).Times(loopCount-1).Return(returnBundle, returnErr)
+	mockCache.On("Get", mock.AnythingOfType("string")).Times(2*loopCount-1).Return(nil, assert.AnError)
+	mockCache.On("Set", mock.AnythingOfType("string"), returnBundle).Once().Return(nil)
+	mockCache.On("Wait").Once().Return()
 
 	for i := 0; i < loopCount; i++ {
 		go func(n int) {
