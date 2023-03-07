@@ -199,48 +199,36 @@ func TestGetStringAbnormal(t *testing.T) {
 	arg := "MyArg"
 
 	// original locale has component, but doesn't have Key
-	EnableMultipleMockData([]string{"componentMessages-zh-Hans-sunglow", "componentMessages-fr-sunglow"})
-	EnableMockDataWithTimes("componentMessages-en-sunglow", 2)
-	// EnableMockDataWithTimes("componentMessages-latest-sunglow", 3)
-	EnableMockDataWithTimes("componentMessages-latest-sunglow", 2)
+	EnableMultipleMockData([]string{"componentMessages-zh-Hans-sunglow", "componentMessages-en-sunglow", "componentMessages-latest-sunglow"})
 	message2, err2 := trans.GetStringMessage(name, version, localeZhhans, compSunglow, keyNonexistent, arg)
-	// assert.Contains(t, err2.Error(), "locale: "+inst.cfg.GetSourceLocale())
-	assert.Contains(t, err2.Error(), "locale: "+localeDefault)
-	assert.Contains(t, err2.Error(), compSunglow)
-	assert.Contains(t, err2.Error(), "fail to get message")
+	assert.EqualError(t, err2, fmt.Sprintf(notFoundKey, keyNonexistent))
 	assert.Equal(t, keyNonexistent, message2)
 	assert.True(t, gock.IsDone())
 
 	// original locale doesn't have component.
 	// default locale has component, but doesn't have Key
-	EnableMultipleMockData([]string{"componentMessages-fr-users"})
-	EnableMockDataWithTimes("componentMessages-en-users", 1)
-	// EnableMockDataWithTimes("componentMessages-latest-users", 2)
-	EnableMockDataWithTimes("componentMessages-latest-users", 1)
+	EnableMultipleMockData([]string{"componentMessages-fr-users", "componentMessages-en-users", "componentMessages-latest-users"})
 	message3, err3 := trans.GetStringMessage(name, version, localeZhhans, compUsers, keyNonexistent, arg)
-	// assert.Contains(t, err3.Error(), "locale: "+inst.cfg.GetSourceLocale())
-	assert.Contains(t, err3.Error(), "locale: "+localeDefault)
-	assert.Contains(t, err3.Error(), compUsers)
-	assert.Contains(t, err3.Error(), "fail to get message")
+	assert.EqualError(t, err3, fmt.Sprintf(notFoundKey, keyNonexistent))
 	assert.Equal(t, keyNonexistent, message3)
 	assert.True(t, gock.IsDone())
 
 	// Both locales doesn't have the component
 	message4, err4 := trans.GetStringMessage(name, version, localeZhhans, compNonexistent, key, arg)
 	assert.NotNil(t, err4)
-	assert.NotContains(t, err4.Error(), "fail to get message")
+	assert.NotEqualValues(t, err4, fmt.Sprintf(notFoundKey, key))
 	assert.Equal(t, key, message4)
 
 	// Get default locale directly. Default locale doesn't have the component
 	message5, err5 := trans.GetStringMessage(name, version, defaultLocaleFr, compNonexistent, key, arg)
 	assert.NotNil(t, err5)
-	assert.NotContains(t, err5.Error(), "fail to get message")
+	assert.NotContains(t, err5.Error(), "didn't find key")
 	assert.Equal(t, key, message5)
 
 	// Get default locale directly. Default locale doesn't have the key
 	message6, err6 := trans.GetStringMessage(name, version, defaultLocaleFr, compUsers, keyNonexistent, arg)
 	assert.NotNil(t, err6)
-	assert.Contains(t, err6.Error(), "fail to get message")
+	assert.EqualError(t, err6, fmt.Sprintf(notFoundKey, keyNonexistent))
 	assert.Equal(t, keyNonexistent, message6)
 
 	assert.True(t, gock.IsDone())
@@ -686,7 +674,7 @@ func TestMultipleComponentsAbnormal(t *testing.T) {
 		{"Abnormal: empty result is an error",
 			[]string{"HTTP404"},
 			[]string{"zh-Hans"}, []string{"HTTP404"}, 0,
-			"no translations are available for {product 'SgtnTest', version '1.0.0', locales '[zh-Hans]', components '[HTTP404]'}"},
+			"no translations are available for {product:\"SgtnTest\", version:\"1.0.0\", locales:[zh-Hans], components:[HTTP404]}"},
 	}
 
 	defer gock.Off()

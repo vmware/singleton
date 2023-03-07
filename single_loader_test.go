@@ -45,7 +45,7 @@ func (suite *SingleLoaderTestSuite) TestConcurrentGet() {
 	var muData sync.Mutex
 
 	// setup expectations
-	suite.testObj.On("Get", mock.AnythingOfType("*sgtn.dataItem")).Once().Return(nil).After(time.Millisecond)
+	suite.testObj.On("Get", mock.AnythingOfType("*sgtn.dataItem")).Once().Return(nil).After(2 * time.Millisecond)
 
 	// call the code we are testing
 	loopCount := 100

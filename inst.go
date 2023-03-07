@@ -96,13 +96,13 @@ func createTranslation(cfg Config) Translation {
 
 	transImpl := transInst{origin}
 
-	localeSet := linkedhashset.New(cfg.DefaultLocale /*, cfg.GetSourceLocale()*/)
 	fallbackLocales := []string{}
-	for _, locale := range localeSet.Values() {
+	linkedhashset.New(cfg.DefaultLocale, cfg.SourceLocale).Each(func(_ int, locale interface{}) {
 		if locale != "" {
 			fallbackLocales = append(fallbackLocales, locale.(string))
 		}
-	}
+	})
+
 	return newTransMgr(&transImpl, fallbackLocales)
 }
 
@@ -112,6 +112,8 @@ func checkConfig(cfg *Config) error {
 		return errors.New(originNotProvided)
 	case cfg.DefaultLocale == "":
 		return errors.New(defaultLocaleNotProvided)
+	case cfg.SourceLocale == "":
+		return errors.New(sourceLocaleNotProvided)
 	default:
 		return nil
 	}
@@ -156,7 +158,7 @@ func SetLogger(l Logger) {
 
 // RegisterSource is the way sending source strings to Singleton client programmatically
 func RegisterSource(name, version string, sources []ComponentMsgs) {
-	logger.Info(fmt.Sprintf("Register source to %s/%s", name, version))
+	logger.Info(fmt.Sprintf("Register source to %q/%q", name, version))
 
 	id := releaseID{name, version}
 	release, ok := mapSource.releases[id]

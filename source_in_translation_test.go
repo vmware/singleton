@@ -22,11 +22,11 @@ func (suite *SourceInTranslationTestSuite) SetupSuite() {
 }
 
 func (suite *SourceInTranslationTestSuite) TestGetComponentMessages() {
-	messages, err := GetTranslation().GetComponentMessages(name, version, inst.cfg.GetSourceLocale(), component)
+	messages, err := GetTranslation().GetComponentMessages(name, version, inst.cfg.SourceLocale, component)
 	suite.Nil(err)
 	suite.Equal(4, messages.Size())
 	suite.IsType(&sourceInTranslation{}, getCachedItem(enComponentID).origin)
-	message, err := GetTranslation().GetStringMessage(name, version, inst.cfg.GetSourceLocale(), component, key)
+	message, err := GetTranslation().GetStringMessage(name, version, inst.cfg.SourceLocale, component, key)
 	suite.Nil(err)
 	suite.Equal("Message-latest", message)
 }
