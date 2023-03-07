@@ -1,0 +1,21 @@
+name: 'Get branch name'
+outputs:
+  branch-name:
+    description: "Branch name"
+    value: ${{ steps.get-branch-name-id.outputs.branch-name }}
+runs:
+  using: "composite"
+  steps:
+    - name: Get branch name
+      id: get-branch-name-id
+      shell: bash
+      run: |
+        echo "event name: ${{ github.event_name }}"
+        if [ ${{ github.event_name }} = push ]; then
+          BRANCH_NAME=${GITHUB_REF#refs/heads/}
+        fi
+        if [ ${{ github.event_name }} = pull_request ]; then
+          BRANCH_NAME=${GITHUB_HEAD_REF}
+        fi
+        echo "branch-name=$(echo $BRANCH_NAME)" >> $GITHUB_OUTPUT
+        echo "The branch name is ${BRANCH_NAME}."
