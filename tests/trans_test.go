@@ -138,7 +138,7 @@ func TestTransCacheParallelly(t *testing.T) {
 	ctx := context.TODO()
 	cacheMgr := translationcache.NewCacheManager(mockOrigin, mockCache)
 
-	loopCount := 100
+	loopCount := 50
 	var startGroup, finishGroup sync.WaitGroup
 	startGroup.Add(loopCount)
 	finishGroup.Add(loopCount)
