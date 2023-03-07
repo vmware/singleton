@@ -22,4 +22,6 @@ func main() {
 	defer logger.Log.Sync()
 
 	api.StartServer()
+	api.WaitForSignals()
+	api.ShutdownServer()
 }
