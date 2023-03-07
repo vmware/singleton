@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -13,7 +13,7 @@ const ts = require('typescript');
 const ArgumentParser = require('argparse').ArgumentParser;
 
 class CollectSourceBundle {
-    constructor(logger, vipService, vipConfig) {
+    constructor(logger, vipService, vipConfig, cliOptions) {
         this.logger = logger;
         this.vipService = vipService;
         this.vipConfig = vipConfig;
@@ -21,6 +21,7 @@ class CollectSourceBundle {
             total: 0,
             current: []
         };
+        this.cliOptions = cliOptions;
     }
     isSourceBundle(file) {
         return file.match(/l10n\.(ts|js)$/);
@@ -30,15 +31,24 @@ class CollectSourceBundle {
         return this.vipService.collectSources(sourceSet);
     }
     convertDataForVIP(data) {
+        const isEncode = this.cliOptions.encode ? true : false;
+        const sourceFormat = isEncode ? this.cliOptions.encode + ",STRING" : "STRING";
         var sourceSet = [];
         for (let i in data) {
+            const source = isEncode ? this.encodeString(data[i]) : data[i];
             sourceSet.push({
                 commentForSource: '',
                 key: i,
-                source: data[i]
+                source,
+                sourceFormat,
             });
         }
         return sourceSet;
+    }
+    encodeString(str) {
+        var buff = Buffer.from(str);
+        var res = buff.toString(this.cliOptions.encode);
+        return res;
     }
     throttleCollectSources(dataObject, stepSize, file) {
         var data = this.convertDataForVIP(dataObject);
@@ -142,6 +152,14 @@ function run() {
     );
 
     parser.addArgument(
+        ['--encode'],
+        {
+            help: 'Encode the resource.',
+            required: false,
+        }
+    );
+
+    parser.addArgument(
         ['--moduletype'],
         {
             help: 'transform ECMAScript modules to CommonJS',
@@ -163,7 +181,16 @@ function run() {
     try {
         let vipConfig = new VIPConfig(args.host, args.product, args.version, args.component);
         let vipService = new VIPService(vipConfig, logger, null);
-        let collectSourceBundle = new CollectSourceBundle(logger, vipService, vipConfig);
+        let encode = args.encode && args.encode.toUpperCase();
+        if (encode && encode !== "BASE64") {
+            logger.error("The encoding type '" + encode + "' is not supported.");
+            return;
+        }
+        const cliOptions = {
+            encode: encode,
+        };
+
+        let collectSourceBundle = new CollectSourceBundle(logger, vipService, vipConfig, cliOptions);
         walkDirectory(args.source_dir, function (files) {
             logger.debug('walkDirectory resolve files', files);
             files.forEach(function (file) {
