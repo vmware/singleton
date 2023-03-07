@@ -39,7 +39,7 @@ jobs:
           chmod +x check_headers.py
           git diff ${{ steps.get-commit-range-action.outputs.commit-range }} --stat
           git diff --name-only --diff-filter=d ${{ steps.get-commit-range-action.outputs.commit-range }}
-          python ./check_headers.py -f "$(git diff --name-only --diff-filter=d ${{ steps.get-commit-range-action.outputs.commit-range }} ':(exclude)api/v1/swagger/docs.go' ':(exclude)api/v2/swagger/docs.go' ':(exclude)internal/bindata/bindata.go')"
+          python ./check_headers.py -f "$(git diff --name-only --diff-filter=d ${{ steps.get-commit-range-action.outputs.commit-range }})"
   unit-test:
     name: Unit Test
     runs-on: ubuntu-latest
@@ -51,7 +51,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v2
         with:
-          go-version: 1.18.x
+          go-version: 1.16.x
       - name: Unit test
         run: |
           make test
@@ -79,7 +79,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v2
         with:
-          go-version: 1.18.x
+          go-version: 1.16.x
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v1
         with:
@@ -88,28 +88,6 @@ jobs:
         uses: github/codeql-action/autobuild@v1
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
-
-  codacy-analysis-cli:
-    name: Codacy Analysis CLI
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@main
-      - name: Run Codacy Analysis CLI
-        uses: codacy/codacy-analysis-cli-action@master  
-        with:
-          output: results.sarif
-          format: sarif
-          # Adjust severity of non-security issues
-          gh-code-scanning-compat: true
-          # Force 0 exit code to allow SARIF file generation
-          # This will handover control about PR rejection to the GitHub side
-          max-allowed-issues: 2147483647  
-      # Upload the SARIF file generated in the previous step  
-      - name: Upload SARIF results file
-        uses: github/codeql-action/upload-sarif@main
-        with:
-          sarif_file: results.sarif
 
   smoke-test:
     name: Smoke Test
@@ -122,7 +100,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v2
         with:
-          go-version: 1.18.x
+          go-version: 1.16.x
       - name: Set up JDK 8
         uses: actions/setup-java@v2
         with:
