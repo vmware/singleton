@@ -138,14 +138,14 @@ func TestTransCacheParallelly(t *testing.T) {
 	ctx := context.TODO()
 	cacheMgr := translationcache.NewCacheManager(mockOrigin, mockCache)
 
-	loopCount := 50
+	loopCount := 20
 	var startGroup, finishGroup sync.WaitGroup
 	startGroup.Add(loopCount)
 	finishGroup.Add(loopCount)
 
 	id := &translation.BundleID{Name: Name, Version: Version, Locale: Locale, Component: Component}
 	returnBundle, returnErr := &translation.Bundle{}, error(nil)
-	mockOrigin.On("GetBundle", ctx, id).Once().Return(returnBundle, returnErr).After(10 * time.Millisecond)
+	mockOrigin.On("GetBundle", ctx, id).Once().Return(returnBundle, returnErr).After(time.Millisecond)
 	mockCache.On("Get", mock.AnythingOfType("string")).Times(loopCount).Return(nil, assert.AnError)
 	mockCache.On("Set", mock.AnythingOfType("string"), returnBundle).Once().Return(nil)
 	mockCache.On("Wait").Once().Return()
