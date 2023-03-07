@@ -41,7 +41,7 @@ func TestServer(t *testing.T) {
 	}()
 
 	api.StartServer()
-	raw_connect("localhost", []string{strconv.Itoa(config.Settings.Server.HTTPPort), strconv.Itoa(config.Settings.Server.HTTPSPort)})
+	rawConnect("localhost", []string{strconv.Itoa(config.Settings.Server.HTTPPort), strconv.Itoa(config.Settings.Server.HTTPSPort)})
 	api.ShutdownServer()
 
 	output, _ := done()
@@ -52,7 +52,7 @@ func TestServer(t *testing.T) {
 	assert.Contains(t, output, "Server stopped")
 }
 
-func raw_connect(host string, ports []string) {
+func rawConnect(host string, ports []string) {
 	for _, port := range ports {
 		timeout := time.Second
 		conn, err := net.DialTimeout("tcp", net.JoinHostPort(host, port), timeout)
