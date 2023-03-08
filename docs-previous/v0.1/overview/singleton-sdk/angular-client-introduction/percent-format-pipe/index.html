@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Percent Format Pipe - Singleton</title>
 <meta name="description" content="One-fits-all Internationalization Solution">
-<meta name="generator" content="Hugo 0.90.0" />
+<meta name="generator" content="Hugo 0.105.0">
 <link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/percent-format-pipe/">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
@@ -19,7 +19,7 @@
 </style>
 <meta property="og:title" content="Percent Format Pipe" />
 <meta property="og:description" content="Overview Formats a number into percentage string. Group sizing and separator and other locale-specific configurations are based on the pattern data.
-Usage {{ value | percentFormat [ : formatOptions ] }} Parameters    Parameter Type Description     formatOptions object The results formats can be customized using the formatOptions argument. See formatOptions for further details.    formatOptions    Attribute Type Required Description     minIntegerDigits number Optional The minimum digits of integer numbers used." />
+Usage {{ value | percentFormat [ : formatOptions ] }} Parameters Parameter Type Description formatOptions object The results formats can be customized using the formatOptions argument. See formatOptions for further details. formatOptions Attribute Type Required Description minIntegerDigits number Optional The minimum digits of integer numbers used. The possible values are from 1 to 21, and the default value is 1." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/percent-format-pipe/" /><meta property="og:image" content="https://vmware.github.io/singleton/images/og-image.png"/><meta property="article:section" content="docs-previous" />
 <meta property="article:published_time" content="2019-09-24T20:08:31+08:00" />
@@ -30,12 +30,12 @@ Usage {{ value | percentFormat [ : formatOptions ] }} Parameters    Parameter Ty
 
 <meta name="twitter:title" content="Percent Format Pipe"/>
 <meta name="twitter:description" content="Overview Formats a number into percentage string. Group sizing and separator and other locale-specific configurations are based on the pattern data.
-Usage {{ value | percentFormat [ : formatOptions ] }} Parameters    Parameter Type Description     formatOptions object The results formats can be customized using the formatOptions argument. See formatOptions for further details.    formatOptions    Attribute Type Required Description     minIntegerDigits number Optional The minimum digits of integer numbers used."/>
+Usage {{ value | percentFormat [ : formatOptions ] }} Parameters Parameter Type Description formatOptions object The results formats can be customized using the formatOptions argument. See formatOptions for further details. formatOptions Attribute Type Required Description minIntegerDigits number Optional The minimum digits of integer numbers used. The possible values are from 1 to 21, and the default value is 1."/>
 <meta itemprop="name" content="Percent Format Pipe">
 <meta itemprop="description" content="Overview Formats a number into percentage string. Group sizing and separator and other locale-specific configurations are based on the pattern data.
-Usage {{ value | percentFormat [ : formatOptions ] }} Parameters    Parameter Type Description     formatOptions object The results formats can be customized using the formatOptions argument. See formatOptions for further details.    formatOptions    Attribute Type Required Description     minIntegerDigits number Optional The minimum digits of integer numbers used."><meta itemprop="datePublished" content="2019-09-24T20:08:31+08:00" />
+Usage {{ value | percentFormat [ : formatOptions ] }} Parameters Parameter Type Description formatOptions object The results formats can be customized using the formatOptions argument. See formatOptions for further details. formatOptions Attribute Type Required Description minIntegerDigits number Optional The minimum digits of integer numbers used. The possible values are from 1 to 21, and the default value is 1."><meta itemprop="datePublished" content="2019-09-24T20:08:31+08:00" />
 <meta itemprop="dateModified" content="2019-09-24T20:08:31+08:00" />
-<meta itemprop="wordCount" content="302"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
+<meta itemprop="wordCount" content="202"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
 <meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>Singleton</h1><span class="version">Version 0.6</span><a href="https://github.com/vmware/singleton" class="github"><i class="fab fa-github"></i></a>
@@ -63,7 +63,6 @@ Usage {{ value | percentFormat [ : formatOptions ] }} Parameters    Parameter Ty
 <p>Formats a number into percentage string. Group sizing and separator and other locale-specific configurations are based on the pattern data.</p>
 <h4 id="usage"><strong>Usage</strong></h4>
 <pre tabindex="0"><code>{{ value | percentFormat [ : formatOptions ] }}
-
 </code></pre><h4 id="parameters"><strong>Parameters</strong></h4>
 <table>
 <thead>
@@ -113,26 +112,25 @@ Usage {{ value | percentFormat [ : formatOptions ] }} Parameters    Parameter Ty
 </tbody>
 </table>
 <h4 id="example-code"><strong>Example Code</strong></h4>
-<pre tabindex="0"><code>// input '0.1'
+<pre tabindex="0"><code>// input &#39;0.1&#39;
 {{ num | percentFormat }}
-// output '10%'
+// output &#39;10%&#39;
 
-// input '0.1234'
+// input &#39;0.1234&#39;
 {{ num | percentFormat }}
-// output '12%'
+// output &#39;12%&#39;
 
 // Format options usages
 // Please note that pass object as a parameter,
 // the end of the brace should keep a whitespace.
 
-// input '0.1234'
+// input &#39;0.1234&#39;
 {{ num | percentFormat: { minFractionDigits: 2 } }}
-// output '12.34%'
+// output &#39;12.34%&#39;
 
-// input '12345'
+// input &#39;12345&#39;
 {{ num | percentFormat }}
-// output '1,234,500%'
-
+// output &#39;1,234,500%&#39;
 </code></pre><style>
      html {
         font-family: Metropolis;
@@ -217,6 +215,7 @@ Published on 24 Sep 2019
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">Singleton Service Custom Log</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
 
 <li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>

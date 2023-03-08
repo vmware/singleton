@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Standalone Mode - Singleton</title>
 <meta name="description" content="One-fits-all Internationalization Solution">
-<meta name="generator" content="Hugo 0.90.0" />
+<meta name="generator" content="Hugo 0.105.0">
 <link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/standalone-mode/">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
@@ -35,7 +35,7 @@ Specification Register product No matter the singleton service will be running i
 <meta itemprop="description" content="Standalone mode is designed for the application without singleton service at runtime to support internationalization, the translations and formatting patterns need to be downloaded from singleton service into local asset folder at buildtime. In this way, when the application starts, the Singleton Angular client will get translations and patterns from application web server through HTTP request.
 Specification Register product No matter the singleton service will be running in product environment or not."><meta itemprop="datePublished" content="2019-09-24T20:08:31+08:00" />
 <meta itemprop="dateModified" content="2019-09-24T20:08:31+08:00" />
-<meta itemprop="wordCount" content="730"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
+<meta itemprop="wordCount" content="624"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
 <meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>Singleton</h1><span class="version">Version 0.6</span><a href="https://github.com/vmware/singleton" class="github"><i class="fab fa-github"></i></a>
@@ -66,14 +66,14 @@ Specification Register product No matter the singleton service will be running i
 <h5 id="normalize-the-language-code"><strong>Normalize the language code</strong></h5>
 <p>The language normalization is required when the language comes from user browser lanugage, however, each browser relies on different standard of langugae code, so the normalization is used to map the different format of language code to the singleton standard.</p>
 <p>Most of On-Premise applications have the language seletor to narrow down the language options, in that case the language normalization is only for default selection from user browser language, but just to make sure the language code from the language selector is consistent with the value which defined in the downloading script.</p>
-<pre tabindex="0"><code>import { getBrowserCultureLang, LocaleService } from '@singleton-i18n/angular-client';
+<pre tabindex="0"><code>import { getBrowserCultureLang, LocaleService } from &#39;@singleton-i18n/angular-client&#39;;
 ...
     get selectedLanguage(): string {
         return localStorage.getItem(
             USER_SELECTED_LANGUAGE
         ) ||
         getBrowserCultureLang() ||
-        'en';
+        &#39;en&#39;;
     }
 
     // Singleton provides API to transform the language code from the browser into Singleton standard language code.
@@ -82,7 +82,6 @@ Specification Register product No matter the singleton service will be running i
         return this.localeService.normalizeLanguageCode(language);
     }
 ...
-
 </code></pre><h5 id="define-script-to-download-locale-data"><strong>Define script to download locale data</strong></h5>
 <p>Use npm command line script to download locale data (translation and formatting pattern) into asset folder at buildtime.</p>
 <h5 id="load-locale-data"><strong>load-locale-data</strong></h5>
@@ -155,41 +154,37 @@ Specification Register product No matter the singleton service will be running i
     --version 1.0
     --locales fr,es,ja,en-GB,pt-BR,de,ko,zh-TW,zh-CN
     --scope dates,numbers,currencies,dateFields
-
 </code></pre><h5 id="add-script-in-packagejson"><strong>Add script in package.json</strong></h5>
 <pre tabindex="0"><code>scripts: {
     ...
-    &quot;load-locale-data&quot;: &quot;load-locale-data -d ./src/assets/i18n/ 
+    &#34;load-locale-data&#34;: &#34;load-locale-data -d ./src/assets/i18n/ 
                         --host https://singleton.service.com:8090
                         --product ngxSingleton
                         --component Angular
                         --version 1.0.0
                         --locales zh-Hans,en,ja,fr 
-                        --scope dates,numbers,currencies,dateFields&quot;
+                        --scope dates,numbers,currencies,dateFields&#34;
 }
-
 </code></pre><h5 id="execute-script-at-build-time"><strong>Execute script at build time</strong></h5>
 <pre tabindex="0"><code>npm run load-locale-data
-
 </code></pre><h5 id="configure-i18n-assets"><strong>Configure i18n assets</strong></h5>
 <p>If use the local bundles instead of singleton service to support i18n, the asset path should be specified in singleton configuration, so in that case Singleton Angular client will download the locale data from the path at runtime. Moreover, if the application also needs to handle the data formatting, please define the all functional categories which will be used in the configuration as i18nScope and make sure the downloading script contains the same relevant scope definition.</p>
 <pre tabindex="0"><code>// i18n-config.ts
 const I18nConfig = {
-    productID: 'ngxSingleton',
-    component: 'Angular',
-    version: '1.0.0',
+    productID: &#39;ngxSingleton&#39;,
+    component: &#39;Angular&#39;,
+    version: &#39;1.0.0&#39;,
     i18nScope: [
         PatternCategories.DATE,
         PatternCategories.NUMBER,
         PatternCategories.CURRENCIES,
         PatternCategories.DATEFIELDS
     ],
-    i18nAssets: 'assets/i18n/',
+    i18nAssets: &#39;assets/i18n/&#39;,
     isPseudo: false,
     collectSource: false,
     sourceBundle: ENGLISH
 };
-
 </code></pre><h5 id="limitations"><strong>Limitations</strong></h5>
 <p>Using the local data to support i18n is not a recommended way that only for a transition period prior to singleton service deployed. So before adopting standalone mode, please understand the limitations of this mode as below:</p>
 <ul>
@@ -284,6 +279,7 @@ Published on 24 Sep 2019
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">Singleton Service Custom Log</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
 
 <li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>

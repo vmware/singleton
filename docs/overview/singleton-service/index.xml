@@ -13,7 +13,17 @@
       <pubDate>Thu, 02 Jul 2020 11:09:53 +0800</pubDate>
       
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/</guid>
-      <description>1. Prerequisites  Java 8 (Java 9+ are not supported, will get compiler issue) Git Docker  2. Create Singleton Database docker image 2.1 Required  Linux 64-bit Operation System and install docker successfully  2.2 Prepare the init db scripts 2.2.1 prepare the create users and databases sql scripts vipinitdb.sql CREATE USER pgvipconfig WITH PASSWORD &#39;vipconfig&#39;; CREATE USER pgvipdata WITH PASSWORD &#39;vipdata&#39;; CREATE DATABASE vipconfig OWNER pgvipconfig; CREATE DATABASE vipdata0 OWNER pgvipdata; CREATE DATABASE vipdata1 OWNER pgvipdata; 2.</description>
+      <description>1. Prerequisites Java 8 (Java 9+ are not supported, will get compiler issue) Git Docker 2. Create Singleton Database docker image 2.1 Required Linux 64-bit Operation System and install docker successfully 2.2 Prepare the init db scripts 2.2.1 prepare the create users and databases sql scripts vipinitdb.sql CREATE USER pgvipconfig WITH PASSWORD &amp;#39;vipconfig&amp;#39;; CREATE USER pgvipdata WITH PASSWORD &amp;#39;vipdata&amp;#39;; CREATE DATABASE vipconfig OWNER pgvipconfig; CREATE DATABASE vipdata0 OWNER pgvipdata; CREATE DATABASE vipdata1 OWNER pgvipdata; 2.</description>
+    </item>
+    
+    <item>
+      <title>Singleton Service Custom Log</title>
+      <link>https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/</link>
+      <pubDate>Tue, 07 Mar 2023 10:27:25 +0800</pubDate>
+      
+      <guid>https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/</guid>
+      <description>How to use custom log configuration file in Singleton service 1.The custom log configuration sample If you want to use custom log configuration file, you can change the configuration sample as following:
+&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; &amp;lt;Configuration status=&amp;#34;OFF&amp;#34;&amp;gt; &amp;lt;!-- Logging Properties --&amp;gt; &amp;lt;Properties&amp;gt; &amp;lt;property name=&amp;#34;application_name&amp;#34;&amp;gt;Singleton&amp;lt;/property&amp;gt; &amp;lt;property name=&amp;#34;module_name&amp;#34;&amp;gt;i18nManager&amp;lt;/property&amp;gt; &amp;lt;property name=&amp;#34;log_path&amp;#34;&amp;gt;${sys:app.log.home:-./logs}/i18n&amp;lt;/property&amp;gt; &amp;lt;/Properties&amp;gt; &amp;lt;Appenders&amp;gt; &amp;lt;!-- Console Appender configuration--&amp;gt; &amp;lt;Console name=&amp;#34;Console&amp;#34; target=&amp;#34;SYSTEM_OUT&amp;#34;&amp;gt; &amp;lt;ThresholdFilter level=&amp;#34;trace&amp;#34; onMatch=&amp;#34;ACCEPT&amp;#34; onMismatch=&amp;#34;DENY&amp;#34;/&amp;gt; &amp;lt;PatternLayout pattern=&amp;#34;%d{yyyy-MM-dd HH:mm:ss,SSS} [${application_name}] [${module_name}] [%level] [%t] %l - %msg%n&amp;#34;/&amp;gt; &amp;lt;/Console&amp;gt; &amp;lt;!</description>
     </item>
     
     <item>
@@ -24,7 +34,7 @@
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/</guid>
       <description>Singleton adds script files to help user to start/check/stop Singleton Service build.
 How to generate Singleton Script The steps:
- Clone Singleton Service code using Git  git clone git@github.com:vmware/singleton.gitComplie a build using Gradle wrapper under ./g11n-ws folder  ./gradlew build -x testGo to ./Singleton/Publish folder, find singletonScripts-0.1.0.zip, and extract it, you will get 4 files as below:  singletonall.shsingletonstart.shsingletoncheck.shsingletonstop.shHow to use Singleton Script singletonall.</description>
+Clone Singleton Service code using Git git clone git@github.com:vmware/singleton.git Complie a build using Gradle wrapper under ./g11n-ws folder ./gradlew build -x test Go to ./Singleton/Publish folder, find singletonScripts-0.1.0.zip, and extract it, you will get 4 files as below: singletonall.shsingletonstart.shsingletoncheck.shsingletonstop.sh How to use Singleton Script singletonall.sh This script is used to start, stop, and status detect Singleton Service, also restart it when something wrong in Singleton Service running .</description>
     </item>
     
     <item>

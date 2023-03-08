@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Angular Client Introduction - Singleton</title>
 <meta name="description" content="One-fits-all Internationalization Solution">
-<meta name="generator" content="Hugo 0.90.0" />
+<meta name="generator" content="Hugo 0.105.0">
 <link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
@@ -80,53 +80,49 @@ you need to set your NPM registry either in your .npmrc or on the command line w
     superagent@^5.2.2 \
     typescript@^4.0.0 \
     --save
-
 </code></pre><h4 id="strings-externalization"><strong>Strings externalization</strong></h4>
 <pre tabindex="0"><code>// intro.l10n.ts
 
 export const ENGLISH = {
     ...
-    'some.unique.key' : 'English for some.unique.key',
-    'singleton.description' : '{0} is common lib developed by VMware G11n team.',
+    &#39;some.unique.key&#39; : &#39;English for some.unique.key&#39;,
+    &#39;singleton.description&#39; : &#39;{0} is common lib developed by VMware G11n team.&#39;,
 
     // if the comment is required, please use array as the value
     // the first item represents actual value, the second is the comment
-    'create.time': ['This example was created on {0}', 'the variable is a date']
+    &#39;create.time&#39;: [&#39;This example was created on {0}&#39;, &#39;the variable is a date&#39;]
     ...
 };
-
 </code></pre><pre tabindex="0"><code>// error.l10n.ts
 
 export const ENGLISH = {
     ...
-    'timeout': 'network connection timeout'
+    &#39;timeout&#39;: &#39;network connection timeout&#39;
     ...
 };
-
 </code></pre><h4 id="configuration"><strong>Configuration</strong></h4>
 <pre tabindex="0"><code>// i18n.config.ts
 // Since the variable name exported in the resource file can only be ENGLISH,
 // when importing the resource file, please use import as to distinguish the resource files.
 
-import { ENGLISH as IntroMessages } from './intro.l10n';
-import { ENGLISH as ErrorMessages } from './error.l10n';
-import { PatternCategories } from '@singleton-i18n/angular-client';
+import { ENGLISH as IntroMessages } from &#39;./intro.l10n&#39;;
+import { ENGLISH as ErrorMessages } from &#39;./error.l10n&#39;;
+import { PatternCategories } from &#39;@singleton-i18n/angular-client&#39;;
 
 export const I18nConfig = {
-    productID: 'SingletonNgxSample',
-    component: 'default',
-    version: '1.0.0',
+    productID: &#39;SingletonNgxSample&#39;,
+    component: &#39;default&#39;,
+    version: &#39;1.0.0&#39;,
     i18nScope: [
         PatternCategories.DATE,
         PatternCategories.NUMBER,
         PatternCategories.CURRENCIES
     ],
-    host: 'https://singleton.service.com:8090/',
+    host: &#39;https://singleton.service.com:8090/&#39;,
     isPseudo: false,
     sourceBundles: [IntroMessages, ErrorMessages],
     timeout: 5000
 };
-
 </code></pre><h4 id="parameters"><strong>Parameters</strong></h4>
 <table>
 <thead>
@@ -214,13 +210,13 @@ Make sure you only call this method in the root module of your application, most
 </blockquote>
 <pre tabindex="0"><code>// app.module.ts
 ...
-import { NgModule, APP_INITIALIZER } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { VIPModule, VIPService, LocaleService, getBrowserCultureLang } from '@singleton-i18n/angular-client';
-import { I18nConfig } from './i18n.config';
+import { NgModule, APP_INITIALIZER } from &#39;@angular/core&#39;;
+import { HttpClientModule } from &#39;@angular/common/http&#39;;
+import { VIPModule, VIPService, LocaleService, getBrowserCultureLang } from &#39;@singleton-i18n/angular-client&#39;;
+import { I18nConfig } from &#39;./i18n.config&#39;;
 
 export function initVIPConfig(vipService: VIPService, localeService: LocaleService) {
-    // Specify locale, either from browser language or user's profile.
+    // Specify locale, either from browser language or user&#39;s profile.
     const currentlocale: string  = getBrowserCultureLang();
     localeService.init(currentlocale);
     return () =&gt; vipService.initData(I18nConfig);
@@ -246,7 +242,6 @@ export function initVIPConfig(vipService: VIPService, localeService: LocaleServi
     ...
 })
 export class AppModule {} 
-
 </code></pre><h4 id="usages"><strong>Usages</strong></h4>
 <p>After importing the VIPModule and initializing the related services, now you can start using the utilities provided by ngx-vip to
 consume translations and format data according to different locale patterns.</p>
@@ -254,30 +249,29 @@ consume translations and format data according to different locale patterns.</p>
 <pre tabindex="0"><code>// app.component.html
 
 // Translate Pipe
-{{'some.unique.key' | vtranslate }}
+{{&#39;some.unique.key&#39; | vtranslate }}
 
-{{'singleton.description' | vtranslate: 'Singleton for Angular client'}}
+{{&#39;singleton.description&#39; | vtranslate: &#39;Singleton for Angular client&#39;}}
 
 // Translate Directive
-&lt;span l10n='some.unique.key' &gt;&lt;/span&gt;
+&lt;span l10n=&#39;some.unique.key&#39; &gt;&lt;/span&gt;
 
-&lt;span l10n='singleton.description' [params]=&quot;['Singleton for Angular client']&quot; &gt;
+&lt;span l10n=&#39;singleton.description&#39; [params]=&#34;[&#39;Singleton for Angular client&#39;]&#34; &gt;
 
 // Date &amp; Time Format Pipe
 {{ date | dateFormat }}
 
 // Number Format Pipe
 {{ num | numberFormat }}
-
 </code></pre><h4 id="component-usage"><strong>Component Usage</strong></h4>
 <pre tabindex="0"><code>// shared.component.ts
 
-import { L10nService, I18nService, VIPService } from '@singleton-i18n/angular-client';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { L10nService, I18nService, VIPService } from &#39;@singleton-i18n/angular-client&#39;;
+import { Component, OnInit, OnDestroy } from &#39;@angular/core&#39;;
     
 @Component({
-    selector: 'shared',
-    templateUrl: './shared.component.html'
+    selector: &#39;shared&#39;,
+    templateUrl: &#39;./shared.component.html&#39;
 })
 export class SharedComponent implements OnInit, OnDestroy {
     subscription: any;
@@ -285,8 +279,8 @@ export class SharedComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.subscription = this.vipService.stream.subscribe((locale: string) =&gt; {
-            this.translation = this.l10nService.getMessage('singleton.description', [ 'Singleton for Angular client' ], locale);
-            this.date = this.i18nService.formatDate(new Date(), 'short', locale );
+            this.translation = this.l10nService.getMessage(&#39;singleton.description&#39;, [ &#39;Singleton for Angular client&#39; ], locale);
+            this.date = this.i18nService.formatDate(new Date(), &#39;short&#39;, locale );
         });
     }
 
@@ -295,7 +289,6 @@ export class SharedComponent implements OnInit, OnDestroy {
         this.subscription = undefined;
     }
 }
-
 </code></pre><h4 id="getting-help"><strong>Getting Help</strong></h4>
 <p>If you cannot find the necessary documentation or the answer to your question by looking through the <a href="https://gitlab.eng.vmware.com/core-build/vmw-ngx-components/tree/master">code</a>, reach out in the <a href="slack://channel?id=CNCHU5R4N&amp;team=T024JFTN4">#ngx</a> Slack channel.</p>
 <style>
@@ -389,6 +382,68 @@ Published on 24 Sep 2019
 <li class="parent has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/">Overview<span class="mark opened">-</span></a>
   
 <ul class="sub-menu">
+
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/">Singleton Service<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">Singleton Service Custom Log</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
+
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-source-collection/">Enable Source Collection</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-pseudo-translation/">Enable Pseudo Translation</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/">Enable S3 Key Encrypted</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-new-product/">Enable New Product(s)</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-product-white-list/">Enable Product White List</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-storage/">Enable S3 Storage</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-apis/">Singleton Service APIs</a></li>
+</ul>
+  
+</li>
+
+<li class="parent has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/">Singleton SDK<span class="mark opened">-</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/python-client-introduction/">Python Client Introduction</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/java-client-introduction/">Java Client Introduction</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/javascript-client-introduction/">JavaScript Client Introduction</a></li>
+
+<li class=" active has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/">Angular Client Introduction<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/data-initialization/">Data Initialization</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/locale-management/">Locale Management</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/lazy-load-module/">Lazy Load Module</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/localized-component-mixin/">Localized Component Mixin</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/translate-pipe/">Translate Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/translate-directive/">Translate Directive</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/l10n-service/">L10n Service</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/i18n-service/">I18n Service</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/i18n-context/">I18n Context</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/plural-format/">Plural Format</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/relative-time-format/">Relative Time Format</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/date-time-format-pipe/">Date Time Format Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/number-format-pipe/">Number Format Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/currency-format-pipe/">Currency Format Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/percent-format-pipe/">Percent Format Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/command-line-utils/">Command Line Utils</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/standalone-mode/">Standalone Mode</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/shared-feature-module/">Shared Feature Module</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/error-handling/">Error Handling</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/csharp-client-introduction/">C# Client Introduction</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/go-client-introduction/">Go Client Introduction</a></li>
+</ul>
+  
+</li>
 </ul>
   
 </li>

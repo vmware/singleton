@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Integrate Singleton in Java App - Singleton</title>
 <meta name="description" content="One-fits-all Internationalization Solution">
-<meta name="generator" content="Hugo 0.90.0" />
+<meta name="generator" content="Hugo 0.105.0">
 <link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-java-app/">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
@@ -75,24 +75,24 @@ slf4j-api-1.7.26</li>
 <p>All of the builds could be found at this path: <a href="https://repo1.maven.org/maven2/com/vmware/singleton/singleton-client-java">https://repo1.maven.org/maven2/com/vmware/singleton/singleton-client-java</a></p>
 <h2 id="sample-codes-of-api-usage">Sample Codes of API Usage</h2>
 <p>This is the example of how to use the APIs:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#75715e">// Import classes
-</span><span style="color:#75715e"></span><span style="color:#f92672">import</span> com.vmware.vipclient.i18n.I18nFactory<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> com.vmware.vipclient.i18n.VIPCfg<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> com.vmware.vipclient.i18n.base.MessageCache<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> com.vmware.vipclient.i18n.base.instances.TranslationMessage<span style="color:#f92672">;</span>
-<span style="color:#75715e">// Initialize global setting
-</span><span style="color:#75715e"></span>VIPCfg cfg <span style="color:#f92672">=</span> VIPCfg<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">();</span>
-cfg<span style="color:#f92672">.</span><span style="color:#a6e22e">initialize</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;vipconfig&#34;</span><span style="color:#f92672">);</span>
-cfg<span style="color:#f92672">.</span><span style="color:#a6e22e">initializeVIPService</span><span style="color:#f92672">();</span>
-cfg<span style="color:#f92672">.</span><span style="color:#a6e22e">createTranslationCache</span><span style="color:#f92672">(</span>MessageCache<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
-<span style="color:#75715e">// Create TranslationMessage Instance
-</span><span style="color:#75715e"></span>TranslationMessage t <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>TranslationMessage<span style="color:#f92672">)</span> I18nFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span>cfg<span style="color:#f92672">).</span><span style="color:#a6e22e">getMessageInstance</span><span style="color:#f92672">(</span>TranslationMessage<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
-String translation <span style="color:#f92672">=</span> t<span style="color:#f92672">.</span><span style="color:#a6e22e">getString</span><span style="color:#f92672">(</span><span style="color:#960050;background-color:#1e0010">…</span><span style="color:#f92672">);</span>
-<span style="color:#75715e">// Create Formatting instance
-</span><span style="color:#75715e"></span>cfg<span style="color:#f92672">.</span><span style="color:#a6e22e">createFormattingCache</span><span style="color:#f92672">(</span>FormattingCache<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
-DateFormatting dateformatting <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>DateFormatting<span style="color:#f92672">)</span>i18n<span style="color:#f92672">.</span><span style="color:#a6e22e">getFormattingInstance</span><span style="color:#f92672">(</span>DateFormatting<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
-dateformatting<span style="color:#f92672">.</span><span style="color:#a6e22e">formatDate</span><span style="color:#f92672">(</span><span style="color:#960050;background-color:#1e0010">…</span><span style="color:#f92672">);</span>
-</code></pre></div><p>More JAVA APIs details: <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/java-client-introduction/">https://vmware.github.io/singleton/docs/overview/singleton-sdk/java-client-introduction/</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">// Import classes
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">import</span> com.vmware.vipclient.i18n.I18nFactory<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> com.vmware.vipclient.i18n.VIPCfg<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> com.vmware.vipclient.i18n.base.MessageCache<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> com.vmware.vipclient.i18n.base.instances.TranslationMessage<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Initialize global setting
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>VIPCfg cfg <span style="color:#f92672">=</span> VIPCfg<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>cfg<span style="color:#f92672">.</span><span style="color:#a6e22e">initialize</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;vipconfig&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>cfg<span style="color:#f92672">.</span><span style="color:#a6e22e">initializeVIPService</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>cfg<span style="color:#f92672">.</span><span style="color:#a6e22e">createTranslationCache</span><span style="color:#f92672">(</span>MessageCache<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Create TranslationMessage Instance
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>TranslationMessage t <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>TranslationMessage<span style="color:#f92672">)</span> I18nFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span>cfg<span style="color:#f92672">).</span><span style="color:#a6e22e">getMessageInstance</span><span style="color:#f92672">(</span>TranslationMessage<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>String translation <span style="color:#f92672">=</span> t<span style="color:#f92672">.</span><span style="color:#a6e22e">getString</span><span style="color:#f92672">(</span><span style="color:#960050;background-color:#1e0010">…</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Create Formatting instance
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>cfg<span style="color:#f92672">.</span><span style="color:#a6e22e">createFormattingCache</span><span style="color:#f92672">(</span>FormattingCache<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>DateFormatting dateformatting <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>DateFormatting<span style="color:#f92672">)</span>i18n<span style="color:#f92672">.</span><span style="color:#a6e22e">getFormattingInstance</span><span style="color:#f92672">(</span>DateFormatting<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>dateformatting<span style="color:#f92672">.</span><span style="color:#a6e22e">formatDate</span><span style="color:#f92672">(</span><span style="color:#960050;background-color:#1e0010">…</span><span style="color:#f92672">);</span>
+</span></span></code></pre></div><p>More JAVA APIs details: <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/java-client-introduction/">https://vmware.github.io/singleton/docs/overview/singleton-sdk/java-client-introduction/</a></p>
 <h2 id="sample-app">Sample App</h2>
 <p><a href="https://github.com/vmware/singleton/tree/g11n-java-client/sample-client-app">https://github.com/vmware/singleton/tree/g11n-java-client/sample-client-app</a></p>
 <div class="edit-meta">
@@ -133,6 +133,7 @@ Published on 24 Sep 2019
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">Singleton Service Custom Log</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
 
 <li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>
@@ -256,37 +257,6 @@ Published on 24 Sep 2019
 <li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/">Singleton SDK<span class="mark closed">+</span></a>
   
 <ul class="sub-menu">
-<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/python-client-introduction/">Python Client Introduction</a></li>
-<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/java-client-introduction/">Java Client Introduction</a></li>
-<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/javascript-client-introduction/">JavaScript Client Introduction</a></li>
-
-<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/">Angular Client Introduction<span class="mark closed">+</span></a>
-  
-<ul class="sub-menu">
-<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/data-initialization/">Data Initialization</a></li>
-<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/locale-management/">Locale Management</a></li>
-<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/lazy-load-module/">Lazy Load Module</a></li>
-<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/localized-component-mixin/">Localized Component Mixin</a></li>
-<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/translate-pipe/">Translate Pipe</a></li>
-<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/translate-directive/">Translate Directive</a></li>
-<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/l10n-service/">L10n Service</a></li>
-<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/i18n-service/">I18n Service</a></li>
-<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/i18n-context/">I18n Context</a></li>
-<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/plural-format/">Plural Format</a></li>
-<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/relative-time-format/">Relative Time Format</a></li>
-<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/date-time-format-pipe/">Date Time Format Pipe</a></li>
-<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/number-format-pipe/">Number Format Pipe</a></li>
-<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/currency-format-pipe/">Currency Format Pipe</a></li>
-<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/percent-format-pipe/">Percent Format Pipe</a></li>
-<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/command-line-utils/">Command Line Utils</a></li>
-<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/standalone-mode/">Standalone Mode</a></li>
-<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/shared-feature-module/">Shared Feature Module</a></li>
-<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/error-handling/">Error Handling</a></li>
-</ul>
-  
-</li>
-<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/csharp-client-introduction/">C# Client Introduction</a></li>
-<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/go-client-introduction/">Go Client Introduction</a></li>
 </ul>
   
 </li>

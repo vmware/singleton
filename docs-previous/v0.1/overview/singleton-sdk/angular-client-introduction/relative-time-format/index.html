@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Relative Time Format - Singleton</title>
 <meta name="description" content="One-fits-all Internationalization Solution">
-<meta name="generator" content="Hugo 0.90.0" />
+<meta name="generator" content="Hugo 0.105.0">
 <link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/relative-time-format/">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
@@ -19,7 +19,7 @@
 </style>
 <meta property="og:title" content="Relative Time Format" />
 <meta property="og:description" content="Overview Formats simple relative dates. Try to give the best relative time span representation based on start time and end time.
-API public formatRelativeTime( from: Date, to: Date, locale?: string, options?: Object ): string Parameters    Parameter Type Required Description     from Date Required Relative time start time.   to Date Required Relative time end time.   locale String Optional The locale is only required in async mode for non-blocking loading." />
+API public formatRelativeTime( from: Date, to: Date, locale?: string, options?: Object ): string Parameters Parameter Type Required Description from Date Required Relative time start time. to Date Required Relative time end time. locale String Optional The locale is only required in async mode for non-blocking loading. Please refer to the stream API usage." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/relative-time-format/" /><meta property="og:image" content="https://vmware.github.io/singleton/images/og-image.png"/><meta property="article:section" content="docs-previous" />
 <meta property="article:published_time" content="2019-09-24T20:08:31+08:00" />
@@ -30,12 +30,12 @@ API public formatRelativeTime( from: Date, to: Date, locale?: string, options?: 
 
 <meta name="twitter:title" content="Relative Time Format"/>
 <meta name="twitter:description" content="Overview Formats simple relative dates. Try to give the best relative time span representation based on start time and end time.
-API public formatRelativeTime( from: Date, to: Date, locale?: string, options?: Object ): string Parameters    Parameter Type Required Description     from Date Required Relative time start time.   to Date Required Relative time end time.   locale String Optional The locale is only required in async mode for non-blocking loading."/>
+API public formatRelativeTime( from: Date, to: Date, locale?: string, options?: Object ): string Parameters Parameter Type Required Description from Date Required Relative time start time. to Date Required Relative time end time. locale String Optional The locale is only required in async mode for non-blocking loading. Please refer to the stream API usage."/>
 <meta itemprop="name" content="Relative Time Format">
 <meta itemprop="description" content="Overview Formats simple relative dates. Try to give the best relative time span representation based on start time and end time.
-API public formatRelativeTime( from: Date, to: Date, locale?: string, options?: Object ): string Parameters    Parameter Type Required Description     from Date Required Relative time start time.   to Date Required Relative time end time.   locale String Optional The locale is only required in async mode for non-blocking loading."><meta itemprop="datePublished" content="2019-09-24T20:08:31+08:00" />
+API public formatRelativeTime( from: Date, to: Date, locale?: string, options?: Object ): string Parameters Parameter Type Required Description from Date Required Relative time start time. to Date Required Relative time end time. locale String Optional The locale is only required in async mode for non-blocking loading. Please refer to the stream API usage."><meta itemprop="datePublished" content="2019-09-24T20:08:31+08:00" />
 <meta itemprop="dateModified" content="2019-09-24T20:08:31+08:00" />
-<meta itemprop="wordCount" content="437"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
+<meta itemprop="wordCount" content="337"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
 <meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>Singleton</h1><span class="version">Version 0.6</span><a href="https://github.com/vmware/singleton" class="github"><i class="fab fa-github"></i></a>
@@ -63,7 +63,6 @@ API public formatRelativeTime( from: Date, to: Date, locale?: string, options?: 
 <p>Formats simple relative dates. Try to give the best relative time span representation based on start time and end time.</p>
 <h4 id="api"><strong>API</strong></h4>
 <pre tabindex="0"><code>public formatRelativeTime( from: Date, to: Date, locale?: string, options?: Object ): string
-
 </code></pre><h4 id="parameters"><strong>Parameters</strong></h4>
 <table>
 <thead>
@@ -169,13 +168,13 @@ API public formatRelativeTime( from: Date, to: Date, locale?: string, options?: 
 </tbody>
 </table>
 <h4 id="example-code"><strong>Example Code</strong></h4>
-<pre tabindex="0"><code>import { I18nService } from ' @singleton-i18n/angular-client';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+<pre tabindex="0"><code>import { I18nService } from &#39; @singleton-i18n/angular-client&#39;;
+import { Component, OnInit, OnDestroy } from &#39;@angular/core&#39;;
 
 
 @Component({
-    selector: 'test',
-    templateUrl: './test.component.html'
+    selector: &#39;test&#39;,
+    templateUrl: &#39;./test.component.html&#39;
 })
 export class TestComponent implements OnInit, OnDestroy {
     subscription: any;
@@ -194,10 +193,10 @@ export class TestComponent implements OnInit, OnDestroy {
             this.time = this.i18nService.formatRelativeTime( to, from, locale);
             // Output: 1 month ago
 
-            this.time = this.i18nService.formatRelativeTime( from, to, locale, { numeric: 'auto' });
+            this.time = this.i18nService.formatRelativeTime( from, to, locale, { numeric: &#39;auto&#39; });
             // Output: next month
 
-            this.time = this.i18nService.formatRelativeTime( to, from, locale, { numeric: 'auto' });
+            this.time = this.i18nService.formatRelativeTime( to, from, locale, { numeric: &#39;auto&#39; });
             // Output: last month
         });
     }
@@ -207,7 +206,6 @@ export class TestComponent implements OnInit, OnDestroy {
         this.subscription = undefined;
     }
 }
-
 </code></pre><style> 
     html {
         font-family: Metropolis;
@@ -292,6 +290,7 @@ Published on 24 Sep 2019
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">Singleton Service Custom Log</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
 
 <li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>

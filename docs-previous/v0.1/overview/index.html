@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Overview - Singleton</title>
 <meta name="description" content="One-fits-all Internationalization Solution">
-<meta name="generator" content="Hugo 0.90.0" />
+<meta name="generator" content="Hugo 0.105.0">
 <link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
@@ -101,13 +101,13 @@
 <p>NOTE: To test all available API endpoints from the user interface, see https://localhost:8090/i18n/api/doc/swagger-ui.html or http://localhost:8091/i18n/api/doc/swagger-ui.html.</p>
 <p>NOTE: Sample translation resources are available in the following location: <code>singleton/publish/l10n/bundles</code></p>
 <p>You can test the API using the following URI/request parameters:</p>
-<pre tabindex="0"><code>productName: &quot;SampleProject&quot;
+<pre tabindex="0"><code>productName: &#34;SampleProject&#34;
 
-version: &quot;1.0.0&quot;
+version: &#34;1.0.0&#34;
 
-component: &quot;component1&quot; or &quot;component2&quot;
+component: &#34;component1&#34; or &#34;component2&#34;
 
-locale: &quot;en&quot;, &quot;ja&quot; or &quot;es&quot;
+locale: &#34;en&#34;, &#34;ja&#34; or &#34;es&#34;
 </code></pre><h2 id="creating-the-resource-files">Creating the resource files</h2>
 <p>To deploy Singleton source code and translation data files, you must first create or convert all the product resource files to JSON file.</p>
 <p>NOTE: If your product already has localized resource files, you must convert these files to JSON files manually to retain the existing translations. Please refer to the JSON file structure and folder structure from <code>singleton/publish/l10n/bundles</code>.</p>
@@ -189,65 +189,65 @@ http://localhost:8091/i18n/api/doc/swagger-ui.html
 </code></pre><p>The sample translation resources are available in the following location:</p>
 <p><code>singleton/publish/l10n/bundles</code></p>
 <p>To test the API, you can use the following parameters as URI/request parameters:</p>
-<pre tabindex="0"><code>productName: &quot;SampleProject&quot;
+<pre tabindex="0"><code>productName: &#34;SampleProject&#34;
 
-version: &quot;1.0.0&quot;
+version: &#34;1.0.0&#34;
 
-component: &quot;component1&quot; or &quot;component2&quot;
+component: &#34;component1&#34; or &#34;component2&#34;
 
-locale: &quot;en&quot;, &quot;ja&quot; or &quot;es&quot;
+locale: &#34;en&#34;, &#34;ja&#34; or &#34;es&#34;
 </code></pre><p>Sample translation resources</p>
 <pre tabindex="0"><code>{
-&quot;component&quot; : &quot;component1&quot;,
-&quot;messages&quot;: {
-&quot;sample.apple&quot; : &quot;apple&quot;,
-&quot;sample.banana&quot; : &quot;banana&quot;,
-&quot;sample.cat&quot; : &quot;cat&quot;,
-&quot;sample.dog&quot; : &quot;dog&quot;,
-&quot;sample.egg&quot; : &quot;egg&quot;,
-&quot;sample.fly&quot; : &quot;fly&quot;,
-&quot;sample.giant&quot; : &quot;giant&quot;
+&#34;component&#34; : &#34;component1&#34;,
+&#34;messages&#34;: {
+&#34;sample.apple&#34; : &#34;apple&#34;,
+&#34;sample.banana&#34; : &#34;banana&#34;,
+&#34;sample.cat&#34; : &#34;cat&#34;,
+&#34;sample.dog&#34; : &#34;dog&#34;,
+&#34;sample.egg&#34; : &#34;egg&#34;,
+&#34;sample.fly&#34; : &#34;fly&#34;,
+&#34;sample.giant&#34; : &#34;giant&#34;
 },
-&quot;locale&quot; : &quot;en&quot;
+&#34;locale&#34; : &#34;en&#34;
 }
 </code></pre><pre tabindex="0"><code>{
-&quot;component&quot; : &quot;component1&quot;,
-&quot;messages&quot; : {
-&quot;sample.apple&quot; : &quot;manzana&quot;,
-&quot;sample.banana&quot; : &quot;plátano&quot;,
-&quot;sample.cat&quot; : &quot;gato&quot;,
-&quot;sample.dog&quot; : &quot;perro&quot;,
-&quot;sample.egg&quot; : &quot;huevo&quot;,
-&quot;sample.fly&quot; : &quot;volar&quot;,
-&quot;sample.giant&quot; : &quot;gigante&quot;
+&#34;component&#34; : &#34;component1&#34;,
+&#34;messages&#34; : {
+&#34;sample.apple&#34; : &#34;manzana&#34;,
+&#34;sample.banana&#34; : &#34;plátano&#34;,
+&#34;sample.cat&#34; : &#34;gato&#34;,
+&#34;sample.dog&#34; : &#34;perro&#34;,
+&#34;sample.egg&#34; : &#34;huevo&#34;,
+&#34;sample.fly&#34; : &#34;volar&#34;,
+&#34;sample.giant&#34; : &#34;gigante&#34;
 },
-&quot;locale&quot; : &quot;es&quot;
+&#34;locale&#34; : &#34;es&#34;
 }
 </code></pre><pre tabindex="0"><code>{
-&quot;component&quot; : &quot;component1&quot;,
-&quot;messages&quot; : {
-&quot;sample.apple&quot; : &quot;林檎&quot;,
-&quot;sample.banana&quot; : &quot;バナナ&quot;,
-&quot;sample.cat&quot; : &quot;ネコ&quot;,
-&quot;sample.dog&quot; : &quot;犬&quot;,
-&quot;sample.egg&quot; : &quot;卵&quot;,
-&quot;sample.fly&quot; : &quot;飛ぶ&quot;,
-&quot;sample.giant&quot; : &quot;巨人&quot;
+&#34;component&#34; : &#34;component1&#34;,
+&#34;messages&#34; : {
+&#34;sample.apple&#34; : &#34;林檎&#34;,
+&#34;sample.banana&#34; : &#34;バナナ&#34;,
+&#34;sample.cat&#34; : &#34;ネコ&#34;,
+&#34;sample.dog&#34; : &#34;犬&#34;,
+&#34;sample.egg&#34; : &#34;卵&#34;,
+&#34;sample.fly&#34; : &#34;飛ぶ&#34;,
+&#34;sample.giant&#34; : &#34;巨人&#34;
 },
-&quot;locale&quot; : &quot;ja&quot;
+&#34;locale&#34; : &#34;ja&#34;
 }
 </code></pre><pre tabindex="0"><code>{
-&quot;component&quot; : &quot;component1&quot;,
-&quot;messages&quot;: {
-&quot;sample.apple&quot; : &quot;apple&quot;,
-&quot;sample.banana&quot; : &quot;banana&quot;,
-&quot;sample.cat&quot; : &quot;cat&quot;,
-&quot;sample.dog&quot; : &quot;dog&quot;,
-&quot;sample.egg&quot; : &quot;egg&quot;,
-&quot;sample.fly&quot; : &quot;fly&quot;,
-&quot;sample.giant&quot; : &quot;giant&quot;
+&#34;component&#34; : &#34;component1&#34;,
+&#34;messages&#34;: {
+&#34;sample.apple&#34; : &#34;apple&#34;,
+&#34;sample.banana&#34; : &#34;banana&#34;,
+&#34;sample.cat&#34; : &#34;cat&#34;,
+&#34;sample.dog&#34; : &#34;dog&#34;,
+&#34;sample.egg&#34; : &#34;egg&#34;,
+&#34;sample.fly&#34; : &#34;fly&#34;,
+&#34;sample.giant&#34; : &#34;giant&#34;
 },
-&quot;locale&quot; : &quot;latest&quot;
+&#34;locale&#34; : &#34;latest&#34;
 }
 </code></pre><h2 id="singleton-client-libraries">Singleton client libraries</h2>
 <p>Several client libraries are provided to support sending API requests to Singleton service. Each library, when integrated on the client side, also provides additional features such as post-processing of localized resources and caching.</p>
@@ -303,6 +303,7 @@ Published on 24 Sep 2019
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">Singleton Service Custom Log</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
 
 <li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>
@@ -332,6 +333,25 @@ Published on 24 Sep 2019
 <li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/">Angular Client Introduction<span class="mark closed">+</span></a>
   
 <ul class="sub-menu">
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/data-initialization/">Data Initialization</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/locale-management/">Locale Management</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/lazy-load-module/">Lazy Load Module</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/localized-component-mixin/">Localized Component Mixin</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/translate-pipe/">Translate Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/translate-directive/">Translate Directive</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/l10n-service/">L10n Service</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/i18n-service/">I18n Service</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/i18n-context/">I18n Context</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/plural-format/">Plural Format</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/relative-time-format/">Relative Time Format</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/date-time-format-pipe/">Date Time Format Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/number-format-pipe/">Number Format Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/currency-format-pipe/">Currency Format Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/percent-format-pipe/">Percent Format Pipe</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/command-line-utils/">Command Line Utils</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/standalone-mode/">Standalone Mode</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/shared-feature-module/">Shared Feature Module</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/error-handling/">Error Handling</a></li>
 </ul>
   
 </li>
@@ -377,7 +397,7 @@ Published on 24 Sep 2019
   
 </li>
 
-<li class="parent active has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/">Overview<span class="mark opened">-</span></a>
+<li class=" active has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/">Overview<span class="mark closed">+</span></a>
   
 <ul class="sub-menu">
 

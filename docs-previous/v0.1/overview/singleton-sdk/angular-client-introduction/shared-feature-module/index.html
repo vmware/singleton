@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Shared Feature Module - Singleton</title>
 <meta name="description" content="One-fits-all Internationalization Solution">
-<meta name="generator" content="Hugo 0.90.0" />
+<meta name="generator" content="Hugo 0.105.0">
 <link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/shared-feature-module/">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
@@ -35,7 +35,7 @@ Resource Isolation By default, the resources of each Singleton component are iso
 <meta itemprop="description" content="Overview Creating shared modules allows you to organize and streamline your code. You can put commonly used directives, pipes, and components into one module and then import just that module wherever you need it in other parts of your application. Therefore from the perspective of internationalization, singleton Angular client also provides corresponding support for the shared modules.
 Resource Isolation By default, the resources of each Singleton component are isolated and registered in different namespaces to avoid duplicate keys causing content to be unexpectedly overwritten."><meta itemprop="datePublished" content="2022-06-16T13:19:02+03:00" />
 <meta itemprop="dateModified" content="2022-06-16T13:19:02+03:00" />
-<meta itemprop="wordCount" content="469"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
+<meta itemprop="wordCount" content="350"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
 <meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>Singleton</h1><span class="version">Version 0.6</span><a href="https://github.com/vmware/singleton" class="github"><i class="fab fa-github"></i></a>
@@ -67,32 +67,31 @@ Therefore from the perspective of internationalization, singleton Angular client
 <h4 id="example-code"><strong>Example Code</strong></h4>
 <h5 id="configuration"><strong>Configuration</strong></h5>
 <pre tabindex="0"><code>// i18n.config.ts
-import { ENGLISH } from './header.l10n';
-import { PatternCategories } from '@singleton-i18n/angular-client';
+import { ENGLISH } from &#39;./header.l10n&#39;;
+import { PatternCategories } from &#39;@singleton-i18n/angular-client&#39;;
 
 const I18nConfig = {
-    productID: 'vipuiheader',
-    component: 'default',
-    version: '1.0.0',
+    productID: &#39;vipuiheader&#39;,
+    component: &#39;default&#39;,
+    version: &#39;1.0.0&#39;,
     i18nScope: [
         PatternCategories.DATE,
         PatternCategories.NUMBER,
         PatternCategories.CURRENCIES
     ],
-    host: 'https://singleton.service.com:8090/',
+    host: &#39;https://singleton.service.com:8090/&#39;,
     // By default, the resources of each component are isolated.
     // Please set isolated as false in a shared module.
     isolated: false,
     sourceBundles: [ENGLISH]
 };
-
 </code></pre><h5 id="configuration-registration"><strong>Configuration Registration</strong></h5>
 <blockquote>
 <p>Note: Never call a forRoot static method in a shared module. You might end up with different instances of the service in your injector tree.</p>
 </blockquote>
 <pre tabindex="0"><code>// shared-module.module.ts
-import { VIPModule, VIPService } from ' @singleton-i18n/angular-client';
-import { libConfig } from './i18n.util';
+import { VIPModule, VIPService } from &#39; @singleton-i18n/angular-client&#39;;
+import { libConfig } from &#39;./i18n.util&#39;;
 
 @NgModule({
     imports: [
@@ -107,17 +106,16 @@ export class SharedFeatureModule {
         vipService.registerComponent(libConfig);
     }
 }
-
 </code></pre><h5 id="usages"><strong>Usages</strong></h5>
 <p>Since the resource loading method in a shared module is uncertain, it may be synchronous or asynchronous depending on the calling scenario, when calling synchronous &lsquo;getMessage&rsquo; or data formatting-related methods,
 be sure to use these synchronous methods safely by subscribing to the &lsquo;stream&rsquo; API. All pipe utilities encapsulated in the library support both synchronous and asynchronous scenarios without any difference.</p>
 <pre tabindex="0"><code>// shared-module.module.ts
-import { L10nService, I18nService, VIPService } from '@singleton-i18n/angular-client';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { L10nService, I18nService, VIPService } from &#39;@singleton-i18n/angular-client&#39;;
+import { Component, OnInit, OnDestroy } from &#39;@angular/core&#39;;
     
 @Component({
-    selector: 'shared',
-    templateUrl: './shared.component.html'
+    selector: &#39;shared&#39;,
+    templateUrl: &#39;./shared.component.html&#39;
 })
 export class SharedComponent implements OnInit, OnDestroy {
     subscription: any;
@@ -125,8 +123,8 @@ export class SharedComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.subscription = this.vipService.stream.subscribe((locale: string) =&gt; {
-            this.translation = this.l10nService.getMessage('singleton.description', [ 'Singleton for Angular client' ], locale);
-            this.date = this.i18nService.formatDate(new Date(), 'short', locale );
+            this.translation = this.l10nService.getMessage(&#39;singleton.description&#39;, [ &#39;Singleton for Angular client&#39; ], locale);
+            this.date = this.i18nService.formatDate(new Date(), &#39;short&#39;, locale );
         });
     }
 
@@ -135,7 +133,6 @@ export class SharedComponent implements OnInit, OnDestroy {
         this.subscription = undefined;
     }
 }
-
 </code></pre><style>
     html {
         font-family: Metropolis;
@@ -229,6 +226,7 @@ Published on 16 Jun 2022
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">Singleton Service Custom Log</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
 
 <li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>

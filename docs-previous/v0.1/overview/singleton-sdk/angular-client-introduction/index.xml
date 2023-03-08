@@ -43,7 +43,7 @@ For example, German language is de, an abbreviation for Deutsch, while Swiss Ger
       <guid>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/localized-component-mixin/</guid>
       <description>Overview The LocalizedComponent mixin provides a nice abstraction for localizing components in an Angular app.
 Using the Mixin approach allows you to achieve three things:
- Extract English strings to a separate file, keeping your HTML template clean and containing only DOM. Provides a consistent pattern of where and how English strings are stored allowing easy automation and parsing of those files to collect the English into singleton. Your translation keys will always be prefixed with the key provided in the mixin, helping to avoid namespace clashes with other components.</description>
+Extract English strings to a separate file, keeping your HTML template clean and containing only DOM. Provides a consistent pattern of where and how English strings are stored allowing easy automation and parsing of those files to collect the English into singleton. Your translation keys will always be prefixed with the key provided in the mixin, helping to avoid namespace clashes with other components.</description>
     </item>
     
     <item>
@@ -54,7 +54,7 @@ Using the Mixin approach allows you to achieve three things:
       <guid>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/translate-pipe/</guid>
       <description>Overview Use the translate pipe in your HTML templates to retrieve translations from the singleton service.
 API L10n pipe Get translation by key, will find the source in the sourceBundle according to the key.
-{{ key | vtranslate:[ : variables ] }} Input    Parameter Type Required Description     key string required Define the key to identify the translation, it should name like this: component_module_page_control_shortmsg. e.</description>
+{{ key | vtranslate:[ : variables ] }} Input Parameter Type Required Description key string required Define the key to identify the translation, it should name like this: component_module_page_control_shortmsg. e.g. web_settings_stats_statsTable_host; variables Array[] optional Parameter array, it&amp;rsquo;s used to format the translation/source when they contain placeholders.</description>
     </item>
     
     <item>
@@ -64,8 +64,8 @@ API L10n pipe Get translation by key, will find the source in the sourceBundle a
       
       <guid>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/translate-directive/</guid>
       <description>Overview Use the translate directive in your HTML templates to retrieve translations from the singleton service.
-@Directive({ selector: &#39;[l10n]&#39; }) class L10nDirective implements AfterViewInit { l10n: string; source: string; params: string[]; constructor(el: ElementRef, ...) ngAfterViewInit() } Selector [l10n]
-Inputs    Attribute Type Required Description     key String Required Bound to L10nDirective.l10n.Define the key to identify the translation, it should name like this: component_module_page_control_shortmsg. e.g. web_settings_stats_statsTable_host;   source String No Bound to L10nDirective.</description>
+@Directive({ selector: &amp;#39;[l10n]&amp;#39; }) class L10nDirective implements AfterViewInit { l10n: string; source: string; params: string[]; constructor(el: ElementRef, ...) ngAfterViewInit() } Selector [l10n]
+Inputs Attribute Type Required Description key String Required Bound to L10nDirective.l10n.Define the key to identify the translation, it should name like this: component_module_page_control_shortmsg. e.g. web_settings_stats_statsTable_host; source String No Bound to L10nDirective.source.English string as default value, API will return it when there&amp;rsquo;s no translation found either from cache or remote singleton server.</description>
     </item>
     
     <item>
@@ -85,7 +85,7 @@ public getSourceString(key: string): string; Check if the key exists in the reso
       <pubDate>Tue, 24 Sep 2019 20:08:31 +0800</pubDate>
       
       <guid>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/i18n-service/</guid>
-      <description>Overview I18n service provides APIs which are supposed to be used in JavaScript module to get supported languages &amp;amp; regions, and format locale-sensitive data. import { I18nService } from &amp;quot;@singleton-i18n/angular-client&amp;quot;; Supported Language &amp;amp; Region &amp;amp; City APIs getSupportedLanguages Get the supported languages which are available in singleton service for the specific product. getSupportedLanguages(): Promise&amp;lt;languagesList&amp;gt;; getSupportedRegions Get the supported regions from singleton service, the supported region list should be unified in</description>
+      <description>Overview I18n service provides APIs which are supposed to be used in JavaScript module to get supported languages &amp;amp; regions, and format locale-sensitive data. import { I18nService } from &amp;#34;@singleton-i18n/angular-client&amp;#34;; Supported Language &amp;amp; Region &amp;amp; City APIs getSupportedLanguages Get the supported languages which are available in singleton service for the specific product. getSupportedLanguages(): Promise&amp;lt;languagesList&amp;gt;; getSupportedRegions Get the supported regions from singleton service, the supported region list should be unified in</description>
     </item>
     
     <item>
@@ -105,7 +105,7 @@ public getSourceString(key: string): string; Check if the key exists in the reso
       <guid>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/plural-format/</guid>
       <description>Overview Transform a plural message string to a string that pluralizes the value according to locale rules and translations. It can be implemented using l10n utils, the only difference is the definition of the source.
 Plural Source Text The source text defines the message output for each plural case of the specified locale. Syntax:
-selector { message } /** * selector: explicitValue | keyword * explicitValue: &#39;=&#39; number // adjacent, no white space in between * keyword: Pluralization categories * message: string */ Pluralization categories include (depending on the language):</description>
+selector { message } /** * selector: explicitValue | keyword * explicitValue: &amp;#39;=&amp;#39; number // adjacent, no white space in between * keyword: Pluralization categories * message: string */ Pluralization categories include (depending on the language):</description>
     </item>
     
     <item>
@@ -115,7 +115,7 @@ selector { message } /** * selector: explicitValue | keyword * explicitValue: &#
       
       <guid>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/relative-time-format/</guid>
       <description>Overview Formats simple relative dates. Try to give the best relative time span representation based on start time and end time.
-API public formatRelativeTime( from: Date, to: Date, locale?: string, options?: Object ): string Parameters    Parameter Type Required Description     from Date Required Relative time start time.   to Date Required Relative time end time.   locale String Optional The locale is only required in async mode for non-blocking loading.</description>
+API public formatRelativeTime( from: Date, to: Date, locale?: string, options?: Object ): string Parameters Parameter Type Required Description from Date Required Relative time start time. to Date Required Relative time end time. locale String Optional The locale is only required in async mode for non-blocking loading. Please refer to the stream API usage.</description>
     </item>
     
     <item>
@@ -125,7 +125,7 @@ API public formatRelativeTime( from: Date, to: Date, locale?: string, options?: 
       
       <guid>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/date-time-format-pipe/</guid>
       <description>Overview Use the dateFormat pipe in your HTML templates to format a date according to locale rules.
-Usage {{ value | dateFormat [ : format [ : timezone ] ] }} Input Value    Parameter Type Description     value any a date object or a number (milliseconds since UTC epoch) or an ISO string (https://www.w3.org/TR/NOTE-datetime).    Parameters    Parameter Type Description     format string indicates which date/time components to include.</description>
+Usage {{ value | dateFormat [ : format [ : timezone ] ] }} Input Value Parameter Type Description value any a date object or a number (milliseconds since UTC epoch) or an ISO string (https://www.w3.org/TR/NOTE-datetime). Parameters Parameter Type Description format string indicates which date/time components to include. The format can be predefined as shown below (all examples are given for en-US) or custom as shown in the table.</description>
     </item>
     
     <item>
@@ -135,7 +135,7 @@ Usage {{ value | dateFormat [ : format [ : timezone ] ] }} Input Value    Parame
       
       <guid>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/number-format-pipe/</guid>
       <description>Overview Formats a number as text. Group sizing and separator and other locale-specific configurations are based on the pattern data.
-Usage {{ value | numberFormat [ : formatOptions ] }} Input Value    Parameter Type Description     value number / string The number to be formatted.    Parameters    Parameter Type Required Description     formatOptions object Optional The results formats can be customized using the formatOptions argument.</description>
+Usage {{ value | numberFormat [ : formatOptions ] }} Input Value Parameter Type Description value number / string The number to be formatted. Parameters Parameter Type Required Description formatOptions object Optional The results formats can be customized using the formatOptions argument. See formatOptions for further details. formatOptions Attribute Type Required Description minIntegerDigits number Optional The minimum digits of integer numbers used.</description>
     </item>
     
     <item>
@@ -145,7 +145,7 @@ Usage {{ value | numberFormat [ : formatOptions ] }} Input Value    Parameter Ty
       
       <guid>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/currency-format-pipe/</guid>
       <description>Overview Formats a number into currency string. Group sizing and separator and other locale-specific configurations are based on the pattern data.
-Usage {{ value | currencyFormat [ : currencyCode [ : formatOptions ] ] }} Input Value    Parameter Type Description     value number / string The number to be formatted.    Parameters    Parameter Type Required Description     currencyCode string Optional Currency code should be in accordance with ISO 4217 standard, such as USD for the US dollar and EUR for the euro.</description>
+Usage {{ value | currencyFormat [ : currencyCode [ : formatOptions ] ] }} Input Value Parameter Type Description value number / string The number to be formatted. Parameters Parameter Type Required Description currencyCode string Optional Currency code should be in accordance with ISO 4217 standard, such as USD for the US dollar and EUR for the euro.</description>
     </item>
     
     <item>
@@ -155,7 +155,7 @@ Usage {{ value | currencyFormat [ : currencyCode [ : formatOptions ] ] }} Input 
       
       <guid>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/percent-format-pipe/</guid>
       <description>Overview Formats a number into percentage string. Group sizing and separator and other locale-specific configurations are based on the pattern data.
-Usage {{ value | percentFormat [ : formatOptions ] }} Parameters    Parameter Type Description     formatOptions object The results formats can be customized using the formatOptions argument. See formatOptions for further details.    formatOptions    Attribute Type Required Description     minIntegerDigits number Optional The minimum digits of integer numbers used.</description>
+Usage {{ value | percentFormat [ : formatOptions ] }} Parameters Parameter Type Description formatOptions object The results formats can be customized using the formatOptions argument. See formatOptions for further details. formatOptions Attribute Type Required Description minIntegerDigits number Optional The minimum digits of integer numbers used. The possible values are from 1 to 21, and the default value is 1.</description>
     </item>
     
     <item>
@@ -165,7 +165,7 @@ Usage {{ value | percentFormat [ : formatOptions ] }} Parameters    Parameter Ty
       
       <guid>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/command-line-utils/</guid>
       <description>Load Translation Download the specified languages of translation files in your project location.
-Command line arguments description    Parameter Type Value Description     &amp;ndash;directory string required The directory you want to put translations in.   &amp;ndash;host string required This is singleton service which provides clients with translations and pattern.   &amp;ndash;product string required Product name. For now, singleton service doesn’t explicitly restrict name of product, but it&amp;rsquo;s better to keep short and sync with the name in release master.</description>
+Command line arguments description Parameter Type Value Description &amp;ndash;directory string required The directory you want to put translations in. &amp;ndash;host string required This is singleton service which provides clients with translations and pattern. &amp;ndash;product string required Product name. For now, singleton service doesn’t explicitly restrict name of product, but it&amp;rsquo;s better to keep short and sync with the name in release master.</description>
     </item>
     
     <item>
@@ -195,7 +195,7 @@ Resource Isolation By default, the resources of each Singleton component are iso
       
       <guid>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/error-handling/</guid>
       <description>Singleton provides two error streams for users to listen to that emit objects of type VIPError.
- errors$ on subscription will emit all errors emitted up to this point and each new error after that. lastError$ on subscription will emit last error emitted up to this point and each new error after that.  export interface VIPError { code: VIPErrorCode; // custom code representing the type of failure that occurred data: VIPErrorData; // custom data related to the specific error type error: any; // api error response if such exists } User can listen through VIPService instance:</description>
+errors$ on subscription will emit all errors emitted up to this point and each new error after that. lastError$ on subscription will emit last error emitted up to this point and each new error after that. export interface VIPError { code: VIPErrorCode; // custom code representing the type of failure that occurred data: VIPErrorData; // custom data related to the specific error type error: any; // api error response if such exists } User can listen through VIPService instance:</description>
     </item>
     
   </channel>

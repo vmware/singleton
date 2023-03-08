@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Data Initialization - Singleton</title>
 <meta name="description" content="One-fits-all Internationalization Solution">
-<meta name="generator" content="Hugo 0.90.0" />
+<meta name="generator" content="Hugo 0.105.0">
 <link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/data-initialization/">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
@@ -32,7 +32,7 @@
 <meta itemprop="name" content="Data Initialization">
 <meta itemprop="description" content="In general, for most of the products, it&rsquo;s good enough to load all translations and patterns one time in root module when the application starts, but for some special requirements, such like: isolated translation for feature module or using lazy module to enhance performance, please refer to Isolated feature module and Lazy Load Module. singleton client provides two ways to load i18n data and initialize the services in root module:"><meta itemprop="datePublished" content="2019-09-24T20:08:31+08:00" />
 <meta itemprop="dateModified" content="2019-09-24T20:08:31+08:00" />
-<meta itemprop="wordCount" content="502"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
+<meta itemprop="wordCount" content="383"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
 <meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>Singleton</h1><span class="version">Version 0.6</span><a href="https://github.com/vmware/singleton" class="github"><i class="fab fa-github"></i></a>
@@ -60,7 +60,7 @@
 <h5 id="blocking-loading"><strong>Blocking loading</strong></h5>
 <p><strong>For preloading modules</strong> - Create a factory function that loads i18n resource data and provide that function to the APP_INITIALIZER token. The function is executed during the application bootstrap process, and the needed data is available on startup.</p>
 <pre tabindex="0"><code>export function initVIPConfig(vipService: VIPService, localeService: LocaleService) {
-    // Specify locale, either from browser language or user's profile.
+    // Specify locale, either from browser language or user&#39;s profile.
     const currentlocale: string  = getBrowserCultureLang();
     localeService.init(currentlocale);
     return () =&gt; vipService.initData(I18nConfig);
@@ -86,25 +86,23 @@
     ...
 })
 export class AppModule {}
-
 </code></pre><p><strong>For lazy-loading modules</strong> - Configure i18nDataGuard as part of the route object to load i18n resource for a lazy-loading module by reading lite Singleton configuration from route parameters, asynchronously load the data, and have it ready by the time the module activates and initializes.</p>
 <pre tabindex="0"><code>const routes: Routes = [
 {
-        path: '',
+        path: &#39;&#39;,
         component: SampleComponent,
         canActivate: [I18nDataGuard],
         data: {
-        // 'vipConfig' is specified keyword of Singleton configuration.
+        // &#39;vipConfig&#39; is specified keyword of Singleton configuration.
         // In the simplified configuration of lazy loading module, 
         // only the component name is required, and other fields are optional.
             vipConfig: {
-                component: 'sample',
+                component: &#39;sample&#39;,
                 sourceBundles: [ENGLISH]
             }
         }
     }
 ]
-
 </code></pre><h5 id="non-blocking-loading"><strong>Non-blocking loading</strong></h5>
 <p>Whether it is preloading modules or lazy-loading modules, in addition to loading data in a blocking way, you can also use a non-blocking way.</p>
 <blockquote>
@@ -120,7 +118,6 @@ export class AppModule {
         vipService.initData(I18nConfig);
     }
 }
-
 </code></pre><pre tabindex="0"><code>// lazy.module.ts
 
 export class LazyModule {
@@ -128,12 +125,11 @@ export class LazyModule {
     // In the simplified configuration of lazy loading module, 
     // only the component name is required, and other fields are optional.
         service.initLazyModuleData({
-            component: 'default',
+            component: &#39;default&#39;,
             sourceBundles: [ENGLISH]
         });
     }
 }
-
 </code></pre><style>
     html {
         font-family: Metropolis;
@@ -227,6 +223,7 @@ Published on 24 Sep 2019
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">Singleton Service Custom Log</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
 
 <li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>

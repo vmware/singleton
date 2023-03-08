@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Integrate Singleton in Javascript App - Singleton</title>
 <meta name="description" content="One-fits-all Internationalization Solution">
-<meta name="generator" content="Hugo 0.90.0" />
+<meta name="generator" content="Hugo 0.105.0">
 <link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-javascript-app/">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
@@ -65,109 +65,108 @@ in messages and formatting.
 For I18n formatting, Singleton JSClient also provides I18n support for datetime format, number format, currency and plural.
 Singleton JSClient formatting is based on CLDR data repository and keeps the same scope in supported locale set.
 </code></pre><h2 id="install">Install</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Javascript" data-lang="Javascript"><span style="color:#a6e22e">npm</span> <span style="color:#a6e22e">install</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">singleton</span><span style="color:#f92672">-</span><span style="color:#a6e22e">i18n</span><span style="color:#f92672">/</span><span style="color:#a6e22e">js</span><span style="color:#f92672">-</span><span style="color:#a6e22e">core</span><span style="color:#f92672">-</span><span style="color:#a6e22e">sdk</span> <span style="color:#f92672">--</span><span style="color:#a6e22e">save</span> 
-</code></pre></div><h2 id="integration">Integration</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Javascript" data-lang="Javascript"><span style="display:flex;"><span><span style="color:#a6e22e">npm</span> <span style="color:#a6e22e">install</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">singleton</span><span style="color:#f92672">-</span><span style="color:#a6e22e">i18n</span><span style="color:#f92672">/</span><span style="color:#a6e22e">js</span><span style="color:#f92672">-</span><span style="color:#a6e22e">core</span><span style="color:#f92672">-</span><span style="color:#a6e22e">sdk</span> <span style="color:#f92672">--</span><span style="color:#a6e22e">save</span> 
+</span></span></code></pre></div><h2 id="integration">Integration</h2>
 <ul>
 <li><strong>Create Init method</strong></li>
 </ul>
 <pre tabindex="0"><code>Before integration with Singleton JSClient, it needs to create init method using initialization of basic configuration
 regarding your application, such as productID, version and so on. Example as below.
-</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">//i18nClient.js
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">i18nClient</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">jsClient</span>, <span style="color:#a6e22e">getBrowserCultureLang</span>, <span style="color:#a6e22e">invalidParamater</span>,<span style="color:#a6e22e">PatternCategories</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@singleton-i18n/js-core-sdk&#34;</span>;
-<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">ENGLISH</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./source.l10n&#34;</span>;
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">initI18nClient</span> <span style="color:#f92672">=</span> () =&gt; {
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">currentLanguage</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">getBrowserCultureLang</span>();
-    <span style="color:#a6e22e">jsClient</span>.<span style="color:#a6e22e">init</span>({
-      <span style="color:#a6e22e">productID</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;iReact&#34;</span>,
-      <span style="color:#a6e22e">component</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;UI&#34;</span>,
-      <span style="color:#a6e22e">version</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1.0.0&#34;</span>,
-      <span style="color:#a6e22e">isPseudo</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
-      <span style="color:#a6e22e">host</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;https://singleton-service:8090&#34;</span>,
-      <span style="color:#a6e22e">language</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">currentLanguage</span>,
-      <span style="color:#a6e22e">i18nScope</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">PatternCategories</span>.<span style="color:#a6e22e">DATE</span>, <span style="color:#a6e22e">PatternCategories</span>.<span style="color:#a6e22e">NUMBER</span>],
-      <span style="color:#a6e22e">sourceBundle</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">ENGLISH</span>,
-      <span style="color:#a6e22e">httpOptions</span><span style="color:#f92672">:</span> {
-        <span style="color:#a6e22e">timeout</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3000</span>,
-        <span style="color:#a6e22e">withCredentials</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
-      },
-    });
-    <span style="color:#a6e22e">jsClient</span>.<span style="color:#a6e22e">paramError</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">invalidParamater</span>;
-    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">jsClient</span>;
-  };
-  <span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">i18nClient</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">initI18nClient</span>();
-</code></pre></div><ul>
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">//i18nClient.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">i18nClient</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">jsClient</span>, <span style="color:#a6e22e">getBrowserCultureLang</span>, <span style="color:#a6e22e">invalidParamater</span>,<span style="color:#a6e22e">PatternCategories</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@singleton-i18n/js-core-sdk&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">ENGLISH</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./source.l10n&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">initI18nClient</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">currentLanguage</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">getBrowserCultureLang</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">jsClient</span>.<span style="color:#a6e22e">init</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">productID</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;iReact&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">component</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;UI&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">version</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1.0.0&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">isPseudo</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">host</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;https://singleton-service:8090&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">language</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">currentLanguage</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">i18nScope</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">PatternCategories</span>.<span style="color:#a6e22e">DATE</span>, <span style="color:#a6e22e">PatternCategories</span>.<span style="color:#a6e22e">NUMBER</span>],
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">sourceBundle</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">ENGLISH</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">httpOptions</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">timeout</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3000</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">withCredentials</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">jsClient</span>.<span style="color:#a6e22e">paramError</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">invalidParamater</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">jsClient</span>;
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">i18nClient</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">initI18nClient</span>();
+</span></span></code></pre></div><ul>
 <li><strong>Root loading point</strong></li>
 </ul>
 <pre tabindex="0"><code>While integrating with Singleton, it needs to load data regarding translations and formating from Singleton Service,so it has to figure out
 frontend framework root loading point where jsClient can fetch data ahead of pages rendering。
 Generally speaking each frontend framework has a root loading file, for example, it is the app.module.ts file on Angular,
 the index.js file on React.Here take Integration with React as example as below.
-</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">//index.js
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;react&#39;</span>;
-<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">ReactDOM</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;react-dom&#39;</span>;
-<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">App</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./App&#39;</span>;
-<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">i18nClient</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./i18n/i18nClient&#39;</span>;
-
-(<span style="color:#66d9ef">async</span> () =&gt; {
-  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">i18nClient</span>.<span style="color:#a6e22e">coreService</span>.<span style="color:#a6e22e">loadI18nData</span>(); <span style="color:#75715e">// loading data from Singleton Service
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">ReactDOM</span>.<span style="color:#a6e22e">render</span>(
-    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">App</span> <span style="color:#f92672">/&gt;</span>,
-    document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;root&#39;</span>)
-  );
-})();
-</code></pre></div><ul>
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">//index.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;react&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">ReactDOM</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;react-dom&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">App</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./App&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">i18nClient</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./i18n/i18nClient&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">async</span> () =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">i18nClient</span>.<span style="color:#a6e22e">coreService</span>.<span style="color:#a6e22e">loadI18nData</span>(); <span style="color:#75715e">// loading data from Singleton Service
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">ReactDOM</span>.<span style="color:#a6e22e">render</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">App</span> <span style="color:#f92672">/&gt;</span>,
+</span></span><span style="display:flex;"><span>    document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;root&#39;</span>)
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>})();
+</span></span></code></pre></div><ul>
 <li><strong>Util method</strong></li>
 </ul>
 <pre tabindex="0"><code>After loading data, it needs to translate strings extracted or format level2 such as datetime through jsClient API as below example
-</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">//I18nUtil.js
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">i18nClient</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./i18nClient&#34;</span>;
-<span style="color:#75715e">// create the translation method &#39;l10n&#39; consumed by where to need translate
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">l10n</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">args</span>) =&gt; <span style="color:#a6e22e">i18nClient</span>.<span style="color:#a6e22e">l10nService</span>.<span style="color:#a6e22e">getMessage</span>(<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">args</span>);
-<span style="color:#75715e">// carete formating datetime method &#39;formatDate&#39; consumed by datetime areas
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">formatDate</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">date</span>, <span style="color:#a6e22e">pattern</span>) =&gt;  <span style="color:#a6e22e">i18nClient</span>.<span style="color:#a6e22e">i18nService</span>.<span style="color:#a6e22e">formatDate</span>(<span style="color:#a6e22e">date</span>, <span style="color:#a6e22e">pattern</span>);
-</code></pre></div><ul>
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">//I18nUtil.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">i18nClient</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./i18nClient&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// create the translation method &#39;l10n&#39; consumed by where to need translate
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">l10n</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">args</span>) =&gt; <span style="color:#a6e22e">i18nClient</span>.<span style="color:#a6e22e">l10nService</span>.<span style="color:#a6e22e">getMessage</span>(<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">args</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// carete formating datetime method &#39;formatDate&#39; consumed by datetime areas
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">formatDate</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">date</span>, <span style="color:#a6e22e">pattern</span>) =&gt;  <span style="color:#a6e22e">i18nClient</span>.<span style="color:#a6e22e">i18nService</span>.<span style="color:#a6e22e">formatDate</span>(<span style="color:#a6e22e">date</span>, <span style="color:#a6e22e">pattern</span>);
+</span></span></code></pre></div><ul>
 <li><strong>Extract strings from jsx/js to source file</strong></li>
 </ul>
 <pre tabindex="0"><code>For strings in .jsx/.js files which need to translate, just extract them into a source file by convention named with l10n.js or l10n.ts as extension.
-</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">//source.l10n.js
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ENGLISH</span> <span style="color:#f92672">=</span> {
-    <span style="color:#a6e22e">LEARN</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Learn React&#34;</span>,
-    <span style="color:#a6e22e">EDIT</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Edit &lt;code&gt;{0}&lt;/code&gt; and save to reload.&#34;</span>,
-    <span style="color:#a6e22e">PLURAL</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;{0, plural,one {# day}other {# days}}&#34;</span>,
-}
-</code></pre></div><ul>
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">//source.l10n.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ENGLISH</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">LEARN</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Learn React&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">EDIT</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Edit &lt;code&gt;{0}&lt;/code&gt; and save to reload.&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">PLURAL</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;{0, plural,one {# day}other {# days}}&#34;</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li><strong>Implement translation and formating datetime</strong></li>
 </ul>
-<pre tabindex="0"><code>After extracting strings out into source file, it needs to replace strings using 'l10n' method above created.
-</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">//App.js
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;react&#39;</span>;
-<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">l10n</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./i18n/I18nUtil&#39;</span>;
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">App</span>(){
-    <span style="color:#66d9ef">return</span>(
-        <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">div</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;App&#34;</span><span style="color:#f92672">&gt;</span>
-            <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">header</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;App-header&#34;</span><span style="color:#f92672">&gt;</span>
-                <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">a</span><span style="color:#f92672">&gt;</span>
-                    {<span style="color:#a6e22e">l10n</span>(<span style="color:#e6db74">&#39;LEARN&#39;</span>)}
-                <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/a&gt;</span>
-            <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/header&gt;</span>
-        <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/div&gt;</span>
-    );
-}
-
-</code></pre></div><h2 id="collect-source-strings">Collect Source Strings</h2>
+<pre tabindex="0"><code>After extracting strings out into source file, it needs to replace strings using &#39;l10n&#39; method above created.
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">//App.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;react&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">l10n</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./i18n/I18nUtil&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">App</span>(){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">div</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;App&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">header</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;App-header&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">a</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>                    {<span style="color:#a6e22e">l10n</span>(<span style="color:#e6db74">&#39;LEARN&#39;</span>)}
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/a&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/header&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/div&gt;</span>
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="collect-source-strings">Collect Source Strings</h2>
 <pre tabindex="0"><code>Collecting source strings mean collecting all strings which are already extracted into *.l10n.js or *.l10n.ts files, Singleton Service will 
 responsible for translating these strings into different languages according to products requirements.
 Singleton JSClient also provides CLI to collect source strings, you just need to configure script in frontend project package.json file as below.
-</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">//package.json
-</span><span style="color:#75715e"></span><span style="color:#e6db74">&#34;scripts&#34;</span><span style="color:#f92672">:</span>{
-    <span style="color:#e6db74">&#34;sollect:source-bundle&#34;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">collect</span><span style="color:#f92672">-</span><span style="color:#a6e22e">source</span><span style="color:#f92672">-</span><span style="color:#a6e22e">bundle</span>
-                            <span style="color:#f92672">--</span><span style="color:#a6e22e">source</span><span style="color:#f92672">-</span><span style="color:#a6e22e">dir</span> <span style="color:#e6db74">`pwd`</span><span style="color:#f92672">/</span><span style="color:#a6e22e">src</span><span style="color:#f92672">/</span><span style="color:#a6e22e">i18n</span>
-                            <span style="color:#f92672">--</span><span style="color:#a6e22e">product</span> <span style="color:#e6db74">&#39;iReact&#39;</span>
-                            <span style="color:#f92672">--</span><span style="color:#a6e22e">version</span> <span style="color:#e6db74">&#39;1.0.0&#39;</span>
-                            <span style="color:#f92672">--</span><span style="color:#a6e22e">component</span> <span style="color:#e6db74">&#39;UI&#39;</span>
-                            <span style="color:#f92672">--</span><span style="color:#a6e22e">host</span> <span style="color:#e6db74">&#34;https://singleton-service:8090&#34;</span>
-    }
-</code></pre></div><div class="edit-meta">
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">//package.json
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#e6db74">&#34;scripts&#34;</span><span style="color:#f92672">:</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;sollect:source-bundle&#34;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">collect</span><span style="color:#f92672">-</span><span style="color:#a6e22e">source</span><span style="color:#f92672">-</span><span style="color:#a6e22e">bundle</span>
+</span></span><span style="display:flex;"><span>                            <span style="color:#f92672">--</span><span style="color:#a6e22e">source</span><span style="color:#f92672">-</span><span style="color:#a6e22e">dir</span> <span style="color:#e6db74">`pwd`</span><span style="color:#f92672">/</span><span style="color:#a6e22e">src</span><span style="color:#f92672">/</span><span style="color:#a6e22e">i18n</span>
+</span></span><span style="display:flex;"><span>                            <span style="color:#f92672">--</span><span style="color:#a6e22e">product</span> <span style="color:#e6db74">&#39;iReact&#39;</span>
+</span></span><span style="display:flex;"><span>                            <span style="color:#f92672">--</span><span style="color:#a6e22e">version</span> <span style="color:#e6db74">&#39;1.0.0&#39;</span>
+</span></span><span style="display:flex;"><span>                            <span style="color:#f92672">--</span><span style="color:#a6e22e">component</span> <span style="color:#e6db74">&#39;UI&#39;</span>
+</span></span><span style="display:flex;"><span>                            <span style="color:#f92672">--</span><span style="color:#a6e22e">host</span> <span style="color:#e6db74">&#34;https://singleton-service:8090&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><div class="edit-meta">
 Last updated on 24 Sep 2019
 
 
@@ -205,6 +204,7 @@ Published on 24 Sep 2019
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">Singleton Service Custom Log</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
 
 <li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>

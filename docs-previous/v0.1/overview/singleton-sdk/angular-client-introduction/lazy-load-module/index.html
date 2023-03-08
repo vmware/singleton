@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Lazy Load Module - Singleton</title>
 <meta name="description" content="One-fits-all Internationalization Solution">
-<meta name="generator" content="Hugo 0.90.0" />
+<meta name="generator" content="Hugo 0.105.0">
 <link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/lazy-load-module/">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
@@ -32,7 +32,7 @@
 <meta itemprop="name" content="Lazy Load Module">
 <meta itemprop="description" content="Overview As the application is growing, certain modules will be defined as the lazy module. In that situation, the translation and patterns could be loaded as lazy mode to enhance performance. The Singleton Angular client provides this option to load translation and patterns along with lazy module. Using the &lsquo;forChild&rsquo; API to initialize the Singleton module, thus the lazy module will use the separated Singleton services instances created by its own injector."><meta itemprop="datePublished" content="2019-09-24T20:08:31+08:00" />
 <meta itemprop="dateModified" content="2019-09-24T20:08:31+08:00" />
-<meta itemprop="wordCount" content="384"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
+<meta itemprop="wordCount" content="284"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
 <meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>Singleton</h1><span class="version">Version 0.6</span><a href="https://github.com/vmware/singleton" class="github"><i class="fab fa-github"></i></a>
@@ -62,7 +62,7 @@
 <h4 id="example"><strong>Example</strong></h4>
 <pre tabindex="0"><code>// lazy.module.ts
 ...
-import { VIPModule } from '@singleton-i18n/angular-client';
+import { VIPModule } from &#39;@singleton-i18n/angular-client&#39;;
 
 @NgModule({
     ...
@@ -78,20 +78,19 @@ export class LazyModule {
     // In the simplified configuration of lazy loading module, 
     // only the component name is required, and other fields are optional.
         service.initLazyModuleData({
-            component: 'default',
+            component: &#39;default&#39;,
             sourceBundles: [ENGLISH]
         });
     }
 }
-
 </code></pre><pre tabindex="0"><code>// sample.component.ts
 
-import { L10nService, I18nService, VIPService } from '@singleton-i18n/angular-client';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { L10nService, I18nService, VIPService } from &#39;@singleton-i18n/angular-client&#39;;
+import { Component, OnInit, OnDestroy } from &#39;@angular/core&#39;;
 
 @Component({
-    selector: 'sample',
-    templateUrl: './sample.component.html'
+    selector: &#39;sample&#39;,
+    templateUrl: &#39;./sample.component.html&#39;
 })
 export class SampleComponent implements OnInit, OnDestroy {
     subscription: any;
@@ -99,8 +98,8 @@ export class SampleComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.subscription = this.vipService.stream.subscribe((locale: string) =&gt; {
-            this.translation = this.l10nService.getMessage('Singleton.description', [ 'Singleton for Angular client' ], locale);
-            this.date = this.i18nService.formatDate(new Date(), 'short', locale );
+            this.translation = this.l10nService.getMessage(&#39;Singleton.description&#39;, [ &#39;Singleton for Angular client&#39; ], locale);
+            this.date = this.i18nService.formatDate(new Date(), &#39;short&#39;, locale );
         });
     }
 
@@ -109,7 +108,6 @@ export class SampleComponent implements OnInit, OnDestroy {
         this.subscription = undefined;
     }
 }
-
 </code></pre><style>
     html {
         font-family: Metropolis;
@@ -194,6 +192,7 @@ Published on 24 Sep 2019
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">Singleton Service Custom Log</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
 
 <li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>

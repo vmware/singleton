@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Locale Management - Singleton</title>
 <meta name="description" content="One-fits-all Internationalization Solution">
-<meta name="generator" content="Hugo 0.90.0" />
+<meta name="generator" content="Hugo 0.105.0">
 <link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/locale-management/">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
@@ -35,7 +35,7 @@ For example, German language is de, an abbreviation for Deutsch, while Swiss Ger
 <meta itemprop="description" content="Overview A locale consists of a number of categories for which country-dependent formatting or other specifications exist. A program&rsquo;s locale defines its code sets, date and time formatting conventions, monetary conventions, decimal formatting conventions, and collation (sort) order. A locale name can be composed of a base language, country (territory) of use, and codeset.
 For example, German language is de, an abbreviation for Deutsch, while Swiss German is de_CH, CH being an abbreviation for Confederation Helvetica."><meta itemprop="datePublished" content="2019-09-24T20:08:31+08:00" />
 <meta itemprop="dateModified" content="2019-09-24T20:08:31+08:00" />
-<meta itemprop="wordCount" content="963"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
+<meta itemprop="wordCount" content="863"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
 <meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>Singleton</h1><span class="version">Version 0.6</span><a href="https://github.com/vmware/singleton" class="github"><i class="fab fa-github"></i></a>
@@ -69,26 +69,21 @@ For example, German language is de, an abbreviation for Deutsch, while Swiss Ger
 <p>Provides two ways to get the supported languages: user browser language setting and the language from the user preference. There is one API to get the supported language of the current product, user can pick up one language as a preferred language, then stores into the backend DB. The recommended way is collecting both language and region information from the user as a user profile, this will work well with some complex situations.</p>
 <p>Get user language from browser:</p>
 <pre tabindex="0"><code>getBrowserCultureLang(): string
-
-</code></pre><pre tabindex="0"><code>import { getBrowserCultureLang } from '@singleton-i18n/angular-client';
+</code></pre><pre tabindex="0"><code>import { getBrowserCultureLang } from &#39;@singleton-i18n/angular-client&#39;;
 const language = getBrowserCultureLang(); // eg: zh-CN
-
 </code></pre><p>Get supported languages list from singleton:</p>
 <pre tabindex="0"><code>getSupportedLanguages(): Promise&lt;languagesList&gt;;
-
-</code></pre><pre tabindex="0"><code>import { I18nService } from '@singleton-i18n/angular-client';
+</code></pre><pre tabindex="0"><code>import { I18nService } from &#39;@singleton-i18n/angular-client&#39;;
 ...
 this.i18nService.getSupportedLanguages().then( languages =&gt; {
     this.languages = languages;
-    // eg: [ { displayName: &quot;English&quot;, languageTag: &quot;en&quot; },
-    //       { displayName: &quot;français&quot;, languageTag: &quot;fr } ]
+    // eg: [ { displayName: &#34;English&#34;, languageTag: &#34;en&#34; },
+    //       { displayName: &#34;français&#34;, languageTag: &#34;fr } ]
 });
 ...
-
 </code></pre><h5 id="region"><strong>Region</strong></h5>
 <p>As mentioned above, normally singleton client accepts two parameters to determine which translations and patterns should be used in the current. The available regions can be got from singleton client API, user can pick up the correct one and store into the user profile.</p>
 <pre tabindex="0"><code>getSupportedRegions( languageTag: string): Promise&lt;languagesList&gt;;
-
 </code></pre><table>
 <thead>
 <tr>
@@ -107,17 +102,16 @@ this.i18nService.getSupportedLanguages().then( languages =&gt; {
 </tr>
 </tbody>
 </table>
-<pre tabindex="0"><code>import { I18nService } from '@singleton-i18n/angular-client';
+<pre tabindex="0"><code>import { I18nService } from &#39;@singleton-i18n/angular-client&#39;;
 ...
-this.i18nService.getSupportedRegions('fr').then( regions =&gt; {
+this.i18nService.getSupportedRegions(&#39;fr&#39;).then( regions =&gt; {
     this.regions = regions;
     // eg: assuming that language is fr
-    // [ [ 'FR': 'France'],
-    //   [ 'GE': 'Géorgie' ],
-    //   [ 'CN': 'Chine' ] ]
+    // [ [ &#39;FR&#39;: &#39;France&#39;],
+    //   [ &#39;GE&#39;: &#39;Géorgie&#39; ],
+    //   [ &#39;CN&#39;: &#39;Chine&#39; ] ]
 });
 ...
-
 </code></pre><h4 id="set-locale"><strong>Set locale</strong></h4>
 <h5 id="set-default-locale"><strong>Set default locale</strong></h5>
 <p>Set default locale and initialize current language and current region. Default value is en-US. It will be used as fallback locale. The content in the sourceBundle should correspond to the default locale. This function should be executed when the application start.</p>
@@ -128,7 +122,6 @@ this.i18nService.getSupportedRegions('fr').then( regions =&gt; {
     regionCode: string,
     regionName: string
 })
-
 </code></pre><p>Parameters</p>
 <table>
 <thead>
@@ -165,11 +158,8 @@ this.i18nService.getSupportedRegions('fr').then( regions =&gt; {
 <p>Provides APIs to set the current locale/language/region used in the application.</p>
 <p>API</p>
 <pre tabindex="0"><code>setCurrentLocale(languageTag: string, regionCode?: string)
-
 </code></pre><pre tabindex="0"><code>setCurrentLanguage(languageTag: string)
-
 </code></pre><pre tabindex="0"><code>setCurrentRegion(regionCode: string)
-
 </code></pre><p>Parameters</p>
 <table>
 <thead>
@@ -198,26 +188,20 @@ this.i18nService.getSupportedRegions('fr').then( regions =&gt; {
 <p>Get the current locale language or region from LocaleService synchronously.</p>
 <p>API</p>
 <pre tabindex="0"><code>getCurrentLocale(): string
-
 </code></pre><pre tabindex="0"><code>getCurrentLanguage(): string
-
 </code></pre><pre tabindex="0"><code>getCurrentRegion(): string
-
 </code></pre><pre tabindex="0"><code>this.currentLocale = this.localeService.getCurrentLocale();
-
 </code></pre><h5 id="asynchronous-api"><strong>Asynchronous API</strong></h5>
 <p>The stream is an observable object can be subscribed, the current locale will be emitted only when the resource for the selected locale is loaded.
 In the live update mode, the translation method in L10nService or the formatting method in I18nService should be invoked as a callback function which reacts to the current locale arriving via the stream.</p>
 <p>API</p>
 <pre tabindex="0"><code>get stream(): Observable&lt;string|any&gt;
-
 </code></pre><pre tabindex="0"><code>this.i18nService.stream.subscribe( locale =&gt; {
-    this.formattedDate = this.i18nService.formatDate(new Date(), 'short', locale);
+    this.formattedDate = this.i18nService.formatDate(new Date(), &#39;short&#39;, locale);
 });
-
 </code></pre><h4 id="live-update"><strong>Live Update</strong></h4>
 <p>Automatically refresh the UI when the language and region are changed. The translations and formatting strings will be updated on UI when the i18n data is loaded.</p>
-<pre tabindex="0"><code>import { LocaleService } from '@singleton-i18n/angular-client';
+<pre tabindex="0"><code>import { LocaleService } from &#39;@singleton-i18n/angular-client&#39;;
 ...
 // use language from browser as locale
 this.localeService.setCurrentLocale(locale);
@@ -227,24 +211,21 @@ this.localeService.setCurrentLocale(locale);
 this.localeService.setCurrentLanguage(language);
 this.localeService.setCurrentRegion(region);
 ...
-
 </code></pre><h4 id="static-refresh"><strong>Static Refresh</strong></h4>
 <p>Besides live update, the other choice is using browser refresh to reload the resource according to the new language and region which can be stored in LocalStorage.</p>
 <pre tabindex="0"><code>changeLocale() {
     ...
-    localStorage.setItem('language', language);
-    localStorage.setItem('region', region);
+    localStorage.setItem(&#39;language&#39;, language);
+    localStorage.setItem(&#39;region&#39;, region);
     window.location.reload();
 }
-
 </code></pre><pre tabindex="0"><code>// app initial
 ...
-const language = localStorage.getItem('language'),
-    region = localStorage.getItem('region');
+const language = localStorage.getItem(&#39;language&#39;),
+    region = localStorage.getItem(&#39;region&#39;);
 localeService.init(language, region);
 vipService.initData(I18nConfig);
 ...
-
 </code></pre><style>  
     html {
         font-family: Metropolis;
@@ -329,6 +310,7 @@ Published on 24 Sep 2019
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">Singleton Service Custom Log</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
 
 <li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Plural Format - Singleton</title>
 <meta name="description" content="One-fits-all Internationalization Solution">
-<meta name="generator" content="Hugo 0.90.0" />
+<meta name="generator" content="Hugo 0.105.0">
 <link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/plural-format/">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
@@ -38,7 +38,7 @@ selector { message } /** * selector: explicitValue | keyword * explicitValue: &#
 Plural Source Text The source text defines the message output for each plural case of the specified locale. Syntax:
 selector { message } /** * selector: explicitValue | keyword * explicitValue: &#39;=&#39; number // adjacent, no white space in between * keyword: Pluralization categories * message: string */ Pluralization categories include (depending on the language):"><meta itemprop="datePublished" content="2019-09-24T20:08:31+08:00" />
 <meta itemprop="dateModified" content="2019-09-24T20:08:31+08:00" />
-<meta itemprop="wordCount" content="438"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
+<meta itemprop="wordCount" content="313"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
 <meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>Singleton</h1><span class="version">Version 0.6</span><a href="https://github.com/vmware/singleton" class="github"><i class="fab fa-github"></i></a>
@@ -69,11 +69,10 @@ selector { message } /** * selector: explicitValue | keyword * explicitValue: &#
 <pre tabindex="0"><code>selector { message }
 /**
  *  selector: explicitValue | keyword
- *       explicitValue: '=' number // adjacent, no white space in between
+ *       explicitValue: &#39;=&#39; number // adjacent, no white space in between
  *       keyword: Pluralization categories
  *  message: string
  */
-
 </code></pre><p>Pluralization categories include (depending on the language):</p>
 <ul>
 <li>zero</li>
@@ -92,31 +91,28 @@ selector { message } /** * selector: explicitValue | keyword * explicitValue: &#
 <h4 id="example-code"><strong>Example Code</strong></h4>
 <p>source in bundle</p>
 <pre tabindex="0"><code>...
-'ngx.singleton.files' : '{0, plural, =0 {No files.} one{There is one file on {1}.} other{There are # files on {1}.} }'
-
-</code></pre><pre tabindex="0"><code>import { L10nService } from '@singleton-i18n/angular-client';
+&#39;ngx.singleton.files&#39; : &#39;{0, plural, =0 {No files.} one{There is one file on {1}.} other{There are # files on {1}.} }&#39;
+</code></pre><pre tabindex="0"><code>import { L10nService } from &#39;@singleton-i18n/angular-client&#39;;
 
 @Component({
-    selector: 'test',
-    templateUrl: './test.component.html'
+    selector: &#39;test&#39;,
+    templateUrl: &#39;./test.component.html&#39;
 })
 export class TestComponent {
     constructor(private l10nService: L10nService) {}
 
     ...
     // static refresh mode
-    this.thanslatedFiles = this.l10nService.getMessage('ngx.singleton.files', [ this.files.length, 'XDisk' ]);
+    this.thanslatedFiles = this.l10nService.getMessage(&#39;ngx.singleton.files&#39;, [ this.files.length, &#39;XDisk&#39; ]);
     
     ...
     // live update mode
     this.subscription = this.l10nService.stream.subscribe((locale: string) =&gt; {
-        this.thanslatedFiles = this.l10nService.getMessage('ngx.singleton.files', [ this.files.length, 'XDisk' ]);
+        this.thanslatedFiles = this.l10nService.getMessage(&#39;ngx.singleton.files&#39;, [ this.files.length, &#39;XDisk&#39; ]);
     });
 
 }
-
-</code></pre><pre tabindex="0"><code>{{'ngx.singleton.files' | vtranslate:files.length:'XDisk'}}
-
+</code></pre><pre tabindex="0"><code>{{&#39;ngx.singleton.files&#39; | vtranslate:files.length:&#39;XDisk&#39;}}
 </code></pre><style>
     html {
         font-family: Metropolis;
@@ -213,6 +209,7 @@ Published on 24 Sep 2019
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">Singleton Service Custom Log</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
 
 <li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>

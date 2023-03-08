@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Translate Pipe - Singleton</title>
 <meta name="description" content="One-fits-all Internationalization Solution">
-<meta name="generator" content="Hugo 0.90.0" />
+<meta name="generator" content="Hugo 0.105.0">
 <link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/translate-pipe/">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
@@ -20,7 +20,7 @@
 <meta property="og:title" content="Translate Pipe" />
 <meta property="og:description" content="Overview Use the translate pipe in your HTML templates to retrieve translations from the singleton service.
 API L10n pipe Get translation by key, will find the source in the sourceBundle according to the key.
-{{ key | vtranslate:[ : variables ] }} Input    Parameter Type Required Description     key string required Define the key to identify the translation, it should name like this: component_module_page_control_shortmsg. e." />
+{{ key | vtranslate:[ : variables ] }} Input Parameter Type Required Description key string required Define the key to identify the translation, it should name like this: component_module_page_control_shortmsg. e.g. web_settings_stats_statsTable_host; variables Array[] optional Parameter array, it&rsquo;s used to format the translation/source when they contain placeholders." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/translate-pipe/" /><meta property="og:image" content="https://vmware.github.io/singleton/images/og-image.png"/><meta property="article:section" content="docs-previous" />
 <meta property="article:published_time" content="2019-09-24T20:08:31+08:00" />
@@ -32,13 +32,13 @@ API L10n pipe Get translation by key, will find the source in the sourceBundle a
 <meta name="twitter:title" content="Translate Pipe"/>
 <meta name="twitter:description" content="Overview Use the translate pipe in your HTML templates to retrieve translations from the singleton service.
 API L10n pipe Get translation by key, will find the source in the sourceBundle according to the key.
-{{ key | vtranslate:[ : variables ] }} Input    Parameter Type Required Description     key string required Define the key to identify the translation, it should name like this: component_module_page_control_shortmsg. e."/>
+{{ key | vtranslate:[ : variables ] }} Input Parameter Type Required Description key string required Define the key to identify the translation, it should name like this: component_module_page_control_shortmsg. e.g. web_settings_stats_statsTable_host; variables Array[] optional Parameter array, it&rsquo;s used to format the translation/source when they contain placeholders."/>
 <meta itemprop="name" content="Translate Pipe">
 <meta itemprop="description" content="Overview Use the translate pipe in your HTML templates to retrieve translations from the singleton service.
 API L10n pipe Get translation by key, will find the source in the sourceBundle according to the key.
-{{ key | vtranslate:[ : variables ] }} Input    Parameter Type Required Description     key string required Define the key to identify the translation, it should name like this: component_module_page_control_shortmsg. e."><meta itemprop="datePublished" content="2019-09-24T20:08:31+08:00" />
+{{ key | vtranslate:[ : variables ] }} Input Parameter Type Required Description key string required Define the key to identify the translation, it should name like this: component_module_page_control_shortmsg. e.g. web_settings_stats_statsTable_host; variables Array[] optional Parameter array, it&rsquo;s used to format the translation/source when they contain placeholders."><meta itemprop="datePublished" content="2019-09-24T20:08:31+08:00" />
 <meta itemprop="dateModified" content="2019-09-24T20:08:31+08:00" />
-<meta itemprop="wordCount" content="279"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
+<meta itemprop="wordCount" content="179"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
 <meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>Singleton</h1><span class="version">Version 0.6</span><a href="https://github.com/vmware/singleton" class="github"><i class="fab fa-github"></i></a>
@@ -68,7 +68,6 @@ API L10n pipe Get translation by key, will find the source in the sourceBundle a
 <h5 id="l10n-pipe"><strong>L10n pipe</strong></h5>
 <p>Get translation by key, will find the source in the sourceBundle according to the key.</p>
 <pre tabindex="0"><code>{{ key | vtranslate:[ : variables ] }}
-
 </code></pre><h4 id="input"><strong>Input</strong></h4>
 <table>
 <thead>
@@ -96,21 +95,19 @@ API L10n pipe Get translation by key, will find the source in the sourceBundle a
 </table>
 <h4 id="example-code"><strong>Example Code</strong></h4>
 <pre tabindex="0"><code>export const ENGLISH = {
-    'some.unique.key' : 'English for some.unique.key',
-    'singleton.description' : '{0} is common lib developed by VMware G11n team.',
-    'innerHTML.usage' : 'For more details, please refer to [Singleton Angular Client](https://github.com/vmware/singleton/tree/g11n-angular-client).'
+    &#39;some.unique.key&#39; : &#39;English for some.unique.key&#39;,
+    &#39;singleton.description&#39; : &#39;{0} is common lib developed by VMware G11n team.&#39;,
+    &#39;innerHTML.usage&#39; : &#39;For more details, please refer to [Singleton Angular Client](https://github.com/vmware/singleton/tree/g11n-angular-client).&#39;
     // innerHTML usage: use the innerHTML attribute with the pipe on any element. Not only for plain text node, also for raw HTML tags in source strings as inline tags.
-    // Note: Convert &quot; to &amp;quot; for the value of attribute.
+    // Note: Convert &#34; to &amp;quot; for the value of attribute.
 }
-
 </code></pre><pre tabindex="0"><code>// L10n pipe
-{{'some.unique.key' | vtranslate }}
+{{&#39;some.unique.key&#39; | vtranslate }}
 
-{{'singleton.description' | vtranslate: 'Singleton for Angular client'}}
+{{&#39;singleton.description&#39; | vtranslate: &#39;Singleton for Angular client&#39;}}
 
 // L10n pipe innerHTML sample
-&lt;label [innerHTML]=&quot;'innerHTML.usage' | vtranslate&quot;&gt;&lt;/label&gt;
-
+&lt;label [innerHTML]=&#34;&#39;innerHTML.usage&#39; | vtranslate&#34;&gt;&lt;/label&gt;
 </code></pre><style>
     html {
         font-family: Metropolis;
@@ -195,6 +192,7 @@ Published on 24 Sep 2019
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">Singleton Service Custom Log</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
 
 <li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>

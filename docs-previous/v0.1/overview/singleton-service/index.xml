@@ -13,7 +13,7 @@
       <pubDate>Thu, 02 Jul 2020 11:09:53 +0800</pubDate>
       
       <guid>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/singleton-service-db-build-introducation/</guid>
-      <description>1. Prerequisites  Java 8 (Java 9+ are not supported, will get compiler issue) Git Docker  2. Create Singleton Database docker image 2.1 Required  Linux 64-bit Operation System and install docker successfully  2.2 Prepare the init db scripts 2.2.1 prepare the create users and databases sql scripts vipinitdb.sql CREATE USER pgvipconfig WITH PASSWORD &#39;vipconfig&#39;; CREATE USER pgvipdata WITH PASSWORD &#39;vipdata&#39;; CREATE DATABASE vipconfig OWNER pgvipconfig; CREATE DATABASE vipdata0 OWNER pgvipdata; CREATE DATABASE vipdata1 OWNER pgvipdata; 2.</description>
+      <description>1. Prerequisites Java 8 (Java 9+ are not supported, will get compiler issue) Git Docker 2. Create Singleton Database docker image 2.1 Required Linux 64-bit Operation System and install docker successfully 2.2 Prepare the init db scripts 2.2.1 prepare the create users and databases sql scripts vipinitdb.sql CREATE USER pgvipconfig WITH PASSWORD &amp;#39;vipconfig&amp;#39;; CREATE USER pgvipdata WITH PASSWORD &amp;#39;vipdata&amp;#39;; CREATE DATABASE vipconfig OWNER pgvipconfig; CREATE DATABASE vipdata0 OWNER pgvipdata; CREATE DATABASE vipdata1 OWNER pgvipdata; 2.</description>
     </item>
     
     <item>
@@ -24,7 +24,7 @@
       <guid>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/singleton-service-script/</guid>
       <description>Singleton adds script files to help user to start/check/stop Singleton Service build.
 How to generate Singleton Script The steps:
- Clone Singleton Service code using Git  git clone git@github.com:vmware/singleton.gitComplie a build using Gradle wrapper under ./g11n-ws folder  ./gradlew build -x testGo to ./Singleton/Publish folder, find singletonScripts-0.1.0.zip, and extract it, you will get 4 files as below:  singletonall.shsingletonstart.shsingletoncheck.shsingletonstop.shHow to use Singleton Script singletonall.</description>
+Clone Singleton Service code using Git git clone git@github.com:vmware/singleton.git Complie a build using Gradle wrapper under ./g11n-ws folder ./gradlew build -x test Go to ./Singleton/Publish folder, find singletonScripts-0.1.0.zip, and extract it, you will get 4 files as below: singletonall.shsingletonstart.shsingletoncheck.shsingletonstop.sh How to use Singleton Script singletonall.sh This script is used to start, stop, and status detect Singleton Service, also restart it when something wrong in Singleton Service running .</description>
     </item>
     
     <item>

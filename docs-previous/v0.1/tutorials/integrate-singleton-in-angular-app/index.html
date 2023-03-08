@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Integrate Singleton in Angular App - Singleton</title>
 <meta name="description" content="One-fits-all Internationalization Solution">
-<meta name="generator" content="Hugo 0.90.0" />
+<meta name="generator" content="Hugo 0.105.0">
 <link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://vmware.github.io/singleton/docs-previous/v0.1/tutorials/integrate-singleton-in-angular-app/">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
@@ -64,193 +64,190 @@ Singleton service to dynamically fetch translation and I18n pattern data for pro
 For I18n formatting, Singleton AngularClient also provides I18n support for datetime format, number format, currency and plural.
 Singleton AngularClient formatting is based on CLDR data repository and keeps the same scope in supported locale set.
 </code></pre><h2 id="install">Install</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Javascript" data-lang="Javascript"><span style="color:#a6e22e">npm</span> <span style="color:#a6e22e">install</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">singleton</span><span style="color:#f92672">-</span><span style="color:#a6e22e">i18n</span><span style="color:#f92672">/</span><span style="color:#a6e22e">angular</span><span style="color:#f92672">-</span><span style="color:#a6e22e">client</span> <span style="color:#f92672">--</span><span style="color:#a6e22e">save</span> 
-</code></pre></div><h2 id="initialization">Initialization</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Javascript" data-lang="Javascript"><span style="color:#75715e">//Configure app.module.ts for loading data
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">APP_INITIALIZER</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@angular/core&#39;</span>;    <span style="color:#75715e">//These function are injected at application startup and executed during app initialization, singleton rely on it to initilize singleton for loading data
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">HttpClientModule</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@angular/common/http&#39;</span>;    <span style="color:#75715e">// Angular-Client based on this to communicate with Singleton Service
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> {
-    <span style="color:#a6e22e">VIPModule</span>,
-    <span style="color:#a6e22e">VIPService</span>,
-    <span style="color:#a6e22e">LocaleService</span>,
-    <span style="color:#a6e22e">PatternCategories</span>,
-    <span style="color:#a6e22e">getBrowserCultureLang</span>,
-} <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@singleton-i18n/angular-client&#39;</span>;
-<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">ENGLISH</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;app.l10n&#39;</span>; <span style="color:#75715e">//ENGLISH is source strings extracted from Angular Code
-</span><span style="color:#75715e"></span>
-
-<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">initSingletonConfig</span>(<span style="color:#a6e22e">service</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">VIPService</span>, <span style="color:#a6e22e">localeService</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">LocaleService</span>) {
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">browserLanguage</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">getBrowserCultureLang</span>();    <span style="color:#75715e">//get browser&#39;s language
-</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">localeService</span>.<span style="color:#a6e22e">init</span>(<span style="color:#a6e22e">browserLanguage</span>);
-    <span style="color:#66d9ef">return</span> () =&gt; <span style="color:#a6e22e">service</span>.<span style="color:#a6e22e">initData</span>({
-        <span style="color:#a6e22e">productID</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;ProductName&#39;</span>,
-        <span style="color:#a6e22e">component</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;default&#39;</span>,
-        <span style="color:#a6e22e">version</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;1.0.0&#39;</span>,
-        <span style="color:#a6e22e">host</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;https://singleton-service&#39;</span>,
-        <span style="color:#a6e22e">i18nScope</span><span style="color:#f92672">:</span> [
-            <span style="color:#a6e22e">PatternCategories</span>.<span style="color:#a6e22e">DATE</span>,
-            <span style="color:#a6e22e">PatternCategories</span>.<span style="color:#a6e22e">NUMBER</span>,
-            <span style="color:#a6e22e">PatternCategories</span>.<span style="color:#a6e22e">PLURAL</span>,
-            <span style="color:#a6e22e">PatternCategories</span>.<span style="color:#a6e22e">CURRENCIES</span>
-        ],
-        <span style="color:#a6e22e">isPseudo</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
-        <span style="color:#a6e22e">collectSource</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
-        <span style="color:#a6e22e">sourceBundle</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">ENGLISH</span>,
-    });
-}
-
-<span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">NgModule</span>({
-    ...
-    <span style="color:#a6e22e">imports</span><span style="color:#f92672">:</span> [
-        ...
-        <span style="color:#a6e22e">HttpClientModule</span>,
-        <span style="color:#a6e22e">VIPModule</span>.<span style="color:#a6e22e">forRoot</span>(),
-        ...
-    ],
-    <span style="color:#a6e22e">providers</span><span style="color:#f92672">:</span> [
-        {
-            <span style="color:#a6e22e">provide</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">APP_INITIALIZER</span>,
-            <span style="color:#a6e22e">useFactory</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">initSingletonConfig</span>,
-            <span style="color:#a6e22e">deps</span><span style="color:#f92672">:</span> [
-                <span style="color:#a6e22e">VIPService</span>,
-                <span style="color:#a6e22e">LocaleService</span>,
-            ],
-            <span style="color:#a6e22e">multi</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
-        },
-    ],
-    ...
-})
-<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AppModule</span> {}
-
-</code></pre></div><h2 id="adoption">Adoption</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Javascript" data-lang="Javascript"><span style="display:flex;"><span><span style="color:#a6e22e">npm</span> <span style="color:#a6e22e">install</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">singleton</span><span style="color:#f92672">-</span><span style="color:#a6e22e">i18n</span><span style="color:#f92672">/</span><span style="color:#a6e22e">angular</span><span style="color:#f92672">-</span><span style="color:#a6e22e">client</span> <span style="color:#f92672">--</span><span style="color:#a6e22e">save</span> 
+</span></span></code></pre></div><h2 id="initialization">Initialization</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Javascript" data-lang="Javascript"><span style="display:flex;"><span><span style="color:#75715e">//Configure app.module.ts for loading data
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">APP_INITIALIZER</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@angular/core&#39;</span>;    <span style="color:#75715e">//These function are injected at application startup and executed during app initialization, singleton rely on it to initilize singleton for loading data
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">HttpClientModule</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@angular/common/http&#39;</span>;    <span style="color:#75715e">// Angular-Client based on this to communicate with Singleton Service
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">VIPModule</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">VIPService</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">LocaleService</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">PatternCategories</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">getBrowserCultureLang</span>,
+</span></span><span style="display:flex;"><span>} <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@singleton-i18n/angular-client&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">ENGLISH</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;app.l10n&#39;</span>; <span style="color:#75715e">//ENGLISH is source strings extracted from Angular Code
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">initSingletonConfig</span>(<span style="color:#a6e22e">service</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">VIPService</span>, <span style="color:#a6e22e">localeService</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">LocaleService</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">browserLanguage</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">getBrowserCultureLang</span>();    <span style="color:#75715e">//get browser&#39;s language
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">localeService</span>.<span style="color:#a6e22e">init</span>(<span style="color:#a6e22e">browserLanguage</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> () =&gt; <span style="color:#a6e22e">service</span>.<span style="color:#a6e22e">initData</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">productID</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;ProductName&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">component</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;default&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">version</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;1.0.0&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">host</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;https://singleton-service&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">i18nScope</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">PatternCategories</span>.<span style="color:#a6e22e">DATE</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">PatternCategories</span>.<span style="color:#a6e22e">NUMBER</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">PatternCategories</span>.<span style="color:#a6e22e">PLURAL</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">PatternCategories</span>.<span style="color:#a6e22e">CURRENCIES</span>
+</span></span><span style="display:flex;"><span>        ],
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">isPseudo</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">collectSource</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">sourceBundle</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">ENGLISH</span>,
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">NgModule</span>({
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">imports</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>        ...
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">HttpClientModule</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">VIPModule</span>.<span style="color:#a6e22e">forRoot</span>(),
+</span></span><span style="display:flex;"><span>        ...
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">providers</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">provide</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">APP_INITIALIZER</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">useFactory</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">initSingletonConfig</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">deps</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">VIPService</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">LocaleService</span>,
+</span></span><span style="display:flex;"><span>            ],
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">multi</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AppModule</span> {}
+</span></span></code></pre></div><h2 id="adoption">Adoption</h2>
 <hr>
 <h4 id="translation">Translation</h4>
 <ol>
 <li><strong>Implement translation in html using &lsquo;vtranslate&rsquo; pipe</strong></li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;section-title&#34;</span>&gt;Getting started&lt;/<span style="color:#f92672">div</span>&gt;  //Original frontend code
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">//extracted source string into app.l10n.ts file
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ENGLISH</span> <span style="color:#f92672">=</span> {
-    <span style="color:#a6e22e">STARTED</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Getting started&#39;</span>
-} 
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;section-title&#34;</span>&gt;{{ &#39;STARTED&#39; | vtranslate }}&lt;/<span style="color:#f92672">div</span>&gt;  //use vtranslate pipe to implement translation
-</code></pre></div><ol start="2">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;section-title&#34;</span>&gt;Getting started&lt;/<span style="color:#f92672">div</span>&gt;  //Original frontend code
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">//extracted source string into app.l10n.ts file
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ENGLISH</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">STARTED</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Getting started&#39;</span>
+</span></span><span style="display:flex;"><span>} 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;section-title&#34;</span>&gt;{{ &#39;STARTED&#39; | vtranslate }}&lt;/<span style="color:#f92672">div</span>&gt;  //use vtranslate pipe to implement translation
+</span></span></code></pre></div><ol start="2">
 <li><strong>Source string along with variables needs to translate</strong></li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;page-count-info&#34;</span>&gt;{{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} of {{ pagination.totalItems }} requests&lt;/<span style="color:#f92672">div</span>&gt;  //Original frontend code
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">//extracted source string into app.l10n.ts file
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ENGLISH</span> <span style="color:#f92672">=</span> {
-    <span style="color:#a6e22e">REQ_PAGE</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;{0} - {1} of {2} requests&#39;</span>
-} 
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;page-count-info&#34;</span>&gt;{{ &#39;REQ_PAGE&#39; | vtranslate : pagination.firstItem + 1 : pagination.lastItem + 1 : pagination.totalItems }}&lt;/<span style="color:#f92672">div</span>&gt;  //use vtranslate pipe to implement translation
-</code></pre></div><ol start="3">
-<li><strong>Implement translation in html using &lsquo;l10n&rsquo; directive</strong></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;page-count-info&#34;</span>&gt;{{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} of {{ pagination.totalItems }} requests&lt;/<span style="color:#f92672">div</span>&gt;  //Original frontend code
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">//extracted source string into app.l10n.ts file
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ENGLISH</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">REQ_PAGE</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;{0} - {1} of {2} requests&#39;</span>
+</span></span><span style="display:flex;"><span>} 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;page-count-info&#34;</span>&gt;{{ &#39;REQ_PAGE&#39; | vtranslate : pagination.firstItem + 1 : pagination.lastItem + 1 : pagination.totalItems }}&lt;/<span style="color:#f92672">div</span>&gt;  //use vtranslate pipe to implement translation
+</span></span></code></pre></div><ol start="3">
+<li><strong>Implement translation in html using &rsquo;l10n&rsquo; directive</strong></li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;section-title&#34;</span>&gt;Getting started&lt;/<span style="color:#f92672">div</span>&gt;  //Original frontend code
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">//extracted source string into app.l10n.ts file
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ENGLISH</span> <span style="color:#f92672">=</span> {
-    <span style="color:#a6e22e">STARTED</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Getting started&#39;</span>
-} 
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">l10n</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;STARTED&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;section-title&#34;</span> &gt;&lt;/<span style="color:#f92672">div</span>&gt;  //use l10n directive to implement translation
-</code></pre></div><ol start="4">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;section-title&#34;</span>&gt;Getting started&lt;/<span style="color:#f92672">div</span>&gt;  //Original frontend code
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">//extracted source string into app.l10n.ts file
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ENGLISH</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">STARTED</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Getting started&#39;</span>
+</span></span><span style="display:flex;"><span>} 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">l10n</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;STARTED&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;section-title&#34;</span> &gt;&lt;/<span style="color:#f92672">div</span>&gt;  //use l10n directive to implement translation
+</span></span></code></pre></div><ol start="4">
 <li><strong>Source strings in ts file needs to translate</strong></li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">//extracted source string into app.l10n.ts file
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ENGLISH</span> <span style="color:#f92672">=</span> {
-    <span style="color:#a6e22e">IDENTITY_VERSION</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Identify Manager with version {0} is supported&#39;</span>  <span style="color:#75715e">// this text includes one variable which is repalced by {0} placeholder
-</span><span style="color:#75715e"></span>} 
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Typescript" data-lang="Typescript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">L10nService</span> } <span style="color:#66d9ef">from</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@singleton-i18n/angular-client&#39;</span>;
-<span style="color:#66d9ef">@Component</span>({
-    ...
-})
-<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DemoComponent</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">OnInit</span> {
-    <span style="color:#66d9ef">constructor</span>(<span style="color:#66d9ef">private</span> <span style="color:#a6e22e">l10nService</span>: <span style="color:#66d9ef">L10nService</span>){}
-    <span style="color:#a6e22e">getVersions</span>(){
-        ...
-       <span style="color:#75715e">//this.supportedVersionText = &#39;Identify Manager with version &#39; + data.versions + &#39; is supported&#39;;  //original code
-</span><span style="color:#75715e"></span>       <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">supportedVersionText</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">l10nService</span>.<span style="color:#a6e22e">getMessage</span>(<span style="color:#e6db74">&#39;IDENTITY_VERSION&#39;</span>,[<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">versions</span>]);
-        ...
-    }
-}
-
-</code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">//extracted source string into app.l10n.ts file
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ENGLISH</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">IDENTITY_VERSION</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Identify Manager with version {0} is supported&#39;</span>  <span style="color:#75715e">// this text includes one variable which is repalced by {0} placeholder
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>} 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Typescript" data-lang="Typescript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">L10nService</span> } <span style="color:#66d9ef">from</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@singleton-i18n/angular-client&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Component</span>({
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DemoComponent</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">OnInit</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">constructor</span>(<span style="color:#66d9ef">private</span> <span style="color:#a6e22e">l10nService</span>: <span style="color:#66d9ef">L10nService</span>){}
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">getVersions</span>(){
+</span></span><span style="display:flex;"><span>        ...
+</span></span><span style="display:flex;"><span>       <span style="color:#75715e">//this.supportedVersionText = &#39;Identify Manager with version &#39; + data.versions + &#39; is supported&#39;;  //original code
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>       <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">supportedVersionText</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">l10nService</span>.<span style="color:#a6e22e">getMessage</span>(<span style="color:#e6db74">&#39;IDENTITY_VERSION&#39;</span>,[<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">versions</span>]);
+</span></span><span style="display:flex;"><span>        ...
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
 <h4 id="internationalization">Internationalization</h4>
 <ol>
 <li><strong>Fomatting date via dateFormat pipe</strong></li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Javascript" data-lang="Javascript">{{ <span style="color:#a6e22e">date</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">dateFormat</span> }} <span style="color:#75715e">// output &#39;5:40 PM&#39; 
-</span><span style="color:#75715e"></span>
-{{ <span style="color:#a6e22e">date</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">dateFormat</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;longTime&#39;</span> }}  <span style="color:#75715e">// output &#39;5:40:22 PM GMT+8&#39; 
-</span><span style="color:#75715e"></span>
-{{ <span style="color:#a6e22e">date</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">dateFormat</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;fullDate&#39;</span>}}  <span style="color:#75715e">//output &#39;Friday, February 9, 2018&#39;
-</span></code></pre></div><ol start="2">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Javascript" data-lang="Javascript"><span style="display:flex;"><span>{{ <span style="color:#a6e22e">date</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">dateFormat</span> }} <span style="color:#75715e">// output &#39;5:40 PM&#39; 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>{{ <span style="color:#a6e22e">date</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">dateFormat</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;longTime&#39;</span> }}  <span style="color:#75715e">// output &#39;5:40:22 PM GMT+8&#39; 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>{{ <span style="color:#a6e22e">date</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">dateFormat</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;fullDate&#39;</span>}}  <span style="color:#75715e">//output &#39;Friday, February 9, 2018&#39;
+</span></span></span></code></pre></div><ol start="2">
 <li><strong>Fomatting number via numberFormat pipe</strong></li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Javascript" data-lang="Javascript"><span style="color:#75715e">// input &#39;201703.5416926&#39;
-</span><span style="color:#75715e"></span>{{ <span style="color:#a6e22e">num</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">numberFormat</span> }}
-<span style="color:#75715e">// output &#39;201,703.542&#39;
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">// input &#39;1.149999&#39;
-</span><span style="color:#75715e"></span>{{ <span style="color:#a6e22e">num</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">numberFormat</span> }}
-<span style="color:#75715e">// output &#39;1.150&#39;
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">// input &#39;2.31&#39;
-</span><span style="color:#75715e"></span>{{ <span style="color:#a6e22e">num</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">numberFormat</span> }}
-<span style="color:#75715e">// output &#39;2.31&#39;
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">// input &#39;2017120107&#39;
-</span><span style="color:#75715e"></span>{{ <span style="color:#a6e22e">num</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">numberFormat</span> }}
-<span style="color:#75715e">// output &#39;2,017,120,107&#39;
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">// input &#39;.23&#39;
-</span><span style="color:#75715e"></span>{{ <span style="color:#a6e22e">num</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">numberFormat</span> }}
-<span style="color:#75715e">// output &#39;0.23&#39;
-</span></code></pre></div><ol start="3">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Javascript" data-lang="Javascript"><span style="display:flex;"><span><span style="color:#75715e">// input &#39;201703.5416926&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{{ <span style="color:#a6e22e">num</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">numberFormat</span> }}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// output &#39;201,703.542&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// input &#39;1.149999&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{{ <span style="color:#a6e22e">num</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">numberFormat</span> }}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// output &#39;1.150&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// input &#39;2.31&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{{ <span style="color:#a6e22e">num</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">numberFormat</span> }}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// output &#39;2.31&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// input &#39;2017120107&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{{ <span style="color:#a6e22e">num</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">numberFormat</span> }}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// output &#39;2,017,120,107&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// input &#39;.23&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{{ <span style="color:#a6e22e">num</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">numberFormat</span> }}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// output &#39;0.23&#39;
+</span></span></span></code></pre></div><ol start="3">
 <li><strong>Fomatting currency via currencyFormat pipe</strong></li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Javascript" data-lang="Javascript"><span style="color:#75715e">//Usage
-</span><span style="color:#75715e"></span>{{ <span style="color:#a6e22e">value</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">currencyFormat</span> [ <span style="color:#f92672">:</span> <span style="color:#a6e22e">currencyCode</span> ]  }}
-
-<span style="color:#75715e">// input &#39;201703.5416926&#39;
-</span><span style="color:#75715e"></span>{{ <span style="color:#a6e22e">num</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">currencyFormat</span> }}
-<span style="color:#75715e">// output &#39;$201,703.54&#39;
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">// input &#39;1.149999&#39;
-</span><span style="color:#75715e"></span>{{ <span style="color:#a6e22e">num</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">currencyFormat</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;JPY&#39;</span> }}
-<span style="color:#75715e">// output &#39;¥1&#39;
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">// input &#39;2.31&#39;
-</span><span style="color:#75715e"></span>{{ <span style="color:#a6e22e">num</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">currencyFormat</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;CNY&#39;</span> }}
-<span style="color:#75715e">// output &#39;CN¥2.31&#39;
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">// input &#39;2017120107&#39;
-</span><span style="color:#75715e"></span>{{ <span style="color:#a6e22e">num</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">currencyFormat</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;EUR&#39;</span> }}
-<span style="color:#75715e">// output &#39;€2,017,120,107.00&#39;
-</span></code></pre></div><ol start="4">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Javascript" data-lang="Javascript"><span style="display:flex;"><span><span style="color:#75715e">//Usage
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{{ <span style="color:#a6e22e">value</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">currencyFormat</span> [ <span style="color:#f92672">:</span> <span style="color:#a6e22e">currencyCode</span> ]  }}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// input &#39;201703.5416926&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{{ <span style="color:#a6e22e">num</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">currencyFormat</span> }}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// output &#39;$201,703.54&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// input &#39;1.149999&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{{ <span style="color:#a6e22e">num</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">currencyFormat</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;JPY&#39;</span> }}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// output &#39;¥1&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// input &#39;2.31&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{{ <span style="color:#a6e22e">num</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">currencyFormat</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;CNY&#39;</span> }}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// output &#39;CN¥2.31&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// input &#39;2017120107&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{{ <span style="color:#a6e22e">num</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">currencyFormat</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;EUR&#39;</span> }}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// output &#39;€2,017,120,107.00&#39;
+</span></span></span></code></pre></div><ol start="4">
 <li><strong>Fomatting percent via percentFormat pipe</strong></li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Javascript" data-lang="Javascript"><span style="color:#75715e">// input &#39;0.1&#39;
-</span><span style="color:#75715e"></span>{{ <span style="color:#a6e22e">num</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">percentFormat</span> }}
-<span style="color:#75715e">// output &#39;10%&#39;
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">// input &#39;0.1234&#39;
-</span><span style="color:#75715e"></span>{{ <span style="color:#a6e22e">num</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">percentFormat</span> }}
-<span style="color:#75715e">// output &#39;12%&#39;
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">// input &#39;12345&#39;
-</span><span style="color:#75715e"></span>{{ <span style="color:#a6e22e">num</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">percentFormat</span> }}
-<span style="color:#75715e">// output &#39;1,234,500%&#39;
-</span></code></pre></div><h2 id="collect-source-strings">Collect source strings</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Javascript" data-lang="Javascript"><span style="display:flex;"><span><span style="color:#75715e">// input &#39;0.1&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{{ <span style="color:#a6e22e">num</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">percentFormat</span> }}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// output &#39;10%&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// input &#39;0.1234&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{{ <span style="color:#a6e22e">num</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">percentFormat</span> }}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// output &#39;12%&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// input &#39;12345&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{{ <span style="color:#a6e22e">num</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">percentFormat</span> }}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// output &#39;1,234,500%&#39;
+</span></span></span></code></pre></div><h2 id="collect-source-strings">Collect source strings</h2>
 <p>Angular-Client expose command to collect source strings</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Javascript" data-lang="Javascript"><span style="color:#75715e">//add script in package.json
-</span><span style="color:#75715e"></span><span style="color:#e6db74">&#34;scripts&#34;</span><span style="color:#f92672">:</span> {
-    ...
-    <span style="color:#e6db74">&#34;collect:source-bundle&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;collect-source-bundle --source-dir `pwd`/src --product ProductName --component UI --host https://singleton-service --version 1.0.0&#34;</span>,
-    ...
-  }
-
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Javascript" data-lang="Javascript">   <span style="color:#a6e22e">npm</span> <span style="color:#a6e22e">run</span> <span style="color:#a6e22e">collect</span><span style="color:#f92672">:</span><span style="color:#a6e22e">source</span><span style="color:#f92672">-</span><span style="color:#a6e22e">bundle</span>  <span style="color:#75715e">// collect source strings to Singleton Service
-</span></code></pre></div><div class="edit-meta">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Javascript" data-lang="Javascript"><span style="display:flex;"><span><span style="color:#75715e">//add script in package.json
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#e6db74">&#34;scripts&#34;</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;collect:source-bundle&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;collect-source-bundle --source-dir `pwd`/src --product ProductName --component UI --host https://singleton-service --version 1.0.0&#34;</span>,
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>  }
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Javascript" data-lang="Javascript"><span style="display:flex;"><span>   <span style="color:#a6e22e">npm</span> <span style="color:#a6e22e">run</span> <span style="color:#a6e22e">collect</span><span style="color:#f92672">:</span><span style="color:#a6e22e">source</span><span style="color:#f92672">-</span><span style="color:#a6e22e">bundle</span>  <span style="color:#75715e">// collect source strings to Singleton Service
+</span></span></span></code></pre></div><div class="edit-meta">
 Last updated on 24 Sep 2019
 
 
@@ -288,6 +285,7 @@ Published on 24 Sep 2019
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">Singleton Service Custom Log</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
 
 <li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>

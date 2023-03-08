@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>JavaScript Client Introduction - Singleton</title>
 <meta name="description" content="One-fits-all Internationalization Solution">
-<meta name="generator" content="Hugo 0.90.0" />
+<meta name="generator" content="Hugo 0.105.0">
 <link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/javascript-client-introduction/">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
@@ -19,7 +19,7 @@
 </style>
 <meta property="og:title" content="JavaScript Client Introduction" />
 <meta property="og:description" content="Overview The Singleton JSClient(@singleton-i18n/js-core-sdk) is a Singleton Service-based JavaScript library used for l10n and i18n. It almost supports all JavaScript frameworks, and it can run in browsers, as well as NodeJS environments. With the Singleton JavaScript Client, it makes l10n and i18n implementation more easier in most projects. Now, let&rsquo;s look at what it is and how it works.
-Features  JSClient Initilization Language and region management Load data API Provide string localization API Provide datetime,number,currency,percentage formatting API Source management via CLI scripts Runtime / Offline Mode  JSClient Initilization How to initilize Singleton JSClient in frontend framework?" />
+Features JSClient Initilization Language and region management Load data API Provide string localization API Provide datetime,number,currency,percentage formatting API Source management via CLI scripts Runtime / Offline Mode JSClient Initilization How to initilize Singleton JSClient in frontend framework?" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/javascript-client-introduction/" /><meta property="og:image" content="https://vmware.github.io/singleton/images/og-image.png"/><meta property="article:section" content="docs-previous" />
 <meta property="article:published_time" content="2019-09-24T20:08:23+08:00" />
@@ -30,12 +30,12 @@ Features  JSClient Initilization Language and region management Load data API Pr
 
 <meta name="twitter:title" content="JavaScript Client Introduction"/>
 <meta name="twitter:description" content="Overview The Singleton JSClient(@singleton-i18n/js-core-sdk) is a Singleton Service-based JavaScript library used for l10n and i18n. It almost supports all JavaScript frameworks, and it can run in browsers, as well as NodeJS environments. With the Singleton JavaScript Client, it makes l10n and i18n implementation more easier in most projects. Now, let&rsquo;s look at what it is and how it works.
-Features  JSClient Initilization Language and region management Load data API Provide string localization API Provide datetime,number,currency,percentage formatting API Source management via CLI scripts Runtime / Offline Mode  JSClient Initilization How to initilize Singleton JSClient in frontend framework?"/>
+Features JSClient Initilization Language and region management Load data API Provide string localization API Provide datetime,number,currency,percentage formatting API Source management via CLI scripts Runtime / Offline Mode JSClient Initilization How to initilize Singleton JSClient in frontend framework?"/>
 <meta itemprop="name" content="JavaScript Client Introduction">
 <meta itemprop="description" content="Overview The Singleton JSClient(@singleton-i18n/js-core-sdk) is a Singleton Service-based JavaScript library used for l10n and i18n. It almost supports all JavaScript frameworks, and it can run in browsers, as well as NodeJS environments. With the Singleton JavaScript Client, it makes l10n and i18n implementation more easier in most projects. Now, let&rsquo;s look at what it is and how it works.
-Features  JSClient Initilization Language and region management Load data API Provide string localization API Provide datetime,number,currency,percentage formatting API Source management via CLI scripts Runtime / Offline Mode  JSClient Initilization How to initilize Singleton JSClient in frontend framework?"><meta itemprop="datePublished" content="2019-09-24T20:08:23+08:00" />
+Features JSClient Initilization Language and region management Load data API Provide string localization API Provide datetime,number,currency,percentage formatting API Source management via CLI scripts Runtime / Offline Mode JSClient Initilization How to initilize Singleton JSClient in frontend framework?"><meta itemprop="datePublished" content="2019-09-24T20:08:23+08:00" />
 <meta itemprop="dateModified" content="2019-09-24T20:08:23+08:00" />
-<meta itemprop="wordCount" content="1800"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
+<meta itemprop="wordCount" content="1675"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
 <meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>Singleton</h1><span class="version">Version 0.6</span><a href="https://github.com/vmware/singleton" class="github"><i class="fab fa-github"></i></a>
@@ -158,22 +158,22 @@ Features  JSClient Initilization Language and region management Load data API Pr
 </tr>
 </tbody>
 </table>
-<pre tabindex="0"><code>import { i18nClient as jsClient, getBrowserCultureLang, PatternCategories} from '@singleton-i18n/js-core-sdk';
+<pre tabindex="0"><code>import { i18nClient as jsClient, getBrowserCultureLang, PatternCategories} from &#39;@singleton-i18n/js-core-sdk&#39;;
 
 const currentLanguage  = getBrowserCultureLang();
 
 const initI18nClient = () =&gt; {
 
     const i18nClient = jsClient.init({
-        productID: 'ProductName',
-        version: '1.0.0',
-        component: 'ReactUI',
-        host: 'http://Single-Service:8091',
+        productID: &#39;ProductName&#39;,
+        version: &#39;1.0.0&#39;,
+        component: &#39;ReactUI&#39;,
+        host: &#39;http://Single-Service:8091&#39;,
         language: currentLanguage,
         i18nScope: [PatternCategories.DATE],
         sourceBundle : {
-                'app.title': 'Hello, world!',
-                'plural.apples': '{0, one{ # apple}  other{ # apples} }'
+                &#39;app.title&#39;: &#39;Hello, world!&#39;,
+                &#39;plural.apples&#39;: &#39;{0, one{ # apple}  other{ # apples} }&#39;
             },
         timeout: 5000
     });
@@ -182,24 +182,21 @@ const initI18nClient = () =&gt; {
 }
 
 export const i18nClient = initI18nClient();
-
 </code></pre><h4 id="language-and-region-management"><strong>Language and region management</strong></h4>
 <p>Singleton JSClient provides two approaches to resolve Language and Region, the first one is directly detecting current user language preference in the browser settings, The other one is strongly recommended to be adopted in both SaaS and on-premise deployment mode through the language and region list provided by Singleton JSClient API fetching from Singleton service.</p>
 <h5 id="resolve-browser-locale"><strong>Resolve Browser Locale</strong></h5>
 <p>Resolve browser locale through the API <em><strong>getBrowserCultureLang</strong></em> as below snippet.</p>
-<pre tabindex="0"><code>import { getBrowserCultureLang } from '@singleton-i18n/js-core-sdk';
+<pre tabindex="0"><code>import { getBrowserCultureLang } from &#39;@singleton-i18n/js-core-sdk&#39;;
 
 const currentLanguage  = getBrowserCultureLang();
-
 </code></pre><h5 id="user-preference-of-language-list"><strong>User Preference Of Language List</strong></h5>
 <p>Singleton JSClient offers the API <em><strong>getSupportedLanguages(): Promise&lt;Object[] | null&gt;</strong></em> through i18nService to fetch the supported languages of App from Singleton service runtime.</p>
-<pre tabindex="0"><code>import { i18nClient } from '@singleton-i18n/js-core-sdk';
+<pre tabindex="0"><code>import { i18nClient } from &#39;@singleton-i18n/js-core-sdk&#39;;
 
 i18nClient.i18nService.getSupportedLanguages()
     .then(
         ...
     );
-
 </code></pre><h4 id="load-data-api"><strong>Load Data API</strong></h4>
 <p>Singleton JSClient offers the load data API through coreService in order to load latest translations and patterns when switching locale(language and region). there are certain situations as below.</p>
 <ul>
@@ -214,7 +211,7 @@ async loadI18nData(callback?: () =&gt; void): Promise&lt;any&gt;
 
 
 // Example in React index.jsx
-import { i18nClient } from '@singleton-i18n/js-core-sdk';
+import { i18nClient } from &#39;@singleton-i18n/js-core-sdk&#39;;
 
 const render = async () =&gt; {
     try {
@@ -227,7 +224,6 @@ const render = async () =&gt; {
 };
 
 render();
-
 </code></pre><h4 id="localization-api"><strong>Localization API</strong></h4>
 <p>Singleton JSClient also offers localization API <em><strong>getMessage(key: string, args?: any[] | {}): string</strong></em> through l10nService which is mainly used to translate strings along with varibles involved as below snippet.</p>
 <table>
@@ -255,20 +251,18 @@ render();
 </tbody>
 </table>
 <pre tabindex="0"><code>{
-    'product.login.success': '{0} has logged in successfully!',
+    &#39;product.login.success&#39;: &#39;{0} has logged in successfully!&#39;,
 }
 
-import { i18nClient } from '@singleton-i18n/js-core-sdk';
+import { i18nClient } from &#39;@singleton-i18n/js-core-sdk&#39;;
 
-const username = 'Tom';
+const username = &#39;Tom&#39;;
 
-i18nClient.l10nService.getMessage('product.login.success', [username]);
-
+i18nClient.l10nService.getMessage(&#39;product.login.success&#39;, [username]);
 </code></pre><h4 id="internationalization-api"><strong>Internationalization API</strong></h4>
 <p>Singleton JSClient also provides I18n APIs through i18nService to format the data regarding Datetime, Number, Percentage and Currency.</p>
 <h5 id="datetime-format-api"><strong>Datetime Format API</strong></h5>
-<pre tabindex="0"><code>public formatDate(value: any, pattern: string = 'mediumDate', timezone?: string): any
-
+<pre tabindex="0"><code>public formatDate(value: any, pattern: string = &#39;mediumDate&#39;, timezone?: string): any
 </code></pre><table>
 <thead>
 <tr>
@@ -320,7 +314,7 @@ i18nClient.l10nService.getMessage('product.login.success', [username]);
 <td style="text-align:left">e.g. 5:40:22 PM</td>
 </tr>
 <tr>
-<td style="text-align:left">&lsquo;longTime&rsquo;</td>
+<td style="text-align:left">&rsquo;longTime&rsquo;</td>
 <td style="text-align:left">&lsquo;h:mm:ss z&rsquo;</td>
 <td style="text-align:left">e.g. 5:40:22 PM GMT+8</td>
 </tr>
@@ -340,7 +334,7 @@ i18nClient.l10nService.getMessage('product.login.success', [username]);
 <td style="text-align:left">e.g. Feb 9, 2018</td>
 </tr>
 <tr>
-<td style="text-align:left">&lsquo;longDate&rsquo;</td>
+<td style="text-align:left">&rsquo;longDate'</td>
 <td style="text-align:left">&lsquo;MMMM d, y&rsquo;</td>
 <td style="text-align:left">e.g. February 9, 2018</td>
 </tr>
@@ -360,7 +354,7 @@ i18nClient.l10nService.getMessage('product.login.success', [username]);
 <td style="text-align:left">e.g. Feb 9, 2018, 5:40:22 PM</td>
 </tr>
 <tr>
-<td style="text-align:left">&lsquo;long&rsquo;</td>
+<td style="text-align:left">&rsquo;long'</td>
 <td style="text-align:left">&lsquo;MMMM d, y, h:mm:ss a z&rsquo;</td>
 <td style="text-align:left">e.g. February 9, 2018 at 5:40:22 PM GMT+8</td>
 </tr>
@@ -373,7 +367,6 @@ i18nClient.l10nService.getMessage('product.login.success', [username]);
 </table>
 <h5 id="number-format-api"><strong>Number Format API</strong></h5>
 <pre tabindex="0"><code>public formatNumber(value: any, locale?: string): string
-
 </code></pre><table>
 <thead>
 <tr>
@@ -400,7 +393,6 @@ i18nClient.l10nService.getMessage('product.login.success', [username]);
 </table>
 <h5 id="percentage-format-api"><strong>Percentage Format API</strong></h5>
 <pre tabindex="0"><code>public formatPercent(value: any): string
-
 </code></pre><table>
 <thead>
 <tr>
@@ -421,7 +413,6 @@ i18nClient.l10nService.getMessage('product.login.success', [username]);
 </table>
 <h5 id="currency-format-api"><strong>Currency Format API</strong></h5>
 <pre tabindex="0"><code>public formatCurrency(value: any, currencyCode?: string): any 
-
 </code></pre><table>
 <thead>
 <tr>
@@ -517,11 +508,10 @@ i18nClient.l10nService.getMessage('product.login.success', [username]);
 <li>Create source bundle</li>
 </ul>
 <pre tabindex="0"><code>export const ENGLISH = {
-    &quot;network-error&quot;: 'Network instability.'',
-    &quot;data-error&quot;: 'Data error.',
+    &#34;network-error&#34;: &#39;Network instability.&#39;&#39;,
+    &#34;data-error&#34;: &#39;Data error.&#39;,
     ...
 }
-
 </code></pre><ul>
 <li>Configure script in package.json</li>
 </ul>
@@ -535,7 +525,7 @@ i18nClient.l10nService.getMessage('product.login.success', [username]);
 </code></pre><pre tabindex="0"><code>{
     ...
     scripts: {   
-        &quot;upload-source-bundle&quot;: &quot;collect-source-bundle 
+        &#34;upload-source-bundle&#34;: &#34;collect-source-bundle 
                                 --source-dir `pwd`/src/app 
                                 --host &lt;Singleton Service host&gt;
                                 --product &lt;product&gt;
@@ -549,7 +539,6 @@ i18nClient.l10nService.getMessage('product.login.success', [username]);
 <li>Run the script</li>
 </ul>
 <pre tabindex="0"><code>npm run upload-source-bundle
-
 </code></pre><h5 id="download-translations--patterns"><strong>Download Translations &amp; Patterns</strong></h5>
 <p>Download translations and Patterns by language and region when <em><strong>Offline Mode</strong></em>.</p>
 <ul>
@@ -616,14 +605,13 @@ i18nClient.l10nService.getMessage('product.login.success', [username]);
   --component default
   --version 1.0
   --languages zh-cn,en-US
-
 </code></pre><ul>
 <li>Configure script in package.json</li>
 </ul>
 <pre tabindex="0"><code>{
     ...
     scripts: {   
-        &quot;download-locale-data&quot;: &quot;load-locale-data 
+        &#34;download-locale-data&#34;: &#34;load-locale-data 
                             --directory `pwd`/src/app/assets
                             --host &lt;Singleton Service host&gt;
                             --product &lt;product&gt;
@@ -632,10 +620,8 @@ i18nClient.l10nService.getMessage('product.login.success', [username]);
     }
     ...
 }
-
 </code></pre><p>Run the script</p>
 <pre tabindex="0"><code>npm run download-locale-data
-
 </code></pre><h4 id="runtime--offline-mode"><strong>Runtime / Offline Mode</strong></h4>
 <h5 id="runtime-mode"><strong>Runtime Mode</strong></h5>
 <p>Runtime mode means JSClient has to communicate with Singleton Service runtime fetching translations and patterns, it requires to deploy Singleon Service on backend.</p>
@@ -737,6 +723,7 @@ Published on 24 Sep 2019
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">Singleton Service Custom Log</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
 
 <li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>
