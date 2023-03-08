@@ -1,2 +1,4 @@
-# @Time 2023/2/28 16:52
-# Author: beijingm
+from pathlib import Path
+
+ROOT_DIR = Path(__file__).parent
+

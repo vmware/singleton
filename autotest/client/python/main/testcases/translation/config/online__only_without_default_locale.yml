@@ -1,26 +1,22 @@
 product: FakerSample1
 l10n_version: 1.0.0
 
-online_service_url: https://localhost:8090
+online_service_url: http://localhost:8091
 
 # log path for the python client
 log_path: logs
 
 # local storage path for caching
-# cache_path: ./singleton/
+#cache_path: .cache
 
 # how many seconds should be waited to try again for accessing the remote service,
 # when there is no data cached
-try_wait: 10
+try_delay: 10
 
-
-default_locale: ko      # 用于配置fallback locale。不配置默认en。优先级最低，全模式生效
-source_locale: en-US    # 用于配置source语言的locale，默认都是en-US，全模式生效
-
-#multitask: async
-
-#pseudo: true
-#pseudo: false
+#default_locale: de
+source_locale: en
 
 # how many seconds should be waited to update cache data when there is old data existed
 cache_expired_time: 60
+
+# multitask: async

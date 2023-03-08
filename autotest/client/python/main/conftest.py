@@ -1,12 +1,10 @@
-# @Time 2022/11/10 15:25
-# Author: beijingm
 import os
 import sys
-import time
+import types
 
 import pytest
 from pathlib import Path
-from autotest.client.python.main.sgtnclient import I18N
+from sgtnclient import I18N
 import shutil
 
 
@@ -24,8 +22,6 @@ def setup():
 @pytest.fixture(scope="function", autouse=True)
 def reset_i18n_instance():
     yield
-    print(666)
-    sgtn_client = sys.modules["sgtn_client"]
+    sgtn_client: types.ModuleType = sys.modules["sgtn_client"]
     sgtn_client.SingletonReleaseManager._instance = None
     I18N._release_manager = None
-    print(999)

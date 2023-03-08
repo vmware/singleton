@@ -2,16 +2,11 @@ import pytest
 from pathlib import Path
 from sgtnclient import I18N
 
-PRODUCT = 'PythonClient'
-VERSION = '1.0.00.1'
-COMPONENT = 'about'
-LOCALE = 'fr'
-Config_files = 'sample_online_localsource.yml'
+_CONFIG_ = Path(__file__).parent.joinpath('config')
 
-# singleton\test\TRANSLATION
-__TRANSLATION__ = Path(__file__).parent
-__CONFIG__ = __TRANSLATION__.joinpath('config')
-__RESOURCES__ = __TRANSLATION__.joinpath('resources')
+LOCALE = "en"
+PRODUCT = "PythonClient"
+VERSION = "1.0.00.1"
 
 
 class TestOnlineLocaleSource:
@@ -21,7 +16,7 @@ class TestOnlineLocaleSource:
         """
         mix mode: key only in local. server return 4xx/500, use local
         """
-        file: Path = __CONFIG__.joinpath('sample_online_localsource.yml')
+        file: Path = _CONFIG_.joinpath('sample_online_localsource.yml')
         I18N.add_config_file(file)
         I18N.set_current_locale(LOCALE)
 
@@ -39,7 +34,7 @@ class TestOnlineLocaleSource:
         """
         mix mode: key only in server, use server
         """
-        file: Path = __CONFIG__.joinpath('sample_online_localsource.yml')
+        file: Path = _CONFIG_.joinpath('sample_online_localsource.yml')
         I18N.add_config_file(file)
         I18N.set_current_locale(LOCALE)
         rel = I18N.get_release(PRODUCT, VERSION)
@@ -51,7 +46,7 @@ class TestOnlineLocaleSource:
     @pytest.mark.ci1
     def test_l3xxx(self):
         print("the key both exist in online and offline ")
-        file: Path = __CONFIG__.joinpath('sample_online_localsource.yml')
+        file: Path = _CONFIG_.joinpath('sample_online_localsource.yml')
         I18N.add_config_file(file)
         I18N.set_current_locale(LOCALE)
 
@@ -73,7 +68,7 @@ class TestOnlineLocaleSource:
     @pytest.mark.citest
     def test_l4(self):
         print("the key both exist in online and offline: source error")
-        file: Path = __CONFIG__.joinpath('sample_online_localsource.yml')
+        file: Path = _CONFIG_.joinpath('sample_online_localsource.yml')
         I18N.add_config_file(file)
         I18N.set_current_locale(LOCALE)
         self.rel = I18N.get_release(PRODUCT, VERSION)
@@ -92,7 +87,7 @@ class TestOnlineLocaleSource:
     @pytest.mark.bug
     def test_l5(self):
         print("the key both exist in online and offline ")
-        file: Path = __CONFIG__.joinpath('sample_online_localsource.yml')
+        file: Path = _CONFIG_.joinpath('sample_online_localsource.yml')
         I18N.add_config_file(file)
         I18N.set_current_locale(LOCALE)
         self.rel = I18N.get_release(PRODUCT, VERSION)
@@ -110,7 +105,7 @@ class TestOnlineLocaleSource:
     @pytest.mark.ci1
     def test_l6(self):
         print("the component only in offline")
-        file: Path = __CONFIG__.joinpath('sample_online_localsource.yml')
+        file: Path = _CONFIG_.joinpath('sample_online_localsource.yml')
         I18N.add_config_file(file)
         I18N.set_current_locale(LOCALE)
         self.rel = I18N.get_release(PRODUCT, VERSION)
@@ -122,7 +117,7 @@ class TestOnlineLocaleSource:
     @pytest.mark.ci1
     def test_l7(self):
         print("the component only in online")
-        file: Path = __CONFIG__.joinpath('sample_online_localsource.yml')
+        file: Path = _CONFIG_.joinpath('sample_online_localsource.yml')
         I18N.add_config_file(file)
         I18N.set_current_locale(LOCALE)
         self.rel = I18N.get_release(PRODUCT, VERSION)
@@ -133,7 +128,7 @@ class TestOnlineLocaleSource:
     @pytest.mark.ci1
     def test_l8(self):
         print("the locale only in online")
-        file: Path = __CONFIG__.joinpath('sample_online_localsource.yml')
+        file: Path = _CONFIG_.joinpath('sample_online_localsource.yml')
         I18N.add_config_file(file)
         I18N.set_current_locale(LOCALE)
         self.rel = I18N.get_release(PRODUCT, VERSION)
@@ -146,7 +141,7 @@ class TestOnlineLocaleSource:
     @pytest.mark.ci1
     def test_l9(self):
         print("the locale only in online")
-        file: Path = __CONFIG__.joinpath('sample_online_localsource.yml')
+        file: Path = _CONFIG_.joinpath('sample_online_localsource.yml')
         I18N.add_config_file(file)
         I18N.set_current_locale(LOCALE)
         self.rel = I18N.get_release(PRODUCT, VERSION)
@@ -162,7 +157,7 @@ class TestOnlineLocaleSource:
     @pytest.mark.ci1
     def test_l10(self):
         print("the locale only in default")
-        file: Path = __CONFIG__.joinpath('sample_online_localsource.yml')
+        file: Path = _CONFIG_.joinpath('sample_online_localsource.yml')
         I18N.add_config_file(file)
         I18N.set_current_locale(LOCALE)
         self.rel = I18N.get_release(PRODUCT, VERSION)
@@ -174,7 +169,7 @@ class TestOnlineLocaleSource:
     @pytest.mark.ci2
     def test_l11(self):
         print("online:get_locale_strings")
-        file: Path = __CONFIG__.joinpath('sample_online_localsource.yml')
+        file: Path = _CONFIG_.joinpath('sample_online_localsource.yml')
         I18N.add_config_file(file)
         I18N.set_current_locale(LOCALE)
         rel = I18N.get_release(PRODUCT, VERSION)
@@ -206,7 +201,7 @@ class TestOnlineLocaleSource:
     @pytest.mark.ci1
     def test_l12(self):
         print("online:format_items")
-        file: Path = __CONFIG__.joinpath('sample_online_localsource.yml')
+        file: Path = _CONFIG_.joinpath('sample_online_localsource.yml')
         I18N.add_config_file(file)
         I18N.set_current_locale(LOCALE)
         self.rel = I18N.get_release(PRODUCT, VERSION)
@@ -226,7 +221,7 @@ class TestOnlineLocaleSource:
     @pytest.mark.ci1
     def test_l13(self):
         print("online_with_local:component and key and nolocale or nosource------bug: 1165")
-        file: Path = __CONFIG__.joinpath('sample_online_localsource.yml')
+        file: Path = _CONFIG_.joinpath('sample_online_localsource.yml')
         I18N.add_config_file(file)
         I18N.set_current_locale(LOCALE)
         self.rel = I18N.get_release(PRODUCT, VERSION)

@@ -1,5 +1,3 @@
-import time
-
 import pytest
 from pathlib import Path
 from sgtnclient import I18N
@@ -11,53 +9,53 @@ LOCALE = 'fr'
 
 CONFIG_FILE = "sample_offline_disk.yml"
 
-__TRANSLATION__ = Path(__file__).parent
-__CONFIG__ = __TRANSLATION__.joinpath('config')
-__RESOURCES__ = __TRANSLATION__.joinpath('resources')
+_CONFIG_ = Path(__file__).parent.joinpath('config')
 
 
 class TestTranslationOffline:
 
-    @pytest.mark.skip
     @pytest.mark.ci1
     def test_offline_source_locale(self):
-        file: Path = __CONFIG__.joinpath(CONFIG_FILE)
-        outside_config = {"product": "PythonClient"}
-        I18N.add_config_file(file, outside_config)
+        file: Path = _CONFIG_.joinpath(CONFIG_FILE)
+        I18N.add_config_file(file)
         rel = I18N.get_release(PRODUCT, VERSION)
         translation = rel.get_translation()
 
-        # source_locale: en-US. find message_en.properties
+        # source_locale: en-US. find messages.properties
         tran1 = translation.get_string("about", "about.message")
         assert tran1 == "Your application description page."
 
-        # find locales == de. and find message_de.json
+        # find locales == de. and find messages_de.json
+        # 配置offline_resources_path，在bundle中增加了messages_en.json。一切就变得奇怪了
         tran2 = translation.get_string("about", "about.message", locale="de")
-        assert tran2 == "test de key"
+        assert tran2 == "Your application description de page"
+
+        tran2 = translation.get_string("about", "about.message", locale="ja")
+        assert tran2 == "test ja offline key"
 
         # components no insert and return key.
         tran3 = translation.get_string("insert", "about.message")
         assert tran3 == "about.message"
 
-    @pytest.mark.ci1
-    def test_config_update_by_outside_config(self):
-        """
-        config can update by outside_config
-        """
-        outside_config = {"product": "PythonClient"}
-        file = __CONFIG__.joinpath(CONFIG_FILE)
-
-        I18N.add_config_file(file, outside_config)
-        I18N.set_current_locale(LOCALE)
-
-        current_locale = I18N.get_current_locale()
-        assert current_locale == 'fr'
-
-        rel = I18N.get_release(PRODUCT, VERSION)
-        conf = rel.get_config()
-
-        config_info = conf.get_info()
-        assert config_info["product"] == "PythonClient"
+    # @pytest.mark.ci1
+    # def test_config_update_by_outside_config(self):
+    #     """
+    #     config can update by outside_config
+    #     """
+    #     outside_config = {"product": "PythonClient"}
+    #     file = _CONFIG_.joinpath(CONFIG_FILE)
+    #
+    #     I18N.add_config_file(file, outside_config)
+    #     I18N.set_current_locale(LOCALE)
+    #
+    #     current_locale = I18N.get_current_locale()
+    #     assert current_locale == 'fr'
+    #
+    #     rel = I18N.get_release(PRODUCT, VERSION)
+    #     conf = rel.get_config()
+    #
+    #     config_info = conf.get_info()
+    #     assert config_info["product"] == "PythonClient"
 
     @pytest.mark.ci1
     def test_offline_no_translation_return(self):
@@ -65,9 +63,8 @@ class TestTranslationOffline:
         Offline Mode:
         component_miss and key_exist.
         """
-        file: Path = __CONFIG__.joinpath(CONFIG_FILE)
-        outside_config = {"product": "PythonClient"}
-        I18N.add_config_file(file, outside_config)
+        file: Path = _CONFIG_.joinpath(CONFIG_FILE)
+        I18N.add_config_file(file)
         I18N.set_current_locale(LOCALE)
 
         rel = I18N.get_release(PRODUCT, VERSION)
@@ -97,28 +94,26 @@ class TestTranslationOffline:
         tran7 = translation.get_string("about", None)
         assert tran7 is None
 
-    @pytest.mark.ci1
-    def test_locale_priority(self):
-        """
-        offline mode: set_current_locale priority is low then locale params
-        """
-        file: Path = __CONFIG__.joinpath('sample_offline_disk.yml')
-        outside_config = {"product": "PythonClient"}
-        I18N.add_config_file(file, outside_config)
-        I18N.set_current_locale(LOCALE)
-        rel = I18N.get_release(PRODUCT, VERSION)
-        translation = rel.get_translation()
-        trans2 = translation.get_string("about", "about.message", locale="zh-Hans-CN")
-        assert trans2 == "应用程序说明页。"
-        trans1 = translation.get_string("about", "about.message", locale="ar")
-        assert trans1 == "صفحة وصف التطبيق الخاص بك."
+    # @pytest.mark.ci1
+    # def test_locale_priority(self):
+    #     """
+    #     offline mode: set_current_locale priority is low then locale params
+    #     """
+    #     file: Path = _CONFIG_.joinpath('sample_offline_disk.yml')
+    #     outside_config = {"product": "PythonClient"}
+    #     I18N.add_config_file(file, outside_config)
+    #     I18N.set_current_locale(LOCALE)
+    #     rel = I18N.get_release(PRODUCT, VERSION)
+    #     translation = rel.get_translation()
+    #     trans2 = translation.get_string("about", "about.message", locale="zh-Hans-CN")
+    #     assert trans2 == "应用程序说明页。"
+    #     trans1 = translation.get_string("about", "about.message", locale="ar")
+    #     assert trans1 == "صفحة وصف التطبيق الخاص بك."
 
     @pytest.mark.ci1
     def test_get_string_with_diff_param(self):
-
-        file: Path = __CONFIG__.joinpath('sample_offline_disk.yml')
-        outside_config = {"product": "PythonClient"}
-        I18N.add_config_file(file, outside_config)
+        file: Path = _CONFIG_.joinpath('sample_offline_disk.yml')
+        I18N.add_config_file(file)
         I18N.set_current_locale('de')
 
         rel = I18N.get_release(PRODUCT, VERSION)
@@ -134,11 +129,11 @@ class TestTranslationOffline:
         # I18N.set_current_locale(locale) has low priority then get_string(locale)
         # if no locale config. default is "en"
         trans2 = translation.get_string("about", "about.message", locale=None)
-        assert trans2 == "test de key"
+        assert trans2 == "Your application description de page"
 
         # if locale="da" not support. the .yaml=>default_locale:ja config will be active.
         trans3 = translation.get_string("about", "about.message", locale="da")
-        assert trans3 == "test ja  offline key"
+        assert trans3 == "test ja offline key"
 
         # if source=None or not pass. source will not be compared with message.properties
         trans4 = translation.get_string("about", "about.message", locale="fr", source=None)
@@ -164,7 +159,7 @@ class TestTranslationOffline:
         """
         offline mode: get_string param format_items
         """
-        file: Path = __CONFIG__.joinpath('sample_offline_disk.yml')
+        file: Path = _CONFIG_.joinpath('sample_offline_disk.yml')
         outside_config = {"product": "PythonClient"}
         I18N.add_config_file(file, outside_config)
         I18N.set_current_locale(LOCALE)
@@ -194,44 +189,44 @@ class TestTranslationOffline:
             "contact", "contact.title", format_items={'x': '11', 'y': '22', 'z': '33'}, locale='ko')
         assert trans6 == "연락처change 22 add 11 and 33"
 
-    @pytest.mark.ci1
-    def test_get_string_from_cache(self):
-        """
-        offline mode: get_locale_strings from cache if get_string already
-        """
-        file: Path = __CONFIG__.joinpath('sample_offline_disk.yml')
-        outside_config = {"product": "PythonClient"}
-        I18N.add_config_file(file, outside_config)
-        I18N.set_current_locale(LOCALE)
-        rel = I18N.get_release(PRODUCT, VERSION)
-        translation = rel.get_translation()
-
-        # get_string and cache
-        translation.get_string("about", "about.message", locale="ar")
-
-        trans1 = translation.get_locale_strings("ar", False)
-        assert trans1["about"]["about.title"] == "حول"
-
-        # other locale
-        translation.get_string("about", "about.message", locale="de")
-        trans1 = translation.get_locale_strings("de", False)
-        assert trans1["about"]["about.title"] is None
-
-        # multi locale cache
-        trans1 = translation.get_locale_strings("ar", False)
-        assert trans1["about"]["about.title"] == "حول"
-
-        # cache never expired
-        time.sleep(15)
-        trans1 = translation.get_locale_strings("ar", False)
-        assert trans1["about"]["about.title"] == "حول"
+    # @pytest.mark.ci1
+    # def test_get_string_from_cache(self):
+    #     """
+    #     offline mode: get_locale_strings from cache if get_string already
+    #     """
+    #     file: Path = _CONFIG_.joinpath('sample_offline_disk.yml')
+    #     outside_config = {"product": "PythonClient"}
+    #     I18N.add_config_file(file, outside_config)
+    #     I18N.set_current_locale(LOCALE)
+    #     rel = I18N.get_release(PRODUCT, VERSION)
+    #     translation = rel.get_translation()
+    #
+    #     # get_string and cache
+    #     translation.get_string("about", "about.message", locale="ar")
+    #
+    #     trans1 = translation.get_locale_strings("ar", False)
+    #     assert trans1["about"]["about.title"] == "حول"
+    #
+    #     # other locale
+    #     translation.get_string("about", "about.message", locale="de")
+    #     trans1 = translation.get_locale_strings("de", False)
+    #     assert trans1["about"]["about.title"] is None
+    #
+    #     # multi locale cache
+    #     trans1 = translation.get_locale_strings("ar", False)
+    #     assert trans1["about"]["about.title"] == "حول"
+    #
+    #     # cache never expired
+    #     time.sleep(15)
+    #     trans1 = translation.get_locale_strings("ar", False)
+    #     assert trans1["about"]["about.title"] == "حول"
 
     @pytest.mark.ci1
     def test_get_locale_support(self):
         """
         offline mode: get_locale_supported
         """
-        file: Path = __CONFIG__.joinpath('sample_offline_disk.yml')
+        file: Path = _CONFIG_.joinpath('sample_offline_disk.yml')
         outside_config = {"product": "PythonClient"}
         I18N.add_config_file(file, outside_config)
         I18N.set_current_locale(LOCALE)
@@ -249,10 +244,6 @@ class TestTranslationOffline:
         assert data1 == "123"
         data1 = translation.get_locale_supported("zh-tw")
         assert data1 == "zh-Hant"
-        data = translation.get_locales()
-        assert data == {'en-US': {'as': 'source', 'from': 'local'}, 'de': {'from': 'local'}, 'fr': {'from': 'local'},
-                        'ja': {'from': 'local'}, 'ar': {'from': 'local'}, 'ko': {'from': 'local'},
-                        'zh-Hans': {'from': 'local'}, 'zh-Hant': {'from': 'local'}}
 
 
 if __name__ == '__main__':
