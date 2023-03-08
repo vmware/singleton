@@ -1,3 +1,8 @@
+---
+title: "Singleton Service Custom Log"
+date: 2023-03-07T10:27:25+08:00
+draft: false
+---
 # How to use custom log configuration file in Singleton service
 
 ## 1.The custom log configuration sample
@@ -89,8 +94,9 @@ According your requirement, you can change the following item as following：
 + *<`IfAccumulatedFileSize exceeds="1GB"/>`* You can define which total log files exceeds size, the oldest log file in chronological order will be deleted 
 
 ## How to start the singleton service with custom log configuration file
- You can use the following command start the singleton service:
+You can use the following command start the singleton service:
 
 `java -jar singleton-xxx.jar --logging.config=file:./log4j2-spring.xml`
 
 The file:./log4j2-spring.xml is your log configuration location. You can use relative address or absolute address.
+

@@ -28,9 +28,16 @@ The contents in the documentation are stored under /content and organized as bel
         │       ├── _index.md
         │       ├── configurations
         │       │   ├── _index.md
+        │       │   ├── enable-S3-key-encrypted.md
+        │       │   ├── enable-S3-storage.md
+        │       │   ├── enable-new-product.md
+        │       │   ├── enable-product-white-list.md
         │       │   ├── enable-pseudo-translation.md
         │       │   └── enable-source-collection.md
-        │       └── singleton-service-apis.md
+        │       ├── singleton-service-DB-Build-Introducation.md
+        │       ├── singleton-service-apis.md
+        │       ├── singleton-service-custom-log.md
+        │       └── singleton-service-script.md
         └── tutorials
             ├── _index.md
             ├── deploy-singleton-service-in-your-app.md
