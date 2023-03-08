@@ -24,8 +24,8 @@ Server:
   HTTPPort: 8091
   ReadTimeout: 0s
   WriteTimeout: 0s
-  CertFile:
-  KeyFile:
+  CertFile: testdata/https/server.pem
+  KeyFile: testdata/https/server.key
   MaxHeaderBytes: 1024000
   CacheControl: max-age=2, public
   CompressionAlgorithm: gzip&br #gzip, br, gzip&br

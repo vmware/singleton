@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -90,8 +90,6 @@ func StartServer() {
 	// pprof.Register(ginEngine)
 
 	for _, schema := range strings.Split(config.Settings.Server.Schema, common.ParamAnd) {
-		schema := schema
-
 		httpServer := http.Server{
 			Handler:        ginEngine,
 			ReadTimeout:    config.Settings.Server.ReadTimeout,
@@ -100,44 +98,33 @@ func StartServer() {
 		}
 		servers = append(servers, &httpServer)
 
-		httpsServer := http.Server{
-			Handler:        ginEngine,
-			ReadTimeout:    config.Settings.Server.ReadTimeout,
-			WriteTimeout:   config.Settings.Server.WriteTimeout,
-			MaxHeaderBytes: config.Settings.Server.MaxHeaderBytes,
-		}
-		servers = append(servers, &httpsServer)
-
 		switch schema {
 		case "http":
-			go func() {
+			go func(schema string) {
 				httpServer.Addr = fmt.Sprintf(":%d", config.Settings.Server.HTTPPort)
 				logger.Log.Info(fmt.Sprintf(startServerInfo, schema, httpServer.Addr))
 				err := httpServer.ListenAndServe()
 				if err != nil && err != http.ErrServerClosed {
 					logger.Log.Fatal(fmt.Sprintf(startServerError, schema, err))
 				}
-			}()
+			}(schema)
 		case "https":
-			go func() {
-				httpsServer.Addr = fmt.Sprintf(":%d", config.Settings.Server.HTTPSPort)
-				logger.Log.Info(fmt.Sprintf(startServerInfo, schema, httpsServer.Addr))
-				err := httpsServer.ListenAndServeTLS(config.Settings.Server.CertFile, config.Settings.Server.KeyFile)
+			go func(schema string) {
+				httpServer.Addr = fmt.Sprintf(":%d", config.Settings.Server.HTTPSPort)
+				logger.Log.Info(fmt.Sprintf(startServerInfo, schema, httpServer.Addr))
+				err := httpServer.ListenAndServeTLS(config.Settings.Server.CertFile, config.Settings.Server.KeyFile)
 				if err != nil && err != http.ErrServerClosed {
 					logger.Log.Fatal(fmt.Sprintf(startServerError, schema, err))
 				}
-			}()
+			}(schema)
 		default:
-			logger.Log.Fatal(fmt.Sprintf("Wrong schema type: %s", config.Settings.Server.Schema))
+			logger.Log.Fatal(fmt.Sprintf("Wrong schema type: %s", schema))
 		}
 	}
-
-	ShutdownServer()
-
-	logger.Log.Info("Server stopped")
 }
 
-func ShutdownServer() {
+// WaitAndShutdownServer ...
+func WaitAndShutdownServer() {
 	// Wait for interrupt signal to gracefully shutdown the server with
 	// a timeout of 5 seconds.
 	quit := make(chan os.Signal, 1)
@@ -145,7 +132,14 @@ func ShutdownServer() {
 	// kill -2 is syscall.SIGINT
 	// kill -9 is syscall.SIGKILL but can't be catch, so don't need add it
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
-	<-quit
+	s := <-quit
+	logger.Log.Sugar().Infof("shutdown signal '%v' is received", s)
+
+	ShutdownServer()
+}
+
+// ShutdownServer ...
+func ShutdownServer() {
 	logger.Log.Info("Shutting down server...")
 
 	// The context is used to inform the server it has 5 seconds to finish
@@ -164,6 +158,8 @@ func ShutdownServer() {
 	}
 
 	wg.Wait()
+
+	logger.Log.Info("Server stopped")
 }
 
 type Router interface {

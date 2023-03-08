@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -80,14 +80,6 @@ func DoAndCheck(ctx context.Context, done chan struct{}, doer func() error, chec
 	}
 
 	return
-}
-
-func ToGenericArray(x []string) []interface{} {
-	s := make([]interface{}, len(x))
-	for i, v := range x {
-		s[i] = v
-	}
-	return s
 }
 
 func IsZeroOfUnderlyingType(x interface{}) bool {

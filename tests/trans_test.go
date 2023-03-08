@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -10,19 +10,52 @@ import (
 	"fmt"
 	"os"
 	"path"
+	"sync"
 	"testing"
+	"time"
 
 	"sgtnserver/internal/cache"
 	"sgtnserver/internal/config"
 	"sgtnserver/modules/translation"
 	"sgtnserver/modules/translation/bundleinfo"
+	"sgtnserver/modules/translation/translationcache"
 	"sgtnserver/modules/translation/translationservice"
 
 	"github.com/emirpasic/gods/sets/linkedhashset"
 	jsoniter "github.com/json-iterator/go"
 	"github.com/pkg/fileutils"
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/mock"
 )
+
+type MockCache struct {
+	mock.Mock
+	cache.Cache
+}
+
+func (m *MockCache) Get(key interface{}) (interface{}, error) {
+	args := m.Called(key)
+	return args.Get(0), args.Error(1)
+}
+
+func (m *MockCache) Set(key, value interface{}) error {
+	args := m.Called(key, value)
+	return args.Error(0)
+}
+
+func (m *MockCache) Wait() {
+	m.Called()
+}
+
+type MockOrigin struct {
+	mock.Mock
+	translation.MessageOrigin
+}
+
+func (m *MockOrigin) GetBundle(ctx context.Context, id *translation.BundleID) (*translation.Bundle, error) {
+	args := m.Called(ctx, id)
+	return args.Get(0).(*translation.Bundle), args.Error(1)
+}
 
 var l3Service = translationservice.GetService()
 
@@ -98,6 +131,75 @@ func TestTransCache(t *testing.T) {
 	// query from cache to check entry exists
 	_, err = c.Get(fmt.Sprintf("%s:%s:%s:%s", id.Name, id.Version, id.Locale, id.Component))
 	assert.Nil(t, err)
+}
+
+func TestTransCacheParallelly(t *testing.T) {
+	var mockOrigin, mockCache = &MockOrigin{}, &MockCache{}
+	ctx := context.TODO()
+	cacheMgr := translationcache.NewCacheManager(mockOrigin, mockCache)
+
+	loopCount := 20
+	var startGroup, finishGroup sync.WaitGroup
+	startGroup.Add(loopCount)
+	finishGroup.Add(loopCount)
+
+	id := &translation.BundleID{Name: Name, Version: Version, Locale: Locale, Component: Component}
+	returnBundle, returnErr := &translation.Bundle{}, error(nil)
+	mockOrigin.On("GetBundle", ctx, id).Once().Return(returnBundle, returnErr).After(10 * time.Millisecond)
+	mockCache.On("Get", mock.AnythingOfType("string")).Times(loopCount).Return(nil, assert.AnError)
+	mockCache.On("Set", mock.AnythingOfType("string"), returnBundle).Once().Return(nil)
+	mockCache.On("Wait").Once().Return()
+	mockCache.On("Get", mock.AnythingOfType("string")).Times(loopCount-1).Return(returnBundle, nil)
+
+	for i := 0; i < loopCount; i++ {
+		go func(n int) {
+			defer finishGroup.Done()
+
+			startGroup.Done()
+			startGroup.Wait()
+			bundle, err := cacheMgr.GetBundle(ctx, id)
+			assert.Equal(t, returnErr, err)
+			assert.Equal(t, returnBundle, bundle)
+		}(i)
+	}
+	finishGroup.Wait()
+	mockOrigin.AssertExpectations(t)
+	mockCache.AssertExpectations(t)
+}
+
+// TestTransCacheParallelly1 cache is in wrong state
+func TestTransCacheParallelly1(t *testing.T) {
+	var mockOrigin, mockCache = &MockOrigin{}, &MockCache{}
+	ctx := context.TODO()
+	cacheMgr := translationcache.NewCacheManager(mockOrigin, mockCache)
+
+	loopCount := 10
+	var startGroup, finishGroup sync.WaitGroup
+	startGroup.Add(loopCount)
+	finishGroup.Add(loopCount)
+
+	id := &translation.BundleID{Name: Name, Version: Version, Locale: Locale, Component: Component}
+	returnBundle, returnErr := &translation.Bundle{}, error(nil)
+	mockOrigin.On("GetBundle", ctx, id).Times(1).Return(returnBundle, returnErr).After(time.Millisecond)
+	mockOrigin.On("GetBundle", ctx, id).Times(loopCount-1).Return(returnBundle, returnErr)
+	mockCache.On("Get", mock.AnythingOfType("string")).Times(2*loopCount-1).Return(nil, assert.AnError)
+	mockCache.On("Set", mock.AnythingOfType("string"), returnBundle).Once().Return(nil)
+	mockCache.On("Wait").Once().Return()
+
+	for i := 0; i < loopCount; i++ {
+		go func(n int) {
+			defer finishGroup.Done()
+
+			startGroup.Done()
+			startGroup.Wait()
+			bundle, err := cacheMgr.GetBundle(ctx, id)
+			assert.Equal(t, returnErr, err)
+			assert.Equal(t, returnBundle, bundle)
+		}(i)
+	}
+	finishGroup.Wait()
+	mockOrigin.AssertExpectations(t)
+	mockCache.AssertExpectations(t)
 }
 
 func TestCacheMaxEntities(t *testing.T) {
