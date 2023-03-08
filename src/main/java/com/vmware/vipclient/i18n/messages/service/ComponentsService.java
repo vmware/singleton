@@ -50,7 +50,7 @@ public class ComponentsService {
         return this.getTranslation(components, locales, fallbackLocalesIter);
     }
 
-    public Map<Locale, Map<String, Map<String, String>>> getTranslation(final Set<String> components,
+    private Map<Locale, Map<String, Map<String, String>>> getTranslation(final Set<String> components,
                                                                         final Set<Locale> locales, Iterator<Locale> fallbackLocalesIter) {
 
         final Map<String, Map<String, Map<String, String>>> dataMap = new HashMap<>();
@@ -121,10 +121,10 @@ public class ComponentsService {
                 }
             }
             if (!componentsToFallback.isEmpty()) {
-                getFallbackLocaleMessages(fallbackLocalesIter, componentsToFallback, localesToFallback, dataMap);
+                supplyFallbackLocaleMessages(fallbackLocalesIter, componentsToFallback, localesToFallback, dataMap);
             }
         }else {
-            getFallbackLocaleMessages(fallbackLocalesIter, componentsToQuery, localesToQuery, dataMap);
+            supplyFallbackLocaleMessages(fallbackLocalesIter, componentsToQuery, localesToQuery, dataMap);
         }
         return this.convertDataMap(dataMap, locales);
     }
@@ -154,7 +154,7 @@ public class ComponentsService {
         return map;
     }
 
-    private void getFallbackLocaleMessages(Iterator<Locale> fallbackLocalesIter, final Set<String> componentsToFallback,
+    private void supplyFallbackLocaleMessages(Iterator<Locale> fallbackLocalesIter, final Set<String> componentsToFallback,
                                                                        final Set<String> localesToFallback, final Map<String, Map<String, Map<String, String>>> dataMap) {
         if (fallbackLocalesIter != null && fallbackLocalesIter.hasNext()) {
             Locale fallbackLocale = fallbackLocalesIter.next();
