@@ -80,8 +80,7 @@ public class CommonUtil {
      * @return true if the format is fine
      */
     public static boolean isLanguageTag(String languageTag) {
-        Locale locale = Locale.forLanguageTag(languageTag);
-        return locale != null;
+        return Locale.forLanguageTag(languageTag) != null;
     }
 
     /**
