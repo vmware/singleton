@@ -106,20 +106,20 @@ func (suite *SourceComparisonTestSuite) TestGetLocaleList() {
 	}
 
 	expectedLocales := []string{"abc"}
-	sourceOnly := newSourceComparison(&MockedOrigin{
+	sourceOnly := &MockedOrigin{
 		GetFunc: func(item *dataItem, returnError error) {
 			if returnError == nil {
 				item.data = expectedLocales
 			} else {
 				item.data = nil
 			}
-		}}, nil)
+		}}
 	itemLocales := &dataItem{id: localesID}
-	sourceOnly.source.(*MockedOrigin).On("Get", itemLocales).Once().Return(nil)
+	sourceOnly.On("Get", itemLocales).Once().Return(nil)
 	err := sourceOnly.Get(itemLocales)
 	suite.Nil(err)
 	suite.Equal(expectedLocales, itemLocales.data)
-	sourceOnly.source.(*MockedOrigin).AssertExpectations(suite.T())
+	sourceOnly.AssertExpectations(suite.T())
 }
 
 func (suite *SourceComparisonTestSuite) TestGetComponentList() {
@@ -153,7 +153,7 @@ func (suite *SourceComparisonTestSuite) TestGetComponentList() {
 
 func (suite *SourceComparisonTestSuite) TestNewSourceIsEmpty() {
 	item := &dataItem{id: componentID}
-	sourceAndTranslation := newSourceComparison(&bundleDAO{testCfg.LocalBundles}, &MockedOrigin{})
+	sourceAndTranslation := newSourceComparison(&MockedOrigin{}, &bundleDAO{testCfg.LocalBundles})
 	sourceAndTranslation.source.(*MockedOrigin).On("Get", mock.AnythingOfType("*sgtn.dataItem")).Once().Return(errors.New("failed"))
 
 	err := sourceAndTranslation.Get(item)

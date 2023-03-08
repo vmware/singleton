@@ -80,14 +80,19 @@ func createTranslation(cfg Config) Translation {
 		sourceOrigins = append(sourceOrigins, &sourceInTranslation{bundleTranslation})
 	}
 
-	var origin messageOrigin
-
+	var sourceOrigin, translationOrigin, origin messageOrigin = sourceOrigins, transOrigins, nil
+	if len(sourceOrigins) == 1 {
+		sourceOrigin = sourceOrigins[0]
+	}
+	if len(transOrigins) == 1 {
+		translationOrigin = transOrigins[0]
+	}
 	if len(transOrigins) > 0 && len(sourceOrigins) > 0 {
-		origin = newSourceComparison(sourceOrigins, transOrigins)
+		origin = newSourceComparison(sourceOrigin, translationOrigin)
 	} else if len(sourceOrigins) > 0 {
-		origin = &sourceLocaleVerification{sourceOrigins}
+		origin = &sourceLocaleVerification{sourceOrigin}
 	} else if len(transOrigins) > 0 {
-		origin = transOrigins
+		origin = translationOrigin
 	}
 
 	origin = &saveToCache{messageOrigin: origin}

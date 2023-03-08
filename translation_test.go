@@ -669,24 +669,22 @@ func TestMultipleComponentsAbnormal(t *testing.T) {
 		size        int
 		errorString string
 	}{
-		{"Abnormal: fail to get locale list",
-			[]string{"productLocales_400"},
-			nil, []string{"sunglow"}, 0,
-			`Error from server is HTTP code: 400, message: 400 Bad Request, business code: 0, message: `},
 		{"Abnormal: fail to get component list",
 			[]string{"productComponents_400"},
 			[]string{"en"}, nil, 0,
 			`Error from server is HTTP code: 400, message: 400 Bad Request, business code: 0, message: `},
 		{"Abnormal: partial translations are available is treated as successful",
-			[]string{
-				"productComponents", "productLocales",
-				"componentMessages-fr-sunglow"},
+			[]string{"productComponents", "productLocales", "componentMessages-fr-sunglow"},
 			nil, nil, 1,
 			""},
 		{"Abnormal: empty result is an error",
 			[]string{"HTTP404"},
 			[]string{"zh-Hans"}, []string{"HTTP404"}, 0,
 			"no translations are available for {product 'SgtnTest', version '1.0.0', locales '[zh-Hans]', components '[HTTP404]'}"},
+		{"Abnormal: fail to get locale list",
+			[]string{},
+			nil, []string{"sunglow"}, 0,
+			assert.AnError.Error()},
 	}
 
 	defer gock.Off()
@@ -694,6 +692,7 @@ func TestMultipleComponentsAbnormal(t *testing.T) {
 	newCfg := testCfg
 	newCfg.LocalBundles = ""
 	resetInst(&newCfg, nil)
+
 	trans := GetTranslation()
 	for _, testData := range tests {
 		logger.Debug(fmt.Sprintf("------------ Start testing: %s", testData.desc))
@@ -701,17 +700,28 @@ func TestMultipleComponentsAbnormal(t *testing.T) {
 			EnableMockData(m)
 		}
 
+		if testData.desc == "Abnormal: fail to get locale list" {
+			localesItem := &dataItem{id: localesID}
+			cs := getCacheService()
+			mockObj := MockedOrigin{}
+			*cs = cacheService{&mockObj}
+			mockCall := mockObj.On("Get", localesItem).Once().Return(assert.AnError)
+			defer func() {
+				mockCall.Unset()
+				mockObj.AssertExpectations(t)
+			}()
+		}
 		messages, err := trans.GetComponentsMessages(name, version, testData.locales, testData.components)
 		if len(testData.errorString) == 0 {
-			assert.Nil(t, err)
+			assert.Nil(t, err, testData.desc)
 		} else {
-			assert.Equal(t, testData.errorString, err.Error())
+			assert.Equal(t, testData.errorString, err.Error(), testData.desc)
 		}
 		if len(messages) != testData.size {
 			t.Errorf("%s = %d, want %d", testData.desc, len(messages), testData.size)
 		}
 
-		assert.True(t, gock.IsDone())
+		assert.True(t, gock.IsDone(), testData.desc)
 
 		clearCache()
 	}
