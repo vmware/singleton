@@ -98,24 +98,28 @@ func StartServer() {
 		}
 		servers = append(servers, &httpServer)
 
-		go func(schema string) {
-			var err error
-			switch schema {
-			case "http":
+		switch schema {
+		case "http":
+			go func(schema string) {
 				httpServer.Addr = fmt.Sprintf(":%d", config.Settings.Server.HTTPPort)
 				logger.Log.Info(fmt.Sprintf(startServerInfo, schema, httpServer.Addr))
-				err = httpServer.ListenAndServe()
-			case "https":
+				err := httpServer.ListenAndServe()
+				if err != nil && err != http.ErrServerClosed {
+					logger.Log.Fatal(fmt.Sprintf(startServerError, schema, err))
+				}
+			}(schema)
+		case "https":
+			go func(schema string) {
 				httpServer.Addr = fmt.Sprintf(":%d", config.Settings.Server.HTTPSPort)
 				logger.Log.Info(fmt.Sprintf(startServerInfo, schema, httpServer.Addr))
-				err = httpServer.ListenAndServeTLS(config.Settings.Server.CertFile, config.Settings.Server.KeyFile)
-			default:
-				logger.Log.Fatal(fmt.Sprintf("Wrong schema type: %s", schema))
-			}
-			if err != nil && err != http.ErrServerClosed {
-				logger.Log.Fatal(fmt.Sprintf(startServerError, schema, err))
-			}
-		}(schema)
+				err := httpServer.ListenAndServeTLS(config.Settings.Server.CertFile, config.Settings.Server.KeyFile)
+				if err != nil && err != http.ErrServerClosed {
+					logger.Log.Fatal(fmt.Sprintf(startServerError, schema, err))
+				}
+			}(schema)
+		default:
+			logger.Log.Fatal(fmt.Sprintf("Wrong schema type: %s", schema))
+		}
 	}
 }
 
