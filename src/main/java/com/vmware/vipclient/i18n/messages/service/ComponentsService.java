@@ -182,9 +182,9 @@ public class ComponentsService {
                     }
                 }
                 if(!componentsFallbackFailed.isEmpty())
-                    throw new VIPJavaClientException(FormatUtils.format(ConstantsMsg.GET_MESSAGES_FAILED_ALL, componentsFallbackFailed.toString(), localesFallbackFailed.toString()));
+                    logger.warn(FormatUtils.format(ConstantsMsg.GET_FALLBACK_MESSAGES_FAILED, componentsFallbackFailed.toString(), localesFallbackFailed.toString()));
             } else {
-                throw new VIPJavaClientException(FormatUtils.format(ConstantsMsg.GET_MESSAGES_FAILED_ALL, componentsToFallback.toString(), localeSet.toString()));
+                logger.warn(FormatUtils.format(ConstantsMsg.GET_FALLBACK_MESSAGES_FAILED, componentsToFallback.toString(), localeSet.toString()));
             }
         }
     }
