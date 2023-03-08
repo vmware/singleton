@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Date Time Format Pipe - Singleton</title>
 <meta name="description" content="One-fits-all Internationalization Solution">
-<meta name="generator" content="Hugo 0.90.0" />
+<meta name="generator" content="Hugo 0.105.0">
 <link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/date-time-format-pipe/">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
@@ -19,7 +19,7 @@
 </style>
 <meta property="og:title" content="Date Time Format Pipe" />
 <meta property="og:description" content="Overview Use the dateFormat pipe in your HTML templates to format a date according to locale rules.
-Usage {{ value | dateFormat [ : format [ : timezone ] ] }} Input Value    Parameter Type Description     value any a date object or a number (milliseconds since UTC epoch) or an ISO string (https://www.w3.org/TR/NOTE-datetime).    Parameters    Parameter Type Description     format string indicates which date/time components to include." />
+Usage {{ value | dateFormat [ : format [ : timezone ] ] }} Input Value Parameter Type Description value any a date object or a number (milliseconds since UTC epoch) or an ISO string (https://www.w3.org/TR/NOTE-datetime). Parameters Parameter Type Description format string indicates which date/time components to include. The format can be predefined as shown below (all examples are given for en-US) or custom as shown in the table." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/date-time-format-pipe/" /><meta property="og:image" content="https://vmware.github.io/singleton/images/og-image.png"/><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2019-09-24T20:08:31+08:00" />
@@ -30,12 +30,12 @@ Usage {{ value | dateFormat [ : format [ : timezone ] ] }} Input Value    Parame
 
 <meta name="twitter:title" content="Date Time Format Pipe"/>
 <meta name="twitter:description" content="Overview Use the dateFormat pipe in your HTML templates to format a date according to locale rules.
-Usage {{ value | dateFormat [ : format [ : timezone ] ] }} Input Value    Parameter Type Description     value any a date object or a number (milliseconds since UTC epoch) or an ISO string (https://www.w3.org/TR/NOTE-datetime).    Parameters    Parameter Type Description     format string indicates which date/time components to include."/>
+Usage {{ value | dateFormat [ : format [ : timezone ] ] }} Input Value Parameter Type Description value any a date object or a number (milliseconds since UTC epoch) or an ISO string (https://www.w3.org/TR/NOTE-datetime). Parameters Parameter Type Description format string indicates which date/time components to include. The format can be predefined as shown below (all examples are given for en-US) or custom as shown in the table."/>
 <meta itemprop="name" content="Date Time Format Pipe">
 <meta itemprop="description" content="Overview Use the dateFormat pipe in your HTML templates to format a date according to locale rules.
-Usage {{ value | dateFormat [ : format [ : timezone ] ] }} Input Value    Parameter Type Description     value any a date object or a number (milliseconds since UTC epoch) or an ISO string (https://www.w3.org/TR/NOTE-datetime).    Parameters    Parameter Type Description     format string indicates which date/time components to include."><meta itemprop="datePublished" content="2019-09-24T20:08:31+08:00" />
+Usage {{ value | dateFormat [ : format [ : timezone ] ] }} Input Value Parameter Type Description value any a date object or a number (milliseconds since UTC epoch) or an ISO string (https://www.w3.org/TR/NOTE-datetime). Parameters Parameter Type Description format string indicates which date/time components to include. The format can be predefined as shown below (all examples are given for en-US) or custom as shown in the table."><meta itemprop="datePublished" content="2019-09-24T20:08:31+08:00" />
 <meta itemprop="dateModified" content="2019-09-24T20:08:31+08:00" />
-<meta itemprop="wordCount" content="409"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
+<meta itemprop="wordCount" content="309"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
 <meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>Singleton</h1><span class="version">Version 0.6</span><a href="https://github.com/vmware/singleton" class="github"><i class="fab fa-github"></i></a>
@@ -63,7 +63,6 @@ Usage {{ value | dateFormat [ : format [ : timezone ] ] }} Input Value    Parame
 <p>Use the dateFormat pipe in your HTML templates to format a date according to locale rules.</p>
 <h4 id="usage"><strong>Usage</strong></h4>
 <pre tabindex="0"><code>{{ value | dateFormat [ : format [ : timezone ] ] }}
-
 </code></pre><h4 id="input-value"><strong>Input Value</strong></h4>
 <table>
 <thead>
@@ -124,7 +123,7 @@ Usage {{ value | dateFormat [ : format [ : timezone ] ] }} Input Value    Parame
 <td style="text-align:left">e.g. 5:40:22 PM</td>
 </tr>
 <tr>
-<td style="text-align:center">&lsquo;longTime&rsquo;</td>
+<td style="text-align:center">&rsquo;longTime&rsquo;</td>
 <td style="text-align:center">&lsquo;h:mm:ss z&rsquo;</td>
 <td style="text-align:left">e.g. 5:40:22 PM GMT+8</td>
 </tr>
@@ -144,7 +143,7 @@ Usage {{ value | dateFormat [ : format [ : timezone ] ] }} Input Value    Parame
 <td style="text-align:left">e.g. Feb 9, 2018</td>
 </tr>
 <tr>
-<td style="text-align:center">&lsquo;longDate&rsquo;</td>
+<td style="text-align:center">&rsquo;longDate'</td>
 <td style="text-align:center">&lsquo;MMMM d, y&rsquo;</td>
 <td style="text-align:left">e.g. February 9, 2018</td>
 </tr>
@@ -164,7 +163,7 @@ Usage {{ value | dateFormat [ : format [ : timezone ] ] }} Input Value    Parame
 <td style="text-align:left">e.g. Feb 9, 2018, 5:40:22 PM</td>
 </tr>
 <tr>
-<td style="text-align:center">&lsquo;long&rsquo;</td>
+<td style="text-align:center">&rsquo;long'</td>
 <td style="text-align:center">&lsquo;MMMM d, y, h:mm:ss a z&rsquo;</td>
 <td style="text-align:left">e.g. February 9, 2018 at 5:40:22 PM GMT+8</td>
 </tr>
@@ -176,16 +175,15 @@ Usage {{ value | dateFormat [ : format [ : timezone ] ] }} Input Value    Parame
 </tbody>
 </table>
 <h4 id="example-code"><strong>Example Code</strong></h4>
-<p>Assuming &lsquo;date&rsquo; is (year: 2018, month: 2, day: 09, hour: 17, minute: 40, second: 22) in the local time and locale is &lsquo;en-US&rsquo;:</p>
+<p>Assuming &lsquo;date&rsquo; is (year: 2018, month: 2, day: 09, hour: 17, minute: 40, second: 22) in the local time and locale is &rsquo;en-US&rsquo;:</p>
 <pre tabindex="0"><code>{{ date | dateFormat }}
-// output '5:40 PM' 
+// output &#39;5:40 PM&#39; 
 
-{{ date | dateFormat:'longTime' }}
-// output '5:40:22 PM GMT+8' 
+{{ date | dateFormat:&#39;longTime&#39; }}
+// output &#39;5:40:22 PM GMT+8&#39; 
 
-{{ date | dateFormat: 'fullDate'}}
-//output 'Friday, February 9, 2018'
-
+{{ date | dateFormat: &#39;fullDate&#39;}}
+//output &#39;Friday, February 9, 2018&#39;
 </code></pre><style>
     html {
         font-family: Metropolis;
@@ -269,6 +267,7 @@ Published on 24 Sep 2019
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">Singleton Service Custom Log</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
 
 <li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>

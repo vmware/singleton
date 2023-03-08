@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Command Line Utils - Singleton</title>
 <meta name="description" content="One-fits-all Internationalization Solution">
-<meta name="generator" content="Hugo 0.90.0" />
+<meta name="generator" content="Hugo 0.105.0">
 <link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/command-line-utils/">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
@@ -19,7 +19,7 @@
 </style>
 <meta property="og:title" content="Command Line Utils" />
 <meta property="og:description" content="Load Translation Download the specified languages of translation files in your project location.
-Command line arguments description    Parameter Type Value Description     &ndash;directory string required The directory you want to put translations in.   &ndash;host string required This is singleton service which provides clients with translations and pattern.   &ndash;product string required Product name. For now, singleton service doesn’t explicitly restrict name of product, but it&rsquo;s better to keep short and sync with the name in release master." />
+Command line arguments description Parameter Type Value Description &ndash;directory string required The directory you want to put translations in. &ndash;host string required This is singleton service which provides clients with translations and pattern. &ndash;product string required Product name. For now, singleton service doesn’t explicitly restrict name of product, but it&rsquo;s better to keep short and sync with the name in release master." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/command-line-utils/" /><meta property="og:image" content="https://vmware.github.io/singleton/images/og-image.png"/><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2019-09-24T20:08:31+08:00" />
@@ -30,12 +30,12 @@ Command line arguments description    Parameter Type Value Description     &ndas
 
 <meta name="twitter:title" content="Command Line Utils"/>
 <meta name="twitter:description" content="Load Translation Download the specified languages of translation files in your project location.
-Command line arguments description    Parameter Type Value Description     &ndash;directory string required The directory you want to put translations in.   &ndash;host string required This is singleton service which provides clients with translations and pattern.   &ndash;product string required Product name. For now, singleton service doesn’t explicitly restrict name of product, but it&rsquo;s better to keep short and sync with the name in release master."/>
+Command line arguments description Parameter Type Value Description &ndash;directory string required The directory you want to put translations in. &ndash;host string required This is singleton service which provides clients with translations and pattern. &ndash;product string required Product name. For now, singleton service doesn’t explicitly restrict name of product, but it&rsquo;s better to keep short and sync with the name in release master."/>
 <meta itemprop="name" content="Command Line Utils">
 <meta itemprop="description" content="Load Translation Download the specified languages of translation files in your project location.
-Command line arguments description    Parameter Type Value Description     &ndash;directory string required The directory you want to put translations in.   &ndash;host string required This is singleton service which provides clients with translations and pattern.   &ndash;product string required Product name. For now, singleton service doesn’t explicitly restrict name of product, but it&rsquo;s better to keep short and sync with the name in release master."><meta itemprop="datePublished" content="2019-09-24T20:08:31+08:00" />
+Command line arguments description Parameter Type Value Description &ndash;directory string required The directory you want to put translations in. &ndash;host string required This is singleton service which provides clients with translations and pattern. &ndash;product string required Product name. For now, singleton service doesn’t explicitly restrict name of product, but it&rsquo;s better to keep short and sync with the name in release master."><meta itemprop="datePublished" content="2019-09-24T20:08:31+08:00" />
 <meta itemprop="dateModified" content="2019-09-24T20:08:31+08:00" />
-<meta itemprop="wordCount" content="471"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
+<meta itemprop="wordCount" content="371"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
 <meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>Singleton</h1><span class="version">Version 0.6</span><a href="https://github.com/vmware/singleton" class="github"><i class="fab fa-github"></i></a>
@@ -124,12 +124,11 @@ Command line arguments description    Parameter Type Value Description     &ndas
   --component default
   --version 1.0
   --languages zh-cn,en-US
-
 </code></pre><h5 id="config-script-in-packagejson"><strong>Config script in package.json</strong></h5>
 <pre tabindex="0"><code>{
     ...
     scripts: {   
-        &quot;load-translation&quot;: &quot;load-translation 
+        &#34;load-translation&#34;: &#34;load-translation 
                             --directory `pwd`/src/app/assets
                             --host &lt;Singleton Service host&gt;
                             --product &lt;product&gt;
@@ -138,10 +137,8 @@ Command line arguments description    Parameter Type Value Description     &ndas
     }
     ...
 }
-
 </code></pre><h5 id="use-the-script"><strong>Use the script</strong></h5>
 <pre tabindex="0"><code>npm run load-translation
-
 </code></pre><h4 id="collect-source-bundle"><strong>Collect Source Bundle</strong></h4>
 <p>The @singleton-i18n/angular-client provides a script to collect source strings from source bundles. This script collects the collection named <strong>ENGLISH</strong> from the files named *<strong>.l10n.ts</strong>, and then send them to the singleton server.</p>
 <h5 id="command-line-arguments-description-1"><strong>Command line arguments description</strong></h5>
@@ -201,11 +198,10 @@ Command line arguments description    Parameter Type Value Description     &ndas
 </table>
 <h5 id="create-source-bundle"><strong>Create source bundle</strong></h5>
 <pre tabindex="0"><code>export const ENGLISH = {
-    &quot;network-error&quot;: 'Network instability.'',
-    &quot;data-error&quot;: 'Data error.',
+    &#34;network-error&#34;: &#39;Network instability.&#39;&#39;,
+    &#34;data-error&#34;: &#39;Data error.&#39;,
     ...
 }
-
 </code></pre><h5 id="config-script-in-packagejson-1"><strong>Config script in package.json</strong></h5>
 <pre tabindex="0"><code>collect-source-bundle
             --source-dir `pwd`/src/app
@@ -217,7 +213,7 @@ Command line arguments description    Parameter Type Value Description     &ndas
 </code></pre><pre tabindex="0"><code>{
     ...
     scripts: {   
-        &quot;collect-source-bundle&quot;: &quot;collect-source-bundle 
+        &#34;collect-source-bundle&#34;: &#34;collect-source-bundle 
                                 --source-dir pwd`/src/app 
                                 --host &lt;Singleton Service host&gt;
                                 --product &lt;product&gt;
@@ -229,7 +225,6 @@ Command line arguments description    Parameter Type Value Description     &ndas
     
 </code></pre><h5 id="use-the-script-1"><strong>Use the script</strong></h5>
 <pre tabindex="0"><code>npm run collect-source-bundle
-
 </code></pre><style>
     html {
         font-family: Metropolis;
@@ -314,6 +309,7 @@ Published on 24 Sep 2019
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">Singleton Service Custom Log</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
 
 <li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>

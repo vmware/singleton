@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>I18n Context - Singleton</title>
 <meta name="description" content="One-fits-all Internationalization Solution">
-<meta name="generator" content="Hugo 0.90.0" />
+<meta name="generator" content="Hugo 0.105.0">
 <link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/i18n-context/">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
@@ -32,7 +32,7 @@
 <meta itemprop="name" content="I18n Context">
 <meta itemprop="description" content="Overview I18n context is designed to manage the variables from different environments which carries pseudoEnabled, i18nEnabled, preferredLanguage, and other user-scoped values, provides a way to load and share these values between services without having to explicitly pass a parameter through every level of the service. In this way, users can use this interface to modify the default behavior regardless of the development or testing phase. The storage of these variables is configurable, and the default is saved in localstorage."><meta itemprop="datePublished" content="2022-06-16T12:43:05+03:00" />
 <meta itemprop="dateModified" content="2022-06-16T12:43:05+03:00" />
-<meta itemprop="wordCount" content="576"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
+<meta itemprop="wordCount" content="457"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
 <meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>Singleton</h1><span class="version">Version 0.6</span><a href="https://github.com/vmware/singleton" class="github"><i class="fab fa-github"></i></a>
@@ -59,8 +59,7 @@
 <h4 id="overview"><strong>Overview</strong></h4>
 <p>I18n context is designed to manage the variables from different environments which carries pseudoEnabled, i18nEnabled, preferredLanguage, and other user-scoped values, provides a way to load and share these values between services without having to explicitly pass a parameter through every level of the service. In this way, users can use this interface to modify the default behavior regardless of the development or testing phase.
 The storage of these variables is configurable, and the default is saved in localstorage.</p>
-<pre tabindex="0"><code>import { I18nContext } from &quot;@singleton-i18n/angular-client&quot;;
-
+<pre tabindex="0"><code>import { I18nContext } from &#34;@singleton-i18n/angular-client&#34;;
 </code></pre><h4 id="context-attributes"><strong>Context Attributes</strong></h4>
 <table>
 <thead>
@@ -126,24 +125,21 @@ The storage of these variables is configurable, and the default is saved in loca
 <pre tabindex="0"><code>const i18nEnabled = false;
 // Initialize the current state of i18n feature.
 i18nContext.i18nEnabled = i18nContext.i18nEnabled || i18nEnabled;
-
 </code></pre><h5 id="pseudo-translation"><strong>Pseudo translation</strong></h5>
 <p>To override the pseudo setting in the testing and development stage.</p>
 <pre tabindex="0"><code>const pseudoEnabled = false;
 i18nContext.pseudoEnabled = i18nContext.pseudoEnabled || pseudoEnabled;
-
 </code></pre><h5 id="preferred-language"><strong>Preferred language</strong></h5>
 <p>It is mainly used to load the login page in the user&rsquo;s preferred language before loading the user preference.</p>
 <pre tabindex="0"><code>const browserLanguage: string = getBrowserCultureLang();
 const currentLanguage = i18nContext.preferredLanguage ||
     localeService.normalizeLanguageCode(browserLanguage);
-
 </code></pre><pre tabindex="0"><code>import {
     getBrowserCultureLang,
     I18nContext,
     LocaleService,
     VIPService,
-} from '@singleton-i18n/angular-client';
+} from &#39;@singleton-i18n/angular-client&#39;;
 
 // Initialize the current state of i18n feature.
 const i18nEnabled = false;
@@ -154,7 +150,6 @@ const currentLanguage = i18nContext.preferredLanguage || localeService.normalize
 
 localeService.init(currentLanguage);
 return () =&gt; vipService.initData(I18nConfig);
-
 </code></pre><style>
     html {
         font-family: Metropolis;
@@ -247,6 +242,7 @@ Published on 16 Jun 2022
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">Singleton Service Custom Log</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
 
 <li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>

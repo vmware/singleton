@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Error Handling - Singleton</title>
 <meta name="description" content="One-fits-all Internationalization Solution">
-<meta name="generator" content="Hugo 0.90.0" />
+<meta name="generator" content="Hugo 0.105.0">
 <link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/error-handling/">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
@@ -19,7 +19,7 @@
 </style>
 <meta property="og:title" content="Error Handling" />
 <meta property="og:description" content="Singleton provides two error streams for users to listen to that emit objects of type VIPError.
- errors$ on subscription will emit all errors emitted up to this point and each new error after that. lastError$ on subscription will emit last error emitted up to this point and each new error after that.  export interface VIPError { code: VIPErrorCode; // custom code representing the type of failure that occurred data: VIPErrorData; // custom data related to the specific error type error: any; // api error response if such exists } User can listen through VIPService instance:" />
+errors$ on subscription will emit all errors emitted up to this point and each new error after that. lastError$ on subscription will emit last error emitted up to this point and each new error after that. export interface VIPError { code: VIPErrorCode; // custom code representing the type of failure that occurred data: VIPErrorData; // custom data related to the specific error type error: any; // api error response if such exists } User can listen through VIPService instance:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/error-handling/" /><meta property="og:image" content="https://vmware.github.io/singleton/images/og-image.png"/><meta property="article:section" content="docs-previous" />
 <meta property="article:published_time" content="2022-06-16T13:30:48+03:00" />
@@ -30,12 +30,12 @@
 
 <meta name="twitter:title" content="Error Handling"/>
 <meta name="twitter:description" content="Singleton provides two error streams for users to listen to that emit objects of type VIPError.
- errors$ on subscription will emit all errors emitted up to this point and each new error after that. lastError$ on subscription will emit last error emitted up to this point and each new error after that.  export interface VIPError { code: VIPErrorCode; // custom code representing the type of failure that occurred data: VIPErrorData; // custom data related to the specific error type error: any; // api error response if such exists } User can listen through VIPService instance:"/>
+errors$ on subscription will emit all errors emitted up to this point and each new error after that. lastError$ on subscription will emit last error emitted up to this point and each new error after that. export interface VIPError { code: VIPErrorCode; // custom code representing the type of failure that occurred data: VIPErrorData; // custom data related to the specific error type error: any; // api error response if such exists } User can listen through VIPService instance:"/>
 <meta itemprop="name" content="Error Handling">
 <meta itemprop="description" content="Singleton provides two error streams for users to listen to that emit objects of type VIPError.
- errors$ on subscription will emit all errors emitted up to this point and each new error after that. lastError$ on subscription will emit last error emitted up to this point and each new error after that.  export interface VIPError { code: VIPErrorCode; // custom code representing the type of failure that occurred data: VIPErrorData; // custom data related to the specific error type error: any; // api error response if such exists } User can listen through VIPService instance:"><meta itemprop="datePublished" content="2022-06-16T13:30:48+03:00" />
+errors$ on subscription will emit all errors emitted up to this point and each new error after that. lastError$ on subscription will emit last error emitted up to this point and each new error after that. export interface VIPError { code: VIPErrorCode; // custom code representing the type of failure that occurred data: VIPErrorData; // custom data related to the specific error type error: any; // api error response if such exists } User can listen through VIPService instance:"><meta itemprop="datePublished" content="2022-06-16T13:30:48+03:00" />
 <meta itemprop="dateModified" content="2022-06-16T13:30:48+03:00" />
-<meta itemprop="wordCount" content="249"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
+<meta itemprop="wordCount" content="124"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
 <meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>Singleton</h1><span class="version">Version 0.6</span><a href="https://github.com/vmware/singleton" class="github"><i class="fab fa-github"></i></a>
@@ -69,7 +69,6 @@
     data: VIPErrorData; // custom data related to the specific error type
     error: any; // api error response if such exists
 }
-
 </code></pre><p>User can listen through <strong>VIPService</strong> instance:</p>
 <pre tabindex="0"><code>// user-app.ts
 this.vipService.errors$.subscribe(error =&gt; {
@@ -179,6 +178,7 @@ Published on 16 Jun 2022
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">Singleton Service Custom Log</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
 
 <li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>

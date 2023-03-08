@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Number Format Pipe - Singleton</title>
 <meta name="description" content="One-fits-all Internationalization Solution">
-<meta name="generator" content="Hugo 0.90.0" />
+<meta name="generator" content="Hugo 0.105.0">
 <link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/number-format-pipe/">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
@@ -19,7 +19,7 @@
 </style>
 <meta property="og:title" content="Number Format Pipe" />
 <meta property="og:description" content="Overview Formats a number as text. Group sizing and separator and other locale-specific configurations are based on the pattern data.
-Usage {{ value | numberFormat [ : formatOptions ] }} Input Value    Parameter Type Description     value number / string The number to be formatted.    Parameters    Parameter Type Required Description     formatOptions object Optional The results formats can be customized using the formatOptions argument." />
+Usage {{ value | numberFormat [ : formatOptions ] }} Input Value Parameter Type Description value number / string The number to be formatted. Parameters Parameter Type Required Description formatOptions object Optional The results formats can be customized using the formatOptions argument. See formatOptions for further details. formatOptions Attribute Type Required Description minIntegerDigits number Optional The minimum digits of integer numbers used." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/number-format-pipe/" /><meta property="og:image" content="https://vmware.github.io/singleton/images/og-image.png"/><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2019-09-24T20:08:31+08:00" />
@@ -30,12 +30,12 @@ Usage {{ value | numberFormat [ : formatOptions ] }} Input Value    Parameter Ty
 
 <meta name="twitter:title" content="Number Format Pipe"/>
 <meta name="twitter:description" content="Overview Formats a number as text. Group sizing and separator and other locale-specific configurations are based on the pattern data.
-Usage {{ value | numberFormat [ : formatOptions ] }} Input Value    Parameter Type Description     value number / string The number to be formatted.    Parameters    Parameter Type Required Description     formatOptions object Optional The results formats can be customized using the formatOptions argument."/>
+Usage {{ value | numberFormat [ : formatOptions ] }} Input Value Parameter Type Description value number / string The number to be formatted. Parameters Parameter Type Required Description formatOptions object Optional The results formats can be customized using the formatOptions argument. See formatOptions for further details. formatOptions Attribute Type Required Description minIntegerDigits number Optional The minimum digits of integer numbers used."/>
 <meta itemprop="name" content="Number Format Pipe">
 <meta itemprop="description" content="Overview Formats a number as text. Group sizing and separator and other locale-specific configurations are based on the pattern data.
-Usage {{ value | numberFormat [ : formatOptions ] }} Input Value    Parameter Type Description     value number / string The number to be formatted.    Parameters    Parameter Type Required Description     formatOptions object Optional The results formats can be customized using the formatOptions argument."><meta itemprop="datePublished" content="2019-09-24T20:08:31+08:00" />
+Usage {{ value | numberFormat [ : formatOptions ] }} Input Value Parameter Type Description value number / string The number to be formatted. Parameters Parameter Type Required Description formatOptions object Optional The results formats can be customized using the formatOptions argument. See formatOptions for further details. formatOptions Attribute Type Required Description minIntegerDigits number Optional The minimum digits of integer numbers used."><meta itemprop="datePublished" content="2019-09-24T20:08:31+08:00" />
 <meta itemprop="dateModified" content="2019-09-24T20:08:31+08:00" />
-<meta itemprop="wordCount" content="421"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
+<meta itemprop="wordCount" content="321"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
 <meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>Singleton</h1><span class="version">Version 0.6</span><a href="https://github.com/vmware/singleton" class="github"><i class="fab fa-github"></i></a>
@@ -63,7 +63,6 @@ Usage {{ value | numberFormat [ : formatOptions ] }} Input Value    Parameter Ty
 <p>Formats a number as text. Group sizing and separator and other locale-specific configurations are based on the pattern data.</p>
 <h4 id="usage"><strong>Usage</strong></h4>
 <pre tabindex="0"><code>{{ value | numberFormat [ : formatOptions ] }}
-
 </code></pre><h4 id="input-value"><strong>Input Value</strong></h4>
 <table>
 <thead>
@@ -144,42 +143,41 @@ Usage {{ value | numberFormat [ : formatOptions ] }} Input Value    Parameter Ty
 </tbody>
 </table>
 <h4 id="example-code"><strong>Example Code</strong></h4>
-<pre tabindex="0"><code>// input '201703.5416926'
+<pre tabindex="0"><code>// input &#39;201703.5416926&#39;
 {{ num | numberFormat }}
-// output '201,703.542'
+// output &#39;201,703.542&#39;
 
-// input '1.149999'
+// input &#39;1.149999&#39;
 {{ num | numberFormat }}
-// output '1.150'
+// output &#39;1.150&#39;
 
-// input '2.31'
+// input &#39;2.31&#39;
 {{ num | numberFormat }}
-// output '2.31'
+// output &#39;2.31&#39;
 
-// input '2017120107'
+// input &#39;2017120107&#39;
 {{ num | numberFormat }}
-// output '2,017,120,107'
+// output &#39;2,017,120,107&#39;
 
-// input '.23'
+// input &#39;.23&#39;
 {{ num | numberFormat }}
-// output '0.23'
+// output &#39;0.23&#39;
 
 // Format options usages
 // Please note that pass object as a parameter,
 // the end of the brace should keep a whitespace.
 
-// input '0.5416926'
+// input &#39;0.5416926&#39;
 {{ num | numberFormat: { maxFractionDigits: 6 } }}
-// output '0.541693'
+// output &#39;0.541693&#39;
 
 // input 1000000
-{{ num | numberFormat: {notation: 'compact', compactDisplay: 'short'} }}
+{{ num | numberFormat: {notation: &#39;compact&#39;, compactDisplay: &#39;short&#39;} }}
 // output 1M
 
 // input 1000000
-{{ num | numberFormat: {notation: 'compact', compactDisplay: 'long'} }}
+{{ num | numberFormat: {notation: &#39;compact&#39;, compactDisplay: &#39;long&#39;} }}
 // output 1 million
-
 </code></pre><style>
     html {
         font-family: Metropolis;
@@ -264,6 +262,7 @@ Published on 24 Sep 2019
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">Singleton Service Custom Log</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
 
 <li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>

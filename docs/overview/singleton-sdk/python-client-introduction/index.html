@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Python Client Introduction - Singleton</title>
 <meta name="description" content="One-fits-all Internationalization Solution">
-<meta name="generator" content="Hugo 0.90.0" />
+<meta name="generator" content="Hugo 0.105.0">
 <link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/python-client-introduction/">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
@@ -275,61 +275,61 @@
 <ul>
 <li>Example of component definition in original way</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">components</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">about</span>
-    <span style="color:#f92672">locales</span>:
-      - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">en-US</span>
-        <span style="color:#f92672">offline_resources_path</span>:
-          - <span style="color:#ae81ff">about/messages.properties</span>
-      - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">de</span>
-        <span style="color:#f92672">offline_resources_path</span>:
-          - <span style="color:#ae81ff">about/messages_de.json</span>
-      - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">fr</span>
-        <span style="color:#f92672">offline_resources_path</span>:
-          - <span style="color:#ae81ff">about/messages_fr.json</span>
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">common</span>
-    <span style="color:#f92672">locales</span>:
-      - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">en-US</span>
-        <span style="color:#f92672">offline_resources_path</span>:
-          - <span style="color:#ae81ff">common/messages.properties</span>
-      - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">de</span>
-        <span style="color:#f92672">offline_resources_path</span>:
-          - <span style="color:#ae81ff">common/messages_de.json</span>
-      - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">fr</span>
-        <span style="color:#f92672">offline_resources_path</span>:
-          - <span style="color:#ae81ff">common/messages_fr.json</span>
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">contact</span>
-    <span style="color:#f92672">locales</span>:
-      - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">en-US</span>
-        <span style="color:#f92672">offline_resources_path</span>:
-          - <span style="color:#ae81ff">contact/messages.properties</span>
-      - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">de</span>
-        <span style="color:#f92672">offline_resources_path</span>:
-          - <span style="color:#ae81ff">contact/messages_de.json</span>
-      - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">fr</span>
-        <span style="color:#f92672">offline_resources_path</span>:
-          - <span style="color:#ae81ff">contact/messages_fr.json</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">components</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">about</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">locales</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">en-US</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">offline_resources_path</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#ae81ff">about/messages.properties</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">de</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">offline_resources_path</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#ae81ff">about/messages_de.json</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">fr</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">offline_resources_path</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#ae81ff">about/messages_fr.json</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">common</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">locales</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">en-US</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">offline_resources_path</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#ae81ff">common/messages.properties</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">de</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">offline_resources_path</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#ae81ff">common/messages_de.json</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">fr</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">offline_resources_path</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#ae81ff">common/messages_fr.json</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">contact</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">locales</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">en-US</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">offline_resources_path</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#ae81ff">contact/messages.properties</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">de</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">offline_resources_path</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#ae81ff">contact/messages_de.json</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">fr</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">offline_resources_path</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#ae81ff">contact/messages_fr.json</span>
+</span></span></code></pre></div><ul>
 <li>Example of component definition in concise way</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">locales</span>:
-  - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">en-US</span>
-    <span style="color:#f92672">offline_resources_path</span>:
-      - <span style="color:#ae81ff">$COMPONENT/messages.properties</span>
-  - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">de</span>
-  - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">fr</span>
-
-<span style="color:#f92672">component_template</span>:
-  <span style="color:#f92672">locales_refer</span>: <span style="color:#ae81ff">locales</span>
-  <span style="color:#f92672">offline_resources_path</span>:
-    - <span style="color:#ae81ff">$COMPONENT/messages_$LOCALE.json</span>
-
-<span style="color:#f92672">components</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">about</span>
-    <span style="color:#f92672">template</span>: <span style="color:#ae81ff">component_template</span> <span style="color:#75715e"># default</span>
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">common</span>
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">contact</span>
-</code></pre></div><h1 id="apis-available">APIs Available</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">locales</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">en-US</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">offline_resources_path</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">$COMPONENT/messages.properties</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">de</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">language_tag</span>: <span style="color:#ae81ff">fr</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">component_template</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">locales_refer</span>: <span style="color:#ae81ff">locales</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">offline_resources_path</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">$COMPONENT/messages_$LOCALE.json</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">components</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">about</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">template</span>: <span style="color:#ae81ff">component_template</span> <span style="color:#75715e"># default</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">common</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">contact</span>
+</span></span></code></pre></div><h1 id="apis-available">APIs Available</h1>
 <ul>
 <li><a href="#Entry-of-library">Entry of library</a>
 <ul>
@@ -357,12 +357,12 @@
 <ul>
 <li>It&rsquo;s the entry code that creates and initializes the configuration object and the release object.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_config_file</span>(config_file, outside_config<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_config</span>(base_path, config_data)
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">set_current_locale</span>(locale)
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_current_locale</span>()
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_release</span>(product, version)
-</code></pre></div><h3 id="i18n--add_config_file">I18N / add_config_file</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_config_file</span>(config_file, outside_config<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_config</span>(base_path, config_data)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">set_current_locale</span>(locale)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_current_locale</span>()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_release</span>(product, version)
+</span></span></code></pre></div><h3 id="i18n--add_config_file">I18N / add_config_file</h3>
 <ul>
 <li>Load a configuration json or yaml file and initialize a corresponding release object.</li>
 </ul>
@@ -491,11 +491,11 @@
 </table>
 <h2 id="interface-for-release">Interface For Release</h2>
 <h3 id="release">Release</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Release</span>:
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_config</span>(self)
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_translation</span>(self)
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">set_logger</span>(self, logger)
-</code></pre></div><h3 id="release--get_config">Release / get_config</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Release</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_config</span>(self)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_translation</span>(self)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">set_logger</span>(self, logger)
+</span></span></code></pre></div><h3 id="release--get_config">Release / get_config</h3>
 <ul>
 <li>Get the configuration object owned by the release object.</li>
 </ul>
@@ -553,10 +553,10 @@
 </table>
 <h2 id="interface-for-configuration">Interface For Configuration</h2>
 <h3 id="config">Config</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Config</span>:
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_config_data</span>(self)
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_info</span>(self)
-</code></pre></div><h3 id="config--get_config_data">Config / get_config_data</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Config</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_config_data</span>(self)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_info</span>(self)
+</span></span></code></pre></div><h3 id="config--get_config_data">Config / get_config_data</h3>
 <ul>
 <li>Get configuration data.</li>
 </ul>
@@ -592,24 +592,24 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-  <span style="color:#f92672">&#34;product&#34;</span>: <span style="color:#e6db74">&#34;PYTHON1&#34;</span>,
-  <span style="color:#f92672">&#34;version&#34;</span>: <span style="color:#e6db74">&#34;1.0.0&#34;</span>,
-  <span style="color:#f92672">&#34;remote&#34;</span>: <span style="color:#66d9ef">null</span>,
-  <span style="color:#f92672">&#34;local&#34;</span>: <span style="color:#e6db74">&#34;/tmp/data/l10n&#34;</span>,
-  <span style="color:#f92672">&#34;pseudo&#34;</span>: <span style="color:#66d9ef">true</span>,
-  <span style="color:#f92672">&#34;source_locale&#34;</span>: <span style="color:#e6db74">&#34;en-US&#34;</span>,
-  <span style="color:#f92672">&#34;default_locale&#34;</span>: <span style="color:#e6db74">&#34;en-US&#34;</span>
-}
-</code></pre></div><h2 id="interface-for-translation">Interface For Translation</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;product&#34;</span>: <span style="color:#e6db74">&#34;PYTHON1&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;version&#34;</span>: <span style="color:#e6db74">&#34;1.0.0&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;remote&#34;</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;local&#34;</span>: <span style="color:#e6db74">&#34;/tmp/data/l10n&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;pseudo&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;source_locale&#34;</span>: <span style="color:#e6db74">&#34;en-US&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;default_locale&#34;</span>: <span style="color:#e6db74">&#34;en-US&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="interface-for-translation">Interface For Translation</h2>
 <h3 id="translation">Translation</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Translation</span>:
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_string</span>(self, component, key, <span style="color:#f92672">**</span>kwargs)
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_locale_strings</span>(self, locale)
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_locale_supported</span>(self, locale)
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">format</span>(self, locale, text, array)
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_locales</span>(self, display_locale<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
-</code></pre></div><h3 id="translation--get_string">Translation / get_string</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Translation</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_string</span>(self, component, key, <span style="color:#f92672">**</span>kwargs)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_locale_strings</span>(self, locale)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_locale_supported</span>(self, locale)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">format</span>(self, locale, text, array)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_locales</span>(self, display_locale<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+</span></span></code></pre></div><h3 id="translation--get_string">Translation / get_string</h3>
 <ul>
 <li>Get the translation message of a component and a key.</li>
 </ul>
@@ -635,7 +635,7 @@
 <tr>
 <td>kwargs</td>
 <td>object</td>
-<td>Parameters like &lsquo;source&rsquo;, &lsquo;locale&rsquo; and &lsquo;format_items&rsquo;</td>
+<td>Parameters like &lsquo;source&rsquo;, &rsquo;locale&rsquo; and &lsquo;format_items&rsquo;</td>
 </tr>
 </tbody>
 </table>
@@ -675,18 +675,18 @@
 <ul>
 <li>Examples of string formatting which follow the python format function when &lsquo;format&rsquo; in configuration is set to &lsquo;default&rsquo;.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">msg <span style="color:#f92672">=</span> trans<span style="color:#f92672">.</span>get_string(COMPONENT, KEY) <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;AAA</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">BBB</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">CCC&#39;</span>
-msg <span style="color:#f92672">=</span> trans<span style="color:#f92672">.</span>get_string(COMPONENT, KEY, format_items <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;11&#39;</span>, <span style="color:#e6db74">&#39;22&#39;</span>]) <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;AAA11BBB22CCC&#39;</span>
-
-msg <span style="color:#f92672">=</span> trans<span style="color:#f92672">.</span>get_string(COMPONENT, KEY) <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;AAA</span><span style="color:#e6db74">{x}</span><span style="color:#e6db74">BBB</span><span style="color:#e6db74">{y}</span><span style="color:#e6db74">CCC&#39;</span>
-msg <span style="color:#f92672">=</span> trans<span style="color:#f92672">.</span>get_string(COMPONENT, KEY, format_items <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;x&#39;</span>: <span style="color:#e6db74">&#39;ee&#39;</span>, <span style="color:#e6db74">&#39;y&#39;</span>: <span style="color:#e6db74">&#39;ff&#39;</span>}) <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;AAAeeBBBffCCC&#39;</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>msg <span style="color:#f92672">=</span> trans<span style="color:#f92672">.</span>get_string(COMPONENT, KEY) <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;AAA</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">BBB</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">CCC&#39;</span>
+</span></span><span style="display:flex;"><span>msg <span style="color:#f92672">=</span> trans<span style="color:#f92672">.</span>get_string(COMPONENT, KEY, format_items <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;11&#39;</span>, <span style="color:#e6db74">&#39;22&#39;</span>]) <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;AAA11BBB22CCC&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>msg <span style="color:#f92672">=</span> trans<span style="color:#f92672">.</span>get_string(COMPONENT, KEY) <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;AAA</span><span style="color:#e6db74">{x}</span><span style="color:#e6db74">BBB</span><span style="color:#e6db74">{y}</span><span style="color:#e6db74">CCC&#39;</span>
+</span></span><span style="display:flex;"><span>msg <span style="color:#f92672">=</span> trans<span style="color:#f92672">.</span>get_string(COMPONENT, KEY, format_items <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;x&#39;</span>: <span style="color:#e6db74">&#39;ee&#39;</span>, <span style="color:#e6db74">&#39;y&#39;</span>: <span style="color:#e6db74">&#39;ff&#39;</span>}) <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;AAAeeBBBffCCC&#39;</span>
+</span></span></code></pre></div><ul>
 <li>Example which follows the rules of CLDR MessageFormat when &lsquo;format&rsquo; in configuration is set to &lsquo;icu&rsquo;.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">msg <span style="color:#f92672">=</span> trans<span style="color:#f92672">.</span>get_string(COMPONENT, KEY, locale <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;en-US&#39;</span>, format_items <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">7</span>])
-<span style="color:#75715e"># COMPONENT, KEY =&gt; I bought {0, plural, one {# book} other {# books}} and {1, plural, one {# cup} other {# cups}}.</span>
-<span style="color:#75715e"># msg =&gt; I bought 1 book and 7 cups.</span>
-</code></pre></div><table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>msg <span style="color:#f92672">=</span> trans<span style="color:#f92672">.</span>get_string(COMPONENT, KEY, locale <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;en-US&#39;</span>, format_items <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">7</span>])
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># COMPONENT, KEY =&gt; I bought {0, plural, one {# book} other {# books}} and {1, plural, one {# cup} other {# cups}}.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># msg =&gt; I bought 1 book and 7 cups.</span>
+</span></span></code></pre></div><table>
 <thead>
 <tr>
 <th>Return</th>
@@ -801,8 +801,8 @@ msg <span style="color:#f92672">=</span> trans<span style="color:#f92672">.</spa
 <ul>
 <li>Example which follows the rules of CLDR MessageFormat when &lsquo;format&rsquo; in configuration is set to &lsquo;icu&rsquo;.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">msg <span style="color:#f92672">=</span> trans<span style="color:#f92672">.</span>format(<span style="color:#e6db74">&#39;en&#39;</span>, <span style="color:#e6db74">&#39;I bought {0, plural, one {# book} other {# books}}.&#39;</span>, [<span style="color:#ae81ff">1</span>])
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>msg <span style="color:#f92672">=</span> trans<span style="color:#f92672">.</span>format(<span style="color:#e6db74">&#39;en&#39;</span>, <span style="color:#e6db74">&#39;I bought {0, plural, one {# book} other {# books}}.&#39;</span>, [<span style="color:#ae81ff">1</span>])
+</span></span></code></pre></div><ul>
 <li>When &lsquo;format&rsquo; in configuration is set to &lsquo;default&rsquo;, its format string follows the python format function.</li>
 </ul>
 <table>
@@ -853,22 +853,22 @@ msg <span style="color:#f92672">=</span> trans<span style="color:#f92672">.</spa
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-  <span style="color:#f92672">&#34;en-US&#34;</span>: {
-    <span style="color:#f92672">&#34;as&#34;</span>: <span style="color:#e6db74">&#34;source&#34;</span>,
-    <span style="color:#f92672">&#34;from&#34;</span>: <span style="color:#e6db74">&#34;local&#34;</span>,
-    <span style="color:#f92672">&#34;display&#34;</span>: <span style="color:#e6db74">&#34;英语（美国）&#34;</span>
-  },
-  <span style="color:#f92672">&#34;de&#34;</span>: {
-    <span style="color:#f92672">&#34;from&#34;</span>: <span style="color:#e6db74">&#34;remote&#34;</span>,
-    <span style="color:#f92672">&#34;display&#34;</span>: <span style="color:#e6db74">&#34;德语&#34;</span>
-  }
-}
-</code></pre></div><h2 id="interface-for-logger">Interface For Logger</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;en-US&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;as&#34;</span>: <span style="color:#e6db74">&#34;source&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;from&#34;</span>: <span style="color:#e6db74">&#34;local&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;display&#34;</span>: <span style="color:#e6db74">&#34;英语（美国）&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;de&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;from&#34;</span>: <span style="color:#e6db74">&#34;remote&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;display&#34;</span>: <span style="color:#e6db74">&#34;德语&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="interface-for-logger">Interface For Logger</h2>
 <h3 id="logger">Logger</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Logger</span>:
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">log</span>(self, text, log_type)
-</code></pre></div><h3 id="translation--log">Translation / log</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Logger</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">log</span>(self, text, log_type)
+</span></span></code></pre></div><h3 id="translation--log">Translation / log</h3>
 <ul>
 <li>Log text with type of log_type.</li>
 </ul>
@@ -931,6 +931,7 @@ Published on 22 Feb 2022
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">Singleton Service Custom Log</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
 
 <li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>

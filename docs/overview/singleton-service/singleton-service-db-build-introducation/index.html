@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>DB builder for User guideline - Singleton</title>
 <meta name="description" content="One-fits-all Internationalization Solution">
-<meta name="generator" content="Hugo 0.90.0" />
+<meta name="generator" content="Hugo 0.105.0">
 <link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
@@ -18,7 +18,7 @@
 :root {}
 </style>
 <meta property="og:title" content="DB builder for User guideline" />
-<meta property="og:description" content="1. Prerequisites  Java 8 (Java 9&#43; are not supported, will get compiler issue) Git Docker  2. Create Singleton Database docker image 2.1 Required  Linux 64-bit Operation System and install docker successfully  2.2 Prepare the init db scripts 2.2.1 prepare the create users and databases sql scripts vipinitdb.sql CREATE USER pgvipconfig WITH PASSWORD &#39;vipconfig&#39;; CREATE USER pgvipdata WITH PASSWORD &#39;vipdata&#39;; CREATE DATABASE vipconfig OWNER pgvipconfig; CREATE DATABASE vipdata0 OWNER pgvipdata; CREATE DATABASE vipdata1 OWNER pgvipdata; 2." />
+<meta property="og:description" content="1. Prerequisites Java 8 (Java 9&#43; are not supported, will get compiler issue) Git Docker 2. Create Singleton Database docker image 2.1 Required Linux 64-bit Operation System and install docker successfully 2.2 Prepare the init db scripts 2.2.1 prepare the create users and databases sql scripts vipinitdb.sql CREATE USER pgvipconfig WITH PASSWORD &#39;vipconfig&#39;; CREATE USER pgvipdata WITH PASSWORD &#39;vipdata&#39;; CREATE DATABASE vipconfig OWNER pgvipconfig; CREATE DATABASE vipdata0 OWNER pgvipdata; CREATE DATABASE vipdata1 OWNER pgvipdata; 2." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/" /><meta property="og:image" content="https://vmware.github.io/singleton/images/og-image.png"/><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2020-07-02T11:09:53+08:00" />
@@ -28,9 +28,9 @@
 <meta name="twitter:image" content="https://vmware.github.io/singleton/images/og-image.png"/>
 
 <meta name="twitter:title" content="DB builder for User guideline"/>
-<meta name="twitter:description" content="1. Prerequisites  Java 8 (Java 9&#43; are not supported, will get compiler issue) Git Docker  2. Create Singleton Database docker image 2.1 Required  Linux 64-bit Operation System and install docker successfully  2.2 Prepare the init db scripts 2.2.1 prepare the create users and databases sql scripts vipinitdb.sql CREATE USER pgvipconfig WITH PASSWORD &#39;vipconfig&#39;; CREATE USER pgvipdata WITH PASSWORD &#39;vipdata&#39;; CREATE DATABASE vipconfig OWNER pgvipconfig; CREATE DATABASE vipdata0 OWNER pgvipdata; CREATE DATABASE vipdata1 OWNER pgvipdata; 2."/>
+<meta name="twitter:description" content="1. Prerequisites Java 8 (Java 9&#43; are not supported, will get compiler issue) Git Docker 2. Create Singleton Database docker image 2.1 Required Linux 64-bit Operation System and install docker successfully 2.2 Prepare the init db scripts 2.2.1 prepare the create users and databases sql scripts vipinitdb.sql CREATE USER pgvipconfig WITH PASSWORD &#39;vipconfig&#39;; CREATE USER pgvipdata WITH PASSWORD &#39;vipdata&#39;; CREATE DATABASE vipconfig OWNER pgvipconfig; CREATE DATABASE vipdata0 OWNER pgvipdata; CREATE DATABASE vipdata1 OWNER pgvipdata; 2."/>
 <meta itemprop="name" content="DB builder for User guideline">
-<meta itemprop="description" content="1. Prerequisites  Java 8 (Java 9&#43; are not supported, will get compiler issue) Git Docker  2. Create Singleton Database docker image 2.1 Required  Linux 64-bit Operation System and install docker successfully  2.2 Prepare the init db scripts 2.2.1 prepare the create users and databases sql scripts vipinitdb.sql CREATE USER pgvipconfig WITH PASSWORD &#39;vipconfig&#39;; CREATE USER pgvipdata WITH PASSWORD &#39;vipdata&#39;; CREATE DATABASE vipconfig OWNER pgvipconfig; CREATE DATABASE vipdata0 OWNER pgvipdata; CREATE DATABASE vipdata1 OWNER pgvipdata; 2."><meta itemprop="datePublished" content="2020-07-02T11:09:53+08:00" />
+<meta itemprop="description" content="1. Prerequisites Java 8 (Java 9&#43; are not supported, will get compiler issue) Git Docker 2. Create Singleton Database docker image 2.1 Required Linux 64-bit Operation System and install docker successfully 2.2 Prepare the init db scripts 2.2.1 prepare the create users and databases sql scripts vipinitdb.sql CREATE USER pgvipconfig WITH PASSWORD &#39;vipconfig&#39;; CREATE USER pgvipdata WITH PASSWORD &#39;vipdata&#39;; CREATE DATABASE vipconfig OWNER pgvipconfig; CREATE DATABASE vipdata0 OWNER pgvipdata; CREATE DATABASE vipdata1 OWNER pgvipdata; 2."><meta itemprop="datePublished" content="2020-07-02T11:09:53+08:00" />
 <meta itemprop="dateModified" content="2020-07-02T11:09:53+08:00" />
 <meta itemprop="wordCount" content="1037"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
 <meta itemprop="keywords" content="" /></head>
@@ -69,9 +69,9 @@
 </ul>
 <h2 id="22-prepare-the-init-db-scripts">2.2 Prepare the init db scripts</h2>
 <h3 id="221-prepare-the-create-users-and-databases-sql-scripts-vipinitdbsql">2.2.1 prepare the create users and databases sql scripts vipinitdb.sql</h3>
-<pre tabindex="0"><code>CREATE USER pgvipconfig WITH PASSWORD 'vipconfig';
+<pre tabindex="0"><code>CREATE USER pgvipconfig WITH PASSWORD &#39;vipconfig&#39;;
  
-CREATE USER pgvipdata WITH PASSWORD 'vipdata';
+CREATE USER pgvipdata WITH PASSWORD &#39;vipdata&#39;;
  
 CREATE DATABASE vipconfig OWNER pgvipconfig;
  
@@ -86,7 +86,7 @@ create sequence vip_product_seq increment by 1 minvalue 1 no maxvalue start with
  
 alter table vip_product add primary key(id);
  
-alter table vip_product alter column id set default nextval('vip_product_seq');
+alter table vip_product alter column id set default nextval(&#39;vip_product_seq&#39;);
  
 alter table vip_product add constraint uk_vip_product unique(product);
 </code></pre><h3 id="223-prepare-the-create-data-table-sql-scripts-vipinitdatatabsql">2.2.3 prepare the create data table sql scripts vipinitdatatab.sql</h3>
@@ -138,7 +138,7 @@ Dockerfile  vipinitconfigtab.sql  vipinitdatatab.sql  vipinitdb.sql  vipinstalld
 </code></pre><h3 id="253-execute-docker-build">2.5.3 execute docker build</h3>
 <pre tabindex="0"><code>  docker build -t vipdb_pg:v1 .
 </code></pre><h2 id="26-run-docker-image">2.6 run docker image</h2>
-<pre tabindex="0"><code>tiger@docker:~$ docker run --name='vipdb' -d  -p 5432:5432 vipdb_pg:v1
+<pre tabindex="0"><code>tiger@docker:~$ docker run --name=&#39;vipdb&#39; -d  -p 5432:5432 vipdb_pg:v1
  
 1c9c7864aa3f21af6d0c27932be833465935418a5b6e8a495a1b58dce44fbb78
  
@@ -146,7 +146,7 @@ tiger@docker:~$ docker ps
  
 CONTAINER ID        IMAGE                                                             COMMAND                  CREATED             STATUS              PORTS                    NAMES
  
-1c9c7864aa3f        vipdb_pg:v1   &quot;docker-entrypoint.s...&quot;   4 seconds ago       Up 3 seconds        0.0.0.0:5432-&gt;5432/tcp   vipdb
+1c9c7864aa3f        vipdb_pg:v1   &#34;docker-entrypoint.s...&#34;   4 seconds ago       Up 3 seconds        0.0.0.0:5432-&gt;5432/tcp   vipdb
 </code></pre><h1 id="3-compile-db-builder-installer">3. Compile DB builder installer</h1>
 <h2 id="31-clone-the-repository-using-git">3.1 Clone the repository using Git.</h2>
 <pre tabindex="0"><code>git clone https://github.com/vmware/singleton.git
@@ -185,7 +185,7 @@ syncdata=false
     timeBetweenEvictionRunsMillis: 60000
 # the min life time of a connection   
     minEvictableIdleTimeMillis: 300000
-    validationQuery: SELECT 'x'
+    validationQuery: SELECT &#39;x&#39;
     testWhileIdle: true
     testOnBorrow: false
     testOnReturn: false
@@ -194,7 +194,7 @@ syncdata=false
     maxPoolPreparedStatementPerConnectionSize: 20
     postgres:
       datasoures: 
-        # the vip datanodes' data source
+        # the vip datanodes&#39; data source
         - name: vipdata1
           type: com.alibaba.druid.pool.DruidDataSource
           driverClassName: org.postgresql.Driver
@@ -212,7 +212,7 @@ syncdata=false
  
           minEvictableIdleTimeMillis: 300000
 
-          validationQuery: SELECT 'x'
+          validationQuery: SELECT &#39;x&#39;
           testWhileIdle: true
           testOnBorrow: false
           testOnReturn: false
@@ -242,7 +242,7 @@ syncdata=false
  
           minEvictableIdleTimeMillis: 300000
 
-          validationQuery: SELECT 'x'
+          validationQuery: SELECT &#39;x&#39;
           testWhileIdle: true
           testOnBorrow: false
           testOnReturn: false
@@ -287,8 +287,8 @@ translation:
     git:
       flag: false
 pseudo:
-  notExistSourceTag: '@@'
-  existSourceTag: '#@'
+  notExistSourceTag: &#39;@@&#39;
+  existSourceTag: &#39;#@&#39;
 csp:
   api:
     auth:
@@ -303,7 +303,7 @@ vipservice:
   cross:
     domain:
       enable: true
-      alloworigin: '*'
+      alloworigin: &#39;*&#39;
       maxage: 3600
       allowmethods: GET, POST, PUT, DELETE, OPTIONS
       allowheaders: csp-auth-token, Content-Type
@@ -321,7 +321,7 @@ management:
         include: info, health
     jmx: 
       exposure:
-        exclude: '*'
+        exclude: &#39;*&#39;
 </code></pre><h3 id="323--modify-vip-manager-i18nsrcmainresourcesapplicationproperties-as-following">3.2.3  Modify vip-manager-i18n/src/main/resources/application.properties as following</h3>
 <pre tabindex="0"><code>##
 #Copyright 2019 VMware, Inc.
@@ -351,37 +351,37 @@ or</p>
 <p>http://localhost:8091/i18n/api/doc/swagger-ui.html</p>
 <h2 id="42-add-the-test-data">4.2 Add the test data</h2>
 <p>The following is the way with curl tool to add test data. You need to install the curl tool successfully before use below command.</p>
-<pre tabindex="0"><code>curl -X PUT &quot;https://localhost:8090/i18n/api/v2/translation/products/Testing/versions/1.0.0&quot; -H &quot;accept: application/json;charset=UTF-8&quot; -H &quot;Content-Type: application/json&quot; -d &quot;{ \&quot;data\&quot;: { \&quot;creation\&quot;: { \&quot;operationid\&quot;: \&quot;test12345\&quot; }, \&quot;dataOrigin\&quot;: \&quot;string\&quot;, \&quot;machineTranslation\&quot;: true, \&quot;productName\&quot;: \&quot;Testing\&quot;, \&quot;pseudo\&quot;: false, \&quot;translation\&quot;: [ { \&quot;component\&quot; : \&quot;component1\&quot;, \&quot;messages\&quot;: { \&quot;sample.apple\&quot; : \&quot;apple\&quot;, \&quot;sample.banana\&quot; : \&quot;banana\&quot;, \&quot;sample.cat\&quot; : \&quot;cat\&quot;, \&quot;sample.dog\&quot; : \&quot;dog\&quot;, \&quot;sample.egg\&quot; : \&quot;egg\&quot;, \&quot;sample.fly\&quot; : \&quot;fly\&quot;, \&quot;sample.giant\&quot; : \&quot;giant\&quot; }, \&quot;locale\&quot; : \&quot;en\&quot;},{ \&quot;component\&quot; : \&quot;component1\&quot;, \&quot;messages\&quot; : { \&quot;sample.apple\&quot; : \&quot;manzana\&quot;, \&quot;sample.banana\&quot; : \&quot;plátano\&quot;, \&quot;sample.cat\&quot; : \&quot;gato\&quot;, \&quot;sample.dog\&quot; : \&quot;perro\&quot;, \&quot;sample.egg\&quot; : \&quot;huevo\&quot;, \&quot;sample.fly\&quot; : \&quot;volar\&quot;, \&quot;sample.giant\&quot; : \&quot;gigante\&quot; }, \&quot;locale\&quot; : \&quot;es\&quot;} ], \&quot;version\&quot;: \&quot;1.0.0\&quot; }, \&quot;requester\&quot;: \&quot;ManulTest\&quot;}&quot;
+<pre tabindex="0"><code>curl -X PUT &#34;https://localhost:8090/i18n/api/v2/translation/products/Testing/versions/1.0.0&#34; -H &#34;accept: application/json;charset=UTF-8&#34; -H &#34;Content-Type: application/json&#34; -d &#34;{ \&#34;data\&#34;: { \&#34;creation\&#34;: { \&#34;operationid\&#34;: \&#34;test12345\&#34; }, \&#34;dataOrigin\&#34;: \&#34;string\&#34;, \&#34;machineTranslation\&#34;: true, \&#34;productName\&#34;: \&#34;Testing\&#34;, \&#34;pseudo\&#34;: false, \&#34;translation\&#34;: [ { \&#34;component\&#34; : \&#34;component1\&#34;, \&#34;messages\&#34;: { \&#34;sample.apple\&#34; : \&#34;apple\&#34;, \&#34;sample.banana\&#34; : \&#34;banana\&#34;, \&#34;sample.cat\&#34; : \&#34;cat\&#34;, \&#34;sample.dog\&#34; : \&#34;dog\&#34;, \&#34;sample.egg\&#34; : \&#34;egg\&#34;, \&#34;sample.fly\&#34; : \&#34;fly\&#34;, \&#34;sample.giant\&#34; : \&#34;giant\&#34; }, \&#34;locale\&#34; : \&#34;en\&#34;},{ \&#34;component\&#34; : \&#34;component1\&#34;, \&#34;messages\&#34; : { \&#34;sample.apple\&#34; : \&#34;manzana\&#34;, \&#34;sample.banana\&#34; : \&#34;plátano\&#34;, \&#34;sample.cat\&#34; : \&#34;gato\&#34;, \&#34;sample.dog\&#34; : \&#34;perro\&#34;, \&#34;sample.egg\&#34; : \&#34;huevo\&#34;, \&#34;sample.fly\&#34; : \&#34;volar\&#34;, \&#34;sample.giant\&#34; : \&#34;gigante\&#34; }, \&#34;locale\&#34; : \&#34;es\&#34;} ], \&#34;version\&#34;: \&#34;1.0.0\&#34; }, \&#34;requester\&#34;: \&#34;ManulTest\&#34;}&#34;
 </code></pre><p>You can access other API  use following data.</p>
 <pre tabindex="0"><code>{
-&quot;prductName&quot;: &quot;Testing&quot;,
-&quot;version&quot;: &quot;1.0.0&quot;,
-&quot;messages&quot;:[
+&#34;prductName&#34;: &#34;Testing&#34;,
+&#34;version&#34;: &#34;1.0.0&#34;,
+&#34;messages&#34;:[
 {
-    &quot;component&quot; : &quot;component1&quot;,
-    &quot;messages&quot;: {
-        &quot;sample.apple&quot; : &quot;apple&quot;,
-        &quot;sample.banana&quot; : &quot;banana&quot;,
-        &quot;sample.cat&quot; : &quot;cat&quot;,
-        &quot;sample.dog&quot; : &quot;dog&quot;,
-        &quot;sample.egg&quot; : &quot;egg&quot;,
-        &quot;sample.fly&quot; : &quot;fly&quot;,
-        &quot;sample.giant&quot; : &quot;giant&quot;
+    &#34;component&#34; : &#34;component1&#34;,
+    &#34;messages&#34;: {
+        &#34;sample.apple&#34; : &#34;apple&#34;,
+        &#34;sample.banana&#34; : &#34;banana&#34;,
+        &#34;sample.cat&#34; : &#34;cat&#34;,
+        &#34;sample.dog&#34; : &#34;dog&#34;,
+        &#34;sample.egg&#34; : &#34;egg&#34;,
+        &#34;sample.fly&#34; : &#34;fly&#34;,
+        &#34;sample.giant&#34; : &#34;giant&#34;
     },
-    &quot;locale&quot; : &quot;en&quot;
+    &#34;locale&#34; : &#34;en&#34;
 },
 {
-  &quot;component&quot; : &quot;component1&quot;,
-  &quot;messages&quot; : {
-    &quot;sample.apple&quot; : &quot;manzana&quot;,
-    &quot;sample.banana&quot; : &quot;plátano&quot;,
-    &quot;sample.cat&quot; : &quot;gato&quot;,
-    &quot;sample.dog&quot; : &quot;perro&quot;,
-    &quot;sample.egg&quot; : &quot;huevo&quot;,
-    &quot;sample.fly&quot; : &quot;volar&quot;,
-    &quot;sample.giant&quot; : &quot;gigante&quot;
+  &#34;component&#34; : &#34;component1&#34;,
+  &#34;messages&#34; : {
+    &#34;sample.apple&#34; : &#34;manzana&#34;,
+    &#34;sample.banana&#34; : &#34;plátano&#34;,
+    &#34;sample.cat&#34; : &#34;gato&#34;,
+    &#34;sample.dog&#34; : &#34;perro&#34;,
+    &#34;sample.egg&#34; : &#34;huevo&#34;,
+    &#34;sample.fly&#34; : &#34;volar&#34;,
+    &#34;sample.giant&#34; : &#34;gigante&#34;
   },
-  &quot;locale&quot; : &quot;es&quot;
+  &#34;locale&#34; : &#34;es&#34;
 }]
 }
 </code></pre><div class="edit-meta">
@@ -391,7 +391,7 @@ Last updated on 2 Jul 2020
 <br>
 Published on 2 Jul 2020
 <br><a href="https://github.com/thingsym/hugo-theme-techdoc/edit/master/docs/overview/singleton-service/singleton-service-DB-Build-Introducation.md" class="edit-page"><i class="fas fa-pen-square"></i>&nbsp;Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://vmware.github.io/singleton/docs/overview/singleton-service/" title="Singleton Service"><i class="fas fa-arrow-left" aria-hidden="true"></i>&nbsp;Prev - Singleton Service</a>
-<a class="nav nav-next" href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/" title="Singleton Service Script">Next - Singleton Service Script <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="nav nav-next" href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/" title="Singleton Service Custom Log">Next - Singleton Service Custom Log <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
 </footer>
 </main>
@@ -422,6 +422,7 @@ Published on 2 Jul 2020
   
 <ul class="sub-menu">
 <li class="active"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">Singleton Service Custom Log</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
 
 <li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>

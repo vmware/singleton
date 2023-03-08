@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Enable New Product(s) - Singleton</title>
 <meta name="description" content="One-fits-all Internationalization Solution">
-<meta name="generator" content="Hugo 0.90.0" />
+<meta name="generator" content="Hugo 0.105.0">
 <link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/configurations/enable-new-product/">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
@@ -21,7 +21,7 @@
 <meta property="og:description" content="One of Singleton&rsquo;s features is to provide translation for products, but before you can get real translation from Singleton, your translation bundles should be already existing in Singleton Service.
 This page will show you the details of adding your product(s) definition and corresponding translation bundles to Singleton Service.
 How to add new product(s) and corresponding translation bundles to Singleton Service? Singleton provides 2 ways to do this:
-Using Singleton API  Go to Singleton Service swagger-ui:  https://localhost:8090/i18n/api/doc/swagger-ui." />
+Using Singleton API Go to Singleton Service swagger-ui: https://localhost:8090/i18n/api/doc/swagger-ui." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/configurations/enable-new-product/" /><meta property="og:image" content="https://vmware.github.io/singleton/images/og-image.png"/><meta property="article:section" content="docs-previous" />
 <meta property="article:published_time" content="2020-05-14T11:25:07+08:00" />
@@ -34,12 +34,12 @@ Using Singleton API  Go to Singleton Service swagger-ui:  https://localhost:8090
 <meta name="twitter:description" content="One of Singleton&rsquo;s features is to provide translation for products, but before you can get real translation from Singleton, your translation bundles should be already existing in Singleton Service.
 This page will show you the details of adding your product(s) definition and corresponding translation bundles to Singleton Service.
 How to add new product(s) and corresponding translation bundles to Singleton Service? Singleton provides 2 ways to do this:
-Using Singleton API  Go to Singleton Service swagger-ui:  https://localhost:8090/i18n/api/doc/swagger-ui."/>
+Using Singleton API Go to Singleton Service swagger-ui: https://localhost:8090/i18n/api/doc/swagger-ui."/>
 <meta itemprop="name" content="Enable New Product(s)">
 <meta itemprop="description" content="One of Singleton&rsquo;s features is to provide translation for products, but before you can get real translation from Singleton, your translation bundles should be already existing in Singleton Service.
 This page will show you the details of adding your product(s) definition and corresponding translation bundles to Singleton Service.
 How to add new product(s) and corresponding translation bundles to Singleton Service? Singleton provides 2 ways to do this:
-Using Singleton API  Go to Singleton Service swagger-ui:  https://localhost:8090/i18n/api/doc/swagger-ui."><meta itemprop="datePublished" content="2020-05-14T11:25:07+08:00" />
+Using Singleton API Go to Singleton Service swagger-ui: https://localhost:8090/i18n/api/doc/swagger-ui."><meta itemprop="datePublished" content="2020-05-14T11:25:07+08:00" />
 <meta itemprop="dateModified" content="2020-05-14T11:25:07+08:00" />
 <meta itemprop="wordCount" content="287"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
 <meta itemprop="keywords" content="" /></head>
@@ -113,7 +113,7 @@ http://localhost:8091/i18n/api/doc/swagger-ui.html
 <li>Check the translation location in <code>singleton-0.1.0.jar\BOOT-INF\classes\application-bundle.properties</code></li>
 </ol>
 <pre tabindex="0"><code>#translation config
-#the follow item the Directory can't end of file separator
+#the follow item the Directory can&#39;t end of file separator
 translation.bundle.file.basepath =.
 translation.synch.git.flag = true
 </code></pre><p>By default, it&rsquo;s in the same location with the Singleton Service jar file, to find <code>translation.bundle.file.basepath</code>.</p>
@@ -121,11 +121,11 @@ translation.synch.git.flag = true
 <li>Create your translation bundle file(s) following the structure as below, and name your file(s) like &ldquo;messages_xx.json&rdquo; (for example: messages_en.json):</li>
 </ol>
 <pre tabindex="0"><code>{
-	&quot;component&quot;: &quot;componentName&quot;,
-	&quot;locale&quot;: &quot;en&quot;,
-	&quot;messages&quot;: {
-		&quot;key1&quot;: &quot;value1&quot;,
-		&quot;key2&quot;: &quot;value2&quot;
+	&#34;component&#34;: &#34;componentName&#34;,
+	&#34;locale&#34;: &#34;en&#34;,
+	&#34;messages&#34;: {
+		&#34;key1&#34;: &#34;value1&#34;,
+		&#34;key2&#34;: &#34;value2&#34;
 	}
 }
 </code></pre><ol start="3">
@@ -174,6 +174,7 @@ Published on 14 May 2020
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">Singleton Service Custom Log</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
 
 <li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>

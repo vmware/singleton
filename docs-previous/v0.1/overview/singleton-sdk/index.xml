@@ -23,7 +23,7 @@
       
       <guid>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/java-client-introduction/</guid>
       <description>Singleton Java Client Library To facilitate consumption of the Singleton Service API, internationalization(i18n) client libraries have been developed in several programming languages. These libraries encapsulate API calls to the Singleton service, significantly improving development efficiency and reducing the cost of development work. This section gives a high-level overview of the Singleton Java Client Library.
-Features  Translation - retrieving localized/translated text Formatting - retrieving formatted data using CLDR-compliant, localized patterns (e.</description>
+Features Translation - retrieving localized/translated text Formatting - retrieving formatted data using CLDR-compliant, localized patterns (e.g. date, time, number, currency) Pluralization - retrieving singular/plural variations of data Pseudo-translation - generating a fake(pseudo) translation from source text.</description>
     </item>
     
     <item>
@@ -33,7 +33,7 @@ Features  Translation - retrieving localized/translated text Formatting - retrie
       
       <guid>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/javascript-client-introduction/</guid>
       <description>Overview The Singleton JSClient(@singleton-i18n/js-core-sdk) is a Singleton Service-based JavaScript library used for l10n and i18n. It almost supports all JavaScript frameworks, and it can run in browsers, as well as NodeJS environments. With the Singleton JavaScript Client, it makes l10n and i18n implementation more easier in most projects. Now, let&amp;rsquo;s look at what it is and how it works.
-Features  JSClient Initilization Language and region management Load data API Provide string localization API Provide datetime,number,currency,percentage formatting API Source management via CLI scripts Runtime / Offline Mode  JSClient Initilization How to initilize Singleton JSClient in frontend framework?</description>
+Features JSClient Initilization Language and region management Load data API Provide string localization API Provide datetime,number,currency,percentage formatting API Source management via CLI scripts Runtime / Offline Mode JSClient Initilization How to initilize Singleton JSClient in frontend framework?</description>
     </item>
     
     <item>
@@ -43,7 +43,7 @@ Features  JSClient Initilization Language and region management Load data API Pr
       
       <guid>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/csharp-client-introduction/</guid>
       <description>Introduction C# Client is a class libary running on Windows .NET Framework. It enables applications that can use .NET Framework libraries to handle its globalization easily.
-Features in C# Client  Getting the translation. Getting messages by cache interfaces. Getting configuration content. Enrich implementations by extending different extension interfaces.  APIs Available  Factory Class  I18N   Interface For Configuration  IConfig IConfigItem   Interface For Release  IRelease   Interface For Translation  ITranslation ISource   Interface For Cache Messages  IReleaseMessages ILocaleMessages IComponentMessages   Interface For Extension  IExtension ICacheManager ICacheComponentManager ICacheMessages ILog IResourceParser IAccessService    Factory Class I18N  It&amp;rsquo;s the factory class that creates and initializes the configuration object and the release object.</description>
+Features in C# Client Getting the translation. Getting messages by cache interfaces. Getting configuration content. Enrich implementations by extending different extension interfaces. APIs Available Factory Class I18N Interface For Configuration IConfig IConfigItem Interface For Release IRelease Interface For Translation ITranslation ISource Interface For Cache Messages IReleaseMessages ILocaleMessages IComponentMessages Interface For Extension IExtension ICacheManager ICacheComponentManager ICacheMessages ILog IResourceParser IAccessService Factory Class I18N It&amp;rsquo;s the factory class that creates and initializes the configuration object and the release object.</description>
     </item>
     
     <item>
@@ -53,7 +53,7 @@ Features in C# Client  Getting the translation. Getting messages by cache interf
       
       <guid>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/go-client-introduction/</guid>
       <description>The Singleton Go Client is a Singleton SDK to fetch translations from Singleton service or bundles easily.
-Features in Go Client SDK   Supported interfaces:  GetLocaleList: Get supported locale list GetComponentList: Get supported component list GetStringMessage: Get a message with optional arguments. Fallback to default locale is provided. GetComponentMessages: Get messages of a component. Fallback to default locale is NOT provided.   Provide cache management as well as cache registration.</description>
+Features in Go Client SDK Supported interfaces: GetLocaleList: Get supported locale list GetComponentList: Get supported component list GetStringMessage: Get a message with optional arguments. Fallback to default locale is provided. GetComponentMessages: Get messages of a component. Fallback to default locale is NOT provided. Provide cache management as well as cache registration. Support fallback to local bundles when failing to get from server Support fallback to default locale when failing to get a string message of a nondefault locale.</description>
     </item>
     
   </channel>

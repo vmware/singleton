@@ -31,12 +31,12 @@
       <pubDate>Wed, 24 Feb 2021 16:00:33 +0800</pubDate>
       
       <guid>https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-service/configurations/enable-s3-key-encrypted/</guid>
-      <description>Encrypt AWS S3 accesskey and secretkey in Singleton Service Prerequisites   Java 8 (Java 9+ are not supported, will get compiler issue)
-  Singleton S3 I18n Service Build
-  S3 configurations (accessKey, secretkey, region, bucketName)
-  1. Encrypt AWS S3 accessKey and secretkey You can use the java language RsaCryptUtils to generate private.key and public.key.
+      <description>Encrypt AWS S3 accesskey and secretkey in Singleton Service Prerequisites Java 8 (Java 9+ are not supported, will get compiler issue)
+Singleton S3 I18n Service Build
+S3 configurations (accessKey, secretkey, region, bucketName)
+1. Encrypt AWS S3 accessKey and secretkey You can use the java language RsaCryptUtils to generate private.key and public.key.
 The demo code as following:
-import java.io.IOException; import java.io.UnsupportedEncodingException; import java.security.InvalidKeyException; import java.</description>
+import java.io.IOException; import java.io.UnsupportedEncodingException; import java.security.InvalidKeyException; import java.security.KeyFactory; import java.security.KeyPair; import java.security.KeyPairGenerator; import java.security.NoSuchAlgorithmException; import java.</description>
     </item>
     
     <item>
@@ -48,7 +48,7 @@ import java.io.IOException; import java.io.UnsupportedEncodingException; import 
       <description>One of Singleton&amp;rsquo;s features is to provide translation for products, but before you can get real translation from Singleton, your translation bundles should be already existing in Singleton Service.
 This page will show you the details of adding your product(s) definition and corresponding translation bundles to Singleton Service.
 How to add new product(s) and corresponding translation bundles to Singleton Service? Singleton provides 2 ways to do this:
-Using Singleton API  Go to Singleton Service swagger-ui:  https://localhost:8090/i18n/api/doc/swagger-ui.</description>
+Using Singleton API Go to Singleton Service swagger-ui: https://localhost:8090/i18n/api/doc/swagger-ui.</description>
     </item>
     
     <item>
@@ -72,8 +72,8 @@ How to enable product white list in Singleton Service?</description>
       <description>Singleton Service now supports to store the translation bundle files on AWS S3.
 This page will introduce the details about Singleton Service S3 build.
 How to generate Singleton Service S3 build? The steps to generate S3 build:
- Clone Singleton Service code using Git.  git clone git@github.com:vmware/singleton.git Update the complie configuration file in singleton/g11n-ws/gradle.properties  datatype=bundle to
-datatype=s3 Update the below s3 config items according to your requirements in singleton/g11n-ws/vip-manager-i18n/src/main/resources/application-s3.</description>
+Clone Singleton Service code using Git. git clone git@github.com:vmware/singleton.git Update the complie configuration file in singleton/g11n-ws/gradle.properties datatype=bundle to
+datatype=s3 Update the below s3 config items according to your requirements in singleton/g11n-ws/vip-manager-i18n/src/main/resources/application-s3.properties #S3 store config s3.</description>
     </item>
     
   </channel>

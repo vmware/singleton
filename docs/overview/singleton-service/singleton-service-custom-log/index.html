@@ -3,11 +3,11 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Command Line Utils - Singleton</title>
+<title>Singleton Service Custom Log - Singleton</title>
 <meta name="description" content="One-fits-all Internationalization Solution">
 <meta name="generator" content="Hugo 0.105.0">
 <link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
-<link rel="canonical" href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/command-line-utils/">
+<link rel="canonical" href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/chroma.min.css">
 <script defer src="https://vmware.github.io/singleton//js/fontawesome6/all.min.js"></script>
@@ -17,25 +17,25 @@
 <script src="https://vmware.github.io/singleton/js/bundle.js"></script><style>
 :root {}
 </style>
-<meta property="og:title" content="Command Line Utils" />
-<meta property="og:description" content="Load Translation Download the specified languages of translation files in your project location.
-Command line arguments description Parameter Type Value Description &ndash;directory string required The directory you want to put translations in. &ndash;host string required This is singleton service which provides clients with translations and pattern. &ndash;product string required Product name. For now, singleton service doesn’t explicitly restrict name of product, but it&rsquo;s better to keep short and sync with the name in release master." />
+<meta property="og:title" content="Singleton Service Custom Log" />
+<meta property="og:description" content="How to use custom log configuration file in Singleton service 1.The custom log configuration sample If you want to use custom log configuration file, you can change the configuration sample as following:
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt; &lt;Configuration status=&#34;OFF&#34;&gt; &lt;!-- Logging Properties --&gt; &lt;Properties&gt; &lt;property name=&#34;application_name&#34;&gt;Singleton&lt;/property&gt; &lt;property name=&#34;module_name&#34;&gt;i18nManager&lt;/property&gt; &lt;property name=&#34;log_path&#34;&gt;${sys:app.log.home:-./logs}/i18n&lt;/property&gt; &lt;/Properties&gt; &lt;Appenders&gt; &lt;!-- Console Appender configuration--&gt; &lt;Console name=&#34;Console&#34; target=&#34;SYSTEM_OUT&#34;&gt; &lt;ThresholdFilter level=&#34;trace&#34; onMatch=&#34;ACCEPT&#34; onMismatch=&#34;DENY&#34;/&gt; &lt;PatternLayout pattern=&#34;%d{yyyy-MM-dd HH:mm:ss,SSS} [${application_name}] [${module_name}] [%level] [%t] %l - %msg%n&#34;/&gt; &lt;/Console&gt; &lt;!" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/command-line-utils/" /><meta property="og:image" content="https://vmware.github.io/singleton/images/og-image.png"/><meta property="article:section" content="docs-previous" />
-<meta property="article:published_time" content="2019-09-24T20:08:31+08:00" />
-<meta property="article:modified_time" content="2019-09-24T20:08:31+08:00" /><meta property="og:site_name" content="Hugo Techdoc Theme" />
+<meta property="og:url" content="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/" /><meta property="og:image" content="https://vmware.github.io/singleton/images/og-image.png"/><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2023-03-07T10:27:25+08:00" />
+<meta property="article:modified_time" content="2023-03-07T10:27:25+08:00" /><meta property="og:site_name" content="Hugo Techdoc Theme" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://vmware.github.io/singleton/images/og-image.png"/>
 
-<meta name="twitter:title" content="Command Line Utils"/>
-<meta name="twitter:description" content="Load Translation Download the specified languages of translation files in your project location.
-Command line arguments description Parameter Type Value Description &ndash;directory string required The directory you want to put translations in. &ndash;host string required This is singleton service which provides clients with translations and pattern. &ndash;product string required Product name. For now, singleton service doesn’t explicitly restrict name of product, but it&rsquo;s better to keep short and sync with the name in release master."/>
-<meta itemprop="name" content="Command Line Utils">
-<meta itemprop="description" content="Load Translation Download the specified languages of translation files in your project location.
-Command line arguments description Parameter Type Value Description &ndash;directory string required The directory you want to put translations in. &ndash;host string required This is singleton service which provides clients with translations and pattern. &ndash;product string required Product name. For now, singleton service doesn’t explicitly restrict name of product, but it&rsquo;s better to keep short and sync with the name in release master."><meta itemprop="datePublished" content="2019-09-24T20:08:31+08:00" />
-<meta itemprop="dateModified" content="2019-09-24T20:08:31+08:00" />
-<meta itemprop="wordCount" content="371"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
+<meta name="twitter:title" content="Singleton Service Custom Log"/>
+<meta name="twitter:description" content="How to use custom log configuration file in Singleton service 1.The custom log configuration sample If you want to use custom log configuration file, you can change the configuration sample as following:
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt; &lt;Configuration status=&#34;OFF&#34;&gt; &lt;!-- Logging Properties --&gt; &lt;Properties&gt; &lt;property name=&#34;application_name&#34;&gt;Singleton&lt;/property&gt; &lt;property name=&#34;module_name&#34;&gt;i18nManager&lt;/property&gt; &lt;property name=&#34;log_path&#34;&gt;${sys:app.log.home:-./logs}/i18n&lt;/property&gt; &lt;/Properties&gt; &lt;Appenders&gt; &lt;!-- Console Appender configuration--&gt; &lt;Console name=&#34;Console&#34; target=&#34;SYSTEM_OUT&#34;&gt; &lt;ThresholdFilter level=&#34;trace&#34; onMatch=&#34;ACCEPT&#34; onMismatch=&#34;DENY&#34;/&gt; &lt;PatternLayout pattern=&#34;%d{yyyy-MM-dd HH:mm:ss,SSS} [${application_name}] [${module_name}] [%level] [%t] %l - %msg%n&#34;/&gt; &lt;/Console&gt; &lt;!"/>
+<meta itemprop="name" content="Singleton Service Custom Log">
+<meta itemprop="description" content="How to use custom log configuration file in Singleton service 1.The custom log configuration sample If you want to use custom log configuration file, you can change the configuration sample as following:
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt; &lt;Configuration status=&#34;OFF&#34;&gt; &lt;!-- Logging Properties --&gt; &lt;Properties&gt; &lt;property name=&#34;application_name&#34;&gt;Singleton&lt;/property&gt; &lt;property name=&#34;module_name&#34;&gt;i18nManager&lt;/property&gt; &lt;property name=&#34;log_path&#34;&gt;${sys:app.log.home:-./logs}/i18n&lt;/property&gt; &lt;/Properties&gt; &lt;Appenders&gt; &lt;!-- Console Appender configuration--&gt; &lt;Console name=&#34;Console&#34; target=&#34;SYSTEM_OUT&#34;&gt; &lt;ThresholdFilter level=&#34;trace&#34; onMatch=&#34;ACCEPT&#34; onMismatch=&#34;DENY&#34;/&gt; &lt;PatternLayout pattern=&#34;%d{yyyy-MM-dd HH:mm:ss,SSS} [${application_name}] [${module_name}] [%level] [%t] %l - %msg%n&#34;/&gt; &lt;/Console&gt; &lt;!"><meta itemprop="datePublished" content="2023-03-07T10:27:25+08:00" />
+<meta itemprop="dateModified" content="2023-03-07T10:27:25+08:00" />
+<meta itemprop="wordCount" content="370"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
 <meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>Singleton</h1><span class="version">Version 0.6</span><a href="https://github.com/vmware/singleton" class="github"><i class="fab fa-github"></i></a>
@@ -58,227 +58,105 @@ Command line arguments description Parameter Type Value Description &ndash;direc
 </div>
 
 <div class="content-container">
-<main><h1>Command Line Utils</h1>
-<h4 id="load-translation"><strong>Load Translation</strong></h4>
-<p>Download the specified languages of translation files in your project location.</p>
-<h5 id="command-line-arguments-description"><strong>Command line arguments description</strong></h5>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Parameter</th>
-<th style="text-align:center">Type</th>
-<th style="text-align:center">Value</th>
-<th style="text-align:left"><div style="text-align:center">Description</div></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">&ndash;directory</td>
-<td style="text-align:center">string</td>
-<td style="text-align:center">required</td>
-<td style="text-align:left">The directory you want to put translations in.</td>
-</tr>
-<tr>
-<td style="text-align:center">&ndash;host</td>
-<td style="text-align:center">string</td>
-<td style="text-align:center">required</td>
-<td style="text-align:left">This is singleton service which provides clients with translations and pattern.</td>
-</tr>
-<tr>
-<td style="text-align:center">&ndash;product</td>
-<td style="text-align:center">string</td>
-<td style="text-align:center">required</td>
-<td style="text-align:left">Product name. For now, singleton service doesn’t explicitly restrict name of product, but it&rsquo;s better to keep short and sync with the name in release master.</td>
-</tr>
-<tr>
-<td style="text-align:center">&ndash;component</td>
-<td style="text-align:center">string</td>
-<td style="text-align:center">required</td>
-<td style="text-align:left">Component name.</td>
-</tr>
-<tr>
-<td style="text-align:center">&ndash;version</td>
-<td style="text-align:center">string</td>
-<td style="text-align:center">required</td>
-<td style="text-align:left">Release version.</td>
-</tr>
-<tr>
-<td style="text-align:center">&ndash;languages</td>
-<td style="text-align:center">string</td>
-<td style="text-align:center">required</td>
-<td style="text-align:left">Specified the languages your product supports; Separated by , for example, zh-cn,en-US.</td>
-</tr>
-<tr>
-<td style="text-align:center">&ndash;verbose</td>
-<td style="text-align:center">Don&rsquo;t need</td>
-<td style="text-align:center">optional</td>
-<td style="text-align:left">If set, it will show all information during command execution for debug purpose.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="for-example"><strong>For example</strong></h5>
-<pre tabindex="0"><code>load-translation
-  --directory `pwd`/src/app/assets
-  --host https://singleton.service.com:8090 // It requires to deploy singleton service
-  --product Testing
-  --component default
-  --version 1.0
-  --languages zh-cn,en-US
-</code></pre><h5 id="config-script-in-packagejson"><strong>Config script in package.json</strong></h5>
-<pre tabindex="0"><code>{
-    ...
-    scripts: {   
-        &#34;load-translation&#34;: &#34;load-translation 
-                            --directory `pwd`/src/app/assets
-                            --host &lt;Singleton Service host&gt;
-                            --product &lt;product&gt;
-                            --component &lt;component&gt;
-                            --version &lt;product version&gt;
-    }
-    ...
-}
-</code></pre><h5 id="use-the-script"><strong>Use the script</strong></h5>
-<pre tabindex="0"><code>npm run load-translation
-</code></pre><h4 id="collect-source-bundle"><strong>Collect Source Bundle</strong></h4>
-<p>The @singleton-i18n/angular-client provides a script to collect source strings from source bundles. This script collects the collection named <strong>ENGLISH</strong> from the files named *<strong>.l10n.ts</strong>, and then send them to the singleton server.</p>
-<h5 id="command-line-arguments-description-1"><strong>Command line arguments description</strong></h5>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Parameter</th>
-<th style="text-align:center">Type</th>
-<th style="text-align:center">Value</th>
-<th style="text-align:left"><div style="text-align:center">Description</div></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">&ndash;source-dir</td>
-<td style="text-align:center">string</td>
-<td style="text-align:center">required</td>
-<td style="text-align:left">The directory your source code in.</td>
-</tr>
-<tr>
-<td style="text-align:center">&ndash;host</td>
-<td style="text-align:center">string</td>
-<td style="text-align:center">required</td>
-<td style="text-align:left">This is singleton service which provides clients with translations and pattern.</td>
-</tr>
-<tr>
-<td style="text-align:center">&ndash;product</td>
-<td style="text-align:center">string</td>
-<td style="text-align:center">required</td>
-<td style="text-align:left">Product name. For now, singleton service doesn’t explicitly restrict name of product, but it&rsquo;s better to keep short and sync with the name in release master.</td>
-</tr>
-<tr>
-<td style="text-align:center">&ndash;component</td>
-<td style="text-align:center">string</td>
-<td style="text-align:center">required</td>
-<td style="text-align:left">Component name.</td>
-</tr>
-<tr>
-<td style="text-align:center">&ndash;version</td>
-<td style="text-align:center">string</td>
-<td style="text-align:center">required</td>
-<td style="text-align:left">Release version.</td>
-</tr>
-<tr>
-<td style="text-align:center">&ndash;refresh-token</td>
-<td style="text-align:center">string</td>
-<td style="text-align:center">optional</td>
-<td style="text-align:left">Refresh token is only required for the CSP environment.</td>
-</tr>
-<tr>
-<td style="text-align:center">&ndash;verbose</td>
-<td style="text-align:center">Don&rsquo;t need value</td>
-<td style="text-align:center">optional</td>
-<td style="text-align:left">If set, will show all information during command execution for debug purpose.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="create-source-bundle"><strong>Create source bundle</strong></h5>
-<pre tabindex="0"><code>export const ENGLISH = {
-    &#34;network-error&#34;: &#39;Network instability.&#39;&#39;,
-    &#34;data-error&#34;: &#39;Data error.&#39;,
-    ...
-}
-</code></pre><h5 id="config-script-in-packagejson-1"><strong>Config script in package.json</strong></h5>
-<pre tabindex="0"><code>collect-source-bundle
-            --source-dir `pwd`/src/app
-            --host https://singleton.service.com:8090 // It requires to deploy singleton service
-            --product Testing
-            --component Angular
-            --version 1.0
-    
-</code></pre><pre tabindex="0"><code>{
-    ...
-    scripts: {   
-        &#34;collect-source-bundle&#34;: &#34;collect-source-bundle 
-                                --source-dir pwd`/src/app 
-                                --host &lt;Singleton Service host&gt;
-                                --product &lt;product&gt;
-                                --component &lt;component&gt;
-                                --version &lt;product version&gt;
-    }
-    ...
-}
-    
-</code></pre><h5 id="use-the-script-1"><strong>Use the script</strong></h5>
-<pre tabindex="0"><code>npm run collect-source-bundle
-</code></pre><style>
-    html {
-        font-family: Metropolis;
-        color: #575757;
-    }
-    section strong {
-        font-weight: 400;
-    }
-    section p>strong {
-        font-weight: 600;
-    }
-    article section.page pre {
-        background-color: #444;
-        border: 0.5px solid #DBDBDB; 
-        padding: 1.5rem 1rem 1.5rem 1rem;
-        border-radius: 5px;
-        margin: 16px auto;
-    }
-    article section.page code {
-        font-size: 90%;
-        color: #17ff0b;  
-        white-space: pre-wrap;
-    }
-    article section.page pre span.copy-to-clipboard {
-        color: #b0bec5;
-        cursor: pointer;
-    }
-    article section.page table th {
-        font-weight:500;
-        text-transform: inherit;
-    }
-    table thead tr th:first-child {
-        width:13rem;
-    }
-    table thead tr th:nth-child(2) {
-        width:10rem;
-    }
-    table thead tr th:nth-child(3) {
-        width:10rem;
-    }
-    article section.page h1:first-of-type {
-        text-transform: inherit;
-        font-family: inherit;
-    }
-</style><blockquote>
-</blockquote>
+<main><h1>Singleton Service Custom Log</h1>
+<h1 id="how-to-use-custom-log-configuration-file-in-singleton-service">How to use custom log configuration file in Singleton service</h1>
+<h2 id="1the-custom-log-configuration-sample">1.The custom log configuration sample</h2>
+<p>If you want to use custom log configuration file, you can change the configuration sample as following:</p>
+<pre tabindex="0"><code>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;
+&lt;Configuration status=&#34;OFF&#34;&gt;
+&lt;!-- Logging Properties --&gt;
+	&lt;Properties&gt;
+		&lt;property name=&#34;application_name&#34;&gt;Singleton&lt;/property&gt;
+		&lt;property name=&#34;module_name&#34;&gt;i18nManager&lt;/property&gt;
+		&lt;property name=&#34;log_path&#34;&gt;${sys:app.log.home:-./logs}/i18n&lt;/property&gt;
+	&lt;/Properties&gt;
+	&lt;Appenders&gt;
+       &lt;!-- Console Appender configuration--&gt;
+		&lt;Console name=&#34;Console&#34; target=&#34;SYSTEM_OUT&#34;&gt;
+			&lt;ThresholdFilter level=&#34;trace&#34; onMatch=&#34;ACCEPT&#34;
+							 onMismatch=&#34;DENY&#34;/&gt;
+			&lt;PatternLayout
+					pattern=&#34;%d{yyyy-MM-dd HH:mm:ss,SSS} [${application_name}] [${module_name}] [%level] [%t]  %l - %msg%n&#34;/&gt;
+		&lt;/Console&gt;
+        &lt;!-- Info level log File Appenders configuration --&gt;
+		&lt;RollingFile name=&#34;InfoFile&#34;
+					 fileName=&#34;${log_path}/${application_name}-info.log&#34;
+					 filePattern=&#34;${log_path}/${application_name}-info-%d{yyyy-MM-dd}.%i.log&#34;&gt;
+			&lt;ThresholdFilter level=&#34;info&#34; onMatch=&#34;ACCEPT&#34;
+							 onMismatch=&#34;DENY&#34;/&gt;
+			&lt;PatternLayout
+					pattern=&#34;%d{yyyy-MM-dd HH:mm:ss,SSS} [${application_name}] [${module_name}] [%level] [%t]  %l - %msg%n&#34;/&gt;
+			&lt;Policies&gt;
+				&lt;TimeBasedTriggeringPolicy/&gt;
+				&lt;SizeBasedTriggeringPolicy size=&#34;64 MB&#34;/&gt;
+			&lt;/Policies&gt;
+			&lt;DefaultRolloverStrategy fileIndex=&#34;nomax&#34;&gt;
+				&lt;Delete basePath=&#34;${log_path}&#34; maxDepth=&#34;1&#34;&gt;
+					&lt;IfFileName glob=&#34;${application_name}-info-*.log&#34;/&gt;
+                     &lt;!-- Delete All older files except the last created 10 log files --&gt;
+					&lt;IfAccumulatedFileCount exceeds=&#34;10&#34;/&gt;
+                  &lt;!-- 
+                    &lt;!-- Delete all files older than 7 days --&gt;
+                    &lt;IfLastModified age=&#34;7d&#34;/&gt;
+                    &lt;!-- As long as the total log file size exceeds 1GB, the oldest log file in chronological order will be deleted --&gt;
+					&lt;IfAccumulatedFileSize exceeds=&#34;3GB&#34;/&gt;
+                 --&gt;
+				&lt;/Delete&gt;
+			&lt;/DefaultRolloverStrategy&gt;
+		&lt;/RollingFile&gt;
+      &lt;!-- Error level log File Appenders configuration --&gt;
+		&lt;RollingFile name=&#34;ErrorFile&#34;
+					 fileName=&#34;${log_path}/${application_name}-error.log&#34;
+					 filePattern=&#34;${log_path}/${application_name}-error-%d{yyyy-MM-dd}.%i.log&#34;&gt;
+			&lt;ThresholdFilter level=&#34;error&#34; onMatch=&#34;ACCEPT&#34;
+							 onMismatch=&#34;DENY&#34;/&gt;
+			&lt;PatternLayout
+					pattern=&#34;%d{yyyy-MM-dd HH:mm:ss,SSS} [${application_name}] [${module_name}] [%level] [%t]  %l - %msg%n&#34;/&gt;
+			&lt;Policies&gt;
+				&lt;TimeBasedTriggeringPolicy/&gt;
+				&lt;SizeBasedTriggeringPolicy size=&#34;64 MB&#34;/&gt;
+			&lt;/Policies&gt;
+			&lt;DefaultRolloverStrategy fileIndex=&#34;nomax&#34;&gt;
+				&lt;Delete basePath=&#34;${log_path}&#34; maxDepth=&#34;1&#34;&gt;
+					&lt;IfFileName glob=&#34;${application_name}-error-*.log&#34;/&gt;
+                  &lt;!-- Delete All older files except the last created 5 log files --&gt;
+					&lt;IfAccumulatedFileCount exceeds=&#34;5&#34;/&gt;              
+                 &lt;!-- 
+                    &lt;!-- Delete all files older than 7 days --&gt;
+                    &lt;IfLastModified age=&#34;7d&#34;/
+                    &lt;!-- As long as the total log file size exceeds 1GB, the oldest log file in chronological order will be deleted --&gt;
+					&lt;IfAccumulatedFileSize exceeds=&#34;1GB&#34;/&gt;
+                 --&gt;
+				&lt;/Delete&gt;
+			&lt;/DefaultRolloverStrategy&gt;
+		&lt;/RollingFile&gt;
+	&lt;/Appenders&gt;
+	&lt;Loggers&gt;
+		&lt;Root level=&#34;debug&#34;&gt;
+			&lt;appender-ref ref=&#34;Console&#34;/&gt;
+			&lt;appender-ref ref=&#34;InfoFile&#34;/&gt;
+			&lt;appender-ref ref=&#34;ErrorFile&#34;/&gt;
+		&lt;/Root&gt;
+	&lt;/Loggers&gt;
+&lt;/Configuration&gt;
+</code></pre><p>According your requirement, you can change the following item as following：</p>
+<ul>
+<li><em><code>&lt;SizeBasedTriggeringPolicy size=&quot;64 MB&quot;/&gt;</code></em> You can change the single log size</li>
+<li><em><code>&lt;IfAccumulatedFileCount exceeds=&quot;5&quot;/&gt;</code></em>  You can change delete strategy how many keep the last created logs file</li>
+<li><em>&lt;<code>IfAccumulatedFileSize exceeds=&quot;1GB&quot;/&gt;</code></em> You can define which total log files exceeds size, the oldest log file in chronological order will be deleted </li>
+</ul>
+<h2 id="how-to-start-the-singleton-service-with-custom-log-configuration-file">How to start the singleton service with custom log configuration file</h2>
+<p>You can use the following command start the singleton service:</p>
+<p><code>java -jar singleton-xxx.jar --logging.config=file:./log4j2-spring.xml</code></p>
+<p>The file:./log4j2-spring.xml is your log configuration location. You can use relative address or absolute address.</p>
 <div class="edit-meta">
-Last updated on 24 Sep 2019
+Last updated on 7 Mar 2023
 
 
 <br>
-Published on 24 Sep 2019
-<br><a href="https://github.com/thingsym/hugo-theme-techdoc/edit/master/docs-previous/v0.1/overview/singleton-sdk/Angular%20Client%20Introduction/command-line-utils.md" class="edit-page"><i class="fas fa-pen-square"></i>&nbsp;Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/percent-format-pipe/" title="Percent Format Pipe"><i class="fas fa-arrow-left" aria-hidden="true"></i>&nbsp;Prev - Percent Format Pipe</a>
-<a class="nav nav-next" href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/standalone-mode/" title="Standalone Mode">Next - Standalone Mode <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+Published on 7 Mar 2023
+<br><a href="https://github.com/thingsym/hugo-theme-techdoc/edit/master/docs/overview/singleton-service/singleton-service-custom-log.md" class="edit-page"><i class="fas fa-pen-square"></i>&nbsp;Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/" title="DB builder for User guideline"><i class="fas fa-arrow-left" aria-hidden="true"></i>&nbsp;Prev - DB builder for User guideline</a>
+<a class="nav nav-next" href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/" title="Singleton Service Script">Next - Singleton Service Script <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
 </footer>
 </main>
@@ -288,7 +166,7 @@ Published on 24 Sep 2019
 <ul>
 <li class=""><a href="https://vmware.github.io/singleton/">Home</a></li>
 
-<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/">Documentation<span class="mark closed">+</span></a>
+<li class="parent has-sub-menu"><a href="https://vmware.github.io/singleton/docs/">Documentation<span class="mark opened">-</span></a>
   
 <ul class="sub-menu">
 
@@ -301,15 +179,15 @@ Published on 24 Sep 2019
   
 </li>
 
-<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/">Overview<span class="mark closed">+</span></a>
+<li class="parent has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/">Overview<span class="mark opened">-</span></a>
   
 <ul class="sub-menu">
 
-<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/">Singleton Service<span class="mark closed">+</span></a>
+<li class="parent has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/">Singleton Service<span class="mark opened">-</span></a>
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
-<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">Singleton Service Custom Log</a></li>
+<li class="active"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">Singleton Service Custom Log</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
 
 <li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>
@@ -386,11 +264,11 @@ Published on 24 Sep 2019
   
 </li>
 
-<li class="parent has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/">Previous Releases<span class="mark opened">-</span></a>
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/">Previous Releases<span class="mark closed">+</span></a>
   
 <ul class="sub-menu">
 
-<li class="parent has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/">v0.1<span class="mark opened">-</span></a>
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/">v0.1<span class="mark closed">+</span></a>
   
 <ul class="sub-menu">
 
@@ -403,7 +281,7 @@ Published on 24 Sep 2019
   
 </li>
 
-<li class="parent has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/">Overview<span class="mark opened">-</span></a>
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/">Overview<span class="mark closed">+</span></a>
   
 <ul class="sub-menu">
 
@@ -430,14 +308,14 @@ Published on 24 Sep 2019
   
 </li>
 
-<li class="parent has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/">Singleton SDK<span class="mark opened">-</span></a>
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/">Singleton SDK<span class="mark closed">+</span></a>
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/python-client-introduction/">Python Client Introduction</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/java-client-introduction/">Java Client Introduction</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/javascript-client-introduction/">JavaScript Client Introduction</a></li>
 
-<li class="parent has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/">Angular Client Introduction<span class="mark opened">-</span></a>
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/">Angular Client Introduction<span class="mark closed">+</span></a>
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/data-initialization/">Data Initialization</a></li>
@@ -455,7 +333,7 @@ Published on 24 Sep 2019
 <li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/number-format-pipe/">Number Format Pipe</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/currency-format-pipe/">Currency Format Pipe</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/percent-format-pipe/">Percent Format Pipe</a></li>
-<li class="active"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/command-line-utils/">Command Line Utils</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/command-line-utils/">Command Line Utils</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/standalone-mode/">Standalone Mode</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/shared-feature-module/">Shared Feature Module</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/error-handling/">Error Handling</a></li>

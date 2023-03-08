@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>C# Client Introduction - Singleton</title>
 <meta name="description" content="One-fits-all Internationalization Solution">
-<meta name="generator" content="Hugo 0.90.0" />
+<meta name="generator" content="Hugo 0.105.0">
 <link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/csharp-client-introduction/">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
@@ -19,7 +19,7 @@
 </style>
 <meta property="og:title" content="C# Client Introduction" />
 <meta property="og:description" content="Introduction C# Client is a class libary running on Windows .NET Framework. It enables applications that can use .NET Framework libraries to handle its globalization easily.
-Features in C# Client  Getting the translation. Getting messages by cache interfaces. Getting configuration content. Enrich implementations by extending different extension interfaces.  APIs Available  Factory Class  I18N   Interface For Configuration  IConfig IConfigItem   Interface For Release  IRelease   Interface For Translation  ITranslation ISource   Interface For Cache Messages  IReleaseMessages ILocaleMessages IComponentMessages   Interface For Extension  IExtension ICacheManager ICacheComponentManager ICacheMessages ILog IResourceParser IAccessService    Factory Class I18N  It&rsquo;s the factory class that creates and initializes the configuration object and the release object." />
+Features in C# Client Getting the translation. Getting messages by cache interfaces. Getting configuration content. Enrich implementations by extending different extension interfaces. APIs Available Factory Class I18N Interface For Configuration IConfig IConfigItem Interface For Release IRelease Interface For Translation ITranslation ISource Interface For Cache Messages IReleaseMessages ILocaleMessages IComponentMessages Interface For Extension IExtension ICacheManager ICacheComponentManager ICacheMessages ILog IResourceParser IAccessService Factory Class I18N It&rsquo;s the factory class that creates and initializes the configuration object and the release object." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://vmware.github.io/singleton/docs/overview/singleton-sdk/csharp-client-introduction/" /><meta property="og:image" content="https://vmware.github.io/singleton/images/og-image.png"/><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2020-03-15T20:07:51+08:00" />
@@ -30,10 +30,10 @@ Features in C# Client  Getting the translation. Getting messages by cache interf
 
 <meta name="twitter:title" content="C# Client Introduction"/>
 <meta name="twitter:description" content="Introduction C# Client is a class libary running on Windows .NET Framework. It enables applications that can use .NET Framework libraries to handle its globalization easily.
-Features in C# Client  Getting the translation. Getting messages by cache interfaces. Getting configuration content. Enrich implementations by extending different extension interfaces.  APIs Available  Factory Class  I18N   Interface For Configuration  IConfig IConfigItem   Interface For Release  IRelease   Interface For Translation  ITranslation ISource   Interface For Cache Messages  IReleaseMessages ILocaleMessages IComponentMessages   Interface For Extension  IExtension ICacheManager ICacheComponentManager ICacheMessages ILog IResourceParser IAccessService    Factory Class I18N  It&rsquo;s the factory class that creates and initializes the configuration object and the release object."/>
+Features in C# Client Getting the translation. Getting messages by cache interfaces. Getting configuration content. Enrich implementations by extending different extension interfaces. APIs Available Factory Class I18N Interface For Configuration IConfig IConfigItem Interface For Release IRelease Interface For Translation ITranslation ISource Interface For Cache Messages IReleaseMessages ILocaleMessages IComponentMessages Interface For Extension IExtension ICacheManager ICacheComponentManager ICacheMessages ILog IResourceParser IAccessService Factory Class I18N It&rsquo;s the factory class that creates and initializes the configuration object and the release object."/>
 <meta itemprop="name" content="C# Client Introduction">
 <meta itemprop="description" content="Introduction C# Client is a class libary running on Windows .NET Framework. It enables applications that can use .NET Framework libraries to handle its globalization easily.
-Features in C# Client  Getting the translation. Getting messages by cache interfaces. Getting configuration content. Enrich implementations by extending different extension interfaces.  APIs Available  Factory Class  I18N   Interface For Configuration  IConfig IConfigItem   Interface For Release  IRelease   Interface For Translation  ITranslation ISource   Interface For Cache Messages  IReleaseMessages ILocaleMessages IComponentMessages   Interface For Extension  IExtension ICacheManager ICacheComponentManager ICacheMessages ILog IResourceParser IAccessService    Factory Class I18N  It&rsquo;s the factory class that creates and initializes the configuration object and the release object."><meta itemprop="datePublished" content="2020-03-15T20:07:51+08:00" />
+Features in C# Client Getting the translation. Getting messages by cache interfaces. Getting configuration content. Enrich implementations by extending different extension interfaces. APIs Available Factory Class I18N Interface For Configuration IConfig IConfigItem Interface For Release IRelease Interface For Translation ITranslation ISource Interface For Cache Messages IReleaseMessages ILocaleMessages IComponentMessages Interface For Extension IExtension ICacheManager ICacheComponentManager ICacheMessages ILog IResourceParser IAccessService Factory Class I18N It&rsquo;s the factory class that creates and initializes the configuration object and the release object."><meta itemprop="datePublished" content="2020-03-15T20:07:51+08:00" />
 <meta itemprop="dateModified" content="2020-03-15T20:07:51+08:00" />
 <meta itemprop="wordCount" content="1828"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
 <meta itemprop="keywords" content="" /></head>
@@ -116,14 +116,14 @@ Features in C# Client  Getting the translation. Getting messages by cache interf
 <ul>
 <li>It&rsquo;s the factory class that creates and initializes the configuration object and the release object.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">sealed</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">I18N</span>
-{
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> IConfig LoadConfig(<span style="color:#66d9ef">string</span> resourceBaseName, Assembly assembly, <span style="color:#66d9ef">string</span> configResourceName);
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> IConfig GetConfig(<span style="color:#66d9ef">string</span> product, <span style="color:#66d9ef">string</span> version);
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> IRelease GetRelease(IConfig config);
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> IExtension GetExtension();
-}
-</code></pre></div><h3 id="i18n--loadconfig">I18N / LoadConfig</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">sealed</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">I18N</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> IConfig LoadConfig(<span style="color:#66d9ef">string</span> resourceBaseName, Assembly assembly, <span style="color:#66d9ef">string</span> configResourceName);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> IConfig GetConfig(<span style="color:#66d9ef">string</span> product, <span style="color:#66d9ef">string</span> version);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> IRelease GetRelease(IConfig config);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> IExtension GetExtension();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="i18n--loadconfig">I18N / LoadConfig</h3>
 <ul>
 <li>Load a configuration json or yaml text from the resource defined by a resx file and initialize a correspondent release object.</li>
 </ul>
@@ -260,17 +260,17 @@ Features in C# Client  Getting the translation. Getting messages by cache interf
 </table>
 <h2 id="interface-for-configuration">Interface For Configuration</h2>
 <h3 id="iconfig">IConfig</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IConfig
-{
-    IConfigItem GetItem(<span style="color:#66d9ef">string</span> key);
-    List&lt;<span style="color:#66d9ef">string</span>&gt; GetComponentList();
-    IConfigItem GetComponentAttribute(<span style="color:#66d9ef">string</span> component, <span style="color:#66d9ef">string</span> key);
-    List&lt;<span style="color:#66d9ef">string</span>&gt; GetLocaleList(<span style="color:#66d9ef">string</span> component);
-    IConfigItem GetLocaleAttribute(<span style="color:#66d9ef">string</span> component, <span style="color:#66d9ef">string</span> locale, <span style="color:#66d9ef">string</span> key);
-    <span style="color:#66d9ef">string</span> ReadResourceText(<span style="color:#66d9ef">string</span> resourceBaseName, <span style="color:#66d9ef">string</span> resourceName);
-    Hashtable ReadResourceMap(<span style="color:#66d9ef">string</span> resourceName, <span style="color:#66d9ef">string</span> format, <span style="color:#66d9ef">string</span> locale);
-}
-</code></pre></div><h3 id="iconfig--getitem">IConfig / GetItem</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">IConfig</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    IConfigItem GetItem(<span style="color:#66d9ef">string</span> key);
+</span></span><span style="display:flex;"><span>    List&lt;<span style="color:#66d9ef">string</span>&gt; GetComponentList();
+</span></span><span style="display:flex;"><span>    IConfigItem GetComponentAttribute(<span style="color:#66d9ef">string</span> component, <span style="color:#66d9ef">string</span> key);
+</span></span><span style="display:flex;"><span>    List&lt;<span style="color:#66d9ef">string</span>&gt; GetLocaleList(<span style="color:#66d9ef">string</span> component);
+</span></span><span style="display:flex;"><span>    IConfigItem GetLocaleAttribute(<span style="color:#66d9ef">string</span> component, <span style="color:#66d9ef">string</span> locale, <span style="color:#66d9ef">string</span> key);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">string</span> ReadResourceText(<span style="color:#66d9ef">string</span> resourceBaseName, <span style="color:#66d9ef">string</span> resourceName);
+</span></span><span style="display:flex;"><span>    Hashtable ReadResourceMap(<span style="color:#66d9ef">string</span> resourceName, <span style="color:#66d9ef">string</span> format, <span style="color:#66d9ef">string</span> locale);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="iconfig--getitem">IConfig / GetItem</h3>
 <ul>
 <li>Get the definition item by key.</li>
 </ul>
@@ -523,17 +523,17 @@ Features in C# Client  Getting the translation. Getting messages by cache interf
 </tbody>
 </table>
 <h3 id="iconfigitem">IConfigItem</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IConfigItem
-{
-    <span style="color:#66d9ef">string</span> GetString();
-    List&lt;<span style="color:#66d9ef">string</span>&gt; GetStringList();
-    <span style="color:#66d9ef">bool</span> GetBool();
-    <span style="color:#66d9ef">int</span> GetInt();
-    IConfigItem GetMapItem(<span style="color:#66d9ef">string</span> key);
-    List&lt;<span style="color:#66d9ef">string</span>&gt; GetArrayItemList(<span style="color:#66d9ef">string</span> key);
-    IConfigItem GetArrayItem(<span style="color:#66d9ef">string</span> key, <span style="color:#66d9ef">string</span> <span style="color:#66d9ef">value</span>);
-}
-</code></pre></div><h3 id="iconfigitem--getstring">IConfigItem / GetString</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">IConfigItem</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">string</span> GetString();
+</span></span><span style="display:flex;"><span>    List&lt;<span style="color:#66d9ef">string</span>&gt; GetStringList();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> GetBool();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> GetInt();
+</span></span><span style="display:flex;"><span>    IConfigItem GetMapItem(<span style="color:#66d9ef">string</span> key);
+</span></span><span style="display:flex;"><span>    List&lt;<span style="color:#66d9ef">string</span>&gt; GetArrayItemList(<span style="color:#66d9ef">string</span> key);
+</span></span><span style="display:flex;"><span>    IConfigItem GetArrayItem(<span style="color:#66d9ef">string</span> key, <span style="color:#66d9ef">string</span> <span style="color:#66d9ef">value</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="iconfigitem--getstring">IConfigItem / GetString</h3>
 <ul>
 <li>Get string value of the configuration item.</li>
 </ul>
@@ -714,13 +714,13 @@ Features in C# Client  Getting the translation. Getting messages by cache interf
 </table>
 <h2 id="interface-for-release">Interface For Release</h2>
 <h3 id="irelease">IRelease</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IRelease
-{
-    IConfig GetConfig();
-    IReleaseMessages GetMessages();
-    ITranslation GetTranslation();
-}
-</code></pre></div><h3 id="irelease--getconfig">IRelease / GetConfig</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">IRelease</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    IConfig GetConfig();
+</span></span><span style="display:flex;"><span>    IReleaseMessages GetMessages();
+</span></span><span style="display:flex;"><span>    ITranslation GetTranslation();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="irelease--getconfig">IRelease / GetConfig</h3>
 <ul>
 <li>Get the configuration object owned the release object.</li>
 </ul>
@@ -776,17 +776,17 @@ Features in C# Client  Getting the translation. Getting messages by cache interf
 </table>
 <h2 id="interface-for-translation">Interface For Translation</h2>
 <h3 id="itranslation">ITranslation</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> ITranslation
-{
-    ISource CreateSource(<span style="color:#66d9ef">string</span> component, <span style="color:#66d9ef">string</span> key, <span style="color:#66d9ef">string</span> source = <span style="color:#66d9ef">null</span>, <span style="color:#66d9ef">string</span> comment = <span style="color:#66d9ef">null</span>);
-    <span style="color:#66d9ef">string</span> GetString(<span style="color:#66d9ef">string</span> locale, ISource source);
-    <span style="color:#66d9ef">string</span> GetString(<span style="color:#66d9ef">string</span> component, <span style="color:#66d9ef">string</span> key, <span style="color:#66d9ef">string</span> source = <span style="color:#66d9ef">null</span>, <span style="color:#66d9ef">string</span> comment = <span style="color:#66d9ef">null</span>);
-    <span style="color:#66d9ef">string</span> Format(<span style="color:#66d9ef">string</span> locale, ISource source, <span style="color:#66d9ef">params</span> <span style="color:#66d9ef">object</span>[] objects);
-    <span style="color:#66d9ef">bool</span> SetCurrentLocale(<span style="color:#66d9ef">string</span> locale);
-    <span style="color:#66d9ef">string</span> GetCurrentLocale();
-    <span style="color:#66d9ef">string</span> GetLocaleSupported(<span style="color:#66d9ef">string</span> locale);
-}
-</code></pre></div><h3 id="itranslation--createsource">ITranslation / CreateSource</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ITranslation</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    ISource CreateSource(<span style="color:#66d9ef">string</span> component, <span style="color:#66d9ef">string</span> key, <span style="color:#66d9ef">string</span> source = <span style="color:#66d9ef">null</span>, <span style="color:#66d9ef">string</span> comment = <span style="color:#66d9ef">null</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">string</span> GetString(<span style="color:#66d9ef">string</span> locale, ISource source);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">string</span> GetString(<span style="color:#66d9ef">string</span> component, <span style="color:#66d9ef">string</span> key, <span style="color:#66d9ef">string</span> source = <span style="color:#66d9ef">null</span>, <span style="color:#66d9ef">string</span> comment = <span style="color:#66d9ef">null</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">string</span> Format(<span style="color:#66d9ef">string</span> locale, ISource source, <span style="color:#66d9ef">params</span> <span style="color:#66d9ef">object</span>[] objects);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> SetCurrentLocale(<span style="color:#66d9ef">string</span> locale);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">string</span> GetCurrentLocale();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">string</span> GetLocaleSupported(<span style="color:#66d9ef">string</span> locale);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="itranslation--createsource">ITranslation / CreateSource</h3>
 <ul>
 <li>Create a source object for other methods.</li>
 </ul>
@@ -1070,23 +1070,23 @@ Features in C# Client  Getting the translation. Getting messages by cache interf
 </tbody>
 </table>
 <h3 id="isource">ISource</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> ISource
-{
-    <span style="color:#66d9ef">string</span> GetComponent();
-    <span style="color:#66d9ef">string</span> GetKey();
-    <span style="color:#66d9ef">string</span> GetSource();
-    <span style="color:#66d9ef">string</span> GetComment();
-}
-</code></pre></div><h2 id="interface-for-cache-messages">Interface For Cache Messages</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ISource</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">string</span> GetComponent();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">string</span> GetKey();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">string</span> GetSource();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">string</span> GetComment();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="interface-for-cache-messages">Interface For Cache Messages</h2>
 <h3 id="ireleasemessages">IReleaseMessages</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IReleaseMessages
-{
-    List&lt;<span style="color:#66d9ef">string</span>&gt; GetLocaleList();
-    List&lt;<span style="color:#66d9ef">string</span>&gt; GetComponentList();
-    ILocaleMessages GetLocaleMessages(<span style="color:#66d9ef">string</span> locale, <span style="color:#66d9ef">bool</span> asSource = <span style="color:#66d9ef">false</span>);
-    Dictionary&lt;<span style="color:#66d9ef">string</span>, ILocaleMessages&gt; GetAllLocaleMessages();
-}
-</code></pre></div><h3 id="ireleasemessages--getlocalelist">IReleaseMessages / GetLocaleList</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">IReleaseMessages</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    List&lt;<span style="color:#66d9ef">string</span>&gt; GetLocaleList();
+</span></span><span style="display:flex;"><span>    List&lt;<span style="color:#66d9ef">string</span>&gt; GetComponentList();
+</span></span><span style="display:flex;"><span>    ILocaleMessages GetLocaleMessages(<span style="color:#66d9ef">string</span> locale, <span style="color:#66d9ef">bool</span> asSource = <span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>    Dictionary&lt;<span style="color:#66d9ef">string</span>, ILocaleMessages&gt; GetAllLocaleMessages();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="ireleasemessages--getlocalelist">IReleaseMessages / GetLocaleList</h3>
 <ul>
 <li>Get the locale list of release messages.</li>
 </ul>
@@ -1183,14 +1183,14 @@ Features in C# Client  Getting the translation. Getting messages by cache interf
 </tbody>
 </table>
 <h3 id="ilocalemessages">ILocaleMessages</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> ILocaleMessages
-{
-    <span style="color:#66d9ef">string</span> GetLocale();
-    List&lt;<span style="color:#66d9ef">string</span>&gt; GetComponentList();
-    IComponentMessages GetComponentMessages(<span style="color:#66d9ef">string</span> component);
-    <span style="color:#66d9ef">string</span> GetString(<span style="color:#66d9ef">string</span> component, <span style="color:#66d9ef">string</span> key);
-}
-</code></pre></div><h3 id="ilocalemessages--getlocale">ILocaleMessages / GetLocale</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ILocaleMessages</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">string</span> GetLocale();
+</span></span><span style="display:flex;"><span>    List&lt;<span style="color:#66d9ef">string</span>&gt; GetComponentList();
+</span></span><span style="display:flex;"><span>    IComponentMessages GetComponentMessages(<span style="color:#66d9ef">string</span> component);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">string</span> GetString(<span style="color:#66d9ef">string</span> component, <span style="color:#66d9ef">string</span> key);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="ilocalemessages--getlocale">ILocaleMessages / GetLocale</h3>
 <ul>
 <li>Get locale of the messages.</li>
 </ul>
@@ -1300,20 +1300,20 @@ Features in C# Client  Getting the translation. Getting messages by cache interf
 </tbody>
 </table>
 <h3 id="icomponentmessages">IComponentMessages</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IComponentMessages
-{
-    <span style="color:#66d9ef">void</span> SetString(<span style="color:#66d9ef">string</span> key, <span style="color:#66d9ef">string</span> message);
-    <span style="color:#66d9ef">string</span> GetString(<span style="color:#66d9ef">string</span> key);
-    ICollection GetKeys();
-    <span style="color:#66d9ef">int</span> GetCount();
-    <span style="color:#66d9ef">string</span> GetLocale();
-    <span style="color:#66d9ef">string</span> GetComponent();
-    <span style="color:#66d9ef">void</span> SetResourcePath(<span style="color:#66d9ef">string</span> resourcePath);
-    <span style="color:#66d9ef">string</span> GetResourcePath();
-    <span style="color:#66d9ef">void</span> SetResourceType(<span style="color:#66d9ef">string</span> resourceType);
-    <span style="color:#66d9ef">string</span> GetResourceType();
-}
-</code></pre></div><h3 id="icomponentmessages--setstring">IComponentMessages / SetString</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">IComponentMessages</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> SetString(<span style="color:#66d9ef">string</span> key, <span style="color:#66d9ef">string</span> message);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">string</span> GetString(<span style="color:#66d9ef">string</span> key);
+</span></span><span style="display:flex;"><span>    ICollection GetKeys();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> GetCount();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">string</span> GetLocale();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">string</span> GetComponent();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> SetResourcePath(<span style="color:#66d9ef">string</span> resourcePath);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">string</span> GetResourcePath();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> SetResourceType(<span style="color:#66d9ef">string</span> resourceType);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">string</span> GetResourceType();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="icomponentmessages--setstring">IComponentMessages / SetString</h3>
 <ul>
 <li>Set message of the key.</li>
 </ul>
@@ -1522,16 +1522,16 @@ Features in C# Client  Getting the translation. Getting messages by cache interf
 </table>
 <h2 id="interface-for-extension">Interface For Extension</h2>
 <h3 id="iextension">IExtension</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IExtension
-{
-    <span style="color:#66d9ef">void</span> RegisterCacheManager(ICacheManager cacheManager, <span style="color:#66d9ef">string</span> cacheManagerName);
-    <span style="color:#66d9ef">void</span> RegisterCacheComponentManager(ICacheComponentManager cacheComponentManager,
-        <span style="color:#66d9ef">string</span> cacheComponentManagerName);
-    <span style="color:#66d9ef">void</span> RegistertLogger(ILog logger, <span style="color:#66d9ef">string</span> loggerName);
-    <span style="color:#66d9ef">void</span> RegisterResourceParser(IResourceParser parser, <span style="color:#66d9ef">string</span> parserName);
-    <span style="color:#66d9ef">void</span> RegisterAccessService(IAccessService accessService, <span style="color:#66d9ef">string</span> accessName);
-}
-</code></pre></div><h3 id="iextension--registercachemanager">IExtension / RegisterCacheManager</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">IExtension</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> RegisterCacheManager(ICacheManager cacheManager, <span style="color:#66d9ef">string</span> cacheManagerName);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> RegisterCacheComponentManager(ICacheComponentManager cacheComponentManager,
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">string</span> cacheComponentManagerName);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> RegistertLogger(ILog logger, <span style="color:#66d9ef">string</span> loggerName);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> RegisterResourceParser(IResourceParser parser, <span style="color:#66d9ef">string</span> parserName);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> RegisterAccessService(IAccessService accessService, <span style="color:#66d9ef">string</span> accessName);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="iextension--registercachemanager">IExtension / RegisterCacheManager</h3>
 <ul>
 <li>Register cache manager object with its name.</li>
 </ul>
@@ -1657,11 +1657,11 @@ Features in C# Client  Getting the translation. Getting messages by cache interf
 </tbody>
 </table>
 <h3 id="icachemanager">ICacheManager</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> ICacheManager
-{
-    ICacheMessages GetReleaseCache(<span style="color:#66d9ef">string</span> product, <span style="color:#66d9ef">string</span> version);
-}
-</code></pre></div><h3 id="icachemanager--getreleasecache">ICacheManager / GetReleaseCache</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ICacheManager</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    ICacheMessages GetReleaseCache(<span style="color:#66d9ef">string</span> product, <span style="color:#66d9ef">string</span> version);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="icachemanager--getreleasecache">ICacheManager / GetReleaseCache</h3>
 <ul>
 <li>Get the release cache by product and version.</li>
 </ul>
@@ -1701,11 +1701,11 @@ Features in C# Client  Getting the translation. Getting messages by cache interf
 </tbody>
 </table>
 <h3 id="icachemessages">ICacheMessages</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> ICacheMessages
-{
-    ILocaleMessages GetLocaleMessages(<span style="color:#66d9ef">string</span> locale, <span style="color:#66d9ef">bool</span> asSource = <span style="color:#66d9ef">false</span>);
-}
-</code></pre></div><h3 id="icachemessages--getlocalemessages">ICacheMessages / GetLocaleMessages</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ICacheMessages</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    ILocaleMessages GetLocaleMessages(<span style="color:#66d9ef">string</span> locale, <span style="color:#66d9ef">bool</span> asSource = <span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="icachemessages--getlocalemessages">ICacheMessages / GetLocaleMessages</h3>
 <ul>
 <li>Get the locale messages from the release cache.</li>
 </ul>
@@ -1748,11 +1748,11 @@ Features in C# Client  Getting the translation. Getting messages by cache interf
 </tbody>
 </table>
 <h3 id="icachecomponentmanager">ICacheComponentManager</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> ICacheComponentManager
-{
-    IComponentMessages NewComponentCache(<span style="color:#66d9ef">string</span> locale, <span style="color:#66d9ef">string</span> component);
-}
-</code></pre></div><h3 id="icachecomponentmanager--newcomponentcache">ICacheComponentManager / NewComponentCache</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ICacheComponentManager</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    IComponentMessages NewComponentCache(<span style="color:#66d9ef">string</span> locale, <span style="color:#66d9ef">string</span> component);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="icachecomponentmanager--newcomponentcache">ICacheComponentManager / NewComponentCache</h3>
 <ul>
 <li>Create a new component messages object.</li>
 </ul>
@@ -1792,11 +1792,11 @@ Features in C# Client  Getting the translation. Getting messages by cache interf
 </tbody>
 </table>
 <h3 id="ilog">ILog</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> ILog
-{
-    <span style="color:#66d9ef">void</span> Log(LogType logType, <span style="color:#66d9ef">string</span> text);
-}
-</code></pre></div><h3 id="ilog--log">ILog / Log</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ILog</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> Log(LogType logType, <span style="color:#66d9ef">string</span> text);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="ilog--log">ILog / Log</h3>
 <ul>
 <li>Log a string with a type.</li>
 </ul>
@@ -1822,20 +1822,20 @@ Features in C# Client  Getting the translation. Getting messages by cache interf
 </tbody>
 </table>
 <h3 id="logtype">LogType</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">enum</span> LogType
-{
-    Debug,
-    Info,
-    Warning,
-    Error,
-    None
-}
-</code></pre></div><h3 id="iresourceparser">IResourceParser</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IResourceParser
-{
-    Hashtable Parse(<span style="color:#66d9ef">string</span> text);
-}
-</code></pre></div><h3 id="iresourceparser--parse">IResourceParser / Parse</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">enum</span> LogType
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Debug,
+</span></span><span style="display:flex;"><span>    Info,
+</span></span><span style="display:flex;"><span>    Warning,
+</span></span><span style="display:flex;"><span>    Error,
+</span></span><span style="display:flex;"><span>    None
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="iresourceparser">IResourceParser</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">IResourceParser</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Hashtable Parse(<span style="color:#66d9ef">string</span> text);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="iresourceparser--parse">IResourceParser / Parse</h3>
 <ul>
 <li>Parse a text into a key-value map.</li>
 </ul>
@@ -1870,12 +1870,12 @@ Features in C# Client  Getting the translation. Getting messages by cache interf
 </tbody>
 </table>
 <h3 id="iaccessservice">IAccessService</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IAccessService
-{
-    <span style="color:#66d9ef">string</span> HttpGet(<span style="color:#66d9ef">string</span> url, Hashtable headers);
-    <span style="color:#66d9ef">string</span> HttpPost(<span style="color:#66d9ef">string</span> url, <span style="color:#66d9ef">string</span> text, Hashtable headers);
-}
-</code></pre></div><h3 id="iaccessservice--httpget">IAccessService / HttpGet</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">IAccessService</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">string</span> HttpGet(<span style="color:#66d9ef">string</span> url, Hashtable headers);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">string</span> HttpPost(<span style="color:#66d9ef">string</span> url, <span style="color:#66d9ef">string</span> text, Hashtable headers);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="iaccessservice--httpget">IAccessService / HttpGet</h3>
 <ul>
 <li>Get data from http service.</li>
 </ul>
@@ -1996,6 +1996,7 @@ Published on 15 Mar 2020
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">Singleton Service Custom Log</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
 
 <li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>

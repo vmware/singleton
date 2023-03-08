@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>I18n Service - Singleton</title>
 <meta name="description" content="One-fits-all Internationalization Solution">
-<meta name="generator" content="Hugo 0.90.0" />
+<meta name="generator" content="Hugo 0.105.0">
 <link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/i18n-service/">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
@@ -18,7 +18,7 @@
 :root {}
 </style>
 <meta property="og:title" content="I18n Service" />
-<meta property="og:description" content="Overview I18n service provides APIs which are supposed to be used in JavaScript module to get supported languages &amp; regions, and format locale-sensitive data. import { I18nService } from &quot;@singleton-i18n/angular-client&quot;; Supported Language &amp; Region &amp; City APIs getSupportedLanguages Get the supported languages which are available in singleton service for the specific product. getSupportedLanguages(): Promise&lt;languagesList&gt;; getSupportedRegions Get the supported regions from singleton service, the supported region list should be unified in" />
+<meta property="og:description" content="Overview I18n service provides APIs which are supposed to be used in JavaScript module to get supported languages &amp; regions, and format locale-sensitive data. import { I18nService } from &#34;@singleton-i18n/angular-client&#34;; Supported Language &amp; Region &amp; City APIs getSupportedLanguages Get the supported languages which are available in singleton service for the specific product. getSupportedLanguages(): Promise&lt;languagesList&gt;; getSupportedRegions Get the supported regions from singleton service, the supported region list should be unified in" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/i18n-service/" /><meta property="og:image" content="https://vmware.github.io/singleton/images/og-image.png"/><meta property="article:section" content="docs-previous" />
 <meta property="article:published_time" content="2019-09-24T20:08:31+08:00" />
@@ -28,11 +28,11 @@
 <meta name="twitter:image" content="https://vmware.github.io/singleton/images/og-image.png"/>
 
 <meta name="twitter:title" content="I18n Service"/>
-<meta name="twitter:description" content="Overview I18n service provides APIs which are supposed to be used in JavaScript module to get supported languages &amp; regions, and format locale-sensitive data. import { I18nService } from &quot;@singleton-i18n/angular-client&quot;; Supported Language &amp; Region &amp; City APIs getSupportedLanguages Get the supported languages which are available in singleton service for the specific product. getSupportedLanguages(): Promise&lt;languagesList&gt;; getSupportedRegions Get the supported regions from singleton service, the supported region list should be unified in"/>
+<meta name="twitter:description" content="Overview I18n service provides APIs which are supposed to be used in JavaScript module to get supported languages &amp; regions, and format locale-sensitive data. import { I18nService } from &#34;@singleton-i18n/angular-client&#34;; Supported Language &amp; Region &amp; City APIs getSupportedLanguages Get the supported languages which are available in singleton service for the specific product. getSupportedLanguages(): Promise&lt;languagesList&gt;; getSupportedRegions Get the supported regions from singleton service, the supported region list should be unified in"/>
 <meta itemprop="name" content="I18n Service">
-<meta itemprop="description" content="Overview I18n service provides APIs which are supposed to be used in JavaScript module to get supported languages &amp; regions, and format locale-sensitive data. import { I18nService } from &quot;@singleton-i18n/angular-client&quot;; Supported Language &amp; Region &amp; City APIs getSupportedLanguages Get the supported languages which are available in singleton service for the specific product. getSupportedLanguages(): Promise&lt;languagesList&gt;; getSupportedRegions Get the supported regions from singleton service, the supported region list should be unified in"><meta itemprop="datePublished" content="2019-09-24T20:08:31+08:00" />
+<meta itemprop="description" content="Overview I18n service provides APIs which are supposed to be used in JavaScript module to get supported languages &amp; regions, and format locale-sensitive data. import { I18nService } from &#34;@singleton-i18n/angular-client&#34;; Supported Language &amp; Region &amp; City APIs getSupportedLanguages Get the supported languages which are available in singleton service for the specific product. getSupportedLanguages(): Promise&lt;languagesList&gt;; getSupportedRegions Get the supported regions from singleton service, the supported region list should be unified in"><meta itemprop="datePublished" content="2019-09-24T20:08:31+08:00" />
 <meta itemprop="dateModified" content="2019-09-24T20:08:31+08:00" />
-<meta itemprop="wordCount" content="1364"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
+<meta itemprop="wordCount" content="1249"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
 <meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>Singleton</h1><span class="version">Version 0.6</span><a href="https://github.com/vmware/singleton" class="github"><i class="fab fa-github"></i></a>
@@ -58,24 +58,20 @@
 <main><h1>I18n Service</h1>
 <h4 id="overview"><strong>Overview</strong></h4>
 <p>I18n service provides APIs which are supposed to be used in JavaScript module to get supported languages &amp; regions, and format locale-sensitive data.</p>
-<pre tabindex="0"><code>import { I18nService } from &quot;@singleton-i18n/angular-client&quot;;
-
+<pre tabindex="0"><code>import { I18nService } from &#34;@singleton-i18n/angular-client&#34;;
 </code></pre><h4 id="supported-language--region--city-apis"><strong>Supported Language &amp; Region &amp; City APIs</strong></h4>
 <h5 id="getsupportedlanguages"><strong>getSupportedLanguages</strong></h5>
 <p>Get the supported languages which are available in singleton service for the specific product.</p>
 <pre tabindex="0"><code>getSupportedLanguages(): Promise&lt;languagesList&gt;;
-
 </code></pre><h5 id="getsupportedregions"><strong>getSupportedRegions</strong></h5>
 <p>Get the supported regions from singleton service, the supported region list should be unified in all products.</p>
 <pre tabindex="0"><code>getSupportedRegions(languageTag: string): Promise&lt;regionsList&gt;;
-
 </code></pre><h5 id="getcities"><strong>getCities</strong></h5>
-<p>Get the cities list of the specified region and display the cities' names in a specific language.</p>
+<p>Get the cities list of the specified region and display the cities&rsquo; names in a specific language.</p>
 <blockquote>
 <p>Note that the current city list is only available in English, and there is no translation in other languages.</p>
 </blockquote>
 <pre tabindex="0"><code>getCities(regionCode: string, languageTag: string): Promise&lt;citiesList&gt;;
-
 </code></pre><table>
 <thead>
 <tr>
@@ -90,7 +86,7 @@
 <td style="text-align:center">languageTag</td>
 <td style="text-align:center">String</td>
 <td>Required</td>
-<td style="text-align:left">Get supported region list with the localized display name by the &lsquo;languageTag&rsquo;.</td>
+<td style="text-align:left">Get supported region list with the localized display name by the &rsquo;languageTag'.</td>
 </tr>
 <tr>
 <td style="text-align:center">regionCode</td>
@@ -103,25 +99,23 @@
 <h5 id="example-code"><strong>Example Code</strong></h5>
 <pre tabindex="0"><code>this.i18nService.getSupportedLanguages().then( languages =&gt; {
     this.languages = languages;
-    // eg: [ { displayName: &quot;English&quot;, languageTag: &quot;en&quot; },
-    //       { displayName: &quot;français&quot;, languageTag: &quot;fr&quot; },
-    //       { displayName: &quot;简体中文&quot;, languageTag: &quot;zh-Hans&quot; }
+    // eg: [ { displayName: &#34;English&#34;, languageTag: &#34;en&#34; },
+    //       { displayName: &#34;français&#34;, languageTag: &#34;fr&#34; },
+    //       { displayName: &#34;简体中文&#34;, languageTag: &#34;zh-Hans&#34; }
     //      ]
 });
-this.i18nService.getSupportedRegions('fr').then( regions =&gt; {
+this.i18nService.getSupportedRegions(&#39;fr&#39;).then( regions =&gt; {
         this.regions = regions;
         // eg: assuming that languageTag is fr
-        // [ [ 'FR': 'France'],
-        //   [ 'GE': 'Géorgie' ],
-        //   [ 'CN': 'Chine' ] ]
+        // [ [ &#39;FR&#39;: &#39;France&#39;],
+        //   [ &#39;GE&#39;: &#39;Géorgie&#39; ],
+        //   [ &#39;CN&#39;: &#39;Chine&#39; ] ]
 });
-
 </code></pre><h4 id="data-formatting-apis"><strong>Data Formatting APIs</strong></h4>
 <p>Data formatting APIs are locale-sensitive; their return depends on the locale. So when using these formatting APIs in the JavaScript module, locale pattern data is required, which can be loaded synchronously or asynchronously depending on the way of i18n data initialization. If the i18n data was loaded in synchronous, these APIs could be used to format data directly. Otherwise, the stream API is the right way to get locale through the subscription and consume these APIs in an observer. For more details, please refer to the session &lsquo;Data initialization&rsquo; and sample code below.</p>
 <h5 id="format-date"><strong>Format date</strong></h5>
 <p>Formats a date according to the given options and locale.</p>
 <pre tabindex="0"><code>formatDate(value: any, pattern: string, locale?: string, timezone?: string): string;
-
 </code></pre><table>
 <thead>
 <tr>
@@ -161,7 +155,6 @@ this.i18nService.getSupportedRegions('fr').then( regions =&gt; {
 <h5 id="format-number"><strong>Format number</strong></h5>
 <p>Formats a number according to the given options and locale.</p>
 <pre tabindex="0"><code>formatNumber(value: any, locale?: string, formatOptions?: NumberFormatOptions): string;
-
 </code></pre><table>
 <thead>
 <tr>
@@ -195,7 +188,6 @@ this.i18nService.getSupportedRegions('fr').then( regions =&gt; {
 <h5 id="format-percent"><strong>Format percent</strong></h5>
 <p>Formats a number into percentage string according to the given options and locale.</p>
 <pre tabindex="0"><code>formatPercent(value: any, locale?: string, formatOptions?: NumberFormatOptions): string;
-
 </code></pre><table>
 <thead>
 <tr>
@@ -229,7 +221,6 @@ this.i18nService.getSupportedRegions('fr').then( regions =&gt; {
 <h5 id="format-currency"><strong>Format currency</strong></h5>
 <p>Formats a number into currency string according to the given options and locale.</p>
 <pre tabindex="0"><code>formatCurrency(value: any, currencyCode?: string, locale?: string, formatOptions?: NumberFormatOptions): string;
-
 </code></pre><table>
 <thead>
 <tr>
@@ -312,11 +303,9 @@ this.i18nService.getSupportedRegions('fr').then( regions =&gt; {
 <h5 id="format-relative-time"><strong>Format relative time</strong></h5>
 <p>Formats simple relative dates. <a href="../relative-time-format">Details</a></p>
 <pre tabindex="0"><code>formatRelativeTime( from: Date, to: Date, locale?: string, options?: Object ): string
-
 </code></pre><h5 id="get-localized-pattern"><strong>Get localized Pattern</strong></h5>
 <p>Get a localized version of the predefined patterns. If the input pattern is not the predefined pattern, return the input pattern directly. If the locale data is missing for the current locale, fallback to source locale and return source pattern instead.</p>
 <pre tabindex="0"><code>getLocalizedPattern(pattern: string, locale?: string): string;
-
 </code></pre><table>
 <thead>
 <tr>
@@ -344,14 +333,13 @@ this.i18nService.getSupportedRegions('fr').then( regions =&gt; {
 <h5 id="stream-api"><strong>Stream API</strong></h5>
 <p>Since the live update is relying on the observable object to notice the available current locale, formatting data based on the i18n service should be performed in the subscription of the &lsquo;stream&rsquo; to ensure the pattern data is ready for this locale.</p>
 <pre tabindex="0"><code>public stream(): Observable&lt;string | any&gt;;
-
 </code></pre><h5 id="example-code-1"><strong>Example Code</strong></h5>
-<pre tabindex="0"><code>import { I18nService } from '@singleton-i18n/angular-client';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+<pre tabindex="0"><code>import { I18nService } from &#39;@singleton-i18n/angular-client&#39;;
+import { Component, OnInit, OnDestroy } from &#39;@angular/core&#39;;
 
 @Component({
-    selector: 'test',
-    templateUrl: './test.component.html'
+    selector: &#39;test&#39;,
+    templateUrl: &#39;./test.component.html&#39;
 })
 export class TestComponent implements OnInit, OnDestroy {
     subscription: any;
@@ -361,19 +349,19 @@ export class TestComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.subscription = this.i18nService.stream.subscribe((locale: string) =&gt; {
-            this.time = this.i18nService.formatDate(new Date(), 'short', locale );
-            this.currency = this.i18nService.formatCurrency(10, 'CNY', locale);
+            this.time = this.i18nService.formatDate(new Date(), &#39;short&#39;, locale );
+            this.currency = this.i18nService.formatCurrency(10, &#39;CNY&#39;, locale);
 
-            // By default, the locale is the current locale, eg: 'zh-Hans'
+            // By default, the locale is the current locale, eg: &#39;zh-Hans&#39;
             // output: y/M/d ah:mm
-            const localizedPattern = this.i18nService.getLocalizedPattern('short');
+            const localizedPattern = this.i18nService.getLocalizedPattern(&#39;short&#39;);
             
-            // Explicitly set locale parameter, eg: 'en-US'
+            // Explicitly set locale parameter, eg: &#39;en-US&#39;
             // output: M/d/yy, h:mm a
-            const EnPattern = this.i18nService.getLocalizedPattern('short', 'en-US');
+            const EnPattern = this.i18nService.getLocalizedPattern(&#39;short&#39;, &#39;en-US&#39;);
 
             // format options usage
-            let formatOptions = { notation: 'compact', compactDisplay: 'long' };
+            let formatOptions = { notation: &#39;compact&#39;, compactDisplay: &#39;long&#39; };
             const compactNumber = this.i18nService.formatNumber( 1000000, locale, formatOptions);
             // output: 1 million
 
@@ -387,7 +375,6 @@ export class TestComponent implements OnInit, OnDestroy {
         this.subscription = undefined;
     }
 }
-
 </code></pre><style>
     html {
         font-family: Metropolis;
@@ -481,6 +468,7 @@ Published on 24 Sep 2019
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">Singleton Service Custom Log</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
 
 <li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations<span class="mark closed">+</span></a>
