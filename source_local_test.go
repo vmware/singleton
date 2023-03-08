@@ -24,7 +24,7 @@ func (suite *LocalSourceTestSuite) SetupSuite() {
 }
 
 func (suite *LocalSourceTestSuite) TestGetComponentMessages() {
-	messages, err := GetTranslation().GetComponentMessages(name, version, inst.cfg.GetSourceLocale(), component)
+	messages, err := GetTranslation().GetComponentMessages(name, version, inst.cfg.SourceLocale, component)
 	suite.Nil(err)
 	suite.Equal(4, messages.Size())
 }

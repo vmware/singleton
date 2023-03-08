@@ -21,15 +21,6 @@ type Config struct {
 	SourceLocale      string `json:"source_locale"`
 }
 
-// GetSourceLocale returns the source locale, if SourceLocale is unset, return English
-func (c *Config) GetSourceLocale() string {
-	if c.SourceLocale == "" {
-		return localeEn
-	}
-
-	return c.SourceLocale
-}
-
 // LoadConfig Create a new Singleton configuration instance
 func LoadConfig(path string) (*Config, error) {
 	contents, err := ioutil.ReadFile(path)

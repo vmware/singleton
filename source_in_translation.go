@@ -12,7 +12,7 @@ type sourceInTranslation struct {
 func (s *sourceInTranslation) Get(item *dataItem) (err error) {
 	switch item.id.iType {
 	case itemComponent:
-		defer func() { item.id.Locale = inst.cfg.GetSourceLocale() }()
+		defer func() { item.id.Locale = inst.cfg.SourceLocale }()
 		item.id.Locale = localeLatest
 		err = s.messageOrigin.Get(item)
 	case itemLocales:

@@ -70,7 +70,7 @@ func (suite *SourceComparisonTestSuite) TestSourceComparison() {
 		{"a new key is added", locale, ComponentToRegister, RegisteredKey, RegisteredValue, 8},
 		{"a key is updated", locale, ComponentToRegister, UpdatedKey, UpdatedValue, 8},
 		{"a key is upchanged", locale, ComponentToRegister, UnchangedKey, "测试一个参数{0}", 8},
-		{"source locale without comparison", inst.cfg.GetSourceLocale(), ComponentToRegister, UnchangedKey, UnchangedValue, len(RegisteredMap)},
+		{"source locale without comparison", inst.cfg.SourceLocale, ComponentToRegister, UnchangedKey, UnchangedValue, len(RegisteredMap)},
 	}
 
 	for _, testData := range tests {

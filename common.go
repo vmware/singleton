@@ -7,9 +7,6 @@ package sgtn
 
 import (
 	"fmt"
-	"strings"
-
-	"github.com/pkg/errors"
 )
 
 // ComponentMsgs The interface of a component's messages
@@ -45,10 +42,6 @@ type releaseID struct {
 type dataItemID struct {
 	iType                            itemType
 	Name, Version, Locale, Component string
-}
-
-type stackTracer interface {
-	StackTrace() errors.StackTrace
 }
 
 //!+ error definition
@@ -99,16 +92,6 @@ type messageOriginList []messageOrigin
 
 //!- messageOrigin
 
-func indexIgnoreCase(slices []string, item string) int {
-	for i, s := range slices {
-		if strings.EqualFold(s, item) {
-			return i
-		}
-	}
-
-	return -1
-}
-
 func uniqueStrings(slices ...[]string) []string {
 	uniqueMap := map[string]bool{}
 
@@ -131,7 +114,7 @@ func uniqueStrings(slices ...[]string) []string {
 
 func convertLocale(locale string) string {
 	if locale == localeLatest {
-		return inst.cfg.GetSourceLocale()
+		return inst.cfg.SourceLocale
 	}
 
 	return locale

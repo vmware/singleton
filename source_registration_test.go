@@ -28,7 +28,7 @@ type RegisterSourceTestSuite struct {
 func (suite *RegisterSourceTestSuite) SetupSuite() {
 	messages := NewMapComponentMsgs(RegisteredMap, localeEn, ComponentToRegister)
 	resetInst(&OnlyRegisteredSourceConfig, func() { RegisterSource(name, version, []ComponentMsgs{messages}) })
-	// suite.origin = GetTranslation().(*transMgr).Translation.(*transInst).msgOrigin.(*cacheService).messageOrigin.(*singleLoader).messageOrigin.(*saveToCache).messageOrigin.(*sourceComparison).source.(messageOriginList)[0]
+	// suite.origin = GetTranslation().(*transMgr).transInst.msgOrigin.(*cacheService).messageOrigin.(*singleLoader).messageOrigin.(*saveToCache).messageOrigin.(*sourceComparison).source.(messageOriginList)[0]
 }
 
 func (suite *RegisterSourceTestSuite) TestGetComponentMessages() {
@@ -106,7 +106,7 @@ func (suite *RegisterSourceTestSuite) TestGetLocaleList() {
 func (suite *RegisterSourceTestSuite) TestGetNonexistentRelease() {
 	nonExistentVersion := version + "-nonexistent"
 	expectedError := fmt.Sprintf(errorReleaseNonexistent, name, nonExistentVersion)
-	messages, err := GetTranslation().GetComponentMessages(name, nonExistentVersion, inst.cfg.GetSourceLocale(), component)
+	messages, err := GetTranslation().GetComponentMessages(name, nonExistentVersion, inst.cfg.SourceLocale, component)
 	suite.Equal(expectedError, err.Error())
 	suite.Nil(messages)
 
