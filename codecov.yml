@@ -1,22 +1,18 @@
 coverage:
-  precision: 2        
-  round: down         
-  range: 75...100     
+  precision: 2
+  round: down
+  range: "75...100"
   status:
-    project:                   
-      default:                 
-        enabled: yes           
-        target: 75%                 
-        if_no_uploads: error   
-        if_not_found: error  
-        if_ci_failed: error   
+    project:
+      default:
+        branches: g11n-angular-client
+        target: 75%
+        if_ci_failed: error
+        if_not_found: failure
     patch:
       default:
-        enabled: true            
-        target: 0%                      
-        if_no_uploads: error     
-        if_not_found: error
+        branches: g11n-angular-client
+        target: 0%
         if_ci_failed: error
-
-
+        if_not_found: failure
 
