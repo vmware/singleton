@@ -119,8 +119,8 @@ func StartServer() {
 	}
 }
 
-// WaitForSignals ...
-func WaitForSignals() {
+// WaitAndShutdownServer ...
+func WaitAndShutdownServer() {
 	// Wait for interrupt signal to gracefully shutdown the server with
 	// a timeout of 5 seconds.
 	quit := make(chan os.Signal, 1)
@@ -130,6 +130,8 @@ func WaitForSignals() {
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 	s := <-quit
 	logger.Log.Sugar().Infof("shutdown signal '%v' is received", s)
+
+	ShutdownServer()
 }
 
 // ShutdownServer ...
