@@ -2,11 +2,10 @@ product: PythonClient
 l10n_version: 9.0.2
 online_service_url: https://localhost:8090
 offline_resources_base_url: file:///../resources/l10n/PythonClient/9.0.2/
-default_locale: de-DE
+default_locale: ja
 source_locale: en-US
 # log path for the python client
 log_path: logs
-cache_path: .cache
 
 
 locales:
@@ -21,8 +20,6 @@ locales:
     -   language_tag: de
     -   language_tag: fr
     -   language_tag: ja
-        source_resources_path:
-            - $COMPONENT/messages_ja.properties
     -   language_tag: ar
     -   language_tag: ko
     -   language_tag: zh-Hans
@@ -32,7 +29,7 @@ locales:
 component_template:
     locales_refer: locales
     offline_resources_path:
-        - $COMPONENT/messages$LC.json   # $LC是不可修改的
+        - $COMPONENT/messages_$LOCALE.json   # $LC是不可修改的
 
 # 定义OfflineMode下$COMPONENT的查询范围，如果没有改配置,默认全部查询,如果配置,按配置生效.
 components:
