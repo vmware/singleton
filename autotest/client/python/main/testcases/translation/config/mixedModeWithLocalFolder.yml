@@ -2,7 +2,7 @@ product: PythonClient
 l10n_version: 9.0.2
 online_service_url: https://localhost:8090
 offline_resources_base_url: file:///../resources/l10n/PythonClient/9.0.2/
-default_locale: ja
+default_locale: ja  # 如果source_locale没有请求到对应的翻译，messages或者key-value不存在，就会触发default_locale.默认en
 source_locale: en-US
 # log path for the python client
 log_path: logs
