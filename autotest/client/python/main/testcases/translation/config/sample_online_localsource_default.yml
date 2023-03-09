@@ -31,6 +31,7 @@ component_template:
 
 
 # offline 模式下。支持的component，不填，则不查询对应的文件夹。
+# 配置了components，会想服务器发出请求，如果服务器没有component，会导致服务器请求报错
 components:
     -   name: about
     -   name: insert

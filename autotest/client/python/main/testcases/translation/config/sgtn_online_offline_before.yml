@@ -1,7 +1,7 @@
 product: PythonClient
 l10n_version: 1.1.1.1.1
 
-online_service_url: http://localhost:8091
+online_service_url: https://localhost:8090
 
 offline_resources_base_url: file:///../resources/l10n/PythonClient/1.1.1.1.1
 
@@ -9,10 +9,10 @@ offline_resources_base_url: file:///../resources/l10n/PythonClient/1.1.1.1.1
 log_path: logs
 
 #pseudo: true
-cache_type: by_key
+#cache_type: by_key
 
 # local storage path for caching
-cache_path: .cache
+#cache_path: .cache
 
 # how many seconds should be waited to try again for accessing the remote service,
 # when there is no data cached
@@ -22,27 +22,20 @@ try_wait: 10
 cache_expired_time: 10  # python object cache, not localcache
 
 locales:
-    -   language_tag: en-US
+    -   language_tag: en
         source_resources_path:
             - $COMPONENT/messages.properties
-        offline_resources_path:
-            - $COMPONENT/messages_en.properties
     -   language_tag: de
-        offline_resources_path:
-            - $COMPONENT/messages$LC.json
     -   language_tag: ja
-        offline_resources_path:
-            - $COMPONENT/messages$LC.json
-    -   language_tag: fr-CA
-        offline_resources_path:
-            - $COMPONENT/messages$LC.json
+    -   language_tag: fr
     -   language_tag: zh-Hans
-        offline_resources_path:
-            - $COMPONENT/messages$LC.json
+
 
 
 component_template:
     locales_refer: locales
+    offline_resources_path:
+        - $COMPONENT/messages_$LOCALE.json
 
 components:
     -   name: about
