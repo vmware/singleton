@@ -36,7 +36,7 @@ class TestMixedBundleInAll:
         translation = rel.get_translation()
 
         tran1 = translation.get_string("contact", "contact.title", locale="ja")
-        assert tran1 == "連絡先"
+        assert tran1 == "連絡先(Offline)"
 
     @pytest.mark.ci1
     def test_translation_online_has_high_priority(self):

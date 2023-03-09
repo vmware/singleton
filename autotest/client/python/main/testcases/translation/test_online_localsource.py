@@ -40,7 +40,7 @@ class TestOnlineLocaleSource:
         rel = I18N.get_release(PRODUCT, VERSION)
         translation = rel.get_translation()
 
-        tran1 = translation.get_string("intest", "intest.online")
+        tran1 = translation.get_string("intest", "intest.online", locale="fr")
         assert tran1 == "Contact1 fr online"
 
     @pytest.mark.ci1

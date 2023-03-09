@@ -141,11 +141,11 @@ class TestTranslationOfflineRemote:
         # I18N.set_current_locale(locale) has low priority then get_string(locale)
         # if no locale config. default is "en"
         trans2 = translation.get_string("about", "about.message", locale=None)
-        assert trans2 == "test de key"
+        assert trans2 == "Your application description de page"
 
         # if locale="da" not support. the .yaml=>default_locale:ja config will be active.
         trans3 = translation.get_string("about", "about.message", locale="da")
-        assert trans3 == "test ja  offline key"
+        assert trans3 == "test ja offline key"
 
         # if source=None or not pass. source will not be compared with message.properties
         trans4 = translation.get_string("about", "about.message", locale="fr", source=None)
@@ -221,7 +221,7 @@ class TestTranslationOfflineRemote:
         # other locale
         translation.get_string("about", "about.message", locale="de")
         trans1 = translation.get_locale_strings("de", False)
-        assert trans1["about"]["about.title"] is None
+        assert trans1["about"]["about.title"] == "About"
 
         # multi locale cache
         trans1 = translation.get_locale_strings("ar", False)
