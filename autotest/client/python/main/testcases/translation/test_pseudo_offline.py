@@ -1,6 +1,5 @@
 import pytest
 from pathlib import Path
-from multiprocessing import Process
 from sgtnclient import I18N
 
 PRODUCT = 'PythonClient'
@@ -16,8 +15,7 @@ __RESOURCES__ = __TRANSLATION__.joinpath('resources')
 
 class TestPseudoOffline:
 
-    @staticmethod
-    def offline_add_configuration():
+    def test_offline_add_configuration(self):
         """
         offline mode: add config
         """
@@ -36,15 +34,7 @@ class TestPseudoOffline:
         assert config_info["version"] == "2.0.0"
         assert config_info["pseudo"] is True
 
-    @pytest.mark.ci1
-    def test_offline_add_configuration(self):
-        task = Process(target=self.offline_add_configuration)
-        task.daemon = True
-        task.start()
-        task.join()
-
-    @staticmethod
-    def offline_pseudo():
+    def test_offline_pseudo(self):
         """
         offline mode: pseudo True.
         """
@@ -79,13 +69,6 @@ class TestPseudoOffline:
         # key no exist
         tran3 = translation.get_string("about", "about.message123")
         assert tran3 == "about.message123"
-
-    @pytest.mark.ci1
-    def test_offline_pseudo(self):
-        task = Process(target=self.offline_pseudo)
-        task.daemon = True
-        task.start()
-        task.join()
 
 
 if __name__ == '__main__':

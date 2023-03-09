@@ -31,7 +31,8 @@ locales:
 component_template:
     locales_refer: locales
     offline_resources_path:
-        - $COMPONENT/messages$LC.json
+#        - $COMPONENT/messages$LC.json
+        - $COMPONENT/messages_$LOCALE.json
 
 components:
     -   name: about

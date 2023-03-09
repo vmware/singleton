@@ -14,12 +14,6 @@ __CONFIG__ = __CACHE__.joinpath('config')
 __RESOURCES__ = __CACHE__.joinpath('resources')
 
 
-@pytest.fixture(scope="function", autouse=True)
-def clean():
-    yield
-    I18N._release_manager = None
-
-
 class TestCacheOfflineRemote:
     CONFIG_FILE = 'sample_offline_disk.yml'
 

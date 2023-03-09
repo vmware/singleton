@@ -60,25 +60,25 @@ class TestL2IcuFormat:
         task.start()
         task.join()
 
-    @pytest.mark.skip
-    @pytest.mark.parametrize('tc', _TESTCASES_)
-    def test_plurals_online(self, tc: dict):
-        file: Path = __RESOURCES__.joinpath(tc['CONFIG'])
-        I18N.add_config_file(file)
-        I18N.set_current_locale("en")
-        rel = I18N.get_release(tc['PRODUCT'], tc['VERSION'])
-        txt = rel.get_string(tc['COMPONENT'], tc['KEY'], locale=tc['LOCALE'], format_items=tc['FORMAT_ITEMS'])
-        assert txt == tc['ASSERTION'], txt
-
-    @pytest.mark.skip
-    @pytest.mark.parametrize('tc', _TESTCASES_)
-    def test_plurals_format(self, tc: dict):
-        file: Path = __RESOURCES__.joinpath(tc['CONFIG'])
-        I18N.add_config_file(file)
-        rel = I18N.get_release(tc['PRODUCT'], tc['VERSION'])
-        if tc['FORMAT_ITEMS']:
-            txt = rel.format(tc['LOCALE'], tc['VALUE'], array=tc['FORMAT_ITEMS'])
-            assert txt == tc['ASSERTION'], txt
+    # @pytest.mark.skip
+    # @pytest.mark.parametrize('tc', _TESTCASES_)
+    # def test_plurals_online(self, tc: dict):
+    #     file: Path = __RESOURCES__.joinpath(tc['CONFIG'])
+    #     I18N.add_config_file(file)
+    #     I18N.set_current_locale("en")
+    #     rel = I18N.get_release(tc['PRODUCT'], tc['VERSION'])
+    #     txt = rel.get_string(tc['COMPONENT'], tc['KEY'], locale=tc['LOCALE'], format_items=tc['FORMAT_ITEMS'])
+    #     assert txt == tc['ASSERTION'], txt
+    #
+    # @pytest.mark.skip
+    # @pytest.mark.parametrize('tc', _TESTCASES_)
+    # def test_plurals_format(self, tc: dict):
+    #     file: Path = __RESOURCES__.joinpath(tc['CONFIG'])
+    #     I18N.add_config_file(file)
+    #     rel = I18N.get_release(tc['PRODUCT'], tc['VERSION'])
+    #     if tc['FORMAT_ITEMS']:
+    #         txt = rel.format(tc['LOCALE'], tc['VALUE'], array=tc['FORMAT_ITEMS'])
+    #         assert txt == tc['ASSERTION'], txt
 
 
 if __name__ == '__main__':

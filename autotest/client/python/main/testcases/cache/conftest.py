@@ -1,5 +1,3 @@
-# @Time 2022/11/11 15:48
-# Author: beijingm
 from pathlib import Path
 import pytest
 import shutil

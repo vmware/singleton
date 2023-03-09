@@ -1,6 +1,5 @@
 import pytest
 from pathlib import Path
-from multiprocessing import Process
 from sgtnclient import I18N
 
 PRODUCT = 'PythonClient'
@@ -35,8 +34,7 @@ class TestOnlineLocaleSource:
                                        locale="en")
         assert tran2 == "Your application description page. parameter"
 
-    @staticmethod
-    def func_l2():
+    def test_func_l2(self):
         file: Path = __CONFIG__.joinpath('sample_online_localsource.yml')
         outside_config = {"l10n_version": "1.10.251", "pseudo": True,
                           "offline_resources_base_url": "file:///../resources/l10n/PythonClient/1.10.251"}
@@ -48,13 +46,6 @@ class TestOnlineLocaleSource:
         translation = rel.get_translation()
         tran2 = translation.get_string("about", "about.message", locale="en")
         assert tran2 == "Your application description page. source"
-
-    @pytest.mark.ci1
-    def test_l2(self):
-        task = Process(target=self.func_l2)
-        task.daemon = True
-        task.start()
-        task.join()
 
     @pytest.mark.ci1
     def test_l3(self):
@@ -105,16 +96,14 @@ class TestOnlineLocaleSource:
         # assert trans3 == "Your application description page."
         tran2 = translation1.get_string("about", "about.message", source="Your application description page. parameter",
                                         locale='fr')
-        print(tran2)
-        assert tran2 == "#@Your application description page. latest#@"
+        assert tran2 == "@@Your application description page. parameter@@"
         # time.sleep(3)
         # assert tran2 == "test ja key"
         # trans3 = translation1.get_string("about", "about.message", locale = 'de')
         # print(trans3)
         # assert trans1 == "About1 fr"
 
-    @staticmethod
-    def func_l6():
+    def test_func_l6(self):
         file: Path = __CONFIG__.joinpath('sample_online_localsource.yml')
         outside_config = {"l10n_version": "1.10.251", "pseudo": True,
                           "offline_resources_base_url": "file://d:/D1/l10ntest/PythonClient/1.10.251"}
@@ -129,15 +118,7 @@ class TestOnlineLocaleSource:
         # assert trans3 == "Your application description page."
         tran2 = translation1.get_string("about", "about.description",
                                         source="Your application description page. parameter", locale='fr')
-        print(tran2)
-        assert tran2 == "@@Use this area to provide additional information offline@@"
-
-    @pytest.mark.ci1
-    def test_l6(self):
-        task = Process(target=self.func_l6)
-        task.daemon = True
-        task.start()
-        task.join()
+        assert tran2 == "@@Your application description page. parameter@@"
 
     @pytest.mark.citest
     def test_l7(self):

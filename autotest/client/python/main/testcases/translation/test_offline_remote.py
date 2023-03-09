@@ -16,12 +16,10 @@ __RESOURCES__ = __TRANSLATION__.joinpath('resources')
 
 class TestTranslationOfflineRemote:
 
-    @pytest.mark.skip
     @pytest.mark.ci1
     def test_offline_source_locale(self):
         file: Path = __CONFIG__.joinpath(CONFIG_FILE)
-        outside_config = {"product": "PythonClient"}
-        I18N.add_config_file(file, outside_config)
+        I18N.add_config_file(file)
         rel = I18N.get_release(PRODUCT, VERSION)
         translation = rel.get_translation()
 

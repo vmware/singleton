@@ -31,6 +31,8 @@ Cache 测试
 2. 缓存粒度，请求key，local，product。cache根据component级别进行缓存和更新。
 3. 更新策略，5秒过期后，再次请求，返回旧值，同时更新缓存
 """
+
+
 class TestOnlineCache:
 
     @pytest.mark.cache1

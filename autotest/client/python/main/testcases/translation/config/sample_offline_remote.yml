@@ -16,8 +16,8 @@ locales:
   - language_tag: en-US
     source_resources_path:
       - $COMPONENT/messages.properties
-    offline_resources_path:
-      - $COMPONENT/messages_en.json
+#    offline_resources_path:
+#      - $COMPONENT/messages_en.json
   - language_tag: ko
   - language_tag: de
   - language_tag: fr
@@ -37,6 +37,7 @@ components:
 component_template:
   locales_refer: locales
   offline_resources_path:
-    - $COMPONENT/messages_$LOCALE.json
+#    - $COMPONENT/messages_$LOCALE.json
+    - $COMPONENT/messages$LC.json
 
 

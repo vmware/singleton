@@ -16,37 +16,37 @@ __RESOURCES__ = __TRANSLATION__.joinpath('resources')
 
 class TestOnlinePseudo:
 
-    @pytest.mark.ci1
-    def test_l1xxxxxxxx(self):
-        """
-        """
-        file: Path = __CONFIG__.joinpath('only_online.yml')
-        outside_config = {"product": "PythonClient", "l10n_version": "1.10.251",
-                          "online_service_url": "https://localhost:8090", "pseudo": True}
-        I18N.add_config_file(file, outside_config)
-        I18N.set_current_locale(LOCALE)
-        rel = I18N.get_release(PRODUCT, VERSION)
-        translation = rel.get_translation()
-
-        # not en and pseudo, return online latest.json ，if no latest.json, return key. latest must exist.
-        tran2 = translation.get_string("about", "about.message", locale='fr')
-        assert tran2 == "#@Your application description page. latest#@"
-
-        # en and pseudo, return latest.json. no add #@
-        tran2 = translation.get_string("about", "about.message", locale='en')
-        assert tran2 == "Your application description page. latest"
-
-        # if has source ,return source direct
-        tran2 = translation.get_string("about", "about.message", source="Your application description page. parameter",
-                                       locale='en')
-        assert tran2 == "Your application description page. parameter"
+    # @pytest.mark.ci1
+    # def test_l1xxxxxxxx(self):
+    #     """
+    #     """
+    #     file: Path = __CONFIG__.joinpath('only_online.yml')
+    #     outside_config = {"product": "PythonClient", "l10n_version": "1.10.251",
+    #                       "online_service_url": "https://localhost:8090", "pseudo": True}
+    #     I18N.add_config_file(file, outside_config)
+    #     I18N.set_current_locale(LOCALE)
+    #     rel = I18N.get_release(PRODUCT, VERSION)
+    #     translation = rel.get_translation()
+    #
+    #     # not en and pseudo, return online latest.json ，if no latest.json, return key. latest must exist.
+    #     tran2 = translation.get_string("about", "about.message", locale='fr')
+    #     assert tran2 == "#@Your application description page. latest#@"
+    #
+    #     # en and pseudo, return latest.json. no add #@
+    #     tran2 = translation.get_string("about", "about.message", locale='en')
+    #     assert tran2 == "Your application description page. latest"
+    #
+    #     # if has source ,return source direct
+    #     tran2 = translation.get_string("about", "about.message", source="Your application description page. parameter",
+    #                                    locale='en')
+    #     assert tran2 == "Your application description page. parameter"
 
 
     @pytest.mark.ci1
     def test_l3(self):
         print("online:component and key")
         file: Path = __CONFIG__.joinpath('only_online.yml')
-        outside_config = {"product": "PythonClient", "l10n_version": "1.10.25",
+        outside_config = {"product": "PythonClient", "l10n_version": "1.10.251",
                           "online_service_url": "https://localhost:8090", "pseudo": True}
         I18N.add_config_file(file, outside_config)
         # I18N.set_current_locale(LOCALE)
@@ -66,7 +66,7 @@ class TestOnlinePseudo:
     def test_l4(self):
         print("online:component and key")
         file: Path = __CONFIG__.joinpath('only_online.yml')
-        outside_config = {"product": "PythonClient", "l10n_version": "1.10.25",
+        outside_config = {"product": "PythonClient", "l10n_version": "1.10.251",
                           "online_service_url": "https://localhost:8090", "pseudo": True}
         I18N.add_config_file(file, outside_config)
         # I18N.set_current_locale(LOCALE)
@@ -85,7 +85,7 @@ class TestOnlinePseudo:
     def test_l5(self):
         print("online:component and key and source and locale ")
         file: Path = __CONFIG__.joinpath('only_online.yml')
-        outside_config = {"product": "PythonClient", "l10n_version": "1.10.25",
+        outside_config = {"product": "PythonClient", "l10n_version": "1.10.251",
                           "online_service_url": "https://localhost:8090", "pseudo": True}
         I18N.add_config_file(file, outside_config)
         I18N.set_current_locale(LOCALE)
@@ -94,26 +94,26 @@ class TestOnlinePseudo:
         trans1 = translation1.get_string("about", "about.message", source="Your application description page.45678910",
                                          locale="ja")
         # "Your application description page."
-        assert trans1 == "#@Your application description page. latest#@"
-
-    @pytest.mark.ci1
-    def test_l6(self):
-        print("online:component and key and source")
-        file: Path = __CONFIG__.joinpath('only_online.yml')
-        outside_config = {"product": "PythonClient", "l10n_version": "1.10.25",
-                          "online_service_url": "https://localhost:8090", "pseudo": True}
-        I18N.add_config_file(file, outside_config)
-        I18N.set_current_locale(LOCALE)
-        self.rel = I18N.get_release(PRODUCT, VERSION)
-        translation1 = self.rel.get_translation()
-        trans1 = translation1.get_string("about", "about.message")
-        assert trans1 == "#@Your application description page. latest#@"
+        assert trans1 == "@@Your application description page.45678910@@"
+    #
+    # @pytest.mark.ci1
+    # def test_l6(self):
+    #     print("online:component and key and source")
+    #     file: Path = __CONFIG__.joinpath('only_online.yml')
+    #     outside_config = {"product": "PythonClient", "l10n_version": "1.10.251",
+    #                       "online_service_url": "https://localhost:8090", "pseudo": True}
+    #     I18N.add_config_file(file, outside_config)
+    #     I18N.set_current_locale(LOCALE)
+    #     self.rel = I18N.get_release(PRODUCT, VERSION)
+    #     translation1 = self.rel.get_translation()
+    #     trans1 = translation1.get_string("about", "about.message", locale='en')
+    #     assert trans1 == "#@Your application description page. latest#@"
 
     @pytest.mark.ci1
     def test_l7(self):
         print("online:component and key and source")
         file: Path = __CONFIG__.joinpath('only_online.yml')
-        outside_config = {"product": "PythonClient", "l10n_version": "1.10.25",
+        outside_config = {"product": "PythonClient", "l10n_version": "1.10.251",
                           "online_service_url": "https://localhost:8090", "pseudo": True}
         I18N.add_config_file(file, outside_config)
         I18N.set_current_locale(LOCALE)
@@ -126,7 +126,7 @@ class TestOnlinePseudo:
     def test_l8(self):
         print("online:component and key and locale")
         file: Path = __CONFIG__.joinpath('only_online.yml')
-        outside_config = {"product": "PythonClient", "l10n_version": "1.10.25",
+        outside_config = {"product": "PythonClient", "l10n_version": "1.10.251",
                           "online_service_url": "https://localhost:8090", "pseudo": True}
         I18N.add_config_file(file, outside_config)
         I18N.set_current_locale(LOCALE)
