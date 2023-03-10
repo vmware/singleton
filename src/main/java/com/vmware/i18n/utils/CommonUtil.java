@@ -1,18 +1,17 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.utils;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import com.vmware.i18n.PatternUtil;
 import com.vmware.i18n.common.Constants;
 import com.vmware.i18n.dto.LocaleDataDTO;
 import com.vmware.i18n.pattern.service.impl.PatternServiceImpl;
-import sun.util.locale.LanguageTag;
-import sun.util.locale.ParseStatus;
 
 import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.*;
 
@@ -81,12 +80,7 @@ public class CommonUtil {
      * @return true if the format is fine
      */
     public static boolean isLanguageTag(String languageTag) {
-        ParseStatus sts = new ParseStatus();
-        LanguageTag.parse(languageTag, sts);
-        if (sts.isError()) {
-            return false;
-        }
-        return true;
+        return Locale.forLanguageTag(languageTag) != null;
     }
 
     /**
