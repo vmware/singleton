@@ -182,9 +182,9 @@ public class ComponentsService {
                     }
                 }
                 if(!componentsFallbackFailed.isEmpty())
-                    logger.warn(FormatUtils.format(ConstantsMsg.GET_FALLBACK_MESSAGES_FAILED, componentsFallbackFailed.toString(), localesFallbackFailed.toString()));
+                    logger.error(FormatUtils.format(ConstantsMsg.GET_FALLBACK_MESSAGES_FAILED, componentsFallbackFailed.toString(), localesFallbackFailed.toString()));
             } else {
-                logger.warn(FormatUtils.format(ConstantsMsg.GET_FALLBACK_MESSAGES_FAILED, componentsToFallback.toString(), localeSet.toString()));
+                logger.error(FormatUtils.format(ConstantsMsg.GET_FALLBACK_MESSAGES_FAILED, componentsToFallback.toString(), localeSet.toString()));
             }
         }
     }
