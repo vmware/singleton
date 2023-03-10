@@ -12,7 +12,7 @@ CONFIG_FILE = "offlineDiskWithCompare.yml"
 _CONFIG_ = Path(__file__).parent.joinpath('config')
 
 
-class TestTranslationOffline:
+class TestTranslationOfflineDisk:
 
     @pytest.mark.ci1
     def test_offline_with_compare(self):
@@ -217,4 +217,4 @@ class TestTranslationOffline:
 
 
 if __name__ == '__main__':
-    pytest.main(['-s', '-k TestTranslationOffline'])
+    pytest.main(['-s', '-k TestTranslationOfflineDisk'])

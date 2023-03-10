@@ -252,4 +252,4 @@ class TestOnLine:
 
 
 if __name__ == '__main__':
-    pytest.main(['-s'])
+    pytest.main(['-s', '-k TestOnLine'])

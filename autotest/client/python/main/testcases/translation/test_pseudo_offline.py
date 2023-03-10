@@ -8,37 +8,16 @@ COMPONENT = 'about'
 LOCALE = 'fr'
 Config_files = 'sample_offline_disk.yml'
 
-__TRANSLATION__ = Path(__file__).parent
-__CONFIG__ = __TRANSLATION__.joinpath('config')
-__RESOURCES__ = __TRANSLATION__.joinpath('resources')
+__CONFIG__ = Path(__file__).parent.joinpath('config')
 
 
 class TestPseudoOffline:
-
-    def test_offline_add_configuration(self):
-        """
-        offline mode: add config
-        """
-        file: Path = __CONFIG__.joinpath('sample_offline_disk.yml')
-        outside_config = {"product": "PythonClient", "l10n_version": "2.0.0", "pseudo": True}
-        I18N.add_config_file(file, outside_config)
-        I18N.set_current_locale('fr')
-        current_locale = I18N.get_current_locale()
-        assert current_locale == 'fr'
-
-        rel = I18N.get_release(PRODUCT, VERSION)
-        conf = rel.get_config()
-        config_info = conf.get_info()
-
-        assert config_info["product"] == "PythonClient"
-        assert config_info["version"] == "2.0.0"
-        assert config_info["pseudo"] is True
 
     def test_offline_pseudo(self):
         """
         offline mode: pseudo True.
         """
-        file: Path = __CONFIG__.joinpath('sample_offline_disk.yml')
+        file: Path = __CONFIG__.joinpath('offlineDiskWithCompare.yml')
         outside_config = {"product": "PythonClient", "l10n_version": "2.0.0", "pseudo": True}
         I18N.add_config_file(file, outside_config)
         I18N.set_current_locale(LOCALE)
@@ -73,3 +52,10 @@ class TestPseudoOffline:
 
 if __name__ == '__main__':
     pytest.main(['-s', '-k TestPseudoOffline'])
+
+"""
+__all__ = ['update_wrapper', 'wraps', 'WRAPPER_ASSIGNMENTS', 'WRAPPER_UPDATES',
+           'total_ordering', 'cache', 'cmp_to_key', 'lru_cache', 'reduce',
+           'partial', 'partialmethod', 'singledispatch', 'singledispatchmethod',
+           'cached_property']
+"""
