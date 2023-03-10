@@ -17,20 +17,7 @@
 #
 # BASE_URL = "http://localhost:8091"
 #
-# """
-# Cache 测试
-#
-# 配置项生效
-# 1. 服务端不配置cache-control。默认读取yaml->cache_expired_time。如果无配置项，默认60秒。
-# 2. 服务端配置cache-control=0
-# 3. 服务端配置cache-control=5，配置项yaml->cache_expired_time=10秒。按照5秒计算
-#
-# 场景测试
-# 前置条件：cache_expired_time默认5秒生效。
-# 1. 缓存失效，拷贝测试.cache。进行测试5秒内，不会更新测试cache，5秒后，更新测试cache。
-# 2. 缓存粒度，请求key，local，product。cache根据component级别进行缓存和更新。
-# 3. 更新策略，5秒过期后，再次请求，返回旧值，同时更新缓存
-# """
+
 #
 #
 # class TestOnlineCache:
