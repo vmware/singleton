@@ -53,9 +53,3 @@ class TestPseudoOffline:
 if __name__ == '__main__':
     pytest.main(['-s', '-k TestPseudoOffline'])
 
-"""
-__all__ = ['update_wrapper', 'wraps', 'WRAPPER_ASSIGNMENTS', 'WRAPPER_UPDATES',
-           'total_ordering', 'cache', 'cmp_to_key', 'lru_cache', 'reduce',
-           'partial', 'partialmethod', 'singledispatch', 'singledispatchmethod',
-           'cached_property']
-"""

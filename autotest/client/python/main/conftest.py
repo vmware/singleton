@@ -1,17 +1,11 @@
 import os
 import sys
 import types
-import inspect
-import logging
-from types import FrameType
-from typing import Optional
 
 import pytest
 from pathlib import Path
 from sgtnclient import I18N
 import shutil
-
-logger = logging.getLogger()
 
 
 @pytest.fixture(scope="session", autouse=True)
