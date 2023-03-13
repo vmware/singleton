@@ -1,76 +1,81 @@
+import os
 import time
 from pathlib import Path
 
 import pytest
 from sgtnclient import I18N
 
-from .utils import ContextModifyCacheFr1
-
-PRODUCT = 'Cache'
-VERSION = '1.0.2'
+PRODUCT = 'PythonClient'
+VERSION = '1.0.0'
 COMPONENT = 'about'
 LOCALE = 'de'
-CONFIG_FILE = 'mixed_online_local.yml'
+CONFIG_FILE = 'cacheMixedMode.yml'
 
-__CACHE__ = Path(__file__).parent
-__CONFIG__ = __CACHE__.joinpath('config')
-__RESOURCES__ = __CACHE__.joinpath('resources')
+_CONFIG_ = Path(__file__).parent.joinpath('config')
 
 
 class TestMixedCacheOnlineSuccess:
 
     @pytest.mark.cache1
-    def test_mixed_cache_online_success(self):
+    def test_mixed_cache_online_success(self, update_cache):
         """
         Mixed Mode:
         1. if Online can get component + locale, use online and cached
         """
-        file = __CONFIG__.joinpath(CONFIG_FILE)
+        t1 = time.time()
+        file = _CONFIG_.joinpath(CONFIG_FILE)
         I18N.add_config_file(file)
         I18N.set_current_locale(LOCALE)
         rel = I18N.get_release(PRODUCT, VERSION)
         translation = rel.get_translation()
 
         # get_source from server and save in localCache.
-        tran1 = translation.get_string("about", "about.message", locale="fr")
-        assert tran1 == "test fr key"
+        # .cache not expire. use cache
+        tran1 = translation.get_string("about", "about.message", locale="de")
+        assert tran1 == "test de key(Cached)"
 
-        # # return from cache. no request server
-        # time.sleep(9)
-        # tran1 = translation.get_string("about", "about.message", locale="fr")
-        # assert tran1 == "test fr key"
+        # wait cache expire
+        # return old value and cache updated
+        time.sleep(21 - int(time.time()) + t1)
+        tran1 = translation.get_string("about", "about.message", locale="de")
+        assert tran1 == "test de key(Cached)"
+
+        # get memory cache updated
+        time.sleep(3)
+        tran1 = translation.get_string("about", "about.message", locale="de")
+        assert tran1 == "test de key"
 
 
-# class TestMixedCacheOnlineFail:
-#
-#     def test_mixed_cache_online_fail_use_cache(self):
-#         """
-#         Mixed Mode:
-#         1. if Online can get component + locale, use online and cached
-#         """
-#         outside_config = {"online_service_url": "https://localhost:809011"}
-#         file: Path = __CONFIG__.joinpath(CONFIG_FILE)
-#         I18N.add_config_file(file, outside_config)
-#         I18N.set_current_locale(LOCALE)
-#         rel = I18N.get_release(PRODUCT, VERSION)
-#         translation = rel.get_translation()
-#
-#         cache = __CACHE__.joinpath(".cache").joinpath("Cache").joinpath("1.0.2").joinpath("about").joinpath(
-#             "messages_fr.json")
-#
-#         # if online fail ,use cache
-#         with ContextModifyCacheFr1(cache):
-#             tran1 = translation.get_string("about", "about.message", locale="fr")
-#             assert tran1 == "test fr key (CACHED)", cache.read_text()
-#
-#         time.sleep(2)
-#         # use local  ？？ expire then from local？？
-#         tran1 = translation.get_string("about", "about.message", locale="fr")
-#         assert tran1 == "test fr key (CACHED)"
-#
-#         # if update
-#         tran1 = translation.get_string("about", "about.message", locale="de")
-#         assert tran1 == "test de key （Offline Local）"
+class TestMixedCacheOnlineFail:
+
+    def test_mixed_cache_online_fail_use_cache(self, update_cache):
+        """
+        Mixed Mode:
+        1. if Online can get component + locale, use online and cached
+        """
+        t1 = time.time()
+        outside_config = {"online_service_url": "https://localhost:809011"}
+        file: Path = _CONFIG_.joinpath(CONFIG_FILE)
+        I18N.add_config_file(file, outside_config)
+        I18N.set_current_locale(LOCALE)
+        rel = I18N.get_release(PRODUCT, VERSION)
+        translation = rel.get_translation()
+
+        # online 4xx/5xx
+        # if .cache exist .use cache
+        tran1 = translation.get_string("about", "about.message", locale="de")
+        assert tran1 == "test de key(Cached)"
+
+        # wait cache expire
+        time.sleep(21 - int(time.time()) + t1)
+        tran1 = translation.get_string("about", "about.message", locale="de")
+        assert tran1 == "test de key(Cached)"
+
+        # wait cache expire
+        time.sleep(5)
+        tran1 = translation.get_string("about", "about.message", locale="de")
+        # assert tran1 == "test de key(Offline Disk)"
+        assert tran1 == "test de key(Offline Disk)"
 
 
 if __name__ == '__main__':
