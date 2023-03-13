@@ -11,3 +11,4 @@ put properties in l10n directory
 cp lib\application-bundle.properties application-bundle.properties
 
 
+pytest testcase

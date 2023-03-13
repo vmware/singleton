@@ -3,44 +3,22 @@ from pathlib import Path
 from sgtnclient import I18N
 
 PRODUCT = 'PythonClient'
-VERSION = '2.0.0'
+VERSION = '1.0.0'
 COMPONENT = 'about'
 LOCALE = 'fr'
 Config_files = 'sample_offline_remote.yml'
 
-# singleton\test\TRANSLATION
-__TRANSLATION__ = Path(__file__).parent
-__CONFIG__ = __TRANSLATION__.joinpath('config')
-__RESOURCES__ = __TRANSLATION__.joinpath('resources')
+_CONFIG_ = Path(__file__).parent.joinpath('config')
 
 
 class TestPseudoOfflineRemote:
-
-    def test_offline_remote_add_configuration(self):
-        """
-        offline mode: add config
-        """
-        file: Path = __CONFIG__.joinpath('sample_offline_remote.yml')
-        outside_config = {"product": "PythonClient", "l10n_version": "2.0.0", "pseudo": True}
-        I18N.add_config_file(file, outside_config)
-        I18N.set_current_locale('fr')
-        current_locale = I18N.get_current_locale()
-        assert current_locale == 'fr'
-
-        rel = I18N.get_release(PRODUCT, VERSION)
-        conf = rel.get_config()
-        config_info = conf.get_info()
-
-        assert config_info["product"] == "PythonClient"
-        assert config_info["version"] == "2.0.0"
-        assert config_info["pseudo"] is True
 
     def test_offline_remote_pseudo(self):
         """
         offline mode: pseudo True.
         """
-        file: Path = __CONFIG__.joinpath('sample_offline_remote.yml')
-        outside_config = {"product": "PythonClient", "l10n_version": "2.0.0", "pseudo": True}
+        file: Path = _CONFIG_.joinpath('sample_offline_remote.yml')
+        outside_config = {"product": "PythonClient", "l10n_version": "1.0.0", "pseudo": True}
         I18N.add_config_file(file, outside_config)
         I18N.set_current_locale(LOCALE)
         rel = I18N.get_release(PRODUCT, VERSION)

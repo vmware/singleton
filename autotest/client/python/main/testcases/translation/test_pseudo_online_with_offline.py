@@ -156,10 +156,6 @@ class TestPseudoMixMode:
         I18N.set_current_locale(LOCALE)
         self.rel = I18N.get_release(PRODUCT, VERSION)
         translation1 = self.rel.get_translation()
-        # trans1 = translation1.get_string("intest","intest.about",source = "About123", locale = "ja")
-        # assert trans1 == "About1"
-        # tran1 = translation1.get_string("intest","intest.offline",locale = "ja")
-        # assert tran1 == "Contact1 offline"
         trans2 = translation1.get_string("intest", "intest.home1234", locale="fr")
         assert trans2 == "intest.home1234"
 

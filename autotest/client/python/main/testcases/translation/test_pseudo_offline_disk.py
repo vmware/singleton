@@ -3,22 +3,22 @@ from pathlib import Path
 from sgtnclient import I18N
 
 PRODUCT = 'PythonClient'
-VERSION = '2.0.0'
+VERSION = '1.0.0'
 COMPONENT = 'about'
 LOCALE = 'fr'
 Config_files = 'sample_offline_disk.yml'
 
-__CONFIG__ = Path(__file__).parent.joinpath('config')
+_CONFIG_ = Path(__file__).parent.joinpath('config')
 
 
-class TestPseudoOffline:
+class TestPseudoOfflineDisk:
 
     def test_offline_pseudo(self):
         """
         offline mode: pseudo True.
         """
-        file: Path = __CONFIG__.joinpath('offlineDiskWithCompare.yml')
-        outside_config = {"product": "PythonClient", "l10n_version": "2.0.0", "pseudo": True}
+        file: Path = _CONFIG_.joinpath('offlineDiskWithCompare.yml')
+        outside_config = {"l10n_version": "1.0.0", "pseudo": True}
         I18N.add_config_file(file, outside_config)
         I18N.set_current_locale(LOCALE)
         rel = I18N.get_release(PRODUCT, VERSION)
@@ -52,4 +52,3 @@ class TestPseudoOffline:
 
 if __name__ == '__main__':
     pytest.main(['-s', '-k TestPseudoOffline'])
-

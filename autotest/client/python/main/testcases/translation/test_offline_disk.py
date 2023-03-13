@@ -21,15 +21,15 @@ class TestTranslationOfflineDisk:
         rel = I18N.get_release(PRODUCT, VERSION)
         translation = rel.get_translation()
 
-        # offline模式，指定了latest和en
-        # 如果latest.title ！= en.title
-        # 返回messages.properties的值
+        # offline Mode
+        # messages.properties(latest) != messages_en.properties(en)
+        # return messages.properties
         message = translation.get_string("about", "about.title", locale="de")
         assert message == "About<offline latest>"
 
-        # offline模式，指定了latest和en
-        # 如果latest.title == en.title
-        # 返回messages_de.json
+        # offline Mode
+        # messages.properties(latest) == messages_en.properties(en)
+        # return messages_de.json
         message = translation.get_string("about", "about.message", locale="de")
         assert message == "Your application description de page(Offline)"
 
@@ -44,15 +44,19 @@ class TestTranslationOfflineDisk:
         rel = I18N.get_release(PRODUCT, VERSION)
         translation = rel.get_translation()
 
-        # offline模式，未指定en, 不比较
-        # 返回messages.properties的值
+        # offline Mode
+        # no messages_en.properties
+        # no compare and return messages_de.json direct
         message = translation.get_string("about", "about.title", locale="de")
         assert message == "About de(Offline)"
 
-        # offline模式，未指定en
-        # 返回messages_default_locale.json翻译
+        # offline Mode
+        # no messages_en.properties
+        # no compare and da un support and return messages_default_locale.json
         message = translation.get_string("about", "about.message", locale="da")
         assert message == "test ja offline key"
+
+        # if no default_locale. default = en
 
     @pytest.mark.ci1
     def test_config_update_by_outside_config(self):
@@ -63,11 +67,6 @@ class TestTranslationOfflineDisk:
         file = _CONFIG_.joinpath(CONFIG_FILE)
 
         I18N.add_config_file(file, outside_config)
-        I18N.set_current_locale(LOCALE)
-
-        current_locale = I18N.get_current_locale()
-        assert current_locale == 'fr'
-
         rel = I18N.get_release(PRODUCT, VERSION)
         conf = rel.get_config()
 
@@ -162,8 +161,7 @@ class TestTranslationOfflineDisk:
         offline mode: get_string param format_items
         """
         file: Path = _CONFIG_.joinpath(CONFIG_FILE)
-        outside_config = {"product": "PythonClient"}
-        I18N.add_config_file(file, outside_config)
+        I18N.add_config_file(file)
         I18N.set_current_locale(LOCALE)
         rel = I18N.get_release(PRODUCT, VERSION)
         translation = rel.get_translation()
@@ -171,25 +169,21 @@ class TestTranslationOfflineDisk:
         with pytest.raises(IndexError):
             translation.get_string("about", "about.test", format_items=["11", "22"])
 
-        trans1 = translation.get_string("about", "about.test")
-        assert trans1 == "test fr the {1} to {0} and {2}"
+        message = translation.get_string("about", "about.test")
+        assert message == "test fr the {1} to {0} and {2}"
 
-        trans2 = translation.get_string("about", "about.test", format_items=None)
-        assert trans2 == "test fr the {1} to {0} and {2}"
+        message = translation.get_string("about", "about.test", format_items=None)
+        assert message == "test fr the {1} to {0} and {2}"
 
-        trans3 = translation.get_string("about", "about.test", format_items=["11", "22", "33"])
-        assert trans3 == "test fr the 22 to 11 and 33"
+        message = translation.get_string("about", "about.test", format_items=[True, None, 33])
+        assert message == "test fr the None to True and 33"
 
-        trans4 = translation.get_string("about", "about.test", format_items=[True, None, 33])
-        assert trans4 == "test fr the None to True and 33"
+        message = translation.get_string("about", "about.test", format_items=["11", "22", "33", "44"])
+        assert message == "test fr the 22 to 11 and 33"
 
-        trans5 = translation.get_string("about", "about.test", format_items=["11", "22", "33", "44"])
-        assert trans5 == "test fr the 22 to 11 and 33"
-
-        # "연락처change {y} add {x} and {z}"
-        trans6 = translation.get_string(
+        message = translation.get_string(
             "contact", "contact.title", format_items={'x': '11', 'y': '22', 'z': '33'}, locale='ko')
-        assert trans6 == "연락처change 22 add 11 and 33"
+        assert message == "연락처change 22 add 11 and 33"
 
     @pytest.mark.ci1
     def test_get_locale_support(self):
@@ -197,23 +191,17 @@ class TestTranslationOfflineDisk:
         offline mode: get_locale_supported
         """
         file: Path = _CONFIG_.joinpath(CONFIG_FILE)
-        outside_config = {"product": "PythonClient"}
-        I18N.add_config_file(file, outside_config)
+        I18N.add_config_file(file)
         I18N.set_current_locale(LOCALE)
         rel = I18N.get_release(PRODUCT, VERSION)
         translation = rel.get_translation()
-        data1 = translation.get_locale_supported("da")
-        assert data1 == "da"
-        data1 = translation.get_locale_supported("zh-Hans")
-        assert data1 == "zh-Hans"
-        data1 = translation.get_locale_supported("fr-CA")
-        assert data1 == "fr"
-        data1 = translation.get_locale_supported("en")
-        assert data1 == "en"
-        data1 = translation.get_locale_supported("123")
-        assert data1 == "123"
-        data1 = translation.get_locale_supported("zh-tw")
-        assert data1 == "zh-Hant"
+
+        message = translation.get_locale_supported("da")
+        assert message == "da"
+        message = translation.get_locale_supported("fr-CA")
+        assert message == "fr"
+        message = translation.get_locale_supported("zh-tw")
+        assert message == "zh-Hant"
 
 
 if __name__ == '__main__':

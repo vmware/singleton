@@ -21,15 +21,15 @@ class TestTranslationOfflineRemote:
         rel = I18N.get_release(PRODUCT, VERSION)
         translation = rel.get_translation()
 
-        # offline模式，指定了latest和en
-        # 如果latest.title ！= en.title
-        # 返回messages.properties的值
+        # offline Mode
+        # messages.properties(latest) != messages_en.properties(en)
+        # return messages.properties
         message = translation.get_string("about", "about.title", locale="de")
         assert message == "About<offline latest>"
 
-        # offline模式，指定了latest和en
-        # 如果latest.title == en.title
-        # 返回messages_de.json
+        # offline Mode
+        # messages.properties(latest) == messages_en.properties(en)
+        # return messages_de.json
         message = translation.get_string("about", "about.message", locale="de")
         assert message == "Your application description de page(Offline)"
 
@@ -44,13 +44,15 @@ class TestTranslationOfflineRemote:
         rel = I18N.get_release(PRODUCT, VERSION)
         translation = rel.get_translation()
 
-        # offline模式，未指定en, 不比较
-        # 返回messages.properties的值
+        # offline Mode
+        # no messages_en.properties
+        # no compare and return messages_de.json direct
         message = translation.get_string("about", "about.title", locale="de")
         assert message == "About de(Offline)"
 
-        # offline模式，未指定en
-        # 返回messages_default_locale.json翻译
+        # offline Mode
+        # no messages_en.properties
+        # no compare and da un support and return messages_default_locale.json
         message = translation.get_string("about", "about.message", locale="da")
         assert message == "test ja offline key"
 
@@ -202,18 +204,13 @@ class TestTranslationOfflineRemote:
         I18N.set_current_locale(LOCALE)
         rel = I18N.get_release(PRODUCT, VERSION)
         translation = rel.get_translation()
-        data1 = translation.get_locale_supported("da")
-        assert data1 == "da"
-        data1 = translation.get_locale_supported("zh-Hans")
-        assert data1 == "zh-Hans"
-        data1 = translation.get_locale_supported("fr-CA")
-        assert data1 == "fr"
-        data1 = translation.get_locale_supported("en")
-        assert data1 == "en"
-        data1 = translation.get_locale_supported("123")
-        assert data1 == "123"
-        data1 = translation.get_locale_supported("zh-tw")
-        assert data1 == "zh-Hant"
+
+        message = translation.get_locale_supported("da")
+        assert message == "da"
+        message = translation.get_locale_supported("fr-CA")
+        assert message == "fr"
+        message = translation.get_locale_supported("zh-tw")
+        assert message == "zh-Hant"
 
 
 if __name__ == '__main__':

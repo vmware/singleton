@@ -3,6 +3,9 @@ from pathlib import Path
 from sgtnclient import I18N
 
 _CONFIG_ = Path(__file__).parent.joinpath('config')
+PRODUCT = "PythonClient"
+VERSION = "1.0.0"
+COMPONENT = "about"
 
 
 class TestOnLine:
@@ -232,8 +235,7 @@ class TestOnLine:
 
     @pytest.mark.ci1
     def test_format_locale_strings(self):
-        print("online:get_locale_supported")
-        file: Path = _CONFIG_.joinpath('only_online.yml')
+        file = _CONFIG_.joinpath('only_online.yml')
         I18N.add_config_file(file)
         rel = I18N.get_release("FakerSample1", "1.0.0")
         translation = rel.get_translation()
