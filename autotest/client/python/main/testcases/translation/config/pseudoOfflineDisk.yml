@@ -1,0 +1,44 @@
+product: PythonClient
+l10n_version: 1.0.0
+offline_resources_base_url: file:///../resources/l10n/PythonClient/1.0.0/
+
+#default_locale: ja
+
+source_locale: en-US
+# log path for the python client
+log_path: logs
+
+#cache_path: .cache
+# multitask: async
+cache_expired_time: 10
+
+locales:
+    -   language_tag: en-US
+        source_resources_path:
+            - $COMPONENT/messages.properties
+        offline_resources_path:
+            - $COMPONENT/messages_en.properties
+    -   language_tag: de
+    -   language_tag: fr
+    -   language_tag: ja
+    -   language_tag: ar
+    -   language_tag: ko
+    -   language_tag: zh-Hans
+    -   language_tag: zh-Hant
+
+# offline_resources_path 就是控制messages_xx.json的。可以指向json或者properties
+# 理论上，source_resources_path 就是latest。offline_resources_path 就是 en
+
+# 这个会创建en之外所有的messages_$LC.json. 如果en不指定offline_resources_path。则认为没有
+component_template:
+    locales_refer: locales
+    offline_resources_path:
+        #        - $COMPONENT/messages$LC.json
+        - $COMPONENT/messages_$LOCALE.json
+
+components:
+    -   name: about
+    -   name: contact
+#    -   name: insert
+
+

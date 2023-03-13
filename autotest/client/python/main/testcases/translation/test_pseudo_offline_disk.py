@@ -6,7 +6,7 @@ PRODUCT = 'PythonClient'
 VERSION = '1.0.0'
 COMPONENT = 'about'
 LOCALE = 'fr'
-Config_files = 'sample_offline_disk.yml'
+CONFIG_FILE = 'pseudoOfflineDisk.yml'
 
 _CONFIG_ = Path(__file__).parent.joinpath('config')
 
@@ -17,8 +17,8 @@ class TestPseudoOfflineDisk:
         """
         offline mode: pseudo True.
         """
-        file: Path = _CONFIG_.joinpath('offlineDiskWithCompare.yml')
-        outside_config = {"l10n_version": "1.0.0", "pseudo": True}
+        file: Path = _CONFIG_.joinpath(CONFIG_FILE)
+        outside_config = {"pseudo": True}
         I18N.add_config_file(file, outside_config)
         I18N.set_current_locale(LOCALE)
         rel = I18N.get_release(PRODUCT, VERSION)

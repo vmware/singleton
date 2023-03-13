@@ -11,7 +11,7 @@ CONFIG_FILE = 'mixedModeWithLocalFolder.yml'
 _CONFIG_ = Path(__file__).parent.joinpath('config')
 
 
-class TestMixedWithLocalFolder:
+class TestMixedWithLocalDisk:
 
     @pytest.mark.ci1
     def test_source_offline_has_high_priority(self):
@@ -59,4 +59,4 @@ class TestMixedWithLocalFolder:
 
 
 if __name__ == '__main__':
-    pytest.main(['-s', '-k TestMixedWithLocalFolder'])
+    pytest.main(['-s', '-k TestMixedWithLocalDisk'])

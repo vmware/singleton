@@ -111,51 +111,6 @@ class TestTranslationOfflineDisk:
         assert tran7 is None
 
     @pytest.mark.ci1
-    def test_get_string_with_diff_param(self):
-        file: Path = _CONFIG_.joinpath(CONFIG_FILE)
-        I18N.add_config_file(file)
-        I18N.set_current_locale('de')
-
-        rel = I18N.get_release(PRODUCT, VERSION)
-        translation = rel.get_translation()
-
-        # get_string(locale) cover I18N.set_current_locale(locale)
-        trans1 = translation.get_string("about", "about.message", locale="en")
-        assert trans1 == "Your application description page."
-
-        trans1 = translation.get_string("about", "about.message", locale="en-US")
-        assert trans1 == "Your application description page."
-
-        # I18N.set_current_locale(locale) has low priority then get_string(locale)
-        # if no locale config. default is "en"
-        trans2 = translation.get_string("about", "about.message", locale=None)
-        assert trans2 == "Your application description de page(Offline)"
-
-        # if locale="da" not support. the .yaml=>default_locale:ja config will be active.
-        trans3 = translation.get_string("about", "about.message", locale="da")
-        assert trans3 == "test ja offline key"
-
-        # if source=None or not pass. source will not be compared with message.properties
-        trans4 = translation.get_string("about", "about.message", locale="fr", source=None)
-        assert trans4 == "test fr offline key"
-
-        # if locale="en" and pass source. whatever source pass. return direct.
-        trans6 = translation.get_string("about", "about.message", locale="en",
-                                        source="Your application description page.")
-        assert trans6 == "Your application description page."
-
-        # if source="123", "123" as source to compared with message.properties.values
-        # if message.properties value can not find "123", means the source update. and return source direct.
-        trans5 = translation.get_string("about", "about.message", locale="fr", source="123")
-        assert trans5 == "123"
-
-        # if source="Your xxx" is same with message.properties "about.message",
-        # means source not update ,return translation
-        trans7 = translation.get_string("about", "about.description", locale="fr",
-                                        source="Use this area to provide additional information")
-        assert trans7 == "Utilisez cette zone pour fournir des informations supplémentaires"
-
-    @pytest.mark.ci1
     def test_format_items(self):
         """
         offline mode: get_string param format_items

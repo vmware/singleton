@@ -6,7 +6,7 @@ PRODUCT = 'PythonClient'
 VERSION = '1.0.0'
 COMPONENT = 'about'
 LOCALE = 'fr'
-Config_files = 'only_online.yml'
+CONFIG_FILE = 'only_online.yml'
 
 _CONFIG_ = Path(__file__).parent.joinpath('config')
 
@@ -15,7 +15,7 @@ class TestOnlinePseudo:
 
     @pytest.mark.ci1
     def test_online_pseudo_success(self):
-        file: Path = _CONFIG_.joinpath('only_online.yml')
+        file: Path = _CONFIG_.joinpath(CONFIG_FILE)
         outside_config = {"pseudo": True}
         I18N.add_config_file(file, outside_config)
         I18N.set_current_locale(LOCALE)
