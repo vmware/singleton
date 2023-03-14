@@ -1,0 +1,33 @@
+product: PythonClient
+l10n_version: 9.0.2
+online_service_url: https://localhost:8090
+offline_resources_base_url: http://10.216.169.20:8080/bundles/PythonClient/9.0.2/
+default_locale: ja
+source_locale: en-US
+log_path: logs
+
+
+locales:
+    -   language_tag: en-US
+        source_resources_path:
+            - $COMPONENT/messages.properties
+        offline_resources_path:
+            - $COMPONENT/messages_en.json
+    -   language_tag: de
+    -   language_tag: fr
+    -   language_tag: ja
+    -   language_tag: ar
+    -   language_tag: ko
+    -   language_tag: zh-Hans
+    -   language_tag: zh-Hant
+
+component_template:
+    locales_refer: locales
+    offline_resources_path:
+        - $COMPONENT/messages_$LOCALE.json
+
+
+components:
+    -   name: about
+    -   name: contact
+#    -   name: insert
