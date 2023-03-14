@@ -1,0 +1,18 @@
+product: PythonClient
+l10n_version: 1.0.0
+
+online_service_url: https://localhost:8090
+
+log_path: logs
+
+cache_path: ../.cache
+
+# when there is no data cached
+#try_delay: 50
+
+#Cache-Control
+# cache-control.value=max-age=83600, public
+
+
+# how many seconds should be waited to update cache data when there is old data existed
+cache_expired_time: 10

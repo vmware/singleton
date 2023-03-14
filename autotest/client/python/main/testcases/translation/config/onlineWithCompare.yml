@@ -1,0 +1,26 @@
+product: PythonClient
+l10n_version: 1.0.0
+
+online_service_url: https://localhost:8090
+
+# log path for the python client
+log_path: logs
+
+# local storage path for caching
+# cache_path: ./singleton/
+
+# how many seconds should be waited to try again for accessing the remote service,
+# when there is no data cached
+try_wait: 10
+
+
+default_locale: ko
+source_locale: en-US
+
+#multitask: async
+
+#pseudo: true
+#pseudo: false
+
+# how many seconds should be waited to update cache data when there is old data existed
+cache_expired_time: 60
