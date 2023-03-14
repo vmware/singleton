@@ -30,7 +30,7 @@ public class PropertyConfigs {
 	@Value("${remote.l10n.base.url}")
 	private String remoteBaseL10Url;
 
-	@Value("${remote.l10n.user-agent:NoAgent}")
+	@Value("${remote.l10n.user-agent:}")
 	private String userAgent;
 	
 	@Value("${vip.i18n.base.url}")

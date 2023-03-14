@@ -24,7 +24,6 @@ public interface PropertyContantKeys {
 	public final static String PRODUCT_NAME = "productName";
 	public final static String VERSION = "version";
 	public final static String LOCAL = "local";
-	public final static String NO_AGENT = "NoAgent";
 	
 	//source file type
 	public static final String DEFAULT_COMPONENT = "default";

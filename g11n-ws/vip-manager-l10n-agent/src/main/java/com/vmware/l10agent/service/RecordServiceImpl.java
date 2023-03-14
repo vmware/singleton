@@ -75,7 +75,7 @@ public class RecordServiceImpl implements RecordService {
 		}
         logger.info("getRecordUrl:>>>"+getRecodeUrl);
 		Map<String, String> header=null;
-		if (!config.getUserAgent().equalsIgnoreCase(PropertyContantKeys.NO_AGENT)){
+		if (!config.getUserAgent().isEmpty()){
 			header = new HashMap<>();
 			header.put("User-Agent", config.getUserAgent());
 		}
@@ -117,7 +117,7 @@ public class RecordServiceImpl implements RecordService {
 		getComponentUrl = getComponentUrl.replaceAll(" ", "%20");   
 		 logger.info("getComponentUrl:>>>"+getComponentUrl);
 		Map<String, String> header=null;
-		if (!config.getUserAgent().equalsIgnoreCase(PropertyContantKeys.NO_AGENT)){
+		if (!config.getUserAgent().isEmpty()){
 			header = new HashMap<>();
 			header.put("User-Agent", config.getUserAgent());
 		}
@@ -165,7 +165,7 @@ public class RecordServiceImpl implements RecordService {
 		 }
 		 logger.info("synchRecordUrl:>>>"+synchRecordUrl+">>>params:"+sb.toString());
 		Map<String, String> header=null;
-		if (!config.getUserAgent().equalsIgnoreCase(PropertyContantKeys.NO_AGENT)){
+		if (!config.getUserAgent().isEmpty()){
 			header = new HashMap<>();
 			header.put("User-Agent", config.getUserAgent());
 		}
@@ -197,7 +197,7 @@ public class RecordServiceImpl implements RecordService {
 		params.put(PropertyContantKeys.RECORD_UPDATE, "true");
         logger.info("getRecordUrl:>>>"+getRecodeUrl);
 		Map<String, String> header=null;
-		if (!config.getUserAgent().equalsIgnoreCase(PropertyContantKeys.NO_AGENT)){
+		if (!config.getUserAgent().isEmpty()){
 			header = new HashMap<>();
 			header.put("User-Agent", config.getUserAgent());
 		}
@@ -254,7 +254,7 @@ public class RecordServiceImpl implements RecordService {
         	logger.info("paramters: {}---{}", entry.getKey(), entry.getValue());
         }
 		Map<String, String> header=null;
-		if (!config.getUserAgent().equalsIgnoreCase(PropertyContantKeys.NO_AGENT)){
+		if (!config.getUserAgent().isEmpty()){
 			header = new HashMap<>();
 			header.put("User-Agent", config.getUserAgent());
 
