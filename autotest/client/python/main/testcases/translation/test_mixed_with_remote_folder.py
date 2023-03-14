@@ -1,5 +1,6 @@
-import pytest
 from pathlib import Path
+
+import pytest
 from sgtnclient import I18N
 
 PRODUCT = 'PythonClient'

@@ -9,7 +9,7 @@ _CONFIG_ = Path(__file__).parent.joinpath('config')
 PRODUCT = "PythonClient"
 VERSION = "1.0.0"
 COMPONENT = "about"
-CONFIG_FILE = "config_default_locale.yml"
+CONFIG_FILE = "configDefaultOnline.yml"
 
 
 class TestDefaultConfig:
@@ -88,10 +88,10 @@ class TestDefaultConfig:
         assert message == "test ja key"
 
     def test_config_offline_resources(self):
-        config_file = "config_offline_resources.yml"
+        config_file = "configDefaultOffline.yml"
         file: Path = _CONFIG_.joinpath(config_file)
         I18N.add_config_file(file)
-        rel = I18N.get_release(PRODUCT, "1.0.0")
+        rel = I18N.get_release(PRODUCT, VERSION)
         translation = rel.get_translation()
 
         # no locales and component_template

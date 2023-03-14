@@ -4,17 +4,13 @@ online_service_url: https://localhost:8090
 offline_resources_base_url: http://10.216.169.20:8080/bundles/PythonClient/9.0.2/
 default_locale: ja
 source_locale: en-US
-# log path for the python client
 log_path: logs
 
 
 locales:
-    -   language_tag: en-US     # 如果配置了Mixed模式，会请求下服务端的messages_en.json文件
-        # 源文件
+    -   language_tag: en-US
         source_resources_path:
             - $COMPONENT/messages.properties
-
-        # 默认情况下，源文件也会返回一个message_en.json文件，不过offline模式下，只会跟源文件进行比较，所以这个配置不会使用
         offline_resources_path:
             - $COMPONENT/messages_en.json
     -   language_tag: de
@@ -25,13 +21,12 @@ locales:
     -   language_tag: zh-Hans
     -   language_tag: zh-Hant
 
-# 这里是用于配置模板，主要用于映射，不同的locale翻译文件
 component_template:
     locales_refer: locales
     offline_resources_path:
-        - $COMPONENT/messages_$LOCALE.json   # $LC是不可修改的
+        - $COMPONENT/messages_$LOCALE.json
 
-# 定义OfflineMode下$COMPONENT的查询范围，如果没有改配置,默认全部查询,如果配置,按配置生效.
+
 components:
     -   name: about
     -   name: contact

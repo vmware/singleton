@@ -26,14 +26,9 @@ locales:
     -   language_tag: zh-Hans
     -   language_tag: zh-Hant
 
-# offline_resources_path 就是控制messages_xx.json的。可以指向json或者properties
-# 理论上，source_resources_path 就是latest。offline_resources_path 就是 en
-
-# 这个会创建en之外所有的messages_$LC.json. 如果en不指定offline_resources_path。则认为没有
 component_template:
     locales_refer: locales
     offline_resources_path:
-        #        - $COMPONENT/messages$LC.json
         - $COMPONENT/messages_$LOCALE.json
 
 components:

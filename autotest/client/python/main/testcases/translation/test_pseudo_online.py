@@ -6,7 +6,7 @@ PRODUCT = 'PythonClient'
 VERSION = '1.0.0'
 COMPONENT = 'about'
 LOCALE = 'fr'
-CONFIG_FILE = 'only_online.yml'
+CONFIG_FILE = 'pseudoOnline.yml'
 
 _CONFIG_ = Path(__file__).parent.joinpath('config')
 

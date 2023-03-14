@@ -96,7 +96,7 @@ class TestOnLine:
         """
         Online Mode:
         """
-        file: Path = _CONFIG_.joinpath("only_online.yml")
+        file: Path = _CONFIG_.joinpath(CONFIG_FILE)
         I18N.add_config_file(file)
         I18N.set_current_locale("ja")
         rel = I18N.get_release("FakerSample1", "1.0.0")

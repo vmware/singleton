@@ -39,7 +39,8 @@ class TestTranslationOfflineRemote:
 
     @pytest.mark.ci1
     def test_offline_without_compare(self):
-        file: Path = _CONFIG_.joinpath("offlineRemoteWithOutCompare.yml")
+        config_file = "offlineRemoteWithOutCompare.yml"
+        file = _CONFIG_.joinpath(config_file)
         I18N.add_config_file(file)
         rel = I18N.get_release(PRODUCT, VERSION)
         translation = rel.get_translation()
@@ -99,8 +100,7 @@ class TestTranslationOfflineRemote:
         offline mode: get_string param format_items
         """
         file: Path = _CONFIG_.joinpath(CONFIG_FILE)
-        outside_config = {"product": "PythonClient"}
-        I18N.add_config_file(file, outside_config)
+        I18N.add_config_file(file)
         I18N.set_current_locale(LOCALE)
         rel = I18N.get_release(PRODUCT, VERSION)
         translation = rel.get_translation()
@@ -131,8 +131,7 @@ class TestTranslationOfflineRemote:
         offline mode: get_locale_supported
         """
         file: Path = _CONFIG_.joinpath(CONFIG_FILE)
-        outside_config = {"product": "PythonClient"}
-        I18N.add_config_file(file, outside_config)
+        I18N.add_config_file(file)
         I18N.set_current_locale(LOCALE)
         rel = I18N.get_release(PRODUCT, VERSION)
         translation = rel.get_translation()

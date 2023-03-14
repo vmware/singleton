@@ -39,7 +39,8 @@ class TestTranslationOfflineDisk:
 
     @pytest.mark.ci1
     def test_offline_without_compare(self):
-        file: Path = _CONFIG_.joinpath("offlineDiskWithOutCompare.yml")
+        config_file = "offlineDiskWithOutCompare.yml"
+        file: Path = _CONFIG_.joinpath(config_file)
         I18N.add_config_file(file)
         rel = I18N.get_release(PRODUCT, VERSION)
         translation = rel.get_translation()

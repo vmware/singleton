@@ -6,7 +6,7 @@ PRODUCT = 'PythonClient'
 VERSION = '9.0.2'
 COMPONENT = 'contact'
 LOCALE = 'fr'
-CONFIG_FILE = 'mixedModeWithLocalFolder.yml'
+CONFIG_FILE = 'mixedModeWithLocalDisk.yml'
 
 _CONFIG_ = Path(__file__).parent.joinpath('config')
 
