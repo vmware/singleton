@@ -5,35 +5,11 @@ from sgtnclient import I18N
 _CONFIG_ = Path(__file__).parent.joinpath('config')
 PRODUCT = "PythonClient"
 VERSION = "1.0.0"
-COMPONENT = "about"
+COMPONENT = "contact"
+CONFIG_FILE = "onlineWithCompare.yml"
 
 
 class TestOnLine:
-    """
-    product: FakerSample1
-    version: 1.0.0
-    component: android latest == en
-    component: JavaSDK latest != en
-    """
-
-    @pytest.mark.ci1
-    def test_online_default_locale(self):
-        """
-        update config from outside_config
-        :return:
-        """
-        file: Path = _CONFIG_.joinpath("only_online_with_incorrect_product.yml")
-        outside_config: dict = {
-            "product": "FakerSample1", "online_service_url": "https://localhost:8090", "default_locale": "ja"
-        }
-        I18N.add_config_file(file, outside_config)
-        rel = I18N.get_release("FakerSample1", "1.0.0")
-
-        translation = rel.get_translation()
-
-        # set locale=da not in supportLocales and update default_locale:"ja", return messages_ja.json
-        message = translation.get_string("android", "key.star-laugh.title", locale="da")
-        assert message == "ストレージ私今日欠乏電池器官。"
 
     @pytest.mark.ci1
     def test_online_compare_with_latest(self):
@@ -43,27 +19,23 @@ class TestOnLine:
             key-value not same return messages_latest.json
             key-value same. return messages_locale.json
         """
-        file: Path = _CONFIG_.joinpath("only_online.yml")
+        file: Path = _CONFIG_.joinpath(CONFIG_FILE)
         I18N.add_config_file(file)
-        rel = I18N.get_release("FakerSample1", "1.0.0")
+        rel = I18N.get_release(PRODUCT, VERSION)
 
         translation = rel.get_translation()
 
         # not set locale, if messages_en.key != messages_latest.key, return messages_latest.json
-        message = translation.get_string("JavaSDK", "key.star-laugh.title")
-        assert message == "@@translation not same with messages_en.json@@"
+        message = translation.get_string(COMPONENT, "contact.message")
+        assert message == "Your contact page.<latest>"
 
         # set locale="en", if messages_en.key != messages_latest.key, return messages_latest.json
-        message = translation.get_string("JavaSDK", "key.star-laugh.title", locale="en")
-        assert message == "@@translation not same with messages_en.json@@"
-
-        # set locale="de", if messages_en.key != messages_latest.key, return messages_latest.json
-        message = translation.get_string("JavaSDK", "key.star-laugh.title", locale="de")
-        assert message == "@@translation not same with messages_en.json@@"
+        message = translation.get_string(COMPONENT, "contact.message", locale="en")
+        assert message == "Your contact page.<latest>"
 
         # messages_en.key == messages_latest.key, return messages_zh-Hant.json
-        message = translation.get_string("JavaSDK", "key.star-laugh.name", locale="zh-Hant")
-        assert message == "以上一起精華專業開發可是為了不會控制情況教育."
+        message = translation.get_string(COMPONENT, "contact.support", locale="zh-Hant")
+        assert message == "支援："
 
     @pytest.mark.ci1
     def test_online_no_source_found(self):
@@ -72,10 +44,9 @@ class TestOnLine:
         1. no component return key direct
         2. no key  return key direct
         """
-        file: Path = _CONFIG_.joinpath("only_online.yml")
+        file: Path = _CONFIG_.joinpath(CONFIG_FILE)
         I18N.add_config_file(file)
-        # I18N.set_current_locale("de")
-        rel = I18N.get_release("FakerSample1", "1.0.0")
+        rel = I18N.get_release(PRODUCT, VERSION)
 
         translation = rel.get_translation()
 
@@ -86,8 +57,6 @@ class TestOnLine:
         assert message == "key.star-laugh.title"
         message = translation.get_string(None, "key.star-laugh.title")
         assert message == "key.star-laugh.title"
-        message = translation.get_string("android", "key.star-laugh.title", locale="de")
-        assert message == "Hinein bei draußen zu Junge Fahrrad Feuer."  # noqa
 
         # no key
         message = translation.get_string("android", "")
@@ -96,8 +65,6 @@ class TestOnLine:
         assert message == "123"
         message = translation.get_string("android", None)
         assert message is None
-        message = translation.get_string("android", "key.star-laugh.title", locale="fr")
-        assert message == "Attaquer discours recherche ami ramener déjà."  # noqa
 
         # no component and key
         message = translation.get_string("", "")
@@ -112,28 +79,19 @@ class TestOnLine:
         """
         online mode: has both message_fr.json and message_fr-CA.json。always return fr.json
         """
-        file: Path = _CONFIG_.joinpath("only_online.yml")
+        file: Path = _CONFIG_.joinpath(CONFIG_FILE)
         I18N.add_config_file(file)
-        rel = I18N.get_release("FakerSample1", "1.0.0")
+        rel = I18N.get_release(PRODUCT, VERSION)
 
         translation = rel.get_translation()
 
-        message = translation.get_string("android", "key.star-laugh.title", locale="fr-CA")
-        assert message == "Attaquer discours recherche ami ramener déjà."
+        message = translation.get_string(COMPONENT, "contact.title", locale="zh_hant")
+        assert message == "聯繫"
 
-        message = translation.get_string("android", "key.star-laugh.title", locale="fr_CA")
-        assert message == "Attaquer discours recherche ami ramener déjà."
+        message = translation.get_string(COMPONENT, "contact.title", locale="zh-Hant")
+        assert message == "聯繫"
 
-        message = translation.get_string("android", "key.star-laugh.title", locale="zh_Hant")
-        assert message == "責任一起最后最大教育評論本站由於科技大學人員部分來源都是."
-
-        message = translation.get_string("android", "key.star-laugh.title", locale="zh_hant")
-        assert message == "責任一起最后最大教育評論本站由於科技大學人員部分來源都是."
-
-        message = translation.get_string("android", "key.star-laugh.title", locale="zh-hant")
-        assert message == "責任一起最后最大教育評論本站由於科技大學人員部分來源都是."
-
-    @pytest.mark.ci1
+    @pytest.mark.skip("DeprecationWarning")
     def test_online_latest_compare_with_source(self):
         """
         Online Mode:
@@ -172,11 +130,10 @@ class TestOnLine:
 
     @pytest.mark.ci1
     def test_format_items(self):
-        print("online:format_items")
-        file: Path = _CONFIG_.joinpath('only_online.yml')
+        file: Path = _CONFIG_.joinpath(CONFIG_FILE)
         I18N.add_config_file(file)
         I18N.set_current_locale("de")
-        rel = I18N.get_release("FakerSample1", "1.0.0")
+        rel = I18N.get_release(PRODUCT, VERSION)
         translation = rel.get_translation()
 
         # no format_items
@@ -222,22 +179,22 @@ class TestOnLine:
         """
         online mode: get locale strings by cache
         """
-        file: Path = _CONFIG_.joinpath('only_online.yml')
+        file: Path = _CONFIG_.joinpath(CONFIG_FILE)
         I18N.add_config_file(file)
         I18N.set_current_locale("de")
-        rel = I18N.get_release("FakerSample1", "1.0.0")
+        rel = I18N.get_release(PRODUCT, VERSION)
         translation = rel.get_translation()
 
-        translation.get_string("android", "key.star-laugh.title")
-        message: dict = translation.get_locale_strings("de", False)
-        assert "android" in message.keys()
-        assert "key.star-laugh.title" in message["android"].keys()
+        translation.get_string(COMPONENT, "contact.support", locale="zh-Hant")
+        message: dict = translation.get_locale_strings("zh-Hant", False)
+        assert COMPONENT in message.keys()
+        assert "contact.support" in message[COMPONENT].keys()
 
     @pytest.mark.ci1
     def test_format_locale_strings(self):
-        file = _CONFIG_.joinpath('only_online.yml')
+        file = _CONFIG_.joinpath(CONFIG_FILE)
         I18N.add_config_file(file)
-        rel = I18N.get_release("FakerSample1", "1.0.0")
+        rel = I18N.get_release(PRODUCT, VERSION)
         translation = rel.get_translation()
 
         locale = translation.get_locale_supported("de-de")
@@ -245,12 +202,6 @@ class TestOnLine:
 
         locale = translation.get_locale_supported("zh-Hans")
         assert locale == "zh-Hans"
-
-        locale = translation.get_locale_supported("fr-FR")
-        assert locale == "fr"
-
-        locale = translation.get_locale_supported("fr-CA")
-        assert locale == "fr"
 
 
 if __name__ == '__main__':

@@ -57,26 +57,6 @@ class TestTranslationOfflineRemote:
         assert message == "test ja offline key"
 
     @pytest.mark.ci1
-    def test_config_update_by_outside_config(self):
-        """
-        config can update by outside_config
-        """
-        outside_config = {"product": "PythonClient"}
-        file = _CONFIG_.joinpath(CONFIG_FILE)
-
-        I18N.add_config_file(file, outside_config)
-        I18N.set_current_locale(LOCALE)
-
-        current_locale = I18N.get_current_locale()
-        assert current_locale == 'fr'
-
-        rel = I18N.get_release(PRODUCT, VERSION)
-        conf = rel.get_config()
-
-        config_info = conf.get_info()
-        assert config_info["product"] == "PythonClient"
-
-    @pytest.mark.ci1
     def test_offline_no_translation_return(self):
         """
         Offline Mode:

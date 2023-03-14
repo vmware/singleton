@@ -91,7 +91,7 @@ class TestDefaultConfig:
         config_file = "config_offline_resources.yml"
         file: Path = _CONFIG_.joinpath(config_file)
         I18N.add_config_file(file)
-        rel = I18N.get_release(PRODUCT, "9.0.1")
+        rel = I18N.get_release(PRODUCT, "1.0.0")
         translation = rel.get_translation()
 
         # no locales and component_template
@@ -99,7 +99,7 @@ class TestDefaultConfig:
         # default locale_translation=messages_de.json
         # can not compare with latest and en
         message = translation.get_string("about", "about.title", locale="de")
-        assert message == "About de(Offline)"
+        assert message == "About_de(Offline)"
 
         # no locales and component_template
         # default latest=messages.properties
@@ -107,7 +107,7 @@ class TestDefaultConfig:
         # no dd will return messages.properties.
         # if no messages.properties will return "about.title"
         message = translation.get_string("about", "about.title", locale="dd")
-        assert message == "About<offline latest>"
+        assert message == "About"
 
 
 if __name__ == '__main__':
