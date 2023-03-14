@@ -1,0 +1,48 @@
+product: PythonClient
+l10n_version: 1.0.0
+
+online_service_url: https://localhost:8090
+#offline_resources_base_url: http://10.216.169.20:8080/bundles/PythonClient/1.0.00.1/
+offline_resources_base_url: file:///../resources/l10n/PythonClient/1.0.0/
+
+# log path for the python client
+log_path: logs
+
+pseudo: true
+# local storage path for caching
+#cache_path: ../.cache/
+
+default_locale: ja
+source_locale: en-US
+#default_locale: ja
+# how many seconds should be waited to try again for accessing the remote service,
+# when there is no data cached
+try_wait: 10
+
+# how many seconds should be waited to update cache data when there is old data existed
+cache_expired_time: 5
+
+
+locales:
+    -   language_tag: en-US
+        source_resources_path:
+            - $COMPONENT/messages.properties
+        offline_resources_path:
+            - $COMPONENT/messages_en.properties
+    -   language_tag: de
+    -   language_tag: fr
+    -   language_tag: ja
+    -   language_tag: ar
+    -   language_tag: ko
+    -   language_tag: zh-Hans
+    -   language_tag: zh-Hant
+
+component_template:
+    locales_refer: locales
+    offline_resources_path:
+        - $COMPONENT/messages_$LOCALE.json
+
+components:
+    -   name: about
+    -   name: contact
+    -   name: intest
