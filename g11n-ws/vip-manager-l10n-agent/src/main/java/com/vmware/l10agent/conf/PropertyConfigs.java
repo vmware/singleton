@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10agent.conf;
@@ -27,9 +27,11 @@ public class PropertyConfigs {
 	@Value("${source.bundle.file.basepath}")
 	private String sourceFileBasepath;
 
-	
 	@Value("${remote.l10n.base.url}")
 	private String remoteBaseL10Url;
+
+	@Value("${remote.l10n.user-agent:}")
+	private String userAgent;
 	
 	@Value("${vip.i18n.base.url}")
 	private String vipBasei18nUrl;
@@ -184,5 +186,6 @@ public class PropertyConfigs {
 		return syncListPath;
 	}
 
+	public String getUserAgent() { return userAgent; }
 
 }

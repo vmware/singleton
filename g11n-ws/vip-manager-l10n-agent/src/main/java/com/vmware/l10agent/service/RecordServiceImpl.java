@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10agent.service;
@@ -74,10 +74,15 @@ public class RecordServiceImpl implements RecordService {
 			params.put("AccessToken", tokenStr);
 		}
         logger.info("getRecordUrl:>>>"+getRecodeUrl);
-		String result = HttpRequester.sendGet(getRecodeUrl, params, null);
+		Map<String, String> header=null;
+		if (!config.getUserAgent().isEmpty()){
+			header = new HashMap<>();
+			header.put("User-Agent", config.getUserAgent());
+		}
+		String result = HttpRequester.sendGet(getRecodeUrl, params, header);
 		if(result == null) {
 			refreshToken();
-			result = HttpRequester.sendGet(getRecodeUrl, params, null);
+			result = HttpRequester.sendGet(getRecodeUrl, params, header);
 		}
 		logger.info(result);
 		if(result == null || result.trim().equals("")) {
@@ -104,17 +109,22 @@ public class RecordServiceImpl implements RecordService {
 		String getComponentUrl = config.getRemoteBaseL10Url() + L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v1/source/sourcecomponent/"
 				+ record.getProduct() + "/" + record.getVersion() + "/" + record.getComponent() + "/"
 				+ record.getLocale() + "/";
-		Map<String, String> params = null;
+		Map<String, String> params  = new HashMap<String, String>();
+		params.put("rand", String.valueOf(System.currentTimeMillis()));
 		if (config.getAccessModel().equalsIgnoreCase("remote")) {
-			params = new HashMap<String, String>();
 			params.put("AccessToken", tokenStr);
 		}
 		getComponentUrl = getComponentUrl.replaceAll(" ", "%20");   
 		 logger.info("getComponentUrl:>>>"+getComponentUrl);
-		String result = HttpRequester.sendGet(getComponentUrl, params, null);
+		Map<String, String> header=null;
+		if (!config.getUserAgent().isEmpty()){
+			header = new HashMap<>();
+			header.put("User-Agent", config.getUserAgent());
+		}
+		String result = HttpRequester.sendGet(getComponentUrl, params, header);
 		if(result == null) {
 			refreshToken();
-			result = HttpRequester.sendGet(getComponentUrl, params, null);
+			result = HttpRequester.sendGet(getComponentUrl, params, header);
 		}
 		
 		if(result != null) {
@@ -154,10 +164,15 @@ public class RecordServiceImpl implements RecordService {
 			 
 		 }
 		 logger.info("synchRecordUrl:>>>"+synchRecordUrl+">>>params:"+sb.toString());
-		String result = HttpRequester.post(synchRecordUrl, param, null);
+		Map<String, String> header=null;
+		if (!config.getUserAgent().isEmpty()){
+			header = new HashMap<>();
+			header.put("User-Agent", config.getUserAgent());
+		}
+		String result = HttpRequester.post(synchRecordUrl, param, header);
 		if(result == null) {
 			refreshToken();
-			result = HttpRequester.post(synchRecordUrl, param, null);
+			result = HttpRequester.post(synchRecordUrl, param, header);
 		}
 		
 		Response response = JSONObject.parseObject(result, Response.class);
@@ -181,10 +196,15 @@ public class RecordServiceImpl implements RecordService {
 		}
 		params.put(PropertyContantKeys.RECORD_UPDATE, "true");
         logger.info("getRecordUrl:>>>"+getRecodeUrl);
-		String result = HttpRequester.sendGet(getRecodeUrl, params, null);
+		Map<String, String> header=null;
+		if (!config.getUserAgent().isEmpty()){
+			header = new HashMap<>();
+			header.put("User-Agent", config.getUserAgent());
+		}
+		String result = HttpRequester.sendGet(getRecodeUrl, params, header);
 		if(result == null) {
 			refreshToken();
-			result = HttpRequester.sendGet(getRecodeUrl, params, null);
+			result = HttpRequester.sendGet(getRecodeUrl, params, header);
 		}
 		logger.info(result);
 		if(result == null || result.trim().equals("")) {
@@ -233,10 +253,17 @@ public class RecordServiceImpl implements RecordService {
         for(Entry<String, String> entry : params.entrySet()) {
         	logger.info("paramters: {}---{}", entry.getKey(), entry.getValue());
         }
-		String result = HttpRequester.sendGet(getRecodeUrl, params, null);
+		Map<String, String> header=null;
+		if (!config.getUserAgent().isEmpty()){
+			header = new HashMap<>();
+			header.put("User-Agent", config.getUserAgent());
+
+		}
+		String result = HttpRequester.sendGet(getRecodeUrl, params, header);
+
 		if(result == null) {
 			refreshToken();
-			result = HttpRequester.sendGet(getRecodeUrl, params, null);
+			result = HttpRequester.sendGet(getRecodeUrl, params, header);
 		}
 		logger.info("requestResult:{}",result);
 		if(result == null || result.trim().equals("")) {
