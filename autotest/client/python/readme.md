@@ -10,5 +10,7 @@ pip install lib\PyICU-2.9-cp39-cp39-win_amd64.whl
 put properties in l10n directory
 cp lib\application-bundle.properties application-bundle.properties
 
+put lib\l10n to localhost
+
 
 pytest testcase
