@@ -57,6 +57,8 @@ public class Constants {
 	public static final String CURRENCIES_DATA = "currencies.json";
 	public static final String NUMBERING_SYSTEMS_JSON = "numberingSystems.json";
 	public static final String NUMBERS_JSON = "numbers.json";
+	public static final String DAY_PERIODS_JSON = "dayPeriods.json";
+	public static final String DATES_JSON = "dates.json";
 	public static final String DATE_TIMEZONENAME = "timeZoneName.json";
 	
 	// key name
@@ -151,5 +153,7 @@ public class Constants {
 	public static final String TO = "_to";
 	public static final String SUPPLEMENTAL_NUMBERING_SYSTEMS = "supplemental.numberingSystems";
 	public static final String NUMBERING_SYSTEMS = "numberingSystems";
+	public static final String SUPPLEMENTAL_DAY_PERIODS_RULESET = "supplemental.dayPeriodRuleSet";
+	public static final String DAY_PERIODS_RULESET = "dayPeriodRuleSet";
 
 }
