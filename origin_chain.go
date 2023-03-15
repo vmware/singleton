@@ -12,6 +12,10 @@ import (
 )
 
 func (ol messageOriginList) Get(item *dataItem) (err error) {
+	if len(ol) == 1 {
+		return ol[0].Get(item)
+	}
+
 	switch item.id.iType {
 	case itemComponent:
 		return ol.getComponentMessages(item)

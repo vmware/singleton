@@ -14,7 +14,7 @@ type sourceLocaleVerification struct {
 }
 
 func (sc *sourceLocaleVerification) Get(item *dataItem) (err error) {
-	if item.id.iType == itemComponent && item.id.Locale != inst.cfg.GetSourceLocale() {
+	if item.id.iType == itemComponent && item.id.Locale != inst.cfg.SourceLocale {
 		return errors.Errorf("unsupported locale %q", item.id.Locale)
 	}
 

@@ -19,9 +19,9 @@ type sourceComparison struct {
 }
 
 func newSourceComparison(source, trans messageOrigin) *sourceComparison {
-	obj := &sourceComparison{source: source, messageOrigin: trans}
+	obj := sourceComparison{source: source, messageOrigin: trans}
 	obj.originList = messageOriginList{source, trans}
-	return obj
+	return &obj
 }
 
 func (sc *sourceComparison) Get(item *dataItem) (err error) {
