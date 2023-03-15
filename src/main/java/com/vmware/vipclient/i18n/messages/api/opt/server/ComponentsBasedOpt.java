@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.messages.api.opt.server;
@@ -63,9 +63,7 @@ public class ComponentsBasedOpt extends BaseOpt implements Opt {
 
         int statusCode = this.getResponseCode(this.responseJsonObj);
         if (!this.isSuccess(statusCode))
-            throw new VIPJavaClientException(
-                    String.format(ConstantsMsg.SERVER_RETURN_ERROR, statusCode, this.getResponseMessage(this.responseJsonObj)));
-
-        return this.responseJsonObj;
+            logger.error(String.format(ConstantsMsg.SERVER_RETURN_ERROR, statusCode, this.getResponseMessage(this.responseJsonObj)));
+        return getDataPart(this.responseJsonObj);
     }
 }
