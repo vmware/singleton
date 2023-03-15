@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.common;
@@ -76,9 +76,13 @@ public class Constants {
     public static final String PM = "pm";
     public static final String PMALTVARIANT = "pm-alt-variant";
     public static final String MORNING1 = "morning1";
+	public static final String MORNING2 = "morning2";
     public static final String AFTERNOON1 = "afternoon1";
+	public static final String AFTERNOON2 = "afternoon2";
     public static final String EVENING1 = "evening1";
+	public static final String EVENING2 = "evening2";
     public static final String NIGHT1 = "night1";
+	public static final String NIGHT2 = "night2";
 
 	public static final String DAYS_FORMAT = "daysFormat";
 	public static final String DAYS_STANDALONE = "daysStandalone";
