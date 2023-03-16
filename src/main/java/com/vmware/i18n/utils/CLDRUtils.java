@@ -235,17 +235,14 @@ public class CLDRUtils {
 	}
 
 	private static Map<String, Object> dayPeriodsFormatExtract(String locale, JSONObject content) {
-		// dayPeriodsFormat narrow am/pm
+		// dayPeriodsFormat narrow
 		String dayPeriodsFormatNarrow = JSONUtil
 				.select(content, "main." + locale + ".dates.calendars.gregorian.dayPeriods.format.narrow").toString();
 		Map<String, Object> dayPeriodsFormatNarrowMap = JSONUtil.getMapFromJson(dayPeriodsFormatNarrow);
 		List<Object> dayPeriodsFormatNarrowArr = new ArrayList<Object>();
-		if (dayPeriodsFormatNarrowMap.get(Constants.AM) != null) {
-			dayPeriodsFormatNarrowArr.add(dayPeriodsFormatNarrowMap.get(Constants.AM).toString());
-		}
-		if (dayPeriodsFormatNarrowMap.get(Constants.PM) != null) {
-			dayPeriodsFormatNarrowArr.add(dayPeriodsFormatNarrowMap.get(Constants.PM).toString());
-		}
+		//am&pm are always defined
+		dayPeriodsFormatNarrowArr.add(dayPeriodsFormatNarrowMap.get(Constants.AM).toString());
+		dayPeriodsFormatNarrowArr.add(dayPeriodsFormatNarrowMap.get(Constants.PM).toString());
 		if (dayPeriodsFormatNarrowMap.get(Constants.AMALTVARIANT) != null) {
 			dayPeriodsFormatNarrowArr.add(dayPeriodsFormatNarrowMap.get(Constants.AMALTVARIANT).toString());
 		}
@@ -282,18 +279,14 @@ public class CLDRUtils {
 		if (dayPeriodsFormatNarrowMap.get(Constants.NIGHT2) != null) {
 			dayPeriodsFormatNarrowArr.add(dayPeriodsFormatNarrowMap.get(Constants.NIGHT2).toString());
 		}
-		// dayPeriodsFormat abbreviated am/pm
+		// dayPeriodsFormat abbreviated
 		String dayPeriodsFormatAbbreviated = JSONUtil
 				.select(content, "main." + locale + ".dates.calendars.gregorian.dayPeriods.format.abbreviated")
 				.toString();
 		Map<String, Object> dayPeriodsFormatAbbrMap = JSONUtil.getMapFromJson(dayPeriodsFormatAbbreviated);
 		List<Object> dayPeriodsFormatAbbrArr = new ArrayList<Object>();
-		if (dayPeriodsFormatAbbrMap.get(Constants.AM) != null) {
-			dayPeriodsFormatAbbrArr.add(dayPeriodsFormatAbbrMap.get(Constants.AM).toString());
-		}
-		if (dayPeriodsFormatAbbrMap.get(Constants.PM) != null) {
-			dayPeriodsFormatAbbrArr.add(dayPeriodsFormatAbbrMap.get(Constants.PM).toString());
-		}
+		dayPeriodsFormatAbbrArr.add(dayPeriodsFormatAbbrMap.get(Constants.AM).toString());
+		dayPeriodsFormatAbbrArr.add(dayPeriodsFormatAbbrMap.get(Constants.PM).toString());
 		if (dayPeriodsFormatAbbrMap.get(Constants.AMALTVARIANT) != null) {
 			dayPeriodsFormatAbbrArr.add(dayPeriodsFormatAbbrMap.get(Constants.AMALTVARIANT).toString());
 		}
@@ -331,17 +324,13 @@ public class CLDRUtils {
 			dayPeriodsFormatAbbrArr.add(dayPeriodsFormatAbbrMap.get(Constants.NIGHT2).toString());
 		}
 
-		// dayPeriodsFormat wide am/pm
+		// dayPeriodsFormat wide
 		String dayPeriodsFormatWide = JSONUtil
 				.select(content, "main." + locale + ".dates.calendars.gregorian.dayPeriods.format.wide").toString();
 		Map<String, Object> dayPeriodsFormatWideMap = JSONUtil.getMapFromJson(dayPeriodsFormatWide);
 		List<Object> dayPeriodsFormatWideArr = new ArrayList<Object>();
-		if (dayPeriodsFormatWideMap.get(Constants.AM) != null) {
-			dayPeriodsFormatWideArr.add(dayPeriodsFormatWideMap.get(Constants.AM).toString());
-		}
-		if (dayPeriodsFormatWideMap.get(Constants.PM) != null) {
-			dayPeriodsFormatWideArr.add(dayPeriodsFormatWideMap.get(Constants.PM).toString());
-		}
+		dayPeriodsFormatWideArr.add(dayPeriodsFormatWideMap.get(Constants.AM).toString());
+		dayPeriodsFormatWideArr.add(dayPeriodsFormatWideMap.get(Constants.PM).toString());
 		if (dayPeriodsFormatWideMap.get(Constants.AMALTVARIANT) != null) {
 			dayPeriodsFormatWideArr.add(dayPeriodsFormatWideMap.get(Constants.AMALTVARIANT).toString());
 		}
@@ -393,12 +382,8 @@ public class CLDRUtils {
 				.toString();
 		Map<String, Object> dayPeriodsStandaloneNarrowMap = JSONUtil.getMapFromJson(dayPeriodsStandaloneNarrow);
 		List<Object> dayPeriodsStandaloneNarrowArr = new ArrayList<Object>();
-		if (dayPeriodsStandaloneNarrowMap.get(Constants.AM) != null) {
-			dayPeriodsStandaloneNarrowArr.add(dayPeriodsStandaloneNarrowMap.get(Constants.AM).toString());
-		}
-		if (dayPeriodsStandaloneNarrowMap.get(Constants.PM) != null) {
-			dayPeriodsStandaloneNarrowArr.add(dayPeriodsStandaloneNarrowMap.get(Constants.PM).toString());
-		}
+		dayPeriodsStandaloneNarrowArr.add(dayPeriodsStandaloneNarrowMap.get(Constants.AM).toString());
+		dayPeriodsStandaloneNarrowArr.add(dayPeriodsStandaloneNarrowMap.get(Constants.PM).toString());
 		if (dayPeriodsStandaloneNarrowMap.get(Constants.AMALTVARIANT) != null) {
 			dayPeriodsStandaloneNarrowArr.add(dayPeriodsStandaloneNarrowMap.get(Constants.AMALTVARIANT).toString());
 		}
@@ -442,12 +427,8 @@ public class CLDRUtils {
 				.toString();
 		Map<String, Object> dayPeriodsStandaloneAbbrMap = JSONUtil.getMapFromJson(dayPeriodsStandaloneAbbreviated);
 		List<Object> dayPeriodsStandaloneAbbrArr = new ArrayList<Object>();
-		if (dayPeriodsStandaloneAbbrMap.get(Constants.AM) != null) {
-			dayPeriodsStandaloneAbbrArr.add(dayPeriodsStandaloneAbbrMap.get(Constants.AM).toString());
-		}
-		if (dayPeriodsStandaloneAbbrMap.get(Constants.PM) != null) {
-			dayPeriodsStandaloneAbbrArr.add(dayPeriodsStandaloneAbbrMap.get(Constants.PM).toString());
-		}
+		dayPeriodsStandaloneAbbrArr.add(dayPeriodsStandaloneAbbrMap.get(Constants.AM).toString());
+		dayPeriodsStandaloneAbbrArr.add(dayPeriodsStandaloneAbbrMap.get(Constants.PM).toString());
 		if (dayPeriodsStandaloneAbbrMap.get(Constants.AMALTVARIANT) != null) {
 			dayPeriodsStandaloneAbbrArr.add(dayPeriodsStandaloneAbbrMap.get(Constants.AMALTVARIANT).toString());
 		}
@@ -491,12 +472,8 @@ public class CLDRUtils {
 				.toString();
 		Map<String, Object> dayPeriodsStandaloneWideMap = JSONUtil.getMapFromJson(dayPeriodsStandaloneWide);
 		List<Object> dayPeriodsStandaloneWideArr = new ArrayList<Object>();
-		if (dayPeriodsStandaloneWideMap.get(Constants.AM) != null) {
-			dayPeriodsStandaloneWideArr.add(dayPeriodsStandaloneWideMap.get(Constants.AM).toString());
-		}
-		if (dayPeriodsStandaloneWideMap.get(Constants.PM) != null) {
-			dayPeriodsStandaloneWideArr.add(dayPeriodsStandaloneWideMap.get(Constants.PM).toString());
-		}
+		dayPeriodsStandaloneWideArr.add(dayPeriodsStandaloneWideMap.get(Constants.AM).toString());
+		dayPeriodsStandaloneWideArr.add(dayPeriodsStandaloneWideMap.get(Constants.PM).toString());
 		if (dayPeriodsStandaloneWideMap.get(Constants.AMALTVARIANT) != null) {
 			dayPeriodsStandaloneWideArr.add(dayPeriodsStandaloneWideMap.get(Constants.AMALTVARIANT).toString());
 		}
