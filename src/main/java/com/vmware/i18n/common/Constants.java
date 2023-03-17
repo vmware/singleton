@@ -10,6 +10,19 @@ package com.vmware.i18n.common;
 public class Constants {
 
 	public static final String UTF8 = "UTF-8";
+
+	//symbol
+	public static final String DOT = ".";
+
+	//format type
+	public static final String FORMAT = "format";
+	public static final String STANDALONE = "stand-alone";
+
+	//format length
+	public static final String NARROW = "narrow";
+	public static final String ABBREVIATED = "abbreviated";
+	public static final String WIDE = "wide";
+
 	// locale
 	public static final String TERRITORIES = "territories";
 	public static final String LANGUAGE = "language";
