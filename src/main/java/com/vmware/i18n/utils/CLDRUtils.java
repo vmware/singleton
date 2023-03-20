@@ -27,6 +27,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 import com.vmware.i18n.common.DayEnum;
+import com.vmware.i18n.common.DayPeriodEnum;
 import com.vmware.i18n.common.OfficialStatusEnum;
 import com.vmware.i18n.utils.timezone.CldrTimeZoneUtils;
 
@@ -266,44 +267,11 @@ public class CLDRUtils {
 				.select(dateData, "main." + locale + ".dates.calendars.gregorian.dayPeriods." + formatTypeALength).toString();
 		Map<String, Object> dayPeriodsMap = JSONUtil.getMapFromJson(dayPeriodsJsonStr);
 		List<String> dayPeriodsArr = new ArrayList<String>();
-		//am&pm are always defined
-		dayPeriodsArr.add(dayPeriodsMap.get(Constants.AM).toString());
-		dayPeriodsArr.add(dayPeriodsMap.get(Constants.PM).toString());
-		if (dayPeriodsMap.get(Constants.AMALTVARIANT) != null) {
-			dayPeriodsArr.add(dayPeriodsMap.get(Constants.AMALTVARIANT).toString());
-		}
-		if (dayPeriodsMap.get(Constants.PMALTVARIANT) != null) {
-			dayPeriodsArr.add(dayPeriodsMap.get(Constants.PMALTVARIANT).toString());
-		}
-		if (dayPeriodsMap.get(Constants.MIDNIGHT) != null) {
-			dayPeriodsArr.add(dayPeriodsMap.get(Constants.MIDNIGHT).toString());
-		}
-		if (dayPeriodsMap.get(Constants.NOON) != null) {
-			dayPeriodsArr.add(dayPeriodsMap.get(Constants.NOON).toString());
-		}
-		if (dayPeriodsMap.get(Constants.MORNING1) != null) {
-			dayPeriodsArr.add(dayPeriodsMap.get(Constants.MORNING1).toString());
-		}
-		if (dayPeriodsMap.get(Constants.MORNING2) != null) {
-			dayPeriodsArr.add(dayPeriodsMap.get(Constants.MORNING2).toString());
-		}
-		if (dayPeriodsMap.get(Constants.AFTERNOON1) != null) {
-			dayPeriodsArr.add(dayPeriodsMap.get(Constants.AFTERNOON1).toString());
-		}
-		if (dayPeriodsMap.get(Constants.AFTERNOON2) != null) {
-			dayPeriodsArr.add(dayPeriodsMap.get(Constants.AFTERNOON2).toString());
-		}
-		if (dayPeriodsMap.get(Constants.EVENING1) != null) {
-			dayPeriodsArr.add(dayPeriodsMap.get(Constants.EVENING1).toString());
-		}
-		if (dayPeriodsMap.get(Constants.EVENING2) != null) {
-			dayPeriodsArr.add(dayPeriodsMap.get(Constants.EVENING2).toString());
-		}
-		if (dayPeriodsMap.get(Constants.NIGHT1) != null) {
-			dayPeriodsArr.add(dayPeriodsMap.get(Constants.NIGHT1).toString());
-		}
-		if (dayPeriodsMap.get(Constants.NIGHT2) != null) {
-			dayPeriodsArr.add(dayPeriodsMap.get(Constants.NIGHT2).toString());
+		for (DayPeriodEnum dayPeriodEnum : DayPeriodEnum.values()) {
+			String dayPeriod = (String) dayPeriodsMap.get(dayPeriodEnum.getDayPeriod());
+			if (dayPeriod != null) {
+				dayPeriodsArr.add(dayPeriod);
+			}
 		}
 		return dayPeriodsArr;
 	}

@@ -84,20 +84,6 @@ public class Constants {
 
 	public static final String DAY_PERIODS_FORMAT = "dayPeriodsFormat";
 	public static final String DAY_PERIODS_STANDALONE = "dayPeriodsStandalone";
-    public static final String MIDNIGHT = "midnight";
-    public static final String AM = "am";
-    public static final String AMALTVARIANT = "am-alt-variant";
-    public static final String NOON = "noon";
-    public static final String PM = "pm";
-    public static final String PMALTVARIANT = "pm-alt-variant";
-    public static final String MORNING1 = "morning1";
-	public static final String MORNING2 = "morning2";
-    public static final String AFTERNOON1 = "afternoon1";
-	public static final String AFTERNOON2 = "afternoon2";
-    public static final String EVENING1 = "evening1";
-	public static final String EVENING2 = "evening2";
-    public static final String NIGHT1 = "night1";
-	public static final String NIGHT2 = "night2";
 
 	public static final String DAYS_FORMAT = "daysFormat";
 	public static final String DAYS_STANDALONE = "daysStandalone";
