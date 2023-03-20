@@ -62,7 +62,8 @@ func TestBundleDirNonexistent(t *testing.T) {
 	ok := errors.As(err, &pathError)
 	assert.True(t, ok, "error isn't an PATH error: %s", err)
 
-	_, err = inst.trans.GetLocaleList(name, version)
+	bundleTranslation := &bundleDAO{newCfg.LocalBundles}
+	_, err = bundleTranslation.GetLocaleList(name, version)
 	ok = errors.As(err, &pathError)
 	assert.True(t, ok, "error isn't an PATH error: %s", err)
 

@@ -42,12 +42,13 @@ func TestGetLocaleCompAbnormal(t *testing.T) {
 	assert.Nil(t, components)
 	assert.Contains(t, errcomp.Error(), errMsg)
 
-	locales, errlocale := trans.GetLocaleList(name, version)
-	assert.Nil(t, locales)
+	LocalesItem := &dataItem{id: localesID}
+	errlocale := inst.server.Get(LocalesItem)
+	assert.Nil(t, LocalesItem.data)
 	assert.Contains(t, errlocale.Error(), errMsg)
 
-	locales, errlocale = trans.GetLocaleList(name, version)
-	assert.Nil(t, locales)
+	errlocale = inst.server.Get(LocalesItem)
+	assert.Nil(t, LocalesItem.data)
 	assert.Contains(t, errlocale.Error(), errMsg)
 }
 

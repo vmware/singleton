@@ -83,9 +83,9 @@ func createTranslation(cfg Config) Translation {
 	var origin messageOrigin
 
 	if len(transOrigins) > 0 && len(sourceOrigins) > 0 {
-		origin = &sourceComparison{source: sourceOrigins, messageOrigin: transOrigins}
+		origin = newSourceComparison(sourceOrigins, transOrigins)
 	} else if len(sourceOrigins) > 0 {
-		origin = &sourceComparison{source: sourceOrigins}
+		origin = &sourceLocaleVerification{sourceOrigins}
 	} else if len(transOrigins) > 0 {
 		origin = transOrigins
 	}

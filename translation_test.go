@@ -657,18 +657,12 @@ func TestMultipleComponentsAbnormal(t *testing.T) {
 		size        int
 		errorString string
 	}{
-		{"Abnormal: fail to get locale list",
-			[]string{"productLocales_400"},
-			nil, []string{"sunglow"}, 0,
-			`Error from server is HTTP code: 400, message: 400 Bad Request, business code: 0, message: `},
 		{"Abnormal: fail to get component list",
 			[]string{"productComponents_400"},
 			[]string{"en"}, nil, 0,
 			`Error from server is HTTP code: 400, message: 400 Bad Request, business code: 0, message: `},
 		{"Abnormal: partial translations are available is treated as successful",
-			[]string{
-				"productComponents", "productLocales",
-				"componentMessages-fr-sunglow"},
+			[]string{"productComponents", "productLocales", "componentMessages-fr-sunglow"},
 			nil, nil, 1,
 			""},
 		{"Abnormal: empty result is an error",
@@ -682,6 +676,7 @@ func TestMultipleComponentsAbnormal(t *testing.T) {
 	newCfg := testCfg
 	newCfg.LocalBundles = ""
 	resetInst(&newCfg, nil)
+
 	trans := GetTranslation()
 	for _, testData := range tests {
 		logger.Debug(fmt.Sprintf("------------ Start testing: %s", testData.desc))
@@ -691,16 +686,56 @@ func TestMultipleComponentsAbnormal(t *testing.T) {
 
 		messages, err := trans.GetComponentsMessages(name, version, testData.locales, testData.components)
 		if len(testData.errorString) == 0 {
-			assert.Nil(t, err)
+			assert.Nil(t, err, testData.desc)
 		} else {
-			assert.Equal(t, testData.errorString, err.Error())
+			assert.Equal(t, testData.errorString, err.Error(), testData.desc)
 		}
 		if len(messages) != testData.size {
 			t.Errorf("%s = %d, want %d", testData.desc, len(messages), testData.size)
 		}
 
-		assert.True(t, gock.IsDone())
+		assert.True(t, gock.IsDone(), testData.desc)
 
 		clearCache()
+	}
+}
+
+func TestMultipleComponentsAbnormal2(t *testing.T) {
+	var tests = []struct {
+		desc        string
+		locales     []string
+		components  []string
+		size        int
+		errorString string
+	}{
+		{"Abnormal: fail to get locale list",
+			nil, []string{"sunglow"}, 0,
+			assert.AnError.Error()},
+	}
+
+	newCfg := testCfg
+	newCfg.LocalBundles = ""
+	resetInst(&newCfg, nil)
+
+	trans := GetTranslation()
+	for _, testData := range tests {
+		logger.Debug(fmt.Sprintf("------------ Start testing: %s", testData.desc))
+
+		localesItem := &dataItem{id: localesID}
+		cs := getCacheService()
+		mockObj := MockedOrigin{}
+		*cs = cacheService{&mockObj}
+		mockObj.On("Get", localesItem).Once().Return(assert.AnError)
+
+		messages, err := trans.GetComponentsMessages(name, version, testData.locales, testData.components)
+		if len(testData.errorString) == 0 {
+			assert.Nil(t, err, testData.desc)
+		} else {
+			assert.Equal(t, testData.errorString, err.Error(), testData.desc)
+		}
+		if len(messages) != testData.size {
+			t.Errorf("%s = %d, want %d", testData.desc, len(messages), testData.size)
+		}
+		mockObj.AssertExpectations(t)
 	}
 }

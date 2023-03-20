@@ -15,9 +15,8 @@ func (s *sourceInTranslation) Get(item *dataItem) (err error) {
 		defer func() { item.id.Locale = inst.cfg.SourceLocale }()
 		item.id.Locale = localeLatest
 		err = s.messageOrigin.Get(item)
-	// case itemLocales:
-		// this case is impossible because locales will come from translation.
-		// item.data = []string{inst.cfg.SourceLocale}
+	case itemLocales:
+		item.data = []string{inst.cfg.SourceLocale}
 	case itemComponents:
 		err = s.messageOrigin.Get(item)
 	}
