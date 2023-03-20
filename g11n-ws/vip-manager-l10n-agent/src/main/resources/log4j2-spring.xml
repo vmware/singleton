@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2019-2023 VMware, Inc.
+SPDX-License-Identifier: EPL-2.0
+-->
+<Configuration status="OFF">
+	<Properties>
+		<property name="application_name">VIP</property>
+		<property name="module_name">L10nAgent</property>
+		<property name="log_path">${sys:app.log.home:-./logs}/l10nAgent</property>
+	</Properties>
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<ThresholdFilter level="trace" onMatch="ACCEPT"
+							 onMismatch="DENY"/>
+			<PatternLayout
+					pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} [${application_name}] [${module_name}] [%level] [%t]  %l - %msg%n"/>
+		</Console>
+
+		<RollingFile name="InfoFile"
+					 fileName="${log_path}/${application_name}-info.log"
+					 filePattern="${log_path}/${application_name}-info-%d{yyyy-MM-dd}.%i.log">
+			<ThresholdFilter level="info" onMatch="ACCEPT"
+							 onMismatch="DENY"/>
+			<PatternLayout
+					pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} [${application_name}] [${module_name}] [%level] [%t]  %l - %msg%n"/>
+			<Policies>
+				<TimeBasedTriggeringPolicy/>
+				<SizeBasedTriggeringPolicy size="64 MB"/>
+			</Policies>
+			<DefaultRolloverStrategy fileIndex="nomax">
+				<Delete basePath="${log_path}" maxDepth="1">
+					<IfFileName glob="${application_name}-info-*.log"/>
+					<IfAccumulatedFileCount exceeds="10"/>
+				</Delete>
+			</DefaultRolloverStrategy>
+		</RollingFile>
+		<RollingFile name="ErrorFile"
+					 fileName="${log_path}/${application_name}-error.log"
+					 filePattern="${log_path}/${application_name}-error-%d{yyyy-MM-dd}.%i.log">
+			<ThresholdFilter level="error" onMatch="ACCEPT"
+							 onMismatch="DENY"/>
+			<PatternLayout
+					pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} [${application_name}] [${module_name}] [%level] [%t]  %l - %msg%n"/>
+			<Policies>
+				<TimeBasedTriggeringPolicy/>
+				<SizeBasedTriggeringPolicy size="64 MB"/>
+			</Policies>
+			<DefaultRolloverStrategy fileIndex="nomax">
+				<Delete basePath="${log_path}" maxDepth="1">
+					<IfFileName glob="${application_name}-error-*.log"/>
+					<IfAccumulatedFileCount exceeds="5"/>
+				</Delete>
+			</DefaultRolloverStrategy>
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Root level="info">
+			<appender-ref ref="Console"/>
+			<appender-ref ref="InfoFile"/>
+			<appender-ref ref="ErrorFile"/>
+		</Root>
+	</Loggers>
+</Configuration>

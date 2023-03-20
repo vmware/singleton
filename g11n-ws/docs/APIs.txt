@@ -1,0 +1,40 @@
+
+https://10.117.168.26:8090/translation/api/string?source=Home&locale=zh_CN&productName=vCG&version=1.0.0
+        •        The response content is JSON, e.g. {"productName":"devCenter","version":"1.0.0","source":"Home","translation":"主页","locale":"zh_CN"}
+        •        The ‘en’ locale and EN source will be returned if translation not found.
+ 
+https://10.117.168.26:8090/format/api/localizedDate?locale=zh_CN&longDate=1467185266089&pattern=yMMMM   
+        •        The API’s response is JSON, e.g.  {"pattern":"yMMMM","locale":"zh_CN","longDate":"1467185266089","formatedDate":"2016年6月"}
+        •        Parameter ‘locale’ could be at least one of these ‘zh_CN, en, fr, de, zh_TW, ja, ko’  and the API will return according translation
+        •        Parameter ‘LongDate’ is the date’s long value, the API will return it’s localized date
+        •        Parameter ‘pattern’ would be one of the list(see the bottom of this email), e.g. for ‘June 2016’, ‘pattern=yMMMM’ should be used.
+ 
+ 
+ 
+Pattern list:
+YEAR = "y";
+QUARTER = "QQQQ";
+ABBR_QUARTER = "QQQ";
+YEAR_QUARTER = "yQQQQ";
+YEAR_ABBR_QUARTER = "yQQQ";
+MONTH = "MMMM";
+ABBR_MONTH = "MMM";
+NUM_MONTH = "M";
+YEAR_MONTH = "yMMMM";
+YEAR_ABBR_MONTH = "yMMM";
+YEAR_NUM_MONTH = "yM";
+DAY = "d";
+YEAR_MONTH_DAY = "yMMMMd";
+YEAR_ABBR_MONTH_DAY = "yMMMd";
+YEAR_NUM_MONTH_DAY = "yMd";
+WEEKDAY = "EEEE";
+ABBR_WEEKDAY = "E";
+YEAR_MONTH_WEEKDAY_DAY = "yMMMMEEEEd";
+YEAR_ABBR_MONTH_WEEKDAY_DAY = "yMMMEd";
+YEAR_NUM_MONTH_WEEKDAY_DAY = "yMEd";
+MONTH_DAY = "MMMMd";
+ABBR_MONTH_DAY = "MMMd";
+NUM_MONTH_DAY = "Md";
+MONTH_WEEKDAY_DAY = "MMMMEEEEd";
+ABBR_MONTH_WEEKDAY_DAY = "MMMEd";
+NUM_MONTH_WEEKDAY_DAY = "MEd";

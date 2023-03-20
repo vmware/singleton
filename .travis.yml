@@ -1,0 +1,102 @@
+dist: trusty
+language: java
+python:
+  - 3.4
+jdk:
+  - openjdk8
+services:
+  - docker
+before_install:
+- |
+    git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '(\.md$)|(^(docs|g11n-ws/docs))/' || {
+      echo "Only docs were updated, stopping build process."
+      exit
+    }
+    sudo apt-get -y install python3-pip python-dev
+    python3 -V
+    pip3 -V
+install:
+  - sudo pip3 install requests
+jobs:
+  include:
+  - name: "Check Header"
+    env: TEST=check_header
+  - name: "Unit Test"
+    env: TEST=unit_test
+  - name: "Code Scan"
+    env: TEST=code_scan
+  - name: "Smoke Test"
+    env: TEST=smoke_test
+script: >
+  if [ x${TEST} = xcheck_header ]; then
+    git clone --branch=devops https://github.com/vmware/singleton.git devops
+    cp $TRAVIS_BUILD_DIR/devops/check_headers.py .
+    chmod +x check_headers.py
+    python3 ./check_headers.py -f "$(git diff --name-only --diff-filter=d $TRAVIS_COMMIT_RANGE)"
+  fi &&
+  if [ x${TEST} = xunit_test ]; then
+    cd $TRAVIS_BUILD_DIR/g11n-ws
+    ./gradlew test --console=plain
+  fi &&
+  if [ x${TEST} = xcode_scan ]; then
+    java -version
+    git clone --branch=devops https://github.com/vmware/singleton.git devops
+    SONARSCANNER='sonar-scanner-cli-4.0.0.1744-linux'
+    SONARSCANNERINNER='sonar-scanner-4.0.0.1744-linux'
+    wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/$SONARSCANNER.zip
+    unzip $SONARSCANNER.zip
+    rm -f $SONARSCANNER.zip
+    str=$(printf '=%.0s' {1..50})
+    echo $str Code Scan Start $str
+    cd $TRAVIS_BUILD_DIR/devops/sonar/ && python ./config_sonar_project.py -ProjectName=$SONAR_ORG-singleton-service-$TRAVIS_BRANCH -ProjectKey=$SONAR_ORG-singleton-service-$TRAVIS_BRANCH -OrgKey=$SONAR_ORG -QualityGateName=service-gate -QualityGateConditions="./quality_gates/service_quality_gate.json" -SonarToken=$SONAR_TOKEN
+    cd $TRAVIS_BUILD_DIR/g11n-ws && sed -i "s/rootProject.name = 'vip'/rootProject.name = '$SONAR_ORG-singleton-service-$TRAVIS_BRANCH'/" settings.gradle && cat settings.gradle
+    cd $TRAVIS_BUILD_DIR/g11n-ws && ./gradlew test jacocoTestReport
+    java -version
+        
+    cd $TRAVIS_BUILD_DIR && ls -la
+    wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
+    sudo chmod +x install-jdk.sh
+    export JAVA_HOME=$HOME/openjdk11
+    export PATH="$JAVA_HOME/bin:$PATH"
+    $TRAVIS_BUILD_DIR/install-jdk.sh --target "/home/travis/openjdk11" --workspace "/home/travis/.cache/install-jdk" --feature "11" --license "GPL" --cacerts
+    java -version
+        
+    cd $TRAVIS_BUILD_DIR/g11n-ws && $TRAVIS_BUILD_DIR/$SONARSCANNERINNER/bin/sonar-scanner \
+       -Dsonar.projectKey=$SONAR_ORG-singleton-service-$TRAVIS_BRANCH \
+       -Dsonar.projectName=$SONAR_ORG-singleton-service-$TRAVIS_BRANCH \
+       -Dsonar.sources=. \
+       -Dsonar.language=java \
+       -Dsonar.sourceEncoding=UTF-8 \
+       -Dsonar.host.url=https://sonarcloud.io \
+       -Dsonar.login=$SONAR_TOKEN \
+       -Dsonar.branch.name=master \
+       -Dsonar.organization=$SONAR_ORG \
+       -Dsonar.exclusions=tools/tool-cldr-extractor/**,**/*.py,**/*.xml,**/*.css,**/*.js,**/*.html \
+       -Dsonar.java.binaries=vip-manager-i18n/build/classes/java,vip-manager-l10n/build/classes/java,vip-manager-lite-i18n/build/classes/java \
+       -Dsonar.java.test.binaries=vip-manager-i18n/build/classes/test,vip-manager-l10n/build/classes/test,vip-manager-lite-i18n/build/classes/test \
+       -Dsonar.coverage.jacoco.xmlReportPaths=vip-manager-i18n/build/reports/jacoco.xml,vip-manager-l10n/build/reports/jacoco.xml,vip-manager-lite-i18n/build/reports/jacoco.xml \
+       -Dsonar.coverage.exclusions=modules/**,tools/**,vip-common/src/main/java/com/vmware/vip/common/**,vip-manager-l10n-agent/**,vip-manager-i18n/build/**,vip-manager-l10n/build/**,vip-manager-lite-i18n/build/**,vip-manager-i18n/src/test/**,vip-manager-l10n/src/test/**,vip-manager-lite-i18n/src/test/**
+    
+    echo $str Code Scan End $str
+    git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.travis\.yml$' || {
+      echo "Only docs were updated, stopping build process."
+      exit
+    }
+    cd $TRAVIS_BUILD_DIR/devops/sonar && sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG-singleton-service-$TRAVIS_BRANCH -HostName=https://sonarcloud.io
+  fi &&
+  if [ x${TEST} = xsmoke_test ]; then
+    git clone --branch=devops https://github.com/vmware/singleton.git devops
+    cd $TRAVIS_BUILD_DIR/g11n-ws && ./gradlew build
+    cp $TRAVIS_BUILD_DIR/devops/deploy/i18n-service/Dockerfile $TRAVIS_BUILD_DIR/publish/
+    cd $TRAVIS_BUILD_DIR/publish && ls
+    mv singleton-[0~9]*.jar i18n-service.jar && ls
+    docker build -t singleton .
+    docker run -d -p 8090:8090 --name singleton singleton
+    docker ps
+    cd $TRAVIS_BUILD_DIR/devops/autotest/service/i18n-service/APITest && gradle build
+    docker cp l10n singleton:/
+    str=$(printf '=%.0s' {1..50})
+    echo $str Smoke Test Start $str
+    java -cp "target/*:resource/*" org.testng.TestNG testng.xml
+    echo $str Smoke Test End $str
+  fi

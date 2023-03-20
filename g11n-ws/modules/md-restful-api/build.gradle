@@ -1,0 +1,11 @@
+//Copyright 2019-2022 VMware, Inc.
+//SPDX-License-Identifier: EPL-2.0
+
+archivesBaseName = 'md-restful-api'
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': "$archivesBaseName",
+                   'Implementation-Version': version
+    }
+}

@@ -1,0 +1,122 @@
+//Copyright 2019-2022 VMware, Inc.
+//SPDX-License-Identifier: EPL-2.0
+buildscript {
+  repositories {
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+      classpath "com.bmuschko:gradle-docker-plugin:3.2.7"
+  }
+} 
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'java-library'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'com.bmuschko.docker-remote-api'
+
+archivesBaseName = 'md-data-initdb'
+  
+eclipse {
+  //if you want parts of paths in resulting file to be replaced by variables (files):
+  //pathVariables 'GRADLE_HOME': file('/best/software/gradle'), 'TOMCAT_HOME': file('../tomcat')
+
+  classpath {
+    //you can tweak the classpath of the Eclipse project by adding extra configurations:
+   // plusConfigurations += [ configurations.provided ]
+
+    //you can also remove configurations from the classpath:
+    //minusConfigurations += [ configurations.someBoringConfig ]
+
+    //if you don't want some classpath entries 'exported' in Eclipse
+    //noExportConfigurations += [ configurations.provided ]
+
+    //if you want to append extra containers:
+    //containers 'someFriendlyContainer', 'andYetAnotherContainer'
+
+    //customizing the classes output directory:
+   // defaultOutputDir = file('build-eclipse')
+
+    //default settings for downloading sources and Javadoc:
+    downloadSources = true
+    downloadJavadoc = false
+  }
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart',
+                   'Implementation-Version': version
+    }
+}
+/**
+task copyJar(type: Copy) {
+    dependsOn   'jar'
+    from        "build/libs/md-data-initdb-${project.version}.jar"
+    into        'build/docker'
+    rename { String fileName ->
+        fileName.replace("-${project.version}", "")
+    }
+}
+
+
+task buildDockerImage(type: DockerBuildImage) {
+    dependsOn   copyJar
+    if (System.env.DOCKER_HOST) {
+        url = "$System.env.DOCKER_HOST".replace("tcp","https")
+        if (System.env.DOCKER_CERT_PATH) {
+            certPath = new File(System.env.DOCKER_CERT_PATH)
+
+        }
+    }
+    else {
+        url = 'unix:///var/run/docker.sock'
+    }
+    inputDir = file('.')
+    tag = 'vipservice/initdbdata'
+}
+
+build.dependsOn buildDockerImage
+build.dependsOn copyJar
+**/
+
+
+repositories {
+   mavenLocal()
+    mavenCentral()
+}
+
+
+
+configurations {
+   providedRuntime
+   // remove default logger
+   all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+}
+
+dependencies {
+    api project(":md-data-api")
+    api project(":vip-common")
+    api project(":md-data-api-pgimpl")
+    api "org.springframework.boot:spring-boot-starter"
+    api ('org.springframework.boot:spring-boot-starter-log4j2')
+    api group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '4.11.0.201803080745-r'
+    api("org.apache.httpcomponents:httpclient:$httpclient")
+    implementation("commons-collections:commons-collections:$commonsCollectionsVersion")
+    api group: 'org.python', name: 'jython-standalone', version: '2.7.1'
+    testImplementation group: 'junit', name: 'junit', version: '4.+'
+}
+
+
+
+
+test {
+    systemProperties 'property': 'value'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
