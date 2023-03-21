@@ -35,7 +35,7 @@ require (
 	github.com/xiaochao8/format v0.1.1
 	go.uber.org/zap v1.21.0
 	golang.org/x/text v0.3.7
-	gopkg.in/natefinch/lumberjack.v2 v2.0.0
+	gopkg.in/natefinch/lumberjack.v2 v2.2.1
 	gopkg.in/yaml.v3 v3.0.1
 )
 
