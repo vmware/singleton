@@ -7,7 +7,7 @@ require (
 	github.com/anargu/gin-brotli v0.0.0-20220116052358-12bf532d5267
 	github.com/aws/aws-sdk-go-v2/service/sts v1.17.1
 	github.com/buf1024/golib v0.0.0-20180525093050-357ea6b5733d
-	github.com/dgraph-io/ristretto v0.1.0
+	github.com/dgraph-io/ristretto v0.1.1
 	github.com/emirpasic/gods v1.18.1
 	github.com/fatih/structs v1.1.0
 	github.com/gavv/httpexpect/v2 v2.3.1
@@ -101,7 +101,7 @@ require (
 	go.uber.org/multierr v1.8.0 // indirect
 	golang.org/x/crypto v0.0.0-20220622213112-05595931fe9d // indirect
 	golang.org/x/net v0.0.0-20220706163947-c90051bbdb60 // indirect
-	golang.org/x/sys v0.0.0-20220704084225-05e143d24a9e // indirect
+	golang.org/x/sys v0.0.0-20221010170243-090e33056c14 // indirect
 	golang.org/x/tools v0.1.11 // indirect
 	google.golang.org/protobuf v1.28.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
