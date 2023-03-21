@@ -21,7 +21,7 @@ require (
 	github.com/go-test/deep v1.0.8
 	github.com/golang/mock v1.6.0
 	github.com/hashicorp/go-multierror v1.1.1
-	github.com/jaffee/commandeer v0.5.0
+	github.com/jaffee/commandeer v0.6.0
 	github.com/json-iterator/go v1.1.12
 	github.com/jucardi/go-osx v1.0.1
 	github.com/mackerelio/go-osstat v0.2.3
