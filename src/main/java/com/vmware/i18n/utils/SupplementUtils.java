@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.utils;
@@ -89,4 +89,18 @@ public class SupplementUtils {
 		logger.info("Extract cldr supplemental numberingSystems data complete!");
 	}
 
+	public static void extractSupplementalDayPeriods(){
+        logger.info("Start to extract cldr supplemental dayPeriods data ... ");
+        Map<String, Object> supplementalMap = getSupplementalData(Constants.DAY_PERIODS_JSON, Constants.SUPPLEMENTAL_DAY_PERIODS_RULESET);
+        try {
+            String result = new ObjectMapper().writeValueAsString(supplementalMap);
+            Map<String, Object> tmpMap = new LinkedHashMap<String, Object>();
+            tmpMap.put(Constants.DAY_PERIODS_RULESET, JSONUtil.string2SortMap(result));
+            CLDRUtils.writePatternDataIntoFile(
+                    CLDRConstants.GEN_CLDR_SUPPLEMENT_DIR + File.separator + Constants.DATES_JSON, tmpMap);
+        } catch (JsonProcessingException e) {
+            logger.error(e.getMessage());
+        }
+        logger.info("Extract cldr supplemental dayPeriods data complete!");
+    }
 }

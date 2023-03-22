@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n;
@@ -23,6 +23,8 @@ public class PatternParseMain {
         SupplementUtils.supplementalCurrencyExtract();
         System.out.println("start supplementalNumberingSystemsExtract");
         SupplementUtils.supplementalNumberingSystemsExtract();
+        System.out.println("start extractSupplementalDayPeriods");
+        SupplementUtils.extractSupplementalDayPeriods();
         System.out.println("start aliasesExtract");
         CLDRUtils.aliasesExtract();
         System.out.println("start defaultContentExtract");

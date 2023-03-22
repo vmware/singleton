@@ -140,7 +140,7 @@ public class PatternServiceImpl implements IPatternService {
 		String resourcePath = PathUtils.getResourcePath();
 
 		for (String cat : cateList) {
-			if(cat.equals(Constants.NUMBERS) || cat.equals(Constants.CURRENCIES)) {// currently only these two categories have supplemental data
+			if(cat.equals(Constants.NUMBERS) || cat.equals(Constants.CURRENCIES) || cat.equals(Constants.DATES)) {// currently only these three categories have supplemental data
 				String filePath = MessageFormat.format(CLDRConstants.SUPPLEMENTAL_PATH, cat);
 				String suppleData = dao.getPattern(PathUtils.getCoreResourcePath(), filePath);
 				if (!CommonUtil.isEmpty(suppleData)) {
