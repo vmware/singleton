@@ -171,7 +171,7 @@ public class StreamProductAction extends TranslationProductAction {
 
         for (int idx = 1; idx < readChannels.size(); idx++) {
             if (flag) {
-                buf.rewind();
+                buf.position(0);
                 wbc.write(buf);
             } else {
                 buf.put(byteComm);
@@ -200,7 +200,7 @@ public class StreamProductAction extends TranslationProductAction {
         for (int i =1; i<resultList.size(); i++){
             wbc.write(buf);
             wbc.write(ByteBuffer.wrap(resultList.get(0).toJSONString().getBytes()));
-            buf.rewind();
+            buf.position(0);
         }
         wbc.write(sr.getEndBytes());
     }
