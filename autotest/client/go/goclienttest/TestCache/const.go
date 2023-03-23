@@ -38,5 +38,5 @@ const (
 	messagevalue     = "Your contact page."
 	frmessagevalue   = "Votre page de contact."
 	dlcnmessagevalue = "您的联系人页面。"
-	bat_path         = "E:/234/goclienttest/go_bat/"
+	bat_path         = "../test/path"
 )

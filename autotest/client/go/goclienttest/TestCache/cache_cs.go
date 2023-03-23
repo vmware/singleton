@@ -5,6 +5,7 @@
 
 package cachetest
 
+//COMMENT
 import (
 	"sync"
 )
@@ -15,7 +16,7 @@ type defaultCache struct {
 	m *sync.Map
 }
 
-// new cache.
+//NewCache
 func NewCache() *defaultCache {
 	return &defaultCache{new(sync.Map)}
 }
