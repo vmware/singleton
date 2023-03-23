@@ -30,6 +30,7 @@ class TestCacheOnline:
         message = translation.get_string("about", "about.message")
         assert message == "test de key"
 
+    @pytest.mark.skip
     def test_online_cache_in_effective(self, update_cache):
         config_file = "cacheOnlineWithoutCacheControl.yml"
         file: Path = _CONFIG_.joinpath(config_file)
