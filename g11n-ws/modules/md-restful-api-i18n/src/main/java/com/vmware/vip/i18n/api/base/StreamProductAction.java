@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.channels.Channels;
 import java.nio.channels.FileChannel;
@@ -142,12 +143,12 @@ public class StreamProductAction extends TranslationProductAction {
 
             try {
                 while ((readChannel.read(buf)) != -1) {
-                    buf.flip();
+                    ((Buffer) buf).flip();
                     do {
                         writeChannel.write(buf);
                     } while (buf.hasRemaining());
 
-                    buf.clear();
+                    ((Buffer) buf).clear();
                 }
             } catch (Exception e) {
                 throw e;
@@ -171,7 +172,7 @@ public class StreamProductAction extends TranslationProductAction {
 
         for (int idx = 1; idx < readChannels.size(); idx++) {
             if (flag) {
-                buf.rewind();
+                ((Buffer) buf).rewind();
                 wbc.write(buf);
             } else {
                 buf.put(byteComm);
@@ -200,7 +201,7 @@ public class StreamProductAction extends TranslationProductAction {
         for (int i =1; i<resultList.size(); i++){
             wbc.write(buf);
             wbc.write(ByteBuffer.wrap(resultList.get(0).toJSONString().getBytes()));
-            buf.rewind();
+            ((Buffer) buf).rewind();
         }
         wbc.write(sr.getEndBytes());
     }
