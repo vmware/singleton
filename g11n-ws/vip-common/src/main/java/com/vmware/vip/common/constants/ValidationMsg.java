@@ -10,6 +10,8 @@ public final class ValidationMsg {
 	public final static String COMPONENT_NOT_VALIDE = "Incorrect component(only allows letter, number, dot, underline, dashline)";
 	public final static String COMPONENTS_NOT_VALIDE = "Incorrect components(only allows letter, number, comma, dot, underline, dashline)";
 	public final static String KEY_NOT_VALIDE = "Incorrect key(only allows standard ASCII char)";
+
+	public final static String KEY_CONTAIN_HTML = "Incorrect '%s' with html tags";
 	public final static String KEY_NOT_VALIDE_FORMAT = "Incorrect key name '%s' contains non-ASCII char(only allows standard ASCII char)";
 	public final static String KEYS_NOT_VALIDE = "Incorrect keys(only allows standard ASCII char)";
 	public final static String LOCALE_NOT_VALIDE = "Incorrect locale(only allows letter, number, dot, underline, dashline)";

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.common.utils;
@@ -114,7 +114,21 @@ public final class RegExpValidatorUtils {
 	public static boolean isAscii(String inputStr) {
 		return inputStr.matches("\\A\\p{ASCII}*\\z");
 	}
-	
+
+	/**
+	 * validate if the inputstr contains html tags
+	 *
+	 * @param inputStr
+	 * @return
+	 */
+	public static boolean containsHTML(String inputStr) {
+		if(inputStr != null) {
+			String p = "<(\"[^\"]*\"|'[^']*'|[^'\">])*>";
+			return Pattern.compile(p).matcher(inputStr).find();
+		}
+		return false;
+	}
+
 	public static void main(String[] args) {
 		System.out.println(RegExpValidatorUtils.IsLetter("bba"));
 		System.out.println(RegExpValidatorUtils.IsNumberAndDot("1.9.0"));

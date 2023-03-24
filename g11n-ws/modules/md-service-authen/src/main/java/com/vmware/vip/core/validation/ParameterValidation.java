@@ -29,6 +29,7 @@ public class ParameterValidation implements IVlidation {
 		if (this.request == null) { 
 			return;
 		}
+		validateQueryParams(request);
 		validateAppId(request);
 		validateProductname(request);
 		validateVersion(request);
@@ -50,7 +51,19 @@ public class ParameterValidation implements IVlidation {
 		validateScope(request);
 	}
 
-	
+	private void validateQueryParams(HttpServletRequest request)
+			throws ValidationException{
+		Map<String, String[]> allMap = request.getParameterMap();
+		for (String key : allMap.keySet()) {
+			String[] strArr = allMap.get(key);
+			for (String val : strArr) {
+				if (RegExpValidatorUtils.containsHTML(val)) {
+					throw new ValidationException(String.format(ValidationMsg.KEY_CONTAIN_HTML, key));
+				}
+			}
+		}
+
+	}
 	@SuppressWarnings("unchecked")
 	private void validateProductname(HttpServletRequest request)
 			throws ValidationException {
@@ -209,8 +222,12 @@ public class ParameterValidation implements IVlidation {
 		if (!RegExpValidatorUtils.isAscii(key)) {
 			throw new ValidationException(String.format(ValidationMsg.KEY_NOT_VALIDE_FORMAT, key));
 		}
+
+		if (RegExpValidatorUtils.containsHTML(key)) {
+			throw new ValidationException(String.format(ValidationMsg.KEY_CONTAIN_HTML, key));
+		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	private void validateKeys(HttpServletRequest request)
 			throws ValidationException {
@@ -224,6 +241,9 @@ public class ParameterValidation implements IVlidation {
 		}
 		if (!RegExpValidatorUtils.isAscii(keys)) {
 			throw new ValidationException(ValidationMsg.KEYS_NOT_VALIDE);
+		}
+		if (RegExpValidatorUtils.containsHTML(keys)) {
+			throw new ValidationException(String.format(ValidationMsg.KEY_CONTAIN_HTML, keys));
 		}
 	}
 
