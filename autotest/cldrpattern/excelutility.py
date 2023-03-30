@@ -9,11 +9,6 @@ def excelutil():
     try:
         for row in sheet.iter_rows(min_row=2, values_only=True):
 
-        # data = TestData(casename=row[0],
-        #                 path=row[1],
-        #                 filename=row[2],
-        #                 key=row[3],
-        #                 expected=row[4])
             data = {"caseid": row[0],
                     "casename": row[1],
                     "zipdir": row[2],
@@ -21,7 +16,8 @@ def excelutil():
                     "filename": row[4],
                     "key": row[5],
                     "expected": str(row[6]),
-                    "category": row[7]}
+                    "category": row[7],
+                    "filesource": row[8]}
             datas.append(data)
         return datas
     except Exception as e:
