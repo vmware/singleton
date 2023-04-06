@@ -90,7 +90,8 @@ def unzipfile(directory, path):
     try:
         filename = curfilename(directory)
         for i in filename:
-            with ZipFile(directory + "/" + i) as zf:
+            file = directory + "/" + i
+            with ZipFile(file) as zf:
                 for f in zf.namelist():
                     zf.extract(f, path)
         zf.close()
