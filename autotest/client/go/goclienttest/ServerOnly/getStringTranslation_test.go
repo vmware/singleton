@@ -6,6 +6,7 @@
 package ServerOnly
 
 import (
+	"fmt"
 	"testing"
 
 	. "github.com/smartystreets/goconvey/convey"
@@ -20,68 +21,94 @@ func TestGetStringTranslation(t *testing.T) {
 	sgtn.Initialize(cfg)
 	translation := sgtn.GetTranslation()
 
-	Convey("Service-requestlocale: Get request locale's translation from service", t, func() {
 
-		Convey("Service-requestlocale: Get common strings successfully with en(P0)", func() {
+	Convey("localbundles-request: Get request locale's translation from localbundle", t, func() {
 
-			tran1, _ := translation.GetStringMessage("GoClientTest", "1.0.0", "en", Defaultcom, commonkey)
-			// fmt.Print(tran1)
 
-			So(tran1, ShouldEqual, commonvalue)
-			// So(cfg, ShouldNotBeNil)
+
+		Convey("localbundles-requestlocale: Get common strings successfully from localbundle(P0)", func() {
+
+			tran1, _ := translation.GetStringMessage("GoClientTest", "1.0.0", "zh-Hans", "DefaultComponent", "message.translation.available")
+
+
+			So(tran1, ShouldEqual, "该组件已准备好翻译。")
 		})
 
-		Convey("Service-requestlocale: Get placehodler strings successfully with fr(P0)", func() {
 
-			tran2, _ := translation.GetStringMessage("GoClientTest", "1.0.0", "fr", Defaultcom, holderkey, "a", "b")
-			// fmt.Print(tran2)
+		Convey("localbundles-requestlocale: Get placehodler strings and locale fallback to default locale(P0)", func() {
 
-			So(tran2, ShouldEqual, "L'opérateur 'a' n'est pas pris en charge pour la propriété 'b'.")
+			tran2, _ := translation.GetStringMessage("GoClientTest", "1.0.0", "da", "DefaultComponent", "message.argument", "a", "b")
+			fmt.Print(tran2)
+			So(tran2, ShouldEqual, "Der Operator 'a' unterstützt die Eigenschaft 'b' nicht.")
 		})
 
-		Convey("Service-requestlocale: Get long and html tag strings successfully with fr(P0)", func() {
+		Convey("localbundles-requestlocale: Get common strings and locale fallback to loacle source", func() {
 
-			tran2, _ := translation.GetStringMessage("GoClientTest", "1.0.0", "fr", Defaultcom, htmlkey)
+			tran2, _ := translation.GetStringMessage("GoClientTest", "1.0.0", "ru", "default1", "language")
 			// should add check if send out http request as the previous case has cached fr component translation
 
-			So(tran2, ShouldEqual, frhtmlvalue)
+			So(tran2, ShouldEqual, "en Language")
 		})
 
-		SkipConvey("Service-requestlocale: non-existing key, return key(P1)", func() {
+		Convey("localbundles-requestlocale: Get long and html tag strings and locale is empty(P0)", func() {
 
-			tran2, _ := translation.GetStringMessage("GoClientTest", "1.0.0", "fr", Defaultcom, "non-existing.key")
-			So(tran2, ShouldEqual, "non-existing.key")
+			tran2, _ := translation.GetStringMessage("GoClientTest", "1.0.0", "", "DefaultComponent", "message.url")
+			// should add check if send out http request as the previous case has cached fr component translation
+
+			So(tran2, ShouldEqual, "<html><body><p><span style=\"color: rgb(255,0,0);\"><strong>Die geplante Wartung wurde gestartet. </strong></span></p><p>Wichtige Informationen zur Wartung finden Sie hier: <a class=\"external-link\" href=\"http://www.vmware.com\">https://www.vmware.com</a><strong><br/></strong></p></body></html>")
 		})
+
+		SkipConvey("localbundles-requestlocale: version fallback--- discuss bug,server not 604", func() {
+
+			tran2, _ := translation.GetStringMessage("GoClientTest", "1.0.1", "de", "DefaultComponent", "message.translation.available")
+			// should add check if send out http request as the previous case has cached fr component translation
+			fmt.Print(tran2)
+			So(tran2, ShouldEqual, "该组件已准备好翻译。")
+		})
+
+		
 	})
 
-	Convey("Service-defaultlocale: Get default locale's translation from service", t, func() {
+	Convey("localbundles-request:abnormal scenario about getstringtranslation", t, func() {
 
-		// cfPath := "testdata/Config/config.yaml"
-		// cfg, _ := sgtn.NewConfig(cfPath)
-		// inst, _ := sgtn.NewInst(*cfg)
-		// fmt.Print(inst)
-		// translation := inst.GetTranslation()
+		Convey("product name not exist(P1)", func() {
 
-		Convey("Service-defaultlocale: request unsupport locale(ru) in service, get default locale translation from service(P0)", func() {
+			//messages_zh-Hans.json of component "contact" isn't in service but in localbundle
+			tran1, _ := translation.GetStringMessage("notexist", "1.0.0", "abc", "contact", "contact.title")
 
-			tran1, _ := translation.GetStringMessage("GoClientTest", "1.0.0", "ru", Defaultcom, commonkey)
-
-			//should return default locale translation as expect service to return nothing with 404. But now, service return en.
-			//So(tran1, ShouldEqual, dlcncommonvalue)
-			So(tran1, ShouldEqual, dlcncommonvalue)
+			//zh-Hans is default locale
+			So(tran1, ShouldEqual, "contact.title")
 		})
 
-		SkipConvey("Service-defaultlocale: request empty locale() and key is not existing, get key returned(P1)", func() {
 
-			tran2, _ := translation.GetStringMessage("GoClientTest", "1.0.0", "", Defaultcom, "non-existing.key")
+		Convey("version is not exist", func() {
+
+			tran1, _ := translation.GetStringMessage("GoClientTest", "abc", "en", "contact", "contact.title")
+
+			//zh-Hans is default locale
+			So(tran1, ShouldEqual, "contact.title")
+		})
+
+		Convey("component is not exist", func() {
+
+			tran1, _ := translation.GetStringMessage("GoClientTest", "1.0.0", "fr", "abc", "contact.title")
+
+			//zh-Hans is default locale
+			So(tran1, ShouldEqual, "contact.title")
+		})
+
+		Convey("key is not exist", func() {
+
+			tran2, _ := translation.GetStringMessage("GoClientTest", "1.0.0", "en", "contact", "non-existing.key")
 			So(tran2, ShouldEqual, "non-existing.key")
 		})
 
-		SkipConvey("Service-defaultlocale: request non-existing component in service, get key returned(P1)", func() {
+		// SkipConvey("element is not abnormal-sucess", func() {
 
-			tran2, _ := translation.GetStringMessage("GoClientTest", "1.0.0", "fr", "NonExistingComponent", commonkey)
-			So(tran2, ShouldEqual, commonkey)
-		})
+		// 	tran2, err := translation.GetStringMessage("GoClientTest", "1.0.0", "contact", "non-existing.key")
+		// 	So(tran2, ShouldEqual, "non-existing.key")
+		// 	fmt.Print(err)
+		// })
 	})
 
 }

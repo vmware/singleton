@@ -36,8 +36,8 @@ func TestLocaleList(t *testing.T) {
 		SkipConvey("Get nothing for non-existing product-(P1)", func() {
 
 			// inst1, _ := replaceInst(cfg)
-			// fmt.Printf("localbunlde path: %s\n", inst1.GetConfig().LocalBundles) //结果确实是空的
-			// fmt.Printf("product name: %s\n", inst1.GetConfig().Name)             //结果确实是空的
+			// fmt.Printf("localbunlde path: %s\n", inst1.GetConfig().LocalBundles) 
+			// fmt.Printf("product name: %s\n", inst1.GetConfig().Name)             
 
 			//translation1 := inst1.GetTranslation()
 			localelist, err := translation.GetLocaleList("NonExistingProduct", "1.0")

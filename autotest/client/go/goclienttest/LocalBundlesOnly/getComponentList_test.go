@@ -26,13 +26,15 @@ func TestComponentList(t *testing.T) {
 		comlist, err := translation.GetComponentList("GoClientTest", "1.0.0")
 		fmt.Print(comlist)
 		fmt.Print(err)
+		//fmt.Print("\ntest add value")
 
 		So(len(comlist), ShouldEqual, 5)
+		So(comlist, ShouldContain, "about")
 		// So(cfg, ShouldNotBeNil)
 
 	})
 
-	SkipConvey("Get nothing when the localbundle path is incorrect(P1)", t, func() {
+	Convey("Get nothing for non-existing product-(P1)", t, func() {
 
 		comlist1, err1 := translation.GetComponentList("NonExistenceProduct", "1.0")
 		fmt.Print(comlist1)
