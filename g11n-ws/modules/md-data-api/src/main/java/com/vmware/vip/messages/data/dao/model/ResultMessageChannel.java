@@ -70,7 +70,7 @@ public class ResultMessageChannel implements Serializable{
 		StringBuilder sb = new StringBuilder();
 	 	sb.append("{\r\n    \"component\": \""+this.component+"\",\r\n" );
 	 	sb.append("    \"messages\": null ,\r\n" );
-    	sb.append("    \"locale\": \""+this.locale+"\",\r\n}" );
+    	sb.append("    \"locale\": \""+this.locale+"\"\r\n}" );
 		return sb.toString();
 	}
 	
