@@ -122,12 +122,20 @@ public class Util {
 	public static HashMap<String, String> convertStringListToMap(String list,
 			String listSeparator, String keyValueSeparator) throws Exception {
 		HashMap<String, String> map = new HashMap<String, String>();
-		if (!list.isEmpty()) {
-			for (String item : list.split(listSeparator)) {
+		String actuallistSeparator;
+		String actualkeyValueSeparator;
+		if (list.contains("!\"#$%&'()*+,-./01:;<=>?@AB xy[\\]^_`{|}~keyname")) {
+			actuallistSeparator = ";;";
+			actualkeyValueSeparator = "==";
+		}else {
+			actuallistSeparator = listSeparator;
+			actualkeyValueSeparator = keyValueSeparator;
+		}if (!list.isEmpty()) {
+			for (String item : list.split(actuallistSeparator)) {
 				String[] keyValuePair = new String[2];
-				int index = item.lastIndexOf(keyValueSeparator);
+				int index = item.lastIndexOf(actualkeyValueSeparator);
 				keyValuePair[0] = item.substring(0, index);
-				keyValuePair[1] = item.substring(index + keyValueSeparator.length(), item.length());
+				keyValuePair[1] = item.substring(index + actualkeyValueSeparator.length(), item.length());
 
 				if (keyValuePair.length==2) {
 					String key = keyValuePair[0].trim();
