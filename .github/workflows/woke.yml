@@ -1,15 +1,20 @@
-on: workflow_call
+on:
+  workflow_call:
+    inputs:
+      fail-on-error:
+        required: true
+        type: boolean
+
 jobs:
   woke:
     name: woke
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: woke
+        uses: actions/checkout@v3
+      - name: Woke
         uses: get-woke/woke-action@v0
         with:
-          # Cause the check to fail on any broke rules
-          fail-on-error: true
+          fail-on-error: ${{ inputs.fail-on-error }}
+          # The woke rule is turned off, but still shows the output
           woke-args: --config https://via.vmw.com/its-woke-rules -o text --disable-default-rules

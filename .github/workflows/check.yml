@@ -1,0 +1,21 @@
+on: workflow_call
+jobs:
+  check-header:
+    name: Check Header
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2.
+      - name: Get commit range
+        id: get-commit-range-action
+        uses: aleksbogdanov12/singleton/.github/actions/get-commit-range-action@devops
+      - name: Check header
+        run: |
+          git clone --branch=devops https://github.com/vmware/singleton.git devops
+          cp $GITHUB_WORKSPACE/devops/check_headers.py .
+          chmod +x check_headers.py
+          git diff ${{ steps.get-commit-range-action.outputs.commit-range }} --stat
+          git diff --name-only --diff-filter=d ${{ steps.get-commit-range-action.outputs.commit-range }}
+          python ./check_headers.py -f "$(git diff --name-only --diff-filter=d ${{ steps.get-commit-range-action.outputs.commit-range }})"

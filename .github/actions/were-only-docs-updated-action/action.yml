@@ -1,0 +1,23 @@
+name: 'Were only docs updated'
+inputs:
+  commit-range:
+    description: 'commit range'
+    required: true
+outputs:
+  were-only-docs-updated:
+    description: "Were only docs updated"
+    value: ${{ steps.were-only-docs-updated-id.outputs.were-only-docs-updated }}
+runs:
+  using: "composite"
+  steps:
+    - id: were-only-docs-updated-id
+      shell: bash
+      run: |
+        echo "commit range: ${{ inputs.commit-range }}"
+        git diff --name-only ${{ inputs.commit-range }} | grep -qvE '(\.md$)|(^(docs|g11n-ws/docs))/' || {
+          echo "were-only-docs-updated=yes" >> $GITHUB_OUTPUT
+          echo "were-only-docs-updated: yes."
+          exit
+        }
+        echo "were-only-docs-updated=no" >> $GITHUB_OUTPUT
+        echo "were-only-docs-updated: no."
