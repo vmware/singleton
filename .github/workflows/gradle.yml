@@ -142,7 +142,7 @@ jobs:
       - name: Smoke Test
         run: |
           pip install wheel setuptools pip --upgrade
-          pip install ddt datetime openpyxl zipfile37 JPype1 ast
+          pip install ddt datetime openpyxl zipfile37 JPype1
           git clone --branch=devops https://github.com/vmware/singleton.git devops
           mv $GITHUB_WORKSPACE/devops/autotest/cldrpattern/* .
           sudo cp HTMLTestRunner.py /usr/lib/python3.10
