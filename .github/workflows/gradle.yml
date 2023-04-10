@@ -141,7 +141,7 @@ jobs:
           python-version: '3.10'
       - name: Smoke Test
         run: |
-          pip install ddt datetime openpyxl zipfile37 JPype1
+          pip install ddt datetime openpyxl zipfile37 JPype1 ast
           git clone --branch=devops https://github.com/vmware/singleton.git devops
           mv $GITHUB_WORKSPACE/devops/autotest/cldrpattern/* .
           sudo cp HTMLTestRunner.py /usr/lib/python3.10
@@ -154,6 +154,7 @@ jobs:
           sudo chmod +x gradlew
           ./gradlew build
           cp build/libs/i18n-patterns-core-0.11.0.jar java-client-sample/lib
+          cp build/libs/i18n-patterns-core-0.11.0.jar jarpath
           cd java-client-sample
           sudo chmod +x gradlew 
           ./gradlew build
