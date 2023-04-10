@@ -141,6 +141,7 @@ jobs:
           python-version: '3.10'
       - name: Smoke Test
         run: |
+          pip install wheel setuptools pip --upgrade
           pip install ddt datetime openpyxl zipfile37 JPype1 ast
           git clone --branch=devops https://github.com/vmware/singleton.git devops
           mv $GITHUB_WORKSPACE/devops/autotest/cldrpattern/* .
