@@ -121,7 +121,7 @@ jobs:
       run: |
         sudo apt-get update
         git clone --branch=master --depth=1 https://github.com/vmware/singleton.git server
-        git clone --branch=devops --depth=1 https://github.com/aleksbogdanov12/singleton.git devops
+        git clone --branch=devops --depth=1 https://github.com/vmware/singleton.git devops
         cp -r $GITHUB_WORKSPACE/devops/autotest/client/python/main/lib/l10n/bundles $GITHUB_WORKSPACE/server/g11n-ws/vip-manager-i18n/src/main/resources/l10n/bundles
         mv $GITHUB_WORKSPACE/devops/autotest/client/python/main/lib/application-bundle.properties $GITHUB_WORKSPACE/server/g11n-ws/vip-manager-i18n/src/main/resources/application-bundle.properties
         cd $GITHUB_WORKSPACE/server/g11n-ws && ./gradlew build -x test
