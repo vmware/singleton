@@ -27,7 +27,7 @@ class TestCacheOfflineRemote:
 
         # get remote messages_de.json
         message = translation.get_string("about", "about.message", locale="de")
-        assert message == "test de key"
+        assert message == "test de key(Offline Disk)"
 
 
 if __name__ == '__main__':
