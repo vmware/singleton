@@ -97,8 +97,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: set-up go
+      - name: Set-Up Python environment
         uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
       - name: Run Codacy Analysis CLI
         uses: codacy/codacy-analysis-cli-action@master
         with:
