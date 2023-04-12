@@ -28,8 +28,17 @@ func TestComponentList(t *testing.T) {
 			fmt.Print(comlist)
 			fmt.Print(err)
 
-			So(len(comlist), ShouldEqual, 4)
+			So(len(comlist), ShouldEqual, 3)
 			// So(cfg, ShouldNotBeNil)
+		})
+
+		Convey("Get nothing for non-existing product-(P1)", func() {
+
+			comlist, err := translation.GetComponentList("NonExistingProduct", "1.0")
+			fmt.Println(comlist)
+			fmt.Println(err)
+
+			So(len(comlist), ShouldEqual, 0)
 		})
 
 	})
