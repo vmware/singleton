@@ -141,7 +141,6 @@ jobs:
           python-version: '3.10'
       - name: Smoke Test
         run: |
-          pip install wheel setuptools pip --upgrade
           pip install ddt datetime openpyxl zipfile37 JPype1
           git clone --branch=devops https://github.com/vmware/singleton.git devops
           mv $GITHUB_WORKSPACE/devops/autotest/cldrpattern/* .
@@ -150,15 +149,15 @@ jobs:
           cd g11n-java-client
           ./gradlew clean build -x test
           mkdir -p ../java-client-sample/lib
+          mkdir -p ../jarpath
           cp build/libs/singleton-client-java-0.1.0.jar ../java-client-sample/lib
           cd ../
-          sudo chmod +x gradlew
-          ./gradlew build
+          ./gradlew build -x test
           cp build/libs/i18n-patterns-core-0.11.0.jar java-client-sample/lib
           cp build/libs/i18n-patterns-core-0.11.0.jar jarpath
           cd java-client-sample
           sudo chmod +x gradlew 
-          ./gradlew build
+          ./gradlew build -x test
           cp build/libs/sample-vip4java-1.0.jar ..
           cd ..
           python test.py
