@@ -4,16 +4,19 @@
  */
 package com.vmware.vipclient.i18n.filters;
 
+import com.vmware.vipclient.i18n.util.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.OutputStream;
 
-public class URLParamUtils {
-    static Logger logger = LoggerFactory.getLogger(URLParamUtils.class);
+public class FilterUtils {
+    static Logger logger = LoggerFactory.getLogger(FilterUtils.class);
 
     public static String getParamFromURI(ServletRequest request, String paramName) {
         HttpServletRequest res = (HttpServletRequest) request;
@@ -23,7 +26,7 @@ public class URLParamUtils {
 
     public static String getParamFromURI(String uri, String paramName) {
         logger.debug("requestURI: " + uri);
-        if (uri == null || uri.equalsIgnoreCase("")) {
+        if (StringUtil.isEmpty(uri)) {
             throw new RuntimeException("URI doesn't contain required parameter '" + paramName + "'!");
         }
         int paramNameIndex = uri.indexOf(paramName);
@@ -58,7 +61,7 @@ public class URLParamUtils {
 
     public static String getParamFromQuery(String queryStr, String paramName) {
         logger.debug("queryStr: " + queryStr);
-        if (queryStr == null || queryStr.equalsIgnoreCase("")) {
+        if (StringUtil.isEmpty(queryStr)) {
             throw new RuntimeException("Request parameter '" + paramName + "' is required!");
         }
         int paramNameIndex = queryStr.indexOf(paramName);
@@ -92,5 +95,11 @@ public class URLParamUtils {
             logger.error(e.getMessage());
         }
         return source.toString();
+    }
+
+    public static void printErrorMsg(ServletResponse response, String errorMsg) throws IOException {
+        OutputStream os = response.getOutputStream();
+        response.setContentType("application/json;charset=UTF-8");
+        os.write(errorMsg.getBytes("UTF-8"));
     }
 }

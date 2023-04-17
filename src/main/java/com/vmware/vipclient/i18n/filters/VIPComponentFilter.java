@@ -36,36 +36,36 @@ public class VIPComponentFilter implements Filter {
 
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain) throws IOException, ServletException {
-        String locale = null;
-        String component = null;
         try {
-            component = URLParamUtils.getParamFromURI(request, "component");
+            String component = FilterUtils.getParamFromURI(request, "component");
             logger.debug("component: " + component);
-            locale = URLParamUtils.getParamFromQuery(request, "locale");
+            String locale = FilterUtils.getParamFromQuery(request, "locale");
             logger.debug("locale: " + locale);
-        } catch (Exception e) {
-            logger.error(e.getMessage(), e);
-        }
-        String messages = "{}";
-        if (!StringUtil.isEmpty(component) && !StringUtil.isEmpty(locale)) {
-            if (!LocaleUtility.isDefaultLocale(locale) && translation != null) {
-                Map<String, String> ctmap = translation.getMessages(LocaleUtility.fmtToMappedLocale(locale),
-                        component);
-                if (ctmap != null) {
-                    messages = JSONObject.toJSONString(ctmap);
+            String messages = "{}";
+            if (!StringUtil.isEmpty(component) && !StringUtil.isEmpty(locale)) {
+                if (!LocaleUtility.isDefaultLocale(locale) && translation != null) {
+                    Map<String, String> ctmap = translation.getMessages(LocaleUtility.fmtToMappedLocale(locale),
+                            component);
+                    if (ctmap != null) {
+                        messages = JSONObject.toJSONString(ctmap);
+                    }
                 }
             }
+            OutputStream os = response.getOutputStream();
+            response.setContentType("text/javascript;charset=UTF-8");
+            os.write(("var translation = {" + "\"messages\" : " + messages + ", "
+                    + "\"productName\" : \"" + gc.getInstance().getProductName()
+                    + "\", " + "\"version\" : \"" + gc.getInstance().getVersion()
+                    + "\", " + "\"vipServer\" : \""
+                    + gc.getInstance().getVipServer() + "\", " + "\"pseudo\" : \""
+                    + gc.getInstance().isPseudo() + "\", "
+                    + "\"collectSource\" : \"" + gc.getInstance().isCollectSource() + "\"};")
+                    .getBytes("UTF-8"));
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            String errorMsg = "{\"code\":\"400\", \"message\": "+e.getMessage()+"}";
+            FilterUtils.printErrorMsg(response, errorMsg);
         }
-        OutputStream os = response.getOutputStream();
-        response.setContentType("text/javascript;charset=UTF-8");
-        os.write(("var translation = {" + "\"messages\" : " + messages + ", "
-                + "\"productName\" : \"" + gc.getInstance().getProductName()
-                + "\", " + "\"version\" : \"" + gc.getInstance().getVersion()
-                + "\", " + "\"vipServer\" : \""
-                + gc.getInstance().getVipServer() + "\", " + "\"pseudo\" : \""
-                + gc.getInstance().isPseudo() + "\", "
-                + "\"collectSource\" : \"" + gc.getInstance().isCollectSource() + "\"};")
-                        .getBytes("UTF-8"));
     }
 
     public void destroy() {
