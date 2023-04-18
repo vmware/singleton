@@ -53,13 +53,22 @@ dependencies {
 	implementation("commons-codec:commons-codec:$commonsCodecVersion")
     implementation("com.ibm.icu:icu4j:$icu4jVersion")
     api group: 'org.webjars.bower', name: 'cldr-data', version: '28.0.1'
-    api("org.springframework:spring-webmvc:$springWebVersion")
+
     api ("org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion")
     api ("org.apache.tomcat:tomcat-annotations-api:$tomcatVersion")
     api('org.springframework.boot:spring-boot-autoconfigure')
       api ('org.springframework.boot:spring-boot-starter-log4j2'){
               exclude group: "org.apache.logging.log4j"
     }
+    implementation("org.springframework:spring-aop:$springWebVersion")
+    implementation("org.springframework:spring-beans:$springWebVersion")
+    implementation("org.springframework:spring-context:$springWebVersion")
+    implementation("org.springframework:spring-core:$springWebVersion")
+    implementation("org.springframework:spring-expression:$springWebVersion")
+    implementation("org.springframework:spring-jcl:$springWebVersion")
+    implementation("org.springframework:spring-web:$springWebVersion")
+    implementation("org.springframework:spring-webmvc:$springWebVersion")
+
     implementation("org.apache.logging.log4j:log4j-api:$log4j2Version")
     implementation("org.apache.logging.log4j:log4j-core:$log4j2Version")
     implementation("org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version")
