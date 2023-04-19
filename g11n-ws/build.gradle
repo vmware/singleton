@@ -19,6 +19,7 @@ buildscript {
     }
 }
 
+
 allprojects{
     version = project.getProperty('buildNumber')
     
@@ -52,7 +53,7 @@ subprojects{
     ext {
    	       
         projectVersion = '0.0.1-SNAPSHOT'
-        springWebVersion='5.3.26'
+        springWebVersion='5.3.27'
         tomcatVersion= '9.0.73'
         httpclient='4.5.13'
         jacksonVersion = '2.14.0'
