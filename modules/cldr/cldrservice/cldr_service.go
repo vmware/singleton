@@ -26,13 +26,21 @@ import (
 var (
 	ArgSplitter = regexp.MustCompile(`\s*` + common.ParamSep + `\s*`)
 
-	// SpecialCategories Data is always form language
-	SpecialCategories = hashset.New(cldr.PatternDateFields, cldr.PatternPlurals)
+	// categoriesFromLanguage these are always form language
+	categoriesFromLanguage = hashset.New(cldr.PatternDateFields, cldr.PatternPlurals)
 
-	// SupplementalCategories Need to get some extra data for these categories
-	SupplementalCategories = map[string]cldr.CoreDataType{
+	// categoriesWithSupplement Need to get some extra data for these categories for front end requirements
+	categoriesWithSupplement = map[string]cldr.CoreDataType{
 		cldr.PatternCurrencies: cldr.CoreSplmtCurrencyData,
 		cldr.PatternNumbers:    cldr.CoreSplmtNumberingSystems,
+	}
+
+	// categoriesNeedOtherCategories these categories need other categories for front end requirements
+	categoriesNeedOtherCategories = map[string][]string{
+		cldr.PatternCurrencies:   {cldr.PatternNumbers},
+		cldr.PatternPlurals:      {cldr.PatternNumbers},
+		cldr.PatternDateFields:   {cldr.PatternPlurals, cldr.PatternNumbers},
+		cldr.PatternMeasurements: {cldr.PatternPlurals, cldr.PatternNumbers},
 	}
 )
 
@@ -56,7 +64,7 @@ func GetPatternByLangReg(ctx context.Context, language, region, catgs, filter st
 		catg := categories[i]
 		var catgData jsoniter.Any
 		var err error
-		if SpecialCategories.Contains(catg) { // dateFields and Plural always follow language
+		if categoriesFromLanguage.Contains(catg) { // dateFields and Plural always follow language
 			if normalizedLanguage == "" {
 				err = sgtnerror.StatusBadRequest.WithUserMessage(cldr.InvalidLocale, language)
 				log.Error(err.Error())
@@ -74,10 +82,7 @@ func GetPatternByLangReg(ctx context.Context, language, region, catgs, filter st
 		returnErr = sgtnerror.Append(returnErr, err)
 		if err == nil {
 			resultMap[catg] = catgData
-
-			if catg == cldr.PatternCurrencies && common.Contains(categories, cldr.PatternNumbers) < 0 {
-				categories = append(categories, cldr.PatternNumbers)
-			}
+			categories = addOtherCategories(categories, catg)
 		}
 	}
 
@@ -120,10 +125,7 @@ func GetPatternByLocale(ctx context.Context, locale, catgs, filter string) (newL
 		returnErr = sgtnerror.Append(returnErr, err)
 		if err == nil {
 			resultMap[catg] = catgData
-
-			if catg == cldr.PatternCurrencies && common.Contains(categories, cldr.PatternNumbers) < 0 {
-				categories = append(categories, cldr.PatternNumbers)
-			}
+			categories = addOtherCategories(categories, catg)
 		}
 	}
 
@@ -143,7 +145,7 @@ func getSupplementalData(ctx context.Context, resultMap map[string]interface{}, 
 			continue
 		}
 
-		if coreType, ok := SupplementalCategories[catg]; ok {
+		if coreType, ok := categoriesWithSupplement[catg]; ok {
 			coreData, err := coreutil.GetCoreData(ctx, coreType)
 			returnErr = sgtnerror.Append(returnErr, err)
 			if err == nil {
@@ -215,4 +217,15 @@ func includeNodes(data map[string]interface{}, filters string) map[string]interf
 	}
 
 	return newData
+}
+
+func addOtherCategories(categories []string, category string) []string {
+	if otherCatgs, ok := categoriesNeedOtherCategories[category]; ok {
+		for _, otherCatg := range otherCatgs {
+			if common.Contains(categories, otherCatg) < 0 {
+				categories = append(categories, otherCatg)
+			}
+		}
+	}
+	return categories
 }
