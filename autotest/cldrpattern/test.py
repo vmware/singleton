@@ -70,7 +70,7 @@ def rootfilename(directory, listvalue, externalfile):
         # only folder under root, different
         if paths == directory:
             continue
-        elif paths == directory + '\en':
+        elif paths == directory + '\en' or paths == directory + '/en':
             if externalfile is None:
                 if sorted(files) != sorted(listvalue):
                     print("there is missing/external file: ", paths, files)
