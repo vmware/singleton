@@ -207,12 +207,15 @@ public class PatternServiceImpl implements IPatternService {
 		Map<String, Object> resultMap = new LinkedHashMap<>();
 		Map<String, Object> categoriesMap = (Map<String, Object>) patternMap.get(ConstantsKeys.CATEGORIES);
 		Map<String, Object> supplementMap = (Map<String, Object>) categoriesMap.get(ConstantsKeys.SUPPLEMENT);
+		try {
+			if (categoryList.contains(ConstantsKeys.CURRENCIES) || categoryList.contains(ConstantsKeys.MEASUREMENTS) || categoryList.contains(ConstantsKeys.DATE_FIELDS) && !categoryList.contains(ConstantsKeys.PLURALS)) {
+				categoryList.add(ConstantsKeys.PLURALS);
+			}
+			if (categoryList.contains(ConstantsKeys.PLURALS) && !categoryList.contains(ConstantsKeys.NUMBERS)) {
+				categoryList.add(ConstantsKeys.NUMBERS);
+			}
+		} catch (UnsupportedOperationException e) {//catch the exception when refetch plural and dateFields by language for getPatternWithLanguageAndRegion API
 
-		if (categoryList.contains(ConstantsKeys.CURRENCIES) || categoryList.contains(ConstantsKeys.MEASUREMENTS) || categoryList.contains(ConstantsKeys.DATE_FIELDS) && !categoryList.contains(ConstantsKeys.PLURALS)) {
-			categoryList.add(ConstantsKeys.PLURALS);
-		}
-		if (categoryList.contains(ConstantsKeys.PLURALS) && !categoryList.contains(ConstantsKeys.NUMBERS)) {
-			categoryList.add(ConstantsKeys.NUMBERS);
 		}
 
 		for (String cat : categoryList) {
