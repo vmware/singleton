@@ -9,6 +9,9 @@ on:
   pull_request:
     branches: [ g11n-cldr-pattern ]
 
+env:
+  TZ: Asia/Shanghai
+
 jobs:
   pre-process:
     name: Pre process
