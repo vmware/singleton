@@ -205,8 +205,6 @@ public class PatternServiceImpl implements IPatternService {
 	 */
 	private Map<String, Object> getCategories(List<String> categoryList, Map<String, Object> patternMap){
 		Map<String, Object> resultMap = new LinkedHashMap<>();
-		Map<String, Object> categoriesMap = (Map<String, Object>) patternMap.get(ConstantsKeys.CATEGORIES);
-		Map<String, Object> supplementMap = (Map<String, Object>) categoriesMap.get(ConstantsKeys.SUPPLEMENT);
 		try {
 			if (categoryList.contains(ConstantsKeys.CURRENCIES) || categoryList.contains(ConstantsKeys.MEASUREMENTS) || categoryList.contains(ConstantsKeys.DATE_FIELDS) && !categoryList.contains(ConstantsKeys.PLURALS)) {
 				categoryList.add(ConstantsKeys.PLURALS);
@@ -217,15 +215,13 @@ public class PatternServiceImpl implements IPatternService {
 		} catch (UnsupportedOperationException e) {//catch the exception when refetch plural and dateFields by language for getPatternWithLanguageAndRegion API
 
 		}
-
+		Map<String, Object> categoriesMap = (Map<String, Object>) patternMap.get(ConstantsKeys.CATEGORIES);
+		Map<String, Object> supplementMap = (Map<String, Object>) categoriesMap.get(ConstantsKeys.SUPPLEMENT);
+		Map<String, Object> suppMap = new HashMap<>();
 		for (String cat : categoryList) {
 			if (!CommonUtil.isEmpty(categoriesMap.get(cat))) {
 				resultMap.put(cat, categoriesMap.get(cat));
 			}
-		}
-
-		Map<String, Object> suppMap = new HashMap<>();
-		for (String cat : categoryList) {
 			if (!CommonUtil.isEmpty(supplementMap.get(cat))) {
 				suppMap.put(cat, supplementMap.get(cat));
 			}
