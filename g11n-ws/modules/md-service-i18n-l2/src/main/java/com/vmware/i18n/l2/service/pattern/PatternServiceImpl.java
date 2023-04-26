@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.l2.service.pattern;
@@ -205,21 +205,25 @@ public class PatternServiceImpl implements IPatternService {
 	 */
 	private Map<String, Object> getCategories(List<String> categoryList, Map<String, Object> patternMap){
 		Map<String, Object> resultMap = new LinkedHashMap<>();
+		try {
+			if (categoryList.contains(ConstantsKeys.CURRENCIES) || categoryList.contains(ConstantsKeys.MEASUREMENTS) || categoryList.contains(ConstantsKeys.DATE_FIELDS) && !categoryList.contains(ConstantsKeys.PLURALS)) {
+				categoryList.add(ConstantsKeys.PLURALS);
+			}
+			if (categoryList.contains(ConstantsKeys.PLURALS) && !categoryList.contains(ConstantsKeys.NUMBERS)) {
+				categoryList.add(ConstantsKeys.NUMBERS);
+			}
+		} catch (UnsupportedOperationException e) {//catch the exception when refetch plural and dateFields by language for getPatternWithLanguageAndRegion API
+
+		}
 		Map<String, Object> categoriesMap = (Map<String, Object>) patternMap.get(ConstantsKeys.CATEGORIES);
 		Map<String, Object> supplementMap = (Map<String, Object>) categoriesMap.get(ConstantsKeys.SUPPLEMENT);
 		Map<String, Object> suppMap = new HashMap<>();
 		for (String cat : categoryList) {
-			suppMap.put(cat, supplementMap.get(cat));
-		}
-
-		if (categoryList.contains(ConstantsKeys.CURRENCIES) && !categoryList.contains(ConstantsKeys.NUMBERS)) {
-			categoryList.add(ConstantsKeys.NUMBERS);
-			suppMap.put(ConstantsKeys.NUMBERS, supplementMap.get(ConstantsKeys.NUMBERS));
-		}
-
-		for (String cat : categoryList) {
 			if (!CommonUtil.isEmpty(categoriesMap.get(cat))) {
 				resultMap.put(cat, categoriesMap.get(cat));
+			}
+			if (!CommonUtil.isEmpty(supplementMap.get(cat))) {
+				suppMap.put(cat, supplementMap.get(cat));
 			}
 		}
 		//add the supplement data
