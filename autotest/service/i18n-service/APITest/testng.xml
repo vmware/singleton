@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="RestAPI">
+<listeners>
+<listener class-name="com.vmware.singleton.api.test.common.Listener"/>
+</listeners>
 	<test name="RestAPI Test" preserve-order="true">
 		<classes>
 				 <class name="com.vmware.singleton.api.test.TestBase" />
