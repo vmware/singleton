@@ -9,6 +9,9 @@ on:
   pull_request:
     branches: [ g11n-cldr-pattern ]
 
+env:
+  TZ: Asia/Shanghai
+
 jobs:
   pre-process:
     name: Pre process
@@ -149,14 +152,15 @@ jobs:
           cd g11n-java-client
           ./gradlew clean build -x test
           mkdir -p ../java-client-sample/lib
+          mkdir -p ../jarpath
           cp build/libs/singleton-client-java-0.1.0.jar ../java-client-sample/lib
           cd ../
-          sudo chmod +x gradlew
-          ./gradlew build
+          ./gradlew build -x test
           cp build/libs/i18n-patterns-core-0.11.0.jar java-client-sample/lib
+          cp build/libs/i18n-patterns-core-0.11.0.jar jarpath
           cd java-client-sample
           sudo chmod +x gradlew 
-          ./gradlew build
+          ./gradlew build -x test
           cp build/libs/sample-vip4java-1.0.jar ..
           cd ..
           python test.py
