@@ -44,13 +44,6 @@ dependencies {
     }
     implementation("org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion")
     implementation("org.apache.tomcat:tomcat-annotations-api:$tomcatVersion")
-    implementation("org.springframework:spring-aop:$springWebVersion")
-    implementation("org.springframework:spring-beans:$springWebVersion")
-    implementation("org.springframework:spring-context:$springWebVersion")
-    implementation("org.springframework:spring-core:$springWebVersion")
-    implementation("org.springframework:spring-expression:$springWebVersion")
-    implementation("org.springframework:spring-jcl:$springWebVersion")
-    implementation("org.springframework:spring-web:$springWebVersion")
     implementation("org.springframework:spring-webmvc:$springWebVersion")
 
     implementation('org.springframework.boot:spring-boot-starter-log4j2'){
