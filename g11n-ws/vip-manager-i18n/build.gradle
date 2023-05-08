@@ -60,7 +60,11 @@ dependencies {
     implementation("org.yaml:snakeyaml:$snakeyam")
     implementation("io.jsonwebtoken:jjwt:$jjwtVersion")
     implementation("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$hibernateJpa21Api")
+
+    implementation("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
     implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
+    implementation("com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion")
+
     implementation("org.ehcache:ehcache:$ehCacheVersion")
     implementation("javax.cache:cache-api:$cacheApiVersion")
     implementation("org.apache.httpcomponents:httpclient:$httpclient")
