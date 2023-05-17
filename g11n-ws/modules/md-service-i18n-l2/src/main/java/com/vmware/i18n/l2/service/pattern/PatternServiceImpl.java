@@ -149,6 +149,16 @@ public class PatternServiceImpl implements IPatternService {
 	private Map<String, Object> buildPatternMap(String language, String region, String patternJson, List<String> categoryList, String scopeFilter, LocaleDataDTO localeDataDTO) throws VIPCacheException {
 		Map<String, Object> patternMap = new LinkedHashMap<>();
 		Map<String, Object> categoriesMap = new LinkedHashMap<>();
+		try {
+			if (categoryList.contains(ConstantsKeys.CURRENCIES) || categoryList.contains(ConstantsKeys.MEASUREMENTS) || categoryList.contains(ConstantsKeys.DATE_FIELDS) && !categoryList.contains(ConstantsKeys.PLURALS)) {
+				categoryList.add(ConstantsKeys.PLURALS);
+			}
+			if (categoryList.contains(ConstantsKeys.PLURALS) && !categoryList.contains(ConstantsKeys.NUMBERS)) {
+				categoryList.add(ConstantsKeys.NUMBERS);
+			}
+		} catch (UnsupportedOperationException e) {//catch the exception when refetch plural and dateFields by language for getPatternWithLanguageAndRegion API
+
+		}
 		if (StringUtils.isEmpty(patternJson)) {
 			patternMap.put(ConstantsKeys.LOCALEID, "");
 			for (String category : categoryList) {
@@ -205,16 +215,6 @@ public class PatternServiceImpl implements IPatternService {
 	 */
 	private Map<String, Object> getCategories(List<String> categoryList, Map<String, Object> patternMap){
 		Map<String, Object> resultMap = new LinkedHashMap<>();
-		try {
-			if (categoryList.contains(ConstantsKeys.CURRENCIES) || categoryList.contains(ConstantsKeys.MEASUREMENTS) || categoryList.contains(ConstantsKeys.DATE_FIELDS) && !categoryList.contains(ConstantsKeys.PLURALS)) {
-				categoryList.add(ConstantsKeys.PLURALS);
-			}
-			if (categoryList.contains(ConstantsKeys.PLURALS) && !categoryList.contains(ConstantsKeys.NUMBERS)) {
-				categoryList.add(ConstantsKeys.NUMBERS);
-			}
-		} catch (UnsupportedOperationException e) {//catch the exception when refetch plural and dateFields by language for getPatternWithLanguageAndRegion API
-
-		}
 		Map<String, Object> categoriesMap = (Map<String, Object>) patternMap.get(ConstantsKeys.CATEGORIES);
 		Map<String, Object> supplementMap = (Map<String, Object>) categoriesMap.get(ConstantsKeys.SUPPLEMENT);
 		Map<String, Object> suppMap = new HashMap<>();
