@@ -3,11 +3,11 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>I18n Context - Singleton</title>
+<title>Integrate Singleton in Go App - Singleton</title>
 <meta name="description" content="One-fits-all Internationalization Solution">
 <meta name="generator" content="Hugo 0.111.3">
 <link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
-<link rel="canonical" href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/i18n-context/">
+<link rel="canonical" href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-go-app/">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/chroma.min.css">
 <script defer src="https://vmware.github.io/singleton//js/fontawesome6/all.min.js"></script>
@@ -17,21 +17,24 @@
 <script src="https://vmware.github.io/singleton/js/bundle.js"></script><style>
 :root {}
 </style>
-<meta property="og:title" content="I18n Context" />
-<meta property="og:description" content="Overview I18n context is designed to manage the variables from different environments which carries pseudoEnabled, i18nEnabled, preferredLanguage, and other user-scoped values, provides a way to load and share these values between services without having to explicitly pass a parameter through every level of the service. In this way, users can use this interface to modify the default behavior regardless of the development or testing phase. The storage of these variables is configurable, and the default is saved in localstorage." />
+<meta property="og:title" content="Integrate Singleton in Go App" />
+<meta property="og:description" content="Requirements Go 1.13 or higher Install Singleton client package go get -u github.com/vmware/singleton@v0.7.1-Singleton-Go-Client Change v0.7.1-Singleton-Go-Client to the version of Singleton client you will use.
+Sample code package main import ( &#34;fmt&#34; sgtn &#34;github.com/vmware/singleton&#34; ) func main() { cfg := &amp;sgtn.Config{ ServerURL: &#34;https://localhost:8090&#34;, LocalSourceBundle: &#34;./sources&#34;, DefaultLocale: &#34;en&#34;, SourceLocale: &#34;en&#34;, } sgtn.Initialize(cfg) trans := sgtn.GetTranslation() // Get translation of a string message, err := trans.GetStringMessage(&#34;SgtnTest&#34;, &#34;1.0.0&#34;, &#34;zh-Hans&#34;, &#34;sunglow&#34;, &#34;application.title&#34;) if err != nil { fmt." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/i18n-context/" /><meta property="og:image" content="https://vmware.github.io/singleton/images/og-image.png"/><meta property="article:section" content="docs-previous" />
-<meta property="article:published_time" content="2022-06-16T12:43:05+03:00" />
-<meta property="article:modified_time" content="2022-06-16T12:43:05+03:00" /><meta property="og:site_name" content="Hugo Techdoc Theme" />
+<meta property="og:url" content="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-go-app/" /><meta property="og:image" content="https://vmware.github.io/singleton/images/og-image.png"/><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2023-05-11T10:07:56+00:00" />
+<meta property="article:modified_time" content="2023-05-11T10:07:56+00:00" /><meta property="og:site_name" content="Hugo Techdoc Theme" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://vmware.github.io/singleton/images/og-image.png"/>
 
-<meta name="twitter:title" content="I18n Context"/>
-<meta name="twitter:description" content="Overview I18n context is designed to manage the variables from different environments which carries pseudoEnabled, i18nEnabled, preferredLanguage, and other user-scoped values, provides a way to load and share these values between services without having to explicitly pass a parameter through every level of the service. In this way, users can use this interface to modify the default behavior regardless of the development or testing phase. The storage of these variables is configurable, and the default is saved in localstorage."/>
-<meta itemprop="name" content="I18n Context">
-<meta itemprop="description" content="Overview I18n context is designed to manage the variables from different environments which carries pseudoEnabled, i18nEnabled, preferredLanguage, and other user-scoped values, provides a way to load and share these values between services without having to explicitly pass a parameter through every level of the service. In this way, users can use this interface to modify the default behavior regardless of the development or testing phase. The storage of these variables is configurable, and the default is saved in localstorage."><meta itemprop="datePublished" content="2022-06-16T12:43:05+03:00" />
-<meta itemprop="dateModified" content="2022-06-16T12:43:05+03:00" />
-<meta itemprop="wordCount" content="457"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
+<meta name="twitter:title" content="Integrate Singleton in Go App"/>
+<meta name="twitter:description" content="Requirements Go 1.13 or higher Install Singleton client package go get -u github.com/vmware/singleton@v0.7.1-Singleton-Go-Client Change v0.7.1-Singleton-Go-Client to the version of Singleton client you will use.
+Sample code package main import ( &#34;fmt&#34; sgtn &#34;github.com/vmware/singleton&#34; ) func main() { cfg := &amp;sgtn.Config{ ServerURL: &#34;https://localhost:8090&#34;, LocalSourceBundle: &#34;./sources&#34;, DefaultLocale: &#34;en&#34;, SourceLocale: &#34;en&#34;, } sgtn.Initialize(cfg) trans := sgtn.GetTranslation() // Get translation of a string message, err := trans.GetStringMessage(&#34;SgtnTest&#34;, &#34;1.0.0&#34;, &#34;zh-Hans&#34;, &#34;sunglow&#34;, &#34;application.title&#34;) if err != nil { fmt."/>
+<meta itemprop="name" content="Integrate Singleton in Go App">
+<meta itemprop="description" content="Requirements Go 1.13 or higher Install Singleton client package go get -u github.com/vmware/singleton@v0.7.1-Singleton-Go-Client Change v0.7.1-Singleton-Go-Client to the version of Singleton client you will use.
+Sample code package main import ( &#34;fmt&#34; sgtn &#34;github.com/vmware/singleton&#34; ) func main() { cfg := &amp;sgtn.Config{ ServerURL: &#34;https://localhost:8090&#34;, LocalSourceBundle: &#34;./sources&#34;, DefaultLocale: &#34;en&#34;, SourceLocale: &#34;en&#34;, } sgtn.Initialize(cfg) trans := sgtn.GetTranslation() // Get translation of a string message, err := trans.GetStringMessage(&#34;SgtnTest&#34;, &#34;1.0.0&#34;, &#34;zh-Hans&#34;, &#34;sunglow&#34;, &#34;application.title&#34;) if err != nil { fmt."><meta itemprop="datePublished" content="2023-05-11T10:07:56+00:00" />
+<meta itemprop="dateModified" content="2023-05-11T10:07:56+00:00" />
+<meta itemprop="wordCount" content="81"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
 <meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>Singleton</h1><span class="version">Version 0.6</span><a href="https://github.com/vmware/singleton" class="github"><i class="fab fa-github"></i></a>
@@ -54,163 +57,49 @@
 </div>
 
 <div class="content-container">
-<main><h1>I18n Context</h1>
-<h4 id="overview"><strong>Overview</strong></h4>
-<p>I18n context is designed to manage the variables from different environments which carries pseudoEnabled, i18nEnabled, preferredLanguage, and other user-scoped values, provides a way to load and share these values between services without having to explicitly pass a parameter through every level of the service. In this way, users can use this interface to modify the default behavior regardless of the development or testing phase.
-The storage of these variables is configurable, and the default is saved in localstorage.</p>
-<pre tabindex="0"><code>import { I18nContext } from &#34;@singleton-i18n/angular-client&#34;;
-</code></pre><h4 id="context-attributes"><strong>Context Attributes</strong></h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Attribute</th>
-<th style="text-align:center">Type</th>
-<th>Writable</th>
-<th>Default</th>
-<th style="text-align:left"><div style="text-align:center">Description</div></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">pseudoEnabled</td>
-<td style="text-align:center">boolean</td>
-<td>readonly</td>
-<td>undefined</td>
-<td style="text-align:left">The pseudo setting from localStorage, determine whether to show pseudo translation in debugging or developing stage. The value can be changed by localStorage, it will override the pseudo setting in i18n configs.</td>
-</tr>
-<tr>
-<td style="text-align:center">i18nEnabled</td>
-<td style="text-align:center">boolean</td>
-<td>writable</td>
-<td>undefined</td>
-<td style="text-align:left">The i18n enable setting from localStorage, determine whether to use Singleton features in testing or product stage.</td>
-</tr>
-<tr>
-<td style="text-align:center">preferredLanguage</td>
-<td style="text-align:center">string</td>
-<td>writable</td>
-<td>undefined</td>
-<td style="text-align:left">The preferred language from localStorage.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="default-storage"><strong>Default storage</strong></h5>
-<p>The default context storage is based on localstorage, which can be replaced by cookie, session storage, etc. Developers and testers can directly modify the corresponding attribute values in the localstorage to change the default behavior of the application to achieve the purpose of testing. However, this requires certain development work in the application itself. The specific development and usage scenarios will be explained in detail in the following sessions.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Key</th>
-<th style="text-align:left"><div style="text-align:center">Description</div></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">vip.pseudoEnabled</td>
-<td style="text-align:left">The key in localStorage determines whether to enable pseudo. The value can be true or false.</td>
-</tr>
-<tr>
-<td style="text-align:center">vip.i18nEnabled</td>
-<td style="text-align:left">The key in localStorage determines whether to enable i18n. The value can be true or false.</td>
-</tr>
-<tr>
-<td style="text-align:center">vip.preferredLanguage</td>
-<td style="text-align:left">The key in the local storage to store the preferred language which is controlled by the application.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="usage-scenarios"><strong>Usage Scenarios</strong></h4>
-<h5 id="i18n-feature-switch"><strong>I18n feature switch</strong></h5>
-<p>Under normal circumstances, international development is cross-release. Before the official release of the internationalization function, we need to disable the function of i18n at the code level, but in the testing and development stage, we need to debug and test i18n, so it is suitable for using context in this situation to override the default settings.</p>
-<pre tabindex="0"><code>const i18nEnabled = false;
-// Initialize the current state of i18n feature.
-i18nContext.i18nEnabled = i18nContext.i18nEnabled || i18nEnabled;
-</code></pre><h5 id="pseudo-translation"><strong>Pseudo translation</strong></h5>
-<p>To override the pseudo setting in the testing and development stage.</p>
-<pre tabindex="0"><code>const pseudoEnabled = false;
-i18nContext.pseudoEnabled = i18nContext.pseudoEnabled || pseudoEnabled;
-</code></pre><h5 id="preferred-language"><strong>Preferred language</strong></h5>
-<p>It is mainly used to load the login page in the user&rsquo;s preferred language before loading the user preference.</p>
-<pre tabindex="0"><code>const browserLanguage: string = getBrowserCultureLang();
-const currentLanguage = i18nContext.preferredLanguage ||
-    localeService.normalizeLanguageCode(browserLanguage);
-</code></pre><pre tabindex="0"><code>import {
-    getBrowserCultureLang,
-    I18nContext,
-    LocaleService,
-    VIPService,
-} from &#39;@singleton-i18n/angular-client&#39;;
-
-// Initialize the current state of i18n feature.
-const i18nEnabled = false;
-i18nContext.i18nEnabled = i18nContext.i18nEnabled || i18nEnabled;
-
-const browserLanguage: string = getBrowserCultureLang();
-const currentLanguage = i18nContext.preferredLanguage || localeService.normalizeLanguageCode(browserLanguage);
-
-localeService.init(currentLanguage);
-return () =&gt; vipService.initData(I18nConfig);
-</code></pre><style>
-    html {
-        font-family: Metropolis;
-        color: #575757;
-    }
-    section strong {
-        font-weight: 400;
-    }
-    section p>strong {
-        font-weight: 600;
-    }
-    article section.page pre {
-        background-color: #444;
-        border: 0.5px solid #DBDBDB; 
-        padding: 1.5rem 1rem 1.5rem 1rem;
-        border-radius: 5px;
-        margin: 16px auto;
-    }
-    article section.page code {
-        font-size: 90%;
-        color: #17ff0b;  
-        white-space: pre-wrap;
-    }
-    article section.page pre span.copy-to-clipboard {
-        color: #b0bec5;
-        cursor: pointer;
-    }
-    article section.page table th {
-        font-weight:500;
-        text-transform: inherit;
-    }
-    table thead tr th:first-child {
-        width:13rem;
-    }
-    table thead tr th:nth-child(2) {
-        width:10rem;
-    }
-    table thead tr th:nth-child(3) {
-        width:10rem;
-    }
-    article section.page h1:first-of-type {
-        text-transform: inherit;
-        font-family: inherit;
-    }
-   blockquote {
-        background: #f5dddb;
-        border: 1px solid #f8b5b4;
-        color: #575757;
-    }    
-    blockquote>p {
-        display: inline-block;
-        margin: 1rem 0;
-    }
-</style>
-<div class="edit-meta">
-Last updated on 16 Jun 2022
+<main><h1>Integrate Singleton in Go App</h1>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>Go 1.13 or higher</li>
+</ul>
+<h2 id="install-singleton-client-package">Install Singleton client package</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>go get -u github.com/vmware/singleton@v0.7.1-Singleton-Go-Client
+</span></span></code></pre></div><p>Change <code>v0.7.1-Singleton-Go-Client</code> to the version of Singleton client you will use.</p>
+<h2 id="sample-code">Sample code</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Go" data-lang="Go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">sgtn</span> <span style="color:#e6db74">&#34;github.com/vmware/singleton&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">cfg</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">sgtn</span>.<span style="color:#a6e22e">Config</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ServerURL</span>:         <span style="color:#e6db74">&#34;https://localhost:8090&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">LocalSourceBundle</span>: <span style="color:#e6db74">&#34;./sources&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">DefaultLocale</span>:     <span style="color:#e6db74">&#34;en&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">SourceLocale</span>:      <span style="color:#e6db74">&#34;en&#34;</span>,
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">sgtn</span>.<span style="color:#a6e22e">Initialize</span>(<span style="color:#a6e22e">cfg</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">trans</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">sgtn</span>.<span style="color:#a6e22e">GetTranslation</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Get translation of a string
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">message</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">trans</span>.<span style="color:#a6e22e">GetStringMessage</span>(<span style="color:#e6db74">&#34;SgtnTest&#34;</span>, <span style="color:#e6db74">&#34;1.0.0&#34;</span>, <span style="color:#e6db74">&#34;zh-Hans&#34;</span>, <span style="color:#e6db74">&#34;sunglow&#34;</span>, <span style="color:#e6db74">&#34;application.title&#34;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;\nThe translation is &#39;%s&#39;.\n&#34;</span>, <span style="color:#a6e22e">message</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="edit-meta">
+Last updated on 11 May 2023
 
 
 <br>
-Published on 16 Jun 2022
-<br><a href="https://github.com/thingsym/hugo-theme-techdoc/edit/master/docs-previous/v0.1/overview/singleton-sdk/Angular%20Client%20Introduction/i18n-context.md" class="edit-page"><i class="fas fa-pen-square"></i>&nbsp;Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/i18n-service/" title="I18n Service"><i class="fas fa-arrow-left" aria-hidden="true"></i>&nbsp;Prev - I18n Service</a>
-<a class="nav nav-next" href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/plural-format/" title="Plural Format">Next - Plural Format <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+Published on 11 May 2023
+<br><a href="https://github.com/thingsym/hugo-theme-techdoc/edit/master/docs/tutorials/integrate-singleton-in-go-app.md" class="edit-page"><i class="fas fa-pen-square"></i>&nbsp;Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://vmware.github.io/singleton/docs/tutorials/deploy-singleton-service-in-your-app/" title="Deploy Singleton Service in Your App"><i class="fas fa-arrow-left" aria-hidden="true"></i>&nbsp;Prev - Deploy Singleton Service in Your App</a>
+<a class="nav nav-next" href="https://vmware.github.io/singleton/docs-previous/" title="Previous Releases">Next - Previous Releases <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
 </footer>
 </main>
@@ -220,7 +109,7 @@ Published on 16 Jun 2022
 <ul>
 <li class=""><a href="https://vmware.github.io/singleton/">Home</a></li>
 
-<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/">Documentation<span class="mark closed">+</span></a>
+<li class="parent has-sub-menu"><a href="https://vmware.github.io/singleton/docs/">Documentation<span class="mark opened">-</span></a>
   
 <ul class="sub-menu">
 
@@ -302,7 +191,7 @@ Published on 16 Jun 2022
   
 </li>
 
-<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs/tutorials/">Tutorials<span class="mark closed">+</span></a>
+<li class="parent has-sub-menu"><a href="https://vmware.github.io/singleton/docs/tutorials/">Tutorials<span class="mark opened">-</span></a>
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-java-app/">Integrate Singleton in Java App</a></li>
@@ -311,7 +200,7 @@ Published on 16 Jun 2022
 <li class=""><a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-csharp-app/">Integrate Singleton in C# App</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-python-app/">Integrate Singleton in Python App</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/tutorials/deploy-singleton-service-in-your-app/">Deploy Singleton Service in Your App</a></li>
-<li class=""><a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-go-app/">Integrate Singleton in Go App</a></li>
+<li class="active"><a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-go-app/">Integrate Singleton in Go App</a></li>
 </ul>
   
 </li>
@@ -319,11 +208,11 @@ Published on 16 Jun 2022
   
 </li>
 
-<li class="parent has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/">Previous Releases<span class="mark opened">-</span></a>
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/">Previous Releases<span class="mark closed">+</span></a>
   
 <ul class="sub-menu">
 
-<li class="parent has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/">v0.1<span class="mark opened">-</span></a>
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/">v0.1<span class="mark closed">+</span></a>
   
 <ul class="sub-menu">
 
@@ -336,7 +225,7 @@ Published on 16 Jun 2022
   
 </li>
 
-<li class="parent has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/">Overview<span class="mark opened">-</span></a>
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/">Overview<span class="mark closed">+</span></a>
   
 <ul class="sub-menu">
 
@@ -363,14 +252,14 @@ Published on 16 Jun 2022
   
 </li>
 
-<li class="parent has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/">Singleton SDK<span class="mark opened">-</span></a>
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/">Singleton SDK<span class="mark closed">+</span></a>
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/python-client-introduction/">Python Client Introduction</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/java-client-introduction/">Java Client Introduction</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/javascript-client-introduction/">JavaScript Client Introduction</a></li>
 
-<li class="parent has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/">Angular Client Introduction<span class="mark opened">-</span></a>
+<li class=" has-sub-menu"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/">Angular Client Introduction<span class="mark closed">+</span></a>
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/data-initialization/">Data Initialization</a></li>
@@ -381,7 +270,7 @@ Published on 16 Jun 2022
 <li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/translate-directive/">Translate Directive</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/l10n-service/">L10n Service</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/i18n-service/">I18n Service</a></li>
-<li class="active"><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/i18n-context/">I18n Context</a></li>
+<li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/i18n-context/">I18n Context</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/plural-format/">Plural Format</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/relative-time-format/">Relative Time Format</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs-previous/v0.1/overview/singleton-sdk/angular-client-introduction/date-time-format-pipe/">Date Time Format Pipe</a></li>

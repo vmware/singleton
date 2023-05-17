@@ -63,5 +63,15 @@ For I18n formatting, Singleton Client(Java) also provides I18n support for datet
       <description>Coming soon</description>
     </item>
     
+    <item>
+      <title>Integrate Singleton in Go App</title>
+      <link>https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-go-app/</link>
+      <pubDate>Thu, 11 May 2023 10:07:56 +0000</pubDate>
+      
+      <guid>https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-go-app/</guid>
+      <description>Requirements Go 1.13 or higher Install Singleton client package go get -u github.com/vmware/singleton@v0.7.1-Singleton-Go-Client Change v0.7.1-Singleton-Go-Client to the version of Singleton client you will use.
+Sample code package main import ( &amp;#34;fmt&amp;#34; sgtn &amp;#34;github.com/vmware/singleton&amp;#34; ) func main() { cfg := &amp;amp;sgtn.Config{ ServerURL: &amp;#34;https://localhost:8090&amp;#34;, LocalSourceBundle: &amp;#34;./sources&amp;#34;, DefaultLocale: &amp;#34;en&amp;#34;, SourceLocale: &amp;#34;en&amp;#34;, } sgtn.Initialize(cfg) trans := sgtn.GetTranslation() // Get translation of a string message, err := trans.GetStringMessage(&amp;#34;SgtnTest&amp;#34;, &amp;#34;1.0.0&amp;#34;, &amp;#34;zh-Hans&amp;#34;, &amp;#34;sunglow&amp;#34;, &amp;#34;application.title&amp;#34;) if err != nil { fmt.</description>
+    </item>
+    
   </channel>
 </rss>
