@@ -27,7 +27,7 @@ var (
 	ArgSplitter = regexp.MustCompile(`\s*` + common.ParamSep + `\s*`)
 
 	// categoriesFromLanguage these are always form language
-	categoriesFromLanguage = hashset.New(cldr.PatternDateFields, cldr.PatternPlurals)
+	categoriesFromLanguage = hashset.New(cldr.PatternDateFields, cldr.PatternPlurals, cldr.PatternMeasurements, cldr.PatternCurrencies)
 
 	// categoriesWithSupplement Need to get some extra data for these categories for front end requirements
 	categoriesWithSupplement = map[string]cldr.CoreDataType{
