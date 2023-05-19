@@ -35,8 +35,8 @@ public class PatternServiceImpl implements IPatternService {
 
 	private static final Logger logger = LoggerFactory.getLogger(PatternServiceImpl.class.getName());
 
-	private static List<String> specialCategories = Arrays.asList(ConstantsKeys.PLURALS, ConstantsKeys.DATE_FIELDS);
-	private static List<String> otherCategories = Arrays.asList(ConstantsKeys.DATES, ConstantsKeys.NUMBERS, ConstantsKeys.MEASUREMENTS, ConstantsKeys.CURRENCIES);
+	private static List<String> specialCategories = Arrays.asList(ConstantsKeys.PLURALS, ConstantsKeys.DATE_FIELDS, ConstantsKeys.MEASUREMENTS, ConstantsKeys.CURRENCIES);
+	private static List<String> otherCategories = Arrays.asList(ConstantsKeys.DATES, ConstantsKeys.NUMBERS);
 
 	@Resource
 	private IPatternDao patternDao;
@@ -169,15 +169,13 @@ public class PatternServiceImpl implements IPatternService {
 			categoriesMap = getCategories(categoryList, patternMap);
 		}
 
-		if (categoryList.contains(ConstantsKeys.PLURALS)) {
-			handleSpecialCategory(ConstantsKeys.PLURALS, language, categoriesMap, scopeFilter);
-		}
-
-		if (categoryList.contains(ConstantsKeys.DATE_FIELDS)) {
-			handleSpecialCategory(ConstantsKeys.DATE_FIELDS, language, categoriesMap, scopeFilter);
-		}
-
 		if (!localeDataDTO.isDisplayLocaleID()) {
+		//when the combination of language and region is invalid, specialCategories(plurals,currencies,dateFields,measurements) data fetching follow language
+			for(String category : categoryList){
+				if(specialCategories.contains(category)){
+					handleSpecialCategory(category, language, categoriesMap, scopeFilter);
+				}
+			}
 			patternMap.put(ConstantsKeys.LOCALEID, "");
 		}
 
