@@ -38,4 +38,6 @@ public class APIParamValue {
 	public final static String PASSWORD       = "ldap user password";
 	public final static String EXPIREDAYS     = "the authentication token's expired days";
 
+	public final static String COUNTRY_FLAG_SCALE          = "The country flag scale：1 is 1x1, 2 is 3x2,default is 1x1";
+
 }

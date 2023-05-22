@@ -66,7 +66,9 @@ public class APIOperation {
 
 	public static final String FORMAT_PATTERN_VALUE = "Get pattern from CLDR";
 	public static final String FORMAT_PATTERN_NOTES = "Get pattern from CLDR with language, region and scope";
-	
+	public static final String FORMAT_PATTERN_COUNTRY_FLAG_VALUE = "Get the country flag svg image";
+	public static final String FORMAT_PATTERN_COUNTRY_FLAG_NOTES = "Get the country flag svg image with region and scale";
+
 	public static final String TRANSLATION_WITH_PATTERN_VALUE = "Get translations and patterns";
 	public static final String TRANSLATION_WITH_PATTERN_NOTES = "Get translations and patterns by customized type";
 	

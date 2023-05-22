@@ -41,4 +41,6 @@ public class APIV2 {
 	public static final String FORMAT_PATTERN_WITH_LANGUAGE     = API_FORMATTING  + "/patterns";
 	public static final String TRANSLATION_WITH_PATTERN = API.I18N_API_ROOT + V+"/combination/translationsAndPattern";
 
+	public static final String FORMAT_PATTERN_COUNTRY_FLAG_GET = API_FORMATTING+"/countryFlag";
+
 }
