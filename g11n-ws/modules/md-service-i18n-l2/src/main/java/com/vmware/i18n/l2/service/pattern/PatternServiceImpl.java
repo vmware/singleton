@@ -14,9 +14,11 @@ import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.exceptions.VIPCacheException;
 import com.vmware.vip.common.utils.JSONUtils;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
@@ -149,6 +151,16 @@ public class PatternServiceImpl implements IPatternService {
 	private Map<String, Object> buildPatternMap(String language, String region, String patternJson, List<String> categoryList, String scopeFilter, LocaleDataDTO localeDataDTO) throws VIPCacheException {
 		Map<String, Object> patternMap = new LinkedHashMap<>();
 		Map<String, Object> categoriesMap = new LinkedHashMap<>();
+		try {
+			if (CollectionUtils.containsAny(categoryList, specialCategories) && !categoryList.contains(ConstantsKeys.PLURALS)) {
+				categoryList.add(ConstantsKeys.PLURALS);
+			}
+			if (categoryList.contains(ConstantsKeys.PLURALS) && !categoryList.contains(ConstantsKeys.NUMBERS)) {
+				categoryList.add(ConstantsKeys.NUMBERS);
+			}
+		} catch (UnsupportedOperationException e) {//catch the exception when refetch plural and dateFields by language for getPatternWithLanguageAndRegion API
+
+		}
 		if (StringUtils.isEmpty(patternJson)) {
 			patternMap.put(ConstantsKeys.LOCALEID, "");
 			for (String category : categoryList) {
@@ -159,8 +171,8 @@ public class PatternServiceImpl implements IPatternService {
 			categoriesMap = getCategories(categoryList, patternMap);
 		}
 
-		if (!localeDataDTO.isDisplayLocaleID()) {
 		//when the combination of language and region is invalid, specialCategories(plurals,currencies,dateFields,measurements) data fetching follow language
+		if (!localeDataDTO.isDisplayLocaleID() || localeDataDTO.getLocale().isEmpty()) {
 			for(String category : categoryList){
 				if(specialCategories.contains(category)){
 					handleSpecialCategory(category, language, categoriesMap, scopeFilter);
@@ -203,16 +215,6 @@ public class PatternServiceImpl implements IPatternService {
 	 */
 	private Map<String, Object> getCategories(List<String> categoryList, Map<String, Object> patternMap){
 		Map<String, Object> resultMap = new LinkedHashMap<>();
-		try {
-			if (categoryList.contains(ConstantsKeys.CURRENCIES) || categoryList.contains(ConstantsKeys.MEASUREMENTS) || categoryList.contains(ConstantsKeys.DATE_FIELDS) && !categoryList.contains(ConstantsKeys.PLURALS)) {
-				categoryList.add(ConstantsKeys.PLURALS);
-			}
-			if (categoryList.contains(ConstantsKeys.PLURALS) && !categoryList.contains(ConstantsKeys.NUMBERS)) {
-				categoryList.add(ConstantsKeys.NUMBERS);
-			}
-		} catch (UnsupportedOperationException e) {//catch the exception when refetch plural and dateFields by language for getPatternWithLanguageAndRegion API
-
-		}
 		Map<String, Object> categoriesMap = (Map<String, Object>) patternMap.get(ConstantsKeys.CATEGORIES);
 		Map<String, Object> supplementMap = (Map<String, Object>) categoriesMap.get(ConstantsKeys.SUPPLEMENT);
 		Map<String, Object> suppMap = new HashMap<>();
