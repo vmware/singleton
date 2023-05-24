@@ -4,8 +4,14 @@
  */
 package com.vmware.i18n.l2.dao.image;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vmware.vip.common.constants.ConstantsChar;
+import com.vmware.vip.common.constants.ConstantsFile;
 import com.vmware.vip.common.constants.ConstantsKeys;
+import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
+import com.vmware.vip.common.i18n.status.APIResponseStatus;
+import com.vmware.vip.messages.data.dao.exception.DataException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.Resource;
@@ -14,13 +20,14 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.ResourceUtils;
 
 import javax.annotation.PostConstruct;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
+import java.nio.ByteBuffer;
 import java.nio.channels.Channels;
 import java.nio.channels.FileChannel;
 import java.nio.channels.ReadableByteChannel;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 
 @Repository
 public class CountryFlagDaoImpl implements ICountryFlagDao {
@@ -38,20 +45,45 @@ public class CountryFlagDaoImpl implements ICountryFlagDao {
                 String pathStr = resource.getURL().getFile();
 
                 int index = pathStr.lastIndexOf("!/flags/")+1;
-                pathStr = ConstantsKeys.PATTERN+pathStr.substring(index);
+                pathStr = ConstantsKeys.IMAGE+pathStr.substring(index);
                 logger.info(pathStr);
                 pathStr = pathStr.replaceAll(ConstantsChar.BACKSLASH, File.separator);
+                pathStr = pathStr.replaceAll(ConstantsFile.FILE_TYPE_SVG, ConstantsFile.FILE_TPYE_JSON);
                 File file = new File(pathStr);
                 if (!file.getParentFile().exists()){
                     file.getParentFile().mkdirs();
                 }
                 file.deleteOnExit();
                 file.createNewFile();
-                try (ReadableByteChannel readableByteChannel = Channels.newChannel(resource.getInputStream());
-                     FileOutputStream fileOutputStream = new FileOutputStream(file);
-                     FileChannel fileChannel = fileOutputStream.getChannel() ) {
+                String region = file.getName().replace(ConstantsFile.FILE_TPYE_JSON,"");
 
-                    fileChannel.transferFrom(readableByteChannel, 0, resource.contentLength());
+                StringBuilder sb = new StringBuilder();
+                try(BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(resource.getInputStream()))){
+                    String temp = null;
+                    while((temp = bufferedReader.readLine()) != null){
+                        sb.append(temp).append("\n");
+                    }
+                }
+                Map<String,String> respData = new HashMap<>();
+                respData.put("type", "svg");
+                respData.put("image", sb.toString());
+                respData.put("region", region);
+                APIResponseDTO apiResponseDTO = new APIResponseDTO();
+                apiResponseDTO.setData(respData);
+                apiResponseDTO.setResponse(APIResponseStatus.OK);
+
+
+
+                try (FileOutputStream fileOutputStream = new FileOutputStream(file);
+                     FileChannel fileChannel = fileOutputStream.getChannel() ) {
+                    String content = null;
+                    try {
+                        content = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(respData);
+                    } catch (JsonProcessingException e) {
+                        logger.error(e.getMessage(), e);
+                        throw e;
+                    }
+                    fileChannel.write(ByteBuffer.wrap(content.getBytes(StandardCharsets.UTF_8)));
 
                 } catch (IOException e) {
                     logger.error(e.getMessage(), e);
@@ -70,10 +102,10 @@ public class CountryFlagDaoImpl implements ICountryFlagDao {
     @Override
     public FileChannel getCountryFlagChannel(String scale, String shortName) throws Exception{
         StringBuilder sourcePath = new StringBuilder();
-        sourcePath.append(ConstantsKeys.PATTERN).append(File.separator);
+        sourcePath.append(ConstantsKeys.IMAGE).append(File.separator);
         sourcePath.append("flags").append(File.separator);
         sourcePath.append(scale).append(File.separator);
-        sourcePath.append(shortName).append(".svg");
+        sourcePath.append(shortName).append(ConstantsFile.FILE_TPYE_JSON);
         return new FileInputStream(new File(sourcePath.toString())).getChannel();
 
     }

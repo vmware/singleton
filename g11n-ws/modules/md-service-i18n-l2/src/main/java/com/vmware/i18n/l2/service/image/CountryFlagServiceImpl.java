@@ -26,8 +26,9 @@ public class CountryFlagServiceImpl implements ICountryFlagService {
     public FileChannel getCountryFlagChannel(String region, int scale) throws L2APIException {
         String result = null;
         switch(scale){
-            case 2 :  result = "3x2"; break;
-            default: result = "1x1";
+            case 1 : result= "1x1"; break;
+            case 2 : result = "3x2"; break;
+            default: throw new L2APIException(ConstantsMsg.IMAGE_NOT_SUPPORT_SCALE);
         }
         try {
             return this.countryFlagDao.getCountryFlagChannel(result, region.toUpperCase());

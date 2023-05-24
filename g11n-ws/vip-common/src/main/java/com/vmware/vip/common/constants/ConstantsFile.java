@@ -32,4 +32,6 @@ public class ConstantsFile {
     
     public static final String ALLOW_LIST_FILE = "bundle.json";
 
+    public static final String FILE_TYPE_SVG = ".svg";
+
 }

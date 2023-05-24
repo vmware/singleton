@@ -108,5 +108,6 @@ public class ConstantsKeys {
    public final static Set<String> SOURCE_FORMAT_LIST = new HashSet<String>(Arrays.asList("STRING", "SVG", "MD", "HTML"));
    public final static String SOURCE_FORMAT_BASE64 = "BASE64";
    public static final String CSP_AUTH_TOKEN = "csp-auth-token";
+   public static final String IMAGE = "image";
 
 }
