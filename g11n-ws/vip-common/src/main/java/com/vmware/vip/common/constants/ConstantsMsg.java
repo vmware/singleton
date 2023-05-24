@@ -33,7 +33,7 @@ public class ConstantsMsg {
    public static final String SCOPE_FILTER_NOT_VALIDATE = "The request parameter scopeFilter is invalid, only one filtering method is supported";
    public static final String PRODUCT_OR_VERSION_MISSING = "Only one parameter of 'productName' and 'version' is provided, they should be used in pairs!";
    public static final String SOURCE_IS_NOT_PROVIDE = "Source is not provided, the existing translation is found and returned";
-
+   public static final String IMAGE_NOT_SUPPORT_REGION = "Current request region '%s' is not support.";
    private ConstantsMsg() {
    }
 }

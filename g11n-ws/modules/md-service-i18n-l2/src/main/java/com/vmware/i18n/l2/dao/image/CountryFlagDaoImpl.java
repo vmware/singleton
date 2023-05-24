@@ -2,7 +2,7 @@
  * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
-package com.vmware.i18n.l2.dao.pattern;
+package com.vmware.i18n.l2.dao.image;
 
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
@@ -14,13 +14,16 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.ResourceUtils;
 
 import javax.annotation.PostConstruct;
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.nio.channels.Channels;
 import java.nio.channels.FileChannel;
 import java.nio.channels.ReadableByteChannel;
 
 @Repository
-public class CountryFlagDaoImpl implements ICountryFlagDao{
+public class CountryFlagDaoImpl implements ICountryFlagDao {
     private Logger logger = LoggerFactory.getLogger(CountryFlagDaoImpl.class);
 
     @PostConstruct
