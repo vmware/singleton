@@ -64,7 +64,7 @@ public class ScopeFilterDTO implements Serializable {
         }
         for (String key : scopeFilterDTO.getFilters().keySet()) {
             if (!categories.contains(key)) {
-                throw new ValidationException(String.format(ConstantsMsg.SCOPE_FILTER_NOT_VALIDATE, reqScopeFilter, key));
+                throw new ValidationException(ConstantsMsg.SCOPE_FILTER_NOT_VALIDATE);
             }
         }
         return scopeFilterDTO;

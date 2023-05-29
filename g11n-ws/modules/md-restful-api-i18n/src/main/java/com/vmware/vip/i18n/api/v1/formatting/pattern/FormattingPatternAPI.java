@@ -61,11 +61,6 @@ public class FormattingPatternAPI extends BaseAction {
         if (CommonUtil.isEmpty(categories)) {
             return super.handleResponse(APIResponseStatus.BAD_REQUEST, "Parameter error");
         }
-/**
-        if (!CommonUtil.isEmpty(scopeFilter) && !Pattern.matches(ConstantsKeys.SCOPE_FILTER_MATCH, scopeFilter)) {
-            return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.SCOPE_FILTER_NOT_VALIDATE, null);
-        }
-**/
         Map<String, Object> patternMap = patternService.getPattern(locale, categories, scopeFilter);
         if (CommonUtil.isEmpty(patternMap.get(ConstantsKeys.CATEGORIES))) {
             return super.handleResponse(APIResponseStatus.INTERNAL_NO_RESOURCE_ERROR, "Pattern file not found or parse failed.");

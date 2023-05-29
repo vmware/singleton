@@ -52,15 +52,11 @@ public class FormattingPatternAPI extends BaseAction {
             @ApiParam(name = APIParamName.SCOPE, required = true, value = APIParamValue.SCOPE) @RequestParam(value = APIParamName.SCOPE, required = true) String scope,
             @ApiParam(name = APIParamName.SCOPE_FILTER, required = false, value = APIParamValue.SCOPE_FILTER) @RequestParam(value = APIParamName.SCOPE_FILTER, required = false) String scopeFilter
     ) throws ValidationException, Exception {
+
         List<String> categories = CommonUtility.getCategoriesByEnum(scope, true);
         if (CommonUtil.isEmpty(categories)) {
             return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.PATTERN_NOT_VALIDATE, null);
         }
-/**
-        if (!CommonUtil.isEmpty(scopeFilter) && !Pattern.matches(ConstantsKeys.SCOPE_FILTER_MATCH, scopeFilter)) {
-            return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.SCOPE_FILTER_NOT_VALIDATE, null);
-        }
-**/
         Map<String, Object> patternMap = patternService.getPattern(locale, categories, scopeFilter);
         if (CommonUtil.isEmpty(patternMap.get(ConstantsKeys.CATEGORIES))) {
             return super.handleResponse(APIResponseStatus.INTERNAL_NO_RESOURCE_ERROR, "Pattern file not found or parse failed.");
@@ -81,11 +77,7 @@ public class FormattingPatternAPI extends BaseAction {
             @ApiParam(name = APIParamName.SCOPE, required = true, value = APIParamValue.SCOPE) @RequestParam(value = APIParamName.SCOPE, required = true) String scope,
             @ApiParam(name = APIParamName.SCOPE_FILTER, required = false, value = APIParamValue.SCOPE_FILTER) @RequestParam(value = APIParamName.SCOPE_FILTER, required = false) String scopeFilter
     ) throws VIPCacheException, ValidationException {
-       /**
-        if (!CommonUtil.isEmpty(scopeFilter) && !Pattern.matches(ConstantsKeys.SCOPE_FILTER_MATCH, scopeFilter)) {
-            return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.SCOPE_FILTER_NOT_VALIDATE, null);
-        }
-        **/
+
         List<String> categories = CommonUtility.getCategoriesByEnum(scope, true);
         if (CommonUtil.isEmpty(categories)) {
         	return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.PATTERN_NOT_VALIDATE, null);
