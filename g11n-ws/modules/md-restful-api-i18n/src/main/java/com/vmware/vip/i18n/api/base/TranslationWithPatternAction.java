@@ -63,9 +63,11 @@ public class TranslationWithPatternAction extends BaseAction {
 	    			  excep.getMessage(), null);
 	      }
 	      if (validateResult) {
+/*
               if (!CommonUtil.isEmpty(data.getScopeFilter()) && !Pattern.matches(ConstantsKeys.SCOPE_FILTER_MATCH, data.getScopeFilter())) {
                   return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.SCOPE_FILTER_NOT_VALIDATE, null);
               }
+*/
 
 	    	  List<String> categories = CommonUtility.getCategoriesByEnum(data.getScope(), true);
 	    	  if (CommonUtil.isEmpty(categories)) {
@@ -108,11 +110,11 @@ public class TranslationWithPatternAction extends BaseAction {
         if (CommonUtil.isEmpty(categories)) {
             return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.PATTERN_NOT_VALIDATE, null);
         }
-
+/**
         if (!CommonUtil.isEmpty(scopeFilter) && !Pattern.matches(ConstantsKeys.SCOPE_FILTER_MATCH, scopeFilter)) {
             return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.SCOPE_FILTER_NOT_VALIDATE, null);
         }
-
+**/
         String newversion=null;
         try {
         	newversion = VersionMatcher.getMatchedVersion(version, productService.getSupportVersionList(productName));

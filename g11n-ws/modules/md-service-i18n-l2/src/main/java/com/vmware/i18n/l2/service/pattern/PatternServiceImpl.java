@@ -13,6 +13,8 @@ import com.vmware.vip.common.cache.TranslationCache3;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.exceptions.VIPCacheException;
+import com.vmware.vip.common.exceptions.ValidationException;
+import com.vmware.vip.common.i18n.dto.ScopeFilterDTO;
 import com.vmware.vip.common.utils.JSONUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,18 +47,19 @@ public class PatternServiceImpl implements IPatternService {
 	 *
 	 * @param locale
 	 * @param categoryList dates,numbers,plurals,measurements,currencies, split by ','
-	 * @param scopeFilter a String for filtering out the pattern data, separated by commas and underline.
+	 * @param scopeFilterStr a String for filtering out the pattern data, separated by commas and underline.
 	 * @return
 	 * @throws Exception
 	 */
 	@SuppressWarnings({ "unchecked" })
-	public Map<String, Object> getPattern(String locale, List<String> categoryList, String scopeFilter) throws VIPCacheException {
+	public Map<String, Object> getPattern(String locale, List<String> categoryList, String scopeFilterStr) throws VIPCacheException, ValidationException {
 		/**
 		 * VIP-1665:[i18n pattern API] it always return CN/TW patten
 		 * as long as language starts with zh-Hans/zh-Hant.
 		 * @param locale
 		 */
 		locale = locale.replace("_", "-");
+		ScopeFilterDTO scopeFilterDTO = ScopeFilterDTO.generateScopeFilterWithValidation(categoryList, scopeFilterStr);
 		String newLocale = CommonUtil.getCLDRLocale(locale, localePathMap, localeAliasesMap);
 		if (CommonUtil.isEmpty(newLocale)){
 			logger.info("Invalid locale!");
@@ -88,10 +91,12 @@ public class PatternServiceImpl implements IPatternService {
 			}
 		}
 		Map<String, Object> categoryPatternMap = getCategories(categoryList, patternMap);
-		filterScope(categoryPatternMap, scopeFilter);
+		filterScope(categoryPatternMap, scopeFilterDTO);
 		patternMap.put(ConstantsKeys.CATEGORIES, categoryPatternMap);
 		return patternMap;
 	}
+
+
 
 	private Map<String, Object> buildPatternMap(String locale) {
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -106,13 +111,14 @@ public class PatternServiceImpl implements IPatternService {
 	 * @param language
 	 * @param region
 	 * @param categoryList dates,numbers,plurals,measurements,currencies, split by ','
-	 * @param scopeFilter a String for filtering out the pattern data, separated by commas and underline.
+	 * @param scopeFilterStr a String for filtering out the pattern data, separated by commas and underline.
 	 * @return
 	 * @throws Exception
 	 */
 	@Override
-	public Map<String, Object> getPatternWithLanguageAndRegion(String language, String region, List<String> categoryList, String scopeFilter) throws VIPCacheException {
+	public Map<String, Object> getPatternWithLanguageAndRegion(String language, String region, List<String> categoryList, String scopeFilterStr) throws VIPCacheException, ValidationException {
 		logger.info("Get i18n pattern with language: {},region: {} and categories: {}", language, region, categoryList);
+		ScopeFilterDTO scopeFilterDTO = ScopeFilterDTO.generateScopeFilterWithValidation(categoryList, scopeFilterStr);
 		Map<String, Object> patternMap = null;
 		String patternJson = "";
 		language = language.replace("_", "-");
@@ -125,14 +131,14 @@ public class PatternServiceImpl implements IPatternService {
 			patternJson = patternDao.getPattern(locale, null);
 			if (StringUtils.isEmpty(patternJson)) {
 				logger.info("file data don't exist");
-				return buildPatternMap(language, region, patternJson, categoryList, scopeFilter, resultData);
+				return buildPatternMap(language, region, patternJson, categoryList, scopeFilterStr, resultData);
 			}
 			TranslationCache3.addCachedObject(CacheName.PATTERN, locale, String.class, patternJson);
 		}
 		logger.info("get pattern data from cache");
-		patternMap = buildPatternMap(language, region, patternJson, categoryList, scopeFilter, resultData);
+		patternMap = buildPatternMap(language, region, patternJson, categoryList, scopeFilterStr, resultData);
 		if (!CommonUtil.isEmpty(patternMap) && !CommonUtil.isEmpty(patternMap.get(ConstantsKeys.CATEGORIES))) {
-			filterScope((Map<String, Object>) patternMap.get(ConstantsKeys.CATEGORIES), scopeFilter);
+			filterScope((Map<String, Object>) patternMap.get(ConstantsKeys.CATEGORIES), scopeFilterDTO);
 		}
 		logger.info("The result pattern: {}", patternMap);
 		logger.info("Get i18n pattern successful");
@@ -146,7 +152,7 @@ public class PatternServiceImpl implements IPatternService {
 	 * @param categoryList
 	 * @return
 	 */
-	private Map<String, Object> buildPatternMap(String language, String region, String patternJson, List<String> categoryList, String scopeFilter, LocaleDataDTO localeDataDTO) throws VIPCacheException {
+	private Map<String, Object> buildPatternMap(String language, String region, String patternJson, List<String> categoryList, String scopeFilter, LocaleDataDTO localeDataDTO) throws VIPCacheException, ValidationException {
 		Map<String, Object> patternMap = new LinkedHashMap<>();
 		Map<String, Object> categoriesMap = new LinkedHashMap<>();
 		if (StringUtils.isEmpty(patternJson)) {
@@ -184,7 +190,7 @@ public class PatternServiceImpl implements IPatternService {
 		return patternMap;
 	}
 
-	private void handleSpecialCategory(String category, String language, Map<String, Object> categoriesMap, String scopeFilter) throws VIPCacheException {
+	private void handleSpecialCategory(String category, String language, Map<String, Object> categoriesMap, String scopeFilter) throws VIPCacheException, ValidationException {
 		categoriesMap.put(category, null);
 		Map<String, Object> patternMap = getPattern(language, Arrays.asList(category), scopeFilter);
 		if (null != patternMap.get(ConstantsKeys.CATEGORIES)) {
@@ -235,36 +241,39 @@ public class PatternServiceImpl implements IPatternService {
 	 * @param patternMap
 	 * @param scopeFilter
 	 */
-	private void filterScope(Map<String, Object> patternMap, String scopeFilter) {
+
+	private Map<String,Object> filterScope(Map<String, Object> patternMap, ScopeFilterDTO scopeFilter) {
+
 		if (CommonUtil.isEmpty(scopeFilter) || CommonUtil.isEmpty(patternMap)) {
-			return;
+			return patternMap;
 		}
 
-		// If scopeFilter starts with ^, it means deleting the data under the node
-		if (scopeFilter.startsWith(ConstantsChar.REVERSE)) {
-			scopeFilter = scopeFilter.substring(scopeFilter.indexOf(ConstantsChar.LEFT_PARENTHESIS) + 1, scopeFilter.indexOf(ConstantsChar.RIGHT_PARENTHESIS));
-			Arrays.asList(scopeFilter.split(ConstantsChar.COMMA)).stream().forEach(scopeNode -> {
-				List<String> scopeFilters = Arrays.asList(scopeNode.split(ConstantsChar.UNDERLINE));
-				removeData(patternMap, scopeFilters, 0);
-			});
-		} else {
-			Map<String, Object> newPatternMap = new HashMap<>();
-			for (String scopeNode : Arrays.asList(scopeFilter.split(ConstantsChar.COMMA))) {
-				List<String> scopeFilters = Arrays.asList(scopeNode.split(ConstantsChar.UNDERLINE));
-				Map<String, Object> tempPatternMap = getData(patternMap, scopeFilters, 0);
-				newPatternMap = mergePatternMap(newPatternMap, tempPatternMap, scopeFilters, 0);
+		if (scopeFilter.isReverse()){
+			for (Map.Entry<String, List<List<String>>> entry : scopeFilter.getFilters().entrySet()){
+				for (List<String> filters: entry.getValue()){
+					reverseFilterPatternItem((Map)patternMap.get(entry.getKey()), filters, 0);
+				}
 			}
-			patternMap.putAll(newPatternMap);
+
+		}else {
+			for (Map.Entry<String, List<List<String>>> entry : scopeFilter.getFilters().entrySet()){
+				Map<String,Object> tempMap = (Map<String, Object>) patternMap.remove(entry.getKey());
+				for (List<String> filters: entry.getValue()){
+					tempMap = filterPatternItem(tempMap,filters, 0);
+				}
+				patternMap.put(entry.getKey(), tempMap);
+			}
 		}
+		return patternMap;
 	}
 
-	private void removeData(Map<String, Object> patternMap, List<String> scopeFilters, Integer index) {
+	private void reverseFilterPatternItem(Map<String, Object> patternMap, List<String> scopeFilters, Integer index) {
 		String scopeFilter = scopeFilters.get(index);
 		if (index == scopeFilters.size() - 1) {
 			patternMap.remove(scopeFilter);
 		} else if (!CommonUtil.isEmpty(patternMap.get(scopeFilter))) {
 			patternMap = (Map<String, Object>) patternMap.get(scopeFilter);
-			removeData(patternMap, scopeFilters, index + 1);
+			reverseFilterPatternItem(patternMap, scopeFilters, index + 1);
 		}
 	}
 
@@ -275,16 +284,14 @@ public class PatternServiceImpl implements IPatternService {
 	 * @param index
 	 * @return
 	 */
-	private Map<String, Object> getData(Map<String, Object> originPatternMap, List<String> scopeFilters, Integer index) {
+	private Map<String, Object> filterPatternItem(Map<String, Object> originPatternMap, List<String> scopeFilters, Integer index) {
 		String scopeFilter = scopeFilters.get(index);
 		Map<String, Object> patternMap = new HashMap<>();
-
-		//The data type of the last node may not Map, so can't put line 290 before below if statement, or bug https://github.com/vmware/singleton/issues/1037 will appear.
 		if ((index == scopeFilters.size() - 1) || (CommonUtil.isEmpty(originPatternMap.get(scopeFilter)))) {
 			patternMap.put(scopeFilter, originPatternMap.get(scopeFilter));
 		} else {
 			originPatternMap = (Map<String, Object>) originPatternMap.get(scopeFilter);
-			patternMap.put(scopeFilter, getData(originPatternMap, scopeFilters, index + 1));
+			patternMap.put(scopeFilter, filterPatternItem(originPatternMap, scopeFilters, index + 1));
 		}
 		return patternMap;
 	}

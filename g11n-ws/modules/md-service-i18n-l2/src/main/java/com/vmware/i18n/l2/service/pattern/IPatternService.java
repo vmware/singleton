@@ -5,6 +5,8 @@
 package com.vmware.i18n.l2.service.pattern;
 
 import com.vmware.vip.common.exceptions.VIPCacheException;
+import com.vmware.vip.common.exceptions.ValidationException;
+import com.vmware.vip.common.i18n.dto.ScopeFilterDTO;
 
 import java.util.List;
 import java.util.Map;
@@ -18,7 +20,9 @@ public interface IPatternService {
      * @param scopeFilter a String for filtering out the pattern data, separated by commas and underline.
      * @return SingleComponentDTO Object
      */
-    public Map<String, Object> getPattern(String locale, List<String> categoryList, String scopeFilter) throws Exception;
+
+    public Map<String, Object> getPattern(String locale, List<String> categoryList, String scopeFilter) throws ValidationException, Exception ;
+
 
     /**
      * Get i18n pattern data according to the language, region and categoryList value
@@ -28,5 +32,5 @@ public interface IPatternService {
      * @param scopeFilter a String for filtering out the pattern data, separated by commas and underline.
      * @return SingleComponentDTO Object
      */
-    Map<String, Object> getPatternWithLanguageAndRegion(String language, String region, List<String> categoryList, String scopeFilter) throws VIPCacheException;
+    Map<String, Object> getPatternWithLanguageAndRegion(String language, String region, List<String> categoryList, String scopeFilter) throws VIPCacheException, ValidationException;
 }

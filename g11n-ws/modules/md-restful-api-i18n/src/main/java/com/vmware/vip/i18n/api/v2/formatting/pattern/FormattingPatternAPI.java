@@ -14,6 +14,7 @@ import com.vmware.vip.api.rest.APIV2;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ConstantsMsg;
 import com.vmware.vip.common.exceptions.VIPCacheException;
+import com.vmware.vip.common.exceptions.ValidationException;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.i18n.api.base.BaseAction;
@@ -50,16 +51,16 @@ public class FormattingPatternAPI extends BaseAction {
             @ApiParam(name = APIParamName.LOCALE, required = true, value = APIParamValue.LOCALE) @PathVariable(value = APIParamName.LOCALE) String locale,
             @ApiParam(name = APIParamName.SCOPE, required = true, value = APIParamValue.SCOPE) @RequestParam(value = APIParamName.SCOPE, required = true) String scope,
             @ApiParam(name = APIParamName.SCOPE_FILTER, required = false, value = APIParamValue.SCOPE_FILTER) @RequestParam(value = APIParamName.SCOPE_FILTER, required = false) String scopeFilter
-    ) throws Exception {
+    ) throws ValidationException, Exception {
         List<String> categories = CommonUtility.getCategoriesByEnum(scope, true);
         if (CommonUtil.isEmpty(categories)) {
             return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.PATTERN_NOT_VALIDATE, null);
         }
-
+/**
         if (!CommonUtil.isEmpty(scopeFilter) && !Pattern.matches(ConstantsKeys.SCOPE_FILTER_MATCH, scopeFilter)) {
             return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.SCOPE_FILTER_NOT_VALIDATE, null);
         }
-
+**/
         Map<String, Object> patternMap = patternService.getPattern(locale, categories, scopeFilter);
         if (CommonUtil.isEmpty(patternMap.get(ConstantsKeys.CATEGORIES))) {
             return super.handleResponse(APIResponseStatus.INTERNAL_NO_RESOURCE_ERROR, "Pattern file not found or parse failed.");
@@ -79,11 +80,12 @@ public class FormattingPatternAPI extends BaseAction {
             @ApiParam(name = APIParamName.REGION, required = true, value = APIParamValue.REGION) @RequestParam(value = APIParamName.REGION, required = true) String region,
             @ApiParam(name = APIParamName.SCOPE, required = true, value = APIParamValue.SCOPE) @RequestParam(value = APIParamName.SCOPE, required = true) String scope,
             @ApiParam(name = APIParamName.SCOPE_FILTER, required = false, value = APIParamValue.SCOPE_FILTER) @RequestParam(value = APIParamName.SCOPE_FILTER, required = false) String scopeFilter
-    ) throws VIPCacheException {
+    ) throws VIPCacheException, ValidationException {
+       /**
         if (!CommonUtil.isEmpty(scopeFilter) && !Pattern.matches(ConstantsKeys.SCOPE_FILTER_MATCH, scopeFilter)) {
             return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.SCOPE_FILTER_NOT_VALIDATE, null);
         }
-
+        **/
         List<String> categories = CommonUtility.getCategoriesByEnum(scope, true);
         if (CommonUtil.isEmpty(categories)) {
         	return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.PATTERN_NOT_VALIDATE, null);
