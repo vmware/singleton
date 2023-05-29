@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.v2.formatting.pattern;
@@ -73,15 +73,25 @@ public class FormattingPatternAPITest {
         respMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
         Assert.assertEquals(200L, respMap.get("code"));
 
+
+    }
+
+    @Test
+    public void testGetI18nPatternInvalidateScopeFilter() throws Exception {
+        String locale = "en";
+        String cateStr = "dates,numbers";
+
         //Test with valid 'scope' and invalid 'scopeFilter' parameter
-        url = new StringBuilder(
-                LocalePatternAPIURI.replace("{locale}", locale))
+
+        String url = new StringBuilder(LocalePatternAPIURI.replace("{locale}", locale))
                 .append("?scope=").append(cateStr)
                 .append("&scopeFilter=").append("dates_a,c_d")
                 .toString();
-        json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET, url);
-        respMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
-        Assert.assertEquals(200L, respMap.get("code"));
+        String json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET, url);
+        System.out.println("------------------------------------");
+        System.out.println(json);
+        Map<String,Object> respMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
+        Assert.assertEquals(400L, respMap.get("code"));
     }
 
     @SuppressWarnings("unchecked")
