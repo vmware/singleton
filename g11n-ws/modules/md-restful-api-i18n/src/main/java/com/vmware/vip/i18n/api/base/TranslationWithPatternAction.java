@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.base;
@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.regex.Pattern;
 
+import com.vmware.vip.common.exceptions.ValidationException;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,7 +54,7 @@ public class TranslationWithPatternAction extends BaseAction {
 	    * pattern
 	    * 
 	    */
-	   public APIResponseDTO getTransPattern(TranslationWithPatternDTO data) throws Exception {
+	   public APIResponseDTO getTransPattern(TranslationWithPatternDTO data) throws ValidationException, Exception {
 	      logger.info("begin getTransPattern");
 	      boolean validateResult;
 	      try {
@@ -234,7 +235,7 @@ public class TranslationWithPatternAction extends BaseAction {
 	    *
 	    */
 	   @SuppressWarnings("unchecked")
-	   public Map<String, Object> getPattern(TranslationWithPatternDTO data, List<String> categories) throws Exception {
+	   public Map<String, Object> getPattern(TranslationWithPatternDTO data, List<String> categories) throws ValidationException, Exception {
 	      Map<String, Object> pattern = null;
 	      if (data.getCombine() == TransWithPatternDataScope.TRANSLATION_PATTERN_WITH_REGION.getValue()
 	            || data.getCombine() == TransWithPatternDataScope.ONLY_PATTERN_WITH_REGION.getValue()) {
