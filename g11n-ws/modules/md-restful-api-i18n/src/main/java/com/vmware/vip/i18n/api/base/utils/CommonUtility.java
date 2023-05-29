@@ -6,13 +6,11 @@ package com.vmware.vip.i18n.api.base.utils;
 
 import com.vmware.i18n.utils.CommonUtil;
 import com.vmware.vip.common.constants.ConstantsChar;
-import com.vmware.vip.common.i18n.dto.ScopeFilterDTO;
 import com.vmware.vip.common.utils.CategoriesEnum;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 public class CommonUtility {
   private CommonUtility() {}
@@ -41,26 +39,5 @@ public class CommonUtility {
             }
         }
         return categoryList;
-    }
-
-    public static ScopeFilterDTO generateScopeFilterWithValidation(List<String> categories, String reqScopeFilter) throws  RuntimeException{
-        boolean reverse = false;
-        String scopeFilterTrim = reqScopeFilter.trim();
-        if (scopeFilterTrim.startsWith(ConstantsChar.REVERSE)) {
-            scopeFilterTrim = scopeFilterTrim.substring(2, scopeFilterTrim.length()-1);
-            reverse = true;
-        }
-        ScopeFilterDTO scopeFilterDTO = new ScopeFilterDTO();
-        scopeFilterDTO.setReverse(reverse);
-        String[] scopeFilterArr = scopeFilterTrim.split(ConstantsChar.COMMA);
-        for (int index =0; index < scopeFilterArr.length; index++){
-            scopeFilterDTO.addScopeFilter(scopeFilterArr[index]);
-        }
-        scopeFilterDTO.getFilters().keySet().forEach(key -> {
-            if (!categories.contains(key)){
-                throw new RuntimeException();
-            }
-        });
-        return scopeFilterDTO;
     }
 }
