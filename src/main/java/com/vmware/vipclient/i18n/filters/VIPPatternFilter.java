@@ -55,9 +55,9 @@ public class VIPPatternFilter implements Filter {
             OutputStream os = response.getOutputStream();
             response.setContentType("text/javascript;charset=UTF-8");
             os.write(("var localeData =" + patterns).getBytes("UTF-8"));
-        } catch (Exception e) {
+        } catch (RuntimeException e) {
             logger.error(e.getMessage());
-            String errorMsg = "{\"code\":\"400\", \"message\": "+e.getMessage()+"}";
+            String errorMsg = "{\"code\":400, \"message\": \""+e.getMessage()+"\"}";
             FilterUtils.printErrorMsg(response, errorMsg);
         }
     }
@@ -71,7 +71,7 @@ public class VIPPatternFilter implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {
         if (gc.getVipService() == null) {
             try {
-                gc.initialize(filterConfig.getInitParameter("vipconfig"));//this is for product can rename the config file, product must provide a init parameter named "vipconfig" for this filter
+                gc.initialize("vipconfig");
             } catch (VIPClientInitException e) {
                 logger.error(e.getMessage());
             }

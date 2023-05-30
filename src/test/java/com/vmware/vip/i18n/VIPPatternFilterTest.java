@@ -4,49 +4,51 @@
  */
 package com.vmware.vip.i18n;
 
-import com.vmware.vipclient.i18n.filters.URLParamUtils;
-import com.vmware.vipclient.i18n.messages.service.PatternService;
-import com.vmware.vipclient.i18n.util.LocaleUtility;
-import org.json.simple.JSONObject;
+import com.vmware.vipclient.i18n.filters.VIPPatternFilter;
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
+import org.springframework.mock.web.MockFilterChain;
+import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.mock.web.MockHttpServletResponse;
 
-import java.util.Map;
+import javax.servlet.ServletException;
+import java.io.IOException;
 
-public class VIPPatternFilterTest {
+public class VIPPatternFilterTest extends BaseTestClass{
+    VIPPatternFilter patternFilter = new VIPPatternFilter();
+
+    @Before
+    public void init() throws ServletException {
+        patternFilter.init(null);
+    }
+
     @Test
-    public void testDoFilter() {
+    public void testDoFilter() throws IOException, ServletException {
+        String errorMsg = "{\"code\":400, \"message\": \"Request parameter 'locale' is required!\"}";
+
+        String uri = "https://localhost/i18n/pattern";
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        request.setRequestURI(uri);
+        MockHttpServletResponse response = new MockHttpServletResponse();
+        MockFilterChain filterChain = new MockFilterChain();
+
         //test valid locale
-        String queryStr = "locale=zh-CN";
-        doFilter(queryStr);
+        request.setQueryString("locale=zh-CN");
+        patternFilter.doFilter(request, response, filterChain);
+        Assert.assertNotEquals("var localeData ={}", response.getContentAsString());
+        response.setCommitted(false);
+        response.reset();
 
         //test empty locale
-        queryStr = "";
-        doFilter(queryStr);
+        request.setQueryString("");
+        patternFilter.doFilter(request, response, filterChain);
+        Assert.assertEquals(errorMsg, response.getContentAsString());
+        response.reset();
 
         //test invalid locale
-        queryStr = "locale=NSFTW";
-        doFilter(queryStr);
+        request.setQueryString("locale=NSFTW");
+        patternFilter.doFilter(request, response, filterChain);
+        Assert.assertNotEquals("var localeData ={}", response.getContentAsString());
     }
-
-    private void doFilter(String queryStr){
-        String locale = null;
-        try {
-            locale = URLParamUtils.getParamFromQuery(queryStr, "locale");
-            System.out.println("locale: " + locale);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        String messages = "{}";
-        if ((locale != null && !"".equalsIgnoreCase(locale))) {
-            if (!LocaleUtility.isDefaultLocale(locale)) {
-                Map<String, String> ctmap = new PatternService().getPatterns(locale);
-                if (ctmap != null) {
-                    System.out.println("size: " + ctmap.size());
-                    messages = JSONObject.toJSONString(ctmap);
-                }
-            }
-        }
-        System.out.println("patterns: " + messages);
-    }
-
 }

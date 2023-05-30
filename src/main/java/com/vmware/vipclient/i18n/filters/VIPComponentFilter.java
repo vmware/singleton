@@ -61,9 +61,9 @@ public class VIPComponentFilter implements Filter {
                     + gc.getInstance().isPseudo() + "\", "
                     + "\"collectSource\" : \"" + gc.getInstance().isCollectSource() + "\"};")
                     .getBytes("UTF-8"));
-        } catch (Exception e) {
+        } catch (RuntimeException e) {
             logger.error(e.getMessage(), e);
-            String errorMsg = "{\"code\":\"400\", \"message\": "+e.getMessage()+"}";
+            String errorMsg = "{\"code\":400, \"message\": \""+e.getMessage()+"\"}";
             FilterUtils.printErrorMsg(response, errorMsg);
         }
     }
