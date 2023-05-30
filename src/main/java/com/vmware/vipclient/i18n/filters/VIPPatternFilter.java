@@ -21,6 +21,7 @@ import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.base.instances.PatternMessage;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
+import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.util.StringUtil;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
@@ -55,7 +56,7 @@ public class VIPPatternFilter implements Filter {
             OutputStream os = response.getOutputStream();
             response.setContentType("text/javascript;charset=UTF-8");
             os.write(("var localeData =" + patterns).getBytes("UTF-8"));
-        } catch (RuntimeException e) {
+        } catch (VIPJavaClientException e) {
             logger.error(e.getMessage());
             String errorMsg = "{\"code\":400, \"message\": \""+e.getMessage()+"\"}";
             FilterUtils.printErrorMsg(response, errorMsg);

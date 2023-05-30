@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
+import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.util.StringUtil;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
@@ -42,13 +43,11 @@ public class VIPComponentFilter implements Filter {
             String locale = FilterUtils.getParamFromQuery(request, "locale");
             logger.debug("locale: " + locale);
             String messages = "{}";
-            if (!StringUtil.isEmpty(component) && !StringUtil.isEmpty(locale)) {
-                if (!LocaleUtility.isDefaultLocale(locale) && translation != null) {
-                    Map<String, String> ctmap = translation.getMessages(LocaleUtility.fmtToMappedLocale(locale),
-                            component);
-                    if (ctmap != null) {
-                        messages = JSONObject.toJSONString(ctmap);
-                    }
+            if (!StringUtil.isEmpty(component) && !StringUtil.isEmpty(locale) && !LocaleUtility.isDefaultLocale(locale) && translation != null) {
+                Map<String, String> ctmap = translation.getMessages(LocaleUtility.fmtToMappedLocale(locale),
+                        component);
+                if (ctmap != null) {
+                    messages = JSONObject.toJSONString(ctmap);
                 }
             }
             OutputStream os = response.getOutputStream();
@@ -61,7 +60,7 @@ public class VIPComponentFilter implements Filter {
                     + gc.getInstance().isPseudo() + "\", "
                     + "\"collectSource\" : \"" + gc.getInstance().isCollectSource() + "\"};")
                     .getBytes("UTF-8"));
-        } catch (RuntimeException e) {
+        } catch (VIPJavaClientException e) {
             logger.error(e.getMessage(), e);
             String errorMsg = "{\"code\":400, \"message\": \""+e.getMessage()+"\"}";
             FilterUtils.printErrorMsg(response, errorMsg);

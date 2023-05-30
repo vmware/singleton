@@ -4,6 +4,7 @@
  */
 package com.vmware.vip.i18n;
 
+import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.filters.FilterUtils;
 import org.junit.Assert;
 import org.junit.Test;
@@ -19,34 +20,34 @@ public class FilterUtilsTest {
         List<String> list =new ArrayList<String>();
         try {
             list.add(FilterUtils.getParamFromURI((String) null, "component"));
-        } catch (RuntimeException e) {
+        } catch (VIPJavaClientException e) {
             Assert.assertEquals(noComponentErrorMsg, e.getMessage());
         }
         try {
             list.add(FilterUtils.getParamFromURI("", "component"));
-        } catch (RuntimeException e) {
+        } catch (VIPJavaClientException e) {
             Assert.assertEquals(noComponentErrorMsg, e.getMessage());
         }
         try {
             //test not contain locale
             list.add(FilterUtils.getParamFromURI("https://10.126.59.186/i18n", "component"));
-        } catch (RuntimeException e) {
+        } catch (VIPJavaClientException e) {
             Assert.assertEquals(noComponentErrorMsg, e.getMessage());
         }
         try {
             //test only contain locale
             list.add(FilterUtils.getParamFromURI("https://10.126.59.186/i18n/component", "component"));
-        } catch (RuntimeException e) {
+        } catch (VIPJavaClientException e) {
             Assert.assertEquals(noComponentValueErrorMsg, e.getMessage());
         }
         try {
             list.add(FilterUtils.getParamFromURI("https://10.126.59.186/i18n/component?sdf=34", "component"));
-        } catch (RuntimeException e) {
+        } catch (VIPJavaClientException e) {
             Assert.assertEquals(noComponentValueErrorMsg, e.getMessage());
         }
         try {
             list.add(FilterUtils.getParamFromURI("https://10.126.59.186/i18n/componentss/", "component"));
-        } catch (RuntimeException e) {
+        } catch (VIPJavaClientException e) {
             Assert.assertEquals(noComponentValueErrorMsg, e.getMessage());
         }
         list.add(FilterUtils.getParamFromURI("https://10.126.59.186/i18n/component/", "component"));
@@ -59,7 +60,7 @@ public class FilterUtilsTest {
         try {
             //test contain spaces
             list.add(FilterUtils.getParamFromURI(" locale = en & component=default", "component"));
-        } catch (RuntimeException e) {
+        } catch (VIPJavaClientException e) {
             Assert.assertEquals(noComponentValueErrorMsg, e.getMessage());
         }
         list.add(FilterUtils.getParamFromURI("https://10.126.59.186/i18n/ component / JS ", "component"));
@@ -80,29 +81,29 @@ public class FilterUtilsTest {
         List<String> list =new ArrayList<String>();
         try {
             list.add(FilterUtils.getParamFromQuery((String) null, "locale"));
-        } catch (RuntimeException e) {
+        } catch (VIPJavaClientException e) {
             Assert.assertEquals(noLocaleErrorMsg, e.getMessage());
         }
         try {
             list.add(FilterUtils.getParamFromQuery("", "locale"));
-        } catch (RuntimeException e) {
+        } catch (VIPJavaClientException e) {
             Assert.assertEquals(noLocaleErrorMsg, e.getMessage());
         }
         try {
             //test not contain locale
             list.add(FilterUtils.getParamFromQuery("eeeeewrewe=321&rew", "locale"));
-        } catch (RuntimeException e) {
+        } catch (VIPJavaClientException e) {
             Assert.assertEquals(noLocaleErrorMsg, e.getMessage());
         }
         try {
             list.add(FilterUtils.getParamFromQuery("localepath=", "locale"));
-        } catch (RuntimeException e) {
+        } catch (VIPJavaClientException e) {
             Assert.assertEquals(noLocaleErrorMsg, e.getMessage());
         }
         try {
             //test only contain locale
             list.add(FilterUtils.getParamFromQuery("locale", "locale"));
-        } catch (RuntimeException e) {
+        } catch (VIPJavaClientException e) {
             Assert.assertEquals(noLocaleValueErrorMsg, e.getMessage());
         }
         list.add(FilterUtils.getParamFromQuery("locale=", "locale"));

@@ -4,6 +4,7 @@
  */
 package com.vmware.vipclient.i18n.filters;
 
+import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.util.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,21 +28,21 @@ public class FilterUtils {
     public static String getParamFromURI(String uri, String paramName) {
         logger.debug("requestURI: " + uri);
         if (StringUtil.isEmpty(uri)) {
-            throw new RuntimeException("URI doesn't contain required parameter '" + paramName + "'!");
+            throw new VIPJavaClientException("URI doesn't contain required parameter '" + paramName + "'!");
         }
         int paramNameIndex = uri.indexOf(paramName);
         if (paramNameIndex == -1) {
-            throw new RuntimeException("URI doesn't contain required parameter '" + paramName + "'!");
+            throw new VIPJavaClientException("URI doesn't contain required parameter '" + paramName + "'!");
         }
         if ((paramNameIndex + paramName.length()) == uri.length()) {
-            throw new RuntimeException("URI doesn't provide value for required parameter '" + paramName + "'!");
+            throw new VIPJavaClientException("URI doesn't provide value for required parameter '" + paramName + "'!");
         }
         String componentPath = uri
                 .substring(paramNameIndex + paramName.length(),
                         uri.length());
         logger.debug("componentPath: " + componentPath);
         if (!componentPath.trim().startsWith("/")) {
-            throw new RuntimeException("URI doesn't provide value for required parameter '" + paramName + "'!");
+            throw new VIPJavaClientException("URI doesn't provide value for required parameter '" + paramName + "'!");
         }
         componentPath = componentPath.trim().substring(1);
         if (componentPath.indexOf("/") > 0) {
@@ -62,20 +63,20 @@ public class FilterUtils {
     public static String getParamFromQuery(String queryStr, String paramName) {
         logger.debug("queryStr: " + queryStr);
         if (StringUtil.isEmpty(queryStr)) {
-            throw new RuntimeException("Request parameter '" + paramName + "' is required!");
+            throw new VIPJavaClientException("Request parameter '" + paramName + "' is required!");
         }
         int paramNameIndex = queryStr.indexOf(paramName);
         if (paramNameIndex == -1) {
-            throw new RuntimeException("Request parameter '" + paramName + "' is required!");
+            throw new VIPJavaClientException("Request parameter '" + paramName + "' is required!");
         }
         if ((paramNameIndex + paramName.length()) == queryStr.length()) {
-            throw new RuntimeException("Value of request parameter '" + paramName + "' must not be empty!");
+            throw new VIPJavaClientException("Value of request parameter '" + paramName + "' must not be empty!");
         }
         String localePath = queryStr.substring(paramNameIndex
                 + paramName.length(), queryStr.length());
         logger.debug("localePath: " + localePath);
         if (!localePath.trim().startsWith("=")) {
-            throw new RuntimeException("Request parameter '" + paramName + "' is required!");
+            throw new VIPJavaClientException("Request parameter '" + paramName + "' is required!");
         }
         return localePath.substring(localePath.indexOf("=") + 1,
                 localePath.indexOf("&") > 0 ? localePath.indexOf("&")
