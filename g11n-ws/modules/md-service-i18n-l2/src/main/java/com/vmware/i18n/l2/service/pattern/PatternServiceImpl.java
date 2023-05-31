@@ -167,17 +167,14 @@ public class PatternServiceImpl implements IPatternService {
 		Map<String, Object> patternMap = new LinkedHashMap<>();
 		Map<String, Object> categoriesMap = new LinkedHashMap<>();
 		buildCategoryList(categoryList);
-		buildPatternJson(patternJson, categoryList, patternMap, categoriesMap);
-
-			//when the combination of language and region is invalid, specialCategories(plurals,currencies,dateFields,measurements) data fetching follow language
-		if (!localeDataDTO.isDisplayLocaleID() || localeDataDTO.getLocale().isEmpty()) {
-			for(String category : categoryList){
-				if(specialCategories.contains(category)){
-					handleSpecialCategory(category, language, categoriesMap, scopeFilter);
-				}
-			}
-			patternMap.put(ConstantsKeys.LOCALEID, "");
+		if (StringUtils.isEmpty(patternJson)) {
+			buildEmptyPatternJson(categoryList, patternMap, categoriesMap);
+		}else{
+			patternMap = JSONUtils.getMapFromJson(patternJson);
+			categoriesMap = getCategories(categoryList, patternMap);
 		}
+
+		buildSpecialCategories( language, scopeFilter, categoryList, localeDataDTO, patternMap, categoriesMap);
 
 		// fix issue: https://github.com/vmware/singleton/issues/311
 		if (!Collections.disjoint(categoryList, specialCategories)) {
@@ -194,17 +191,27 @@ public class PatternServiceImpl implements IPatternService {
 		return patternMap;
 	}
 
-	private void buildPatternJson(String patternJson, List<String> categoryList, Map<String, Object> patternMap, Map<String, Object> categoriesMap){
-		if (StringUtils.isEmpty(patternJson)) {
+	private void buildSpecialCategories(String language, String scopeFilter, List<String> categoryList, LocaleDataDTO localeDataDTO, Map<String, Object> patternMap, Map<String, Object> categoriesMap) throws VIPCacheException, L2APIException {
+
+		//when the combination of language and region is invalid, specialCategories(plurals,currencies,dateFields,measurements) data fetching follow language
+		if (!localeDataDTO.isDisplayLocaleID() || localeDataDTO.getLocale().isEmpty()) {
+			for(String category : categoryList){
+				if(specialCategories.contains(category)){
+					handleSpecialCategory(category, language, categoriesMap, scopeFilter);
+				}
+			}
+			patternMap.put(ConstantsKeys.LOCALEID, "");
+		}
+
+	}
+
+	private void buildEmptyPatternJson(List<String> categoryList, Map<String, Object> patternMap, Map<String, Object> categoriesMap){
 			patternMap.put(ConstantsKeys.LOCALEID, "");
 			for (String category : categoryList) {
 				categoriesMap.put(category, null);
 			}
-		} else {
-			patternMap = JSONUtils.getMapFromJson(patternJson);
-			categoriesMap = getCategories(categoryList, patternMap);
-		}
 	}
+
 	private void buildCategoryList(List<String> categoryList){
 		try {
 			if (CollectionUtils.containsAny(categoryList, specialCategories) && !categoryList.contains(ConstantsKeys.PLURALS)) {
