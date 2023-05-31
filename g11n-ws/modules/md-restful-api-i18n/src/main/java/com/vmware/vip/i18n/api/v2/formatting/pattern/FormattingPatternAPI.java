@@ -17,6 +17,7 @@ import com.vmware.vip.common.exceptions.VIPCacheException;
 import com.vmware.vip.common.exceptions.ValidationException;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
+import com.vmware.vip.core.messages.exception.L2APIException;
 import com.vmware.vip.i18n.api.base.BaseAction;
 import com.vmware.vip.i18n.api.base.utils.CommonUtility;
 import io.swagger.annotations.ApiOperation;
@@ -50,7 +51,7 @@ public class FormattingPatternAPI extends BaseAction {
             @ApiParam(name = APIParamName.LOCALE, required = true, value = APIParamValue.LOCALE) @PathVariable(value = APIParamName.LOCALE) String locale,
             @ApiParam(name = APIParamName.SCOPE, required = true, value = APIParamValue.SCOPE) @RequestParam(value = APIParamName.SCOPE, required = true) String scope,
             @ApiParam(name = APIParamName.SCOPE_FILTER, required = false, value = APIParamValue.SCOPE_FILTER) @RequestParam(value = APIParamName.SCOPE_FILTER, required = false) String scopeFilter
-    ) throws ValidationException, Exception {
+    ) throws  Exception {
 
         List<String> categories = CommonUtility.getCategoriesByEnum(scope, true);
         if (CommonUtil.isEmpty(categories)) {
@@ -75,7 +76,7 @@ public class FormattingPatternAPI extends BaseAction {
             @ApiParam(name = APIParamName.REGION, required = true, value = APIParamValue.REGION) @RequestParam(value = APIParamName.REGION, required = true) String region,
             @ApiParam(name = APIParamName.SCOPE, required = true, value = APIParamValue.SCOPE) @RequestParam(value = APIParamName.SCOPE, required = true) String scope,
             @ApiParam(name = APIParamName.SCOPE_FILTER, required = false, value = APIParamValue.SCOPE_FILTER) @RequestParam(value = APIParamName.SCOPE_FILTER, required = false) String scopeFilter
-    ) throws VIPCacheException, ValidationException {
+    ) throws VIPCacheException, L2APIException {
 
         List<String> categories = CommonUtility.getCategoriesByEnum(scope, true);
         if (CommonUtil.isEmpty(categories)) {

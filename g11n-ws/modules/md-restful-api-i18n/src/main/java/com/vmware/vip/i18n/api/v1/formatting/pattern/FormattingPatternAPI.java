@@ -42,7 +42,7 @@ public class FormattingPatternAPI extends BaseAction {
             @ApiParam(name = APIParamName.LOCALE, required = true, value = APIParamValue.LOCALE) @RequestParam(value = APIParamName.LOCALE, required = true) String locale,
             @ApiParam(name = APIParamName.SCOPE, required = true, value = APIParamValue.SCOPE) @RequestParam(value = APIParamName.SCOPE, required = true) String scope,
             @ApiParam(name = APIParamName.SCOPE_FILTER, required = false, value = APIParamValue.SCOPE_FILTER) @RequestParam(value = APIParamName.SCOPE_FILTER, required = false) String scopeFilter
-    ) throws ValidationException, Exception {
+    ) throws Exception {
         List<String> categories = CommonUtility.getCategoriesByEnum(scope, true);
         if (CommonUtil.isEmpty(categories)) {
             return super.handleResponse(APIResponseStatus.BAD_REQUEST, "Parameter error");

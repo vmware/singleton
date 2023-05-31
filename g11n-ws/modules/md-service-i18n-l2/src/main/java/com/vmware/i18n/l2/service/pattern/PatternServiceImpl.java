@@ -10,12 +10,12 @@ import com.vmware.i18n.l2.dao.pattern.IPatternDao;
 import com.vmware.i18n.utils.CommonUtil;
 import com.vmware.vip.common.cache.CacheName;
 import com.vmware.vip.common.cache.TranslationCache3;
-import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.exceptions.VIPCacheException;
 import com.vmware.vip.common.exceptions.ValidationException;
 import com.vmware.vip.common.i18n.dto.ScopeFilterDTO;
 import com.vmware.vip.common.utils.JSONUtils;
+import com.vmware.vip.core.messages.exception.L2APIException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -52,14 +52,19 @@ public class PatternServiceImpl implements IPatternService {
 	 * @throws Exception
 	 */
 	@SuppressWarnings({ "unchecked" })
-	public Map<String, Object> getPattern(String locale, List<String> categoryList, String scopeFilterStr) throws VIPCacheException, ValidationException {
+	public Map<String, Object> getPattern(String locale, List<String> categoryList, String scopeFilterStr) throws VIPCacheException, L2APIException {
 		/**
 		 * VIP-1665:[i18n pattern API] it always return CN/TW patten
 		 * as long as language starts with zh-Hans/zh-Hant.
 		 * @param locale
 		 */
 		locale = locale.replace("_", "-");
-		ScopeFilterDTO scopeFilterDTO = ScopeFilterDTO.generateScopeFilterWithValidation(categoryList, scopeFilterStr);
+		ScopeFilterDTO scopeFilterDTO = null;
+		try {
+			scopeFilterDTO = ScopeFilterDTO.generateScopeFilterWithValidation(categoryList, scopeFilterStr);
+		} catch (ValidationException e) {
+			throw new L2APIException(e.getMessage());
+		}
 		String newLocale = CommonUtil.getCLDRLocale(locale, localePathMap, localeAliasesMap);
 		if (CommonUtil.isEmpty(newLocale)){
 			logger.info("Invalid locale!");
@@ -116,9 +121,14 @@ public class PatternServiceImpl implements IPatternService {
 	 * @throws Exception
 	 */
 	@Override
-	public Map<String, Object> getPatternWithLanguageAndRegion(String language, String region, List<String> categoryList, String scopeFilterStr) throws VIPCacheException, ValidationException {
+	public Map<String, Object> getPatternWithLanguageAndRegion(String language, String region, List<String> categoryList, String scopeFilterStr) throws VIPCacheException, L2APIException {
 		logger.info("Get i18n pattern with language: {},region: {} and categories: {}", language, region, categoryList);
-		ScopeFilterDTO scopeFilterDTO = ScopeFilterDTO.generateScopeFilterWithValidation(categoryList, scopeFilterStr);
+		ScopeFilterDTO scopeFilterDTO = null;
+		try {
+			scopeFilterDTO = ScopeFilterDTO.generateScopeFilterWithValidation(categoryList, scopeFilterStr);
+		} catch (ValidationException e) {
+			throw new L2APIException(e.getMessage());
+		}
 		Map<String, Object> patternMap = null;
 		String patternJson = "";
 		language = language.replace("_", "-");
@@ -152,7 +162,7 @@ public class PatternServiceImpl implements IPatternService {
 	 * @param categoryList
 	 * @return
 	 */
-	private Map<String, Object> buildPatternMap(String language, String region, String patternJson, List<String> categoryList, String scopeFilter, LocaleDataDTO localeDataDTO) throws VIPCacheException, ValidationException {
+	private Map<String, Object> buildPatternMap(String language, String region, String patternJson, List<String> categoryList, String scopeFilter, LocaleDataDTO localeDataDTO) throws VIPCacheException, L2APIException {
 		Map<String, Object> patternMap = new LinkedHashMap<>();
 		Map<String, Object> categoriesMap = new LinkedHashMap<>();
 		if (StringUtils.isEmpty(patternJson)) {
@@ -190,7 +200,7 @@ public class PatternServiceImpl implements IPatternService {
 		return patternMap;
 	}
 
-	private void handleSpecialCategory(String category, String language, Map<String, Object> categoriesMap, String scopeFilter) throws VIPCacheException, ValidationException {
+	private void handleSpecialCategory(String category, String language, Map<String, Object> categoriesMap, String scopeFilter) throws VIPCacheException, L2APIException {
 		categoriesMap.put(category, null);
 		Map<String, Object> patternMap = getPattern(language, Arrays.asList(category), scopeFilter);
 		if (null != patternMap.get(ConstantsKeys.CATEGORIES)) {
