@@ -164,10 +164,12 @@ public class PatternServiceImpl implements IPatternService {
 	 * @return
 	 */
 	private Map<String, Object> buildPatternMap(String language, String region, String patternJson, List<String> categoryList, String scopeFilter, LocaleDataDTO localeDataDTO) throws VIPCacheException, L2APIException {
-		Map<String, Object> patternMap = new LinkedHashMap<>();
-		Map<String, Object> categoriesMap = new LinkedHashMap<>();
+		Map<String, Object> patternMap = null;
+		Map<String, Object> categoriesMap = null;
 		buildCategoryList(categoryList);
 		if (StringUtils.isEmpty(patternJson)) {
+			patternMap = new LinkedHashMap<>();
+			categoriesMap = new LinkedHashMap<>();
 			buildEmptyPatternJson(categoryList, patternMap, categoriesMap);
 		}else{
 			patternMap = JSONUtils.getMapFromJson(patternJson);
