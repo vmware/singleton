@@ -5,8 +5,6 @@
 package com.vmware.vip.i18n.api.v2.combine;
 
 import javax.servlet.http.HttpServletRequest;
-
-import com.vmware.vip.common.exceptions.ValidationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

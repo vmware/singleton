@@ -8,7 +8,6 @@ import com.vmware.i18n.l2.service.pattern.IPatternService;
 import com.vmware.i18n.utils.CommonUtil;
 import com.vmware.vip.api.rest.*;
 import com.vmware.vip.common.constants.ConstantsKeys;
-import com.vmware.vip.common.exceptions.ValidationException;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.i18n.api.base.BaseAction;
