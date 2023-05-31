@@ -166,27 +166,10 @@ public class PatternServiceImpl implements IPatternService {
 	private Map<String, Object> buildPatternMap(String language, String region, String patternJson, List<String> categoryList, String scopeFilter, LocaleDataDTO localeDataDTO) throws VIPCacheException, L2APIException {
 		Map<String, Object> patternMap = new LinkedHashMap<>();
 		Map<String, Object> categoriesMap = new LinkedHashMap<>();
-		try {
-			if (CollectionUtils.containsAny(categoryList, specialCategories) && !categoryList.contains(ConstantsKeys.PLURALS)) {
-				categoryList.add(ConstantsKeys.PLURALS);
-			}
-			if (categoryList.contains(ConstantsKeys.PLURALS) && !categoryList.contains(ConstantsKeys.NUMBERS)) {
-				categoryList.add(ConstantsKeys.NUMBERS);
-			}
-		} catch (UnsupportedOperationException e) {//catch the exception when refetch plural and dateFields by language for getPatternWithLanguageAndRegion API
+		buildCategoryList(categoryList);
+		buildPatternJson(patternJson, categoryList, patternMap, categoriesMap);
 
-		}
-		if (StringUtils.isEmpty(patternJson)) {
-			patternMap.put(ConstantsKeys.LOCALEID, "");
-			for (String category : categoryList) {
-				categoriesMap.put(category, null);
-			}
-		} else {
-			patternMap = JSONUtils.getMapFromJson(patternJson);
-			categoriesMap = getCategories(categoryList, patternMap);
-		}
-
-		//when the combination of language and region is invalid, specialCategories(plurals,currencies,dateFields,measurements) data fetching follow language
+			//when the combination of language and region is invalid, specialCategories(plurals,currencies,dateFields,measurements) data fetching follow language
 		if (!localeDataDTO.isDisplayLocaleID() || localeDataDTO.getLocale().isEmpty()) {
 			for(String category : categoryList){
 				if(specialCategories.contains(category)){
@@ -209,6 +192,30 @@ public class PatternServiceImpl implements IPatternService {
 		patternMap.put(ConstantsKeys.REGION, region);
 		patternMap.put(ConstantsKeys.CATEGORIES, categoriesMap);
 		return patternMap;
+	}
+
+	private void buildPatternJson(String patternJson, List<String> categoryList, Map<String, Object> patternMap, Map<String, Object> categoriesMap){
+		if (StringUtils.isEmpty(patternJson)) {
+			patternMap.put(ConstantsKeys.LOCALEID, "");
+			for (String category : categoryList) {
+				categoriesMap.put(category, null);
+			}
+		} else {
+			patternMap = JSONUtils.getMapFromJson(patternJson);
+			categoriesMap = getCategories(categoryList, patternMap);
+		}
+	}
+	private void buildCategoryList(List<String> categoryList){
+		try {
+			if (CollectionUtils.containsAny(categoryList, specialCategories) && !categoryList.contains(ConstantsKeys.PLURALS)) {
+				categoryList.add(ConstantsKeys.PLURALS);
+			}
+			if (categoryList.contains(ConstantsKeys.PLURALS) && !categoryList.contains(ConstantsKeys.NUMBERS)) {
+				categoryList.add(ConstantsKeys.NUMBERS);
+			}
+		} catch (UnsupportedOperationException e) {//catch the exception when refetch plural and dateFields by language for getPatternWithLanguageAndRegion API
+          logger.error(e.getMessage(), e);
+		}
 	}
 
 	private void handleSpecialCategory(String category, String language, Map<String, Object> categoriesMap, String scopeFilter) throws VIPCacheException, L2APIException {

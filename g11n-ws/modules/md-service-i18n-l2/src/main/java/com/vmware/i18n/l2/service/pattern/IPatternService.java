@@ -5,8 +5,6 @@
 package com.vmware.i18n.l2.service.pattern;
 
 import com.vmware.vip.common.exceptions.VIPCacheException;
-import com.vmware.vip.common.exceptions.ValidationException;
-import com.vmware.vip.common.i18n.dto.ScopeFilterDTO;
 import com.vmware.vip.core.messages.exception.L2APIException;
 
 import java.util.List;
