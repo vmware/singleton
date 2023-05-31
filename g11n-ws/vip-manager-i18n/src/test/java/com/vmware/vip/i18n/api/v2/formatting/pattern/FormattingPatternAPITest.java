@@ -81,15 +81,11 @@ public class FormattingPatternAPITest {
         String locale = "en";
         String cateStr = "dates,numbers";
 
-        //Test with valid 'scope' and invalid 'scopeFilter' parameter
-
         String url = new StringBuilder(LocalePatternAPIURI.replace("{locale}", locale))
                 .append("?scope=").append(cateStr)
                 .append("&scopeFilter=").append("dates_a,c_d")
                 .toString();
         String json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET, url);
-        System.out.println("------------------------------------");
-        System.out.println(json);
         Map<String,Object> respMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
         Assert.assertEquals(400L, respMap.get("code"));
     }

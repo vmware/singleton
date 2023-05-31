@@ -14,7 +14,6 @@ import com.vmware.vip.api.rest.APIV2;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ConstantsMsg;
 import com.vmware.vip.common.exceptions.VIPCacheException;
-import com.vmware.vip.common.exceptions.ValidationException;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.core.messages.exception.L2APIException;
@@ -51,8 +50,7 @@ public class FormattingPatternAPI extends BaseAction {
             @ApiParam(name = APIParamName.LOCALE, required = true, value = APIParamValue.LOCALE) @PathVariable(value = APIParamName.LOCALE) String locale,
             @ApiParam(name = APIParamName.SCOPE, required = true, value = APIParamValue.SCOPE) @RequestParam(value = APIParamName.SCOPE, required = true) String scope,
             @ApiParam(name = APIParamName.SCOPE_FILTER, required = false, value = APIParamValue.SCOPE_FILTER) @RequestParam(value = APIParamName.SCOPE_FILTER, required = false) String scopeFilter
-    ) throws  Exception {
-
+    ) throws Exception {
         List<String> categories = CommonUtility.getCategoriesByEnum(scope, true);
         if (CommonUtil.isEmpty(categories)) {
             return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.PATTERN_NOT_VALIDATE, null);

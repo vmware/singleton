@@ -54,7 +54,7 @@ public class TranslationWithPatternAction extends BaseAction {
 	    * pattern
 	    * 
 	    */
-	   public APIResponseDTO getTransPattern(TranslationWithPatternDTO data) throws ValidationException, Exception {
+	   public APIResponseDTO getTransPattern(TranslationWithPatternDTO data) throws Exception {
 	      logger.info("begin getTransPattern");
 	      boolean validateResult;
 	      try {
@@ -225,7 +225,7 @@ public class TranslationWithPatternAction extends BaseAction {
 	    *
 	    */
 	   @SuppressWarnings("unchecked")
-	   public Map<String, Object> getPattern(TranslationWithPatternDTO data, List<String> categories) throws ValidationException, Exception {
+	   public Map<String, Object> getPattern(TranslationWithPatternDTO data, List<String> categories) throws Exception {
 	      Map<String, Object> pattern = null;
 	      if (data.getCombine() == TransWithPatternDataScope.TRANSLATION_PATTERN_WITH_REGION.getValue()
 	            || data.getCombine() == TransWithPatternDataScope.ONLY_PATTERN_WITH_REGION.getValue()) {
