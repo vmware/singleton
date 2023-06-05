@@ -85,3 +85,11 @@ func DoAndCheck(ctx context.Context, done chan struct{}, doer func() error, chec
 func IsZeroOfUnderlyingType(x interface{}) bool {
 	return reflect.DeepEqual(x, reflect.Zero(reflect.TypeOf(x)).Interface())
 }
+
+func CopyMap[K, V comparable](m map[K]V) map[K]V {
+	result := make(map[K]V, len(m))
+	for k, v := range m {
+		result[k] = v
+	}
+	return result
+}

@@ -27,7 +27,7 @@ definitions:
       productName:
         type: string
       pseudo:
-        type: string
+        type: object
       region:
         type: string
       scope:
@@ -250,6 +250,47 @@ paths:
           schema:
             type: string
       summary: Get localized date
+      tags:
+      - formatting-api
+  /formatting/date/timezoneNameList:
+    get:
+      description: Get time zone names in a specified locale
+      parameters:
+      - description: the display language. e.g. 'en'
+        in: query
+        name: displayLanguage
+        required: true
+        type: string
+      - default: true
+        description: a boolean value to get the default territory timezone name or
+          not, default is true
+        in: query
+        name: defaultTerritory
+        type: boolean
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "206":
+          description: Successful Partially
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get timezone names
       tags:
       - formatting-api
   /formatting/patterns:

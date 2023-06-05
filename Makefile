@@ -82,6 +82,7 @@ downloadgo-bindata:
 	go install github.com/go-bindata/go-bindata/go-bindata
 
 swagger:
+	go install github.com/swaggo/swag/cmd/swag@v1.6.7
 	swag init -d api -g v1/swagger/swagger.go --exclude api/v2 -o api/v1/swagger
 	swag init -d api -g v2/swagger/swagger.go --exclude api/v1 -o api/v2/swagger
 
