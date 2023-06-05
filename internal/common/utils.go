@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -7,6 +7,7 @@ package common
 
 import (
 	"context"
+	"errors"
 	"reflect"
 	"strings"
 	"time"
@@ -55,33 +56,30 @@ func TitleCase(s string) string {
 }
 
 // DoAndCheck ...
-func DoAndCheck(ctx context.Context, done chan struct{}, doer, checker func() error) (err error) {
-	defer close(done)
+func DoAndCheck(ctx context.Context, done chan struct{}, doer func() error, checker func(), duration time.Duration) (err error) {
+	defer close(done) // Close the channel
 
-	const waitTime, retryInterval = time.Millisecond * 30, time.Microsecond * 100
 	err = doer()
-	if err == nil {
-		start := time.Now()
-		for {
-			if err := checker(); err == nil {
-				break
-			}
-			if time.Since(start) >= waitTime {
-				logger.FromContext(ctx).DPanic("Time out to wait for cache ready. Suggest to wait more time!", zap.Duration("waitTime", waitTime))
-				break
-			}
-			time.Sleep(retryInterval)
-		}
+	if err != nil {
+		return
 	}
-	return
-}
 
-func ToGenericArray(x []string) []interface{} {
-	s := make([]interface{}, len(x))
-	for i, v := range x {
-		s[i] = v
+	timeout := time.After(duration)
+	ready := make(chan struct{})
+
+	go func() {
+		checker()
+		ready <- struct{}{}
+	}()
+
+	select {
+	case <-ready:
+	case <-timeout:
+		err = errors.New("time out to wait for cache ready")
+		logger.FromContext(ctx).Error(err.Error(), zap.Duration("waitTime", duration))
 	}
-	return s
+
+	return
 }
 
 func IsZeroOfUnderlyingType(x interface{}) bool {

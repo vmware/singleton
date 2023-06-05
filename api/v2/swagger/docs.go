@@ -95,6 +95,13 @@ var doc = `{
                         "description": "a string for filtering the pattern data, separated by comma and underline. e.g. 'dates_eras,dates_dateTimeFormats'",
                         "name": "scopeFilter",
                         "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "a flag for returnning pseudo translation",
+                        "name": "pseudo",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -541,6 +548,13 @@ var doc = `{
                         "description": "components",
                         "name": "components",
                         "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "a flag for returnning pseudo translation",
+                        "name": "pseudo",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -795,6 +809,13 @@ var doc = `{
                         "required": true
                     },
                     {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "a flag for returnning pseudo translation",
+                        "name": "pseudo",
+                        "in": "query"
+                    },
+                    {
                         "type": "string",
                         "default": "false",
                         "description": "checkTranslationStatus",
@@ -878,6 +899,13 @@ var doc = `{
                         "required": true
                     },
                     {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "a flag for returnning pseudo translation",
+                        "name": "pseudo",
+                        "in": "query"
+                    },
+                    {
                         "type": "string",
                         "description": "a source string",
                         "name": "source",
@@ -958,6 +986,13 @@ var doc = `{
                         "required": true
                     },
                     {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "a flag for returnning pseudo translation",
+                        "name": "pseudo",
+                        "in": "query"
+                    },
+                    {
                         "description": "a source string",
                         "name": "source",
                         "in": "body",
@@ -1028,14 +1063,6 @@ var doc = `{
         },
         "combine.translationWithPatternPostReq": {
             "type": "object",
-            "required": [
-                "combine",
-                "components",
-                "language",
-                "productName",
-                "scope",
-                "version"
-            ],
             "properties": {
                 "combine": {
                     "type": "integer"
@@ -1052,6 +1079,9 @@ var doc = `{
                 "productName": {
                     "type": "string"
                 },
+                "pseudo": {
+                    "type": "string"
+                },
                 "region": {
                     "type": "string"
                 },
@@ -1066,32 +1096,8 @@ var doc = `{
                 }
             }
         },
-        "translation.BundleData": {
-            "type": "object",
-            "required": [
-                "component",
-                "locale",
-                "messages"
-            ],
-            "properties": {
-                "component": {
-                    "type": "string"
-                },
-                "locale": {
-                    "type": "string"
-                },
-                "messages": {
-                    "type": "string"
-                }
-            }
-        },
         "translation.UpdateBundle": {
             "type": "object",
-            "required": [
-                "productName",
-                "translation",
-                "version"
-            ],
             "properties": {
                 "creation": {
                     "type": "object",
@@ -1110,7 +1116,24 @@ var doc = `{
                 "translation": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/translation.BundleData"
+                        "type": "object",
+                        "properties": {
+                            "component": {
+                                "type": "string"
+                            },
+                            "locale": {
+                                "type": "string"
+                            },
+                            "messages": {
+                                "type": "object",
+                                "required": [
+                                    "messages"
+                                ],
+                                "additionalProperties": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     }
                 },
                 "version": {

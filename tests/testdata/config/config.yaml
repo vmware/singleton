@@ -6,27 +6,29 @@ LocalBundle:
 S3Bundle:
   PublicKeyFile: # file content is used to decode AccessKey and SecretKey
   AccessKey: myAccessKey
-  Secretkey: mySecretkey
+  SecretKey: mySecretkey
+  RoleArn: myRoleArn
+  SessionDuration: 3600
   Region: myRegion
   BucketName: myBucketName
   BundleRoot: myBundleRoot
 
-RefreshBundleInterval: 60s # interval to refresh bundle information
+RefreshBundleInterval: 30m # interval to refresh bundle information. 0s means never to refresh.
 
 HeaderOfTraceID: # comma separated headers carrying trace ID
 
 Server:
-  RunMode: debug # debug or release
-  Schema: http   # http, https, http&https
+  RunMode: debug # debug, release
+  Schema: http # http, https, http&https
   HTTPSPort: 8090
   HTTPPort: 8091
   ReadTimeout: 0s
   WriteTimeout: 0s
-  CertFile:
-  KeyFile:
+  CertFile: testdata/https/server.pem
+  KeyFile: testdata/https/server.key
   MaxHeaderBytes: 1024000
   CacheControl: max-age=2, public
-  CompressionAlgorithm: #gzip, br, gzip&br
+  CompressionAlgorithm: gzip&br #gzip, br, gzip&br
 
 CrossDomain:
   Enable: true
@@ -38,17 +40,15 @@ CrossDomain:
 
 LOG:
   Filename: logs/singleton.log
-  MaxSize: 5 # megabytes
-  MaxBackups: 50
+  MaxSize: 1 # megabytes
+  MaxBackups: 1
   MaxAge: 365 # days
-  FileLevel: debug
-  Level: debug
+  Level: debug # level in file log
+  ConsoleLevel: debug # level in console log
 
 Cache:
-  Enable: true
-  MaxCost: 1000 # number of entities to store
-  BufferItems: 64
-  Expiration: 10s #seconds
+  MaxEntities: 100 # number of bundle files in cache
+  Expiration: 10s # 0s means cache never expires
 
 SwaggerUI: true
-
+AllowList: true

@@ -33,6 +33,8 @@ func init() {
 			config.Settings.S3Bundle.PublicKeyFile,
 			config.Settings.S3Bundle.AccessKey,
 			config.Settings.S3Bundle.SecretKey,
+			config.Settings.S3Bundle.RoleArn,
+			config.Settings.S3Bundle.SessionDuration,
 			config.Settings.S3Bundle.Region)
 
 		inst = s3bundle.NewS3Bundle(

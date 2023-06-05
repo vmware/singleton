@@ -16,12 +16,12 @@ import (
 )
 
 func NewRistrettoCache(config map[string]interface{}) *RistrettoCache {
-	maxCost := int64(config["MaxCost"].(int))
-	bufferItems := int64(config["BufferItems"].(int))
+	maxEntities := config["MaxEntities"].(int64)
 	cache, err := ristretto.NewCache(&ristretto.Config{
-		NumCounters: maxCost * 10, // number of keys to track frequency of (10M).
-		MaxCost:     maxCost,      // maximum cost of cache (1GB).
-		BufferItems: bufferItems,  // number of keys per Get buffer.
+		NumCounters:        maxEntities * 10,
+		MaxCost:            maxEntities,
+		BufferItems:        64,
+		IgnoreInternalCost: true,
 	})
 	if err != nil {
 		logger.Log.Fatal("Fail to create cache", zap.Error(err))

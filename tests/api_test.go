@@ -219,8 +219,9 @@ func TestCompressResponse(t *testing.T) {
 func TestAbortWithError(t *testing.T) {
 	e := CreateHTTPExpect(t, GinTestEngine)
 	resp := e.GET(GetBundleURL, Name, Version, "zh-Hans").Expect()
-	resp.Status(http.StatusBadRequest)
-	resp.Body().Contains("component")
+
+	resp.Status(http.StatusOK)
+	assert.JSONEq(t, `{"response":{"code":400,"message":"Incorrect component(only allows letter, number, dot, underline, dash)"}}`, resp.Body().Raw())
 }
 
 func TestAllFailed(t *testing.T) {
@@ -233,12 +234,10 @@ func TestAllFailed(t *testing.T) {
 	} {
 		resp := e.GET(GetBundlesURL, Name, Version).
 			WithQuery("locales", d.locales).WithQuery("components", d.components).Expect()
-		resp.Status(sgtnerror.StatusNotFound.HTTPCode())
-		bError, _ := GetErrorAndData(resp.Body().Raw())
-		assert.Equal(t, sgtnerror.StatusNotFound.Code(), bError.Code)
-		for _, v := range strings.Split(d.locales, common.ParamSep) {
-			resp.Body().Contains(v)
-		}
+		resp.Status(http.StatusOK)
+		assert.JSONEq(t,
+			`{"response":{"code":404,"message":"2 errors occurred. Fail to get translation for VPE/1.0.0/zh-Invalid/sunglow; Fail to get translation for VPE/1.0.0/en-Invalid/sunglow"},"data":null}`,
+			resp.Body().Raw())
 	}
 }
 
@@ -249,10 +248,29 @@ func TestPartialSuccess(t *testing.T) {
 		testName                    string
 		locales, components         string
 		wantedBCode, wantedHTTPCode int
+		wantedBody                  string
 	}{
-		{testName: "Partially Successful", locales: "zh-Hans,en-Invalid", components: "sunglow", wantedBCode: sgtnerror.StatusPartialSuccess.Code(), wantedHTTPCode: sgtnerror.StatusPartialSuccess.HTTPCode()},
-		{testName: "All Successful", locales: "zh-Hans,en", components: "sunglow", wantedBCode: http.StatusOK, wantedHTTPCode: http.StatusOK},
-		{testName: "All Failed", locales: "zh-Hans,en", components: "invalidComponent", wantedBCode: sgtnerror.StatusNotFound.Code(), wantedHTTPCode: sgtnerror.StatusNotFound.HTTPCode()},
+		{testName: "Partially Successful", locales: "zh-Hans,en-Invalid", components: "sunglow", wantedBCode: sgtnerror.StatusPartialSuccess.Code(), wantedHTTPCode: http.StatusOK,
+			wantedBody: `{"response":{"code":207,"message":"Successful Partially"},"data":{"productName":"VPE","version":"1.0.0","locales":["zh-Hans","en-Invalid"],"components":["sunglow"],"bundles":[{"component":"sunglow","locale":"zh-Hans","messages":{
+            "plural.files": "{files, plural,=0 {category 0 : 无文件。} =1 {category 1 : 在{place}上有且仅有一个文件。} one {category one : 在{place}上有一个文件。}other {category other : {place}上有 # 文件。}}",
+            "message": "消息",
+            "pagination": "{0}-{1} 个客户，共 {2} 个",
+            "one.arg": "测试一个参数{0}"
+          }},{"component":"sunglow","locale":"en-Invalid","messages":null}]}}`},
+		{testName: "All Successful", locales: "zh-Hans,en", components: "sunglow", wantedBCode: http.StatusOK, wantedHTTPCode: http.StatusOK,
+			wantedBody: `{"response":{"code":200,"message":"OK"},"data":{"productName":"VPE","version":"1.0.0","locales":["zh-Hans","en"],"components":["sunglow"],"bundles":[{"component":"sunglow","locale":"zh-Hans","messages":{
+            "plural.files": "{files, plural,=0 {category 0 : 无文件。} =1 {category 1 : 在{place}上有且仅有一个文件。} one {category one : 在{place}上有一个文件。}other {category other : {place}上有 # 文件。}}",
+            "message": "消息",
+            "pagination": "{0}-{1} 个客户，共 {2} 个",
+            "one.arg": "测试一个参数{0}"
+          }},{"component":"sunglow","locale":"en","messages":{
+            "plural.files": "{files, plural,one {category one : There is one file on {place}.}other {category other : There are # files on {place}.}}",
+            "message": "Message-en",
+            "pagination": "{0} - {1} of {2} customers",
+            "one.arg": "test one argument {0}"
+          }}]}}`},
+		{testName: "All Failed", locales: "zh-Hans,en", components: "invalidComponent", wantedBCode: sgtnerror.StatusNotFound.Code(), wantedHTTPCode: http.StatusOK,
+			wantedBody: `{"response":{"code":404,"message":"2 errors occurred. Fail to get translation for VPE/1.0.0/zh-Hans/invalidComponent; Fail to get translation for VPE/1.0.0/en/invalidComponent"},"data":null}`},
 	} {
 		d := d
 		t.Run(d.testName, func(t *testing.T) {
@@ -261,14 +279,19 @@ func TestPartialSuccess(t *testing.T) {
 			resp.Status(d.wantedHTTPCode)
 			bError, _ := GetErrorAndData(resp.Body().Raw())
 			assert.Equal(t, d.wantedBCode, bError.Code)
+			assert.JSONEq(t, d.wantedBody, resp.Body().Raw())
 		})
 	}
 }
 
 func TestAllowList(t *testing.T) {
+	oldvalue := config.Settings.AllowList
+	config.Settings.AllowList = true
+	defer func() { config.Settings.AllowList = oldvalue }()
+
 	e := CreateHTTPExpect(t, GinTestEngine)
 	resp := e.GET(GetBundleURL, "not-found", Version, "zh-Hans", "sunglow").Expect()
-	resp.Status(http.StatusBadRequest)
+	resp.Status(http.StatusOK)
 	resp.Body().Contains("doesn't exist")
 }
 
@@ -278,11 +301,12 @@ func TestEtag(t *testing.T) {
 	resp := e.GET(GetBundleURL, Name, Version, Locale, Component).Expect()
 	resp.Status(http.StatusOK)
 	expectedEtag := api.GenerateEtag([]byte(resp.Body().Raw()), false)
-	resp.Header(headers.ETag).Equal(expectedEtag)
+	actualEtag := resp.Headers().Value(headers.ETag).Array().First().String()
+	actualEtag.Equal(expectedEtag)
 
 	// Send request again to test Etag
 	req := e.GET(GetBundleURL, Name, Version, Locale, Component)
-	resp = req.WithHeader(headers.IfNoneMatch, resp.Header(headers.ETag).Raw()).Expect()
+	resp = req.WithHeader(headers.IfNoneMatch, actualEtag.Raw()).Expect()
 	resp.Status(http.StatusNotModified)
 	resp.Body().Empty()
 }

@@ -20,7 +20,7 @@ type Service interface {
 
 	GetStringWithSource(ctx context.Context, id *MessageID, source string) (map[string]interface{}, error)
 
-	GetMultipleBundles(ctx context.Context, name, version, localeString, componentString string) (data []*Bundle, err error)
+	GetMultipleBundles(ctx context.Context, name, version, localeString, componentString string) (data *Release, err error)
 
 	GetAvailableLocales(ctx context.Context, name, version string) (data []string, returnErr error)
 

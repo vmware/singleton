@@ -26,6 +26,8 @@ const (
 
 	RegionToLanguage
 	DefaultContent
+
+	MaxCoreDataSize
 )
 
 // Locale data type

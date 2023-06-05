@@ -84,50 +84,50 @@ func (ts Service) GetAvailableBundles(ctx context.Context, name, version string)
 }
 
 // GetMultipleBundles Get translation of multiple bundles
-func (ts Service) GetMultipleBundles(ctx context.Context, name, version, localeString, componentString string) ([]*translation.Bundle, error) {
+func (ts Service) GetMultipleBundles(ctx context.Context, name, version, localeString, componentString string) (*translation.Release, error) {
 	log := logger.FromContext(ctx)
 	log.Debug("Get bundles", zap.String(translation.Name, name), zap.String(translation.Version, version),
 		zap.String("locales", localeString), zap.String("components", componentString))
 
-	if localeString == "" && componentString == "" {
-		bundleIDs, err := ts.GetAvailableBundles(ctx, name, version)
-		if err != nil {
-			return nil, err
-		}
-		return ts.getMultipleBundles(ctx, name, version, bundleIDs)
-	}
-
+	var bundleIDs = []translation.CompactBundleID{}
 	var err error
-	var components, locales []string
-	if localeString != "" {
-		locales = PickupLocales(name, version, strings.Split(localeString, common.ParamSep))
-	} else {
-		locales, err = ts.GetAvailableLocales(ctx, name, version)
+	if localeString == "" && componentString == "" {
+		bundleIDs, err = ts.GetAvailableBundles(ctx, name, version)
 		if err != nil {
-			err = sgtnerror.StatusNotFound.WithUserMessage(translation.ReleaseNonexistent, name, version)
-			log.Error(err.Error())
 			return nil, err
 		}
-	}
-	if componentString != "" {
-		components = strings.Split(componentString, common.ParamSep)
 	} else {
-		components, err = ts.GetAvailableComponents(ctx, name, version)
-		if err != nil {
-			err = sgtnerror.StatusNotFound.WithUserMessage(translation.ReleaseNonexistent, name, version)
-			log.Error(err.Error())
-			return nil, err
+		var components, locales []string
+		if localeString != "" {
+			locales = PickupLocales(name, version, strings.Split(localeString, common.ParamSep))
+		} else {
+			locales, err = ts.GetAvailableLocales(ctx, name, version)
+			if err != nil {
+				err = sgtnerror.StatusNotFound.WithUserMessage(translation.ReleaseNonexistent, name, version)
+				log.Error(err.Error())
+				return nil, err
+			}
+		}
+		if componentString != "" {
+			components = strings.Split(componentString, common.ParamSep)
+		} else {
+			components, err = ts.GetAvailableComponents(ctx, name, version)
+			if err != nil {
+				err = sgtnerror.StatusNotFound.WithUserMessage(translation.ReleaseNonexistent, name, version)
+				log.Error(err.Error())
+				return nil, err
+			}
+		}
+
+		for _, comp := range components {
+			for _, locale := range locales {
+				bundleIDs = append(bundleIDs, translation.CompactBundleID{Locale: locale, Component: comp})
+			}
 		}
 	}
 
-	bundleIDs := make([]translation.CompactBundleID, 0, len(locales)*len(components))
-	for _, comp := range components {
-		for _, locale := range locales {
-			bundleIDs = append(bundleIDs, translation.CompactBundleID{Locale: locale, Component: comp})
-		}
-	}
-
-	return ts.getMultipleBundles(ctx, name, version, bundleIDs)
+	bundles, err := ts.getMultipleBundles(ctx, name, version, bundleIDs)
+	return &translation.Release{Name: name, Version: version, Bundles: bundles}, err
 }
 
 func (ts Service) getMultipleBundles(ctx context.Context, name, version string, bundleIDs []translation.CompactBundleID) (data []*translation.Bundle, err error) {

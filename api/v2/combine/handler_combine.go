@@ -1,11 +1,13 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
 package combine
 
 import (
+	"errors"
+	"strconv"
 	"strings"
 
 	"sgtnserver/api"
@@ -39,6 +41,7 @@ var l3Service translation.Service = translationservice.GetService()
 // @Param region query string false "a string which represents region, e.g. US,PT,CN"
 // @Param scope query string true "pattern category string, separated by commas. e.g. 'dates,numbers,currencies,plurals,measurements,dateFields'"
 // @Param scopeFilter query string false "a string for filtering the pattern data, separated by comma and underline. e.g. 'dates_eras,dates_dateTimeFormats'"
+// @Param pseudo query boolean false "a flag for returnning pseudo translation" default(false)
 // @Success 200 {object} api.Response "OK"
 // @Success 206 {object} api.Response "Successful Partially"
 // @Failure 400 {string} string "Bad Request"
@@ -171,6 +174,27 @@ func getCombinedDataByPost(c *gin.Context) {
 		return
 	}
 
+	var pseudo bool
+	var err error
+	switch v := params.Pseudo.(type) {
+	case nil:
+		pseudo = false
+	case string:
+		if v == "" {
+			pseudo = false
+		} else {
+			pseudo, err = strconv.ParseBool(v)
+		}
+	case bool:
+		pseudo = v
+	default:
+		err = errors.New("wrong type")
+	}
+	if err != nil {
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WrapErrorWithMessage(err, "%v is an invalid boolean value", params.Pseudo))
+		return
+	}
+
 	params.Version = transApi.DoVersionFallback(c, params.ProductName, params.Version)
 
 	req := translationWithPatternReq{
@@ -181,7 +205,8 @@ func getCombinedDataByPost(c *gin.Context) {
 		Components: strings.Join(params.Components, common.ParamSep),
 		PatternScope: cldrApi.PatternScope{
 			Scope:       params.Scope,
-			ScopeFilter: params.ScopeFilter}}
+			ScopeFilter: params.ScopeFilter},
+		Pseudo: pseudo}
 	doGetCombinedData(c, &req)
 }
 
@@ -189,7 +214,7 @@ func doGetCombinedData(c *gin.Context, params *translationWithPatternReq) {
 	ctx := logger.NewContext(c, c.MustGet(api.LoggerKey))
 
 	var allErrors, translationError, patternError error
-	var transData []*translation.Bundle
+	var transData *translation.Release
 	var patternDataMap map[string]interface{}
 	var localeToSet, language, region = "", params.Language, params.Region
 	data := new(translationWithPatternData)
@@ -202,7 +227,7 @@ func doGetCombinedData(c *gin.Context, params *translationWithPatternReq) {
 			return
 		}
 		patternDataMap, localeToSet, patternError = cldrservice.GetPatternByLangReg(ctx, params.Language, params.Region, params.Scope, params.ScopeFilter)
-		transData, translationError = l3Service.GetMultipleBundles(ctx, params.ProductName, params.Version, params.Language, params.Components)
+		transData, translationError = transApi.GetService(params.Pseudo).GetMultipleBundles(ctx, params.ProductName, params.Version, params.Language, params.Components)
 	// get pattern use parameter: language, scope, get the translation use parameters language, productName, version, component
 	case 2:
 		localeToSet, patternDataMap, patternError = cldrservice.GetPatternByLocale(ctx, params.Language, params.Scope, params.ScopeFilter)
@@ -213,14 +238,14 @@ func doGetCombinedData(c *gin.Context, params *translationWithPatternReq) {
 				region, _ = localeutil.GetLocaleDefaultRegion(ctx, localeToSet)
 			}
 		}
-		transData, translationError = l3Service.GetMultipleBundles(ctx, params.ProductName, params.Version, params.Language, params.Components)
+		transData, translationError = transApi.GetService(params.Pseudo).GetMultipleBundles(ctx, params.ProductName, params.Version, params.Language, params.Components)
 	default:
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("Unsupported combination type: %d", params.Combine))
 		return
 	}
 	allErrors = sgtnerror.Append(patternError, translationError)
 
-	for _, t := range transData {
+	for _, t := range transData.Bundles {
 		data.Bundles = append(data.Bundles, transApi.ConvertBundleToAPI(t))
 	}
 	if len(patternDataMap) > 0 && isExistPattern(patternDataMap) {
@@ -234,6 +259,15 @@ func doGetCombinedData(c *gin.Context, params *translationWithPatternReq) {
 			IsExistPattern: true,
 		}
 	}
+
+	//!+ This is for JS client which can't handle 207
+	// In development env, when translation isn't ready,
+	// server will return 207 because only pattern data is available.
+	if bError := api.ToBusinessError(allErrors); bError.Code == 207 {
+		api.HandleResponse(c, data, nil)
+		return
+	}
+	//!- This is for JS client which can't handle 207
 
 	api.HandleResponse(c, data, allErrors)
 }

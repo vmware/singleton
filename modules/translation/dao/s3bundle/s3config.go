@@ -15,16 +15,20 @@ import (
 
 type (
 	S3Config struct {
-		publicKeyFile, accessKey, secretKey, region string
+		publicKeyFile, accessKey, secretKey, roleArn, region string
+		sessionDuration int32
 	}
 )
 
-func NewS3Config(publicKeyFile, accessKey, secretKey, region string) *S3Config {
+func NewS3Config(publicKeyFile, accessKey, secretKey, roleArn string, sessionDuration int32, region string) *S3Config {
 	config := &S3Config{
-		publicKeyFile: publicKeyFile,
-		accessKey:     accessKey,
-		secretKey:     secretKey,
-		region:        region}
+		publicKeyFile:   publicKeyFile,
+		accessKey:       accessKey,
+		secretKey:       secretKey,
+		roleArn:         roleArn,
+		sessionDuration: sessionDuration,
+		region:          region,
+	}
 
 	if len(config.publicKeyFile) != 0 {
 		// Get public key
@@ -68,6 +72,10 @@ func (config *S3Config) GetAccessKey() string {
 
 func (config *S3Config) GetSecretKey() string {
 	return config.secretKey
+}
+
+func (config *S3Config) GetRoleArn() string {
+	return config.roleArn
 }
 
 func (config *S3Config) GetRegion() string {

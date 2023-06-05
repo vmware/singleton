@@ -16,5 +16,6 @@ type (
 		Component string `form:"component" binding:"component"`
 		Key       string `form:"key" binding:"key"`
 		Source    string `form:"source"`
+		Pseudo    bool   `form:"pseudo" binding:"omitempty"`
 	}
 )

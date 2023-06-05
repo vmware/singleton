@@ -9,6 +9,7 @@ import (
 	"context"
 	"reflect"
 	"sync"
+	"time"
 
 	"sgtnserver/internal/cache"
 	"sgtnserver/internal/common"
@@ -37,32 +38,31 @@ func (localeCache) GetLocaleData(ctx context.Context, cldrLocale, dataType strin
 	}
 
 	// (Read from storage and populate cache) or (wait and read from cache)
-	populateCache := func() (err error) {
-		err = cldrDao.GetLocaleData(ctx, cldrLocale, dataType, data)
+	populateCache := func() error {
+		err = cldrDao.GetLocaleData(ctx, cldrLocale, dataType, data) // Set return error
 		if err == nil {
 			if cacheErr := localeDataCache.Set(cacheKey, reflect.ValueOf(data).Elem().Interface()); cacheErr != nil {
-				logger.FromContext(ctx).DPanic(cacheErr.Error())
+				logger.FromContext(ctx).Error(cacheErr.Error())
 				return cacheErr
 			}
 		}
-		return err
-	}
-	getFromCache := func() error {
-		_, err := localeDataCache.Get(cacheKey)
 		return err
 	}
 
 	actual, loaded := localeDataLocks.LoadOrStore(cacheKey, make(chan struct{}))
 	if !loaded {
 		defer localeDataLocks.Delete(cacheKey)
-		err = common.DoAndCheck(ctx, actual.(chan struct{}), populateCache, getFromCache)
+
+		// Don't need to process returned error because values to return have been set in 'populateCache'
+		common.DoAndCheck(ctx, actual.(chan struct{}), populateCache, func() { localeDataCache.Wait() }, time.Second)
 	} else { // For the routine waiting for cache population, get from cache
 		<-actual.(chan struct{})
 		if dataInCache, e := localeDataCache.Get(cacheKey); e == nil {
 			reflect.ValueOf(data).Elem().Set(reflect.ValueOf(dataInCache))
 		} else {
 			err = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(e, common.FailToReadCache, cacheKey)
-			logger.FromContext(ctx).DPanic(err.Error())
+			logger.FromContext(ctx).Error(err.Error())
+			err = cldrDao.GetLocaleData(ctx, cldrLocale, dataType, data) // Read from storage directly if failing to get from cache
 		}
 	}
 
@@ -76,8 +76,7 @@ func GetCache() localeCache {
 // InitCLDRCache .
 func InitCLDRCache() {
 	localeDataCache = cache.NewCache("cldr", map[string]interface{}{
-		"MaxCost":     100,
-		"BufferItems": 64,
+		"MaxEntities": int64(200),
 	})
 }
 

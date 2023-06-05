@@ -17,9 +17,19 @@ import (
 
 	"github.com/emirpasic/gods/sets/linkedhashset"
 	"github.com/gin-gonic/gin"
+	jsoniter "github.com/json-iterator/go"
 )
 
 var l3Service translation.Service = translationservice.GetService()
+var pseudoService translation.Service = translationservice.GetPseudoService(l3Service)
+
+func GetService(pseudo bool) translation.Service {
+	if pseudo {
+		return pseudoService
+	} else {
+		return l3Service
+	}
+}
 
 // GetAvailableComponents godoc
 // @Summary Get component names
@@ -86,6 +96,7 @@ func GetAvailableLocales(c *gin.Context) {
 // @Param version path string true "version"
 // @Param locales query string false "locales"
 // @Param components query string false "components"
+// @Param pseudo query boolean false "a flag for returnning pseudo translation" default(false)
 // @Success 200 {object} api.Response "OK"
 // @Success 206 {object} api.Response "Successful Partially"
 // @Failure 400 {string} string "Bad Request"
@@ -99,9 +110,45 @@ func GetMultipleBundles(c *gin.Context) {
 	}
 	version := c.GetString(api.SgtnVersionKey)
 
-	bundles, multiErr := l3Service.GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.ProductName, version, params.Locales, params.Components)
-	data := ConvertReleaseToAPI(params.ProductName, version, bundles)
-	api.HandleResponse(c, data, multiErr)
+	transService := GetService(params.Pseudo)
+	ctx := logger.NewContext(c, c.MustGet(api.LoggerKey))
+	releaseData, multiErr := transService.GetMultipleBundles(ctx, params.ProductName, version, params.Locales, params.Components)
+	if multiErr != nil && releaseData != nil && len(releaseData.Bundles) > 0 {
+		// make up failed bundles because JAVA client needs them when successful partially
+		var locales, components []string
+		if params.Locales == "" {
+			locales, _ = transService.GetAvailableLocales(ctx, params.ProductName, version)
+		} else {
+			locales = strings.Split(params.Locales, common.ParamSep)
+		}
+		if params.Components == "" {
+			components, _ = transService.GetAvailableComponents(ctx, params.ProductName, version)
+		} else {
+			components = strings.Split(params.Components, common.ParamSep)
+		}
+
+		allBundles := make([]*translation.Bundle, 0, len(locales)*len(components))
+		for _, locale := range locales {
+			locale = translationservice.PickupLocales(params.ProductName, version, []string{locale})[0]
+			for _, component := range components {
+				i := 0
+				for ; i < len(releaseData.Bundles); i++ {
+					bundle := releaseData.Bundles[i]
+					if bundle.ID.Component == component && bundle.ID.Locale == locale {
+						allBundles = append(allBundles, bundle)
+						break
+					}
+				}
+				if i == len(releaseData.Bundles) {
+					id := translation.BundleID{Name: params.ProductName, Version: version, Component: component, Locale: locale}
+					allBundles = append(allBundles, &translation.Bundle{ID: id, Pseudo: params.Pseudo})
+				}
+			}
+		}
+		releaseData.Bundles = allBundles
+	}
+
+	api.HandleResponse(c, ConvertReleaseToAPI(releaseData), multiErr)
 }
 
 // GetBundle godoc
@@ -113,6 +160,7 @@ func GetMultipleBundles(c *gin.Context) {
 // @Param version path string true "version"
 // @Param locale path string true "locale name"
 // @Param component path string true "component name"
+// @Param pseudo query boolean false "a flag for returnning pseudo translation" default(false)
 // @Param checkTranslationStatus query string false "checkTranslationStatus" default(false)
 // @Success 200 {object} api.Response "OK"
 // @Failure 400 {string} string "Bad Request"
@@ -129,7 +177,7 @@ func GetBundle(c *gin.Context) {
 
 	ctx := logger.NewContext(c, c.MustGet(api.LoggerKey))
 	bundleID := &translation.BundleID{Name: params.ProductName, Version: version, Locale: params.Locale, Component: params.Component}
-	data, err := l3Service.GetBundle(ctx, bundleID)
+	data, err := GetService(params.Pseudo).GetBundle(ctx, bundleID)
 	bundleAPIData := ConvertBundleToAPI(data)
 
 	mErr := sgtnerror.Append(err)
@@ -181,6 +229,7 @@ func GetStrings(c *gin.Context) {
 // @Param locale path string true "locale name"
 // @Param component path string true "component name"
 // @Param key path string true "key"
+// @Param pseudo query boolean false "a flag for returnning pseudo translation" default(false)
 // @Param source query string false "a source string"
 // @Success 200 {object} api.Response "OK"
 // @Failure 400 {string} string "Bad Request"
@@ -197,7 +246,7 @@ func GetString(c *gin.Context) {
 	version := c.GetString(api.SgtnVersionKey)
 
 	internalID := translation.MessageID{Name: params.ProductName, Version: version, Locale: params.Locale, Component: params.Component, Key: params.Key}
-	result, err := l3Service.GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, params.Source)
+	result, err := GetService(params.Pseudo).GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, params.Source)
 	api.HandleResponse(c, result, err)
 }
 
@@ -211,6 +260,7 @@ func GetString(c *gin.Context) {
 // @Param locale path string true "locale name"
 // @Param component path string true "component name"
 // @Param key path string true "key"
+// @Param pseudo query boolean false "a flag for returnning pseudo translation" default(false)
 // @Param source body string false "a source string"
 // @Param checkTranslationStatus query string false "checkTranslationStatus" default(false)
 // @Success 200 {object} api.Response "OK"
@@ -235,7 +285,7 @@ func GetStringByPost(c *gin.Context) {
 	}
 
 	internalID := translation.MessageID{Name: params.ProductName, Version: params.Version, Locale: params.Locale, Component: params.Component, Key: params.Key}
-	result, err := l3Service.GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, params.Source)
+	result, err := GetService(params.Pseudo).GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, params.Source)
 	if err == nil && result != nil && params.CheckTranslationStatus {
 		if result["status"].(translation.TranslationStatus).IsReady() {
 			err = sgtnerror.TranslationReady
@@ -288,20 +338,21 @@ func ConvertBundleToInternal(apiData *UpdateBundle) []*translation.Bundle {
 	internalData := make([]*translation.Bundle, 0, len(apiData.Translation))
 	for _, ad := range apiData.Translation {
 		id := translation.BundleID{Name: productName, Version: version, Locale: ad.Locale, Component: ad.Component}
-		internalData = append(internalData, &translation.Bundle{ID: id, Messages: ad.Messages})
+		marshaled, _ := jsoniter.Marshal(ad.Messages)
+		internalData = append(internalData, &translation.Bundle{ID: id, Messages: jsoniter.Get(marshaled)})
 	}
 
 	return internalData
 }
 
-func ConvertReleaseToAPI(productName, version string, bundles []*translation.Bundle) *ReleaseData {
-	if len(bundles) == 0 {
+func ConvertReleaseToAPI(release *translation.Release) *ReleaseData {
+	if release == nil || len(release.Bundles) == 0 {
 		return nil
 	}
 
-	pData := ReleaseData{ProductName: productName, Version: version}
+	pData := ReleaseData{ProductName: release.Name, Version: release.Version, Pseudo: release.Pseudo}
 	localeSet, componentSet := linkedhashset.New(), linkedhashset.New()
-	for _, d := range bundles {
+	for _, d := range release.Bundles {
 		pData.Bundles = append(pData.Bundles, BundleData{Component: d.ID.Component, Locale: d.ID.Locale, Messages: d.Messages})
 		localeSet.Add(d.ID.Locale)
 		componentSet.Add(d.ID.Component)
@@ -317,12 +368,11 @@ func ConvertBundleToAPI(bundle *translation.Bundle) *SingleBundleData {
 	}
 
 	id := bundle.ID
-	data := SingleBundleData{
+	return &SingleBundleData{
 		ProductName: id.Name,
 		Version:     id.Version,
 		Locale:      id.Locale,
 		Component:   id.Component,
-		Messages:    bundle.Messages}
-
-	return &data
+		Messages:    bundle.Messages,
+		Pseudo:      bundle.Pseudo}
 }

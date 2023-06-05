@@ -14,6 +14,7 @@ import (
 	"sgtnserver/modules/translation"
 	"sgtnserver/modules/translation/bundleinfo"
 
+	jsoniter "github.com/json-iterator/go"
 	"go.uber.org/zap"
 )
 
@@ -75,11 +76,30 @@ func (d *decorator) PutBundle(ctx context.Context, bundleData *translation.Bundl
 	if ce := log.Check(zap.DebugLevel, "Bundle content"); ce != nil {
 		ce.Write(zap.String("content", bundleData.Messages.ToString()))
 	}
-	err := d.MessageOrigin.PutBundle(ctx, bundleData)
+
+	existingBundle, err := d.MessageOrigin.GetBundle(ctx, &bundleData.ID)
+	if err == nil {
+		d.mergeBundle(bundleData, existingBundle)
+	}
+
+	err = d.MessageOrigin.PutBundle(ctx, bundleData)
 	if err == nil {
 		bundleinfo.AddBundle(&bundleData.ID)
 	}
 	return err
+}
+
+func (d *decorator) mergeBundle(bundle *translation.Bundle, existingBundle *translation.Bundle) {
+	existingMessages, newMessages := make(map[string]string), make(map[string]string)
+	existingBundle.Messages.ToVal(&existingMessages)
+	bundle.Messages.ToVal(&newMessages)
+
+	for k, v := range newMessages {
+		existingMessages[k] = v
+	}
+
+	marshaled, _ := jsoniter.Marshal(existingMessages)
+	bundle.Messages = jsoniter.Get(marshaled)
 }
 
 // func (d *decorator) DeleteBundle(ctx context.Context, bundleID *translation.BundleID) error {

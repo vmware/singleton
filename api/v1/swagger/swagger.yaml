@@ -189,6 +189,11 @@ paths:
         in: query
         name: locale
         type: string
+      - default: false
+        description: a flag for returnning pseudo translation
+        in: query
+        name: pseudo
+        type: boolean
       produces:
       - application/json
       responses:
@@ -239,6 +244,11 @@ paths:
         name: component
         required: true
         type: string
+      - default: false
+        description: a flag for returnning pseudo translation
+        in: query
+        name: pseudo
+        type: boolean
       produces:
       - application/json
       responses:
@@ -286,6 +296,11 @@ paths:
         name: components
         required: true
         type: string
+      - default: false
+        description: a flag for returnning pseudo translation
+        in: query
+        name: pseudo
+        type: boolean
       produces:
       - application/json
       responses:
@@ -336,6 +351,11 @@ paths:
         name: component
         required: true
         type: string
+      - default: false
+        description: a flag for returnning pseudo translation
+        in: query
+        name: pseudo
+        type: boolean
       produces:
       - application/json
       responses:
@@ -391,6 +411,11 @@ paths:
         in: query
         name: source
         type: string
+      - default: false
+        description: a flag for returnning pseudo translation
+        in: query
+        name: pseudo
+        type: boolean
       produces:
       - application/json
       responses:
@@ -438,6 +463,11 @@ paths:
         name: components
         required: true
         type: string
+      - default: false
+        description: a flag for returnning pseudo translation
+        in: query
+        name: pseudo
+        type: boolean
       produces:
       - application/json
       responses:
@@ -492,6 +522,11 @@ paths:
         in: query
         name: source
         type: string
+      - default: false
+        description: a flag for returnning pseudo translation
+        in: query
+        name: pseudo
+        type: boolean
       produces:
       - application/json
       responses:
@@ -634,6 +669,11 @@ paths:
         in: query
         name: source
         type: string
+      - default: false
+        description: a flag for returnning pseudo translation
+        in: query
+        name: pseudo
+        type: boolean
       produces:
       - application/json
       responses:

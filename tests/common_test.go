@@ -28,19 +28,17 @@ import (
 func TestDoAndCheck(t *testing.T) {
 	group := sync.WaitGroup{}
 
-	doneCount := 0
+	var err error
+	doneCount := int64(0)
 	waiterCount := int64(0)
 	done := make(chan struct{})
 	doer := func() error {
-		doneCount++
+		atomic.AddInt64(&doneCount, 1)
 		time.Sleep(time.Millisecond)
 		return nil
 	}
-	waiter := func() error {
-		atomic.AddInt64(&waiterCount, 1)
-		time.Sleep(time.Millisecond)
-		return nil
-	}
+	checker := func() { time.Sleep(time.Millisecond) }
+	waiter := func() { atomic.AddInt64(&waiterCount, 1) }
 
 	maxNumber := 200
 	r := rand.Intn(maxNumber)
@@ -48,7 +46,7 @@ func TestDoAndCheck(t *testing.T) {
 		group.Add(1)
 		go func(n int) {
 			if n == r {
-				common.DoAndCheck(logger.NewContext(context.TODO(), logger.Log.With(zap.Int("thread", n))), done, doer, waiter)
+				err = common.DoAndCheck(logger.NewContext(context.TODO(), logger.Log.With(zap.Int("thread", n))), done, doer, checker, time.Second)
 			} else {
 				<-done
 				waiter()
@@ -58,8 +56,38 @@ func TestDoAndCheck(t *testing.T) {
 	}
 
 	group.Wait()
-	assert.Equal(t, 1, doneCount)
-	assert.Equal(t, int64(maxNumber), waiterCount)
+	assert.Nil(t, err)
+	assert.Equal(t, int64(1), doneCount)
+	assert.Equal(t, int64(maxNumber-1), waiterCount)
+}
+
+func TestDoAndCheckTimeOut(t *testing.T) {
+	group := sync.WaitGroup{}
+
+	var err error
+	done := make(chan struct{})
+	doer := func() error { return nil }
+	checker := func() { time.Sleep(time.Second) }
+	waiter := func() {}
+
+	maxNumber := 2
+	r := rand.Intn(maxNumber)
+	for i := 0; i < maxNumber; i++ {
+		group.Add(1)
+		go func(n int) {
+			if n == r {
+				err = common.DoAndCheck(logger.NewContext(context.TODO(), logger.Log.With(zap.Int("thread", n))), done, doer, checker, time.Millisecond)
+			} else {
+				<-done
+				waiter()
+			}
+			group.Done()
+		}(i)
+	}
+
+	group.Wait()
+
+	assert.EqualError(t, err, "time out to wait for cache ready")
 }
 
 func TestMultiError(t *testing.T) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -7,6 +7,7 @@ package tests
 
 import (
 	"flag"
+	"io"
 	"math/rand"
 	"net/http"
 	"os"
@@ -19,11 +20,13 @@ import (
 	v2 "sgtnserver/api/v2"
 	"sgtnserver/internal/config"
 	"sgtnserver/internal/logger"
+	"sgtnserver/modules/translation"
 
 	"github.com/gavv/httpexpect/v2"
 	"github.com/gin-gonic/gin"
 	jsoniter "github.com/json-iterator/go"
 	"github.com/jucardi/go-osx/paths"
+	"github.com/mackerelio/go-osstat/memory"
 )
 
 var (
@@ -59,6 +62,8 @@ const (
 	Key, Msg                         = "message", "Message-en"
 )
 
+var ID = translation.BundleID{Name: Name, Version: Version, Locale: Locale, Component: Component}
+
 func TestMain(m *testing.M) {
 	defer logger.Log.Sync()
 
@@ -82,6 +87,7 @@ func init() {
 	// Rid of debug output
 	gin.SetMode(gin.TestMode)
 
+	printOSInfo()
 	cwd, _ := os.Getwd()
 	log.Infof("Current directory is: %s", cwd)
 
@@ -198,5 +204,46 @@ func ReplaceLogger(tempLogFile string) func() {
 		config.Settings.LOG.Filename = oldLogFile
 		logger.InitLogger()
 		os.Remove(tempLogFile)
+	}
+}
+
+func printOSInfo() {
+	memory, err := memory.Get()
+	if err != nil {
+		log.Errorf("%s", err)
+		return
+	}
+
+	var oneM uint64 = 1024 * 1024
+	log.Infof("memory total: %d MB", memory.Total/oneM)
+	log.Infof("memory used: %d MB", memory.Used/oneM)
+	log.Infof("memory cached: %d MB", memory.Cached/oneM)
+	log.Infof("memory free: %d MB", memory.Free/oneM)
+}
+
+func capture() func() (string, error) {
+	r, w, err := os.Pipe()
+	if err != nil {
+		panic(err)
+	}
+
+	done := make(chan error, 1)
+
+	save := os.Stdout
+	os.Stdout = w
+
+	var buf strings.Builder
+
+	go func() {
+		_, err := io.Copy(&buf, r)
+		r.Close()
+		done <- err
+	}()
+
+	return func() (string, error) {
+		os.Stdout = save
+		w.Close()
+		err := <-done
+		return buf.String(), err
 	}
 }

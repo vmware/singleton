@@ -25,6 +25,7 @@ var l3Service translation.Service = translationservice.GetService()
 // @Param version query string true "version"
 // @Param locale query string false "locale String. e.g. 'en-US'"
 // @Param component query string true "component name"
+// @Param pseudo query boolean false "a flag for returnning pseudo translation" default(false)
 // @Success 200 {object} api.Response "OK"
 // @Failure 400 {string} string "Bad Request"
 // @Failure 404 {string} string "Not Found"
@@ -36,6 +37,7 @@ func GetBundle2(c *gin.Context) {
 		ReleaseID
 		Locale    string `form:"locale" binding:"locale"`
 		Component string `form:"component" binding:"component"`
+		Pseudo    bool   `form:"pseudo" binding:"omitempty"`
 	}{Locale: translation.EnLocale}
 	if err := api.ExtractParameters(c, nil, &params); err != nil {
 		return
@@ -43,7 +45,7 @@ func GetBundle2(c *gin.Context) {
 
 	version := c.GetString(api.SgtnVersionKey)
 
-	data, err := l3Service.GetBundle(logger.NewContext(c, c.MustGet(api.LoggerKey)),
+	data, err := v2Translation.GetService(params.Pseudo).GetBundle(logger.NewContext(c, c.MustGet(api.LoggerKey)),
 		&translation.BundleID{Name: params.ProductName, Version: version, Locale: params.Locale, Component: params.Component})
 
 	api.HandleResponse(c, v2Translation.ConvertBundleToAPI(data), err)
@@ -57,6 +59,7 @@ func GetBundle2(c *gin.Context) {
 // @Param version query string true "version"
 // @Param locales query string true "locales"
 // @Param components query string true "components"
+// @Param pseudo query boolean false "a flag for returnning pseudo translation" default(false)
 // @Success 200 {object} api.Response "OK"
 // @Success 206 {object} api.Response "Successful Partially"
 // @Failure 400 {string} string "Bad Request"
@@ -69,6 +72,7 @@ func GetMultipleBundles2(c *gin.Context) {
 		ReleaseID
 		Locales    string `form:"locales" binding:"locales"`
 		Components string `form:"components" binding:"components"`
+		Pseudo     bool   `form:"pseudo" binding:"omitempty"`
 	}{}
 	if err := api.ExtractParameters(c, nil, &params); err != nil {
 		return
@@ -76,8 +80,8 @@ func GetMultipleBundles2(c *gin.Context) {
 
 	version := c.GetString(api.SgtnVersionKey)
 
-	bundles, multiErr := l3Service.GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.ProductName, version, params.Locales, params.Components)
-	data := v2Translation.ConvertReleaseToAPI(params.ProductName, version, bundles)
+	bundles, multiErr := v2Translation.GetService(params.Pseudo).GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.ProductName, version, params.Locales, params.Components)
+	data := v2Translation.ConvertReleaseToAPI(bundles)
 	api.HandleResponse(c, data, multiErr)
 }
 
@@ -91,6 +95,7 @@ func GetMultipleBundles2(c *gin.Context) {
 // @Param component query string true "component name"
 // @Param key query string true "key"
 // @Param source query string false "a source string"
+// @Param pseudo query boolean false "a flag for returnning pseudo translation" default(false)
 // @Success 200 {object} api.Response "OK"
 // @Failure 400 {string} string "Bad Request"
 // @Failure 404 {string} string "Not Found"
@@ -106,7 +111,7 @@ func GetString2(c *gin.Context) {
 	version := c.GetString(api.SgtnVersionKey)
 
 	internalID := translation.MessageID{Name: params.ProductName, Version: version, Locale: params.Locale, Component: params.Component, Key: params.Key}
-	result, err := l3Service.GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, params.Source)
+	result, err := v2Translation.GetService(params.Pseudo).GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, params.Source)
 	api.HandleResponse(c, result, err)
 }
 
@@ -117,6 +122,7 @@ func GetString2(c *gin.Context) {
 // @Param productName query string true "product name"
 // @Param version query string true "version"
 // @Param locale query string false "locale String. e.g. 'en-US'"
+// @Param pseudo query boolean false "a flag for returnning pseudo translation" default(false)
 // @Success 200 {object} api.Response "OK"
 // @Success 206 {object} api.Response "Successful Partially"
 // @Failure 400 {string} string "Bad Request"
@@ -128,6 +134,7 @@ func GetProduct(c *gin.Context) {
 	params := struct {
 		ReleaseID
 		Locale string `form:"locale" binding:"locale"`
+		Pseudo bool   `form:"pseudo" binding:"omitempty"`
 	}{Locale: translation.EnLocale}
 	if err := api.ExtractParameters(c, nil, &params); err != nil {
 		return
@@ -135,8 +142,8 @@ func GetProduct(c *gin.Context) {
 
 	version := c.GetString(api.SgtnVersionKey)
 
-	bundles, multiErr := l3Service.GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.ProductName, version, params.Locale, "")
-	data := v2Translation.ConvertReleaseToAPI(params.ProductName, version, bundles)
+	bundles, multiErr := v2Translation.GetService(params.Pseudo).GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.ProductName, version, params.Locale, "")
+	data := v2Translation.ConvertReleaseToAPI(bundles)
 	api.HandleResponse(c, data, multiErr)
 }
 
@@ -192,6 +199,7 @@ func GetAvailableLocales(c *gin.Context) {
 // @Param version query string true "version"
 // @Param locale query string false "locale String. e.g. 'en-US'"
 // @Param component path string true "component name"
+// @Param pseudo query boolean false "a flag for returnning pseudo translation" default(false)
 // @Success 200 {object} api.Response "OK"
 // @Failure 400 {string} string "Bad Request"
 // @Failure 404 {string} string "Not Found"
@@ -206,6 +214,7 @@ func GetBundle(c *gin.Context) {
 	formPart := struct {
 		Version string `form:"version" binding:"version"`
 		Locale  string `form:"locale" binding:"locale"`
+		Pseudo  bool   `form:"pseudo" binding:"omitempty"`
 	}{Locale: translation.EnLocale}
 	if err := api.ExtractParameters(c, &uriPart, &formPart); err != nil {
 		return
@@ -213,7 +222,7 @@ func GetBundle(c *gin.Context) {
 
 	version := c.GetString(api.SgtnVersionKey)
 
-	data, err := l3Service.GetBundle(logger.NewContext(c, c.MustGet(api.LoggerKey)),
+	data, err := v2Translation.GetService(formPart.Pseudo).GetBundle(logger.NewContext(c, c.MustGet(api.LoggerKey)),
 		&translation.BundleID{Name: uriPart.ProductName, Version: version, Locale: formPart.Locale, Component: uriPart.Component})
 
 	api.HandleResponse(c, v2Translation.ConvertBundleToAPI(data), err)
@@ -227,6 +236,7 @@ func GetBundle(c *gin.Context) {
 // @Param version query string true "version"
 // @Param locales query string true "locales"
 // @Param components path string true "components"
+// @Param pseudo query boolean false "a flag for returnning pseudo translation" default(false)
 // @Success 200 {object} api.Response "OK"
 // @Success 206 {object} api.Response "Successful Partially"
 // @Failure 400 {string} string "Bad Request"
@@ -242,6 +252,7 @@ func GetMultipleBundles(c *gin.Context) {
 	formPart := struct {
 		Version string `form:"version" binding:"version"`
 		Locales string `form:"locales" binding:"locales"`
+		Pseudo  bool   `form:"pseudo" binding:"omitempty"`
 	}{}
 	if err := api.ExtractParameters(c, &uriPart, &formPart); err != nil {
 		return
@@ -249,8 +260,8 @@ func GetMultipleBundles(c *gin.Context) {
 
 	version := c.GetString(api.SgtnVersionKey)
 
-	bundles, multiErr := l3Service.GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), uriPart.ProductName, version, formPart.Locales, uriPart.Components)
-	data := v2Translation.ConvertReleaseToAPI(uriPart.ProductName, version, bundles)
+	bundles, multiErr := v2Translation.GetService(formPart.Pseudo).GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), uriPart.ProductName, version, formPart.Locales, uriPart.Components)
+	data := v2Translation.ConvertReleaseToAPI(bundles)
 	api.HandleResponse(c, data, multiErr)
 }
 
@@ -264,6 +275,7 @@ func GetMultipleBundles(c *gin.Context) {
 // @Param component path string true "component name"
 // @Param key path string true "key"
 // @Param source query string false "a source string"
+// @Param pseudo query boolean false "a flag for returnning pseudo translation" default(false)
 // @Success 200 {object} api.Response "OK"
 // @Failure 400 {string} string "Bad Request"
 // @Failure 404 {string} string "Not Found"
@@ -280,6 +292,7 @@ func GetString(c *gin.Context) {
 		Version string `form:"version" binding:"version"`
 		Locale  string `form:"locale" binding:"locale"`
 		Source  string `form:"source"`
+		Pseudo  bool   `form:"pseudo" binding:"omitempty"`
 	}{Locale: translation.EnLocale}
 	if err := api.ExtractParameters(c, &uriPart, &formPart); err != nil {
 		return
@@ -288,7 +301,7 @@ func GetString(c *gin.Context) {
 	version := c.GetString(api.SgtnVersionKey)
 
 	internalID := translation.MessageID{Name: uriPart.ProductName, Version: version, Locale: formPart.Locale, Component: uriPart.Component, Key: uriPart.Key}
-	result, err := l3Service.GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, formPart.Source)
+	result, err := v2Translation.GetService(formPart.Pseudo).GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, formPart.Source)
 	api.HandleResponse(c, result, err)
 }
 
@@ -301,6 +314,7 @@ func GetString(c *gin.Context) {
 // @Param locale query string false "locale String. e.g. 'en-US'"
 // @Param key path string true "key"
 // @Param source query string false "a source string"
+// @Param pseudo query boolean false "a flag for returnning pseudo translation" default(false)
 // @Success 200 {object} api.Response "OK"
 // @Failure 400 {string} string "Bad Request"
 // @Failure 404 {string} string "Not Found"
@@ -317,6 +331,7 @@ func GetString3(c *gin.Context) {
 		Version string `form:"version" binding:"version"`
 		Locale  string `form:"locale" binding:"locale"`
 		Source  string `form:"source"`
+		Pseudo  bool   `form:"pseudo" binding:"omitempty"`
 	}{Locale: translation.EnLocale}
 	if err := api.ExtractParameters(c, &uriPart, &formPart); err != nil {
 		return
@@ -325,7 +340,7 @@ func GetString3(c *gin.Context) {
 	version := c.GetString(api.SgtnVersionKey)
 
 	internalID := translation.MessageID{Name: uriPart.ProductName, Version: version, Locale: formPart.Locale, Component: uriPart.Component, Key: uriPart.Key}
-	result, err := l3Service.GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, formPart.Source)
+	result, err := v2Translation.GetService(formPart.Pseudo).GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, formPart.Source)
 	api.HandleResponse(c, result, err)
 }
 

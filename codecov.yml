@@ -1,0 +1,19 @@
+coverage:
+  precision: 2
+  round: down
+  range: "80...100"
+  status:
+    project:
+      default:
+        branches: g11n-go-service
+        target: 80%
+        if_ci_failed: error
+        if_not_found: failure
+        
+    patch:
+      default:
+        branches: g11n-go-service
+        target: 0%
+        if_ci_failed: error
+        if_not_found: failure
+

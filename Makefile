@@ -1,3 +1,6 @@
+# Copyright 2022 VMware, Inc.
+# SPDX-License-Identifier: EPL-2.0
+
 bench ?= .
 config ?= ${CURDIR}/tests/testdata/config/config.yaml
 
@@ -76,6 +79,7 @@ internal/bindata/bindata.go: downloadgo-bindata
 
 downloadgo-bindata:
 	go get -u github.com/go-bindata/go-bindata/...
+	go install github.com/go-bindata/go-bindata/go-bindata
 
 swagger:
 	go install github.com/swaggo/swag/cmd/swag@v1.6.7

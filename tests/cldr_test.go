@@ -225,6 +225,7 @@ func TestParseLocaleFunc(t *testing.T) {
 		{testName: "zh-Hans", locale: "zh-Hans", wanted: &coreutil.Locale{Language: "zh", Region: "", Scripts: "Hans"}},
 		{testName: "zh-Hans-CN", locale: "zh-Hans-CN", wanted: &coreutil.Locale{Language: "zh", Region: "CN", Scripts: "Hans"}},
 		{testName: "XXX-Hans", locale: "XXX-Hans", wanted: nil},
+		{testName: "ES-419", locale: "ES-419", wanted: &coreutil.Locale{Language: "es", Region: "419", Scripts: ""}},
 	}
 
 	for _, tt := range tests {

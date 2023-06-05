@@ -45,7 +45,6 @@ func GetCache() coreCache {
 
 func init() {
 	coreDataCache = cache.NewCache("cldrcore", map[string]interface{}{
-		"MaxCost":     20,
-		"BufferItems": 64,
+		"MaxEntities": int64(cldr.MaxCoreDataSize),
 	})
 }
