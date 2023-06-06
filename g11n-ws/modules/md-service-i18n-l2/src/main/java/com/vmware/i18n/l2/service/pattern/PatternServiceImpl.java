@@ -67,6 +67,8 @@ public class PatternServiceImpl implements IPatternService {
 
 		locale = newLocale;
 
+		supplyDependentCategories(categoryList);
+
 		Map<String, Object> patternMap = null;
 		String patternJson = "";
 		patternJson = TranslationCache3.getCachedObject(CacheName.PATTERN, locale, String.class);
@@ -151,16 +153,9 @@ public class PatternServiceImpl implements IPatternService {
 	private Map<String, Object> buildPatternMap(String language, String region, String patternJson, List<String> categoryList, String scopeFilter, LocaleDataDTO localeDataDTO) throws VIPCacheException {
 		Map<String, Object> patternMap = new LinkedHashMap<>();
 		Map<String, Object> categoriesMap = new LinkedHashMap<>();
-		try {
-			if (CollectionUtils.containsAny(categoryList, specialCategories) && !categoryList.contains(ConstantsKeys.PLURALS)) {
-				categoryList.add(ConstantsKeys.PLURALS);
-			}
-			if (categoryList.contains(ConstantsKeys.PLURALS) && !categoryList.contains(ConstantsKeys.NUMBERS)) {
-				categoryList.add(ConstantsKeys.NUMBERS);
-			}
-		} catch (UnsupportedOperationException e) {//catch the exception when refetch plural and dateFields by language for getPatternWithLanguageAndRegion API
 
-		}
+		supplyDependentCategories(categoryList);
+
 		if (StringUtils.isEmpty(patternJson)) {
 			patternMap.put(ConstantsKeys.LOCALEID, "");
 			for (String category : categoryList) {
@@ -194,6 +189,19 @@ public class PatternServiceImpl implements IPatternService {
 		patternMap.put(ConstantsKeys.REGION, region);
 		patternMap.put(ConstantsKeys.CATEGORIES, categoriesMap);
 		return patternMap;
+	}
+
+	private void supplyDependentCategories(List<String> categoryList){
+		try {
+			if (CollectionUtils.containsAny(categoryList, specialCategories) && !categoryList.contains(ConstantsKeys.PLURALS)) {
+				categoryList.add(ConstantsKeys.PLURALS);
+			}
+			if (categoryList.contains(ConstantsKeys.PLURALS) && !categoryList.contains(ConstantsKeys.NUMBERS)) {
+				categoryList.add(ConstantsKeys.NUMBERS);
+			}
+		} catch (UnsupportedOperationException e) {//catch the exception when refetch plural and dateFields by language for getPatternWithLanguageAndRegion API
+
+		}
 	}
 
 	private void handleSpecialCategory(String category, String language, Map<String, Object> categoriesMap, String scopeFilter) throws VIPCacheException {
