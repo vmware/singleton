@@ -1,3 +1,8 @@
+/*
+ * Copyright 2019-2023 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
+
 package com.vmware.vip.core.conf;
 
 import io.swagger.v3.oas.models.OpenAPI;
