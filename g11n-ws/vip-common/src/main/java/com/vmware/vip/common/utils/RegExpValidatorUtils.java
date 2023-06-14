@@ -129,6 +129,13 @@ public final class RegExpValidatorUtils {
 		return false;
 	}
 
+	public static boolean startLetterAndCommValidchar(String str) {
+		String regex = "^[A-Za-z\\^][\\w\\,\\-\\(\\)]+$";
+		return match(regex, str);
+	}
+
+
+
 	public static void main(String[] args) {
 		System.out.println(RegExpValidatorUtils.IsLetter("bba"));
 		System.out.println(RegExpValidatorUtils.IsNumberAndDot("1.9.0"));
