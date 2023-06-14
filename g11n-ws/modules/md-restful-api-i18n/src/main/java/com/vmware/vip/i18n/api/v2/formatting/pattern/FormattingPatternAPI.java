@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.v2.formatting.pattern;
@@ -33,7 +33,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 @RestController("v2-FormattingPatternAPI")
 public class FormattingPatternAPI extends BaseAction {
