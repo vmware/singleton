@@ -32,12 +32,11 @@ public class Swagger3HostResolver implements WebMvcOpenApiTransformationFilter {
     public OpenAPI transform(OpenApiTransformationContext<HttpServletRequest> context) {
         OpenAPI swagger = context.getSpecification();
         if (StringUtils.isNotEmpty(hostUrl)){
-            List<Server> servers = new ArrayList<>();
-            Server server = new Server();
-            server.setUrl(hostUrl);
-            server.setDescription(hostDesp);
-            servers.add(server);
-            swagger.setServers(servers);
+            List<Server> servers = swagger.getServers();
+            for (Server server : servers){
+                server.setUrl(hostUrl);
+                server.setDescription(hostDesp);
+            }
         }
         return swagger;
     }
