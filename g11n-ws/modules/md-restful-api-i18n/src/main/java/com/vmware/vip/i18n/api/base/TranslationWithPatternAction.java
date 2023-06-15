@@ -63,7 +63,7 @@ public class TranslationWithPatternAction extends BaseAction {
 	    			  excep.getMessage(), null);
 	      }
 	      if (validateResult) {
-              if (!CommonUtil.isEmpty(data.getScopeFilter()) && !!RegExpValidatorUtils.startLetterAndCommValidchar(data.getScopeFilter())) {
+              if (!CommonUtil.isEmpty(data.getScopeFilter()) && !RegExpValidatorUtils.startLetterAndCommValidchar(data.getScopeFilter())) {
                   return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.SCOPE_FILTER_NOT_VALIDATE, null);
               }
 
