@@ -27,7 +27,7 @@ definitions:
       productName:
         type: string
       pseudo:
-        type: string
+        type: object
       region:
         type: string
       scope:
@@ -351,10 +351,19 @@ paths:
     get:
       description: Get region names in a specified locale
       parameters:
-      - description: 'the supported language list, separated by commas. e.g. ''en,zh,ja'' '
+      - description: the supported language list, separated by commas. e.g. 'en,zh,ja'
         in: query
         name: supportedLanguageList
         required: true
+        type: string
+      - description: a flag for returning cities
+        in: query
+        name: displayCity
+        type: boolean
+      - description: a string which represents regions, separated by commas. e.g.
+          US, PT, CN
+        in: query
+        name: regions
         type: string
       produces:
       - application/json

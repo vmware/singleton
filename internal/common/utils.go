@@ -9,6 +9,7 @@ import (
 	"context"
 	"errors"
 	"reflect"
+	"regexp"
 	"strings"
 	"time"
 
@@ -19,7 +20,8 @@ import (
 
 // Contains ...
 // return < 0 not found
-//        >=0 the index
+//
+//	>=0 the index
 func Contains(s []string, e string) int {
 	for i, a := range s {
 		if a == e {
@@ -31,7 +33,8 @@ func Contains(s []string, e string) int {
 
 // ContainsIgnoreCase
 // return < 0 not found
-//        >=0 the index
+//
+//	>=0 the index
 func ContainsIgnoreCase(s []string, e string) int {
 	for i, a := range s {
 		if strings.EqualFold(a, e) {
@@ -84,4 +87,13 @@ func DoAndCheck(ctx context.Context, done chan struct{}, doer func() error, chec
 
 func IsZeroOfUnderlyingType(x interface{}) bool {
 	return reflect.DeepEqual(x, reflect.Zero(reflect.TypeOf(x)).Interface())
+}
+
+func SplitParameter(param string, reg *regexp.Regexp) []string {
+	param = strings.TrimSpace(param)
+	if len(param) == 0 {
+		return nil
+	}
+
+	return reg.Split(param, -1)
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -14,7 +14,7 @@ const (
 	LocaleAliasesPath        = cldrBaseFolder + "aliases/aliases.json"
 	SupplementalCurrencyPath = cldrBaseFolder + "supplement/currencies.json"
 	LanguageDataPath         = cldrBaseFolder + "supplement/languageData.json"
-	ParseDataPath            = cldrBaseFolder + "pattern/common/parse.json"
+	ParseDataPath            = cldrBaseFolder + "core/parse.json"
 	NumberingSystemsPath     = cldrBaseFolder + "supplement/numbers.json"
 	RegionLanguagesMapPath   = cldrBaseFolder + "regionLanguage/regionLanguageMapping.json"
 	DefaultContentPath       = cldrBaseFolder + "defaultContent/defaultContent.json"
@@ -53,6 +53,7 @@ const (
 	LocaleLanguagesPath   = cldrBaseFolder + "localedata/%s/languages.json"
 	ContextTransformPath  = cldrBaseFolder + "misc/%s/contextTransforms.json"
 	DateFieldsJSONPath    = cldrBaseFolder + "pattern/common/%s/dateFields.json"
+	LocaleCitiesPath      = cldrBaseFolder + "localedata/%s/cities.json"
 )
 
 var localeDataInfo = map[string]cldrItemInfo{
@@ -66,6 +67,7 @@ var localeDataInfo = map[string]cldrItemInfo{
 	cldr.ContextTransform:  {ContextTransformPath, []interface{}{"contextTransforms"}},
 	cldr.LocaleLanguages:   {LocaleLanguagesPath, []interface{}{"languages"}},
 	cldr.LocaleTerritories: {LocaleTerritoriesPath, []interface{}{}},
+	cldr.LocaleCities:      {LocaleCitiesPath, []interface{}{"cities"}},
 }
 
 type cldrItemInfo struct {

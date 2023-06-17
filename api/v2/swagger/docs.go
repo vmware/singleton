@@ -406,10 +406,22 @@ var doc = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "the supported language list, separated by commas. e.g. 'en,zh,ja' ",
+                        "description": "the supported language list, separated by commas. e.g. 'en,zh,ja'",
                         "name": "supportedLanguageList",
                         "in": "query",
                         "required": true
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "a flag for returning cities",
+                        "name": "displayCity",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "a string which represents regions, separated by commas. e.g. US, PT, CN",
+                        "name": "regions",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -1080,7 +1092,7 @@ var doc = `{
                     "type": "string"
                 },
                 "pseudo": {
-                    "type": "string"
+                    "type": "object"
                 },
                 "region": {
                     "type": "string"

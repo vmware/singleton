@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -7,6 +7,7 @@ package localeutil
 
 import (
 	"context"
+	"strings"
 
 	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/cldr"
@@ -48,7 +49,7 @@ func GetLocaleLanguages(ctx context.Context, locale string) (map[string]string, 
 }
 
 func GetLocaleTerritories(ctx context.Context, locale string) (data *LocaleTerritories, err error) {
-	data = new(LocaleTerritories)
+	data = &LocaleTerritories{}
 	err = GetLocaleData(ctx, locale, cldr.LocaleTerritories, data)
 	return data, err
 }
@@ -75,4 +76,24 @@ func GetTerritoriesOfMultipleLocales(ctx context.Context, locales []string) ([]*
 	}
 
 	return territoryList, returnErr.ErrorOrNil()
+}
+
+func GetLocaleCities(ctx context.Context, locale string, regions []string) (data map[string]jsoniter.Any, err error) {
+	cldrLocale := coreutil.GetCLDRLocale(locale)
+	if cldrLocale == "" {
+		err = sgtnerror.StatusBadRequest.WithUserMessage(cldr.InvalidLocale, locale)
+		return
+	}
+
+	data = map[string]jsoniter.Any{}
+	err = GetLocaleData(ctx, locale, cldr.LocaleCities, &data)
+	if err != nil || len(regions) == 0 {
+		return
+	}
+
+	newData := make(map[string]jsoniter.Any, len(regions))
+	for _, region := range regions {
+		newData[region] = data[strings.ToUpper(region)]
+	}
+	return newData, err
 }
