@@ -8,12 +8,12 @@ package localeutil
 import (
 	"context"
 
-	"sgtnserver/internal/common"
 	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/cldr"
 	"sgtnserver/modules/cldr/coreutil"
 
 	jsoniter "github.com/json-iterator/go"
+	"golang.org/x/exp/maps"
 )
 
 type LocaleTerritories struct {
@@ -99,12 +99,13 @@ func GetTimeZoneNames(ctx context.Context, locale string, defaultTerritory bool)
 	const metaZonesKey = "metaZones"
 	metaZones := data.TimeZoneNames[metaZonesKey].([]interface{})
 	newMetaZones := make([]interface{}, 0, len(metaZones))
+	// filter metazones that are not in the default timezone
 	for _, metaZone := range metaZones {
 		if _, ok := metaZone.(map[string]interface{})["mapZones"]; ok {
 			newMetaZones = append(newMetaZones, metaZone)
 		}
 	}
-	data = &LocaleTimeZoneNames{Language: data.Language, TimeZoneNames: common.CopyMap(data.TimeZoneNames)}
+	data = &LocaleTimeZoneNames{Language: data.Language, TimeZoneNames: maps.Clone(data.TimeZoneNames)}
 	data.TimeZoneNames[metaZonesKey] = newMetaZones
 
 	return
