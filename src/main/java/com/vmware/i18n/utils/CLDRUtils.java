@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.utils;
@@ -27,6 +27,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 import com.vmware.i18n.common.DayEnum;
+import com.vmware.i18n.common.DayPeriodEnum;
 import com.vmware.i18n.common.OfficialStatusEnum;
 import com.vmware.i18n.utils.timezone.CldrTimeZoneUtils;
 
@@ -234,74 +235,45 @@ public class CLDRUtils {
 		return dateFieldsFormatMap;
 	}
 
-	private static Map<String, Object> dayPeriodsFormatExtract(String locale, JSONObject content) {
-		// dayPeriodsFormat narrow am/pm
-		String dayPeriodsFormatNarrow = JSONUtil
-				.select(content, "main." + locale + ".dates.calendars.gregorian.dayPeriods.format.narrow").toString();
-		Map<String, Object> dayPeriodsFormatNarrowMap = JSONUtil.getMapFromJson(dayPeriodsFormatNarrow);
-		List<Object> dayPeriodsFormatNarrowArr = new ArrayList<Object>();
-		dayPeriodsFormatNarrowArr.add(dayPeriodsFormatNarrowMap.get("am").toString());
-		dayPeriodsFormatNarrowArr.add(dayPeriodsFormatNarrowMap.get("pm").toString());
-
-		// dayPeriodsFormat abbreviated am/pm
-		String dayPeriodsFormatAbbreviated = JSONUtil
-				.select(content, "main." + locale + ".dates.calendars.gregorian.dayPeriods.format.abbreviated")
-				.toString();
-		Map<String, Object> dayPeriodsFormatAbbrMap = JSONUtil.getMapFromJson(dayPeriodsFormatAbbreviated);
-		List<Object> dayPeriodsFormatAbbrArr = new ArrayList<Object>();
-		dayPeriodsFormatAbbrArr.add(dayPeriodsFormatAbbrMap.get("am").toString());
-		dayPeriodsFormatAbbrArr.add(dayPeriodsFormatAbbrMap.get("pm").toString());
-
-		// dayPeriodsFormat wide am/pm
-		String dayPeriodsFormatWide = JSONUtil
-				.select(content, "main." + locale + ".dates.calendars.gregorian.dayPeriods.format.wide").toString();
-		Map<String, Object> dayPeriodsFormatWideMap = JSONUtil.getMapFromJson(dayPeriodsFormatWide);
-		List<Object> dayPeriodsFormatWideArr = new ArrayList<Object>();
-		dayPeriodsFormatWideArr.add(dayPeriodsFormatWideMap.get("am").toString());
-		dayPeriodsFormatWideArr.add(dayPeriodsFormatWideMap.get("pm").toString());
-
-		Map<String, Object> dayPeriodsFormatMap = new LinkedHashMap<String, Object>();
-		dayPeriodsFormatMap.put("narrow", dayPeriodsFormatNarrowArr);
-		dayPeriodsFormatMap.put("abbreviated", dayPeriodsFormatAbbrArr);
-		dayPeriodsFormatMap.put("wide", dayPeriodsFormatWideArr);
-
-		return dayPeriodsFormatMap;
+	private static Map<String, Object> dayPeriodsFormatExtract(String locale, JSONObject dateData) {
+		return getDayPeriodsMap(locale, Constants.FORMAT, dateData);
 	}
 
-	private static Map<String, Object> dayPeriodsStandaloneExtract(String locale, JSONObject content) {
-		// dayPeriodsStandalone narrow
-		String dayPeriodsStandaloneNarrow = JSONUtil
-				.select(content, "main." + locale + ".dates.calendars.gregorian.dayPeriods.stand-alone.narrow")
-				.toString();
-		Map<String, Object> dayPeriodsStandaloneNarrowMap = JSONUtil.getMapFromJson(dayPeriodsStandaloneNarrow);
-		List<Object> dayPeriodsStandaloneNarrowArr = new ArrayList<Object>();
-		dayPeriodsStandaloneNarrowArr.add(dayPeriodsStandaloneNarrowMap.get("am").toString());
-		dayPeriodsStandaloneNarrowArr.add(dayPeriodsStandaloneNarrowMap.get("pm").toString());
+	private static Map<String, Object> dayPeriodsStandaloneExtract(String locale, JSONObject dateData) {
+		return getDayPeriodsMap(locale, Constants.STANDALONE, dateData);
+	}
 
-		// dayPeriodsStandalone abbreviated
-		String dayPeriodsStandaloneAbbreviated = JSONUtil
-				.select(content, "main." + locale + ".dates.calendars.gregorian.dayPeriods.stand-alone.abbreviated")
-				.toString();
-		Map<String, Object> dayPeriodsStandaloneAbbrMap = JSONUtil.getMapFromJson(dayPeriodsStandaloneAbbreviated);
-		List<Object> dayPeriodsStandaloneAbbrArr = new ArrayList<Object>();
-		dayPeriodsStandaloneAbbrArr.add(dayPeriodsStandaloneAbbrMap.get("am").toString());
-		dayPeriodsStandaloneAbbrArr.add(dayPeriodsStandaloneAbbrMap.get("pm").toString());
+	private static Map<String, Object> getDayPeriodsMap(String locale, String formatType, JSONObject dateData) {
+		// dayPeriods narrow
+		List<String> dayPeriodsNarrowArr = getDayPeriodsArray(locale, formatType + Constants.DOT + Constants.NARROW, dateData);
 
-		// dayPeriodsStandalone wide
-		String dayPeriodsStandaloneWide = JSONUtil
-				.select(content, "main." + locale + ".dates.calendars.gregorian.dayPeriods.stand-alone.wide")
-				.toString();
-		Map<String, Object> dayPeriodsStandaloneWideMap = JSONUtil.getMapFromJson(dayPeriodsStandaloneWide);
-		List<Object> dayPeriodsStandaloneWideArr = new ArrayList<Object>();
-		dayPeriodsStandaloneWideArr.add(dayPeriodsStandaloneWideMap.get("am").toString());
-		dayPeriodsStandaloneWideArr.add(dayPeriodsStandaloneWideMap.get("pm").toString());
+		// dayPeriods abbreviated
+		List<String> dayPeriodsAbbrArr = getDayPeriodsArray(locale, formatType + Constants.DOT + Constants.ABBREVIATED, dateData);
 
-		Map<String, Object> dayPeriodsStandaloneMap = new LinkedHashMap<String, Object>();
-		dayPeriodsStandaloneMap.put("narrow", dayPeriodsStandaloneNarrowArr);
-		dayPeriodsStandaloneMap.put("abbreviated", dayPeriodsStandaloneAbbrArr);
-		dayPeriodsStandaloneMap.put("wide", dayPeriodsStandaloneWideArr);
+		// dayPeriods wide
+		List<String> dayPeriodsWideArr = getDayPeriodsArray(locale, formatType + Constants.DOT + Constants.WIDE, dateData);
 
-		return dayPeriodsStandaloneMap;
+
+		Map<String, Object> dayPeriodsMap = new LinkedHashMap<String, Object>();
+		dayPeriodsMap.put(Constants.NARROW, dayPeriodsNarrowArr);
+		dayPeriodsMap.put(Constants.ABBREVIATED, dayPeriodsAbbrArr);
+		dayPeriodsMap.put(Constants.WIDE, dayPeriodsWideArr);
+
+		return dayPeriodsMap;
+	}
+
+	private static List<String> getDayPeriodsArray(String locale, String formatTypeALength, JSONObject dateData){
+		String dayPeriodsJsonStr = JSONUtil
+				.select(dateData, "main." + locale + ".dates.calendars.gregorian.dayPeriods." + formatTypeALength).toString();
+		Map<String, Object> dayPeriodsMap = JSONUtil.getMapFromJson(dayPeriodsJsonStr);
+		List<String> dayPeriodsArr = new ArrayList<String>();
+		for (DayPeriodEnum dayPeriodEnum : DayPeriodEnum.values()) {
+			String dayPeriod = (String) dayPeriodsMap.get(dayPeriodEnum.getDayPeriod());
+			if (dayPeriod != null) {
+				dayPeriodsArr.add(dayPeriod);
+			}
+		}
+		return dayPeriodsArr;
 	}
 
 	private static Map<String, Object> daysFormatExtract(String locale, JSONObject content) {
@@ -817,7 +789,7 @@ public class CLDRUtils {
 		JSONArray array = (JSONArray) JSONUtil.select(allLocalesContents, "availableLocales.full");
 		for (Object item : array) {
 			String locale = item.toString();
-			if (locale.equals("root") || "yue".equals(locale)) {
+			if ("yue".equals(locale)) {// no data for yue locale, so skip it, or data extract process will throw exception
 				continue;
 			}
 			localesMap.put(locale.toLowerCase(), locale);

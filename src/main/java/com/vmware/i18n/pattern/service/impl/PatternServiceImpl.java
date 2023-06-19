@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.pattern.service.impl;
@@ -140,10 +140,12 @@ public class PatternServiceImpl implements IPatternService {
 		String resourcePath = PathUtils.getResourcePath();
 
 		for (String cat : cateList) {
-			String filePath = MessageFormat.format(CLDRConstants.SUPPLEMENTAL_PATH, cat);
-			String suppleData = dao.getPattern(PathUtils.getCoreResourcePath(), filePath);
-			if (!CommonUtil.isEmpty(suppleData)) {
-				suppleMap.put(cat, JSONUtil.string2SortMap(suppleData));
+			if(cat.equals(Constants.NUMBERS) || cat.equals(Constants.CURRENCIES) || cat.equals(Constants.DATES)) {// currently only these three categories have supplemental data
+				String filePath = MessageFormat.format(CLDRConstants.SUPPLEMENTAL_PATH, cat);
+				String suppleData = dao.getPattern(PathUtils.getCoreResourcePath(), filePath);
+				if (!CommonUtil.isEmpty(suppleData)) {
+					suppleMap.put(cat, JSONUtil.string2SortMap(suppleData));
+				}
 			}
 		}
 

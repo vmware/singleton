@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.common;
@@ -10,6 +10,19 @@ package com.vmware.i18n.common;
 public class Constants {
 
 	public static final String UTF8 = "UTF-8";
+
+	//symbol
+	public static final String DOT = ".";
+
+	//format type
+	public static final String FORMAT = "format";
+	public static final String STANDALONE = "stand-alone";
+
+	//format length
+	public static final String NARROW = "narrow";
+	public static final String ABBREVIATED = "abbreviated";
+	public static final String WIDE = "wide";
+
 	// locale
 	public static final String TERRITORIES = "territories";
 	public static final String LANGUAGE = "language";
@@ -57,6 +70,8 @@ public class Constants {
 	public static final String CURRENCIES_DATA = "currencies.json";
 	public static final String NUMBERING_SYSTEMS_JSON = "numberingSystems.json";
 	public static final String NUMBERS_JSON = "numbers.json";
+	public static final String DAY_PERIODS_JSON = "dayPeriods.json";
+	public static final String DATES_JSON = "dates.json";
 	public static final String DATE_TIMEZONENAME = "timeZoneName.json";
 	
 	// key name
@@ -66,8 +81,10 @@ public class Constants {
 	public static final String HOUR = "hour";
 	public static final String MINUTE = "minute";
 	public static final String SECOND = "second";
+
 	public static final String DAY_PERIODS_FORMAT = "dayPeriodsFormat";
 	public static final String DAY_PERIODS_STANDALONE = "dayPeriodsStandalone";
+
 	public static final String DAYS_FORMAT = "daysFormat";
 	public static final String DAYS_STANDALONE = "daysStandalone";
 	public static final String MONTH_FORMAT = "monthsFormat";
@@ -135,5 +152,7 @@ public class Constants {
 	public static final String TO = "_to";
 	public static final String SUPPLEMENTAL_NUMBERING_SYSTEMS = "supplemental.numberingSystems";
 	public static final String NUMBERING_SYSTEMS = "numberingSystems";
+	public static final String SUPPLEMENTAL_DAY_PERIODS_RULESET = "supplemental.dayPeriodRuleSet";
+	public static final String DAY_PERIODS_RULESET = "dayPeriodRuleSet";
 
 }

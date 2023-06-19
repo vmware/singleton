@@ -13,6 +13,8 @@ public class PathUtils {
         String resourcePath = CLDRConstants.RESOURCES_PATH; //this is the resource path when debug source code in IDE
         if (PatternConfig.getInstance().getPatternPath() != null) {
             resourcePath = PatternConfig.getInstance().getPatternPath(); //this is the configed resource path when format bundles are unbinded with source code
+        }else if (CLDRConstants.JSON_PATH.lastIndexOf(".jar") > 0) {
+            resourcePath = CLDRConstants.JSON_PATH; //this is the resource path when format bundles are binded with source code
         }
         return resourcePath;
     }
