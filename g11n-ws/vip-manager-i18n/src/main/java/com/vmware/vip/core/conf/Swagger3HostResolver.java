@@ -36,9 +36,9 @@ public class Swagger3HostResolver implements WebMvcOpenApiTransformationFilter {
         if (StringUtils.isNotEmpty(hostUrl)){
             List<Server> servers = swagger.getServers();
             for (Server server : servers){
-                logger.info("------old server:{} new server {} -------", server.getUrl(), hostUrl);
                 server.setUrl(hostUrl);
                 server.setDescription(hostDesp);
+                logger.info("------old server:{} new server {} -------", server.getUrl(), hostUrl);
             }
         }
         return swagger;
