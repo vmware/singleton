@@ -104,9 +104,9 @@ func GetPatternDataByLangReg(c *gin.Context) {
 // @Produce json
 // @Param supportedLanguageList query string true "the supported language list, separated by commas. e.g. 'en,zh,ja'"
 // @Param displayCity query boolean false "a flag for returning cities" default(false)
-// @Param regions query string false "a string which represents regions, separated by commas. e.g. US, PT, CN""
+// @Param regions query string false "a string which represents regions, separated by commas. e.g. 'US,PT,CN'"
 // @Success 200 {object} api.Response "OK"
-// @Success 206 {object} api.Response "Successful Partially"
+// @Success 207 {object} api.Response "Successful Partially"
 // @Failure 400 {string} string "Bad Request"
 // @Failure 404 {string} string "Not Found"
 // @Failure 500 {string} string "Internal Server Error"
