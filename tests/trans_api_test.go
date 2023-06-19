@@ -8,7 +8,6 @@ package tests
 import (
 	"context"
 	"fmt"
-	"io/ioutil"
 	"net/http"
 	"os"
 	"path"
@@ -478,7 +477,7 @@ func TestGetMultipleMessages(t *testing.T) {
 			resp := e.GET(GetKeysURL, Name, Version, Locale, Component).
 				WithQuery("keys", d.keys).Expect()
 
-			ioutil.WriteFile(d.keys+".json", []byte(resp.Body().Raw()), 0666)
+			// ioutil.WriteFile(d.keys+".json", []byte(resp.Body().Raw()), 0666)
 
 			assert.JSONEq(t, d.wanted, resp.Body().Raw())
 		})
