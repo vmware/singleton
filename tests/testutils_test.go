@@ -44,6 +44,7 @@ const (
 	GetSupportedComponentsURL = BaseURL + "/translation/products/{productName}/versions/{version}/componentlist"
 	GetSupportedLocalesURL    = BaseURL + "/translation/products/{productName}/versions/{version}/localelist"
 	GetKeyURL                 = BaseURL + "/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key}"
+	GetKeysURL                = BaseURL + "/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys"
 	GetRegionsOfLanguagesURL  = BaseURL + "/locale/regionList"
 )
 const (

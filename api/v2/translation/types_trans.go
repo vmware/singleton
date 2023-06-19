@@ -33,11 +33,6 @@ type (
 		Pseudo bool   `form:"pseudo" binding:"omitempty"`
 	}
 
-	GetStringsReq struct {
-		BundleID
-		Keys string `form:"keys" binding:"required"`
-	}
-
 	GetStringByPostReq struct {
 		StringID
 		Source                 string `form:"source"`

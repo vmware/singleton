@@ -192,30 +192,34 @@ func GetBundle(c *gin.Context) {
 // GetStrings godoc
 // @Summary Get translations of multiple strings
 // @Description Get multiple translations together by their keys
-// @Tags translation-product-component-keys-api
+// @Tags translation-product-component-key-api
 // @Produce json
 // @Param productName path string true "product name"
 // @Param version path string true "version"
 // @Param locale path string true "locale name"
 // @Param component path string true "component name"
 // @Param keys query string true "keys separated by commas"
+// @Param pseudo query boolean false "a flag for returnning pseudo translation"
 // @Success 200 {object} api.Response "OK"
+// @Success 207 {object} api.Response "Successful Partially"
 // @Failure 400 {string} string "Bad Request"
-// @Failure 401 {string} string "Unauthorized"
-// @Failure 403 {string} string "Forbidden"
 // @Failure 404 {string} string "Not Found"
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys [get]
 func GetStrings(c *gin.Context) {
-	params := GetStringsReq{}
-	if err := api.ExtractParameters(c, &params, &params); err != nil {
+	uriPart := BundleID{}
+	formPart := struct {
+		Keys   string `form:"keys" binding:"required"`
+		Pseudo bool   `form:"pseudo"`
+	}{}
+	if err := api.ExtractParameters(c, &uriPart, &formPart); err != nil {
 		return
 	}
 
 	version := c.GetString(api.SgtnVersionKey)
 
-	bundleID := &translation.BundleID{Name: params.ProductName, Version: version, Locale: params.Locale, Component: params.Component}
-	data, err := l3Service.GetStrings(logger.NewContext(c, c.MustGet(api.LoggerKey)), bundleID, strings.Split(params.Keys, common.KeySep))
+	bundleID := &translation.BundleID{Name: uriPart.ProductName, Version: version, Locale: uriPart.Locale, Component: uriPart.Component}
+	data, err := GetService(formPart.Pseudo).GetStrings(logger.NewContext(c, c.MustGet(api.LoggerKey)), bundleID, strings.Split(formPart.Keys, common.ParamSep))
 	api.HandleResponse(c, ConvertBundleToAPI(data), err)
 }
 

@@ -21,7 +21,7 @@ func (r *translationRouter) Init(e *gin.RouterGroup) {
 	{
 		productPart := "/products/:productName/versions/:version"
 
-		// Product API
+		// Product APIs
 		tranGroup.GET(productPart, GetMultipleBundles)
 
 		tranGroup.GET(productPart+"/localelist", GetAvailableLocales)

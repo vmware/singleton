@@ -27,7 +27,7 @@ definitions:
       productName:
         type: string
       pseudo:
-        type: string
+        type: object
       region:
         type: string
       scope:
@@ -654,6 +654,65 @@ paths:
       summary: Get messages of a single bundle
       tags:
       - translation-product-component-api
+  /translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys:
+    get:
+      description: Get multiple translations together by their keys
+      parameters:
+      - description: product name
+        in: path
+        name: productName
+        required: true
+        type: string
+      - description: version
+        in: path
+        name: version
+        required: true
+        type: string
+      - description: locale name
+        in: path
+        name: locale
+        required: true
+        type: string
+      - description: component name
+        in: path
+        name: component
+        required: true
+        type: string
+      - description: keys separated by commas
+        in: query
+        name: keys
+        required: true
+        type: string
+      - description: a flag for returnning pseudo translation
+        in: query
+        name: pseudo
+        type: boolean
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "207":
+          description: Successful Partially
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get translations of multiple strings
+      tags:
+      - translation-product-component-key-api
   /translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key}:
     get:
       deprecated: true

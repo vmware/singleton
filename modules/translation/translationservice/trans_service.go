@@ -166,18 +166,20 @@ func (ts Service) GetStrings(ctx context.Context, id *translation.BundleID, keys
 	}
 
 	var returnErr *sgtnerror.MultiError
-	all_messages := make(map[string]string)
+	all_messages := make(map[string]jsoniter.Any)
 	bundle.Messages.ToVal(&all_messages)
-	messages := make(map[string]string, len(keys))
+	messagesToReturn := make(map[string]jsoniter.Any, len(keys))
 	for _, key := range keys {
-		message := all_messages[key]
-		if message == "" {
-			sgtnerror.Append(returnErr, sgtnerror.StatusNotFound.WrapErrorWithMessage(translation.ErrStringNotFound, "Fail to get translation for key '%s'", key))
+		msg := all_messages[key]
+		if msg == nil {
+			returnErr = sgtnerror.Append(returnErr, sgtnerror.StatusNotFound.WithUserMessage(translation.KeyNotFound, key))
 		} else {
-			messages[key] = message
+			messagesToReturn[key] = msg
+			returnErr = sgtnerror.Append(returnErr, nil)
 		}
 	}
-	return &translation.Bundle{ID: bundle.ID, Messages: jsoniter.Wrap(messages)}, returnErr.ErrorOrNil()
+	marshaled, _ := jsoniter.Marshal(messagesToReturn)
+	return &translation.Bundle{ID: bundle.ID, Messages: jsoniter.Get(marshaled)}, returnErr.ErrorOrNil()
 }
 
 // GetString ...

@@ -8,7 +8,6 @@ package common
 const (
 	ParamAnd = "&"
 	ParamSep = ","
-	KeySep = ","
 )
 
 const (
