@@ -166,11 +166,11 @@ func (ts Service) GetStrings(ctx context.Context, id *translation.BundleID, keys
 	}
 
 	var returnErr *sgtnerror.MultiError
-	all_messages := make(map[string]jsoniter.Any)
-	bundle.Messages.ToVal(&all_messages)
+	allMsgs := make(map[string]jsoniter.Any)
+	bundle.Messages.ToVal(&allMsgs)
 	messagesToReturn := make(map[string]jsoniter.Any, len(keys))
 	for _, key := range keys {
-		msg := all_messages[key]
+		msg := allMsgs[key]
 		if msg == nil {
 			returnErr = sgtnerror.Append(returnErr, sgtnerror.StatusNotFound.WithUserMessage(translation.KeyNotFound, key))
 		} else {
