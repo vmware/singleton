@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -409,7 +409,7 @@ func TestApiTransExceptionArgs(t *testing.T) {
 		{testName: "invalidComponent", name: Name, version: Version, locale: Locale, component: "invalidComponent", key: Key, wantedCode: sgtnerror.StatusNotFound.Code()},
 		{testName: "illegalComponentCharacter", name: Name, version: Version, locale: Locale, component: "\t", key: Key, wantedCode: http.StatusBadRequest},
 		{testName: "invalidKey", name: Name, version: Version, locale: Locale, component: Component, key: "nonexistent", wantedCode: sgtnerror.StatusNotFound.Code()},
-		{testName: "illegalKeyCharacter", name: Name, version: Version, locale: Locale, component: Component, key: "\t", wantedCode: http.StatusBadRequest},
+		{testName: "illegalKeyCharacter", name: Name, version: Version, locale: Locale, component: Component, key: "￥", wantedCode: http.StatusBadRequest},
 	}
 
 	for _, tt := range tests {
