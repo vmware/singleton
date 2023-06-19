@@ -413,6 +413,7 @@ var doc = `{
                     },
                     {
                         "type": "boolean",
+                        "default": false,
                         "description": "a flag for returning cities",
                         "name": "displayCity",
                         "in": "query"

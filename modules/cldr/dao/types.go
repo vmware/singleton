@@ -14,7 +14,7 @@ const (
 	LocaleAliasesPath        = cldrBaseFolder + "aliases/aliases.json"
 	SupplementalCurrencyPath = cldrBaseFolder + "supplement/currencies.json"
 	LanguageDataPath         = cldrBaseFolder + "supplement/languageData.json"
-	ParseDataPath            = cldrBaseFolder + "core/parse.json"
+	ParseDataPath            = cldrBaseFolder + "pattern/common/parse.json"
 	NumberingSystemsPath     = cldrBaseFolder + "supplement/numbers.json"
 	RegionLanguagesMapPath   = cldrBaseFolder + "regionLanguage/regionLanguageMapping.json"
 	DefaultContentPath       = cldrBaseFolder + "defaultContent/defaultContent.json"

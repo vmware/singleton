@@ -356,7 +356,8 @@ paths:
         name: supportedLanguageList
         required: true
         type: string
-      - description: a flag for returning cities
+      - default: false
+        description: a flag for returning cities
         in: query
         name: displayCity
         type: boolean
