@@ -899,7 +899,8 @@ var doc = `{
                     },
                     {
                         "type": "boolean",
-                        "description": "a flag for returnning pseudo translation",
+                        "default": false,
+                        "description": "a flag for returning pseudo translation",
                         "name": "pseudo",
                         "in": "query"
                     }

@@ -683,7 +683,8 @@ paths:
         name: keys
         required: true
         type: string
-      - description: a flag for returnning pseudo translation
+      - default: false
+        description: a flag for returning pseudo translation
         in: query
         name: pseudo
         type: boolean

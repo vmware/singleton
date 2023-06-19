@@ -199,7 +199,7 @@ func GetBundle(c *gin.Context) {
 // @Param locale path string true "locale name"
 // @Param component path string true "component name"
 // @Param keys query string true "keys separated by commas"
-// @Param pseudo query boolean false "a flag for returnning pseudo translation"
+// @Param pseudo query boolean false "a flag for returning pseudo translation" default(false)
 // @Success 200 {object} api.Response "OK"
 // @Success 207 {object} api.Response "Successful Partially"
 // @Failure 400 {string} string "Bad Request"
