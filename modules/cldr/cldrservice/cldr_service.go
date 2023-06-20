@@ -108,9 +108,6 @@ func GetPatternByLocale(ctx context.Context, locale, catgs, filter string) (newL
 	log.Debug("Get pattern by locale", zap.String("locale", locale), zap.String("scope", catgs), zap.String("scopeFilter", filter))
 	newLocale = coreutil.GetCLDRLocale(locale)
 	if newLocale == "" {
-		newLocale = coreutil.GetPathLocale(locale)
-	}
-	if newLocale == "" {
 		err := sgtnerror.StatusBadRequest.WithUserMessage(cldr.InvalidLocale, locale)
 		log.Error(err.Error())
 		return "", nil, err
