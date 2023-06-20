@@ -13,6 +13,7 @@ import com.vmware.vip.common.cache.TranslationCache3;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.exceptions.VIPCacheException;
+import com.vmware.vip.common.utils.CategoriesEnum;
 import com.vmware.vip.common.utils.JSONUtils;
 
 import org.slf4j.Logger;
@@ -169,7 +170,7 @@ public class PatternServiceImpl implements IPatternService {
 		//when the combination of language and region is invalid, specialCategories(plurals,currencies,dateFields,measurements) data fetching follow language
 		if (!localeDataDTO.isDisplayLocaleID() || localeDataDTO.getLocale().isEmpty()) {
 			for(String category : categoryList){
-				if(specialCategories.contains(category)){
+				if(specialCategories.contains(category)&&!CategoriesEnum.CURRENCIES.getText().equals(category)){
 					handleSpecialCategory(category, language, categoriesMap, scopeFilter);
 				}
 			}
