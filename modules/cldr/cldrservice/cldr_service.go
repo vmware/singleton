@@ -33,6 +33,7 @@ var (
 	categoriesWithSupplement = map[string]cldr.CoreDataType{
 		cldr.PatternCurrencies: cldr.CoreSplmtCurrencyData,
 		cldr.PatternNumbers:    cldr.CoreSplmtNumberingSystems,
+		cldr.PatternDates:      cldr.CoreSplmtDates,
 	}
 
 	// categoriesNeedOtherCategories these categories need other categories for front end requirements
