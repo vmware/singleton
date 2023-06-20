@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 import { Decimal } from 'decimal.js-light';
@@ -60,9 +60,9 @@ class Formatter {
         return (value: number, formatOptions?: NumberFormatOptions) => {
             let currentFormats = formatsInfo;
             let compactData;
-            if ( !isEmptyObject(formatOptions) ) {
-                currentFormats = this.resetFormats( formatsInfo, RoundingMode.ROUND_HALF_EVEN, formatOptions );
-                if ( formatOptions.notation && formatOptions.notation === 'compact' ) {
+            if (!isEmptyObject(formatOptions)) {
+                currentFormats = this.resetFormats(formatsInfo, RoundingMode.ROUND_HALF_EVEN, formatOptions);
+                if (formatOptions.notation && formatOptions.notation === 'compact') {
                     compactData = getCompactData(formatsData, formatOptions.compactDisplay);
                 }
             }
@@ -75,14 +75,14 @@ class Formatter {
         const symbol = data.numberSymbols;
         const formatsInfo = this.parseFormats(currencyFormats);
         let nuDigits: string;
-        if ( data.defaultNumberingSystem !== 'latn') {
+        if (data.defaultNumberingSystem !== 'latn') {
             nuDigits = data.numberingSystem._digits || undefined;
         }
         const currencySymbolFormatter = this.currencySymbol(data);
         return (value: number, currencyCode: string, formatOptions?: NumberFormatOptions) => {
             const currentFormats = this.resetCurrencyFormatsInfo(formatsInfo, data, currencyCode, formatOptions);
             let compactData;
-            if ( !isEmptyObject(formatOptions) && formatOptions.notation === 'compact' ) {
+            if (!isEmptyObject(formatOptions) && formatOptions.notation === 'compact') {
                 compactData = getCompactData(formatsData, formatOptions.compactDisplay);
                 compactData.nuDigits = nuDigits;
             }
@@ -94,8 +94,8 @@ class Formatter {
     currencySymbol(data: DataForCurrency) {
         return (currencyCode: string) => {
             const currencySymbol = data.currencySymbols[currencyCode] && data.currencySymbols[currencyCode].symbol
-            ? data.currencySymbols[currencyCode].symbol
-            : currencyCode;
+                ? data.currencySymbols[currencyCode].symbol
+                : currencyCode;
             return currencySymbol;
         };
     }
@@ -105,28 +105,28 @@ class Formatter {
         const formatsInfo = this.parseFormats(percentFormats);
         return (value: number, formatOptions?: NumberFormatOptions) => {
             let currentFormats = formatsInfo;
-            if ( !isEmptyObject(formatOptions) ) {
-                currentFormats = this.resetFormats( formatsInfo, RoundingMode.ROUND_HALF_EVEN, formatOptions );
+            if (!isEmptyObject(formatOptions)) {
+                currentFormats = this.resetFormats(formatsInfo, RoundingMode.ROUND_HALF_EVEN, formatOptions);
             }
             value = +this.resetPercentNumber(value);
             return this.resetString(currentFormats, symbol, value);
         };
     }
-    plural( data: DataForNumber) {
+    plural(data: DataForNumber) {
         const decimalFormats = data.numberFormats.decimalFormats;
         let formatsInfo = this.parseFormats(decimalFormats);
         return (value: number, min?: number, max?: number) => {
-            if ( isDefined(max) || isDefined(min) ) {
-                formatsInfo = this.resetFormats( formatsInfo, RoundingMode.ROUND_HALF_EVEN );
+            if (isDefined(max) || isDefined(min)) {
+                formatsInfo = this.resetFormats(formatsInfo, RoundingMode.ROUND_HALF_EVEN);
             }
             return this.roundingNumber(value, formatsInfo.minFrac, formatsInfo.maxFrac, formatsInfo.round);
         };
     }
-    resetFormats( formats: any, round: RoundingMode, formatOptions?: NumberFormatOptions ) {
+    resetFormats(formats: any, round: RoundingMode, formatOptions?: NumberFormatOptions) {
         // assign the value type to a new object
         const finalFormats = Object.assign({}, formats);
         // in compact number formats, reset default digits
-        if ( formatOptions.notation && formatOptions.compactDisplay ) {
+        if (formatOptions.notation && formatOptions.compactDisplay) {
             finalFormats.maxFrac = 0;
             finalFormats.minFrac = 0;
             finalFormats.minInt = 1;
@@ -140,10 +140,10 @@ class Formatter {
             // in the currency formatting, if the maximum fraction digit undefined in pattern, set the min as max
             finalFormats.maxFrac = finalFormats.minFrac;
         }
-        if ( isDefined(formatOptions.minIntegerDigits) ) {
+        if (isDefined(formatOptions.minIntegerDigits)) {
             finalFormats.minInt = parseOption('minIntegerDigits', [MIN_INTEGER_RANGE, MAX_INTEGER_RANGE], formatOptions.minIntegerDigits);
         }
-        if ( isDefined(round) ) {
+        if (isDefined(round)) {
             finalFormats.round = round;
         }
         return finalFormats;
@@ -246,19 +246,19 @@ class Formatter {
             throw new Error(
                 `The minimum number of digits after fraction (${minFrac}) is higher than the maximum (${maxFrac}).`);
         }
-        const newDecimal: Decimal = new Decimal(number) ;
+        const newDecimal: Decimal = new Decimal(number);
         const fractionSize = Math.min(Math.max(minFrac, fractionLen), maxFrac);
         const roundedNum = newDecimal.toFixed(fractionSize, mode);
         return roundedNum;
     }
 
     resetCurrencyFormatsInfo(formatsInfo: any, data: DataForCurrency, currencyCode: string, formatOptions?: NumberFormatOptions) {
-        if ( !data.fractions[currencyCode] && isEmptyObject(formatOptions)) {
+        if (!data.fractions[currencyCode] && isEmptyObject(formatOptions)) {
             return formatsInfo;
         }
         // assign the value type to a new object
         let finalFormats = Object.assign({}, formatsInfo);
-        if ( data.fractions[currencyCode] ) {
+        if (data.fractions[currencyCode]) {
             finalFormats.maxFrac = data.fractions[currencyCode][CurrenciesDataType.DIGIST];
             finalFormats.minFrac = finalFormats.maxFrac;
         }
@@ -284,20 +284,20 @@ class Formatter {
         let numberExponent;
         let compactPattern;
         if (!isEmptyObject(compactData)) {
-            numberExponent = Math.abs( Math.floor( value ) ).toString().length - 1;
-            numberExponent = Math.min( numberExponent, compactData.maxExponent );
+            numberExponent = Math.abs(Math.floor(value)).toString().length - 1;
+            numberExponent = Math.min(numberExponent, compactData.maxExponent);
             // Use default plural form to perform initial decimal shift
-            if ( numberExponent >= 3 ) {
-                compactPattern = compactData[ numberExponent ] && compactData[ numberExponent ].other;
+            if (numberExponent >= 3) {
+                compactPattern = compactData[numberExponent] && compactData[numberExponent].other;
             }
 
             // if compactPattern is 0, output the number.
-            if ( compactPattern === '0' ) {
+            if (compactPattern === '0') {
                 compactPattern = null;
-            } else if ( compactPattern ) {
+            } else if (compactPattern) {
                 const compactDigits = compactPattern.split('0').length - 1;
-                const divisor = numberExponent - ( compactDigits - 1 );
-                value = value / Math.pow( 10, divisor );
+                const divisor = numberExponent - (compactDigits - 1);
+                value = value / Math.pow(10, divisor);
             }
         }
 
@@ -312,11 +312,11 @@ class Formatter {
 
         let compactPrefix = '';
         let compactSuffix = '';
-        if ( compactData && compactPattern ) {
+        if (compactData && compactPattern) {
             // Get plural form after possible roundings
             const pluralFunc = new Plural().getFunc(locale);
-            const pluralForm = pluralFunc && pluralFunc( +value ) ? pluralFunc( +value ) : 'other';
-            compactPattern = compactData[ numberExponent ][ pluralForm ] || compactPattern;
+            const pluralForm = pluralFunc && pluralFunc(+value) ? pluralFunc(+value) : 'other';
+            compactPattern = compactData[numberExponent][pluralForm] || compactPattern;
             // if the compact pattern contains protected .
             compactPattern = compactPattern.replace('\'.\'', '.');
             const compactProperties = compactPattern.match(/^([^0]*)(0+)([^0]*)$/);
@@ -343,12 +343,12 @@ class Formatter {
             digits = [0];
         }
 
-        if ( compactData && compactData.nuDigits ) {
-            digits.forEach( (item, idx) => {
-                digits[idx] = compactData.nuDigits[ +item ];
+        if (compactData && compactData.nuDigits) {
+            digits.forEach((item, idx) => {
+                digits[idx] = compactData.nuDigits[+item];
             });
-            decimals.forEach( (item, idx) => {
-                decimals[idx] = compactData.nuDigits[ +item ];
+            decimals.forEach((item, idx) => {
+                decimals[idx] = compactData.nuDigits[+item];
             });
         }
 
@@ -384,25 +384,26 @@ class Formatter {
 
 export class FormatterFactory {
     formatter: Formatter;
-    mapping: { [key: string]: any } = {};
+    private mapping: Map<string, Map<NumberFormatTypes, Function>>
+        = new Map<string, Map<NumberFormatTypes, Function>>();
     constructor() {
         this.formatter = new Formatter();
     }
-    getFormatter( locale: string, type: NumberFormatTypes ): Function {
-        if ( !this.mapping[locale] ) {
-            this.mapping[locale] = {};
+    getFormatter(locale: string, type: NumberFormatTypes): Function {
+        if (!this.mapping.get(locale)) {
+            this.mapping.set(locale, new Map<NumberFormatTypes, Function>());
         }
         let formatter: Function;
-        if ( this.mapping[locale] && this.mapping[locale][type] ) {
-            formatter = this.mapping[locale] && this.mapping[locale][type];
+        if (this.mapping.get(locale) && this.mapping.get(locale).get(type)) {
+            formatter = this.mapping.get(locale) && this.mapping.get(locale).get(type);
         }
         return formatter;
     }
-    currencies( data: DataForCurrency, locale: string ) {
+    currencies(data: DataForCurrency, locale: string) {
         let formatter = this.getFormatter(locale, NumberFormatTypes.CURRENCIES);
         if (!formatter) {
             formatter = this.formatter.currencies(data, locale);
-            this.mapping[locale][NumberFormatTypes.CURRENCIES] = formatter;
+            this.mapping.get(locale).set(NumberFormatTypes.CURRENCIES, formatter);
         }
         return formatter;
     }
@@ -410,31 +411,31 @@ export class FormatterFactory {
         let formatter = this.getFormatter(locale, NumberFormatTypes.CURRENCYSYMBOL);
         if (!formatter) {
             formatter = this.formatter.currencySymbol(data);
-            this.mapping[locale][NumberFormatTypes.CURRENCYSYMBOL] = formatter;
+            this.mapping.get(locale).set(NumberFormatTypes.CURRENCYSYMBOL, formatter);
         }
         return formatter;
     }
-    percent( data: DataForNumber, locale: string ) {
+    percent(data: DataForNumber, locale: string) {
         let formatter = this.getFormatter(locale, NumberFormatTypes.PERCENT);
         if (!formatter) {
             formatter = this.formatter.percent(data);
-            this.mapping[locale][NumberFormatTypes.PERCENT] = formatter;
+            this.mapping.get(locale).set(NumberFormatTypes.PERCENT, formatter);
         }
         return formatter;
     }
-    decimal( data: DataForNumber, locale: string ) {
+    decimal(data: DataForNumber, locale: string) {
         let formatter = this.getFormatter(locale, NumberFormatTypes.DECIMAL);
         if (!formatter) {
             formatter = this.formatter.decimal(data, locale);
-            this.mapping[locale][NumberFormatTypes.DECIMAL] = formatter;
+            this.mapping.get(locale).set(NumberFormatTypes.DECIMAL, formatter);
         }
         return formatter;
     }
-    roundNumberForPlural( data: DataForNumber, locale: string ) {
-        let formatter = this.getFormatter( locale, NumberFormatTypes.PLURAL);
+    roundNumberForPlural(data: DataForNumber, locale: string) {
+        let formatter = this.getFormatter(locale, NumberFormatTypes.PLURAL);
         if (!formatter) {
             formatter = this.formatter.plural(data);
-            this.mapping[locale][NumberFormatTypes.PLURAL] = formatter;
+            this.mapping.get(locale).set(NumberFormatTypes.PLURAL, formatter);
         }
         return formatter;
     }
