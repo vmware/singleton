@@ -57,7 +57,7 @@ jobs:
     if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
     strategy:
       matrix:
-        node-version: [10.x]
+        node-version: [14.x]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -137,7 +137,7 @@ jobs:
     if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
     strategy:
       matrix:
-        node-version: [10.x]
+        node-version: [14.x]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -170,7 +170,7 @@ jobs:
           docker ps
           cd $GITHUB_WORKSPACE
           cd g11n-js-client
-          sed -i 's:@vip/vip-core-sdk-server:@vip/vip-core-sdk-dev:' package.json
+          sed -i 's:@singleton-i18n/js-core-sdk-server:@vip/vip-core-sdk-dev:' package.json
           npm install --registry https://registry.npmjs.org
           npm link
           cd $GITHUB_WORKSPACE/devops/autotest/client/jscoresdk
@@ -180,5 +180,3 @@ jobs:
           echo $str Smoke Test Start $str
           ./node_modules/.bin/jest
           echo $str Smoke Test End $str
-
-

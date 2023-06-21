@@ -1,8 +1,8 @@
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
-const vipCore = require('@vip/vip-core-sdk-server');
+const singletonCore = require('@singleton-i18n/js-core-sdk-server');
 const bundle = require('./source.l10n');
 
 
@@ -10,7 +10,7 @@ module.exports.handle = (req, res, next) => {
     // Current language and region could be fetched from cookie, query or HTTP header.
     let currentLanguage = 'zh-Hans';
     let currentRegion = 'CN'
-    let i18nClient = vipCore.i18nClient.createInstance(
+    let i18nClient = singletonCore.i18nClient.createInstance(
         {
             productID: 'CoreSDK',
             version: '1.0.0',
@@ -20,10 +20,10 @@ module.exports.handle = (req, res, next) => {
             region: currentRegion,
             sourceBundle: bundle.ENGLISH,
             i18nScope: [
-                vipCore.PatternCategories.DATE,
-                vipCore.PatternCategories.NUMBER,
-                vipCore.PatternCategories.PLURAL,
-                vipCore.PatternCategories.CURRENCIES,
+                singletonCore.PatternCategories.DATE,
+                singletonCore.PatternCategories.NUMBER,
+                singletonCore.PatternCategories.PLURAL,
+                singletonCore.PatternCategories.CURRENCIES,
             ],
             isPseudo: false,
             httpOptions: {

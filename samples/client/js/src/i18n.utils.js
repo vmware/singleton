@@ -1,8 +1,8 @@
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
-import * as vipCore from '@vip/vip-core-sdk';
+import * as singletonCore from '@singleton-i18n/js-core-sdk';
 import { ENGLISH } from './source.l10n';
 import { config as defaultConfig } from './config';
 
@@ -30,7 +30,7 @@ export function localize(config) {
         return window.localStorage.getItem(config.localStoragePseudoKey) === 'true';
     };
 
-    let i18nClient = vipCore.i18nClient.init(
+    let i18nClient = singletonCore.i18nClient.init(
         {
             productID: config.productID,
             version: config.version,
@@ -77,7 +77,7 @@ function detectLanguage(config) {
     }
 
     // If there isn't cookie detects the browser lang
-    language = vipCore.getBrowserCultureLang();
+    language = singletonCore.getBrowserCultureLang();
     return language || undefined;
 }
 
