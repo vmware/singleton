@@ -6,7 +6,6 @@
 package tests
 
 import (
-	"io/ioutil"
 	"net/http"
 	"strconv"
 	"testing"
@@ -278,7 +277,7 @@ func TestGetTimeZoneNames(t *testing.T) {
 			req.WithQuery("displayLanguage", d.locale).WithQuery("defaultTerritory", d.defaultTerritory)
 			resp := req.Expect()
 
-			ioutil.WriteFile(desc+".json", []byte(resp.Body().Raw()), 0666)
+			// ioutil.WriteFile(desc+".json", []byte(resp.Body().Raw()), 0666)
 
 			assert.JSONEq(t, d.wanted, resp.Body().Raw())
 		})
