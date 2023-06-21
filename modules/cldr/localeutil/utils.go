@@ -92,7 +92,10 @@ func GetTimeZoneNames(ctx context.Context, locale string, defaultTerritory bool)
 
 	data = new(LocaleTimeZoneNames)
 	err = GetLocaleData(ctx, cldrLocale, cldr.TimeZoneName, data)
-	if err != nil || !defaultTerritory {
+	if err != nil {
+		return nil, err
+	}
+	if !defaultTerritory {
 		return
 	}
 
