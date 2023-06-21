@@ -87,7 +87,10 @@ func GetLocaleCities(ctx context.Context, locale string, regions []string) (data
 
 	data = map[string]jsoniter.Any{}
 	err = GetLocaleData(ctx, locale, cldr.LocaleCities, &data)
-	if err != nil || len(regions) == 0 {
+	if err != nil {
+		return nil, err
+	}
+	if len(regions) == 0 {
 		return
 	}
 
