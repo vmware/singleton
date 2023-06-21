@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 export class DateFormatter {
@@ -103,7 +103,7 @@ export class DateFormatter {
      */
     private formatDateTimeRules(type: string, rulesArray: string[]) {
         const format = this.i18nData.dateTimeFormats[type];
-        const rules = format.replace(/\{([^}]+)}/g, (match: string, key: string) => {
+        const rules = format.trim().replace(/\{(\d)\}/g, (match: string, key: string) => {
             return (rulesArray != null && rulesArray[+key]) ? rulesArray[+key] : match;
         });
         return rules;

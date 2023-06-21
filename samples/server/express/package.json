@@ -1,17 +1,17 @@
 {
-  "name": "express-vip-sample",
+  "name": "express-singleton-sample",
   "version": "1.0.0",
-  "description": "Node Express server with VIP.",
+  "description": "Node Express server with Singleton.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "collect-source-bundle": "collect-source-bundle --source-dir `pwd`/i18n --product NodeSample --component NodeJS --host http://localhost:8091 --version 1.0"
   },
   "dependencies": {
-    "@vip/vip-core-sdk-server": "file:../../../vip-vip-core-sdk-server-0.4.2.tgz",
+    "@singleton-i18n/js-core-sdk-server": "file:../../../singleton-i18n-js-core-sdk-server-0.5.7.tgz",
     "argparse": "^1.0.10",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "express": "4.15.3",
-    "typescript": "^3.4.5"
+    "typescript": "^4.4.4"
   }
 }

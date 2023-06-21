@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 const helpers = require('./config/helpers');
@@ -16,8 +16,8 @@ entry: helpers.root('index.ts'),
 output: {
     path: helpers.root('bundles'),
     publicPath: '/',
-    filename: 'vip.core.umd.js',
-    library: 'vipcore',
+    filename: 'singleton.core.umd.js',
+    library: 'singletoncore',
     libraryTarget: 'umd',
     globalObject: `typeof self !== 'undefined' ? self : this`
 },
@@ -54,8 +54,8 @@ const nodeConfig = {
     output: {
         path: helpers.root('bundles'),
         publicPath: '/',
-        filename: 'vip.core.umd.server.js',
-        library: 'vipcore',
+        filename: 'singleton.core.umd.server.js',
+        library: 'singletoncore',
         libraryTarget: 'umd'
     },
     

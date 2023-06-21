@@ -47,25 +47,25 @@ Package the client library
 npm pack
 ```
 
-The library will be packaged in the same directory (eg. vip-vip-core-sdk-server-0.4.1.tgz)
+The library will be packaged in the same directory (eg. singleton-i18n-js-core-sdk-server-0.5.7.tgz)
 
 Import the library in your ES2015 application
 
 ```
 cd <root path of your app>
-npm install <path-to-location-of-library-in-previous-step/vip-vip-core-sdk-server-0.4.1.tgz>
+npm install <path-to-location-of-library-in-previous-step/singleton-i18n-js-core-sdk-server-0.5.7.tgz>
 ```
 
 Configure your main module file :
 
 ```js
-const vipCore = require('@vip/vip-core-sdk-server');
+const singletonCore = require('@singleton-i18n/js-core-sdk-server');
 const bundle = require('./source.l10n');
 
 module.exports.handle = (req, res, next) => {
     let currentLanguage = 'zh-Hans';
     let currentRegion = 'CN'
-    let i18nClient = vipCore.i18nClient.createInstance(
+    let i18nClient = singletonCore.i18nClient.createInstance(
         {
             productID: 'CoreSDK',
             version: '1.0.0',
@@ -75,9 +75,9 @@ module.exports.handle = (req, res, next) => {
             region: currentRegion,
             sourceBundles: [ bundle.ENGLISH ],
             i18nScope: [
-                vipCore.PatternCategories.DATE,
-                vipCore.PatternCategories.NUMBER,
-                vipCore.PatternCategories.CURRENCIES
+                singletonCore.PatternCategories.DATE,
+                singletonCore.PatternCategories.NUMBER,
+                singletonCore.PatternCategories.CURRENCIES
             ],
             isPseudo: false,
         }

@@ -12,7 +12,7 @@
 - You can load the translation by two ways, either from the Singleton service or from your predefined sources. If you want to use custom sources you have to add them in the src/translations
   with the following format: translation_locale.json and uncomment the code in the src/i18n.utils.js on row 30. The src/translations/translation_zh.json is example. 
 ```
-"@vip/vip-core-sdk": "file:../../../vip-vip-core-sdk-0.4.2.tgz"
+"@singleton-i18n/js-core-sdk": "file:../../../singleton-i18n-js-core-sdk-0.5.7.tgz"
 ```
 
 ## Install
@@ -38,5 +38,5 @@ open: http://localhost:3000/example
 # In the dev tools terminal change the lang
 
 ```
-$ document.cookie = "language=zh"
+$ document.cookie = "vcs_locale=zh"
 ```
