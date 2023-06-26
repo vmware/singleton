@@ -1,4 +1,4 @@
-//Copyright 2019-2022 VMware, Inc.
+//Copyright 2019-2023 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java'
 apply plugin: "jacoco"
@@ -28,7 +28,7 @@ buildscript {
     }
   }
   dependencies {
-    classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5"
+    classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.3"
   }
 }
 
@@ -53,14 +53,19 @@ repositories {
 }
 
 dependencies {
-    compile group: 'commons-collections', name: 'commons-collections', version: '3.2.2'
-    testCompile group: 'junit', name: 'junit', version: '4.+'
-    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.14.0'
-    compile group: 'commons-io', name: 'commons-io', version: '2.11.0'
-    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.26'
-    testCompile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.26'
-    testCompile group: 'log4j', name: 'log4j', version: '1.2.17'
+    implementation("commons-collections:commons-collections:3.2.2")
+    implementation("com.googlecode.json-simple:json-simple:1.1.1"){
+        exclude group: 'junit'
+    }
+
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.15.2")
+    implementation("commons-io:commons-io:2.13.0")
+    implementation("org.slf4j:slf4j-api:1.7.26")
+
+    testImplementation group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.26'
+    testImplementation group: 'log4j', name: 'log4j', version: '1.2.17'
+    testImplementation group: 'junit', name: 'junit', version: '4.+'
+
 }
 
 jacocoTestReport {
