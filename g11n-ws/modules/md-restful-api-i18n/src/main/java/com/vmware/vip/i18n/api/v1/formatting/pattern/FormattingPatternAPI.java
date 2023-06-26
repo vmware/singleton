@@ -1,18 +1,16 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.v1.formatting.pattern;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 import com.vmware.i18n.utils.CommonUtil;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ConstantsMsg;
+import com.vmware.vip.common.utils.RegExpValidatorUtils;
 import com.vmware.vip.i18n.api.base.utils.CommonUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -61,7 +59,7 @@ public class FormattingPatternAPI extends BaseAction {
             return super.handleResponse(APIResponseStatus.BAD_REQUEST, "Parameter error");
         }
 
-        if (!CommonUtil.isEmpty(scopeFilter) && !Pattern.matches(ConstantsKeys.SCOPE_FILTER_MATCH, scopeFilter)) {
+        if (!CommonUtil.isEmpty(scopeFilter) && !RegExpValidatorUtils.startLetterAndCommValidchar(scopeFilter)) {
             return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.SCOPE_FILTER_NOT_VALIDATE, null);
         }
 

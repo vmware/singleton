@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.base;
@@ -10,8 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.regex.Pattern;
 
+import com.vmware.vip.common.utils.RegExpValidatorUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,7 +63,7 @@ public class TranslationWithPatternAction extends BaseAction {
 	    			  excep.getMessage(), null);
 	      }
 	      if (validateResult) {
-              if (!CommonUtil.isEmpty(data.getScopeFilter()) && !Pattern.matches(ConstantsKeys.SCOPE_FILTER_MATCH, data.getScopeFilter())) {
+              if (!CommonUtil.isEmpty(data.getScopeFilter()) && !RegExpValidatorUtils.startLetterAndCommValidchar(data.getScopeFilter())) {
                   return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.SCOPE_FILTER_NOT_VALIDATE, null);
               }
 
@@ -109,7 +109,7 @@ public class TranslationWithPatternAction extends BaseAction {
             return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.PATTERN_NOT_VALIDATE, null);
         }
 
-        if (!CommonUtil.isEmpty(scopeFilter) && !Pattern.matches(ConstantsKeys.SCOPE_FILTER_MATCH, scopeFilter)) {
+        if (!CommonUtil.isEmpty(scopeFilter) && !RegExpValidatorUtils.startLetterAndCommValidchar(scopeFilter)) {
             return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.SCOPE_FILTER_NOT_VALIDATE, null);
         }
 
