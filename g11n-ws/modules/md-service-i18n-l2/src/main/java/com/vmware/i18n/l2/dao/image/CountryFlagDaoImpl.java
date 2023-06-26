@@ -72,13 +72,11 @@ public class CountryFlagDaoImpl implements ICountryFlagDao {
                 apiResponseDTO.setData(respData);
                 apiResponseDTO.setResponse(APIResponseStatus.OK);
 
-
-
                 try (FileOutputStream fileOutputStream = new FileOutputStream(file);
                      FileChannel fileChannel = fileOutputStream.getChannel() ) {
                     String content = null;
                     try {
-                        content = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(respData);
+                        content = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(apiResponseDTO);
                     } catch (JsonProcessingException e) {
                         logger.error(e.getMessage(), e);
                         throw e;

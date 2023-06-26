@@ -10,7 +10,6 @@ import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.api.rest.APIParamValue;
 import com.vmware.vip.api.rest.APIV2;
 import com.vmware.vip.common.constants.ConstantsKeys;
-import com.vmware.vip.i18n.api.base.StreamImageResp;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,9 +45,7 @@ public class ImageAPI {
         WritableByteChannel writeChannel = Channels.newChannel(resp.getOutputStream());
 
         try (FileChannel fileChannel = this.countryFlagService.getCountryFlagChannel(region, s)){
-            writeChannel.write(StreamImageResp.getRespStartBytes());
             fileChannel.transferTo(0, fileChannel.size(), writeChannel);
-            writeChannel.write(StreamImageResp.getEndBytes());
         }
 
     }
