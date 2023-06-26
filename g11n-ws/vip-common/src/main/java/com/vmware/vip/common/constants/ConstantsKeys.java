@@ -109,5 +109,7 @@ public class ConstantsKeys {
    public final static String SOURCE_FORMAT_BASE64 = "BASE64";
    public static final String CSP_AUTH_TOKEN = "csp-auth-token";
    public static final String IMAGE = "image";
+   public static final String FLAGS = "flags";
+
 
 }

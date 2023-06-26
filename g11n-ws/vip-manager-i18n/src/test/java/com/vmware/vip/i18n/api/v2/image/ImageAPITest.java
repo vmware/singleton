@@ -7,12 +7,10 @@ package com.vmware.vip.i18n.api.v2.image;
 
 
 import com.vmware.vip.BootApplication;
-import com.vmware.vip.common.constants.ConstantsFile;
 import com.vmware.vip.common.utils.JSONUtils;
 import com.vmware.vip.i18n.api.v1.common.CacheUtil;
 import com.vmware.vip.i18n.api.v1.common.ConstantsForTest;
 import com.vmware.vip.i18n.api.v1.common.RequestUtil;
-import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
