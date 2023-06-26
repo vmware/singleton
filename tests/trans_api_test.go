@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -448,6 +448,38 @@ func TestApiTransExceptionArgs(t *testing.T) {
 				bError, _ = GetErrorAndData(resp.Body().Raw())
 				assert.Equal(t, tt.wantedCode, bError.Code)
 			}
+		})
+	}
+}
+
+func TestGetMultipleMessages(t *testing.T) {
+	e := CreateHTTPExpect(t, GinTestEngine)
+	anotherKey := "plural.files"
+	nonexistentKey := "nonexistent.key"
+
+	for _, d := range []struct {
+		desc, keys string
+		wanted     string
+	}{
+		{"Get 1 key", Key,
+			`{"response":{"code":200,"message":"OK"},"data":{"productName":"VPE","version":"1.0.0","locale":"en","component":"sunglow","messages":{"message":"Message-en"}}}`},
+		{"Get 1 nonexistent key", nonexistentKey,
+			`{"response":{"code":404,"message":"key 'nonexistent.key' isn't found"},"data":{"productName":"VPE","version":"1.0.0","locale":"en","component":"sunglow","messages":{}}}`},
+		{"Get 2 keys", Key + "," + anotherKey,
+			`{"response":{"code":200,"message":"OK"},"data":{"productName":"VPE","version":"1.0.0","locale":"en","component":"sunglow","messages":{"message":"Message-en","plural.files":"{files, plural,one {category one : There is one file on {place}.}other {category other : There are # files on {place}.}}"}}}`},
+		{"Get 2 keys with an nonexistent key", Key + "," + nonexistentKey,
+			`{"response":{"code":207,"message":"Successful Partially"},"data":{"productName":"VPE","version":"1.0.0","locale":"en","component":"sunglow","messages":{"message":"Message-en"}}}`},
+		{"Get 2 nonexistent key", nonexistentKey + "," + nonexistentKey + "1",
+			`{"response":{"code":404,"message":"2 errors occurred. key 'nonexistent.key' isn't found; key 'nonexistent.key1' isn't found"},"data":{"productName":"VPE","version":"1.0.0","locale":"en","component":"sunglow","messages":{}}}`},
+	} {
+		d := d
+		t.Run(d.desc, func(t *testing.T) {
+			resp := e.GET(GetKeysURL, Name, Version, Locale, Component).
+				WithQuery("keys", d.keys).Expect()
+
+			// ioutil.WriteFile(d.keys+".json", []byte(resp.Body().Raw()), 0666)
+
+			assert.JSONEq(t, d.wanted, resp.Body().Raw())
 		})
 	}
 }

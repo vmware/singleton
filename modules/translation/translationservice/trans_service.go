@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -20,6 +20,7 @@ import (
 	"sgtnserver/modules/translation/translationcache"
 
 	"github.com/fatih/structs"
+	jsoniter "github.com/json-iterator/go"
 	"go.uber.org/zap"
 )
 
@@ -150,6 +151,35 @@ func (ts Service) GetBundle(ctx context.Context, id *translation.BundleID) (*tra
 
 	id.Locale = PickupLocales(name, version, []string{locale})[0]
 	return ts.msgOrigin.GetBundle(ctx, id)
+}
+
+// GetStrings ...
+func (ts Service) GetStrings(ctx context.Context, id *translation.BundleID, keys []string) (*translation.Bundle, error) {
+	name, version, locale, component := id.Name, id.Version, id.Locale, id.Component
+	logger.FromContext(ctx).Debug("Get translations of multiple keys", zap.String(translation.Name, name), zap.String(translation.Version, version),
+		zap.String(translation.Locale, locale), zap.String(translation.Component, component), zap.Strings("keys", keys))
+
+	id.Locale = PickupLocales(name, version, []string{locale})[0]
+	bundle, err := ts.msgOrigin.GetBundle(ctx, id)
+	if err != nil {
+		return nil, err
+	}
+
+	var returnErr *sgtnerror.MultiError
+	allMsgs := make(map[string]jsoniter.Any)
+	bundle.Messages.ToVal(&allMsgs)
+	messagesToReturn := make(map[string]jsoniter.Any, len(keys))
+	for _, key := range keys {
+		msg := allMsgs[key]
+		if msg == nil {
+			returnErr = sgtnerror.Append(returnErr, sgtnerror.StatusNotFound.WithUserMessage(translation.KeyNotFound, key))
+		} else {
+			messagesToReturn[key] = msg
+			returnErr = sgtnerror.Append(returnErr, nil)
+		}
+	}
+	marshaled, _ := jsoniter.Marshal(messagesToReturn)
+	return &translation.Bundle{ID: bundle.ID, Messages: jsoniter.Get(marshaled)}, returnErr.ErrorOrNil()
 }
 
 // GetString ...
