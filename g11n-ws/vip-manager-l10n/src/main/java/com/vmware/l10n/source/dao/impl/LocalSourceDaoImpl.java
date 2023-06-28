@@ -5,18 +5,22 @@
 package com.vmware.l10n.source.dao.impl;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
-import com.vmware.l10n.record.dao.SqlLiteDao;
 import com.vmware.l10n.record.model.RecordModel;
 import com.vmware.l10n.source.dao.SourceDao;
 import com.vmware.l10n.utils.SourceUtils;
@@ -35,9 +39,6 @@ import com.vmware.vip.common.utils.SortJSONUtils;
 @Profile(value="bundle")
 public class LocalSourceDaoImpl implements SourceDao {
     private static Logger LOGGER = LoggerFactory.getLogger(LocalSourceDaoImpl.class);
-
-    @Autowired
-    private SqlLiteDao sqlLite;
 
     /**
      * the path of local resource file,can be configed in spring config file
@@ -99,7 +100,7 @@ public class LocalSourceDaoImpl implements SourceDao {
 				SingleComponentDTO latestDTO = SourceUtils.mergeCacheWithBundle(componentMessagesDTO, existingBundle);
 				SortJSONUtils.writeJSONObjectToJSONFile(basepath
 						+ filepath, latestDTO);
-				sqlLite.updateModifySourceRecord(componentMessagesDTO);
+
 				return true;
 			} catch (VIPResourceOperationException e) {
 				LOGGER.error(e.getMessage(), e);
@@ -116,7 +117,7 @@ public class LocalSourceDaoImpl implements SourceDao {
 				return false;
 			}
 			
-			sqlLite.createSourceRecord(componentMessagesDTO);
+
 			
 			return true;
 		}
@@ -125,8 +126,50 @@ public class LocalSourceDaoImpl implements SourceDao {
 
 	@Override
 	public List<RecordModel> getUpdateRecords(String productName, String version, long lastModifyTime) throws L10nAPIException{
-		LOGGER.error("bundle use the local disk media request the S3 API!");
-		throw new L10nAPIException("Local disk bundle can't support get update record method!");
+
+		StringBuilder prefix = new StringBuilder();
+		prefix.append(basepath);
+		prefix.append(ConstantsFile.L10N_BUNDLES_PATH);
+		if (!StringUtils.isEmpty(productName)) {
+			prefix.append(productName);
+			prefix.append(ConstantsChar.BACKSLASH);
+		}
+		if (!StringUtils.isEmpty(version)) {
+			prefix.append(version);
+			prefix.append(ConstantsChar.BACKSLASH);
+		}
+
+		File targetFile = new File(prefix.toString());
+		LOGGER.info("local bundle file base path:{}", targetFile.getAbsolutePath());
+		List<RecordModel> records = new ArrayList<RecordModel>();
+		String latestJsonFile = ConstantsFile.LOCAL_FILE_SUFFIX+ConstantsChar.UNDERLINE+ConstantsKeys.LATEST+ConstantsFile.FILE_TPYE_JSON;
+		try(Stream<Path> sp = Files.walk(targetFile.toPath())){
+			sp.filter(Files :: isRegularFile).filter(path -> path.endsWith(latestJsonFile) && (path.toFile().lastModified()>lastModifyTime))
+					.forEach(currPath ->{
+						File file = currPath.toFile();
+						LOGGER.info("Need Update:{}:{}", file.getAbsolutePath(), file.lastModified());
+						records.add(parseKeyStr2Record(file.getAbsolutePath(),this.basepath, file.lastModified()));
+					});
+
+
+		} catch (IOException e) {
+			LOGGER.error(e.getMessage(), e);
+			throw new L10nAPIException("Local disk bundle can't get update record!");
+		}
+
+		return records;
+	}
+
+	private RecordModel parseKeyStr2Record(String key, String productParentDir, long lastModify) {
+		key = key.replace(productParentDir, "");
+		String[] keyArry = key.split(ConstantsChar.BACKSLASH);
+		RecordModel record = new RecordModel();
+		record.setProduct(keyArry[0]);
+		record.setVersion(keyArry[1]);
+		record.setComponent(keyArry[2]);
+		record.setLocale(ConstantsKeys.LATEST);
+		record.setStatus(lastModify);
+		return record;
 	}
 
 }

@@ -8,7 +8,6 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.vmware.l10n.record.dao.SqlLiteDao;
 import com.vmware.l10n.record.model.ComponentSourceModel;
 import com.vmware.l10n.record.model.RecordModel;
 import com.vmware.l10n.source.dao.SourceDao;
@@ -31,36 +30,8 @@ public class RecordServiceImpl implements RecordService{
 	private ObjectMapper mapper = new ObjectMapper().disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 
 	@Autowired
-	private SqlLiteDao sqlLite;
-	
-	@Autowired
 	private SourceDao sourceDao;
-    
-	/**
-     * get the updated source record 
-     */
-	@Override
-	public List<RecordModel> getChangedRecords() {
-		// TODO Auto-generated method stub
-		return sqlLite.getChangedRecords();
-	}
-	
-	/**
-	 * sync the update source record status after get the change update source record
-	 */
-	@Override
-	public int updateSynchSourceRecord(String product, String version, String component, String locale, long status) {
-		// TODO Auto-generated method stub
-		
-		RecordModel record = new RecordModel();
-		record.setProduct(product);
-		record.setVersion(version);
-		record.setComponent(component);
-		record.setLocale(locale);
-		record.setStatus(status);
-		
-		return sqlLite.updateSynchSourceRecord(record);
-	}
+
 
 	/**
 	 * get the update source content that cached in local file
@@ -106,7 +77,7 @@ public class RecordServiceImpl implements RecordService{
 	 * get the updated source record when source store in S3
 	 */
 	@Override
-	public List<RecordModel> getChangedRecordsS3(String productName, String version, long lastModifyTime)
+	public List<RecordModel> getChangedRecords(String productName, String version, long lastModifyTime)
 			throws L10nAPIException {
 		// TODO Auto-generated method stub
 		return sourceDao.getUpdateRecords(productName, version, lastModifyTime);
