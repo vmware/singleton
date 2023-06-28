@@ -130,7 +130,7 @@ public class S3SourceDaoImpl implements SourceDao {
 			prefix.append(version);
 			prefix.append(ConstantsChar.BACKSLASH);
 		}
-	    logger.info("begin getUpdateRecords lastModifyTime: {}, prefix: {}", lastModifyTime, prefix.toString());
+	    logger.info("begin getUpdateRecords lastModyTime: {}, prefix: {}", lastModifyTime, prefix.toString());
 	    req.setPrefix(prefix.toString());
 	    
         ListObjectsV2Result result;
@@ -141,7 +141,7 @@ public class S3SourceDaoImpl implements SourceDao {
           	  long  currentModifyTime = oSy.getLastModified().getTime();
           	  if(keyStr.endsWith(latestJsonFile)
           			  && currentModifyTime>lastModifyTime) {
-          		logger.info("Need Update:{}:{}", keyStr, currentModifyTime);
+          		logger.info("Need Udate:{}:{}", keyStr, currentModifyTime);
           		records.add(parseKeyStr2Record(keyStr,this.basePath, currentModifyTime));
           	  }
 
