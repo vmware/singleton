@@ -148,7 +148,7 @@ public class LocalSourceDaoImpl implements SourceDao {
 					.forEach(currPath ->{
 						File file = currPath.toFile();
 						LOGGER.info("Need Update:{}:{}", file.getAbsolutePath(), file.lastModified());
-						records.add(parseKeyStr2Record(file.getAbsolutePath(),this.basepath, file.lastModified()));
+						records.add(SourceUtils.parseKeyStr2Record(file.getAbsolutePath(),this.basepath, file.lastModified()));
 					});
 
 
@@ -158,18 +158,6 @@ public class LocalSourceDaoImpl implements SourceDao {
 		}
 
 		return records;
-	}
-
-	private RecordModel parseKeyStr2Record(String key, String productParentDir, long lastModify) {
-		key = key.replace(productParentDir, "");
-		String[] keyArry = key.split(ConstantsChar.BACKSLASH);
-		RecordModel record = new RecordModel();
-		record.setProduct(keyArry[0]);
-		record.setVersion(keyArry[1]);
-		record.setComponent(keyArry[2]);
-		record.setLocale(ConstantsKeys.LATEST);
-		record.setStatus(lastModify);
-		return record;
 	}
 
 }

@@ -141,8 +141,8 @@ public class S3SourceDaoImpl implements SourceDao {
           	  long  currentModifyTime = oSy.getLastModified().getTime();
           	  if(keyStr.endsWith(latestJsonFile)
           			  && currentModifyTime>lastModifyTime) {
-          		logger.info("Need Udate:{}:{}", keyStr, currentModifyTime);
-          		records.add(parseKeyStr2Record(keyStr,this.basePath, currentModifyTime));
+          		logger.info("Need Update:{}:{}", keyStr, currentModifyTime);
+          		records.add(SourceUtils.parseKeyStr2Record(keyStr,this.basePath, currentModifyTime));
           	  }
 
             }
@@ -151,17 +151,6 @@ public class S3SourceDaoImpl implements SourceDao {
         } while (result.isTruncated());
         return records;
 	}
-	
-	private RecordModel parseKeyStr2Record(String key, String productParentDir, long lastModify) {
-		key = key.replace(productParentDir, "");
-		String[] keyArry = key.split(ConstantsChar.BACKSLASH);
-		RecordModel record = new RecordModel();
-		record.setProduct(keyArry[0]);
-		record.setVersion(keyArry[1]);
-		record.setComponent(keyArry[2]);
-		record.setLocale(ConstantsKeys.LATEST);
-		record.setStatus(lastModify);
-		return record;
-	}
+
 	
 }
