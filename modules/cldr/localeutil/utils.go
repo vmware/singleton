@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -13,12 +13,18 @@ import (
 	"sgtnserver/modules/cldr/coreutil"
 
 	jsoniter "github.com/json-iterator/go"
+	"golang.org/x/exp/maps"
 )
 
 type LocaleTerritories struct {
 	Language          string       `json:"language"`
 	DefaultRegionCode string       `json:"defaultRegionCode"`
 	Territories       jsoniter.Any `json:"territories"`
+}
+
+type LocaleTimeZoneNames struct {
+	Language      string                 `json:"language"`
+	TimeZoneNames map[string]interface{} `json:"timeZoneNames"`
 }
 
 func GetPatternData(ctx context.Context, locale string, catg string) (data jsoniter.Any, err error) {
@@ -75,4 +81,35 @@ func GetTerritoriesOfMultipleLocales(ctx context.Context, locales []string) ([]*
 	}
 
 	return territoryList, returnErr.ErrorOrNil()
+}
+
+func GetTimeZoneNames(ctx context.Context, locale string, defaultTerritory bool) (data *LocaleTimeZoneNames, err error) {
+	cldrLocale := coreutil.GetCLDRLocale(locale)
+	if cldrLocale == "" {
+		err = sgtnerror.StatusBadRequest.WithUserMessage(cldr.InvalidLocale, locale)
+		return
+	}
+
+	data = new(LocaleTimeZoneNames)
+	err = GetLocaleData(ctx, cldrLocale, cldr.TimeZoneName, data)
+	if err != nil {
+		return nil, err
+	}
+	if !defaultTerritory {
+		return
+	}
+
+	const metaZonesKey = "metaZones"
+	metaZones := data.TimeZoneNames[metaZonesKey].([]interface{})
+	newMetaZones := make([]interface{}, 0, len(metaZones))
+	// filter metazones that are not in the default timezone
+	for _, metaZone := range metaZones {
+		if _, ok := metaZone.(map[string]interface{})["mapZones"]; ok {
+			newMetaZones = append(newMetaZones, metaZone)
+		}
+	}
+	data = &LocaleTimeZoneNames{Language: data.Language, TimeZoneNames: maps.Clone(data.TimeZoneNames)}
+	data.TimeZoneNames[metaZonesKey] = newMetaZones
+
+	return
 }

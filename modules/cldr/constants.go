@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -42,4 +42,5 @@ const (
 	ContextTransform  = "ContextTransform"
 	LocaleLanguages   = "LocaleLanguages"
 	LocaleTerritories = "LocaleTerritories"
+	TimeZoneName      = "TimeZoneName"
 )

@@ -55,6 +55,7 @@ const (
 const (
 	GetPatternByLangRegURL = BaseURL + "/formatting/patterns"
 	GetPatternByLocaleURL  = BaseURL + "/formatting/patterns/locales/{locale}"
+	GetTimeZoneNamesURL    = BaseURL + "/formatting/date/timezoneNameList"
 )
 
 const (

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -20,6 +20,7 @@ func (cldr *cldrRouter) Init(e *gin.RouterGroup) {
 	{
 		formattingGroup.GET("/patterns", GetPatternDataByLangReg)
 		formattingGroup.GET("/patterns/locales/:locale", GetPatternByLocale)
+		formattingGroup.GET("/date/timezoneNameList", GetTimeZoneNames)
 	}
 
 	e.GET("/locale/regionList", GetRegionListOfLanguages)

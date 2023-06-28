@@ -254,6 +254,66 @@ var doc = `{
                 }
             }
         },
+        "/formatting/date/timezoneNameList": {
+            "get": {
+                "description": "Get time zone names in a specified locale",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "formatting-api"
+                ],
+                "summary": "Get timezone names",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "the display language. e.g. 'en'",
+                        "name": "displayLanguage",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "a boolean value to get the default territory timezone name or not, default is true",
+                        "name": "defaultTerritory",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "206": {
+                        "description": "Successful Partially",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/formatting/patterns": {
             "get": {
                 "description": "Get pattern data with language, region",

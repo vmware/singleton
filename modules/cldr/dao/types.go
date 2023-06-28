@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -53,6 +53,7 @@ const (
 	LocaleLanguagesPath   = cldrBaseFolder + "localedata/%s/languages.json"
 	ContextTransformPath  = cldrBaseFolder + "misc/%s/contextTransforms.json"
 	DateFieldsJSONPath    = cldrBaseFolder + "pattern/common/%s/dateFields.json"
+	TimeZoneNameJSONPath  = cldrBaseFolder + "pattern/timezone/%s/timeZoneName.json"
 )
 
 var localeDataInfo = map[string]cldrItemInfo{
@@ -66,6 +67,7 @@ var localeDataInfo = map[string]cldrItemInfo{
 	cldr.ContextTransform:  {ContextTransformPath, []interface{}{"contextTransforms"}},
 	cldr.LocaleLanguages:   {LocaleLanguagesPath, []interface{}{"languages"}},
 	cldr.LocaleTerritories: {LocaleTerritoriesPath, []interface{}{}},
+	cldr.TimeZoneName:      {TimeZoneNameJSONPath, []interface{}{}},
 }
 
 type cldrItemInfo struct {
