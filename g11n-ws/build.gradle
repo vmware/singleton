@@ -3,7 +3,7 @@
 
 buildscript {
     ext {
-     springBootVersion = '2.7.12'
+     springBootVersion = '3.1.1'
     }
     repositories {
         mavenLocal()
@@ -48,7 +48,7 @@ allprojects{
 subprojects{
 
 
-    sourceCompatibility = '1.8'
+    sourceCompatibility = '17'
      
     ext {
    	       
