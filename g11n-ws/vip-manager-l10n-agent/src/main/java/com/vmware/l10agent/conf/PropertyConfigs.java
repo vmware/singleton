@@ -58,7 +58,7 @@ public class PropertyConfigs {
 	@Value("${access.grant_type}")
 	private String accessGrant_type;
 	
-	@Value("${source.sync.api.version:v1}")
+	@Value("${source.sync.api.version:s3}")
 	private String recordApiVersion;
 	
 	@Value("${source.sync.req.thread:1}")
