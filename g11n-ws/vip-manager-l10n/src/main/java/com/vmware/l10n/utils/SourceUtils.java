@@ -110,8 +110,8 @@ public class SourceUtils {
 	 * @return
 	 */
 	public static RecordModel parseKeyStr2Record(String key, String productParentDir, long lastModify) {
-		key = key.replace(productParentDir, "");
-		String[] keyArry = key.split(ConstantsChar.BACKSLASH);
+		String keyStr = key.replace(productParentDir, "");
+		String[] keyArry = keyStr.split(ConstantsChar.BACKSLASH);
 		RecordModel record = new RecordModel();
 		record.setProduct(keyArry[0]);
 		record.setVersion(keyArry[1]);

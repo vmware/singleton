@@ -1,11 +1,13 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
+import com.vmware.vip.common.utils.JSONUtils;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -25,6 +27,8 @@ import com.vmware.l10n.BootApplication;
 import com.vmware.l10n.record.model.RecordModel;
 import com.vmware.vip.api.rest.l10n.L10NAPIV1;
 import com.vmware.vip.api.rest.l10n.L10nI18nAPI;
+
+import java.util.Map;
 
 /**
  * 
@@ -74,6 +78,10 @@ public class RecordControllerTest {
 		
 		MvcResult mvcRS = mockMvc.perform(MockMvcRequestBuilders.get(urlStr)).andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
 	   String resultStr =   mvcRS.getResponse().getContentAsString();
+
+	   Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(resultStr).get("response");
+	   long code = (long) dataMap.get("code");
+	   Assert.assertTrue(code==200L);
 	   
 	   logger.info(resultStr);
 		}catch(Exception e) {
