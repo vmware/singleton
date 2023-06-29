@@ -49,7 +49,7 @@ func GetLocaleLanguages(ctx context.Context, locale string) (map[string]string, 
 }
 
 func GetLocaleTerritories(ctx context.Context, locale string) (data *LocaleTerritories, err error) {
-	data = &LocaleTerritories{}
+	data = new(LocaleTerritories)
 	err = GetLocaleData(ctx, locale, cldr.LocaleTerritories, data)
 	return data, err
 }
