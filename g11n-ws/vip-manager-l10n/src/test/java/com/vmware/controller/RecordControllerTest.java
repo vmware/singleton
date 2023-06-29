@@ -40,22 +40,6 @@ public class RecordControllerTest {
   private final static String GATEWAYPREF="/i18n"; 
 	@Autowired
 	private WebApplicationContext webApplicationContext;
-	
-	
-	@Test
-	public void test000getRecoredModel() throws Exception {
-		MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(
-				webApplicationContext).build();
-		String urlStr = GATEWAYPREF+L10NAPIV1.API_L10N+"/records";
-		
-		MvcResult mvcRS = mockMvc.perform(MockMvcRequestBuilders.get(urlStr)).andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
-	   String resultStr =   mvcRS.getResponse().getContentAsString();
-	   
-	   logger.info(resultStr);
-	
-	}
-	
-	
 
 	@Test
 	public void test002getSourceComponentModel() throws Exception {
@@ -82,25 +66,7 @@ public class RecordControllerTest {
 	
 
 	@Test
-	public void test003synchRecoredModel() throws Exception {
-		String l10nsynchUrl =GATEWAYPREF+ L10NAPIV1.API_L10N+"/synchrecord";
-		MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(
-				webApplicationContext).build();
-		
-		MvcResult mvcRS =mockMvc.perform(
-				post(l10nsynchUrl).param("product", "unittest")
-						.param("version", "1.0.0")
-						.param("component", "default")
-						.param("locale", "EN")
-						.param("status", "2")
-						.accept(MediaType.APPLICATION_JSON)).andReturn();
-		    String resultStr =   mvcRS.getResponse().getContentAsString();
-		    
-		    logger.info(resultStr);
-	}
-	
-	@Test
-	public void test004getRecoredModelfromS3() throws Exception {
+	public void test004getRecoredModelfromV2() throws Exception {
 		try {
 		MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(
 				webApplicationContext).build();
