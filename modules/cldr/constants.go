@@ -43,4 +43,5 @@ const (
 	ContextTransform  = "ContextTransform"
 	LocaleLanguages   = "LocaleLanguages"
 	LocaleTerritories = "LocaleTerritories"
+	TimeZoneName      = "TimeZoneName"
 )

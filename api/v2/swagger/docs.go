@@ -254,6 +254,66 @@ var doc = `{
                 }
             }
         },
+        "/formatting/date/timezoneNameList": {
+            "get": {
+                "description": "Get time zone names in a specified locale",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "formatting-api"
+                ],
+                "summary": "Get timezone names",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "the display language. e.g. 'en'",
+                        "name": "displayLanguage",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "a boolean value to get the default territory timezone name or not, default is true",
+                        "name": "defaultTerritory",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "206": {
+                        "description": "Successful Partially",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/formatting/patterns": {
             "get": {
                 "description": "Get pattern data with language, region",
@@ -851,6 +911,94 @@ var doc = `{
                 }
             }
         },
+        "/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys": {
+            "get": {
+                "description": "Get multiple translations together by their keys",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "translation-product-component-key-api"
+                ],
+                "summary": "Get translations of multiple strings",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "product name",
+                        "name": "productName",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "version",
+                        "name": "version",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "locale name",
+                        "name": "locale",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "component name",
+                        "name": "component",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "keys separated by commas",
+                        "name": "keys",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "a flag for returning pseudo translation",
+                        "name": "pseudo",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "207": {
+                        "description": "Successful Partially",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key}": {
             "get": {
                 "description": "Get a message by its key",
@@ -1080,7 +1228,7 @@ var doc = `{
                     "type": "string"
                 },
                 "pseudo": {
-                    "type": "string"
+                    "type": "object"
                 },
                 "region": {
                     "type": "string"

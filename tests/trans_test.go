@@ -230,6 +230,8 @@ func TestCacheMaxEntities(t *testing.T) {
 	_, err = l3Service.GetBundle(context.TODO(), &newID)
 	assert.Nil(t, err)
 
+	realCache.Wait()
+
 	// new ID should exist
 	_, err = c.Get(newKey)
 	assert.Nil(t, err)
