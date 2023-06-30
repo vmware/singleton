@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -30,8 +30,11 @@ func (r *translationRouter) Init(e *gin.RouterGroup) {
 		// Component API
 		tranGroup.GET(productPart+"/locales/:locale/components/:component", GetBundle)
 
-		// Key APIs
+		// Key API
 		tranGroup.GET(productPart+"/locales/:locale/components/:component/keys/:key", GetString)
+
+		// Keys API
+		tranGroup.GET(productPart+"/locales/:locale/components/:component/keys", GetStrings)
 	}
 
 	e.POST("/translation/products/:productName/versions/:version/locales/:locale/components/:component/keys/:key", HandleAllowList, GetStringByPost)

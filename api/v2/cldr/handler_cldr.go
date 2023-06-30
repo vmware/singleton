@@ -135,3 +135,29 @@ func GetRegionListOfLanguages(c *gin.Context) {
 		api.HandleResponse(c, result, multiErr)
 	}
 }
+
+// GetTimeZoneNames godoc
+// @Summary Get timezone names
+// @Description Get time zone names in a specified locale
+// @Tags formatting-api
+// @Produce json
+// @Param displayLanguage query string true "the display language. e.g. 'en'"
+// @Param defaultTerritory query boolean false "a boolean value to get the default territory timezone name or not, default is true" default(true)
+// @Success 200 {object} api.Response "OK"
+// @Success 206 {object} api.Response "Successful Partially"
+// @Failure 400 {string} string "Bad Request"
+// @Failure 404 {string} string "Not Found"
+// @Failure 500 {string} string "Internal Server Error"
+// @Router /formatting/date/timezoneNameList [get]
+func GetTimeZoneNames(c *gin.Context) {
+	params := struct {
+		DisplayLanguage  string `form:"displayLanguage" binding:"language"`
+		DefaultTerritory bool   `form:"defaultTerritory"`
+	}{DefaultTerritory: true}
+	if err := api.ExtractParameters(c, nil, &params); err != nil {
+		return
+	}
+
+	data, err := localeutil.GetTimeZoneNames(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.DisplayLanguage, params.DefaultTerritory)
+	api.HandleResponse(c, data, err)
+}

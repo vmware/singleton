@@ -45,10 +45,10 @@ func TestServer(t *testing.T) {
 	api.ShutdownServer()
 
 	output, _ := done()
-	assert.Contains(t, output, "Start 'https' server listening on :8090")
-	assert.Contains(t, output, "Start 'http' server listening on :8091")
-	assert.Contains(t, output, "Opened localhost:8090")
-	assert.Contains(t, output, "Opened localhost:8091")
+	assert.Contains(t, output, fmt.Sprintf("Start 'https' server listening on :%d", config.Settings.Server.HTTPSPort))
+	assert.Contains(t, output, fmt.Sprintf("Start 'http' server listening on :%d", config.Settings.Server.HTTPPort))
+	assert.Contains(t, output, fmt.Sprintf("Opened localhost:%d", config.Settings.Server.HTTPSPort))
+	assert.Contains(t, output, fmt.Sprintf("Opened localhost:%d", config.Settings.Server.HTTPPort))
 	assert.Contains(t, output, "Server stopped")
 }
 

@@ -180,7 +180,7 @@ func TestTransCacheParallelly1(t *testing.T) {
 
 	id := &translation.BundleID{Name: Name, Version: Version, Locale: Locale, Component: Component}
 	returnBundle, returnErr := &translation.Bundle{}, error(nil)
-	mockOrigin.On("GetBundle", ctx, id).Times(1).Return(returnBundle, returnErr).After(time.Millisecond)
+	mockOrigin.On("GetBundle", ctx, id).Times(1).Return(returnBundle, returnErr).After(time.Millisecond * 10)
 	mockOrigin.On("GetBundle", ctx, id).Times(loopCount-1).Return(returnBundle, returnErr)
 	mockCache.On("Get", mock.AnythingOfType("string")).Times(2*loopCount-1).Return(nil, assert.AnError)
 	mockCache.On("Set", mock.AnythingOfType("string"), returnBundle).Once().Return(nil)
@@ -229,6 +229,8 @@ func TestCacheMaxEntities(t *testing.T) {
 	// update cache to save newID
 	_, err = l3Service.GetBundle(context.TODO(), &newID)
 	assert.Nil(t, err)
+
+	realCache.Wait()
 
 	// new ID should exist
 	_, err = c.Get(newKey)

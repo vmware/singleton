@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -15,6 +15,8 @@ type Service interface {
 	// DeleteBundle(context.Context, *BundleID) error
 
 	GetString(ctx context.Context, id *MessageID) (*StringMessage, error)
+
+	GetStrings(context.Context, *BundleID, []string) (*Bundle, error)
 
 	GetStringWithSource(ctx context.Context, id *MessageID, source string) (map[string]interface{}, error)
 
