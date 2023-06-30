@@ -480,7 +480,7 @@ var doc = `{
                     },
                     {
                         "type": "string",
-                        "description": "a string which represents regions, separated by commas. e.g. US, PT, CN",
+                        "description": "a string which represents regions, separated by commas. e.g. 'US,PT,CN'",
                         "name": "regions",
                         "in": "query"
                     }
@@ -492,7 +492,7 @@ var doc = `{
                             "$ref": "#/definitions/api.Response"
                         }
                     },
-                    "206": {
+                    "207": {
                         "description": "Successful Partially",
                         "schema": {
                             "$ref": "#/definitions/api.Response"
