@@ -14,6 +14,7 @@ import (
 	cldrApi "sgtnserver/api/v2/cldr"
 	transApi "sgtnserver/api/v2/translation"
 	"sgtnserver/internal/common"
+	"sgtnserver/internal/config"
 	"sgtnserver/internal/logger"
 	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/cldr"
@@ -169,8 +170,8 @@ func getCombinedDataByPost(c *gin.Context) {
 		return
 	}
 
-	if !translationservice.IsProductExist(params.ProductName) {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("Product '%s' doesn't exist", params.ProductName))
+	if config.Settings.AllowList && !translationservice.IsReleaseAllowed(params.ProductName, params.Version) {
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(translation.ReleaseNonexistent, params.ProductName, params.Version))
 		return
 	}
 

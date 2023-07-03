@@ -10,14 +10,17 @@ import (
 	"strings"
 
 	"sgtnserver/internal/bindata"
+	"sgtnserver/internal/config"
 	"sgtnserver/internal/logger"
 	"sgtnserver/modules/cldr"
 	"sgtnserver/modules/cldr/coreutil"
 	"sgtnserver/modules/translation/bundleinfo"
 
+	mapset "github.com/deckarep/golang-set/v2"
 	"github.com/emirpasic/gods/sets"
 	jsoniter "github.com/json-iterator/go"
 	"go.uber.org/zap"
+	"gopkg.in/yaml.v3"
 )
 
 var json = jsoniter.ConfigDefault
@@ -114,6 +117,55 @@ func PickupVersion(name, desiredVersion string) string {
 func IsProductExist(name string) bool {
 	return bundleinfo.IsProductExist(name)
 }
+
+var allowedProducts = map[string]mapset.Set[string]{}
+
+func initAllowedProducts() {
+	allowSettings := map[string][]string{}
+	err := yaml.Unmarshal([]byte(config.Settings.AllowedProducts), &allowSettings)
+	if err != nil {
+		logger.Log.Fatal(err.Error())
+	}
+	for product, versions := range allowSettings {
+		if !bundleinfo.IsProductExist(product) {
+			continue
+		}
+		newProductVersions := mapset.NewSet[string]()
+		allowedProducts[product] = newProductVersions
+		if allExistingVersions, ok := bundleinfo.GetReleaseNames(product); ok {
+			for _, version := range versions {
+				if version == "*" {
+					for _, v := range allExistingVersions.Values() {
+						newProductVersions.Add(v.(string))
+					}
+					break
+				}
+
+				if allExistingVersions.Contains(version) {
+					newProductVersions.Add(version)
+				}
+			}
+		}
+	}
+}
+
+func IsReleaseAllowed(name, version string) bool {
+	if versions, ok := allowedProducts[name]; ok {
+		if versions.Contains(version) {
+			return true
+		}
+	}
+
+	return false
+}
+
+// func IsProductAllowed(name string) bool {
+// 	if _, ok := allowedProducts[name]; ok {
+// 		return true
+// 	}
+
+// 	return false
+// }
 
 func initLocaleMap() {
 	logger.Log.Debug("Initialize locale mapping")

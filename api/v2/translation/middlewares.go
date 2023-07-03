@@ -9,6 +9,7 @@ import (
 	"sgtnserver/api"
 	"sgtnserver/internal/config"
 	"sgtnserver/internal/sgtnerror"
+	"sgtnserver/modules/translation"
 	"sgtnserver/modules/translation/translationservice"
 
 	"github.com/gin-gonic/gin"
@@ -57,8 +58,15 @@ func HandleAllowList(c *gin.Context) {
 			return
 		}
 	}
+	version := c.Param(api.VersionAPIKey)
+	if version == "" {
+		var ok bool
+		if version, ok = c.GetQuery(api.VersionAPIKey); !ok {
+			return
+		}
+	}
 
-	if !translationservice.IsProductExist(productName) {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("Product '%s' doesn't exist", productName))
+	if !translationservice.IsReleaseAllowed(productName, version) {
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(translation.ReleaseNonexistent, productName, version))
 	}
 }

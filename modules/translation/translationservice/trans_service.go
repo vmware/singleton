@@ -389,4 +389,6 @@ func init() {
 	service = newService()
 
 	initLocaleMap()
+
+	initAllowedProducts()
 }
