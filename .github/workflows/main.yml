@@ -154,7 +154,6 @@ jobs:
           docker cp $GITHUB_WORKSPACE/l10n singleton:/
           curl -X GET 'http://localhost:8091/actuator/health'
           cd $GITHUB_WORKSPACE/devops/autotest/client/go/goclienttest
-          go get github.com/smartystreets/goconvey
           echo "" >> go.mod
           echo "replace github.com/vmware/singleton => $GITHUB_WORKSPACE" >> go.mod
           echo "" >> go.mod
@@ -162,5 +161,6 @@ jobs:
           echo $str Smoke Test Start $str
           go mod download github.com/json-iterator/go
           go get github.com/json-iterator/go@v1.1.9
+          go get github.com/smartystreets/goconvey/convey@v1.7.2
           go test -v ./...
           echo $str Smoke Test End $str        
