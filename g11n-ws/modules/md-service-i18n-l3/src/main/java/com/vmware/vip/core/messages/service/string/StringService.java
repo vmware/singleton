@@ -23,7 +23,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import javax.annotation.Resource;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,7 +36,7 @@ public class StringService implements IStringService {
 	private static Logger logger = LoggerFactory.getLogger(StringService.class);
 	@Autowired
 	private PseudoConfig pseudoConfig;
-	@Resource
+	@Autowired
 	private IOneComponentService singleComponentService;
 
 	/**

@@ -9,13 +9,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -37,7 +36,6 @@ import com.vmware.vip.core.messages.exception.L3APIException;
 import com.vmware.vip.core.messages.service.multcomponent.IMultComponentService;
 import com.vmware.vip.core.messages.service.multcomponent.TranslationDTO;
 import com.vmware.vip.core.messages.service.product.IProductService;
-import com.vmware.vip.core.messages.utils.LocaleUtility;
 import com.vmware.vip.i18n.api.base.utils.VersionMatcher;
 
 
@@ -51,8 +49,8 @@ public class TranslationProductAction  extends BaseAction {
 	@Autowired
 	IMultComponentService multipleComponentsService;
 
-	public String getProductTrans(String productName, String version,String locale,String pseudo,
-			HttpServletRequest request, HttpServletResponse response)  throws Exception {
+	public String getProductTrans(String productName, String version, String locale, String pseudo,
+                                  HttpServletRequest request, HttpServletResponse response)  throws Exception {
 		locale = locale == null ? ConstantsUnicode.EN : getMappingLocale(productName, version, locale.trim());
 		List<String> componentList = productService
 				.getComponentNameList(productName, version);

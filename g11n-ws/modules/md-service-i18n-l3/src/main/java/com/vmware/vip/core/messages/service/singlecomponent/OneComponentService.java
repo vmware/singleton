@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import javax.annotation.Resource;
 
 import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
@@ -46,7 +45,7 @@ public class OneComponentService implements IOneComponentService {
 	@Autowired
 	IProductService productService;
 
-	@Resource
+	@Autowired
 	private IOneComponentDao oneComponentDao;
 
 	@Autowired

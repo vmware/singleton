@@ -5,10 +5,10 @@
 
 package com.vmware.vip.messages.mt.intento;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
-import javax.annotation.PostConstruct;
 
 /**
  * A config class to accept the configuration settings from application properties

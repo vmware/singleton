@@ -18,11 +18,11 @@ import com.vmware.vip.common.utils.JSONUtils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
-import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -41,7 +41,7 @@ public class PatternServiceImpl implements IPatternService {
 	private static List<String> specialCategories = Arrays.asList(ConstantsKeys.PLURALS, ConstantsKeys.DATE_FIELDS, ConstantsKeys.MEASUREMENTS, ConstantsKeys.CURRENCIES);
 	private static List<String> otherCategories = Arrays.asList(ConstantsKeys.DATES, ConstantsKeys.NUMBERS);
 
-	@Resource
+	@Autowired
 	private IPatternDao patternDao;
 
 	/**

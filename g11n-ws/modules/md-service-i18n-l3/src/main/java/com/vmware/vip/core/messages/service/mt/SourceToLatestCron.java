@@ -5,11 +5,11 @@
 package com.vmware.vip.core.messages.service.mt;
 
 import java.util.List;
-import javax.annotation.Resource;
 
 import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -33,10 +33,10 @@ import com.vmware.vip.messages.data.dao.exception.DataException;
 public class SourceToLatestCron {
 	private static Logger LOGGER = LoggerFactory.getLogger(SourceToLatestCron.class);
 
-	@Resource
+	@Autowired
 	private IProductService productService;
 
-	@Resource
+	@Autowired
 	private IOneComponentService oneComponentService;
 	
 	

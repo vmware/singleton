@@ -22,7 +22,8 @@ dependencies {
     compileOnly("org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion")
 	compileOnly("commons-codec:commons-codec:$commonsCodecVersion")
 	compileOnly("io.springfox:springfox-swagger2:$swaggerVersion")
-	// Actuator - START
+    compileOnly("org.apache.commons:commons-lang3:$commonsLangVersion")
+    // Actuator - START
     compileOnly("org.springframework.boot:spring-boot-starter-actuator")
     // Actuator - END
 }

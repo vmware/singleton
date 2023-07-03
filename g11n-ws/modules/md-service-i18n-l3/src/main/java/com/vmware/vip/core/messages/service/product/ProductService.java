@@ -29,10 +29,10 @@ import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,10 +46,10 @@ public class ProductService implements IProductService {
 
 	private static Logger logger = LoggerFactory
 			.getLogger(ProductService.class);
-	@Resource
+	@Autowired
 	private IProductDao productdao;
 
-	@Resource
+	@Autowired
 	private IOneComponentDao oneComponentDao;
 
 	@Override

@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
 
 import com.vmware.vip.messages.mt.MTFactory;
 import org.springframework.beans.BeanUtils;
@@ -46,7 +45,7 @@ public class MTService implements IMTService {
 
 	private static Logger LOGGER = LoggerFactory.getLogger(MTService.class);
 
-	@Resource
+	@Autowired
 	private IOneComponentDao oneComponentDao;
 
 	@Autowired

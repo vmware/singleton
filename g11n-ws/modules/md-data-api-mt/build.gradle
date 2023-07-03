@@ -23,6 +23,12 @@ dependencies {
     compileOnly("org.springframework.boot:spring-boot-starter-data-jpa")
     compileOnly("org.slf4j:slf4j-api:$slf4jVersion")
     compileOnly("commons-collections:commons-collections:$commonsCollectionsVersion")
+    compileOnly("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
+    compileOnly("org.apache.commons:commons-lang3:$commonsLangVersion")
+    compileOnly("com.googlecode.json-simple:json-simple:$jsonSimpleVersion"){
+        exclude group: 'junit'
+    }
+
 }
 
 bootJar {

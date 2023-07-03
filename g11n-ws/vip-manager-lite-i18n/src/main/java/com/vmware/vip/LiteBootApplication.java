@@ -15,12 +15,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @EnableScheduling
 @ComponentScan(basePackages = { "com.vmware" })
-public class LiteBootApplication extends SpringBootServletInitializer {
-	@Override
-	protected SpringApplicationBuilder configure(
-			SpringApplicationBuilder application) {
-		return application.sources(LiteBootApplication.class);
-	}
+public class LiteBootApplication {
 
 	public static void main(String[] args) throws Exception {
 
