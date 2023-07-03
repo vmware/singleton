@@ -6,9 +6,10 @@ package com.vmware.l10n.translation.dto;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
 
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
+
+import javax.persistence.Entity;
 
 /**
  * Data Object for Component

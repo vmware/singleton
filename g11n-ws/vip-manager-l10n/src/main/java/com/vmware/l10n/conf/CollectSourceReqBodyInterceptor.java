@@ -4,9 +4,9 @@
  */
 package com.vmware.l10n.conf;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import com.vmware.vip.common.constants.ConstantsKeys;
@@ -24,7 +24,7 @@ public class CollectSourceReqBodyInterceptor implements HandlerInterceptor{
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request,
-			HttpServletResponse response, Object handler) throws Exception {
+							 HttpServletResponse response, Object handler) throws Exception {
 		if (request.getMethod().equalsIgnoreCase(ConstantsKeys.POST) && Integer.valueOf(request.getHeader("content-length")) > this.sourceReqBodySize) {
 			throw new ValidationException(String.format(ValidationMsg.COLLECTSOURCE_REQUEST_BODY_NOT_VALIDE, this.sourceReqBodySize, request.getHeader("content-length")));
 		}

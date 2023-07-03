@@ -4,8 +4,8 @@ package com.vmware.l10n.translation.dao.impl;
 
 import java.util.HashMap;
 
-import javax.annotation.PostConstruct;
 
+import jakarta.annotation.PostConstruct;
 import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

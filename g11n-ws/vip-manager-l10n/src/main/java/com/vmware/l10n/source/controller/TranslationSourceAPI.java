@@ -4,7 +4,10 @@
  */
 package com.vmware.l10n.source.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import io.swagger.v3.oas.annotations.Hidden;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,9 +36,6 @@ import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.vip.common.l10n.source.dto.StringSourceDTO;
 import com.vmware.vip.common.utils.KeyUtils;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import springfox.documentation.annotations.ApiIgnore;
 
 /**
  * Provide RESTful API for product to get translation by String base.
@@ -52,8 +52,8 @@ public class TranslationSourceAPI  {
 	 * source
 	 * 
 	 */
-	@ApiIgnore
-	@ApiOperation(value = APIOperation.SOURCE_TRANSLATION_POST_VALUE, notes = APIOperation.SOURCE_TRANSLATION_POST_NOTES)
+	@Hidden
+	@Operation(summary = APIOperation.SOURCE_TRANSLATION_POST_VALUE, description = APIOperation.SOURCE_TRANSLATION_POST_NOTES)
 	@RequestMapping(value = L10nI18nAPI.TRANSLATION_SOURCE_APIV1, method = RequestMethod.POST, produces = { API.API_CHARSET })
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
@@ -64,7 +64,7 @@ public class TranslationSourceAPI  {
 			@RequestBody String source,
 			@RequestParam(value = APIParamName.SOURCE_FORMAT, required = false) String sourceFormat,
 			@RequestParam(value = APIParamName.LOCALE, required = false) String locale,
-			@ApiParam(name = APIParamName.COLLECT_SOURCE, value = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = true, defaultValue = "true") String collectSource,
+			@Parameter(name = APIParamName.COLLECT_SOURCE, description = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = true, defaultValue = "true") String collectSource,
 			//@ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required = false, defaultValue = "false") String pseudo,
 			HttpServletRequest request) throws L10nAPIException {	
 		String key = KeyUtils.generateKey(component, null, source.toString());
@@ -95,7 +95,7 @@ public class TranslationSourceAPI  {
 	 * @return APIResponseDTO The object which represents response status.
 	 */
     
-    @ApiOperation(value = APIOperation.SOURCE_TRANSLATION_POST_VALUE, notes = APIOperation.SOURCE_TRANSLATION_POST_NOTES)
+    @Operation(summary = APIOperation.SOURCE_TRANSLATION_POST_VALUE, description = APIOperation.SOURCE_TRANSLATION_POST_NOTES)
     @RequestMapping(value = L10nI18nAPI.TRANSLATION_SOURCE_APIV2, method = RequestMethod.POST, produces = { API.API_CHARSET })
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
@@ -106,7 +106,7 @@ public class TranslationSourceAPI  {
 			@PathVariable(value = APIParamName.LOCALE) String locale,
             @RequestBody String source,
             @RequestParam(value = APIParamName.SOURCE_FORMAT, required = false) String sourceFormat,
-            @ApiParam(name = APIParamName.COLLECT_SOURCE, value = APIParamValue.COLLECT_SOURCE)
+            @Parameter(name = APIParamName.COLLECT_SOURCE, description = APIParamValue.COLLECT_SOURCE)
             @RequestParam(value = APIParamName.COLLECT_SOURCE, required = true, defaultValue = "true") String collectSource,
            //@ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required=false, defaultValue="false") String pseudo,
             HttpServletRequest request)  throws L10nAPIException {

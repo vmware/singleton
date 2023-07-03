@@ -8,15 +8,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import com.vmware.vip.common.utils.SourceFormatUtils;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.HandlerMapping;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.common.constants.ConstantsChar;
@@ -26,7 +26,7 @@ import com.vmware.vip.common.exceptions.ValidationException;
 import com.vmware.vip.common.utils.RegExpValidatorUtils;
 
 
-public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapter {
+public class CollectSourceValidationInterceptor implements HandlerInterceptor {
 	
 	private static Logger LOGGER = LoggerFactory.getLogger(CollectSourceValidationInterceptor.class);
 
@@ -56,7 +56,7 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 	 */
 	@Override
 	public boolean preHandle(HttpServletRequest request,
-			HttpServletResponse response, Object handler) throws Exception {
+							 HttpServletResponse response, Object handler) throws Exception {
 		String singletonRequestID = getRequestId(request, this.clientRequestIds);
 		String logOfUrl = singletonRequestID + "The request url is: " + request.getRequestURL();
 		String logOfQueryStr = singletonRequestID + "The request query string is: " + request.getQueryString();

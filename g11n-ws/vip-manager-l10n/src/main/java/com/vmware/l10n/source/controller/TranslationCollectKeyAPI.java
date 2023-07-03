@@ -6,7 +6,10 @@ package com.vmware.l10n.source.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+import io.swagger.v3.oas.annotations.Hidden;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import jakarta.servlet.http.HttpServletRequest;
 
 import com.vmware.vip.common.utils.SourceFormatUtils;
 import org.slf4j.Logger;
@@ -40,9 +43,6 @@ import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.vip.common.l10n.source.dto.StringSourceDTO;
 import com.vmware.vip.common.utils.RegExpValidatorUtils;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import springfox.documentation.annotations.ApiIgnore;
 
 @RestController("i10n-TranslationCollectKeyAPI")
 public class TranslationCollectKeyAPI {
@@ -53,20 +53,20 @@ public class TranslationCollectKeyAPI {
 	/**
 	 * Post a string key's source to l10n server
 	 */
-	@ApiIgnore
-	@ApiOperation(value = APIOperation.KEY_SOURCE_POST_VALUE, notes = APIOperation.KEY_SOURCE_POST_NOTES)
+	@Hidden
+	@Operation(summary = APIOperation.KEY_SOURCE_POST_VALUE, description = APIOperation.KEY_SOURCE_POST_NOTES)
 	@RequestMapping(value = L10nI18nAPI.TRANSLATION_KEY_APIV1, method = RequestMethod.POST, produces = { API.API_CHARSET })
 	@ResponseStatus(HttpStatus.OK)
 	public SourceAPIResponseDTO collectV1StringTranslation(
-			@ApiParam(name = APIParamName.PRODUCT_NAME, required = true, value = APIParamValue.PRODUCT_NAME) @RequestParam(value = APIParamName.PRODUCT_NAME, required = true) String productName,
-			@ApiParam(name = APIParamName.KEY, required = true, value = APIParamValue.KEY) @RequestParam(value = APIParamName.KEY, required = true) String key,
-			@ApiParam(name = APIParamName.VERSION, required = true, value = APIParamValue.VERSION) @RequestParam(value = APIParamName.VERSION, required = true) String version,
-			@ApiParam(name = APIParamName.COMPONENT, required = true, value = APIParamValue.COMPONENT) @RequestParam(value = APIParamName.COMPONENT, required = true) String component,
-			@ApiParam(name = APIParamName.LOCALE, value = APIParamValue.LOCALE) @RequestParam(value = APIParamName.LOCALE, required = false) String locale,
-			@ApiParam(name = APIParamName.SOURCE, required = false, value = APIParamValue.SOURCE) @RequestParam(value = APIParamName.SOURCE, required = false) String source,
-			@ApiParam(name = APIParamName.COMMENT_SOURCE, value = APIParamValue.COMMENT_SOURCE) @RequestParam(value = APIParamName.COMMENT_SOURCE, required = false) String commentForSource,
-			@ApiParam(name = APIParamName.SOURCE_FORMAT, value = APIParamValue.SOURCE_FORMAT) @RequestParam(value = APIParamName.SOURCE_FORMAT, required = false) String sourceFormat,
-			@ApiParam(name = APIParamName.COLLECT_SOURCE, value = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = true, defaultValue = "true") String collectSource,
+			@Parameter(name = APIParamName.PRODUCT_NAME, required = true, description = APIParamValue.PRODUCT_NAME) @RequestParam(value = APIParamName.PRODUCT_NAME, required = true) String productName,
+			@Parameter(name = APIParamName.KEY, required = true, description = APIParamValue.KEY) @RequestParam(value = APIParamName.KEY, required = true) String key,
+			@Parameter(name = APIParamName.VERSION, required = true, description = APIParamValue.VERSION) @RequestParam(value = APIParamName.VERSION, required = true) String version,
+			@Parameter(name = APIParamName.COMPONENT, required = true, description = APIParamValue.COMPONENT) @RequestParam(value = APIParamName.COMPONENT, required = true) String component,
+			@Parameter(name = APIParamName.LOCALE, description = APIParamValue.LOCALE) @RequestParam(value = APIParamName.LOCALE, required = false) String locale,
+			@Parameter(name = APIParamName.SOURCE, required = false, description = APIParamValue.SOURCE) @RequestParam(value = APIParamName.SOURCE, required = false) String source,
+			@Parameter(name = APIParamName.COMMENT_SOURCE, description = APIParamValue.COMMENT_SOURCE) @RequestParam(value = APIParamName.COMMENT_SOURCE, required = false) String commentForSource,
+			@Parameter(name = APIParamName.SOURCE_FORMAT, description = APIParamValue.SOURCE_FORMAT) @RequestParam(value = APIParamName.SOURCE_FORMAT, required = false) String sourceFormat,
+			@Parameter(name = APIParamName.COLLECT_SOURCE, description = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = true, defaultValue = "true") String collectSource,
 			//@ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required = false, defaultValue = "false") String pseudo,
 			HttpServletRequest request) throws L10nAPIException {
 		String newLocale =  StringUtils.isEmpty(locale) ? ConstantsUnicode.EN : locale;
@@ -94,20 +94,20 @@ public class TranslationCollectKeyAPI {
 	 * @return
 	 * @throws L10nAPIException
 	 */
-	@ApiIgnore
-	@ApiOperation(value = APIOperation.SOURCE_TRANSLATION_POST_VALUE, notes = APIOperation.SOURCE_TRANSLATION_POST_NOTES)
+	@Hidden
+	@Operation(summary = APIOperation.SOURCE_TRANSLATION_POST_VALUE, description = APIOperation.SOURCE_TRANSLATION_POST_NOTES)
 	@RequestMapping(value = L10nI18nAPI.TRANSLATION_PRODUCT_COMOPONENT_KEY_APIV1, method = RequestMethod.POST, produces = { API.API_CHARSET })
 	@ResponseStatus(HttpStatus.OK)
 	public SourceAPIResponseDTO collectV1KeyTranslation(
 			@PathVariable(APIParamName.PRODUCT_NAME) String productName,
-			@ApiParam(name = APIParamName.VERSION, required = true, value = APIParamValue.VERSION) @RequestParam(value = APIParamName.VERSION, required = true) String version,
+			@Parameter(name = APIParamName.VERSION, required = true, description = APIParamValue.VERSION) @RequestParam(value = APIParamName.VERSION, required = true) String version,
 			@PathVariable(APIParamName.COMPONENT) String component,
 			@PathVariable(APIParamName.KEY) String key,
-			@ApiParam(value = APIParamValue.SOURCE, required = false) @RequestBody String source,
-			@ApiParam(name = APIParamName.COMMENT_SOURCE, value = APIParamValue.COMMENT_SOURCE) @RequestParam(value = APIParamName.COMMENT_SOURCE, required = false) String commentForSource,
-			@ApiParam(name = APIParamName.LOCALE, value = APIParamValue.LOCALE) @RequestParam(value = APIParamName.LOCALE, required = false) String locale,
-			@ApiParam(name = APIParamName.SOURCE_FORMAT, value = APIParamValue.SOURCE_FORMAT) @RequestParam(value = APIParamName.SOURCE_FORMAT, required = false) String sourceFormat,
-			@ApiParam(name = APIParamName.COLLECT_SOURCE, value = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = true, defaultValue = "true") String collectSource,
+			@Parameter(description = APIParamValue.SOURCE, required = false) @RequestBody String source,
+			@Parameter(name = APIParamName.COMMENT_SOURCE, description = APIParamValue.COMMENT_SOURCE) @RequestParam(value = APIParamName.COMMENT_SOURCE, required = false) String commentForSource,
+			@Parameter(name = APIParamName.LOCALE, description = APIParamValue.LOCALE) @RequestParam(value = APIParamName.LOCALE, required = false) String locale,
+			@Parameter(name = APIParamName.SOURCE_FORMAT, description = APIParamValue.SOURCE_FORMAT) @RequestParam(value = APIParamName.SOURCE_FORMAT, required = false) String sourceFormat,
+			@Parameter(name = APIParamName.COLLECT_SOURCE, description = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = true, defaultValue = "true") String collectSource,
 			//@ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required = false, defaultValue = "false") String pseudo,
 			HttpServletRequest request)
 			throws L10nAPIException {
@@ -129,19 +129,19 @@ public class TranslationCollectKeyAPI {
 	 *Post a string key's source to l10n server.
 	 *
 	 */
-	@ApiIgnore
-	@ApiOperation(value = APIOperation.KEY_SOURCE_POST_VALUE, notes = APIOperation.KEY_SOURCE_POST_NOTES)
+	@Hidden
+	@Operation(summary = APIOperation.KEY_SOURCE_POST_VALUE, description = APIOperation.KEY_SOURCE_POST_NOTES)
 	@RequestMapping(value = L10nI18nAPI.TRANSLATION_PRODUCT_NOCOMOPONENT_KEY_APIV1, method = RequestMethod.POST, produces = { API.API_CHARSET })
 	@ResponseStatus(HttpStatus.OK)
 	public SourceAPIResponseDTO collectV1KeyTranslationNoComponent(
-			@ApiParam(name = APIParamName.PRODUCT_NAME, required = true, value = APIParamValue.PRODUCT_NAME) @PathVariable(APIParamName.PRODUCT_NAME) String productName,
-			@ApiParam(name = APIParamName.VERSION, required = true, value = APIParamValue.VERSION) @RequestParam(value = APIParamName.VERSION, required = true) String version,
-			@ApiParam(name = APIParamName.KEY, required = true, value = APIParamValue.KEY) @PathVariable(APIParamName.KEY) String key,
-			@ApiParam(name = APIParamName.SOURCE, required = false, value = APIParamValue.SOURCE) @RequestParam(value = APIParamName.SOURCE, required = false) String source,
-			@ApiParam(name = APIParamName.COMMENT_SOURCE, value = APIParamValue.COMMENT_SOURCE) @RequestParam(value = APIParamName.COMMENT_SOURCE, required = false) String commentForSource,
-			@ApiParam(name = APIParamName.LOCALE, value = APIParamValue.LOCALE) @RequestParam(value = APIParamName.LOCALE, required = false) String locale,
-			@ApiParam(name = APIParamName.SOURCE_FORMAT, value = APIParamValue.SOURCE_FORMAT) @RequestParam(value = APIParamName.SOURCE_FORMAT, required = false) String sourceFormat,
-			@ApiParam(name = APIParamName.COLLECT_SOURCE, value = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = true, defaultValue = "true") String collectSource,
+			@Parameter(name = APIParamName.PRODUCT_NAME, required = true, description = APIParamValue.PRODUCT_NAME) @PathVariable(APIParamName.PRODUCT_NAME) String productName,
+			@Parameter(name = APIParamName.VERSION, required = true, description = APIParamValue.VERSION) @RequestParam(value = APIParamName.VERSION, required = true) String version,
+			@Parameter(name = APIParamName.KEY, required = true, description = APIParamValue.KEY) @PathVariable(APIParamName.KEY) String key,
+			@Parameter(name = APIParamName.SOURCE, required = false, description = APIParamValue.SOURCE) @RequestParam(value = APIParamName.SOURCE, required = false) String source,
+			@Parameter(name = APIParamName.COMMENT_SOURCE, description = APIParamValue.COMMENT_SOURCE) @RequestParam(value = APIParamName.COMMENT_SOURCE, required = false) String commentForSource,
+			@Parameter(name = APIParamName.LOCALE, description = APIParamValue.LOCALE) @RequestParam(value = APIParamName.LOCALE, required = false) String locale,
+			@Parameter(name = APIParamName.SOURCE_FORMAT, description = APIParamValue.SOURCE_FORMAT) @RequestParam(value = APIParamName.SOURCE_FORMAT, required = false) String sourceFormat,
+			@Parameter(name = APIParamName.COLLECT_SOURCE, description = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = true, defaultValue = "true") String collectSource,
 		//	@ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required = false, defaultValue = ConstantsKeys.FALSE) String pseudo,
 			HttpServletRequest request) throws L10nAPIException {
 		String newLocale = locale == null ? ConstantsUnicode.EN : locale;
@@ -160,19 +160,19 @@ public class TranslationCollectKeyAPI {
 	 * source
 	 * 
 	 */
-	@ApiOperation(value = APIOperation.KEY_TRANSLATION_POST_VALUE, notes = APIOperation.KEY_TRANSLATION_POST_NOTES)
+	@Operation(summary = APIOperation.KEY_TRANSLATION_POST_VALUE, description = APIOperation.KEY_TRANSLATION_POST_NOTES)
 	@RequestMapping(value = L10nI18nAPI.KEY_TRANSLATION_APIV2, method = RequestMethod.POST, produces = { API.API_CHARSET })
 	@ResponseStatus(HttpStatus.OK)
 	public SourceAPIResponseDTO collectV2KeyTranslation(
-			@ApiParam(name = APIParamName.PRODUCT_NAME, required = true, value = APIParamValue.PRODUCT_NAME) @PathVariable(APIParamName.PRODUCT_NAME) String productName,
-			@ApiParam(name = APIParamName.VERSION, required = true, value = APIParamValue.VERSION) @PathVariable(value = APIParamName.VERSION) String version,
-			@ApiParam(name = APIParamName.LOCALE, required = true, value = APIParamValue.LOCALE) @PathVariable(value = APIParamName.LOCALE) String locale,
-			@ApiParam(name = APIParamName.COMPONENT, required = true, value = APIParamValue.COMPONENT) @PathVariable(APIParamName.COMPONENT) String component,
-			@ApiParam(name = APIParamName.KEY, required = true, value = APIParamValue.KEY) @PathVariable(APIParamName.KEY) String key,
-			@ApiParam(value = APIParamValue.SOURCE, required = false) @RequestBody String source,
-			@ApiParam(name = APIParamName.COMMENT_SOURCE, value = APIParamValue.COMMENT_SOURCE) @RequestParam(value = APIParamName.COMMENT_SOURCE, required = false) String commentForSource,
-			@ApiParam(name = APIParamName.SOURCE_FORMAT, value = APIParamValue.SOURCE_FORMAT) @RequestParam(value = APIParamName.SOURCE_FORMAT, required = false) String sourceFormat,
-			@ApiParam(name = APIParamName.COLLECT_SOURCE, value = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = true, defaultValue = "true") String collectSource
+			@Parameter(name = APIParamName.PRODUCT_NAME, required = true, description = APIParamValue.PRODUCT_NAME) @PathVariable(APIParamName.PRODUCT_NAME) String productName,
+			@Parameter(name = APIParamName.VERSION, required = true, description = APIParamValue.VERSION) @PathVariable(value = APIParamName.VERSION) String version,
+			@Parameter(name = APIParamName.LOCALE, required = true, description = APIParamValue.LOCALE) @PathVariable(value = APIParamName.LOCALE) String locale,
+			@Parameter(name = APIParamName.COMPONENT, required = true, description = APIParamValue.COMPONENT) @PathVariable(APIParamName.COMPONENT) String component,
+			@Parameter(name = APIParamName.KEY, required = true, description = APIParamValue.KEY) @PathVariable(APIParamName.KEY) String key,
+			@Parameter(description = APIParamValue.SOURCE, required = false) @RequestBody String source,
+			@Parameter(name = APIParamName.COMMENT_SOURCE, description = APIParamValue.COMMENT_SOURCE) @RequestParam(value = APIParamName.COMMENT_SOURCE, required = false) String commentForSource,
+			@Parameter(name = APIParamName.SOURCE_FORMAT, description = APIParamValue.SOURCE_FORMAT) @RequestParam(value = APIParamName.SOURCE_FORMAT, required = false) String sourceFormat,
+			@Parameter(name = APIParamName.COLLECT_SOURCE, description = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = true, defaultValue = "true") String collectSource
       )
 			throws L10nAPIException {
 	
@@ -198,16 +198,16 @@ public class TranslationCollectKeyAPI {
 	 * @throws ValidationException 
 	 *
 	 */
-	@ApiOperation(value = APIOperation.KEY_SET_POST_VALUE, notes = APIOperation.KEY_SET_POST_NOTES)
+	@Operation(summary = APIOperation.KEY_SET_POST_VALUE, description = APIOperation.KEY_SET_POST_NOTES)
 	@RequestMapping(value = L10nI18nAPI.KEYS_TRANSLATION_APIV2, method = RequestMethod.POST, produces = { API.API_CHARSET })
 	@ResponseStatus(HttpStatus.OK)
 	public SourceAPIResponseDTO collectV2KeysTranslation(
-			@ApiParam(name = APIParamName.PRODUCT_NAME, required = true, value = APIParamValue.PRODUCT_NAME) @PathVariable(APIParamName.PRODUCT_NAME) String productName,
-			@ApiParam(name = APIParamName.VERSION, required = true, value = APIParamValue.VERSION) @PathVariable(value = APIParamName.VERSION) String version,
-			@ApiParam(name = APIParamName.LOCALE, required = true, value = APIParamValue.LOCALE) @PathVariable(value = APIParamName.LOCALE) String locale,
-			@ApiParam(name = APIParamName.COMPONENT, required = true, value = APIParamValue.COMPONENT) @PathVariable(APIParamName.COMPONENT) String component,
+			@Parameter(name = APIParamName.PRODUCT_NAME, required = true, description = APIParamValue.PRODUCT_NAME) @PathVariable(APIParamName.PRODUCT_NAME) String productName,
+			@Parameter(name = APIParamName.VERSION, required = true, description = APIParamValue.VERSION) @PathVariable(value = APIParamName.VERSION) String version,
+			@Parameter(name = APIParamName.LOCALE, required = true, description = APIParamValue.LOCALE) @PathVariable(value = APIParamName.LOCALE) String locale,
+			@Parameter(name = APIParamName.COMPONENT, required = true, description = APIParamValue.COMPONENT) @PathVariable(APIParamName.COMPONENT) String component,
 			@RequestBody List<KeySourceCommentDTO> sourceSet,
-			@ApiParam(name = APIParamName.COLLECT_SOURCE, value = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = true, defaultValue = "true") String collectSource,
+			@Parameter(name = APIParamName.COLLECT_SOURCE, description = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = true, defaultValue = "true") String collectSource,
 			HttpServletRequest request) throws ValidationException  {
 		logger.info("The parameters are: productName={}, version={}, component={}, locale={}", productName, version, component, locale);
 		for (KeySourceCommentDTO sto : sourceSet) {

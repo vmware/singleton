@@ -10,17 +10,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +33,6 @@ import com.vmware.l10n.translation.service.TranslationSyncServerService;
 import com.vmware.vip.api.rest.API;
 import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.api.rest.l10n.L10NAPIV1;
-import com.vmware.vip.common.constants.ConstantsUnicode;
 import com.vmware.vip.common.constants.ValidationMsg;
 import com.vmware.vip.common.exceptions.ValidationException;
 import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO;

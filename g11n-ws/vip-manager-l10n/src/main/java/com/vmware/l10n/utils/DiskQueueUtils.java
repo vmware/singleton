@@ -135,7 +135,7 @@ public class DiskQueueUtils {
      * @return
      * @throws IOException
      */
-    public static Map<String, ComponentSourceDTO> getQueueFile2Obj(File file) throws IOException {
+    public static Map <String, ComponentSourceDTO> getQueueFile2Obj(File file) throws IOException {
     	ObjectMapper objectMapper = new ObjectMapper();
       
 		@SuppressWarnings("unchecked")

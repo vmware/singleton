@@ -6,7 +6,8 @@ package com.vmware.l10n.source.controller;
 
 import java.io.IOException;
 
-import javax.servlet.http.HttpServletRequest;
+import io.swagger.v3.oas.annotations.Hidden;
+import jakarta.servlet.http.HttpServletRequest;
 
 import com.vmware.vip.common.utils.SourceFormatUtils;
 import org.apache.commons.io.IOUtils;
@@ -38,13 +39,12 @@ import com.vmware.vip.common.i18n.dto.KeySourceCommentDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.common.l10n.source.dto.StringSourceDTO;
 
-import springfox.documentation.annotations.ApiIgnore;
 
 /**
  * This class is the controller for collecting dynamic english strings in
  * product code.
  */
-@ApiIgnore
+@Hidden
 @RestController
 public class SourceController {
 	private static Logger LOGGER = LoggerFactory.getLogger(SourceController.class);
