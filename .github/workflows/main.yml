@@ -10,7 +10,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          fetch-depth: 2.  
+          fetch-depth: 0
       - name: Get commit range
         id: get-commit-range-action
         uses: ./.github/actions/get-commit-range-action
