@@ -4,7 +4,7 @@
  */
 package com.vmware.vip.i18n.api.v1.formatting.date;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

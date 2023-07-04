@@ -4,7 +4,7 @@
  */
 package com.vmware.vip.i18n.api.v2.formatting.number;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -65,7 +65,7 @@ public class FormattingNumberAPI extends BaseAction {
 		NumberDTO numberDTO = new NumberDTO();
 		numberDTO.setFormattedNumber(localeNumber);
 		numberDTO.setLocale(locale);
-		numberDTO.setScale(new Integer(s).toString());
+		numberDTO.setScale(Integer.valueOf(s).toString());
 		numberDTO.setNumber(number);
 		return super.handleResponse(APIResponseStatus.OK, numberDTO);
 	}

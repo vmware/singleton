@@ -5,7 +5,7 @@
 package com.vmware.vip.i18n.api.v1.translation;
 
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -76,7 +76,7 @@ public class TranslationKeyAPI extends BaseAction {
 		componentMessagesDTO.setProductName(productName);
 		componentMessagesDTO.setComponent(StringUtils.isEmpty(component) ? ConstantsFile.DEFAULT_COMPONENT : component);
 		componentMessagesDTO.setVersion(version);
-        componentMessagesDTO.setPseudo(new Boolean(pseudo));
+        componentMessagesDTO.setPseudo(Boolean.parseBoolean(pseudo));
 		componentMessagesDTO.setLocale(locale == null ? ConstantsUnicode.EN : locale);
 		StringBasedDTO stringBasedDTO = stringBasedService.getStringTranslation(
 				componentMessagesDTO, StringUtils.isEmpty(sourceFormat) ? key : (key + ConstantsChar.DOT + ConstantsChar.POUND + sourceFormat.toUpperCase()), source);

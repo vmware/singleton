@@ -139,12 +139,8 @@ public class GitUtils {
 	 *
 	 * @param remoteUrl
 	 *            to connect.
-	 * @param localPath
-	 *            where to clone the repo.
 	 * @param passphrase
 	 *            to access private key.
-	 * @param privateKey
-	 *            file location. If null default (~.ssh/id_rsa) location is used.
 	 *
 	 * @return Git instance. Caller is responsible to close the connection.
 	 */

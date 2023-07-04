@@ -8,8 +8,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import com.vmware.vip.common.utils.SourceFormatUtils;
 import org.apache.commons.io.IOUtils;
@@ -65,19 +65,19 @@ public class TranslationProductComponentKeyAction extends BaseAction {
 		c.setProductName(productName);
 		c.setComponent(component);
 		c.setVersion(version);
-		c.setPseudo(new Boolean(pseudo));
+		c.setPseudo(Boolean.parseBoolean(pseudo));
 		c.setLocale(locale == null ? ConstantsUnicode.EN : locale);
 
 		StringBasedDTO stringBasedDTO = null;
-		if (new Boolean(machineTranslation)) {
+		if (Boolean.parseBoolean(machineTranslation)) {
 			stringBasedDTO = mtService.getStringMTTranslation(c, key, source);
 			stringBasedDTO
-					.setMachineTranslation(new Boolean(machineTranslation));
+					.setMachineTranslation(Boolean.parseBoolean(machineTranslation));
 		} else {
 			stringBasedDTO = stringBasedService.getStringTranslation(c, key,
 					source);
 		}
-		if(new Boolean(checkTranslationStatus)) {
+		if(Boolean.parseBoolean(checkTranslationStatus)) {
 			if(stringBasedDTO.getStatus().indexOf(ConstantsMsg.TRANS_IS_NOT_FOUND) != -1 || stringBasedDTO.getStatus().equals(String.format(ConstantsMsg.EN_NOT_SOURCE, ConstantsMsg.TRANS_FOUND_RETURN))) {
 				return super.handleResponse(APIResponseStatus.TRANSLATION_NOT_READY, stringBasedDTO);
 			} else {
@@ -123,7 +123,7 @@ public class TranslationProductComponentKeyAction extends BaseAction {
 		c.setVersion(version);
 		c.setLocale(locale == null ? ConstantsUnicode.EN : locale);
 		if (ConstantsKeys.TRUE.equalsIgnoreCase(pseudo)) {
-			c.setPseudo(new Boolean(pseudo));
+			c.setPseudo(Boolean.parseBoolean(pseudo));
 		}
 
 		return stringBasedService.getStringTranslation(c, key, source);
@@ -183,7 +183,7 @@ public class TranslationProductComponentKeyAction extends BaseAction {
 		c.setVersion(version);
 		c.setLocale(locale == null ? ConstantsUnicode.EN : locale);
 		if (ConstantsKeys.TRUE.equalsIgnoreCase(pseudo)) {
-			c.setPseudo(new Boolean(pseudo));
+			c.setPseudo(Boolean.parseBoolean(pseudo));
 		}
 
 		return stringBasedService.getMultKeyTranslation(c, keyArr);

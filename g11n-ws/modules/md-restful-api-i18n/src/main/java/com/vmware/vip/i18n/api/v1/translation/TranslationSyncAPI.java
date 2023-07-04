@@ -4,7 +4,7 @@
  */
 package com.vmware.vip.i18n.api.v1.translation;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -128,7 +128,7 @@ public class TranslationProductAction  extends BaseAction {
          
          translationDTO.setComponents(componentList);
          List<String> localeList = new ArrayList<String>();
-         if (new Boolean(pseudo)) {
+         if (Boolean.parseBoolean(pseudo)) {
              localeList.add(ConstantsKeys.LATEST);
          } else if (!StringUtils.isEmpty(locales)) {
             List<String> supportedLocaleList = productService
@@ -140,7 +140,7 @@ public class TranslationProductAction  extends BaseAction {
              localeList = productService.getSupportedLocaleList(productName,version);
          }
          translationDTO.setLocales(localeList);
-         translationDTO.setPseudo(new Boolean(pseudo));
+         translationDTO.setPseudo(Boolean.parseBoolean(pseudo));
          return translationDTO;
          
      }

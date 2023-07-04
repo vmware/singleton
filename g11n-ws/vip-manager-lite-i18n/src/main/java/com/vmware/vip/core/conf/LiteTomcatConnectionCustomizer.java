@@ -40,6 +40,7 @@ public class LiteTomcatConnectionCustomizer implements TomcatConnectorCustomizer
 			connector.setPort(serverProperties.getHttpPort());
 			connector.setAttribute("protocol", ConstantsTomcat.HTTP);
 			connector.setAttribute("redirectPort", ConstantsTomcat.REDIRECT_PORT);
+			connector.setAttribute("protocol", ConstantsTomcat.HTTP);
 			connector.setAllowTrace(serverProperties.isAllowTrace());
 			Http11NioProtocol protocol = (Http11NioProtocol) connector.getProtocolHandler();
 			protocol.setMaxHttpHeaderSize(serverProperties.getMaxHttpHeaderSize());
@@ -67,6 +68,8 @@ public class LiteTomcatConnectionCustomizer implements TomcatConnectorCustomizer
 			protocol.setKeystoreType(serverProperties.getHttpsKeyStoreType());
 			protocol.setKeyPass(serverProperties.getHttpsKeyPassword());
 			protocol.setKeyAlias(serverProperties.getHttpsKeyAlias());
+
+			protocol.addSslHostConfig();
 			protocol.setMaxHttpHeaderSize(serverProperties.getMaxHttpHeaderSize());
 			connector.setRedirectPort(ConstantsTomcat.REDIRECT_PORT);
 			connector.setAllowTrace(serverProperties.isAllowTrace());

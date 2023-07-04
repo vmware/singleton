@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 
 import org.apache.commons.lang3.StringUtils;
@@ -51,14 +51,14 @@ public class TranslationProductComponentAction extends BaseAction {
 		c.setProductName(productName);
 		c.setComponent(component == null ? ConstantsKeys.DEFAULT : component);
 		c.setVersion(version);
-		if (new Boolean(pseudo)) {
+		if (Boolean.parseBoolean(pseudo)) {
 			c.setLocale(ConstantsKeys.LATEST);
 		} else {
 			c.setLocale(locale == null ? ConstantsUnicode.EN : locale);
 		}
-		c.setPseudo(new Boolean(pseudo));
+		c.setPseudo(Boolean.parseBoolean(pseudo));
 		// get MT translation
-		if (new Boolean(mt)) {
+		if (Boolean.parseBoolean(mt)) {
 			c.setLocale(locale);
 			c = mtService.getComponentMTTranslation(c);
 			c.setMachineTranslation(true);
@@ -104,7 +104,7 @@ public class TranslationProductComponentAction extends BaseAction {
 		translationDTO.setComponents(componentList);
 
 		List<String> localeList = new ArrayList<String>();
-		if (new Boolean(pseudo)) {
+		if (Boolean.parseBoolean(pseudo)) {
 			localeList.add(ConstantsKeys.LATEST);
 		} else if (!StringUtils.isEmpty(locales)) {
 			List<String> supportedLocaleList = productService
@@ -117,7 +117,7 @@ public class TranslationProductComponentAction extends BaseAction {
 					version);
 		}
 		translationDTO.setLocales(localeList);
-		translationDTO.setPseudo(new Boolean(pseudo));
+		translationDTO.setPseudo(Boolean.parseBoolean(pseudo));
 
 		translationDTO = multipleComponentsService
 				.getMultiComponentsTranslation(translationDTO);

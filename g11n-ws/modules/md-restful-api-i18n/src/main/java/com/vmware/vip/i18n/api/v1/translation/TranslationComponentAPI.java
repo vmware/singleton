@@ -7,7 +7,7 @@ package com.vmware.vip.i18n.api.v1.translation;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -76,7 +76,7 @@ public class TranslationComponentAPI  extends BaseAction {
         componentMessagesDTO.setComponent(component == null ? ConstantsKeys.DEFAULT : component);
         componentMessagesDTO.setVersion(version);
         componentMessagesDTO.setLocale(locale == null ? ConstantsUnicode.EN : locale);
-        componentMessagesDTO.setPseudo(new Boolean(pseudo));
+        componentMessagesDTO.setPseudo(Boolean.parseBoolean(pseudo));
         ComponentMessagesDTO dto = singleComponentService
                 .getComponentTranslation(componentMessagesDTO);
         return super.handleResponse(APIResponseStatus.OK, dto);
@@ -110,7 +110,7 @@ public class TranslationComponentAPI  extends BaseAction {
         translationDTO.setComponents(componentList);
         translationDTO.setVersion(version);
         List<String> localeList = new ArrayList<String>();
-        if(new Boolean(pseudo)) {
+        if(Boolean.parseBoolean(pseudo)) {
         	localeList.add(ConstantsKeys.LATEST);
         } else if(locales != null) {
             List<String> supportedLocaleList = productService.getSupportedLocaleList(productName, version);
@@ -119,7 +119,7 @@ public class TranslationComponentAPI  extends BaseAction {
   			}
         }
         translationDTO.setLocales(localeList);
-        translationDTO.setPseudo(new Boolean(pseudo));
+        translationDTO.setPseudo(Boolean.parseBoolean(pseudo));
         translationDTO =multipleComponentsService.getMultiComponentsTranslation(translationDTO);
         if(translationDTO.getBundles() == null || translationDTO.getBundles().size() == 0) {
         	throw new L3APIException(String.format(ConstantsMsg.TRANS_GET_FAILD,  productName + ConstantsChar.BACKSLASH + version));

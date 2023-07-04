@@ -6,12 +6,12 @@ package com.vmware.vip.core.Interceptor;
 
 import java.util.Set;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.servlet.HandlerInterceptor;
 
-public class LiteAPICrossDomainInterceptor extends HandlerInterceptorAdapter {
+public class LiteAPICrossDomainInterceptor implements HandlerInterceptor {
 
 	private Set<String> allowOrigin;
 	private String allowHeaders;
