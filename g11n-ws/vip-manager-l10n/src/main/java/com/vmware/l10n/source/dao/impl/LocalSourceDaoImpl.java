@@ -153,10 +153,10 @@ public class LocalSourceDaoImpl implements SourceDao {
 					});
 
 
-		} catch (IOException e) {
-			if (e instanceof NoSuchFileException){
+		}catch (NoSuchFileException e1){
 				return records;
-			}
+		}catch (IOException e) {
+
 			LOGGER.error(e.getMessage(), e);
 			throw new L10nAPIException("Local disk bundle can't get update record!");
 		}
