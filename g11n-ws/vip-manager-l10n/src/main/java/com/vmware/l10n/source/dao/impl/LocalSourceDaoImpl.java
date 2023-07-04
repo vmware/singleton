@@ -7,6 +7,7 @@ package com.vmware.l10n.source.dao.impl;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -127,9 +128,9 @@ public class LocalSourceDaoImpl implements SourceDao {
 	@Override
 	public List<RecordModel> getUpdateRecords(String productName, String version, long lastModifyTime) throws L10nAPIException{
 
+		String productParentDir = basepath + ConstantsFile.L10N_BUNDLES_PATH;
 		StringBuilder prefix = new StringBuilder();
-		prefix.append(basepath);
-		prefix.append(ConstantsFile.L10N_BUNDLES_PATH);
+		prefix.append(productParentDir);
 		if (!StringUtils.isEmpty(productName)) {
 			prefix.append(productName);
 			prefix.append(ConstantsChar.BACKSLASH);
@@ -148,11 +149,14 @@ public class LocalSourceDaoImpl implements SourceDao {
 					.forEach(currPath ->{
 						File file = currPath.toFile();
 						LOGGER.info("Need Update:{}:{}", file.getAbsolutePath(), file.lastModified());
-						records.add(SourceUtils.parseKeyStr2Record(file.getAbsolutePath(),this.basepath, file.lastModified()));
+						records.add(SourceUtils.parseKeyStr2Record(file.getAbsolutePath(), new File(productParentDir).getAbsolutePath()+ConstantsChar.BACKSLASH, file.lastModified()));
 					});
 
 
 		} catch (IOException e) {
+			if (e instanceof NoSuchFileException){
+				return records;
+			}
 			LOGGER.error(e.getMessage(), e);
 			throw new L10nAPIException("Local disk bundle can't get update record!");
 		}
