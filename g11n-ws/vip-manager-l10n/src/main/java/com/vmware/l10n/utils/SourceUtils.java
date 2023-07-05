@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.utils;
@@ -7,6 +7,8 @@ package com.vmware.l10n.utils;
 import java.util.Iterator;
 import java.util.Map;
 
+import com.vmware.l10n.record.model.RecordModel;
+import com.vmware.vip.common.constants.ConstantsChar;
 import org.json.simple.parser.ContainerFactory;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -98,6 +100,25 @@ public class SourceUtils {
 			}
 		}
 		return componentMessagesDTO;
+	}
+
+	/**
+	 * base on key parse the update source record
+	 * @param key
+	 * @param productParentDir
+	 * @param lastModify
+	 * @return
+	 */
+	public static RecordModel parseKeyStr2Record(String key, String productParentDir, long lastModify) {
+		String keyStr = key.replace(productParentDir, "");
+		String[] keyArry = keyStr.split(ConstantsChar.BACKSLASH);
+		RecordModel record = new RecordModel();
+		record.setProduct(keyArry[0]);
+		record.setVersion(keyArry[1]);
+		record.setComponent(keyArry[2]);
+		record.setLocale(ConstantsKeys.LATEST);
+		record.setStatus(lastModify);
+		return record;
 	}
 }
 

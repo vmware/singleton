@@ -253,6 +253,7 @@ public class RecordServiceImpl implements RecordService {
         for(Entry<String, String> entry : params.entrySet()) {
         	logger.info("paramters: {}---{}", entry.getKey(), entry.getValue());
         }
+		params.put("randNum", String.valueOf(System.currentTimeMillis()));
 		Map<String, String> header=null;
 		if (!config.getUserAgent().isEmpty()){
 			header = new HashMap<>();
