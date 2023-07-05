@@ -1,11 +1,20 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
+import com.vmware.l10n.source.dao.SourceDao;
+import com.vmware.l10n.source.service.impl.SourceServiceImpl;
+import com.vmware.l10n.source.service.impl.SyncLocalBundleServiceImpl;
+import com.vmware.l10n.utils.DiskQueueUtils;
+import com.vmware.vip.common.constants.ConstantsKeys;
+import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
+import com.vmware.vip.common.l10n.source.dto.StringSourceDTO;
+import com.vmware.vip.common.utils.JSONUtils;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -26,6 +35,10 @@ import com.vmware.l10n.record.model.RecordModel;
 import com.vmware.vip.api.rest.l10n.L10NAPIV1;
 import com.vmware.vip.api.rest.l10n.L10nI18nAPI;
 
+import java.io.File;
+import java.util.List;
+import java.util.Map;
+
 /**
  * 
  *
@@ -40,22 +53,9 @@ public class RecordControllerTest {
   private final static String GATEWAYPREF="/i18n"; 
 	@Autowired
 	private WebApplicationContext webApplicationContext;
-	
-	
-	@Test
-	public void test000getRecoredModel() throws Exception {
-		MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(
-				webApplicationContext).build();
-		String urlStr = GATEWAYPREF+L10NAPIV1.API_L10N+"/records";
-		
-		MvcResult mvcRS = mockMvc.perform(MockMvcRequestBuilders.get(urlStr)).andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
-	   String resultStr =   mvcRS.getResponse().getContentAsString();
-	   
-	   logger.info(resultStr);
-	
-	}
-	
-	
+
+	@Autowired
+	SyncLocalBundleServiceImpl syncSource;
 
 	@Test
 	public void test002getSourceComponentModel() throws Exception {
@@ -82,35 +82,44 @@ public class RecordControllerTest {
 	
 
 	@Test
-	public void test003synchRecoredModel() throws Exception {
-		String l10nsynchUrl =GATEWAYPREF+ L10NAPIV1.API_L10N+"/synchrecord";
-		MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(
-				webApplicationContext).build();
-		
-		MvcResult mvcRS =mockMvc.perform(
-				post(l10nsynchUrl).param("product", "unittest")
-						.param("version", "1.0.0")
-						.param("component", "default")
-						.param("locale", "EN")
-						.param("status", "2")
-						.accept(MediaType.APPLICATION_JSON)).andReturn();
-		    String resultStr =   mvcRS.getResponse().getContentAsString();
-		    
-		    logger.info(resultStr);
-	}
-	
-	@Test
-	public void test004getRecoredModelfromS3() throws Exception {
+	public void test004getRecoredModelfromV2() throws Exception {
 		try {
-		MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(
+
+			SourceServiceImpl source = webApplicationContext.getBean(SourceServiceImpl.class);
+			StringSourceDTO sourceDTO = new StringSourceDTO();
+			sourceDTO.setProductName("unittest");
+			sourceDTO.setVersion("1.0.0");
+			sourceDTO.setComponent("record");
+			sourceDTO.setLocale(ConstantsKeys.LATEST);
+			sourceDTO.setKey("dc.myhome.open3");
+			sourceDTO.setSource("this open3's value");
+			sourceDTO.setComment("dc new string");
+			source.cacheSource(sourceDTO);
+			source.writeSourceToCachedFile();
+			syncSource.mergeSourceToLocalBundle();
+			SourceDao sourcedao = webApplicationContext.getBean(SourceDao.class);
+			SingleComponentDTO sdto = new SingleComponentDTO();
+			sdto.setProductName("unittest");
+			sdto.setVersion("1.0.0");
+			sdto.setComponent("record");
+			sdto.setLocale(ConstantsKeys.LATEST);
+			io.jsonwebtoken.lang.Assert.notNull(sourcedao.getFromBundle(sdto));
+
+			MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(
 				webApplicationContext).build();
-		String urlStr =L10nI18nAPI.SOURCE_SYNC_RECORDS_APIV2;
-		
-		MvcResult mvcRS = mockMvc.perform(MockMvcRequestBuilders.get(urlStr)).andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
-	   String resultStr =   mvcRS.getResponse().getContentAsString();
-	   
-	   logger.info(resultStr);
+			String urlStr =L10nI18nAPI.SOURCE_SYNC_RECORDS_APIV2+"?productName=unittest&&version=1.0.0";
+			MvcResult mvcRS = mockMvc.perform(MockMvcRequestBuilders.get(urlStr)).andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
+			String resultStr =   mvcRS.getResponse().getContentAsString();
+			logger.info(resultStr);
+			Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(resultStr).get("response");
+			long code = (long) dataMap.get("code");
+			Assert.assertTrue(code==200L);
+			List<File> queueFiles = DiskQueueUtils.listQueueFiles(new File("viprepo-bundle" + File.separator + DiskQueueUtils.L10N_TMP_GRM_PATH));
+			for (File delFile : queueFiles) {
+				DiskQueueUtils.delQueueFile(delFile);
+			}
 		}catch(Exception e) {
+			logger.error(e.getMessage(), e);
 		}
 	}
 	

@@ -1,4 +1,4 @@
-//Copyright 2019-2022 VMware, Inc.
+//Copyright 2019-2023 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 package com.vmware.l10n.source.dao.impl;
 
@@ -21,7 +21,6 @@ import com.amazonaws.services.s3.model.S3ObjectSummary;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.vmware.l10n.conf.S3Cfg;
 import com.vmware.l10n.conf.S3Client;
-import com.vmware.l10n.record.dao.SqlLiteDao;
 import com.vmware.l10n.record.model.RecordModel;
 import com.vmware.l10n.source.dao.SourceDao;
 import com.vmware.l10n.utils.S3Util;
@@ -46,8 +45,6 @@ public class S3SourceDaoImpl implements SourceDao {
 	@Autowired
 	private S3Util s3util;
 
-	@Autowired
-	private SqlLiteDao sqlLite;
 
 	/**
 	 * the path of local resource file,can be configured in spring config file
@@ -102,11 +99,11 @@ public class S3SourceDaoImpl implements SourceDao {
 				if (bExist) {
 					logger.debug("The bundle file {}/{} is found, update the bundle file.", compDTO.getLocale(),
 							compDTO.getComponent());
-					sqlLite.updateModifySourceRecord(compDTO);
+
 				} else {
 					logger.debug("The bundle file {}/{} is not found, cascade create the dir, add new bundle file ",
 							compDTO.getLocale(), compDTO.getComponent());
-					sqlLite.createSourceRecord(compDTO);
+
 				}
 			}
 		} finally {
@@ -144,8 +141,8 @@ public class S3SourceDaoImpl implements SourceDao {
           	  long  currentModifyTime = oSy.getLastModified().getTime();
           	  if(keyStr.endsWith(latestJsonFile)
           			  && currentModifyTime>lastModifyTime) {
-          		logger.info("Need Udate:{}:{}", keyStr, currentModifyTime);  
-          		records.add(parseKeyStr2Record(keyStr,this.basePath, currentModifyTime));
+          		logger.info("Need Update:{}:{}", keyStr, currentModifyTime);
+          		records.add(SourceUtils.parseKeyStr2Record(keyStr,this.basePath, currentModifyTime));
           	  }
 
             }
@@ -154,17 +151,6 @@ public class S3SourceDaoImpl implements SourceDao {
         } while (result.isTruncated());
         return records;
 	}
-	
-	private RecordModel parseKeyStr2Record(String key, String productParentDir, long lastModify) {
-		key = key.replace(productParentDir, "");
-		String[] keyArry = key.split(ConstantsChar.BACKSLASH);
-		RecordModel record = new RecordModel();
-		record.setProduct(keyArry[0]);
-		record.setVersion(keyArry[1]);
-		record.setComponent(keyArry[2]);
-		record.setLocale(ConstantsKeys.LATEST);
-		record.setStatus(lastModify);
-		return record;
-	}
+
 	
 }
