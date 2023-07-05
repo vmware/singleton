@@ -16,12 +16,8 @@ import (
 	"sgtnserver/modules/cldr/coreutil"
 	"sgtnserver/modules/cldr/localeutil"
 
-	"github.com/emirpasic/gods/maps/treemap"
 	"github.com/gin-gonic/gin"
-	jsoniter "github.com/json-iterator/go"
 )
-
-var json = jsoniter.ConfigDefault
 
 // GetPatternByLocale godoc
 // @Summary Get pattern data
@@ -106,31 +102,38 @@ func GetPatternDataByLangReg(c *gin.Context) {
 // @Description Get region names in a specified locale
 // @Tags locale-api
 // @Produce json
-// @Param supportedLanguageList query string true "the supported language list, separated by commas. e.g. 'en,zh,ja' "
+// @Param supportedLanguageList query string true "the supported language list, separated by commas. e.g. 'en,zh,ja'"
+// @Param displayCity query boolean false "a flag for returning cities" default(false)
+// @Param regions query string false "a string which represents regions, separated by commas. e.g. 'US,PT,CN'"
 // @Success 200 {object} api.Response "OK"
-// @Success 206 {object} api.Response "Successful Partially"
+// @Success 207 {object} api.Response "Successful Partially"
 // @Failure 400 {string} string "Bad Request"
 // @Failure 404 {string} string "Not Found"
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /locale/regionList [get]
 func GetRegionListOfLanguages(c *gin.Context) {
-	params := LocaleRegionsReq{}
+	params := struct {
+		Locales     string `form:"supportedLanguageList" binding:"locales"`
+		DisplayCity bool   `form:"displayCity"`
+		Regions     string `form:"regions"`
+	}{}
 	if err := api.ExtractParameters(c, nil, &params); err != nil {
 		return
 	}
 
-	data, multiErr := localeutil.GetTerritoriesOfMultipleLocales(logger.NewContext(c, c.MustGet(api.LoggerKey)), strings.Split(params.Locales, common.ParamSep))
-	for _, d := range data {
-		unsortedMap := map[string]interface{}{}
-		d.Territories.ToVal(&unsortedMap)
-		sortedMap := treemap.NewWithStringComparator()
-		for k, v := range unsortedMap {
-			sortedMap.Put(k, v)
+	ctx := logger.NewContext(c, c.MustGet(api.LoggerKey))
+	localesData, multiErr := localeutil.GetTerritoriesOfMultipleLocales(ctx, common.SplitParameter(params.Locales, common.ParamSepSplitRegexp))
+	if !params.DisplayCity {
+		api.HandleResponse(c, localesData, multiErr)
+	} else {
+		result := make([]interface{}, 0, len(localesData))
+		regions := common.SplitParameter(params.Regions, common.ParamSepSplitRegexp)
+		for _, d := range localesData {
+			cities, _ := localeutil.GetLocaleCities(ctx, d.Language, regions)
+			result = append(result, LocaleTerritoriesWithCities{LocaleTerritories: d, Cities: cities})
 		}
-		bts, _ := sortedMap.ToJSON()
-		d.Territories = json.Get(bts)
+		api.HandleResponse(c, result, multiErr)
 	}
-	api.HandleResponse(c, data, multiErr)
 }
 
 // GetTimeZoneNames godoc
