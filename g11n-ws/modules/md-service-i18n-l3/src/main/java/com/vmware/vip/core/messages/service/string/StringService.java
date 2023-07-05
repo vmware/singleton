@@ -157,7 +157,7 @@ public class StringService implements IStringService {
 		ComponentMessagesDTO newComponentMessagesDTO = new ComponentMessagesDTO();
 		BeanUtils.copyProperties(componentMessagesDTO, newComponentMessagesDTO);
 		newComponentMessagesDTO.setLocale(locale);
-		newComponentMessagesDTO.setPseudo(new Boolean(pseudo));
+		newComponentMessagesDTO.setPseudo(Boolean.parseBoolean(pseudo));
 		return newComponentMessagesDTO;
 	}
 

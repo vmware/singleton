@@ -238,10 +238,11 @@ tasks.withType(JavaCompile) {
 //test.dependsOn.add fetchTranslationForTest
 test.dependsOn.add testFetchedTranslation
 
+/**
 if (project.hasProperty('datatype') && (project.getProperty('datatype') == 'pgdb') || (project.getProperty('datatype') == 's3') ) {
 	check.dependsOn.remove(test)
 }
-
+**/
 task sourcesJar(type: Jar, dependsOn: classes) {
     classifier = 'sources'
     from sourceSets.main.allJava

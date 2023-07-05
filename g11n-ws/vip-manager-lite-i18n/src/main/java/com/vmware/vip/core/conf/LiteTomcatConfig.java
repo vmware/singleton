@@ -23,10 +23,10 @@ import com.vmware.vip.common.constants.ConstantsTomcat;
 @Configuration
 public class LiteTomcatConfig {
 
-	@Value("${config.gzip.enable}")
+	@Value("${config.gzip.enable:off}")
 	private String compression;
 
-	@Value("${config.gzip.minsize}")
+	@Value("${config.gzip.minsize:2048}")
 	private int compressionMinSize;
 
 	@Bean
@@ -52,13 +52,14 @@ public class LiteTomcatConfig {
 		protocol.setSSLEnabled(true);
 
 		SSLHostConfig sslHostConfig = new SSLHostConfig();
-		SSLHostConfigCertificate certificate = new SSLHostConfigCertificate();
+		SSLHostConfigCertificate certificate = new SSLHostConfigCertificate(sslHostConfig, SSLHostConfigCertificate.Type.RSA);
 		certificate.setCertificateKeystoreFile(serverProperties.getHttpsKeyStore());
 		certificate.setCertificateKeystorePassword(serverProperties.getHttpsKeyStorePassword());
 		certificate.setCertificateKeystoreType(serverProperties.getHttpsKeyStoreType());
 		certificate.setCertificateKeyPassword(serverProperties.getHttpsKeyPassword());
 		certificate.setCertificateKeyAlias(serverProperties.getHttpsKeyAlias());
 		sslHostConfig.addCertificate(certificate);
+
 		protocol.addSslHostConfig(sslHostConfig);
 		protocol.setMaxHttpHeaderSize(serverProperties.getMaxHttpHeaderSize());
 		connector.setRedirectPort(ConstantsTomcat.REDIRECT_PORT);

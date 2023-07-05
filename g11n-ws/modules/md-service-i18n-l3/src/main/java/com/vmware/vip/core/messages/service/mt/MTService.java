@@ -98,7 +98,7 @@ public class MTService implements IMTService {
 				List<String> mtResult = new ArrayList<String>();
 				IMTProcessor mtProcessor = MTFactory.getMTProcessor();
 				// Since Azure has limitation(max 25) to the array size of source, so we need to handle it.
-				int translatedCount = new Integer(MTConfig.TRANSLATECOUNT).intValue(), fromIndex = 0, toIndex = translatedCount;
+				int translatedCount = Integer.parseInt(MTConfig.TRANSLATECOUNT), fromIndex = 0, toIndex = translatedCount;
 				if (sourceList.size() < translatedCount) {
 					mtResult = mtProcessor.translateArray(ConstantsUnicode.EN,
 							toLang, sourceList);
