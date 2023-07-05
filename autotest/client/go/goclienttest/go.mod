@@ -23,5 +23,3 @@ require (
 	gopkg.in/h2non/gock.v1 v1.1.2
 	gopkg.in/yaml.v2 v2.2.8 // indirect
 )
-
-replace github.com/vmware/singleton v0.4.0-Singleton-Go-Client.0.20200424010020-90d0c097ba21 => github.com/dleng-vmware/singleton v0.4.0-Singleton-Go-Client.0.20200831081351-dbdb818ff373
