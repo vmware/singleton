@@ -44,4 +44,5 @@ const (
 	LocaleLanguages   = "LocaleLanguages"
 	LocaleTerritories = "LocaleTerritories"
 	TimeZoneName      = "TimeZoneName"
+	LocaleCities      = "LocaleCities"
 )

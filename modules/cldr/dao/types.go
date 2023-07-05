@@ -57,6 +57,7 @@ const (
 	ContextTransformPath  = cldrBaseFolder + "misc/%s/contextTransforms.json"
 	DateFieldsJSONPath    = cldrBaseFolder + "pattern/common/%s/dateFields.json"
 	TimeZoneNameJSONPath  = cldrBaseFolder + "pattern/timezone/%s/timeZoneName.json"
+	LocaleCitiesPath      = cldrBaseFolder + "localedata/%s/cities.json"
 )
 
 var localeDataInfo = map[string]cldrItemInfo{
@@ -71,6 +72,7 @@ var localeDataInfo = map[string]cldrItemInfo{
 	cldr.LocaleLanguages:   {LocaleLanguagesPath, []interface{}{"languages"}},
 	cldr.LocaleTerritories: {LocaleTerritoriesPath, []interface{}{}},
 	cldr.TimeZoneName:      {TimeZoneNameJSONPath, []interface{}{}},
+	cldr.LocaleCities:      {LocaleCitiesPath, []interface{}{"cities"}},
 }
 
 type cldrItemInfo struct {
