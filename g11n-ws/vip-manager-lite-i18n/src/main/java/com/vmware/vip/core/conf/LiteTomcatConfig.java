@@ -59,8 +59,8 @@ public class LiteTomcatConfig {
 		certificate.setCertificateKeyPassword(serverProperties.getHttpsKeyPassword());
 		certificate.setCertificateKeyAlias(serverProperties.getHttpsKeyAlias());
 		sslHostConfig.addCertificate(certificate);
-
 		protocol.addSslHostConfig(sslHostConfig);
+
 		protocol.setMaxHttpHeaderSize(serverProperties.getMaxHttpHeaderSize());
 		connector.setRedirectPort(ConstantsTomcat.REDIRECT_PORT);
 		connector.setAllowTrace(serverProperties.isAllowTrace());

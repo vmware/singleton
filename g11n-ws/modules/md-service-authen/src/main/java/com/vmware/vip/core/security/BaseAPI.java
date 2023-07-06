@@ -4,8 +4,9 @@
  */
 package com.vmware.vip.core.security;
 
-import javax.servlet.http.HttpServletRequest;
 
+
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,8 +23,8 @@ public class BaseAPI {
 
     @ModelAttribute
     public void validateToken(HttpServletRequest request,
-            @RequestParam(value = APIParamName.PRODUCT_NAME) String productName,
-            @RequestParam(value = APIParamName.VERSION) String version) {
+                              @RequestParam(value = APIParamName.PRODUCT_NAME) String productName,
+                              @RequestParam(value = APIParamName.VERSION) String version) {
         APIResponseDTO respDTO = new APIResponseDTO();
         respDTO.setSignature((String) request.getSession().getAttribute(ConstantsKeys.SIGNATURE));
         respDTO.setResponse(APIResponseStatus.OK);

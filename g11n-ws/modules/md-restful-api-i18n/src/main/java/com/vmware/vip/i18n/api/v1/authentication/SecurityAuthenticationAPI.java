@@ -4,6 +4,8 @@
  */
 package com.vmware.vip.i18n.api.v1.authentication;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
@@ -27,8 +29,6 @@ import com.vmware.vip.i18n.api.v1.utils.KeyService;
 import com.vmware.vip.i18n.api.v1.utils.SignatureUtil;
 import com.vmware.vip.i18n.api.v1.utils.TokenUtil;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 
 /**
  * Provide RESTful API to authenticate the product’s identification before business API request.
@@ -58,15 +58,15 @@ public class SecurityAuthenticationAPI {
      * @return APIResponseDTO 
      *         The object which represents response status.
      */
-    @ApiOperation(value = APIOperation.Authenticate_VALUE, notes = APIOperation.Authenticate_NOTES)
+    @Operation(summary = APIOperation.Authenticate_VALUE, description = APIOperation.Authenticate_NOTES)
     @RequestMapping(value = APIV1.AUTHENTICATION, method = RequestMethod.POST, produces = {
             API.API_CHARSET })
     @ResponseStatus(HttpStatus.OK)
     public AuthResponseDTO authentication(HttpServletRequest request,
-            @ApiParam(name = APIParamName.PRODUCT_NAME, required = true, value = APIParamValue.PRODUCT_NAME) @RequestParam(value = APIParamName.PRODUCT_NAME, required = true) String productName,
-            @ApiParam(name = APIParamName.VERSION, required = true, value = APIParamValue.VERSION) @RequestParam(value = APIParamName.VERSION, required = true) String version,
-            @ApiParam(name = APIParamName.USER_ID, required = true, value = APIParamValue.USERID) @RequestParam(value = APIParamName.USER_ID, required = true) String userID,
-            @ApiParam(name = APIParamName.KEY, required = true, value = APIParamValue.KEY) @RequestParam(value = APIParamName.KEY, required = true) String key) {
+            @Parameter(name = APIParamName.PRODUCT_NAME, required = true, description = APIParamValue.PRODUCT_NAME) @RequestParam(value = APIParamName.PRODUCT_NAME, required = true) String productName,
+            @Parameter(name = APIParamName.VERSION, required = true, description = APIParamValue.VERSION) @RequestParam(value = APIParamName.VERSION, required = true) String version,
+            @Parameter(name = APIParamName.USER_ID, required = true, description = APIParamValue.USERID) @RequestParam(value = APIParamName.USER_ID, required = true) String userID,
+            @Parameter(name = APIParamName.KEY, required = true, description = APIParamValue.KEY) @RequestParam(value = APIParamName.KEY, required = true) String key) {
         AuthenKeyDTO keyDTO = new AuthenKeyDTO(productName, version, key, userID);
         AuthResponseDTO respDTO = new AuthResponseDTO();
         if (!KeyService.validateKey(keyDTO)) {

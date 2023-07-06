@@ -7,6 +7,8 @@ package com.vmware.vip.i18n.api.v2.locale;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +33,6 @@ import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.i18n.api.base.BaseAction;
 import com.vmware.vip.i18n.api.base.utils.LocaleUtility;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 
 /**
  * Provide RESTful API to manipulate the locale.
@@ -52,7 +52,7 @@ public class LocaleAPI extends BaseAction {
      * @return APIResponseDTO 
      *         The object which represents response status.
      */
-    @ApiOperation(value = APIOperation.LOCALE_PICKUP_VALUE, notes = APIOperation.LOCALE_PICKUP_NOTES)
+    @Operation(summary = APIOperation.LOCALE_PICKUP_VALUE, description = APIOperation.LOCALE_PICKUP_NOTES)
     @RequestMapping(value = APIV2.BROWSER_LOCALE, method = RequestMethod.GET, produces = { API.API_CHARSET })
     @ResponseStatus(HttpStatus.OK)
     public APIResponseDTO getBrowserLocale(HttpServletRequest request) {
@@ -67,7 +67,7 @@ public class LocaleAPI extends BaseAction {
      * @return APIResponseDTO 
      *         The object which represents response status.
      */
-    @ApiOperation(value = APIOperation.LOCALE_NORMALIZATION_VALUE, notes = APIOperation.LOCALE_NORMALIZATION_NOTES)
+    @Operation(summary = APIOperation.LOCALE_NORMALIZATION_VALUE, description = APIOperation.LOCALE_NORMALIZATION_NOTES)
     @RequestMapping(value = APIV2.NORM_BROWSER_LOCALE, method = RequestMethod.GET, produces = { API.API_CHARSET })
     @ResponseStatus(HttpStatus.OK)
     public APIResponseDTO getNormalizedBrowserLocale(HttpServletRequest request) {
@@ -93,13 +93,13 @@ public class LocaleAPI extends BaseAction {
 	 * @return APIResponseDTO
 	 * @throws Exception
 	 */
-	@ApiOperation(value = APIOperation.LOCALE_REGION_LIST_VALUE, notes = APIOperation.LOCALE_REGION_LIST_NOTES)
+	@Operation(summary = APIOperation.LOCALE_REGION_LIST_VALUE, description = APIOperation.LOCALE_REGION_LIST_NOTES)
 	@RequestMapping(value = APIV2.REGION_LIST, method = RequestMethod.GET, produces = { API.API_CHARSET })
 	@ResponseStatus(HttpStatus.OK)
 	public APIResponseDTO getRegionList(
-			@ApiParam(name = APIParamName.SUPPORTED_LANGUAGE_LIST, required = true, value = APIParamValue.SUPPORTED_LANGUAGES) @RequestParam(value = APIParamName.SUPPORTED_LANGUAGE_LIST, required = true) String supportedLanguageList,
-			@ApiParam(name = APIParamName.DISPLAY_CITY, required = false, value = APIParamValue.DISPLAY_CITY) @RequestParam(value = APIParamName.DISPLAY_CITY, required = false) String displayCity,
-			@ApiParam(name = APIParamName.REGIONS, required = false, value = APIParamValue.REGIONS) @RequestParam(value = APIParamName.REGIONS, required = false) String regions)
+			@Parameter(name = APIParamName.SUPPORTED_LANGUAGE_LIST, required = true, description = APIParamValue.SUPPORTED_LANGUAGES) @RequestParam(value = APIParamName.SUPPORTED_LANGUAGE_LIST, required = true) String supportedLanguageList,
+			@Parameter(name = APIParamName.DISPLAY_CITY, required = false, description = APIParamValue.DISPLAY_CITY) @RequestParam(value = APIParamName.DISPLAY_CITY, required = false) String displayCity,
+			@Parameter(name = APIParamName.REGIONS, required = false, description = APIParamValue.REGIONS) @RequestParam(value = APIParamName.REGIONS, required = false) String regions)
 			throws Exception {
 		return super.handleResponse(APIResponseStatus.OK,
 				this.localeService.getTerritoriesFromCLDR(supportedLanguageList.toLowerCase(), displayCity, regions));
@@ -117,13 +117,13 @@ public class LocaleAPI extends BaseAction {
 	 * @return APIResponseDTO
 	 * @throws Exception
 	 */
-	@ApiOperation(value = APIOperation.LOCALE_SUPPORTED_LANGUAGE_LIST_VALUE, notes = APIOperation.LOCALE_SUPPORTED_LANGUAGE_LIST_NOTES)
+	@Operation(summary = APIOperation.LOCALE_SUPPORTED_LANGUAGE_LIST_VALUE, description = APIOperation.LOCALE_SUPPORTED_LANGUAGE_LIST_NOTES)
 	@RequestMapping(value = APIV2.SUPPORTED_LANGUAGE_LIST, method = RequestMethod.GET, produces = { API.API_CHARSET })
 	@ResponseStatus(HttpStatus.OK)
 	public APIResponseDTO getDisplayLanguagesList(
-			@ApiParam(name = APIParamName.PRODUCT_NAME, required = true, value = APIParamValue.PRODUCT_NAME) @RequestParam(value = APIParamName.PRODUCT_NAME, required = true) String productName,
-			@ApiParam(name = APIParamName.VERSION, required = true, value = APIParamValue.VERSION) @RequestParam(value = APIParamName.VERSION, required = true) String version,
-			@ApiParam(name = APIParamName.DISPLAY_LANGUAGE, required = false, value = APIParamValue.DISPLAY_LANGUAGE) @RequestParam(value = APIParamName.DISPLAY_LANGUAGE, required = false) String displayLanguage)
+			@Parameter(name = APIParamName.PRODUCT_NAME, required = true, description = APIParamValue.PRODUCT_NAME) @RequestParam(value = APIParamName.PRODUCT_NAME, required = true) String productName,
+			@Parameter(name = APIParamName.VERSION, required = true, description = APIParamValue.VERSION) @RequestParam(value = APIParamName.VERSION, required = true) String version,
+			@Parameter(name = APIParamName.DISPLAY_LANGUAGE, required = false, description = APIParamValue.DISPLAY_LANGUAGE) @RequestParam(value = APIParamName.DISPLAY_LANGUAGE, required = false) String displayLanguage)
 			throws Exception {
 		Map<String, Object> data = new HashMap<String, Object>();
 		String newVersion = super.getAvailableVersion(productName, version);

@@ -22,13 +22,8 @@ configurations {
 dependencies {
     api project(":vip-common")
     api project(":md-restful-api")
-    compileOnly("org.springframework:spring-webmvc:$springWebVersion")
-    compileOnly ('org.springframework.boot:spring-boot-starter-log4j2'){
-              exclude group: "org.apache.logging.log4j"
-    }
-    compileOnly("org.apache.logging.log4j:log4j-api:$log4j2Version")
-    compileOnly("org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion")
-    compileOnly("io.springfox:springfox-swagger2:$swaggerVersion")
+    compileOnly("org.springframework.boot:spring-boot-starter-web")
+    compileOnly ('org.springframework.boot:spring-boot-starter-log4j2')
     compileOnly("commons-codec:commons-codec:$commonsCodecVersion")
     api("com.auth0:java-jwt:3.18.2")
     implementation("org.owasp.esapi:esapi:$esapiVersion"){

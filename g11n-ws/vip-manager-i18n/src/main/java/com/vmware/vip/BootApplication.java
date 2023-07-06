@@ -15,12 +15,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @EnableScheduling
 @ComponentScan(basePackages = { "com.vmware" })
-public class BootApplication extends SpringBootServletInitializer {
-	@Override
-	protected SpringApplicationBuilder configure(
-			SpringApplicationBuilder application) {
-		return application.sources(BootApplication.class);
-	}
+public class BootApplication{
 
 	public static void main(String[] args) throws Exception {
 		System.setProperty(

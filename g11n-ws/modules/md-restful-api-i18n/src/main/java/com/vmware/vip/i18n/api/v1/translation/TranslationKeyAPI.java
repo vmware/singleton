@@ -5,6 +5,8 @@
 package com.vmware.vip.i18n.api.v1.translation;
 
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +33,6 @@ import com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO
 import com.vmware.vip.core.messages.service.string.IStringService;
 import com.vmware.vip.i18n.api.base.BaseAction;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 
 /**
  * Provide API for product to get translation by String base.
@@ -47,29 +47,29 @@ public class TranslationKeyAPI extends BaseAction {
 	 * Provide translation based on String.
 	 * 
 	 */
-    @ApiOperation(value = APIOperation.KEY_TRANSLATION_GET_VALUE, notes = APIOperation.KEY_TRANSLATION_GET_NOTES)
+    @Operation(summary = APIOperation.KEY_TRANSLATION_GET_VALUE, description = APIOperation.KEY_TRANSLATION_GET_NOTES)
 	@RequestMapping(value = APIV1.TRANS_STRING, method = RequestMethod.GET, produces = { API.API_CHARSET })
 	@ResponseStatus(HttpStatus.OK)
     public APIResponseDTO getStringTranslation(
-            @ApiParam(name = APIParamName.PRODUCT_NAME, required = true, value = APIParamValue.PRODUCT_NAME)
+            @Parameter(name = APIParamName.PRODUCT_NAME, required = true, description = APIParamValue.PRODUCT_NAME)
             @RequestParam(value = APIParamName.PRODUCT_NAME, required = true) String productName,
-            @ApiParam(name = APIParamName.KEY, required = true, value = APIParamValue.KEY)
+            @Parameter(name = APIParamName.KEY, required = true, description = APIParamValue.KEY)
             @RequestParam(value = APIParamName.KEY, required = true) String key, 
-            @ApiParam(name = APIParamName.VERSION, required = true, value = APIParamValue.VERSION)
+            @Parameter(name = APIParamName.VERSION, required = true, description = APIParamValue.VERSION)
             @RequestParam(value = APIParamName.VERSION, required = true) String version,            
-            @ApiParam(name = APIParamName.COMPONENT, required = true, value = APIParamValue.COMPONENT)
+            @Parameter(name = APIParamName.COMPONENT, required = true, description = APIParamValue.COMPONENT)
             @RequestParam(value = APIParamName.COMPONENT, required = true) String component,
-            @ApiParam(name = APIParamName.LOCALE, value = APIParamValue.LOCALE)
+            @Parameter(name = APIParamName.LOCALE, description = APIParamValue.LOCALE)
             @RequestParam(value = APIParamName.LOCALE, required = false) String locale,         
-            @ApiParam(name = APIParamName.SOURCE, required = false, value = APIParamValue.SOURCE)
+            @Parameter(name = APIParamName.SOURCE, required = false, description = APIParamValue.SOURCE)
             @RequestParam(value = APIParamName.SOURCE, required = false) String source,
-            @ApiParam(name = APIParamName.COMMENT_SOURCE, value = APIParamValue.COMMENT_SOURCE)
+            @Parameter(name = APIParamName.COMMENT_SOURCE, description = APIParamValue.COMMENT_SOURCE)
             @RequestParam(value = APIParamName.COMMENT_SOURCE, required = false) String commentForSource,
-            @ApiParam(name = APIParamName.SOURCE_FORMAT, value = APIParamValue.SOURCE_FORMAT)
+            @Parameter(name = APIParamName.SOURCE_FORMAT, description = APIParamValue.SOURCE_FORMAT)
             @RequestParam(value = APIParamName.SOURCE_FORMAT, required = false) String sourceFormat,
-            @ApiParam(name = APIParamName.COLLECT_SOURCE, value = APIParamValue.COLLECT_SOURCE)
+            @Parameter(name = APIParamName.COLLECT_SOURCE, description = APIParamValue.COLLECT_SOURCE)
             @RequestParam(value = APIParamName.COLLECT_SOURCE, required=false, defaultValue="false") String collectSource,
-            @ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO)
+            @Parameter(name = APIParamName.PSEUDO, description = APIParamValue.PSEUDO)
             @RequestParam(value = APIParamName.PSEUDO, required=false, defaultValue="false") String pseudo,
             HttpServletRequest request)  throws Exception {
         ComponentMessagesDTO componentMessagesDTO = new ComponentMessagesDTO();

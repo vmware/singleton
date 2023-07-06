@@ -12,10 +12,10 @@ import com.vmware.vip.common.constants.ValidationMsg;
 import com.vmware.vip.common.exceptions.ValidationException;
 import com.vmware.vip.common.utils.RegExpValidatorUtils;
 import com.vmware.vip.common.utils.SourceFormatUtils;
+import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.servlet.HandlerMapping;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 public class ParameterValidation implements IVlidation {
@@ -302,7 +302,7 @@ public class ParameterValidation implements IVlidation {
 				: request.getParameter(APIParamName.SCALE);
 		try {
 			if (!StringUtils.isEmpty(scale)
-					&& new Integer(scale).intValue() < 0) {
+					&& Integer.parseInt(scale) < 0) {
 				throw new ValidationException(ValidationMsg.SCALE_NOT_VALIDE);
 			}
 		} catch (NumberFormatException e) {

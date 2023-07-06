@@ -18,12 +18,8 @@ dependencies {
     api project(":md-service-i18n-l3")
     compileOnly("org.apache.httpcomponents:httpclient:$httpclient")
     api("com.alibaba:fastjson:1.2.51")
-    compileOnly("io.springfox:springfox-swagger2:$swaggerVersion")
-    compileOnly("org.springframework:spring-webmvc:$springWebVersion")
-    compileOnly("org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion")
-    compileOnly('org.springframework.boot:spring-boot-starter-log4j2'){
-              exclude group: "org.apache.logging.log4j"
-    }
+    compileOnly("org.springframework.boot:spring-boot-starter-web")
+    compileOnly('org.springframework.boot:spring-boot-starter-log4j2')
     compileOnly("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
     compileOnly('org.springframework.boot:spring-boot-autoconfigure')
 }

@@ -18,8 +18,8 @@ import com.vmware.vip.core.about.service.version.BundleVersionDTO;
 import com.vmware.vip.core.about.service.version.IVersionService;
 import com.vmware.vip.core.about.service.version.ServiceVersionDTO;
 import com.vmware.vip.i18n.api.base.BaseAction;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,11 +43,11 @@ public class AboutVersionAPI extends BaseAction {
      * @return
      * @throws AboutAPIException
      */
-    @ApiOperation(value = APIOperation.ABOUT_VERSION_VALUE, notes = APIOperation.ABOUT_VERSION_NOTES)
+    @Operation(summary = APIOperation.ABOUT_VERSION_VALUE, description = APIOperation.ABOUT_VERSION_NOTES)
     @RequestMapping(value = APIV2.VERSION, method = RequestMethod.GET, produces = { API.API_CHARSET })
     public APIResponseDTO getVersionInfo(
-            @ApiParam(name = APIParamName.PRODUCT_NAME, required = false, value = APIParamValue.PRODUCT_NAME) @RequestParam(required = false) String productName,
-            @ApiParam(name = APIParamName.VERSION, required = false, value = APIParamValue.VERSION) @RequestParam(required = false) String version) throws AboutAPIException {
+            @Parameter(name = APIParamName.PRODUCT_NAME, required = false, description = APIParamValue.PRODUCT_NAME) @RequestParam(required = false) String productName,
+            @Parameter(name = APIParamName.VERSION, required = false, description = APIParamValue.VERSION) @RequestParam(required = false) String version) throws AboutAPIException {
         BuildVersionDTO buildVersionDTO = new BuildVersionDTO();
         ServiceVersionDTO serviceVersionDTO = versionService.getServiceVersion();
         buildVersionDTO.setService(serviceVersionDTO);

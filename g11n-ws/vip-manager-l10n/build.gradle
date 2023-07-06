@@ -12,13 +12,14 @@ configurations {
     providedRuntime
     // remove default logger
     all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    all*.exclude group: 'commons-logging', module: 'commons-logging'
 }
 
 dependencies {
     implementation project(":vip-common")
     implementation project(":md-restful-api")
     if (project.hasProperty('datatype') && project.getProperty('datatype') == 'bundle' && project.getProperty('syncdata') == 'true') {
-        api project(":md-restful-l10n-synch")
+        implementation project(":md-restful-l10n-synch")
     }
    // implementation("org.apache.commons:commons-lang3:$commonsLangVersion")
     implementation("commons-io:commons-io:$commonsIoVersion")
@@ -29,9 +30,8 @@ dependencies {
     
     implementation('org.springframework.boot:spring-boot-starter-log4j2')
     implementation("org.springframework.boot:spring-boot-starter-web")
-    
-    implementation("org.xerial:sqlite-jdbc:$sqliteVersion")
-    implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
+
+    //implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
     implementation("org.yaml:snakeyaml:$snakeyam")
     implementation("io.jsonwebtoken:jjwt:$jjwtVersion")
     implementation("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$hibernateJpa21Api")
@@ -47,14 +47,13 @@ dependencies {
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:$jacksonVersion")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$jacksonVersion")
-    
+    **/
     //swagger UI -START  
-   // implementation("io.springfox:springfox-boot-starter:$swaggerVersion")
-    implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.1.0'
-    implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-api', version: '2.1.0'
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$springdocVersion")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-api:$springdocVersion")
 
     //swagger UI -END    
-    implementation("org.apache.httpcomponents:httpclient:$httpclient")
+    //implementation("org.apache.httpcomponents:httpclient:$httpclient")
     implementation ("com.amazonaws:aws-java-sdk-s3:$awsS3Version")
     implementation ("com.amazonaws:aws-java-sdk-sts:$awsS3Version")
     implementation ("com.amazonaws:aws-java-sdk-iam:$awsS3Version")

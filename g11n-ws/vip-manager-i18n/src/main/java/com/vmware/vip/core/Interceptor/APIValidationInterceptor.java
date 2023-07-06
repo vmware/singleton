@@ -8,14 +8,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.core.auth.AuthenException;
@@ -29,7 +29,7 @@ import com.vmware.vip.core.validation.VIPValidation;
 /**
  * Interceptor for collection new resource
  */
-public class APIValidationInterceptor extends HandlerInterceptorAdapter {
+public class APIValidationInterceptor implements HandlerInterceptor {
 	private static Logger LOGGER = LoggerFactory.getLogger(APIValidationInterceptor.class);
 
 	private Map<String, Object> allowedListMap;
@@ -97,7 +97,7 @@ public class APIValidationInterceptor extends HandlerInterceptorAdapter {
 
 	@Override
 	public void afterCompletion(HttpServletRequest request,
-			HttpServletResponse response, Object handler, Exception ex)
+								HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
 		 // Do nothing because of not need to afterCompletion business
 	}

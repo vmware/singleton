@@ -4,8 +4,8 @@
  */
 package com.vmware.vip.i18n.api.v2.translation;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -36,15 +36,15 @@ public class TranslationProductAPI  extends StreamProductAction {
      * Provide translation based on multiple component.
      *
      */
-	@ApiOperation(value = APIOperation.PRODUCT_TRANSLATION_VALUE, notes = APIOperation.PRODUCT_TRANSLATION_NOTES)
+	@Operation(summary = APIOperation.PRODUCT_TRANSLATION_VALUE, description = APIOperation.PRODUCT_TRANSLATION_NOTES)
     @RequestMapping(value = APIV2.PRODUCT_TRANSLATION_GET, method = RequestMethod.GET, produces = { API.API_CHARSET })
     @ResponseStatus(HttpStatus.OK)
     public void getMultipleComponentsTranslation(
-			@ApiParam(name = APIParamName.PRODUCT_NAME, required = true, value = APIParamValue.PRODUCT_NAME) @PathVariable(APIParamName.PRODUCT_NAME) String productName,
-			@ApiParam(name = APIParamName.VERSION, required = true, value = APIParamValue.VERSION) @PathVariable(value = APIParamName.VERSION) String version,
-	    	@ApiParam(name = APIParamName.COMPONENTS, required = false, value = APIParamValue.COMPONENTS) @RequestParam(value = APIParamName.COMPONENTS, required = false, defaultValue = "") String components,
-			@ApiParam(name = APIParamName.LOCALES, required = false, value = APIParamValue.LOCALES) @RequestParam(value = APIParamName.LOCALES, required = false, defaultValue = "") String locales,
-			@ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required = false, defaultValue = "false") String pseudo,
+			@Parameter(name = APIParamName.PRODUCT_NAME, required = true, description = APIParamValue.PRODUCT_NAME) @PathVariable(APIParamName.PRODUCT_NAME) String productName,
+			@Parameter(name = APIParamName.VERSION, required = true, description = APIParamValue.VERSION) @PathVariable(value = APIParamName.VERSION) String version,
+	    	@Parameter(name = APIParamName.COMPONENTS, required = false, description = APIParamValue.COMPONENTS) @RequestParam(value = APIParamName.COMPONENTS, required = false, defaultValue = "") String components,
+			@Parameter(name = APIParamName.LOCALES, required = false, description = APIParamValue.LOCALES) @RequestParam(value = APIParamName.LOCALES, required = false, defaultValue = "") String locales,
+			@Parameter(name = APIParamName.PSEUDO, description = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required = false, defaultValue = "false") String pseudo,
             HttpServletResponse resp)  throws Exception {
         super.writeMultTranslationResponse(productName, version, components, locales, pseudo, resp);
     }
@@ -53,12 +53,12 @@ public class TranslationProductAPI  extends StreamProductAction {
 	 * Provide supported locales by product name and version.
 	 *
 	 */
-	@ApiOperation(value = APIOperation.PRODUCT_LOCALE_LIST_VALUE, notes = APIOperation.PRODUCT_LOCALE_LIST_NOTES)
+	@Operation(summary = APIOperation.PRODUCT_LOCALE_LIST_VALUE, description = APIOperation.PRODUCT_LOCALE_LIST_NOTES)
 	@RequestMapping(value = APIV2.PRODUCT_LOCALE_LIST_GET, method = RequestMethod.GET, produces = {API.API_CHARSET})
 	@ResponseStatus(HttpStatus.OK)
 	public APIResponseDTO getSupportedLocales(
-			@ApiParam(name = APIParamName.PRODUCT_NAME, required = true, value = APIParamValue.PRODUCT_NAME) @PathVariable(APIParamName.PRODUCT_NAME) String productName,
-			@ApiParam(name = APIParamName.VERSION, required = true, value = APIParamValue.VERSION) @PathVariable(APIParamName.VERSION) String version,
+			@Parameter(name = APIParamName.PRODUCT_NAME, required = true, description = APIParamValue.PRODUCT_NAME) @PathVariable(APIParamName.PRODUCT_NAME) String productName,
+			@Parameter(name = APIParamName.VERSION, required = true, description = APIParamValue.VERSION) @PathVariable(APIParamName.VERSION) String version,
 			HttpServletRequest request) throws Exception{
 		return super.getSLocales(productName, version, request);
 	}
@@ -67,12 +67,12 @@ public class TranslationProductAPI  extends StreamProductAction {
      * Provide component's names by product name and version.
      *
      */
-    @ApiOperation(value = APIOperation.PRODUCT_COMPONENT_LIST_VALUE, notes = APIOperation.PRODUCT_COMPONENT_LIST_NOTES)
+    @Operation(summary = APIOperation.PRODUCT_COMPONENT_LIST_VALUE, description = APIOperation.PRODUCT_COMPONENT_LIST_NOTES)
     @RequestMapping(value = APIV2.PRODUCT_COMPONENT_LIST_GET, method = RequestMethod.GET, produces = {API.API_CHARSET})
     @ResponseStatus(HttpStatus.OK)
     public APIResponseDTO getComponentNameList(
-            @ApiParam(name = APIParamName.PRODUCT_NAME, required = true, value = APIParamValue.PRODUCT_NAME) @PathVariable(APIParamName.PRODUCT_NAME) String productName,
-            @ApiParam(name = APIParamName.VERSION, required = true, value = APIParamValue.VERSION) @PathVariable(value = APIParamName.VERSION) String version,
+            @Parameter(name = APIParamName.PRODUCT_NAME, required = true, description = APIParamValue.PRODUCT_NAME) @PathVariable(APIParamName.PRODUCT_NAME) String productName,
+            @Parameter(name = APIParamName.VERSION, required = true, description = APIParamValue.VERSION) @PathVariable(value = APIParamName.VERSION) String version,
             HttpServletRequest request)  throws Exception {
         return super.getCNameList(productName, version, request);
     }
@@ -82,12 +82,12 @@ public class TranslationProductAPI  extends StreamProductAction {
      * @throws L3APIException 
      *
      */
-    @ApiOperation(value = APIOperation.PRODUCT_VERSIONINFO_VALUE, notes = APIOperation.PRODUCT_VERSIONINFO_NOTES)
+    @Operation(summary = APIOperation.PRODUCT_VERSIONINFO_VALUE, description = APIOperation.PRODUCT_VERSIONINFO_NOTES)
     @RequestMapping(value = APIV2.PRODUCT_VERSIONINFO_GET, method = RequestMethod.GET, produces = {API.API_CHARSET})
     @ResponseStatus(HttpStatus.OK)
     public APIResponseDTO getDropInfo(
-            @ApiParam(name = APIParamName.PRODUCT_NAME, required = true, value = APIParamValue.PRODUCT_NAME) @PathVariable(APIParamName.PRODUCT_NAME) String productName,
-            @ApiParam(name = APIParamName.VERSION, required = true, value = APIParamValue.VERSION) @PathVariable(value = APIParamName.VERSION) String version,
+            @Parameter(name = APIParamName.PRODUCT_NAME, required = true, description = APIParamValue.PRODUCT_NAME) @PathVariable(APIParamName.PRODUCT_NAME) String productName,
+            @Parameter(name = APIParamName.VERSION, required = true, description = APIParamValue.VERSION) @PathVariable(value = APIParamName.VERSION) String version,
             HttpServletRequest request) throws L3APIException {
         return super.getVersionInfo(productName, version);
     }

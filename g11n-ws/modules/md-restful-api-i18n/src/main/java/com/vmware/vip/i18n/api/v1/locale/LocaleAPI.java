@@ -5,6 +5,7 @@
 package com.vmware.vip.i18n.api.v1.locale;
 
 
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,7 @@ import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.i18n.api.base.BaseAction;
 import com.vmware.vip.i18n.api.base.utils.LocaleUtility;
 
-import io.swagger.annotations.ApiOperation;
+
 
 /**
  * Provide RESTful API to manipulate the locale.
@@ -38,7 +39,7 @@ public class LocaleAPI extends BaseAction{
      * @return APIResponseDTO 
      *         The object which represents response status.
      */
-    @ApiOperation(value = APIOperation.LOCALE_PICKUP_VALUE, notes = APIOperation.LOCALE_PICKUP_NOTES)
+    @Operation(summary = APIOperation.LOCALE_PICKUP_VALUE, description = APIOperation.LOCALE_PICKUP_NOTES)
     @RequestMapping(value = APIV1.BROWSER_LOCALE, method = RequestMethod.GET, produces = { API.API_CHARSET })
     @ResponseStatus(HttpStatus.OK)
     public APIResponseDTO getBrowserLocale(HttpServletRequest request) {
@@ -53,7 +54,7 @@ public class LocaleAPI extends BaseAction{
      * @return APIResponseDTO 
      *         The object which represents response status.
      */
-    @ApiOperation(value = APIOperation.LOCALE_NORMALIZATION_VALUE, notes = APIOperation.LOCALE_NORMALIZATION_NOTES)
+    @Operation(summary = APIOperation.LOCALE_NORMALIZATION_VALUE, description = APIOperation.LOCALE_NORMALIZATION_NOTES)
     @RequestMapping(value = APIV1.NORM_BROWSER_LOCALE, method = RequestMethod.GET, produces = { API.API_CHARSET })
     @ResponseStatus(HttpStatus.OK)
     public APIResponseDTO getNormalizedBrowserLocale(HttpServletRequest request) {

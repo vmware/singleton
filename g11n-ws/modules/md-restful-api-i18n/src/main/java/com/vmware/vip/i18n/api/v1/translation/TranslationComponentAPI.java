@@ -7,6 +7,8 @@ package com.vmware.vip.i18n.api.v1.translation;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +38,6 @@ import com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO
 import com.vmware.vip.core.messages.service.singlecomponent.IOneComponentService;
 import com.vmware.vip.i18n.api.base.BaseAction;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 
 /**
  * Provide API for product to get translation by component base.
@@ -59,16 +59,16 @@ public class TranslationComponentAPI  extends BaseAction {
      *
      */
     //@ApiIgnore
-    @ApiOperation(value = APIOperation.COMPONENT_TRANSLATION_VALUE, notes = APIOperation.COMPONENT_TRANSLATION_NOTES)
+    @Operation(summary = APIOperation.COMPONENT_TRANSLATION_VALUE, description = APIOperation.COMPONENT_TRANSLATION_NOTES)
     @RequestMapping(value = APIV1.TRANS_COMPONENT, method = RequestMethod.GET, produces = {
             API.API_CHARSET })
     @ResponseStatus(HttpStatus.OK)
     public APIResponseDTO getSingleComponentTranslation(
-            @ApiParam(name = APIParamName.PRODUCT_NAME, required = true, value = APIParamValue.PRODUCT_NAME) @RequestParam(value = APIParamName.PRODUCT_NAME, required = true) String productName,
-            @ApiParam(name = APIParamName.VERSION, required = true, value = APIParamValue.VERSION) @RequestParam(value = APIParamName.VERSION, required = true) String version,
-            @ApiParam(name = APIParamName.COMPONENT, required = true, value = APIParamValue.COMPONENT) @RequestParam(value = APIParamName.COMPONENT, required = true) String component,
-            @ApiParam(name = APIParamName.LOCALE, value = APIParamValue.LOCALE) @RequestParam(value = APIParamName.LOCALE, required = false) String locale,
-            @ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO)
+            @Parameter(name = APIParamName.PRODUCT_NAME, required = true, description = APIParamValue.PRODUCT_NAME) @RequestParam(value = APIParamName.PRODUCT_NAME, required = true) String productName,
+            @Parameter(name = APIParamName.VERSION, required = true, description = APIParamValue.VERSION) @RequestParam(value = APIParamName.VERSION, required = true) String version,
+            @Parameter(name = APIParamName.COMPONENT, required = true, description = APIParamValue.COMPONENT) @RequestParam(value = APIParamName.COMPONENT, required = true) String component,
+            @Parameter(name = APIParamName.LOCALE, description = APIParamValue.LOCALE) @RequestParam(value = APIParamName.LOCALE, required = false) String locale,
+            @Parameter(name = APIParamName.PSEUDO, description = APIParamValue.PSEUDO)
             @RequestParam(value = APIParamName.PSEUDO, required=false, defaultValue="false") String pseudo,
             HttpServletRequest request)  throws Exception {
         ComponentMessagesDTO componentMessagesDTO = new ComponentMessagesDTO();
@@ -87,16 +87,16 @@ public class TranslationComponentAPI  extends BaseAction {
      *
      */
     //@ApiIgnore
-    @ApiOperation(value = APIOperation.MULT_COMPONENT_TRANSLATION_VALUE, notes = APIOperation.MULT_COMPONENT_TRANSLATION_NOTES)
+    @Operation(summary = APIOperation.MULT_COMPONENT_TRANSLATION_VALUE, description = APIOperation.MULT_COMPONENT_TRANSLATION_NOTES)
     @RequestMapping(value = APIV1.TRANS_COMPONENTS, method = RequestMethod.GET, produces = {
             API.API_CHARSET })
     @ResponseStatus(HttpStatus.OK)
     public APIResponseDTO getMultipleComponentsTranslation(
-            @ApiParam(name = APIParamName.PRODUCT_NAME, required = true, value = APIParamValue.PRODUCT_NAME) @RequestParam(value = APIParamName.PRODUCT_NAME, required = true) String productName,
-            @ApiParam(name = APIParamName.VERSION, required = true, value = APIParamValue.VERSION) @RequestParam(value = APIParamName.VERSION, required = true) String version,
-            @ApiParam(name = APIParamName.COMPONENTS, required = true, value = APIParamValue.COMPONENTS) @RequestParam(value = APIParamName.COMPONENTS, required = true) String components,
-            @ApiParam(name = APIParamName.LOCALES, required = true, value = APIParamValue.LOCALES) @RequestParam(value =  APIParamName.LOCALES, required = true) String locales,
-            @ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO)
+            @Parameter(name = APIParamName.PRODUCT_NAME, required = true, description = APIParamValue.PRODUCT_NAME) @RequestParam(value = APIParamName.PRODUCT_NAME, required = true) String productName,
+            @Parameter(name = APIParamName.VERSION, required = true, description = APIParamValue.VERSION) @RequestParam(value = APIParamName.VERSION, required = true) String version,
+            @Parameter(name = APIParamName.COMPONENTS, required = true, description = APIParamValue.COMPONENTS) @RequestParam(value = APIParamName.COMPONENTS, required = true) String components,
+            @Parameter(name = APIParamName.LOCALES, required = true, description = APIParamValue.LOCALES) @RequestParam(value =  APIParamName.LOCALES, required = true) String locales,
+            @Parameter(name = APIParamName.PSEUDO, description = APIParamValue.PSEUDO)
             @RequestParam(value = APIParamName.PSEUDO, required=false, defaultValue="false") String pseudo,
             HttpServletRequest request) throws Exception {
         TranslationDTO translationDTO = new TranslationDTO();

@@ -4,6 +4,8 @@
  */
 package com.vmware.vip.i18n.api.v1.formatting.date;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +27,6 @@ import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.i18n.api.base.BaseAction;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 
 /**
  * Provide RESTful API to manipulate the date by specific locale and pattern.
@@ -53,7 +53,7 @@ public class FormattingDateAPI extends BaseAction{
      * @return APIResponseDTO 
      *         The object which represents response status.
      */
-    @ApiOperation(value = APIOperation.FORMAT_DATE_GET_VALUE, notes = APIOperation.FORMAT_DATE_GET_NOTES)
+    @Operation(summary = APIOperation.FORMAT_DATE_GET_VALUE, description = APIOperation.FORMAT_DATE_GET_NOTES)
  /*   @ApiImplicitParams({
         @ApiImplicitParam(name = "token", value = "token", required = true, dataType = "string", paramType = "header"),  
         @ApiImplicitParam(name = "sessionid", value = "sessionid", required = true, dataType = "string", paramType = "header")
@@ -61,9 +61,9 @@ public class FormattingDateAPI extends BaseAction{
     @RequestMapping(value = APIV1.LOCALIZED_DATE, method = RequestMethod.GET, produces = { API.API_CHARSET })
 	@ResponseStatus(HttpStatus.OK)
     public APIResponseDTO formatDate(
-            @ApiParam(name = APIParamName.LOCALE, required = true, value = APIParamValue.LOCALE) @RequestParam(value = APIParamName.LOCALE, required = true) String locale,
-            @ApiParam(name = APIParamName.LONGDATE, required = true, value = APIParamValue.LONGDATE) @RequestParam(value = APIParamName.LONGDATE, required = true) String longDate,
-            @ApiParam(name = APIParamName.PATTERN, required = true, value = APIParamValue.PATTERN) @RequestParam(value = APIParamName.PATTERN, required = true) String pattern,
+            @Parameter(name = APIParamName.LOCALE, required = true, description = APIParamValue.LOCALE) @RequestParam(value = APIParamName.LOCALE, required = true) String locale,
+            @Parameter(name = APIParamName.LONGDATE, required = true, description = APIParamValue.LONGDATE) @RequestParam(value = APIParamName.LONGDATE, required = true) String longDate,
+            @Parameter(name = APIParamName.PATTERN, required = true, description = APIParamValue.PATTERN) @RequestParam(value = APIParamName.PATTERN, required = true) String pattern,
             HttpServletRequest request) throws Exception{
         DateDTO dateDTO = new DateDTO();
         String formattedDate = dateFormatService.formatDate(locale, Long.parseLong(longDate),

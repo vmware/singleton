@@ -4,14 +4,13 @@
  */
 package com.vmware.vip.core.Interceptor;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.web.servlet.HandlerInterceptor;
+
 import java.util.Set;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
-public class APICrossDomainInterceptor extends HandlerInterceptorAdapter {
+public class APICrossDomainInterceptor implements HandlerInterceptor {
 
 	private Set<String> allowOrigin;
 	private String allowHeaders;
