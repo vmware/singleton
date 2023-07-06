@@ -10,7 +10,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          fetch-depth: 2.  
+          fetch-depth: 0
       - name: Get commit range
         id: get-commit-range-action
         uses: ./.github/actions/get-commit-range-action
@@ -154,7 +154,6 @@ jobs:
           docker cp $GITHUB_WORKSPACE/l10n singleton:/
           curl -X GET 'http://localhost:8091/actuator/health'
           cd $GITHUB_WORKSPACE/devops/autotest/client/go/goclienttest
-          go get github.com/smartystreets/goconvey
           echo "" >> go.mod
           echo "replace github.com/vmware/singleton => $GITHUB_WORKSPACE" >> go.mod
           echo "" >> go.mod
