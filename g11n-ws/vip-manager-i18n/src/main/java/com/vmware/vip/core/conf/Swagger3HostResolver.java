@@ -4,7 +4,7 @@
  */
 
 package com.vmware.vip.core.conf;
-
+/**
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.servers.Server;
 import org.apache.commons.lang3.StringUtils;
@@ -54,3 +54,4 @@ public class Swagger3HostResolver implements WebMvcOpenApiTransformationFilter {
     }
 
 }
+ **/

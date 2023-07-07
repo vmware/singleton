@@ -15,6 +15,7 @@ dependencies {
     implementation("com.googlecode.json-simple:json-simple:$jsonSimpleVersion"){
           exclude group: 'junit'
     }
+    compileOnly("org.slf4j:slf4j-api:$slf4jVersion")
     compileOnly("org.ehcache:ehcache:$ehCacheVersion")
     compileOnly("javax.cache:cache-api:$cacheApiVersion")
     

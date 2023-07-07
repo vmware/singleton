@@ -12,7 +12,8 @@ configurations {
     war
     providedRuntime
    // remove default logger
-   all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    all*.exclude group: 'commons-logging', module: 'commons-logging'
 }
 
 sourceSets {
@@ -64,9 +65,22 @@ dependencies {
     implementation("org.apache.commons:commons-lang3:$commonsLangVersion")
     implementation("commons-io:commons-io:$commonsIoVersion")
     implementation("commons-codec:commons-codec:$commonsCodecVersion")
+
+    implementation("org.ehcache:ehcache:$ehCacheVersion") {
+        capabilities {
+           requireCapability('org.ehcache:ehcache-jakarta')
+        }
+    }
+   // implementation("javax.cache:cache-api:$cacheApiVersion")
+    implementation 'org.glassfish.jaxb:jaxb-runtime:4.0.3'
+
+    implementation("com.google.guava:guava:$guavaVersion")
+    implementation("com.ibm.icu:icu4j:$icu4jVersion")
     implementation("org.yaml:snakeyaml:$snakeyam")
-    implementation("io.jsonwebtoken:jjwt:$jjwtVersion")
     implementation("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$hibernateJpa21Api")
+
+    //implementation("javax.cache:cache-api:$cacheApiVersion")
+   // implementation("org.apache.httpcomponents:httpclient:$httpclient")
 
     /**
     implementation("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
@@ -75,16 +89,15 @@ dependencies {
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:$jacksonVersion")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
 
-    implementation("org.ehcache:ehcache:$ehCacheVersion")
-    implementation("javax.cache:cache-api:$cacheApiVersion")
-    implementation("org.apache.httpcomponents:httpclient:$httpclient")
+
  **/
     
     //swagger UI -START  
     implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.1.0'
     implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-api', version: '2.1.0'
     //swagger UI -END
-    
+
+
     /**
     //jdk 11
     runtimeOnly 'javax.xml.bind:jaxb-api:2.4.0-b180830.0359'
