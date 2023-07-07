@@ -14,8 +14,9 @@ const (
 	LocaleAliasesPath        = cldrBaseFolder + "aliases/aliases.json"
 	SupplementalCurrencyPath = cldrBaseFolder + "supplement/currencies.json"
 	LanguageDataPath         = cldrBaseFolder + "supplement/languageData.json"
-	ParseDataPath            = cldrBaseFolder + "pattern/common/parse.json"
+	ParseDataPath            = cldrBaseFolder + "core/parse.json"
 	NumberingSystemsPath     = cldrBaseFolder + "supplement/numbers.json"
+	SupplementalDatesPath    = cldrBaseFolder + "supplement/dates.json"
 	RegionLanguagesMapPath   = cldrBaseFolder + "regionLanguage/regionLanguageMapping.json"
 	DefaultContentPath       = cldrBaseFolder + "defaultContent/defaultContent.json"
 )
@@ -27,6 +28,7 @@ var (
 		cldr.CoreSplmtLanguageData:     {LanguageDataPath, []interface{}{"languageData"}},
 		cldr.CoreSplmtLikelySubTags:    {ParseDataPath, []interface{}{"likelySubtag"}},
 		cldr.CoreSplmtNumberingSystems: {NumberingSystemsPath, []interface{}{}},
+		cldr.CoreSplmtDates:            {SupplementalDatesPath, []interface{}{}},
 		cldr.CoreAvaLocales:            {ParseDataPath, []interface{}{"localePath"}},
 
 		cldr.RegionToLanguage: {RegionLanguagesMapPath, []interface{}{"regionInfo"}},
@@ -39,6 +41,7 @@ var (
 		cldr.CoreSplmtLanguageData:     "SplmtLanguage",
 		cldr.CoreSplmtLikelySubTags:    "LikelySubTags",
 		cldr.CoreSplmtNumberingSystems: "NumberingSystems",
+		cldr.CoreSplmtDates:            "SplmtDates",
 		cldr.CoreAvaLocales:            "AvaLocales",
 
 		cldr.RegionToLanguage: "RegionToLanguage",

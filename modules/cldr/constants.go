@@ -22,6 +22,7 @@ const (
 	CoreSplmtLanguageData
 	CoreSplmtLikelySubTags
 	CoreSplmtNumberingSystems
+	CoreSplmtDates
 	CoreAvaLocales
 
 	RegionToLanguage
