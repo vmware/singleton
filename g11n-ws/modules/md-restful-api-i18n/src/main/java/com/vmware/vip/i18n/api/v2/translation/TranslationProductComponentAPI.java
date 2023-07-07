@@ -4,6 +4,8 @@
  */
 package com.vmware.vip.i18n.api.v2.translation;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -23,8 +25,6 @@ import com.vmware.vip.api.rest.APIV2;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.i18n.api.base.TranslationProductComponentAction;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 
 
 /**
@@ -39,16 +39,16 @@ public class TranslationProductComponentAPI extends TranslationProductComponentA
      * Provide translation based on single component.
      * 
      */
-    @ApiOperation(value = APIOperation.COMPONENT_TRANSLATION_VALUE, notes = APIOperation.COMPONENT_TRANSLATION_NOTES)    
+    @Operation(summary = APIOperation.COMPONENT_TRANSLATION_VALUE, description = APIOperation.COMPONENT_TRANSLATION_NOTES)
     @RequestMapping(value = APIV2.COMPONENT_TRANSLATION_GET, method = RequestMethod.GET, produces = {API.API_CHARSET})
     @ResponseStatus(HttpStatus.OK)
     public APIResponseDTO getSingleComponentTranslation(
-            @ApiParam(name = APIParamName.PRODUCT_NAME, required = true, value = APIParamValue.PRODUCT_NAME) @PathVariable(APIParamName.PRODUCT_NAME) String productName,
-            @ApiParam(name = APIParamName.COMPONENT, required = true, value = APIParamValue.COMPONENT) @PathVariable(APIParamName.COMPONENT) String component,
-            @ApiParam(name = APIParamName.VERSION, required = true, value = APIParamValue.VERSION) @PathVariable(value = APIParamName.VERSION) String version,
-            @ApiParam(name = APIParamName.LOCALE, required = true, value = APIParamValue.LOCALE) @PathVariable(value = APIParamName.LOCALE) String locale,
-            @ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required=false, defaultValue="false") String pseudo,
-            @ApiParam(name = APIParamName.MT, value = APIParamValue.MT)
+            @Parameter(name = APIParamName.PRODUCT_NAME, required = true, description = APIParamValue.PRODUCT_NAME) @PathVariable(APIParamName.PRODUCT_NAME) String productName,
+            @Parameter(name = APIParamName.COMPONENT, required = true, description = APIParamValue.COMPONENT) @PathVariable(APIParamName.COMPONENT) String component,
+            @Parameter(name = APIParamName.VERSION, required = true, description = APIParamValue.VERSION) @PathVariable(value = APIParamName.VERSION) String version,
+            @Parameter(name = APIParamName.LOCALE, required = true, description = APIParamValue.LOCALE) @PathVariable(value = APIParamName.LOCALE) String locale,
+            @Parameter(name = APIParamName.PSEUDO, description = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required=false, defaultValue="false") String pseudo,
+            @Parameter(name = APIParamName.MT, description = APIParamValue.MT)
             @RequestParam(value = APIParamName.MT, required=false, defaultValue="false") String machineTranslation,
      	//	@RequestHeader(required = true) String authorization,
             

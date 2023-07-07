@@ -4,6 +4,7 @@
  */
 package com.vmware.vip.i18n.api.v2.translation;
 
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,6 @@ import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.i18n.api.base.TranslationSyncAction;
 
-import io.swagger.annotations.ApiOperation;
 
 /**
  *
@@ -49,7 +49,7 @@ public class TranslationSyncAPI extends TranslationSyncAction {
 	 *            information for HTTP servlets.
 	 * @return APIResponseDTO The object which represents response status.
 	 */
-	@ApiOperation(value = APIOperation.TRANSLATION_UPDATE_VALUE, notes = APIOperation.TRANSLATION_UPDATE_NOTES)
+	@Operation(summary = APIOperation.TRANSLATION_UPDATE_VALUE, description = APIOperation.TRANSLATION_UPDATE_NOTES)
 	@RequestMapping(value = APIV2.PRODUCT_TRANSLATION_PUT, method = RequestMethod.PUT, produces = { API.API_CHARSET })
 	@ResponseStatus(HttpStatus.OK)
 	public APIResponseDTO updateTranslation(
