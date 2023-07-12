@@ -41,6 +41,7 @@ func InitServer() *gin.Engine {
 
 	ginEngine := gin.New()
 
+	ginEngine.UseRawPath = true
 	// ginEngine.RemoveExtraSlash = true
 
 	LogToZap(ginEngine, logger.Log)
