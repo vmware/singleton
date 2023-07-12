@@ -23,6 +23,9 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * This java class mainly is to integrate the swagger-UI into spring boot,
@@ -70,6 +73,19 @@ public class SwaggerConfig {
 
         GroupedOpenApi.Builder builder = GroupedOpenApi.builder().group("v1")
                 .packagesToScan("com.vmware.vip.i18n.api.v1");
+        builder.addOpenApiCustomizer(openApi -> {
+            openApi.info(generateInfo("v1"));
+            if (StringUtils.isNotEmpty(hostUrl)) {
+                logger.info("new host url: {}", hostUrl);
+                Server server = new Server();
+                server.setUrl(hostUrl);
+                server.setDescription(hostDesp);
+                List<Server> list = new ArrayList<>();
+                list.add(server);
+                openApi.servers(list);
+            }
+
+        });
 
         return builder.build();
     }
@@ -78,6 +94,7 @@ public class SwaggerConfig {
     public GroupedOpenApi singletV2Api() {
         GroupedOpenApi.Builder builder = GroupedOpenApi.builder().group("v2")
                 .packagesToScan("com.vmware.vip.i18n.api.v2");
+        builder.addOpenApiCustomizer(openApi -> openApi.info(generateInfo("v2")));
         return builder.build();
     }
 
@@ -91,7 +108,7 @@ public class SwaggerConfig {
     }
 
 
-    @Bean
+   // @Bean
     public OpenAPI singletonOpenAPI() {
         String version = "build number:" + buildNumber + ", build date:" + buildDate + ", branch:" + branch;
         Contact contact = new Contact();
@@ -103,7 +120,7 @@ public class SwaggerConfig {
                 .license(new License().name("Apache 2.0").url("http://springdoc.org"));
 
         OpenAPI openAPI = new OpenAPI();
-        openAPI.addSecurityItem()
+        //openAPI.addSecurityItem()
         openAPI.setInfo(info);
         if (StringUtils.isNotEmpty(hostUrl)) {
             logger.info("new host url: {}", hostUrl);
@@ -114,6 +131,19 @@ public class SwaggerConfig {
         }
         openAPI.setComponents(generateComps());
         return openAPI;
+    }
+
+    private  Info generateInfo(String versionStr){
+        String version = versionStr + ",build number:" + buildNumber + ", build date:" + buildDate + ", branch:" + branch;
+        Contact contact = new Contact();
+        contact.setName("VMWare G11n Team");
+        Info info = new Info().title("Singleton REST APIs")
+                .description("Singleton manager APIs")
+                .version(version)
+                .contact(contact)
+                .license(new License().name("Apache 2.0").url("http://springdoc.org"));
+
+        return info;
     }
 
 
