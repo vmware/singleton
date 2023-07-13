@@ -42,9 +42,8 @@ public class SwaggerConfigTest {
 	@Test
 	public void test001serviceswich() {
 		SwaggerConfig conf = webApplicationContext.getBean(SwaggerConfig.class);
-		conf.getAuthConfig().setAuthSwitch("true");
-		conf.createRestApi1();
-		conf.createRestApi2();
+		conf.singletV1Api();
+		conf.singletV2Api();
 		logger.info("createRestApi1");
 		logger.info("createRestApi2");
 	}

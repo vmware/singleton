@@ -18,6 +18,11 @@ dependencies {
     api project(":md-service-i18n-l3")
     compileOnly("org.apache.httpcomponents:httpclient:$httpclient")
     api("com.alibaba:fastjson:1.2.51")
+    implementation("com.googlecode.json-simple:json-simple:$jsonSimpleVersion"){
+        exclude group: 'junit'
+    }
+    compileOnly("org.springdoc:springdoc-openapi-starter-webmvc-api:$springdocVersion")
+    implementation("commons-io:commons-io:$commonsIoVersion")
     compileOnly("org.springframework.boot:spring-boot-starter-web")
     compileOnly('org.springframework.boot:spring-boot-starter-log4j2')
     compileOnly("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")

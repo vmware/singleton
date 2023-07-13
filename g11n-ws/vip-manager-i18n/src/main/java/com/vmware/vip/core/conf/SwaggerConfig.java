@@ -117,11 +117,23 @@ public class SwaggerConfig {
 
     @Bean
     @ConditionalOnProperty(value = "vipservice.authority.enable")
-    public GroupedOpenApi serviceloginApi() {
+    public GroupedOpenApi singletAuthApi() {
         GroupedOpenApi.Builder builder = GroupedOpenApi.builder().group("authentication")
                 .packagesToScan("com.vmware.vip.core.login.controller");
          logger.info("init authority swagger ui");
-        builder.addOpenApiCustomizer(openApi -> openApi.info(generateInfo("authentication")));
+        builder.addOpenApiCustomizer(openApi -> {
+            openApi.info(generateInfo("authentication"));
+            if (StringUtils.isNotEmpty(hostUrl)) {
+                logger.info("new host url: {}", hostUrl);
+                Server server = new Server();
+                server.setUrl(hostUrl);
+                server.setDescription(hostDesp);
+                List<Server> list = new ArrayList<>();
+                list.add(server);
+                openApi.servers(list);
+            }
+
+        });
         return builder.build();
     }
 

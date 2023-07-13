@@ -4,13 +4,13 @@
  */
 package com.vmware.vip.api.rest;
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vmware.vip.api.domain.DbApiUrl;
 
-import io.swagger.annotations.ApiOperation;
 
 /**
  * 
@@ -21,7 +21,7 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 @RequestMapping(DbApiUrl.API_ROOT)
 public class DBServerTest {
-	@ApiOperation(value = "获取用户详细信息", notes = "根据url的id来获取用户详细信息")
+	@Operation(summary = "获取用户详细信息", description = "根据url的id来获取用户详细信息")
 	@GetMapping("/test")
 	public String test() {
 		return "this is a test!!!";

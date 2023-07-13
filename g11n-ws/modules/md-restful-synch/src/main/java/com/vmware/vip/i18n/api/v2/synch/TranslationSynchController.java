@@ -21,7 +21,7 @@ import com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO
 import com.vmware.vip.messages.synch.model.SynchFile2GitReq;
 import com.vmware.vip.messages.synch.service.SynchService;
 import com.vmware.vip.messages.synch.utils.HttpsUtils;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,7 +59,7 @@ public class TranslationSynchController {
 	@Value("${translation.synch.git.flag}")
 	private String translationSynchGitFlag;
 
-	@ApiOperation(value = APIOperation.TRANSLATION_SYNC_VALUE, notes = APIOperation.TRANSLATION_SYNC_NOTES)
+	@Operation(summary = APIOperation.TRANSLATION_SYNC_VALUE, description = APIOperation.TRANSLATION_SYNC_NOTES)
 	@RequestMapping(value = APIV2.PRODUCT_TRANSLATION_SYNC_PUT, method = RequestMethod.PUT, produces = { API.API_CHARSET })
 	@ResponseStatus(HttpStatus.OK)
 	public APIResponseDTO synchTranslation(@RequestBody UpdateTranslationDTO updateTranslationDTO,

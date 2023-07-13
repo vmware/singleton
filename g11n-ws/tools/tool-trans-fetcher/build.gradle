@@ -8,12 +8,16 @@ configurations {
 }
 
 dependencies {
-	api("org.quartz-scheduler:quartz:2.2.2")
-	api("org.quartz-scheduler:quartz-jobs:2.2.2")
-    api("commons-io:commons-io:$commonsIoVersion")
-    api("org.apache.commons:commons-lang3:$commonsLangVersion")
-    api project(":vip-common")
-	testImplementation("junit:junit:$junitVersion")
+    implementation("org.quartz-scheduler:quartz:2.2.2")
+    implementation("org.quartz-scheduler:quartz-jobs:2.2.2")
+    implementation("commons-io:commons-io:$commonsIoVersion")
+    implementation("org.apache.commons:commons-lang3:$commonsLangVersion")
+    implementation project(":vip-common")
+    implementation("com.googlecode.json-simple:json-simple:$jsonSimpleVersion"){
+        exclude group: 'junit'
+    }
+
+    testImplementation("junit:junit:$junitVersion")
 }
 
 jar {

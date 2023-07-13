@@ -27,6 +27,10 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation('org.springframework.boot:spring-boot-starter-log4j2')
     implementation ("commons-collections:commons-collections:$commonsCollectionsVersion")
+    //swagger UI -START
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$springdocVersion")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-api:$springdocVersion")
+    //swagger UI -END
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation ("junit:junit:$junitVersion")
 }

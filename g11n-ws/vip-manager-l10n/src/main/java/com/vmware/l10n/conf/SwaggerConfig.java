@@ -37,18 +37,5 @@ public class SwaggerConfig {
 	}
 
 
-	/**
-	@Controller
-	@Hidden
-	@ConditionalOnProperty(value = "springfox.documentation.swagger-ui.enabled")
-	public static class SwaggerResourceController {
-
-		@RequestMapping("/swagger-ui.html")
-		public void forwardNewURL(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-			resp.sendRedirect("/swagger-ui/index.html");
-		}
-
-	}
-	**/
 
 }
