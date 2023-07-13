@@ -60,41 +60,12 @@ dependencies {
     implementation("com.ibm.icu:icu4j:$icu4jVersion")
     implementation("org.yaml:snakeyaml:$snakeyam")
     implementation("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$hibernateJpa21Api")
-    //implementation("org.apache.httpcomponents:httpclient:$httpclient")
 
-
-
-    /**
-    implementation("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
-    implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
-    implementation("com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion")
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
- **/
-
-    //api group: 'org.webjars.bower', name: 'cldr-data', version: '28.0.1'
-
-   // api ("org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion")
-    //api ("org.apache.tomcat:tomcat-annotations-api:$tomcatVersion")
-   //api('org.springframework.boot:spring-boot-autoconfigure')
-     // api ('org.springframework.boot:spring-boot-starter-log4j2'){
-     //         exclude group: "org.apache.logging.log4j"
-    //}
-    /**
-    implementation("org.springframework:spring-webmvc:$springWebVersion")
-
-    implementation("org.apache.logging.log4j:log4j-api:$log4j2Version")
-    implementation("org.apache.logging.log4j:log4j-core:$log4j2Version")
-    implementation("org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version")
-    implementation("org.slf4j:slf4j-api:$slf4jVersion")
-    implementation("org.slf4j:jul-to-slf4j:$slf4jVersion")
-     **/
 
     implementation ('org.springframework.boot:spring-boot-starter-actuator')
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("junit:junit:$junitVersion")
-    //testImplementation("org.asciidoctor:asciidoctorj:2.5.10")
-    //testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
 
 
 }
