@@ -10,6 +10,9 @@ import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.api.rest.APIParamValue;
 import com.vmware.vip.api.rest.APIV2;
 import com.vmware.vip.common.constants.ConstantsKeys;
+import com.vmware.vip.common.constants.ValidationMsg;
+import com.vmware.vip.common.exceptions.VIPAPIException;
+import com.vmware.vip.common.exceptions.ValidationException;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,9 +41,13 @@ public class ImageAPI {
     public void getCountryFlagWithRegion(
             @ApiParam(name = APIParamName.REGION, required = true, value = APIParamValue.REGION) @RequestParam(value = APIParamName.REGION, required = true) String region,
             @ApiParam(name = APIParamName.SCALE, required = false, value = APIParamValue.COUNTRY_FLAG_SCALE) @RequestParam(value = APIParamName.SCALE, required = false) Integer scale,
-            HttpServletResponse resp) throws Exception{
+            @ApiParam(name = APIParamName.TYPE, required = false, value = APIParamValue.TYPE) @RequestParam(value = APIParamName.TYPE, required = false) String type,
+            HttpServletResponse resp) throws Exception {
         int s = scale == null ? 1 : scale.intValue();
-
+        String imgType = type.isEmpty()? ConstantsKeys.SVG : type.toLowerCase();
+        if (!ConstantsKeys.IMAGE_TYPE_LIST.contains(imgType)){
+           throw new ValidationException(String.format(ValidationMsg.IMAGE_TYPE_NOT_VALIDE, type));
+        }
         resp.setContentType(ConstantsKeys.CONTENT_TYPE_JSON);
         WritableByteChannel writeChannel = Channels.newChannel(resp.getOutputStream());
 

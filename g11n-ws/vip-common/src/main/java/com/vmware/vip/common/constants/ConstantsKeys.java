@@ -108,6 +108,9 @@ public class ConstantsKeys {
    public static final String CSP_AUTH_TOKEN = "csp-auth-token";
    public static final String IMAGE = "image";
    public static final String FLAGS = "flags";
+   public static final String SVG = "svg";
+   public final static Set<String> IMAGE_TYPE_LIST = new HashSet<>(Arrays.asList( "svg"));
+
 
 
 }

@@ -42,4 +42,6 @@ public class APIParamName {
 	public final static String PASSWORD = "password";
 	public final static String EXPIREDAYS = "expireDays";
 	public final static String APP_ID = "appId";
+	public final static String TYPE = "type";
+
 }
