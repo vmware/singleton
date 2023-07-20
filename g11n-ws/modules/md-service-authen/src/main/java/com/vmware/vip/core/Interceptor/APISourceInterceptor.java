@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.Interceptor;
@@ -9,9 +9,9 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -154,7 +154,7 @@ public class APISourceInterceptor implements HandlerInterceptor {
     
     @Override
     public void afterCompletion(HttpServletRequest request,
-            HttpServletResponse response, Object handler, Exception ex)
+                                HttpServletResponse response, Object handler, Exception ex)
             throws Exception {
         if (StringUtils.equalsIgnoreCase(
                 request.getParameter(ConstantsKeys.COLLECT_SOURCE),

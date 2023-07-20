@@ -8,59 +8,41 @@ description = 'l10n manager'
 
 
 configurations {
+    bootJar
+    providedRuntime
     // remove default logger
     all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    all*.exclude group: 'commons-logging', module: 'commons-logging'
 }
 
 dependencies {
-    api project(":vip-common")
-    api project(":md-restful-api")
+    implementation project(":vip-common")
+    implementation project(":md-restful-api")
     if (project.hasProperty('datatype') && project.getProperty('datatype') == 'bundle' && project.getProperty('syncdata') == 'true') {
-        api project(":md-restful-l10n-synch")
+        implementation project(":md-restful-l10n-synch")
     }
-    implementation("org.apache.commons:commons-lang3:$commonsLangVersion")
+   // implementation("org.apache.commons:commons-lang3:$commonsLangVersion")
     implementation("commons-io:commons-io:$commonsIoVersion")
-    implementation("commons-codec:commons-codec:$commonsCodecVersion")
+   // implementation("commons-codec:commons-codec:$commonsCodecVersion")
     implementation("com.googlecode.json-simple:json-simple:$jsonSimpleVersion"){
           exclude group: 'junit'
     }
     
-    implementation('org.springframework.boot:spring-boot-starter-log4j2') {
-        exclude group: "org.apache.logging.log4j"
-    }
-    implementation("org.apache.logging.log4j:log4j-api:$log4j2Version")
-    implementation("org.apache.logging.log4j:log4j-core:$log4j2Version")
-    implementation("org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version")
-    implementation("org.slf4j:slf4j-api:$slf4jVersion")
-    implementation("org.slf4j:jul-to-slf4j:$slf4jVersion")
-    
-    implementation("org.springframework.boot:spring-boot-starter-web") {
-        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
-    }
-    implementation("org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion")
-    implementation("org.apache.tomcat:tomcat-annotations-api:$tomcatVersion")
-    
-    //implementation("org.xerial:sqlite-jdbc:$sqliteVersion")
-    implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
+    implementation('org.springframework.boot:spring-boot-starter-log4j2')
+    implementation("org.springframework.boot:spring-boot-starter-web")
+
     implementation("org.yaml:snakeyaml:$snakeyam")
     implementation("io.jsonwebtoken:jjwt:$jjwtVersion")
     implementation("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$hibernateJpa21Api")
-    implementation("org.ehcache:ehcache:$ehCacheVersion")
-    implementation("javax.cache:cache-api:$cacheApiVersion")
-    implementation("com.nimbusds:nimbus-jose-jwt:9.27")
+    implementation('com.nimbusds:nimbus-jose-jwt:9.30.2')
 
-    implementation("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
-    implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
-    implementation("com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion")
-    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:$jacksonVersion")
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$jacksonVersion")
-    implementation("com.fasterxml.jackson.module:jackson-module-parameter-names:$jacksonVersion")
 
     //swagger UI -START  
-    implementation("io.springfox:springfox-boot-starter:$swaggerVersion")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$springdocVersion")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-api:$springdocVersion")
+
     //swagger UI -END    
-    implementation("org.apache.httpcomponents:httpclient:$httpclient")
+
     implementation ("com.amazonaws:aws-java-sdk-s3:$awsS3Version")
     implementation ("com.amazonaws:aws-java-sdk-sts:$awsS3Version")
     implementation ("com.amazonaws:aws-java-sdk-iam:$awsS3Version")

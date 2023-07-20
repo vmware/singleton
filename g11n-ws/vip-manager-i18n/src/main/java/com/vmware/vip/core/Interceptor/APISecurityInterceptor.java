@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.Interceptor;
@@ -7,16 +7,16 @@ package com.vmware.vip.core.Interceptor;
 import java.io.PrintWriter;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
@@ -26,7 +26,7 @@ import com.vmware.vip.common.i18n.status.Response;
 /**
  * Security interceptor, this is for sessionID and toksn validation and Authentication requests legitimacy 
  */
-public class APISecurityInterceptor extends HandlerInterceptorAdapter {
+public class APISecurityInterceptor implements HandlerInterceptor {
 
     private Logger LOGGER = LoggerFactory.getLogger(APISecurityInterceptor.class);
 
@@ -36,7 +36,7 @@ public class APISecurityInterceptor extends HandlerInterceptorAdapter {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
-            Object handler) throws Exception {
+                             Object handler) throws Exception {
         HttpSession session = request.getSession(false);
         if (session == null || !validateToken(request)
                 || !verifyRightForResouceAccess(request)) {

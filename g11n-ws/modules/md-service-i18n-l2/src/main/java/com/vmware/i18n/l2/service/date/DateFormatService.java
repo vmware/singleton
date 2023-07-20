@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.l2.service.date;
@@ -9,10 +9,9 @@ import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localePath
 
 import java.util.Date;
 
-import javax.annotation.Resource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -37,7 +36,7 @@ public class DateFormatService implements IDateFormatService{
 
 	private static final Logger logger = LoggerFactory.getLogger(DateFormatService.class.getName());
 	
-	@Resource
+	@Autowired
 	private IPatternDao patternDao;
 	
 	/**

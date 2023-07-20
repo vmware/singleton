@@ -1,4 +1,4 @@
-//Copyright 2019-2022 VMware, Inc.
+//Copyright 2019-2023 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java-library'
 apply plugin: 'org.springframework.boot'
@@ -17,11 +17,8 @@ configurations {
 dependencies {
     implementation project(":vip-common")
     implementation project(":md-restful-api")
-    compileOnly("org.springframework.boot:spring-boot")
-    compileOnly("org.springframework:spring-webmvc:$springWebVersion")
-    compileOnly ('org.springframework.boot:spring-boot-starter-log4j2'){
-              exclude group: "org.apache.logging.log4j"
-    }
+    compileOnly("org.springframework.boot:spring-boot-starter-web")
+    compileOnly ('org.springframework.boot:spring-boot-starter-log4j2')
     api group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '4.11.8.201904181247-r'
 }
 

@@ -1,11 +1,13 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.v1.translation;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,8 +28,6 @@ import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.core.messages.exception.L3APIException;
 import com.vmware.vip.i18n.api.base.TranslationSourceAction;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 
 /**
  * Provide RESTful API for product to get translation by String base.
@@ -40,7 +40,7 @@ public class TranslationSourceAPI extends TranslationSourceAction {
 	 * Provide translation based on String
 	 *
 	 */
-	@ApiOperation(value = APIOperation.SOURCE_TRANSLATION_GET_VALUE, notes = APIOperation.SOURCE_TRANSLATION_POST_NOTES)
+	@Operation(summary = APIOperation.SOURCE_TRANSLATION_GET_VALUE, description = APIOperation.SOURCE_TRANSLATION_POST_NOTES)
 	@RequestMapping(value = APIV1.SOURCES_GET, method = RequestMethod.GET, produces = { API.API_CHARSET })
 	@Override
 	public String getTranslationBySource(
@@ -50,8 +50,8 @@ public class TranslationSourceAPI extends TranslationSourceAction {
 			@RequestParam(value = APIParamName.SOURCE, required = true) String source,
 			@RequestParam(value = APIParamName.SOURCE_FORMAT, required = false) String sourceFormat,
 			@RequestParam(value = APIParamName.LOCALE, required = false) String locale,
-			@ApiParam(name = APIParamName.COLLECT_SOURCE, value = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = false, defaultValue = "false") String collectSource,
-			@ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required = false, defaultValue = "false") String pseudo,
+			@Parameter(name = APIParamName.COLLECT_SOURCE, description = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = false, defaultValue = "false") String collectSource,
+			@Parameter(name = APIParamName.PSEUDO, description = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required = false, defaultValue = "false") String pseudo,
 			HttpServletRequest request, HttpServletResponse response) {
 		return super.getTranslationBySource(productName, component, version,
 				locale, source, sourceFormat, collectSource, pseudo, request,
@@ -63,7 +63,7 @@ public class TranslationSourceAPI extends TranslationSourceAction {
 	 * source
 	 * 
 	 */
-	@ApiOperation(value = APIOperation.SOURCE_TRANSLATION_POST_VALUE, notes = APIOperation.SOURCE_TRANSLATION_POST_NOTES)
+	@Operation(summary =APIOperation.SOURCE_TRANSLATION_POST_VALUE, description = APIOperation.SOURCE_TRANSLATION_POST_NOTES)
 	@RequestMapping(value = APIV1.SOURCES_POST, method = RequestMethod.POST, produces = { API.API_CHARSET })
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
@@ -74,8 +74,8 @@ public class TranslationSourceAPI extends TranslationSourceAction {
 			@RequestBody String source,
 			@RequestParam(value = APIParamName.SOURCE_FORMAT, required = false) String sourceFormat,
 			@RequestParam(value = APIParamName.LOCALE, required = false) String locale,
-			@ApiParam(name = APIParamName.COLLECT_SOURCE, value = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = false, defaultValue = "false") String collectSource,
-			@ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required = false, defaultValue = "false") String pseudo,
+			@Parameter(name = APIParamName.COLLECT_SOURCE, description = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = false, defaultValue = "false") String collectSource,
+			@Parameter(name = APIParamName.PSEUDO, description = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required = false, defaultValue = "false") String pseudo,
 			HttpServletRequest request) throws L3APIException {
 		return super.createSource(productName, component, version, locale, source,
 				sourceFormat, collectSource, pseudo, request);

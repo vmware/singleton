@@ -1,10 +1,9 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.config;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -42,9 +41,8 @@ public class SwaggerConfigTest {
 	@Test
 	public void test001serviceswich() {
 		SwaggerConfig conf = webApplicationContext.getBean(SwaggerConfig.class);
-		conf.getAuthConfig().setAuthSwitch("true");
-		conf.createRestApi1();
-		conf.createRestApi2();
+		conf.singletV1Api();
+		conf.singletV2Api();
 		logger.info("createRestApi1");
 		logger.info("createRestApi2");
 	}
