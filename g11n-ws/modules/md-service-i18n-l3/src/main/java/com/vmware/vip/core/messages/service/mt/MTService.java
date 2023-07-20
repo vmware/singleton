@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.messages.service.mt;
@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
 
 import com.vmware.vip.messages.mt.MTFactory;
 import org.springframework.beans.BeanUtils;
@@ -46,7 +45,7 @@ public class MTService implements IMTService {
 
 	private static Logger LOGGER = LoggerFactory.getLogger(MTService.class);
 
-	@Resource
+	@Autowired
 	private IOneComponentDao oneComponentDao;
 
 	@Autowired
@@ -99,7 +98,9 @@ public class MTService implements IMTService {
 				List<String> mtResult = new ArrayList<String>();
 				IMTProcessor mtProcessor = MTFactory.getMTProcessor();
 				// Since Azure has limitation(max 25) to the array size of source, so we need to handle it.
-				int translatedCount = new Integer(MTConfig.TRANSLATECOUNT).intValue(), fromIndex = 0, toIndex = translatedCount;
+				int translatedCount = Integer.parseInt(MTConfig.TRANSLATECOUNT);
+				int fromIndex = 0;
+				int toIndex = translatedCount;
 				if (sourceList.size() < translatedCount) {
 					mtResult = mtProcessor.translateArray(ConstantsUnicode.EN,
 							toLang, sourceList);

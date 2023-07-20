@@ -6,8 +6,6 @@ package com.vmware.vip.core.messages.service.multcomponent;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -36,7 +34,7 @@ public class MultComponentService implements IMultComponentService {
 
 	private static Logger LOGGER = LoggerFactory.getLogger(MultComponentService.class);
 
-	@Resource
+	@Autowired
 	private IMultComponentDao multipleComponentsDao;
 
 	@Autowired

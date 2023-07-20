@@ -1,31 +1,20 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.v1.authentication;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.vmware.vip.api.rest.API;
-import com.vmware.vip.api.rest.APIOperation;
 import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.api.rest.APIParamValue;
-import com.vmware.vip.api.rest.APIV1;
 import com.vmware.vip.common.i18n.dto.AuthenKeyDTO;
 import com.vmware.vip.common.i18n.dto.response.AthenticationResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.i18n.api.v1.utils.KeyService;
-
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Parameter;
+import jakarta.servlet.http.HttpServletRequest;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Provide RESTful API to manipulate the key for product.
@@ -60,9 +49,9 @@ public class SecurityKeyAPI {
      * Temporarily disabling this unused API by commenting out the following annotations. - 09May19 
     */
     public AthenticationResponseDTO getKey(
-            @ApiParam(name = APIParamName.PRODUCT_NAME, required = true, value = APIParamValue.PRODUCT_NAME) @RequestParam(value = APIParamName.PRODUCT_NAME, required = true) String productName,
-            @ApiParam(name = APIParamName.VERSION, required = true, value = APIParamName.VERSION) @RequestParam(value = APIParamName.VERSION, required = true) String version,
-            @ApiParam(name = APIParamName.USER_ID, required = true, value = APIParamValue.USERID) @RequestParam(value = APIParamName.USER_ID, required = true) String userID,
+            @Parameter(name = APIParamName.PRODUCT_NAME, required = true, description = APIParamValue.PRODUCT_NAME) @RequestParam(value = APIParamName.PRODUCT_NAME, required = true) String productName,
+            @Parameter(name = APIParamName.VERSION, required = true, description = APIParamName.VERSION) @RequestParam(value = APIParamName.VERSION, required = true) String version,
+            @Parameter(name = APIParamName.USER_ID, required = true, description = APIParamValue.USERID) @RequestParam(value = APIParamName.USER_ID, required = true) String userID,
             HttpServletRequest request) {
         AthenticationResponseDTO athenticationResponseDTO = new AthenticationResponseDTO();
         if (StringUtils.isNotEmpty(productName) && StringUtils.isNotEmpty(version)

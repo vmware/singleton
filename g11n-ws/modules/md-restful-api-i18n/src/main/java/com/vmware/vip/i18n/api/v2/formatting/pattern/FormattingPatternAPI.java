@@ -19,8 +19,8 @@ import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.common.utils.RegExpValidatorUtils;
 import com.vmware.vip.i18n.api.base.BaseAction;
 import com.vmware.vip.i18n.api.base.utils.CommonUtility;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,13 +43,13 @@ public class FormattingPatternAPI extends BaseAction {
     /**
      * Get i18n pattern by specific locale and scope
      */
-    @ApiOperation(value = APIOperation.FORMAT_PATTERN_GET_VALUE, notes = APIOperation.FORMAT_PATTERN_GET_NOTES)
+    @Operation(summary = APIOperation.FORMAT_PATTERN_GET_VALUE, description = APIOperation.FORMAT_PATTERN_GET_NOTES)
     @RequestMapping(value = APIV2.FORMAT_PATTERN_GET, method = RequestMethod.GET, produces = {API.API_CHARSET})
     @ResponseStatus(HttpStatus.OK)
     public APIResponseDTO getI18nPattern(
-            @ApiParam(name = APIParamName.LOCALE, required = true, value = APIParamValue.LOCALE) @PathVariable(value = APIParamName.LOCALE) String locale,
-            @ApiParam(name = APIParamName.SCOPE, required = true, value = APIParamValue.SCOPE) @RequestParam(value = APIParamName.SCOPE, required = true) String scope,
-            @ApiParam(name = APIParamName.SCOPE_FILTER, required = false, value = APIParamValue.SCOPE_FILTER) @RequestParam(value = APIParamName.SCOPE_FILTER, required = false) String scopeFilter
+            @Parameter(name = APIParamName.LOCALE, required = true, description = APIParamValue.LOCALE) @PathVariable(value = APIParamName.LOCALE) String locale,
+            @Parameter(name = APIParamName.SCOPE, required = true, description = APIParamValue.SCOPE) @RequestParam(value = APIParamName.SCOPE, required = true) String scope,
+            @Parameter(name = APIParamName.SCOPE_FILTER, required = false, description = APIParamValue.SCOPE_FILTER) @RequestParam(value = APIParamName.SCOPE_FILTER, required = false) String scopeFilter
     ) throws Exception {
         List<String> categories = CommonUtility.getCategoriesByEnum(scope, true);
         if (CommonUtil.isEmpty(categories)) {
@@ -71,14 +71,14 @@ public class FormattingPatternAPI extends BaseAction {
     /**
      * Get i18n pattern with language, region and scope parameter.
      */
-    @ApiOperation(value = APIOperation.FORMAT_PATTERN_VALUE, notes = APIOperation.FORMAT_PATTERN_NOTES)
+    @Operation(summary = APIOperation.FORMAT_PATTERN_VALUE, description = APIOperation.FORMAT_PATTERN_NOTES)
     @GetMapping(value = APIV2.FORMAT_PATTERN_WITH_LANGUAGE, produces = {API.API_CHARSET})
     @ResponseStatus(HttpStatus.OK)
     public APIResponseDTO getI18nPatternWithLanguageAndRegion(
-            @ApiParam(name = APIParamName.LANGUAGE, required = true, value = APIParamValue.LANGUAGE) @RequestParam(value = APIParamName.LANGUAGE, required = true) String language,
-            @ApiParam(name = APIParamName.REGION, required = true, value = APIParamValue.REGION) @RequestParam(value = APIParamName.REGION, required = true) String region,
-            @ApiParam(name = APIParamName.SCOPE, required = true, value = APIParamValue.SCOPE) @RequestParam(value = APIParamName.SCOPE, required = true) String scope,
-            @ApiParam(name = APIParamName.SCOPE_FILTER, required = false, value = APIParamValue.SCOPE_FILTER) @RequestParam(value = APIParamName.SCOPE_FILTER, required = false) String scopeFilter
+            @Parameter(name = APIParamName.LANGUAGE, required = true, description = APIParamValue.LANGUAGE) @RequestParam(value = APIParamName.LANGUAGE, required = true) String language,
+            @Parameter(name = APIParamName.REGION, required = true, description = APIParamValue.REGION) @RequestParam(value = APIParamName.REGION, required = true) String region,
+            @Parameter(name = APIParamName.SCOPE, required = true, description = APIParamValue.SCOPE) @RequestParam(value = APIParamName.SCOPE, required = true) String scope,
+            @Parameter(name = APIParamName.SCOPE_FILTER, required = false, description = APIParamValue.SCOPE_FILTER) @RequestParam(value = APIParamName.SCOPE_FILTER, required = false) String scopeFilter
     ) throws VIPCacheException {
         if (!CommonUtil.isEmpty(scopeFilter) && !RegExpValidatorUtils.startLetterAndCommValidchar(scopeFilter)) {
             return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.SCOPE_FILTER_NOT_VALIDATE, null);

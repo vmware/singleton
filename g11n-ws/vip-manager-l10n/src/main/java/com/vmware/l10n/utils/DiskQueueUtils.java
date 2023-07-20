@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.utils;
@@ -135,7 +135,7 @@ public class DiskQueueUtils {
      * @return
      * @throws IOException
      */
-    public static Map<String, ComponentSourceDTO> getQueueFile2Obj(File file) throws IOException {
+    public static Map <String, ComponentSourceDTO> getQueueFile2Obj(File file) throws IOException {
     	ObjectMapper objectMapper = new ObjectMapper();
       
 		@SuppressWarnings("unchecked")

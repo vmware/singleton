@@ -1,10 +1,12 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.v2.formatting.number;
 
-import javax.servlet.http.HttpServletRequest;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,8 +27,6 @@ import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.i18n.api.base.BaseAction;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 
 /**
  * Provide RESTful API to manipulate the number by specific locale and scale.
@@ -51,13 +51,13 @@ public class FormattingNumberAPI extends BaseAction {
 	 *            Digital precision, decimal digits
 	 * @return APIResponseDTO The object which represents response status.
 	 */
-	@ApiOperation(value = APIOperation.FORMAT_NUMBER_GET_VALUE, notes = APIOperation.FORMAT_NUMBER_GET_NOTES)
+	@Operation(summary = APIOperation.FORMAT_NUMBER_GET_VALUE, description = APIOperation.FORMAT_NUMBER_GET_NOTES)
 	@RequestMapping(value = APIV2.LOCALIZED_NUMBER, method = RequestMethod.GET, produces = { API.API_CHARSET })
 	@ResponseStatus(HttpStatus.OK)
 	public APIResponseDTO formatDate(
-			@ApiParam(name = APIParamName.LOCALE, required = true, value = APIParamValue.LOCALE) @RequestParam(value = APIParamName.LOCALE, required = true) String locale,
-			@ApiParam(name = APIParamName.NUMBER, required = true, value = APIParamValue.NUMBER) @RequestParam(value = APIParamName.NUMBER, required = true) String number,
-			@ApiParam(name = APIParamName.SCALE, required = false, value = APIParamValue.SCALE) @RequestParam(value = APIParamName.SCALE, required = false) Integer scale,
+			@Parameter(name = APIParamName.LOCALE, required = true, description = APIParamValue.LOCALE) @RequestParam(value = APIParamName.LOCALE, required = true) String locale,
+			@Parameter(name = APIParamName.NUMBER, required = true, description = APIParamValue.NUMBER) @RequestParam(value = APIParamName.NUMBER, required = true) String number,
+			@Parameter(name = APIParamName.SCALE, required = false, description = APIParamValue.SCALE) @RequestParam(value = APIParamName.SCALE, required = false) Integer scale,
 			HttpServletRequest request) {
 		int s = scale == null ? 0 : scale.intValue();
 		String localeNumber = numberFormatService.formatNumber(locale, number,
@@ -65,7 +65,7 @@ public class FormattingNumberAPI extends BaseAction {
 		NumberDTO numberDTO = new NumberDTO();
 		numberDTO.setFormattedNumber(localeNumber);
 		numberDTO.setLocale(locale);
-		numberDTO.setScale(new Integer(s).toString());
+		numberDTO.setScale(Integer.valueOf(s).toString());
 		numberDTO.setNumber(number);
 		return super.handleResponse(APIResponseStatus.OK, numberDTO);
 	}

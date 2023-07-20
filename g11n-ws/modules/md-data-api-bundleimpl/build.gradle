@@ -1,4 +1,4 @@
-//Copyright 2019-2022 VMware, Inc.
+//Copyright 2019-2023 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java-library'
 apply plugin: 'org.springframework.boot'
@@ -16,8 +16,14 @@ jar {
 dependencies {
     api project(":md-data-api")
 	api project(":vip-common")
-	implementation("org.springframework.boot:spring-boot")
-	implementation("org.slf4j:slf4j-api:$slf4jVersion")
+    compileOnly("org.springframework.boot:spring-boot")
+    compileOnly("org.slf4j:slf4j-api:$slf4jVersion")
+    compileOnly("commons-io:commons-io:$commonsIoVersion")
+    compileOnly("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
+    compileOnly("org.apache.commons:commons-lang3:$commonsLangVersion")
+
+
+
 }
 
 bootJar {

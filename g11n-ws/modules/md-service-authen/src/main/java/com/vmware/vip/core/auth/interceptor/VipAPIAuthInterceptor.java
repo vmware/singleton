@@ -1,20 +1,20 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.auth.interceptor;
 
 import java.time.LocalDateTime;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.servlet.HandlerInterceptor;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
@@ -22,7 +22,7 @@ import com.vmware.vip.common.i18n.status.Response;
 import com.vmware.vip.core.csp.service.JwtTokenService;
 
 @Component
-public class VipAPIAuthInterceptor extends HandlerInterceptorAdapter{
+public class VipAPIAuthInterceptor  implements HandlerInterceptor {
 	private static Logger logger = LoggerFactory.getLogger(VipAPIAuthInterceptor.class); 
 	private static final String AUTH_TOKEN = "token";
 	private static final String AUTH_APPID = "appId";

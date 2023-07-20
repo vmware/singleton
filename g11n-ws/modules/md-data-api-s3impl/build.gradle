@@ -22,6 +22,7 @@ dependencies {
     compileOnly("org.springframework.boot:spring-boot")
     compileOnly("org.springframework.boot:spring-boot-starter-data-jpa")
     compileOnly("org.slf4j:slf4j-api:$slf4jVersion")
+    compileOnly("org.apache.commons:commons-lang3:$commonsLangVersion")
     implementation ("com.amazonaws:aws-java-sdk-s3:$awsS3Version")
     implementation ("com.amazonaws:aws-java-sdk-sts:$awsS3Version")
     implementation ("com.amazonaws:aws-java-sdk-iam:$awsS3Version")

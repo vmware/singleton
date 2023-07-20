@@ -1,4 +1,4 @@
-//Copyright 2019-2022 VMware, Inc.
+//Copyright 2019-2023 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 buildscript {
   repositories {
@@ -98,15 +98,16 @@ configurations {
 }
 
 dependencies {
-    api project(":md-data-api")
-    api project(":vip-common")
-    api project(":md-data-api-pgimpl")
-    api "org.springframework.boot:spring-boot-starter"
-    api ('org.springframework.boot:spring-boot-starter-log4j2')
-    api group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '4.11.0.201803080745-r'
-    api("org.apache.httpcomponents:httpclient:$httpclient")
+    implementation project(":md-data-api")
+    implementation project(":vip-common")
+    implementation project(":md-data-api-pgimpl")
+    implementation "org.springframework.boot:spring-boot-starter"
+    implementation ('org.springframework.boot:spring-boot-starter-log4j2')
+    implementation group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '4.11.0.201803080745-r'
+    implementation("org.apache.httpcomponents:httpclient:$httpclient")
     implementation("commons-collections:commons-collections:$commonsCollectionsVersion")
-    api group: 'org.python', name: 'jython-standalone', version: '2.7.1'
+    implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
+    implementation group: 'org.python', name: 'jython-standalone', version: '2.7.1'
     testImplementation group: 'junit', name: 'junit', version: '4.+'
 }
 
