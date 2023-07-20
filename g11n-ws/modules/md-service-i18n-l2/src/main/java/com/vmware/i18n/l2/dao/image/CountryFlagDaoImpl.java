@@ -11,6 +11,7 @@ import com.vmware.vip.common.constants.ConstantsFile;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.Resource;
@@ -18,7 +19,6 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.ResourceUtils;
 
-import javax.annotation.PostConstruct;
 import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
@@ -31,8 +31,37 @@ public class CountryFlagDaoImpl implements ICountryFlagDao {
     private static Logger logger = LoggerFactory.getLogger(CountryFlagDaoImpl.class);
     private static String basePath = ConstantsKeys.IMAGE+File.separator+ConstantsKeys.FLAGS+File.separator;
 
+    protected void initZipCountryFlagPattern()  {
 
-    @PostConstruct
+        logger.info("begin to init country flag content.");
+        String sourcePath = "flag/country-flag-icons**.zip";
+        Resource resource   = new PathMatchingResourcePatternResolver().getResource(ResourceUtils.CLASSPATH_URL_PREFIX+sourcePath);
+        harset gbk = Charset.forName("gbk");
+        ZipInputStream zin = new ZipInputStream(in,gbk);
+        ZipEntry ze;
+        while((ze = zin.getNextEntry()) != null){
+            if(ze.toString().endsWith("txt")){
+                BufferedReader br = new BufferedReader(
+                        new InputStreamReader(zf.getInputStream(ze)));
+                String line;
+                while((line = br.readLine()) != null){
+                    System.out.println(line.toString());
+                }
+                br.close();
+            }
+            System.out.println();
+        }
+        zin.closeEntry();
+
+
+
+
+        logger.info("Init country flag content successfully!");
+
+
+    }
+
+        @PostConstruct
     protected void initCountryFlagPattern()  {
         logger.info("begin to init country flag content.");
         String sourcePath = "flags/**/**.svg";

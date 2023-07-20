@@ -11,18 +11,19 @@ import com.vmware.vip.api.rest.APIParamValue;
 import com.vmware.vip.api.rest.APIV2;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ValidationMsg;
-import com.vmware.vip.common.exceptions.VIPAPIException;
 import com.vmware.vip.common.exceptions.ValidationException;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import jakarta.servlet.http.HttpServletResponse;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.servlet.http.HttpServletResponse;
 import java.nio.channels.Channels;
 import java.nio.channels.FileChannel;
 import java.nio.channels.WritableByteChannel;
@@ -35,16 +36,16 @@ public class ImageAPI {
     /**
      * Get country flag with region and level parameter.
      */
-    @ApiOperation(value = APIOperation.IMAGE_COUNTRY_FLAG_VALUE, notes = APIOperation.IMAGE_COUNTRY_FLAG_NOTES)
+    @Operation(summary = APIOperation.IMAGE_COUNTRY_FLAG_VALUE, description = APIOperation.IMAGE_COUNTRY_FLAG_NOTES)
     @GetMapping(value = APIV2.IMAGE_COUNTRY_FLAG_GET)
     @ResponseStatus(HttpStatus.OK)
     public void getCountryFlagWithRegion(
-            @ApiParam(name = APIParamName.REGION, required = true, value = APIParamValue.REGION) @RequestParam(value = APIParamName.REGION, required = true) String region,
-            @ApiParam(name = APIParamName.SCALE, required = false, value = APIParamValue.COUNTRY_FLAG_SCALE) @RequestParam(value = APIParamName.SCALE, required = false) Integer scale,
-            @ApiParam(name = APIParamName.TYPE, required = false, value = APIParamValue.TYPE) @RequestParam(value = APIParamName.TYPE, required = false) String type,
+            @Parameter(name = APIParamName.REGION, required = true, description = APIParamValue.REGION) @RequestParam(value = APIParamName.REGION, required = true) String region,
+            @Parameter(name = APIParamName.SCALE, required = false, description = APIParamValue.COUNTRY_FLAG_SCALE) @RequestParam(value = APIParamName.SCALE, required = false) Integer scale,
+            @Parameter(name = APIParamName.TYPE, required = false, description = APIParamValue.TYPE) @RequestParam(value = APIParamName.TYPE, required = false) String type,
             HttpServletResponse resp) throws Exception {
         int s = scale == null ? 1 : scale.intValue();
-        String imgType = type.isEmpty()? ConstantsKeys.SVG : type.toLowerCase();
+        String imgType = StringUtils.isEmpty(type) ? ConstantsKeys.SVG : type.toLowerCase();
         if (!ConstantsKeys.IMAGE_TYPE_LIST.contains(imgType)){
            throw new ValidationException(String.format(ValidationMsg.IMAGE_TYPE_NOT_VALIDE, type));
         }
