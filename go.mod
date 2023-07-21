@@ -27,8 +27,8 @@ require (
 	github.com/mackerelio/go-osstat v0.2.3
 	github.com/pkg/fileutils v0.0.0-20181114200823-d734b7f202ba
 	github.com/spf13/pflag v1.0.5
-	github.com/stretchr/objx v0.4.0
-	github.com/stretchr/testify v1.8.0
+	github.com/stretchr/objx v0.5.0
+	github.com/stretchr/testify v1.8.4
 	github.com/swaggo/files v0.0.0-20220610200504-28940afbdbfe
 	github.com/swaggo/gin-swagger v1.5.0
 	github.com/swaggo/swag v1.8.3
