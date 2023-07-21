@@ -46,16 +46,18 @@ public class CountryFlagDaoImpl implements ICountryFlagDao {
                try (ZipInputStream zin = new ZipInputStream(resources[0].getInputStream(), Charset.forName("UTF-8"))) {
                    ZipEntry ze = null;
                    while ((ze = zin.getNextEntry()) != null) {
-                       String zipName = ze.getName().substring(ze.getName().indexOf(ConstantsChar.BACKSLASH));
-                       if ((zipName.startsWith("/flags/3x2/") || zipName.startsWith("/flags/1x1/")) && zipName.endsWith(ConstantsFile.FILE_TYPE_SVG)) {
-                           try (ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
-                               byte[] buffer = new byte[1024];
-                               int len;
-                               while ((len = zin.read(buffer)) > 0) {
-                                   bos.write(buffer, 0, len);
+                       if (ze.getName().startsWith("country-flag-icons-")) {
+                           String zipName = ze.getName().substring(ze.getName().indexOf(ConstantsChar.BACKSLASH));
+                           if ((zipName.startsWith("/flags/3x2/") || zipName.startsWith("/flags/1x1/")) && zipName.endsWith(ConstantsFile.FILE_TYPE_SVG)) {
+                               try (ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
+                                   byte[] buffer = new byte[1024];
+                                   int len;
+                                   while ((len = zin.read(buffer)) > 0) {
+                                       bos.write(buffer, 0, len);
+                                   }
+                                   String content = bos.toString();
+                                   writeCountryFlagResult(zipName, content);
                                }
-                               String content = bos.toString();
-                               writeCountryFlagResult(zipName, content);
                            }
                        }
                        zin.closeEntry();
@@ -75,7 +77,6 @@ public class CountryFlagDaoImpl implements ICountryFlagDao {
     private void writeCountryFlagResult(String sourcePathStr, String flagContent) throws IOException {
 
         String pathStr = ConstantsKeys.IMAGE + sourcePathStr;
-        logger.info(pathStr);
         pathStr = pathStr.replaceAll(ConstantsChar.BACKSLASH, File.separator);
         pathStr = pathStr.replaceAll(ConstantsFile.FILE_TYPE_SVG, ConstantsFile.FILE_TPYE_JSON);
         File file = new File(pathStr);
@@ -84,6 +85,7 @@ public class CountryFlagDaoImpl implements ICountryFlagDao {
         }
         file.deleteOnExit();
         file.createNewFile();
+        logger.info(file.getAbsolutePath());
         String region = file.getName().replace(ConstantsFile.FILE_TPYE_JSON, "");
 
         Map<String, String> respData = new HashMap<>();
