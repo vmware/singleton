@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.common.constants;
@@ -33,7 +33,8 @@ public class ConstantsMsg {
    public static final String SCOPE_FILTER_NOT_VALIDATE = "The request parameter scopeFilter is invalid, only one filtering method is supported";
    public static final String PRODUCT_OR_VERSION_MISSING = "Only one parameter of 'productName' and 'version' is provided, they should be used in pairs!";
    public static final String SOURCE_IS_NOT_PROVIDE = "Source is not provided, the existing translation is found and returned";
-
+   public static final String IMAGE_NOT_SUPPORT_REGION = "Current request region '%s' is not support.";
+   public static final String IMAGE_NOT_SUPPORT_SCALE = "Current request image scale is not support.";
    private ConstantsMsg() {
    }
 }

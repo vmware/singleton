@@ -26,6 +26,10 @@ bootJar {
   enabled = false
 }
 
+sourceSets {
+    main.java.srcDirs = ['src/main/java']
+    main.resources.srcDirs = ['src/main/resources']
+}
 
 jar {
     baseName = 'locale-libs'

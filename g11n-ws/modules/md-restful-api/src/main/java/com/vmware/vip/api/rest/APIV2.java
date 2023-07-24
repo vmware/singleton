@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.api.rest;
@@ -40,5 +40,6 @@ public class APIV2 {
 	public static final String SUPPORTED_LANGUAGE_LIST    = API.I18N_API_ROOT + V + "/locale/supportedLanguageList";
 	public static final String FORMAT_PATTERN_WITH_LANGUAGE     = API_FORMATTING  + "/patterns";
 	public static final String TRANSLATION_WITH_PATTERN = API.I18N_API_ROOT + V+"/combination/translationsAndPattern";
+	public static final String IMAGE_COUNTRY_FLAG_GET = API.I18N_API_ROOT + V +"/image/countryFlag";
 
 }

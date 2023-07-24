@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.api.rest;
@@ -66,10 +66,14 @@ public class APIOperation {
 
 	public static final String FORMAT_PATTERN_VALUE = "Get pattern from CLDR";
 	public static final String FORMAT_PATTERN_NOTES = "Get pattern from CLDR with language, region and scope";
-	
+
+
 	public static final String TRANSLATION_WITH_PATTERN_VALUE = "Get translations and patterns";
 	public static final String TRANSLATION_WITH_PATTERN_NOTES = "Get translations and patterns by customized type";
 	
 	public final static String KEY_SOURCE_POST_VALUE = "Post a key's source";
 	public final static String KEY_SOURCE_POST_NOTES = "Post a key's source under the component";
+
+	public static final String IMAGE_COUNTRY_FLAG_VALUE = "Get the country flag svg image";
+	public static final String IMAGE_COUNTRY_FLAG_NOTES = "Get the country flag svg image with region and scale";
 }

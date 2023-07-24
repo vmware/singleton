@@ -33,4 +33,5 @@ public final class ValidationMsg {
 	public final static String PRODUCTNAME_NOT_SUPPORTED = "The product '%s' is NOT supported yet!";
 	public final static String LOCALENAME_NOT_SUPPORTED= "The locale '%s' is NOT supported yet!";
 	public final static String APPID_NOT_VALIDE = "Incorrect appId(only allows letter and number)";
+	public final static String IMAGE_TYPE_NOT_VALIDE = "The image type '%s' not support (only allows empty, svg)";
 }
