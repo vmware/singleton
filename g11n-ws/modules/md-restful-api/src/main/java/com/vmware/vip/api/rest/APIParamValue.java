@@ -39,6 +39,6 @@ public class APIParamValue {
 	public final static String EXPIREDAYS     = "the authentication token's expired days";
 
 	public final static String COUNTRY_FLAG_SCALE          = "The country flag scale：1 is 1x1, 2 is 3x2,default is 1x1";
-	public final static String TYPE = "a string for image type, default is svg (only support 'svg' now)";
+	public final static String IMAGE_TYPE = "a string for image type, default is json (only support empty, 'svg', 'json' now)";
 
 }
