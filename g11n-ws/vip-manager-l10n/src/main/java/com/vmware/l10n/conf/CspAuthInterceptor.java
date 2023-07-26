@@ -6,18 +6,20 @@ package com.vmware.l10n.conf;
 
 import java.time.LocalDateTime;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.servlet.HandlerInterceptor;
 
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.i18n.status.Response;
 
-public class CspAuthInterceptor extends HandlerInterceptorAdapter {
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+
+public class CspAuthInterceptor implements HandlerInterceptor {
 
 	private static Logger logger = LoggerFactory.getLogger(CspAuthInterceptor.class);
 

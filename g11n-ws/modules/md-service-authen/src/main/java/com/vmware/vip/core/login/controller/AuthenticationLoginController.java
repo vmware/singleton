@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.login.controller;
@@ -8,6 +8,8 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,13 +27,8 @@ import com.vmware.vip.common.i18n.status.Response;
 import com.vmware.vip.core.csp.service.JwtTokenService;
 import com.vmware.vip.core.login.LdapAuthenticator;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiParam;
-
-
-
 @RestController("authentication-authenticationLoginAPI")  
-@Api(value = "Login Controller login operations")
+@Tag(name = "authentication-authenticationLoginAPI", description = "Login Controller login operations")
 public class AuthenticationLoginController {
 	private static Logger logger = LoggerFactory.getLogger(AuthenticationLoginController.class);
 	
@@ -45,11 +42,11 @@ public class AuthenticationLoginController {
 	
 	@PostMapping("/auth/login")
 	public APIResponseDTO vipLogin(
-			 @ApiParam(name = APIParamName.USERNAME, value = APIParamValue.USERNAME) 
+			 @Parameter(name = APIParamName.USERNAME, description = APIParamValue.USERNAME)
 			 @RequestParam(value = APIParamName.USERNAME) String username,
-			 @ApiParam(name = APIParamName.PASSWORD, value = APIParamValue.PASSWORD) 
+			 @Parameter(name = APIParamName.PASSWORD, description = APIParamValue.PASSWORD)
 			 @RequestParam(value = APIParamName.PASSWORD) String password,
-			 @ApiParam(name = APIParamName.EXPIREDAYS, value = APIParamValue.EXPIREDAYS) 
+			 @Parameter(name = APIParamName.EXPIREDAYS, description = APIParamValue.EXPIREDAYS)
 			 @RequestParam(value = APIParamName.EXPIREDAYS) Integer expireDays
 			) throws ValidationException {
 		logger.info("{} begin to login", username );

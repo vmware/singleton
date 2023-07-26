@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.except;
@@ -13,6 +13,7 @@ import com.vmware.vip.common.i18n.status.Response;
 import com.vmware.vip.core.about.exception.AboutAPIException;
 import com.vmware.vip.core.messages.exception.L2APIException;
 import com.vmware.vip.core.messages.exception.L3APIException;
+import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -21,7 +22,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.text.MessageFormat;
 
-import javax.servlet.http.HttpServletResponse;
 
 @ControllerAdvice
 public class ExceptionHandle {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.api.rest;
@@ -42,4 +42,6 @@ public class APIParamName {
 	public final static String PASSWORD = "password";
 	public final static String EXPIREDAYS = "expireDays";
 	public final static String APP_ID = "appId";
+	public final static String TYPE = "type";
+
 }

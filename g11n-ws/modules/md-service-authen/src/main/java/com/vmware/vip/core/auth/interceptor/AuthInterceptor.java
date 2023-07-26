@@ -6,20 +6,22 @@ package com.vmware.vip.core.auth.interceptor;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
+
 import com.vmware.vip.core.csp.service.CSPTokenService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.servlet.HandlerInterceptor;
 
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.i18n.status.Response;
 
-public class AuthInterceptor extends HandlerInterceptorAdapter {
+public class AuthInterceptor implements HandlerInterceptor {
 
 	private static Logger logger = LoggerFactory.getLogger(AuthInterceptor.class);
   

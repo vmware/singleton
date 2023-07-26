@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.synch.utils;
@@ -139,12 +139,8 @@ public class GitUtils {
 	 *
 	 * @param remoteUrl
 	 *            to connect.
-	 * @param localPath
-	 *            where to clone the repo.
 	 * @param passphrase
 	 *            to access private key.
-	 * @param privateKey
-	 *            file location. If null default (~.ssh/id_rsa) location is used.
 	 *
 	 * @return Git instance. Caller is responsible to close the connection.
 	 */

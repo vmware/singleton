@@ -1,14 +1,14 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.base;
 
 import java.io.IOException;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -23,7 +23,6 @@ import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.utils.KeyUtils;
 import com.vmware.vip.core.messages.exception.L3APIException;
-import com.vmware.vip.i18n.api.base.BaseAction;
 import com.vmware.vip.i18n.api.v1.translation.TranslationProductComponentKeyAPI;
 
 /**

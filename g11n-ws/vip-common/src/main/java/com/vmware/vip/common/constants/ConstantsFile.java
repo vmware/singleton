@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.common.constants;
@@ -31,5 +31,7 @@ public class ConstantsFile {
     public static final String VERSION_FILE = "version.json";
     
     public static final String ALLOW_LIST_FILE = "bundle.json";
+
+    public static final String FILE_TYPE_SVG = ".svg";
 
 }

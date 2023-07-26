@@ -1,9 +1,11 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.api.rest;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,9 +19,6 @@ import com.vmware.vip.api.domain.DbResponseStatus;
 import com.vmware.vip.messages.data.dao.api.IPgVipDbTabApi;
 import com.vmware.vip.messages.data.dao.exception.DataException;
 
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
 
 /**
  * 
@@ -34,12 +33,10 @@ public class ProductRegisterControl {
 	@Autowired
 	private IPgVipDbTabApi dbtab;
 
-	@ApiOperation(value = "get product", notes = "get product from vip DB")
-	@ApiImplicitParams({
-			@ApiImplicitParam(name = "productName", value = "product Name", required = true, dataType = "String", paramType = "path") })
+	@Operation(summary = "get product", description = "get product from vip DB")
 
 	@GetMapping(value = "/product/{productName}")
-	public DbResponseStatus getProduct(@PathVariable String productName) {
+	public DbResponseStatus getProduct(@Parameter(name = "productName", description = "product Name", required = true) @PathVariable String productName) {
 
 		boolean result = dbtab.productIsRegistered(productName);
 		if (result) {
@@ -50,11 +47,9 @@ public class ProductRegisterControl {
 
 	}
 
-	@ApiOperation(value = "register product", notes = "customer need register product to vip DB")
-	@ApiImplicitParams({
-			@ApiImplicitParam(name = "productName", value = "product Name", required = true, dataType = "String", paramType = "path") })
+	@Operation(summary = "register product", description = "customer need register product to vip DB")
 	@PutMapping(value = "/product/{productName}")
-	public DbResponseStatus addProduct(@PathVariable String productName) {
+	public DbResponseStatus addProduct(@Parameter(name = "productName", description = "product Name", required = true) @PathVariable String productName) {
 
 		boolean result = dbtab.registerProduct(productName);
 		if (result) {
@@ -65,11 +60,9 @@ public class ProductRegisterControl {
 
 	}
 
-	@ApiOperation(value = "delete product", notes = "delete product to vip DB")
-	@ApiImplicitParams({
-			@ApiImplicitParam(name = "productName", value = "product Name", required = true, dataType = "String", paramType = "path") })
+	@Operation(summary = "delete product", description = "delete product to vip DB")
 	@DeleteMapping(value = "/product/{productName}")
-	public DbResponseStatus deleteProduct(@PathVariable String productName) throws DataException {
+	public DbResponseStatus deleteProduct(@Parameter(name = "productName", description = "product Name", required = true) @PathVariable String productName) throws DataException {
 
 		boolean result = dbtab.delProduct(productName);
 		if (result) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.messages.service.string;
@@ -23,7 +23,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import javax.annotation.Resource;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,7 +36,7 @@ public class StringService implements IStringService {
 	private static Logger logger = LoggerFactory.getLogger(StringService.class);
 	@Autowired
 	private PseudoConfig pseudoConfig;
-	@Resource
+	@Autowired
 	private IOneComponentService singleComponentService;
 
 	/**
@@ -158,7 +157,7 @@ public class StringService implements IStringService {
 		ComponentMessagesDTO newComponentMessagesDTO = new ComponentMessagesDTO();
 		BeanUtils.copyProperties(componentMessagesDTO, newComponentMessagesDTO);
 		newComponentMessagesDTO.setLocale(locale);
-		newComponentMessagesDTO.setPseudo(new Boolean(pseudo));
+		newComponentMessagesDTO.setPseudo(Boolean.parseBoolean(pseudo));
 		return newComponentMessagesDTO;
 	}
 

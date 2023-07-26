@@ -3,14 +3,12 @@
 apply plugin: 'java-library'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
-sourceCompatibility = 1.8
 description = 'singleton lite manager'
 
 archivesBaseName = 'singleton-lite'
 
 configurations {
 	bootJar
-    war
     providedRuntime
    // remove default logger
    all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
@@ -32,60 +30,44 @@ test {
 
 dependencies {
    if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
-        api project(":md-data-api-pgimpl")
+       implementation project(":md-data-api-pgimpl")
     }else if (project.hasProperty('datatype') && project.getProperty('datatype') == 's3') {
-        api project(":md-data-api-s3impl")
+       implementation project(":md-data-api-s3impl")
     }else {
-        api project(":md-data-api-bundleimpl")
+       implementation project(":md-data-api-bundleimpl")
     }
-    api project(":vip-common")
-    api project(":md-restful-api-i18n")
+    implementation project(":vip-common")
+    implementation project(":md-restful-api-i18n")
+
     implementation("org.apache.commons:commons-lang3:$commonsLangVersion")
     implementation("commons-io:commons-io:$commonsIoVersion")
+    implementation("commons-codec:commons-codec:$commonsCodecVersion")
     implementation("com.googlecode.json-simple:json-simple:$jsonSimpleVersion"){
           exclude group: 'junit'
     }
-    implementation("org.ehcache:ehcache:$ehCacheVersion")
-    implementation("javax.cache:cache-api:$cacheApiVersion")
 
-    implementation("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
-    implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
-    implementation("com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion")
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
+    implementation('org.springframework.boot:spring-boot-starter-log4j2')
+    implementation("org.springframework.boot:spring-boot-starter-web")
 
-    compileOnly("com.google.guava:guava:$guavaVersion")
-	implementation("commons-codec:commons-codec:$commonsCodecVersion")
-    implementation("com.ibm.icu:icu4j:$icu4jVersion")
-    api group: 'org.webjars.bower', name: 'cldr-data', version: '28.0.1'
-
-    api ("org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion")
-    api ("org.apache.tomcat:tomcat-annotations-api:$tomcatVersion")
-    api('org.springframework.boot:spring-boot-autoconfigure')
-      api ('org.springframework.boot:spring-boot-starter-log4j2'){
-              exclude group: "org.apache.logging.log4j"
+    implementation("org.ehcache:ehcache:$ehCacheVersion") {
+        capabilities {
+            requireCapability('org.ehcache:ehcache-jakarta')
+        }
     }
-    implementation("org.springframework:spring-webmvc:$springWebVersion")
+    implementation 'org.glassfish.jaxb:jaxb-runtime:4.0.3'
 
-    implementation("org.apache.logging.log4j:log4j-api:$log4j2Version")
-    implementation("org.apache.logging.log4j:log4j-core:$log4j2Version")
-    implementation("org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version")
-    implementation("org.slf4j:slf4j-api:$slf4jVersion")
-    implementation("org.slf4j:jul-to-slf4j:$slf4jVersion")
+    implementation("com.google.guava:guava:$guavaVersion")
+    implementation("com.ibm.icu:icu4j:$icu4jVersion")
     implementation("org.yaml:snakeyaml:$snakeyam")
     implementation("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$hibernateJpa21Api")
-    implementation("org.apache.httpcomponents:httpclient:$httpclient")
-    
+
+
     implementation ('org.springframework.boot:spring-boot-starter-actuator')
-      //jdk 11
-    runtimeOnly 'javax.xml.bind:jaxb-api:2.4.0-b180830.0359'
-    runtimeOnly 'javax.activation:activation:1.1.1'
-    runtimeOnly 'com.sun.xml.bind:jaxb-impl:3.0.2'
-    runtimeOnly 'com.sun.xml.bind:jaxb-core:3.0.2'
-    //end jdk 11
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.asciidoctor:asciidoctorj:2.5.10")
-    testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
     testImplementation("junit:junit:$junitVersion")
+
+
 }
 
 processResources {

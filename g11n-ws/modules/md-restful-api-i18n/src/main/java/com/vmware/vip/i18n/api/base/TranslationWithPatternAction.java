@@ -301,12 +301,12 @@ public class TranslationWithPatternAction extends BaseAction {
 	      c.setProductName(productName);
 	      c.setComponent(component == null ? ConstantsKeys.DEFAULT : component.trim());
 	      c.setVersion(version);
-	      if (new Boolean(pseudo)) {
+	      if (Boolean.parseBoolean(pseudo)) {
 	         c.setLocale(ConstantsKeys.LATEST);
 	      } else {
 	         c.setLocale(locale == null ? ConstantsUnicode.EN : locale);
 	      }
-	      c.setPseudo(new Boolean(pseudo));
+	      c.setPseudo(Boolean.parseBoolean(pseudo));
 	      c = singleComponentService.getComponentTranslation(c);
 	      return c;
 	   }

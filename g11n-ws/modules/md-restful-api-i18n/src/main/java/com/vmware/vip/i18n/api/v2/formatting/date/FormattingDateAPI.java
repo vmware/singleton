@@ -1,10 +1,12 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.v2.formatting.date;
 
-import javax.servlet.http.HttpServletRequest;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,8 +29,6 @@ import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.core.messages.exception.L2APIException;
 import com.vmware.vip.i18n.api.base.BaseAction;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 
 /**
  * Provide RESTful API to manipulate the date by specific locale and pattern.
@@ -55,7 +55,7 @@ public class FormattingDateAPI extends BaseAction{
      * @return APIResponseDTO 
      *         The object which represents response status.
      */
-    @ApiOperation(value = APIOperation.FORMAT_DATE_GET_VALUE, notes = APIOperation.FORMAT_DATE_GET_NOTES)
+    @Operation(summary = APIOperation.FORMAT_DATE_GET_VALUE, description = APIOperation.FORMAT_DATE_GET_NOTES)
  /*   @ApiImplicitParams({
         @ApiImplicitParam(name = "token", value = "token", required = true, dataType = "string", paramType = "header"),  
         @ApiImplicitParam(name = "sessionid", value = "sessionid", required = true, dataType = "string", paramType = "header")
@@ -63,9 +63,9 @@ public class FormattingDateAPI extends BaseAction{
     @RequestMapping(value = APIV2.LOCALIZED_DATE, method = RequestMethod.GET, produces = { API.API_CHARSET })
 	@ResponseStatus(HttpStatus.OK)
     public APIResponseDTO formatDate(
-            @ApiParam(name = APIParamName.LOCALE, required = true, value = APIParamValue.LOCALE) @RequestParam(value = APIParamName.LOCALE, required = true) String locale,
-            @ApiParam(name = APIParamName.LONGDATE, required = true, value = APIParamValue.LONGDATE) @RequestParam(value = APIParamName.LONGDATE, required = true) String longDate,
-            @ApiParam(name = APIParamName.PATTERN, required = true, value = APIParamValue.PATTERN) @RequestParam(value = APIParamName.PATTERN, required = true) String pattern,
+            @Parameter(name = APIParamName.LOCALE, required = true, description = APIParamValue.LOCALE) @RequestParam(value = APIParamName.LOCALE, required = true) String locale,
+            @Parameter(name = APIParamName.LONGDATE, required = true, description = APIParamValue.LONGDATE) @RequestParam(value = APIParamName.LONGDATE, required = true) String longDate,
+            @Parameter(name = APIParamName.PATTERN, required = true, description = APIParamValue.PATTERN) @RequestParam(value = APIParamName.PATTERN, required = true) String pattern,
             HttpServletRequest request) throws Exception{
         DateDTO dateDTO = new DateDTO();
         String formattedDate = dateFormatService.formatDate(locale, Long.parseLong(longDate),
@@ -80,8 +80,8 @@ public class FormattingDateAPI extends BaseAction{
     @RequestMapping(value = APIV2.LOCALIZED_TIMEZONE_NAME, method = RequestMethod.GET, produces = { API.API_CHARSET })
    	@ResponseStatus(HttpStatus.OK)
     public APIResponseDTO getDisplayTimezoneNameList(
-            @ApiParam(name = APIParamName.DISPLAY_LANGUAGE, required = true, value = APIParamValue.DISPLAY_LANGUAGE) @RequestParam(value = APIParamName.DISPLAY_LANGUAGE, required = true) String displayLanguage,
-            @ApiParam(name = APIParamName.DEFAULT_TERRITORY, required = false, value = APIParamValue.DEFAULT_TERRITORY) @RequestParam(value = APIParamName.DEFAULT_TERRITORY, required = false, defaultValue = "true") String defaultTerritory
+            @Parameter(name = APIParamName.DISPLAY_LANGUAGE, required = true, description = APIParamValue.DISPLAY_LANGUAGE) @RequestParam(value = APIParamName.DISPLAY_LANGUAGE, required = true) String displayLanguage,
+            @Parameter(name = APIParamName.DEFAULT_TERRITORY, required = false, description = APIParamValue.DEFAULT_TERRITORY) @RequestParam(value = APIParamName.DEFAULT_TERRITORY, required = false, defaultValue = "true") String defaultTerritory
     ) throws L2APIException{
     	TimeZoneName jsonObj = dateFormatService.getTimeZoneName(displayLanguage, Boolean.parseBoolean(defaultTerritory));
         return super.handleResponse(APIResponseStatus.OK, jsonObj);

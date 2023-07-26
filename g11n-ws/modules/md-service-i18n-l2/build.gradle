@@ -18,12 +18,18 @@ dependencies {
     compileOnly("org.springframework:spring-context")
     compileOnly("org.springframework.boot:spring-boot-starter-data-jpa")
     compileOnly("org.slf4j:slf4j-api:$slf4jVersion")
+    compileOnly("org.apache.commons:commons-lang3:$commonsLangVersion")
+
 }
 
 bootJar {
   enabled = false
 }
 
+sourceSets {
+    main.java.srcDirs = ['src/main/java']
+    main.resources.srcDirs = ['src/main/resources']
+}
 
 jar {
     baseName = 'locale-libs'

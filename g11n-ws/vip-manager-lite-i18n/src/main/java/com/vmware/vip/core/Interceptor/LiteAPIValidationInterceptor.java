@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.Interceptor;
@@ -8,16 +8,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
 import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
@@ -28,7 +27,7 @@ import com.vmware.vip.common.utils.RegExpValidatorUtils;
 /**
  * Interceptor for collection new resource
  */
-public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
+public class LiteAPIValidationInterceptor implements HandlerInterceptor {
 	private static Logger LOGGER = LoggerFactory.getLogger(LiteAPIValidationInterceptor.class);
 
 	private String clientRequestIdsStr;
@@ -340,7 +339,7 @@ public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
 				: request.getParameter(APIParamName.SCALE);
 		try {
 			if (!StringUtils.isEmpty(scale)
-					&& new Integer(scale).intValue() < 0) {
+					&& Integer.valueOf(scale).intValue() < 0) {
 				throw new ValidationException(ValidationMsg.SCALE_NOT_VALIDE);
 			}
 		} catch (NumberFormatException e) {
