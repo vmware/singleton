@@ -56,7 +56,8 @@ public class CountryFlagDaoImpl implements ICountryFlagDao {
                                        bos.write(buffer, 0, len);
                                    }
                                    String content = bos.toString();
-                                   writeCountryFlagResult(zipName, content);
+                                   writeCountryFlagJsonResult(zipName, content);
+                                   writeCountryFlagResult(zipName, content, ConstantsFile.FILE_TYPE_SVG);
                                }
                            }
                        }
@@ -74,11 +75,11 @@ public class CountryFlagDaoImpl implements ICountryFlagDao {
 
     }
 
-    private void writeCountryFlagResult(String sourcePathStr, String flagContent) throws IOException {
+    private void writeCountryFlagResult(String sourcePathStr, String fileContent, String newFileNameSuffix) throws IOException {
 
         String pathStr = ConstantsKeys.IMAGE + sourcePathStr;
         pathStr = pathStr.replaceAll(ConstantsChar.BACKSLASH, File.separator);
-        pathStr = pathStr.replaceAll(ConstantsFile.FILE_TYPE_SVG, ConstantsFile.FILE_TPYE_JSON);
+        pathStr = pathStr.replaceAll(ConstantsFile.FILE_TYPE_SVG, newFileNameSuffix);
         File file = new File(pathStr);
         if (!file.getParentFile().exists()) {
             file.getParentFile().mkdirs();
@@ -86,7 +87,20 @@ public class CountryFlagDaoImpl implements ICountryFlagDao {
         file.deleteOnExit();
         file.createNewFile();
         logger.info(file.getAbsolutePath());
-        String region = file.getName().replace(ConstantsFile.FILE_TPYE_JSON, "");
+        try (FileOutputStream fileOutputStream = new FileOutputStream(file);
+             FileChannel fileChannel = fileOutputStream.getChannel()) {
+            fileChannel.write(ByteBuffer.wrap(fileContent.getBytes(StandardCharsets.UTF_8)));
+
+        } catch (IOException e) {
+            logger.error(e.getMessage(), e);
+            throw e;
+        }
+
+
+    }
+    private void writeCountryFlagJsonResult(String sourcePathStr, String flagContent) throws IOException {
+        int regionIdx = sourcePathStr.lastIndexOf(ConstantsChar.BACKSLASH)+1;
+        String region = sourcePathStr.substring(regionIdx).replace(ConstantsFile.FILE_TYPE_SVG, "");
 
         Map<String, String> respData = new HashMap<>();
         respData.put("type", "svg");
@@ -95,32 +109,23 @@ public class CountryFlagDaoImpl implements ICountryFlagDao {
         APIResponseDTO apiResponseDTO = new APIResponseDTO();
         apiResponseDTO.setData(respData);
         apiResponseDTO.setResponse(APIResponseStatus.OK);
-
-        try (FileOutputStream fileOutputStream = new FileOutputStream(file);
-             FileChannel fileChannel = fileOutputStream.getChannel()) {
-            String content = null;
-            try {
-                content = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(apiResponseDTO);
-            } catch (JsonProcessingException e) {
+        try {
+               String content = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(apiResponseDTO);
+               writeCountryFlagResult(sourcePathStr, content, ConstantsFile.FILE_TPYE_JSON);
+        } catch (JsonProcessingException e) {
                 logger.error(e.getMessage(), e);
                 throw e;
-            }
-            fileChannel.write(ByteBuffer.wrap(content.getBytes(StandardCharsets.UTF_8)));
-
-        } catch (IOException e) {
-            logger.error(e.getMessage(), e);
-            throw e;
         }
 
     }
 
 
     @Override
-    public FileChannel getCountryFlagChannel(String scale, String shortName) throws Exception {
+    public FileChannel getCountryFlagChannel(String scale, String shortName, String fileNameSuffix) throws Exception {
 
         StringBuilder sourcePath = new StringBuilder(basePath);
         sourcePath.append(scale.replaceAll("\\.", "").replaceAll("/", "")).append(File.separator);
-        sourcePath.append(shortName.replaceAll("\\.", "").replaceAll("/", "")).append(ConstantsFile.FILE_TPYE_JSON);
+        sourcePath.append(shortName.replaceAll("\\.", "").replaceAll("/", "")).append(fileNameSuffix);
         return new FileInputStream(new File(sourcePath.toString())).getChannel();
 
     }

@@ -4,9 +4,7 @@
  */
 package com.vmware.vip.common.constants;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Constant strings.
@@ -109,7 +107,9 @@ public class ConstantsKeys {
    public static final String IMAGE = "image";
    public static final String FLAGS = "flags";
    public static final String SVG = "svg";
-   public final static Set<String> IMAGE_TYPE_LIST = new HashSet<>(Arrays.asList( "svg"));
+   public static final String JSON = "json";
+
+   public final static Map<String,String> IMAGE_TYPE_MAP = Map.of("svg", "image/svg+xml", "json", "application/json;charset=utf-8");
 
 
 
