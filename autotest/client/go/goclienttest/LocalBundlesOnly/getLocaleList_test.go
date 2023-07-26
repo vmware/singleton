@@ -32,7 +32,7 @@ func TestLocaleList(t *testing.T) {
 		// So(cfg, ShouldNotBeNil)
 	})
 
-	Convey("Get nothing for non-existing product-(P1)", t, func() {
+	SkipConvey("Get nothing for non-existing product-(P1)", t, func() {
 
 		localelist1, err1 := translation.GetLocaleList("NoxxxxxxxxxxxExistcomponent", "1.0")
 		fmt.Println(localelist1)

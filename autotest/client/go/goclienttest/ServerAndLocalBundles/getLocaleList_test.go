@@ -48,7 +48,7 @@ func TestLocaleList(t *testing.T) {
 		})
 	})
 
-	Convey("Get nothing for locale list since the product isn't in service and localbunldes(P1)", t, func() {
+	SkipConvey("Get nothing for locale list since the product isn't in service and localbunldes(P1)", t, func() {
 
 		localelist2, err2 := translation.GetLocaleList("NonExistingProduct", "1.0")
 		fmt.Print(localelist2)

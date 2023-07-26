@@ -17,7 +17,6 @@ require (
 	github.com/uudashr/gopkgs/v2 v2.1.1 // indirect
 	github.com/vmware/singleton v0.7.1-Singleton-Go-Client.0.20230307023709-1da43a857ed7
 	golang.org/x/crypto v0.0.0-20211215165025-cf75a172585e // indirect
-	golang.org/x/sys v0.6.0 // indirect
 	golang.org/x/tools v0.1.12 // indirect
 	golang.org/x/xerrors v0.0.0-20220907171357-04be3eba64a2 // indirect
 	gopkg.in/h2non/gock.v1 v1.1.2
