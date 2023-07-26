@@ -42,8 +42,8 @@ type (
 // Response
 type (
 	translationWithPatternData struct {
-		Bundles []*translation.SingleBundleData `json:"components,omitempty"`
-		Pattern *patternData                    `json:"pattern,omitempty"`
+		Bundles []*translation.SingleBundleData `json:"components"`
+		Pattern *patternData                    `json:"pattern"`
 	}
 
 	patternData struct {
