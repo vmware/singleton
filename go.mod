@@ -24,7 +24,7 @@ require (
 	github.com/jaffee/commandeer v0.5.0
 	github.com/json-iterator/go v1.1.12
 	github.com/jucardi/go-osx v1.0.1
-	github.com/mackerelio/go-osstat v0.2.3
+	github.com/mackerelio/go-osstat v0.2.4
 	github.com/pkg/fileutils v0.0.0-20181114200823-d734b7f202ba
 	github.com/spf13/pflag v1.0.5
 	github.com/stretchr/objx v0.5.0
