@@ -5,6 +5,7 @@
 package com.vmware.i18n.l2.service.image;
 
 import com.vmware.i18n.l2.dao.image.ICountryFlagDao;
+import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsMsg;
 import com.vmware.vip.core.messages.exception.L2APIException;
 import org.slf4j.Logger;
@@ -23,7 +24,7 @@ public class CountryFlagServiceImpl implements ICountryFlagService {
     private ICountryFlagDao countryFlagDao;
 
     @Override
-    public FileChannel getCountryFlagChannel(String region, int scale) throws L2APIException {
+    public FileChannel getCountryFlagChannel(String region, int scale, String imageType) throws L2APIException {
         String result = null;
         switch(scale){
             case 1 : result= "1x1"; break;
@@ -31,7 +32,7 @@ public class CountryFlagServiceImpl implements ICountryFlagService {
             default: throw new L2APIException(ConstantsMsg.IMAGE_NOT_SUPPORT_SCALE);
         }
         try {
-            return this.countryFlagDao.getCountryFlagChannel(result, region.toUpperCase());
+            return this.countryFlagDao.getCountryFlagChannel(result, region.toUpperCase(), ConstantsChar.DOT+imageType);
         } catch (FileNotFoundException  fe){
             logger.warn(fe.getMessage(), fe);
             throw new L2APIException(String.format(ConstantsMsg.IMAGE_NOT_SUPPORT_REGION, region), fe);

@@ -42,17 +42,17 @@ public class ImageAPI {
     public void getCountryFlagWithRegion(
             @Parameter(name = APIParamName.REGION, required = true, description = APIParamValue.REGION) @RequestParam(value = APIParamName.REGION, required = true) String region,
             @Parameter(name = APIParamName.SCALE, required = false, description = APIParamValue.COUNTRY_FLAG_SCALE) @RequestParam(value = APIParamName.SCALE, required = false) Integer scale,
-            @Parameter(name = APIParamName.TYPE, required = false, description = APIParamValue.TYPE) @RequestParam(value = APIParamName.TYPE, required = false) String type,
+            @Parameter(name = APIParamName.TYPE, required = false, description = APIParamValue.IMAGE_RESP_TYPE) @RequestParam(value = APIParamName.TYPE, required = false) String type,
             HttpServletResponse resp) throws Exception {
         int s = scale == null ? 1 : scale.intValue();
-        String imgType = StringUtils.isEmpty(type) ? ConstantsKeys.SVG : type.toLowerCase();
-        if (!ConstantsKeys.IMAGE_TYPE_LIST.contains(imgType)){
+        String imgType = StringUtils.isEmpty(type) ? ConstantsKeys.JSON : type.toLowerCase();
+        if (!ConstantsKeys.IMAGE_TYPE_MAP.containsKey(imgType)){
            throw new ValidationException(String.format(ValidationMsg.IMAGE_TYPE_NOT_VALIDE, type));
         }
-        resp.setContentType(ConstantsKeys.CONTENT_TYPE_JSON);
+        resp.setContentType(ConstantsKeys.IMAGE_TYPE_MAP.get(imgType));
         WritableByteChannel writeChannel = Channels.newChannel(resp.getOutputStream());
 
-        try (FileChannel fileChannel = this.countryFlagService.getCountryFlagChannel(region, s)){
+        try (FileChannel fileChannel = this.countryFlagService.getCountryFlagChannel(region, s, imgType)){
             fileChannel.transferTo(0, fileChannel.size(), writeChannel);
         }
 

@@ -7,5 +7,5 @@ package com.vmware.i18n.l2.dao.image;
 import java.nio.channels.FileChannel;
 
 public interface ICountryFlagDao {
-    public FileChannel getCountryFlagChannel(String scale, String shortName) throws Exception;
+    public FileChannel getCountryFlagChannel(String scale, String shortName, String fileNameSuffix) throws Exception;
 }
