@@ -160,6 +160,7 @@ jobs:
           str=$(printf '=%.0s' {1..50})
           echo $str Smoke Test Start $str
           go mod download github.com/json-iterator/go
+          go get github.com/vmware/singleton
           go get github.com/json-iterator/go@v1.1.9
           go get github.com/smartystreets/goconvey/convey@v1.7.2
           go test -v ./...
