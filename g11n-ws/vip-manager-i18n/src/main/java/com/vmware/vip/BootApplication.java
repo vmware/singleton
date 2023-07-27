@@ -16,9 +16,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class BootApplication{
 
 	public static void main(String[] args) throws Exception {
-		System.setProperty(
-				"org.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH",
-				"true");
 		if (args.length > 0) {
 			for (String arg : args) {
 				
@@ -34,8 +31,6 @@ public class BootApplication{
 			System.setProperty("translation.bundle.file.clean", "false");
 			
 		}
-		System.setProperty("org.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH", "true");
-		System.setProperty("org.apache.catalina.connector.CoyoteAdapter.ALLOW_BACKSLASH", "true");
 		SpringApplication.run(BootApplication.class, args);
 	}
 	

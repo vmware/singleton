@@ -62,9 +62,6 @@ public class WebConfiguration implements WebMvcConfigurer {
 	public void configurePathMatch(PathMatchConfigurer configurer) {
 		UrlPathHelper urlPathHelper = new UrlPathHelper();
 		urlPathHelper.setUrlDecode(false);
-		urlPathHelper.setAlwaysUseFullPath(true);
-		configurer.setUseSuffixPatternMatch(false);
-		configurer.setUseRegisteredSuffixPatternMatch(true);
 		configurer.setUrlPathHelper(urlPathHelper);
 	}
 
