@@ -26,8 +26,6 @@ public class BootApplication {
     // System.setProperty(net.sf.ehcache.CacheManager.ENABLE_SHUTDOWN_HOOK_PROPERTY, "true");
      */
     public static void main(String[] args) throws Exception {
-        System.setProperty("org.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH", "true");
-		System.setProperty("org.apache.catalina.connector.CoyoteAdapter.ALLOW_BACKSLASH", "true");
         SpringApplication.run(BootApplication.class, args);
     }
 }

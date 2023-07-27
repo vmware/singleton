@@ -6,6 +6,7 @@ package com.vmware.vip.core.conf;
 
 import org.apache.catalina.connector.Connector;
 import org.apache.coyote.http11.Http11NioProtocol;
+import org.apache.tomcat.util.buf.EncodedSolidusHandling;
 import org.apache.tomcat.util.net.SSLHostConfig;
 import org.apache.tomcat.util.net.SSLHostConfigCertificate;
 import org.slf4j.Logger;
@@ -87,6 +88,9 @@ public class VIPTomcatConnectionCustomizer implements TomcatConnectorCustomizer 
 			protocol.setCompression(compression);
 			protocol.setCompressionMinSize(compressionMinSize);
 		}
+
+		connector.setAllowBackslash(true);
+		connector.setEncodedSolidusHandling(EncodedSolidusHandling.DECODE.getValue());
 
 	}
 }

@@ -6,6 +6,7 @@ package com.vmware.vip.core.conf;
 
 import org.apache.catalina.connector.Connector;
 import org.apache.coyote.http11.Http11NioProtocol;
+import org.apache.tomcat.util.buf.EncodedSolidusHandling;
 import org.apache.tomcat.util.net.SSLHostConfig;
 import org.apache.tomcat.util.net.SSLHostConfigCertificate;
 import org.springframework.beans.factory.annotation.Value;
@@ -36,6 +37,11 @@ public class LiteTomcatConfig {
 		if (serverProperties.getServerScheme().equalsIgnoreCase(ConstantsTomcat.HTTP_HTTPS) ||
 				serverProperties.getServerScheme().equalsIgnoreCase(ConstantsTomcat.HTTPS_HTTP)) {
 			tomcat.addAdditionalTomcatConnectors(initiateHttpsConnector(serverProperties));
+		}
+		for( Connector connector :tomcat.getAdditionalTomcatConnectors()){
+			connector.setAllowBackslash(true);
+			connector.setEncodedSolidusHandling(EncodedSolidusHandling.DECODE.getValue());
+
 		}
 		return tomcat;
 	}
