@@ -32,6 +32,12 @@ public class ImageAPITest {
     private static String countryFlagRegionErr = "/i18n/api/v2/image/countryFlag?region=USS";
     private static String countryFlagScaleErr = "/i18n/api/v2/image/countryFlag?region=US&scale=5";
 
+
+    private static String countryFlagImageTypeSucc = "/i18n/api/v2/image/countryFlag?region=US&type=svg";
+
+    private static String countryFlagIMageTypeErr = "/i18n/api/v2/image/countryFlag?region=US&type=svgg";
+
+
     @Autowired
     private WebApplicationContext webApplicationContext;
 
@@ -85,6 +91,31 @@ public class ImageAPITest {
         Assert.assertTrue(code==400L);
 
     }
+
+
+    @Test
+    public void testCountryFlag5() throws Exception {
+
+        String json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET,countryFlagImageTypeSucc);
+
+        Assert.assertTrue(json != null);
+
+    }
+
+
+
+    @Test
+    public void testCountryFlag6() throws Exception {
+
+        String json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET,countryFlagIMageTypeErr);
+        @SuppressWarnings("unchecked")
+        Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json);
+        long code = (long) dataMap.get("code");
+        Assert.assertTrue(code==400L);
+
+    }
+
+
 
 
 

@@ -9,5 +9,5 @@ import com.vmware.vip.core.messages.exception.L2APIException;
 import java.nio.channels.FileChannel;
 
 public interface ICountryFlagService {
-    public FileChannel getCountryFlagChannel(String region,int scala)throws L2APIException;
+    public FileChannel getCountryFlagChannel(String region,int scala, String imageType)throws L2APIException;
 }
