@@ -42,7 +42,7 @@ public class ImageAPI {
     public void getCountryFlagWithRegion(
             @Parameter(name = APIParamName.REGION, required = true, description = APIParamValue.REGION) @RequestParam(value = APIParamName.REGION, required = true) String region,
             @Parameter(name = APIParamName.SCALE, required = false, description = APIParamValue.COUNTRY_FLAG_SCALE) @RequestParam(value = APIParamName.SCALE, required = false) Integer scale,
-            @Parameter(name = APIParamName.IMAGE_TYPE, required = false, description = APIParamValue.IMAGE_TYPE) @RequestParam(value = APIParamName.IMAGE_TYPE, required = false) String image_type,
+            @Parameter(name = APIParamName.TYPE, required = false, description = APIParamValue.IMAGE_RESP_TYPE) @RequestParam(value = APIParamName.TYPE, required = false) String image_type,
             HttpServletResponse resp) throws Exception {
         int s = scale == null ? 1 : scale.intValue();
         String imgType = StringUtils.isEmpty(image_type) ? ConstantsKeys.JSON : image_type.toLowerCase();

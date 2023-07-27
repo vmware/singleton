@@ -43,6 +43,5 @@ public class APIParamName {
 	public final static String EXPIREDAYS = "expireDays";
 	public final static String APP_ID = "appId";
 	public final static String TYPE = "type";
-	public final static String IMAGE_TYPE = "image_type";
 
 }
