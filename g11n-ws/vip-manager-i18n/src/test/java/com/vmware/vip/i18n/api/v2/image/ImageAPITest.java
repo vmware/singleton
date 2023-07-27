@@ -32,9 +32,9 @@ public class ImageAPITest {
     private static String countryFlagRegionErr = "/i18n/api/v2/image/countryFlag?region=USS";
     private static String countryFlagScaleErr = "/i18n/api/v2/image/countryFlag?region=US&scale=5";
 
-    private static String countryFlagImageTypeSucc = "/i18n/api/v2/image/countryFlag?region=US&image_type=svg";
+    private static String countryFlagImageTypeSucc = "/i18n/api/v2/image/countryFlag?region=US&type=svg";
 
-    private static String countryFlagIMageTypeErr = "/i18n/api/v2/image/countryFlag?region=US&image_type=svgg";
+    private static String countryFlagIMageTypeErr = "/i18n/api/v2/image/countryFlag?region=US&type=svgg";
 
 
     @Autowired
