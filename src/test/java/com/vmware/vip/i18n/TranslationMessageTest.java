@@ -253,6 +253,20 @@ public class TranslationMessageTest extends BaseTestClass {
 
         Map<String, String> retMap6 = translation.getMessages(Locale.forLanguageTag("zh-Hant-TW"), component);
         Assert.assertEquals(message_zh_TW, retMap6.get(key));
+
+        //test comparison behavior
+        String newKey = "translation_not_ready";
+        String newKeyValue = "not_ready";
+        String updatedKey = "table.host";
+        String updatedKeyValue = "Host 1";
+
+        Assert.assertEquals(newKeyValue, retMap2.get(newKey));
+        Assert.assertEquals(updatedKeyValue, retMap2.get(updatedKey));
+
+        //test source in properties file
+        Map<String, String> retMap_de = translation.getMessages("messages", new Locale("de", ""), component);
+        Assert.assertEquals("VM", retMap_de.get("table.head"));
+        Assert.assertEquals(updatedKeyValue, retMap_de.get(updatedKey));
     }
     
     @Test

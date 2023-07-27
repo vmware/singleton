@@ -427,7 +427,52 @@ public class TranslationMessage implements Message {
      * </ul>
      */
     public Map<String, String> getMessages(final Locale locale, final String component) {
-        return getMessages(locale, component, true).getMessages();
+        return getMessages(null, locale, component);
+    }
+
+    public Map<String, String> getMessages(String resourceBundle, final Locale locale, final String component) {
+        if (locale == null) {
+            throw new VIPJavaClientException(ConstantsMsg.LOCALE_CANNOT_NULL);
+        }
+        if (StringUtil.isEmpty(component)) {
+            throw new VIPJavaClientException(ConstantsMsg.COMPONENT_CANNOT_EMPTY);
+        }
+
+        Map<String, String> messages = new LinkedHashMap<>();
+
+        Map<String,String> sources = resourceBundle != null ? getSourcesFromBundle(resourceBundle):
+                    getMessages(Locale.forLanguageTag(ConstantsKeys.SOURCE), component, false).getMessages();
+
+        if(!sources.isEmpty()) {
+            Map<String, String> collectedSources = getMessages(LocaleUtility.getSourceLocale(), component, false).getMessages();
+            if(!collectedSources.isEmpty()){
+                Map<String, String> translations = getMessages(locale, component, true).getMessages();
+                for (String key : sources.keySet()) {
+                    String source = sources.get(key);
+                    String collectedSource = collectedSources.get(key);
+                    if (!source.equals(collectedSource)) {
+                        messages.put(key, source);
+                    } else {
+                        messages.put(key, translations.get(key));
+                    }
+                }
+            }else{
+                messages = sources;
+            }
+        }else{
+            Map<String, String> translations = getMessages(locale, component, true).getMessages();
+            messages = translations;
+        }
+        return messages;
+    }
+
+    private Map<String, String> getSourcesFromBundle(String resourceBundle){
+        Map<String, String> sources = new LinkedHashMap<>();
+        ResourceBundle bundle = ResourceBundle.getBundle(resourceBundle);
+        for(String key: bundle.keySet()){
+            sources.put(key, bundle.getString(key));
+        }
+        return sources;
     }
 
     private ComponentService.TranslationsDTO getMessages(final Locale locale, final String component, boolean useLocaleFallback) {
