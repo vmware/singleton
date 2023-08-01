@@ -241,10 +241,11 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 			sourceModels.add(keySourceModel);
 			count++;
 			if (count > configs.getSyncBatchSize()) {
+				logger.info("sync to i18n batch size: {}", count);
 				boolean reqResult = postBatchData(sourceModels, urlStr.toString());
 				if (reqResult){
 					count = 0;
-					new ArrayList<>();
+					sourceModels = new ArrayList<>();
 				}else {
 					return  false;
 				}
@@ -253,6 +254,7 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 		}
 
 		if (count>0){
+			logger.info("sync to i18n batch size: {}", count);
 			return postBatchData(sourceModels, urlStr.toString());
 		}
 		return true;
@@ -280,10 +282,11 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 			sourceModels.add(keySourceModel);
 			count++;
 			if (count > configs.getSyncBatchSize()) {
+				logger.info("sync to l0n batch size: {}", count);
 				boolean reqResult = postBatchData(sourceModels, urlStr.toString());
 				if (reqResult){
 					count = 0;
-					new ArrayList<>();
+					sourceModels = new ArrayList<>();
 				}else {
 					return  false;
 				}
@@ -292,6 +295,7 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 		}
 
 		if (count>0){
+			logger.info("sync to l0n batch size: {}", count);
 			return postBatchData(sourceModels, urlStr.toString());
 		}
 
