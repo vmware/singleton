@@ -146,7 +146,7 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 	}
 
 	
-	private boolean synchkey2VipI18n(RecordModel record, String key, String srcValue, String commentForSource, String sourceFormat) throws UnsupportedEncodingException {
+	private boolean syncKey2VipI18n(RecordModel record, String key, String srcValue, String commentForSource, String sourceFormat) throws UnsupportedEncodingException {
 		if(configs.getVipBasei18nUrl().equalsIgnoreCase(PropertyContantKeys.LOCAL)) {
 			return false;
 		}
@@ -187,7 +187,7 @@ public class SingleComponentServiceImpl implements SingleComponentService{
         return true;
 	}
 
-	private boolean synchkey2VipL10n(RecordModel record,  String key, String srcValue, String commentForSource, String sourceFormat) throws UnsupportedEncodingException{
+	private boolean syncKey2VipL10n(RecordModel record,  String key, String srcValue, String commentForSource, String sourceFormat) throws UnsupportedEncodingException{
 		if(configs.getVipBaseL10nUrl().equalsIgnoreCase(PropertyContantKeys.LOCAL)) {
 			return false;
 		}
@@ -261,7 +261,7 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 	}
 
 
-	private boolean syncBatchKey2Vipl10n(RecordModel record,  ComponentSourceModel model ){
+	private boolean syncBatchKey2VipL10n(RecordModel record,  ComponentSourceModel model ){
 		if(configs.getVipBaseL10nUrl().equalsIgnoreCase(PropertyContantKeys.LOCAL)) {
 			return true;
 		}
@@ -318,7 +318,7 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 
 	private  boolean syncBatchSource(RecordModel record, ComponentSourceModel model){
 		if (model != null ){
-			boolean l10nResult = syncBatchKey2Vipl10n(record, model);
+			boolean l10nResult = syncBatchKey2VipL10n(record, model);
 			boolean i18nResult = syncBatchKey2VipI18n(record, model);
 
 			if (l10nResult && i18nResult){
@@ -343,9 +343,9 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 		if (model != null) {
 			for (Entry<String, Object> entry : model.getMessages().entrySet()) {
 				try {
-					boolean result = synchkey2VipL10n(record, entry.getKey(), (String) entry.getValue(), null, null);
+					boolean result = syncKey2VipL10n(record, entry.getKey(), (String) entry.getValue(), null, null);
 					if (!result) {
-						result = synchkey2VipI18n(record, entry.getKey(), (String) entry.getValue(), null, null);
+						result = syncKey2VipI18n(record, entry.getKey(), (String) entry.getValue(), null, null);
 						if (!result) {
 							try {
 								if (record.getStatus() < 5) {
