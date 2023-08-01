@@ -377,7 +377,7 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 		String srcValue = JSONArray.toJSONString(sourceModels);
 		try {
 			logger.info("send source url:{}, sourceSet:{}", urlStr, srcValue);
-			String response = postData(srcValue, urlStr.toString().replaceAll(" ", "%20"));
+			String response = postData(srcValue, urlStr.replaceAll(" ", "%20"));
 			logger.info("response: {}", response);
 			JSONObject resultJsonObj = JSONObject.parseObject(response);
 			int responseCode = resultJsonObj.getJSONObject("response").getInteger("code");
