@@ -30,6 +30,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -313,10 +315,10 @@ public class ProductService implements IProductService {
      * get the allow product list
      */
     @Override
-    public Map<String, Object> getAllowPrductList(){
+    public Map<String, Object> getAllowPrductList(String path){
         String content;
         try {
-            content = productdao.getAllowProductListContent();
+            content = productdao.getAllowProductListContent(path);
         } catch (DataException e1) {
             logger.warn(e1.getMessage());
             content =null;
@@ -339,4 +341,9 @@ public class ProductService implements IProductService {
             return null;
         }
     }
+	private String getClasspathAllowList(String path){
+		Resource allowResource = new PathMatchingResourcePatternResolver().getResource(path);
+
+		return  null;
+	}
 }

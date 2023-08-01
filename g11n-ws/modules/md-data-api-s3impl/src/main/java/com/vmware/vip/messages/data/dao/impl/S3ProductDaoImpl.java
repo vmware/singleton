@@ -167,8 +167,7 @@ public List<String> getVersionList(String productName) throws DataException {
  * Get the content of the Allow List by s3 object
  */
 @Override
-public String getAllowProductListContent() throws DataException {
-  String s3Path = S3Utils.S3_L10N_BUNDLES_PATH+ConstantsFile.ALLOW_LIST_FILE;
+public String getAllowProductListContent(String s3Path) throws DataException {
   if (s3Client.getS3Client().doesObjectExist(config.getBucketName(), s3Path)) {
       S3Object o = s3Client.getS3Client().getObject(config.getBucketName(), s3Path);
       if (o != null) {

@@ -158,8 +158,7 @@ public class ProductDao implements IProductDao {
      * Get the content of the Allow Product List by bundle.json file name
      */
     @Override
-    public String getAllowProductListContent() throws DataException {
-        String contentFilePath = bundleConfig.getBasePathWithSeparator() + ConstantsFile.L10N_BUNDLES_PATH +ConstantsFile.ALLOW_LIST_FILE;
+    public String getAllowProductListContent(String contentFilePath) throws DataException {
         if (new File(contentFilePath).exists()) {
          return new LocalJSONReader().readLocalJSONFile(contentFilePath);
         }else {

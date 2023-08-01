@@ -101,7 +101,7 @@ public class PgProductApiImpl implements IProductDao {
     * get the allow list content from pg db
     */
     @Override
-    public String getAllowProductListContent() throws DataException {
+    public String getAllowProductListContent(String path) throws DataException {
         return null;
     }
 
