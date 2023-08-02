@@ -6,6 +6,7 @@ package com.vmware.vip.messages.data.conf;
 
 import java.io.File;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -71,6 +72,9 @@ public class S3Config {
 	
 	@Value("${s3.roleArn}")
 	private String roleArn;
+
+	@Value("${allow.list.path.bucketName:}")
+	private String allowListBucketName;
 	
 	
 	
@@ -135,5 +139,13 @@ public class S3Config {
 
 	public String getRoleArn() {
 		return roleArn;
+	}
+
+	public String getAllowListBucketName() {
+		if (this.allowListBucketName != null && (!this.allowListBucketName.isBlank())){
+			return this.allowListBucketName;
+		}else {
+			return this.bucketName;
+		}
 	}
 }

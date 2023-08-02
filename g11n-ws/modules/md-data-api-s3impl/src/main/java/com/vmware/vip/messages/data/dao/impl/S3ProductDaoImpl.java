@@ -168,8 +168,8 @@ public List<String> getVersionList(String productName) throws DataException {
  */
 @Override
 public String getAllowProductListContent(String s3Path) throws DataException {
-  if (s3Client.getS3Client().doesObjectExist(config.getBucketName(), s3Path)) {
-      S3Object o = s3Client.getS3Client().getObject(config.getBucketName(), s3Path);
+  if (s3Client.getS3Client().doesObjectExist(config.getAllowListBucketName(), s3Path)) {
+      S3Object o = s3Client.getS3Client().getObject(config.getAllowListBucketName(), s3Path);
       if (o != null) {
          try {
              return S3Utils.convertS3Obj2Str(o);
