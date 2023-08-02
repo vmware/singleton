@@ -219,111 +219,30 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 	}
 
 
-	private boolean syncBatchKey2VipI18n(RecordModel record,  ComponentSourceModel model ) {
 
-		if(configs.getVipBasei18nUrl().equalsIgnoreCase(PropertyContantKeys.LOCAL)) {
-			return true;
-		}
-
-		StringBuffer urlStr = new StringBuffer(configs.getVipBasei18nUrl());
-		urlStr.append(PropertyContantKeys.I18N_SOURCE_COLLECT_SET_URL
-					.replace("{" + APIParamName.PRODUCT_NAME + "}", record.getProduct())
-					.replace("{" + APIParamName.VERSION + "}", record.getVersion())
-					.replace("{" + APIParamName.COMPONENT + "}", record.getComponent())
-					.replace("{" + APIParamName.LOCALE + "}", record.getLocale()));
-
-		List<KeySourceModel> sourceModels = new ArrayList<>();
-		int count =0;
-		for (Entry<String, Object> entry : model.getMessages().entrySet() ) {
-			KeySourceModel keySourceModel = new KeySourceModel();
-			keySourceModel.setKey(entry.getKey());
-			keySourceModel.setSource((String) entry.getValue());
-			sourceModels.add(keySourceModel);
-			count++;
-			if (sourceModels.size() > configs.getSyncBatchSize() || count == model.getMessages().size()) {
-				logger.info("sync to i18n batch size: {}", count);
-				boolean reqResult = postBatchData(sourceModels, urlStr.toString());
-				if (reqResult){
-					sourceModels = new ArrayList<>();
-				}else {
-					return  false;
-				}
-			}
-		}
-		return true;
-	}
-
-
-	private boolean syncBatchKey2VipL10n(RecordModel record,  ComponentSourceModel model ){
-		if(configs.getVipBaseL10nUrl().equalsIgnoreCase(PropertyContantKeys.LOCAL)) {
-			return true;
-		}
-
-		StringBuffer urlStr = new StringBuffer(configs.getVipBaseL10nUrl());
-		urlStr.append(PropertyContantKeys.L10N_SOURCE_COLLECT_SET_URL
-				.replace("{" + APIParamName.PRODUCT_NAME + "}", record.getProduct())
-				.replace("{" + APIParamName.VERSION + "}", record.getVersion())
-				.replace("{" + APIParamName.COMPONENT + "}", record.getComponent())
-				.replace("{" + APIParamName.LOCALE + "}", record.getLocale()));
-
-		List<KeySourceModel> sourceModels = new ArrayList<>();
-		int count =0;
-		for (Entry<String, Object> entry : model.getMessages().entrySet() ) {
-			KeySourceModel keySourceModel = new KeySourceModel();
-			keySourceModel.setKey(entry.getKey());
-			keySourceModel.setSource((String) entry.getValue());
-			sourceModels.add(keySourceModel);
-			count++;
-			if (sourceModels.size() > configs.getSyncBatchSize() || count == model.getMessages().size()) {
-				logger.info("sync to l0n batch size: {}", count);
-				boolean reqResult = postBatchData(sourceModels, urlStr.toString());
-				if (reqResult){
-					sourceModels = new ArrayList<>();
-				}else {
-					return  false;
-				}
-			}
-		}
-		return true;
-	}
 	/**
-         * sync the local source content to internal l10n or i18n
-         */
+	 * sync the local source content to internal l10n or i18n
+	 */
 	@Override
 	public boolean synchComponentFile2Internal(RecordModel record) {
 
-      ComponentSourceModel model =  getSourceComponentFile(record);
-	  if (this.configs.isSyncBatchEnable()){
-		  return syncBatchSource(record, model);
-	  }else {
+		ComponentSourceModel model =  getSourceComponentFile(record);
+		if (this.configs.isSyncBatchEnable()){
+			return syncBatchSource(record, model);
+		}else {
 		  return syncSingleSource(record, model);
-	  }
-
-	}
-
-	private  boolean syncBatchSource(RecordModel record, ComponentSourceModel model){
-		if (model != null ){
-			boolean l10nResult = syncBatchKey2VipL10n(record, model);
-			boolean i18nResult = syncBatchKey2VipI18n(record, model);
-
-			if (l10nResult && i18nResult){
-				return true;
-			}else {
-				try {
-					if (record.getStatus() < 5) {
-						record.setStatus(record.getStatus() + 1);
-						TaskSysnQueues.SendComponentTasks.put(record);
-					}
-				} catch (InterruptedException e) {
-					Thread.currentThread().interrupt();
-					logger.error(e.getMessage(), e);
-				}
-				return false;
-			}
-
 		}
-		return true;
+
 	}
+
+	private String postData(String source, String urlStr)  throws VIPHttpException {
+		String response =  HTTPRequester.postData(source, urlStr, "application/json", "POST", null);
+		if(response == null || response.equalsIgnoreCase("")) {
+			throw new VIPHttpException("postFormData error.");
+		}
+		return response;
+	}
+
 	private boolean  syncSingleSource(RecordModel record, ComponentSourceModel model){
 		if (model != null) {
 			for (Entry<String, Object> entry : model.getMessages().entrySet()) {
@@ -353,15 +272,96 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 				}
 			}
 		}
-		
+
+		return true;
+	}
+
+	private  boolean syncBatchSource(RecordModel record, ComponentSourceModel model){
+		if (model != null ){
+			boolean l10nResult = syncBatchKey2VipL10n(record, model);
+			boolean i18nResult = syncBatchKey2VipI18n(record, model);
+
+			if (l10nResult && i18nResult){
+				return true;
+			}else {
+				try {
+					if (record.getStatus() < 5) {
+						record.setStatus(record.getStatus() + 1);
+						TaskSysnQueues.SendComponentTasks.put(record);
+					}
+				} catch (InterruptedException e) {
+					Thread.currentThread().interrupt();
+					logger.error(e.getMessage(), e);
+				}
+				return false;
+			}
+
+		}
 		return true;
 	}
 
 
+	private boolean syncBatchKey2VipI18n(RecordModel record,  ComponentSourceModel model ) {
+
+		if(configs.getVipBasei18nUrl().equalsIgnoreCase(PropertyContantKeys.LOCAL)) {
+			return true;
+		}
+
+		StringBuffer urlStr = new StringBuffer(configs.getVipBasei18nUrl());
+		urlStr.append(PropertyContantKeys.I18N_SOURCE_COLLECT_SET_URL
+				.replace("{" + APIParamName.PRODUCT_NAME + "}", record.getProduct())
+				.replace("{" + APIParamName.VERSION + "}", record.getVersion())
+				.replace("{" + APIParamName.COMPONENT + "}", record.getComponent())
+				.replace("{" + APIParamName.LOCALE + "}", record.getLocale()));
+
+		return prepareBatchDataAndSend(urlStr.toString(), model);
+	}
+
+
+	private boolean syncBatchKey2VipL10n(RecordModel record,  ComponentSourceModel model ){
+		if(configs.getVipBaseL10nUrl().equalsIgnoreCase(PropertyContantKeys.LOCAL)) {
+			return true;
+		}
+
+		StringBuffer urlStr = new StringBuffer(configs.getVipBaseL10nUrl());
+		urlStr.append(PropertyContantKeys.L10N_SOURCE_COLLECT_SET_URL
+				.replace("{" + APIParamName.PRODUCT_NAME + "}", record.getProduct())
+				.replace("{" + APIParamName.VERSION + "}", record.getVersion())
+				.replace("{" + APIParamName.COMPONENT + "}", record.getComponent())
+				.replace("{" + APIParamName.LOCALE + "}", record.getLocale()));
+
+		return prepareBatchDataAndSend(urlStr.toString(), model);
+	}
+
+
+
+	private boolean prepareBatchDataAndSend(String urlStr, ComponentSourceModel model){
+		List<KeySourceModel> sourceModels = new ArrayList<>();
+		int count =0;
+		for (Entry<String, Object> entry : model.getMessages().entrySet() ) {
+			KeySourceModel keySourceModel = new KeySourceModel();
+			keySourceModel.setKey(entry.getKey());
+			keySourceModel.setSource((String) entry.getValue());
+			sourceModels.add(keySourceModel);
+			count++;
+			if (sourceModels.size() > configs.getSyncBatchSize() || count == model.getMessages().size()) {
+				logger.info("sync to remote batch size: {}",urlStr, count);
+				boolean reqResult = postBatchData(sourceModels, urlStr);
+				if (reqResult){
+					sourceModels = new ArrayList<>();
+				}else {
+					return  false;
+				}
+			}
+		}
+		return true;
+	}
+
 	private boolean postBatchData(List<KeySourceModel> sourceModels, String urlStr){
+
 		String srcValue = JSONArray.toJSONString(sourceModels);
 		try {
-			logger.info("send source url:{}, sourceSet:{}", urlStr, srcValue);
+			logger.info("send source url:{}, sourceSize:{}, sourceSet:{}", urlStr, sourceModels.size(),  srcValue);
 			String response = postData(srcValue, urlStr.replaceAll(" ", "%20"));
 			logger.info("response: {}", response);
 			JSONObject resultJsonObj = JSONObject.parseObject(response);
@@ -380,11 +380,4 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 
 	}
 
-	private String postData(String source, String urlStr)  throws VIPHttpException {
-		String response =  HTTPRequester.postData(source, urlStr, "application/json", "POST", null);
-		if(response == null || response.equalsIgnoreCase("")) {
-			throw new VIPHttpException("postFormData error.");
-		}
-		return response;
-	}
 }
