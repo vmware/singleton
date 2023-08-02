@@ -240,22 +240,15 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 			keySourceModel.setSource((String) entry.getValue());
 			sourceModels.add(keySourceModel);
 			count++;
-			if (count > configs.getSyncBatchSize()) {
+			if (sourceModels.size() > configs.getSyncBatchSize() || count == model.getMessages().size()) {
 				logger.info("sync to i18n batch size: {}", count);
 				boolean reqResult = postBatchData(sourceModels, urlStr.toString());
 				if (reqResult){
-					count = 0;
 					sourceModels = new ArrayList<>();
 				}else {
 					return  false;
 				}
-				}
-
-		}
-
-		if (count>0){
-			logger.info("sync to i18n batch size: {}", count);
-			return postBatchData(sourceModels, urlStr.toString());
+			}
 		}
 		return true;
 	}
@@ -281,24 +274,16 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 			keySourceModel.setSource((String) entry.getValue());
 			sourceModels.add(keySourceModel);
 			count++;
-			if (count > configs.getSyncBatchSize()) {
+			if (sourceModels.size() > configs.getSyncBatchSize() || count == model.getMessages().size()) {
 				logger.info("sync to l0n batch size: {}", count);
 				boolean reqResult = postBatchData(sourceModels, urlStr.toString());
 				if (reqResult){
-					count = 0;
 					sourceModels = new ArrayList<>();
 				}else {
 					return  false;
 				}
 			}
-
 		}
-
-		if (count>0){
-			logger.info("sync to l0n batch size: {}", count);
-			return postBatchData(sourceModels, urlStr.toString());
-		}
-
 		return true;
 	}
 	/**
