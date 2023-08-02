@@ -133,7 +133,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 		 */
 
 		// Request Validation
-		InterceptorRegistration apival = registry.addInterceptor(new APIValidationInterceptor(productService.getAllowPrductList(this.allowListPath), this.requestIdsStr)).addPathPatterns("/**")
+		InterceptorRegistration apival = registry.addInterceptor(new APIValidationInterceptor(productService.getAllowProductList(this.allowListPath), this.requestIdsStr)).addPathPatterns("/**")
 				.excludePathPatterns(API.I18N_API_ROOT+"doc/**", "/swagger-ui/**");
 
 		// authentication

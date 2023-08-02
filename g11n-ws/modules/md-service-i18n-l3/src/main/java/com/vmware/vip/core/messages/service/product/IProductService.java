@@ -71,5 +71,5 @@ public interface IProductService {
     /**
      * get the allow product List
      */
-    public Map<String, Object> getAllowPrductList(String path);
+    public Map<String, Object> getAllowProductList(String path);
 }

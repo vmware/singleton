@@ -318,7 +318,7 @@ public class ProductService implements IProductService {
      * get the allow product list
      */
     @Override
-    public Map<String, Object> getAllowPrductList(String path){
+    public Map<String, Object> getAllowProductList(String path){
 
 
         String content = null;
