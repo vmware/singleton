@@ -58,8 +58,7 @@ public class SourceRequestCron {
 	
 
 	public final static long SECOND = 1000;
-
-	private static boolean recovedDir = false;
+	private static boolean recoveredDir = false;
 
 	@PostConstruct
 	public void initSendFile() {
@@ -92,7 +91,7 @@ public class SourceRequestCron {
 		}
 
 		logger.info("end recover the remained resource!!");
-		recovedDir = true;
+		recoveredDir = true;
 	}
 
 	
@@ -175,12 +174,12 @@ public class SourceRequestCron {
 
 	@Scheduled(cron = "${remote.source.schedule.cron}")
 	public void lauchInstructToSync() {
-		if (!recovedDir){
+		if (!recoveredDir){
 			return;
 		}
 
 		try {
-			if(configs.getRecordApiVersion().equalsIgnoreCase("s3") ) {
+			if(configs.getRecordApiVersion().equalsIgnoreCase("s3")) {
 				TaskSysnQueues.InstructTasks.put(instructS3);
 			}else {
 				TaskSysnQueues.InstructTasks.put(instructV1);
@@ -196,7 +195,7 @@ public class SourceRequestCron {
 	public void syncToInternali18nManager() {
 	
 			Set<RecordModel> set = new HashSet<RecordModel>();
-			while (!TaskSysnQueues.SendComponentTasks.isEmpty() && recovedDir) {
+			while (!TaskSysnQueues.SendComponentTasks.isEmpty() && recoveredDir) {
 				logger.info("begin synch local component Model to VIP i18n");
 				RecordModel record = TaskSysnQueues.SendComponentTasks.poll();
 			    set.add(record);
@@ -250,7 +249,7 @@ public class SourceRequestCron {
 	@Scheduled(fixedDelay = SECOND * 2)
 	public void syncSourcefromRemoteToLocal() {
 
-		while (!TaskSysnQueues.InstructTasks.isEmpty() ) {
+		while (!TaskSysnQueues.InstructTasks.isEmpty()) {
 			String doneVerion = TaskSysnQueues.InstructTasks.poll();
 			if(instructS3.equals(doneVerion)) {
 				  doRecordApiS3();
