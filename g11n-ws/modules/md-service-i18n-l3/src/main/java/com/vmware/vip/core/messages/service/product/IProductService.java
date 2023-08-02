@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.messages.service.product;
@@ -72,4 +72,5 @@ public interface IProductService {
      * get the allow product List
      */
     public Map<String, Object> getAllowProductList(String path);
+
 }
