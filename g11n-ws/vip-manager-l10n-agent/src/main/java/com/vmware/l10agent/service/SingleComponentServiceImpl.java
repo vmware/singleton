@@ -187,7 +187,7 @@ public class SingleComponentServiceImpl implements SingleComponentService{
         return true;
 	}
 
-	private boolean syncKey2VipL10n(RecordModel record,  String key, String srcValue, String commentForSource, String sourceFormat) throws UnsupportedEncodingException{
+	private boolean syncKey2VipL10n(RecordModel record,  String key, String srcValue) throws UnsupportedEncodingException{
 		if(configs.getVipBaseL10nUrl().equalsIgnoreCase(PropertyContantKeys.LOCAL)) {
 			return false;
 		}
@@ -247,7 +247,7 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 		if (model != null) {
 			for (Entry<String, Object> entry : model.getMessages().entrySet()) {
 				try {
-					boolean result = syncKey2VipL10n(record, entry.getKey(), (String) entry.getValue(), null, null);
+					boolean result = syncKey2VipL10n(record, entry.getKey(), (String) entry.getValue());
 					if (!result) {
 						result = syncKey2VipI18n(record, entry.getKey(), (String) entry.getValue(), null, null);
 						if (!result) {
