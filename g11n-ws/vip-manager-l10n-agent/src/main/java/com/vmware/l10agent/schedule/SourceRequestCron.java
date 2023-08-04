@@ -81,7 +81,7 @@ public class SourceRequestCron {
 
 		if (file.exists()) {
 			recoverDirectory(file);
-			logger.info("begin sync local recover directory component Model to remote");
+			logger.info("begin sync local recover directory component Model to remote and all size: {}", TaskSysnQueues.SendComponentTasks.size());
 			while (!TaskSysnQueues.SendComponentTasks.isEmpty()) {
 				RecordModel record = TaskSysnQueues.SendComponentTasks.poll();
 				syncResource(record);
