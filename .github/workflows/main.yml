@@ -127,7 +127,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v2
         with:
-          go-version: 1.17
+          go-version: 1.16
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
@@ -153,10 +153,7 @@ jobs:
           cp -r $GITHUB_WORKSPACE/devops/autotest/client/go/l10n/bundles $GITHUB_WORKSPACE/l10n/
           docker cp $GITHUB_WORKSPACE/l10n singleton:/
           curl -X GET 'http://localhost:8091/actuator/health'
-          cd $GITHUB_WORKSPACE/devops/autotest/client/go/goclienttest
-          echo "" >> go.mod
-          echo "replace github.com/vmware/singleton => $GITHUB_WORKSPACE" >> go.mod
-          echo "" >> go.mod
+          cd $GITHUB_WORKSPACE/devops/autotest/client/go/goclienttes
           str=$(printf '=%.0s' {1..50})
           echo $str Smoke Test Start $str
           go mod download github.com/json-iterator/go
