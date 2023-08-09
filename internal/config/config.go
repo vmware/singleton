@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -137,6 +137,16 @@ type Config struct {
 	} `json:"CrossDomain" yaml:"CrossDomain"`
 
 	AllowList bool `yaml:"AllowList"`
+
+	BuildInfo struct {
+		Name        string `json:"name,omitempty" yaml:"name"`
+		Version     string `json:"version,omitempty" yaml:"version"`
+		Author      string `json:"author,omitempty" yaml:"author"`
+		CreatedBy   string `json:"createdBy,omitempty" yaml:"createdBy"`
+		BuildDate   string `json:"buildDate,omitempty" yaml:"buildDate"`
+		BuildNumber string `json:"buildNumber,omitempty" yaml:"buildNumber"`
+		ChangeId    string `json:"changeId,omitempty" yaml:"changeId"`
+	} `json:"BuildInfo" yaml:"BuildInfo"`
 }
 
 var Settings Config

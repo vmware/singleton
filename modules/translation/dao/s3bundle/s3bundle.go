@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -98,31 +98,18 @@ func (b *S3Bundle) GetBundleInfo(ctx context.Context) (*translation.BundleInfo, 
 
 // GetBundle ...
 func (b *S3Bundle) GetBundle(ctx context.Context, id *translation.BundleID) (bundle *translation.Bundle, returnErr error) {
-	input := s3.GetObjectInput{Bucket: b.Bucket, Key: b.GetKey(id)}
-	output, err := GetS3Client(b.Config).GetObject(ctx, &input)
+	bf := translation.BundleFile{}
+	err := b.ReadS3JSONFile(ctx, b.GetKey(id), &bf)
 	if err == nil {
-		defer output.Body.Close()
-
-		bf := translation.BundleFile{}
-		if err = json.NewDecoder(output.Body).Decode(&bf); err == nil {
-			if !strings.EqualFold(bf.Locale, id.Locale) || !strings.EqualFold(bf.Component, id.Component) {
-				logger.FromContext(ctx).Error("Bundle file content is wrong!",
-					zap.String(translation.Locale, bf.Locale+"?="+id.Locale),
-					zap.String(translation.Component, bf.Component+"?="+id.Component))
-			}
-			return &translation.Bundle{ID: *id, Messages: bf.Messages}, nil
+		if !strings.EqualFold(bf.Locale, id.Locale) || !strings.EqualFold(bf.Component, id.Component) {
+			logger.FromContext(ctx).Error("Bundle file content is wrong!",
+				zap.String(translation.Locale, bf.Locale+"?="+id.Locale),
+				zap.String(translation.Component, bf.Component+"?="+id.Component))
 		}
+		return &translation.Bundle{ID: *id, Messages: bf.Messages}, nil
 	}
 
-	var noSuchKeyErr *types.NoSuchKey
-	if errors.As(err, &noSuchKeyErr) {
-		returnErr = sgtnerror.StatusNotFound.WrapErrorWithMessage(err, translation.FailToReadBundle, id.Name, id.Version, id.Locale, id.Component)
-	} else {
-		returnErr = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, translation.FailToReadBundle, id.Name, id.Version, id.Locale, id.Component)
-	}
-	logger.FromContext(ctx).Error(returnErr.Error())
-
-	return nil, returnErr
+	return nil, err
 }
 
 // PutBundle ...
@@ -173,4 +160,33 @@ func (b *S3Bundle) createBucket() error {
 		CreateBucketConfiguration: &createBucketConfig}
 	_, err := GetS3Client(b.Config).CreateBucket(context.Background(), &input)
 	return err
+}
+
+func (b *S3Bundle) ReadS3JSONFile(ctx context.Context, filePath *string, data interface{}) error {
+	input := s3.GetObjectInput{Bucket: b.Bucket, Key: filePath}
+	output, err := GetS3Client(b.Config).GetObject(ctx, &input)
+	if err == nil {
+		defer output.Body.Close()
+
+		if err = json.NewDecoder(output.Body).Decode(data); err == nil {
+			return nil
+		}
+	}
+
+	var noSuchKeyErr *types.NoSuchKey
+	if errors.As(err, &noSuchKeyErr) {
+		err = sgtnerror.StatusNotFound.WrapErrorWithMessage(err, translation.FailToReadFile)
+	} else {
+		err = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, translation.FailToReadFile)
+	}
+	logger.FromContext(ctx).Error(err.Error())
+
+	return err
+}
+
+func (b *S3Bundle) GetVersionInfo(ctx context.Context, name, version string) (data map[string]interface{}, err error) {
+	filePath := b.RootPrefix + name + slash + version + slash + translation.VersionInfoFile
+	data = make(map[string]interface{})
+	err = b.ReadS3JSONFile(ctx, &filePath, &data)
+	return
 }
