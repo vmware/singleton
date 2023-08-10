@@ -60,7 +60,7 @@ public class PropertyConfigs {
 	
 	@Value("${source.sync.api.version:s3}")
 	private String recordApiVersion;
-	
+
 	@Value("${source.sync.req.thread:1}")
 	private String recordReqThread;
 
@@ -69,7 +69,13 @@ public class PropertyConfigs {
 
 	@Value("${source.sync.s3.startTime:2020-01-01 01:00:00}")
 	private String syncStartDatetime;
-	
+
+	@Value("${vip.sync.batch.enable:false}")
+	private boolean syncBatchEnable;
+	@Value("${vip.sync.batch.size:50}")
+	private int syncBatchSize;
+
+
 	public long getSyncStartDatetime() {
 		
 		try {
@@ -188,4 +194,7 @@ public class PropertyConfigs {
 
 	public String getUserAgent() { return userAgent; }
 
+	public int getSyncBatchSize() { return syncBatchSize; }
+
+	public boolean isSyncBatchEnable() { return syncBatchEnable; }
 }
