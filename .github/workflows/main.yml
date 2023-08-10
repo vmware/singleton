@@ -155,8 +155,6 @@ jobs:
           curl -X GET 'http://localhost:8091/actuator/health'
           cd $GITHUB_WORKSPACE/devops/autotest/client/go/goclienttest
           echo "" >> go.mod
-          echo "replace github.com/vmware/singleton => $GITHUB_WORKSPACE" >> go.mod
-          echo "" >> go.mod
           str=$(printf '=%.0s' {1..50})
           echo $str Smoke Test Start $str
           go mod download github.com/json-iterator/go
