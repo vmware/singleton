@@ -75,6 +75,8 @@ public class PropertyConfigs {
 	@Value("${vip.sync.batch.size:50}")
 	private int syncBatchSize;
 
+	@Value("${vip.sync.source.base64.enable:false}")
+	private boolean base64Enable;
 
 	public long getSyncStartDatetime() {
 		
@@ -197,4 +199,8 @@ public class PropertyConfigs {
 	public int getSyncBatchSize() { return syncBatchSize; }
 
 	public boolean isSyncBatchEnable() { return syncBatchEnable; }
+
+	public boolean isBase64Enable() {
+		return base64Enable;
+	}
 }

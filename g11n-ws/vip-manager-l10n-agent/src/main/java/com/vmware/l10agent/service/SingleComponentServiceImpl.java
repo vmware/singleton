@@ -187,7 +187,7 @@ public class SingleComponentServiceImpl implements SingleComponentService{
         return true;
 	}
 
-	private boolean syncKey2VipL10n(RecordModel record,  String key, String srcValue) throws UnsupportedEncodingException{
+	private boolean syncKey2VipL10n(RecordModel record,  String key, String srcValue, String sourceFormatVal) throws UnsupportedEncodingException{
 		if(configs.getVipBaseL10nUrl().equalsIgnoreCase(PropertyContantKeys.LOCAL)) {
 			return false;
 		}
@@ -199,6 +199,10 @@ public class SingleComponentServiceImpl implements SingleComponentService{
                 .replace("{" + APIParamName.LOCALE + "}", record.getLocale())
                 .replace("{" + APIParamName.KEY + "}", key));
           logger.info("source:{}", srcValue);
+		  if (sourceFormatVal != null){
+			  urlStr.append("?sourceFormat=");
+			  urlStr.append(URLEncoder.encode(sourceFormatVal, ConstantsUnicode.UTF8));
+		  }
         try {
             logger.info("-----Start to send source----------");
             logger.debug("{}----------{}", key, srcValue);
@@ -245,11 +249,15 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 
 	private boolean  syncSingleSource(RecordModel record, ComponentSourceModel model){
 		if (model != null) {
+			String sourceFormat = null;
+			if (configs.isBase64Enable()){
+				sourceFormat = PropertyContantKeys.BASE64_REQ_PARAMETER;
+			}
 			for (Entry<String, Object> entry : model.getMessages().entrySet()) {
 				try {
-					boolean result = syncKey2VipL10n(record, entry.getKey(), (String) entry.getValue());
+					boolean result = syncKey2VipL10n(record, entry.getKey(), (String) entry.getValue(),sourceFormat);
 					if (!result) {
-						result = syncKey2VipI18n(record, entry.getKey(), (String) entry.getValue(), null, null);
+						result = syncKey2VipI18n(record, entry.getKey(), (String) entry.getValue(), null, sourceFormat);
 						if (!result) {
 							try {
 								if (record.getStatus() < 5) {
@@ -342,6 +350,9 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 			KeySourceModel keySourceModel = new KeySourceModel();
 			keySourceModel.setKey(entry.getKey());
 			keySourceModel.setSource((String) entry.getValue());
+			if (configs.isBase64Enable()){
+				keySourceModel.setSourceFormat(PropertyContantKeys.BASE64_REQ_PARAMETER);
+			}
 			sourceModels.add(keySourceModel);
 			count++;
 			if (sourceModels.size() > configs.getSyncBatchSize() || count == model.getMessages().size()) {
