@@ -18,7 +18,7 @@ type translationRouter struct{}
 func (r *translationRouter) Init(e *gin.RouterGroup) {
 	logger.Log.Debug("Initialize translation router")
 
-	tranGroup := e.Group("/translation", v2Translation.HandleAllowList, v2Translation.HandleVersionFallback)
+	tranGroup := e.Group("/translation", v2Translation.HandleVersionFallback)
 	{
 		// Component API
 		tranGroup.GET("/component", GetBundle2)
@@ -41,10 +41,10 @@ func (r *translationRouter) Init(e *gin.RouterGroup) {
 	}
 
 	// Translation Product Component API
-	e.GET("/bundles/components", v2Translation.HandleAllowList, v2Translation.HandleVersionFallback, GetAvailableComponents)
+	e.GET("/bundles/components", v2Translation.HandleVersionFallback, GetAvailableComponents)
 
 	// Translation Sync API
-	e.PUT("/translation/product/:productName/version/:version", v2Translation.HandleAllowList, PutBundles)
+	e.PUT("/translation/product/:productName/version/:version", PutBundles)
 
 }
 func init() {
