@@ -155,12 +155,12 @@ jobs:
           curl -X GET 'http://localhost:8091/actuator/health'
           cd $GITHUB_WORKSPACE/devops/autotest/client/go/goclienttest
           echo "" >> go.mod
-          go mod tidy
           str=$(printf '=%.0s' {1..50})
           echo $str Smoke Test Start $str
           go mod download github.com/json-iterator/go
           go get github.com/vmware/singleton
           go get github.com/json-iterator/go@v1.1.9
           go get github.com/smartystreets/goconvey/convey@v1.7.2
+          go mod tidy
           go test -v ./...
           echo $str Smoke Test End $str        
