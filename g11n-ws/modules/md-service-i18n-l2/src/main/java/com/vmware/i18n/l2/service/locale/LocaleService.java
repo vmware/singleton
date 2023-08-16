@@ -9,6 +9,7 @@ import com.vmware.i18n.cldr.CLDR;
 import com.vmware.i18n.utils.CommonUtil;
 import com.vmware.vip.common.cache.CacheName;
 import com.vmware.vip.common.cache.TranslationCache3;
+import com.vmware.vip.common.constants.ConstantsUnicode;
 import com.vmware.vip.common.utils.LocaleUtils;
 import com.vmware.vip.core.messages.service.product.IProductService;
 import org.slf4j.Logger;
@@ -88,7 +89,10 @@ public class LocaleService implements ILocaleService {
 			Map<String, Object> displayNamesMap = null;
 			if (StringUtils.isEmpty(dispLanguage)) {
 				for (String language : languageList) {
-					normalizedDispLanguage = CommonUtil.getCLDRLocale(language, localePathMap, localeAliasesMap);
+					String diplayLanguage = language;
+					if(language.indexOf(ConstantsUnicode.ALT)>0)//handle languages like en-US-alt-short
+						 diplayLanguage = language.substring(0, language.indexOf(ConstantsUnicode.ALT));
+					normalizedDispLanguage = CommonUtil.getCLDRLocale(diplayLanguage, localePathMap, localeAliasesMap);
 					displayNamesMap = languagesParser.getDisplayNames(normalizedDispLanguage);
 					getDisplayNameForLanguage(language, displayNamesMap, tmp);
 				}
@@ -152,11 +156,12 @@ public class LocaleService implements ILocaleService {
 		Map<String, String> localeDisplayPattern = (Map<String, String>) localeDisplayNamesData.get("localeDisplayPattern");
 		String localePattern = localeDisplayPattern.get("localePattern");
 		String localeSeparator = localeDisplayPattern.get("localeSeparator");
-		CLDR cldr = new CLDR(locale);
-		String language = cldr.getLanguage();
-		String script = cldr.getScript();
-		String country = cldr.getTerritory();
-		String variant = cldr.getVariant();
+
+		Locale localeObj = Locale.forLanguageTag(locale);
+		String language = localeObj.getLanguage();
+		String script = localeObj.getScript();
+		String country = localeObj.getCountry();
+		String variant = localeObj.getVariant();
 
 		boolean hasScript = script !=null && script.length() > 0;
 		boolean hasCountry = country !=null && country.length() > 0;

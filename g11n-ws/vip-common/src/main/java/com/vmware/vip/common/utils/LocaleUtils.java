@@ -104,7 +104,7 @@ public class LocaleUtils {
             return localeStr;
         }
         if (isLanguageTag(localeStr)) {
-            return localeStr;
+            return Locale.forLanguageTag(localeStr).toLanguageTag();
         } else {
             String language = "", country = "", script = "";
             String[] os = localeStr.split("_");
