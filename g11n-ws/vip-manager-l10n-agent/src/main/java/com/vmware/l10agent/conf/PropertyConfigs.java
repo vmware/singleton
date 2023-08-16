@@ -194,7 +194,7 @@ public class PropertyConfigs {
 
 	public String getUserAgent() { return userAgent; }
 
-	public int getSyncBatchSize() { return syncBatchSize; }
+	public int getSyncBatchSize() { return (syncBatchSize - 1); }
 
 	public boolean isSyncBatchEnable() { return syncBatchEnable; }
 }
