@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -100,6 +100,19 @@ func (c *TransCacheMgr) ClearCache(ctx context.Context) (err error) {
 	if err = c.Cache.Clear(); err != nil {
 		err = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, "Fail to clear translation cache")
 		log.Error(err.Error())
+	}
+
+	return
+}
+
+func (c *TransCacheMgr) GetVersionInfo(ctx context.Context, name, version string) (data map[string]interface{}, err error) {
+	key := name + ":" + version
+	if dataInCache, err := c.Cache.Get(key); err == nil {
+		return dataInCache.(map[string]interface{}), err
+	}
+
+	if data, err = c.DAO.GetVersionInfo(ctx, name, version); err == nil {
+		c.Cache.Set(key, data)
 	}
 
 	return

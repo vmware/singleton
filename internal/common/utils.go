@@ -8,6 +8,7 @@ package common
 import (
 	"context"
 	"errors"
+	"io/ioutil"
 	"reflect"
 	"regexp"
 	"strings"
@@ -15,6 +16,7 @@ import (
 
 	"sgtnserver/internal/logger"
 
+	jsoniter "github.com/json-iterator/go"
 	"go.uber.org/zap"
 )
 
@@ -96,4 +98,12 @@ func SplitParameter(param string, reg *regexp.Regexp) []string {
 	}
 
 	return reg.Split(param, -1)
+}
+
+func ReadJSONFile(filePath string, data interface{}) error {
+	contents, err := ioutil.ReadFile(filePath)
+	if err == nil {
+		err = jsoniter.Unmarshal(contents, data)
+	}
+	return err
 }

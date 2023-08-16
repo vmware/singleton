@@ -31,6 +31,58 @@ var doc = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/about/version": {
+            "get": {
+                "description": "Get service build and translation bundle information",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "about-version-api"
+                ],
+                "summary": "Get service build information and translation bundle information",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "product name",
+                        "name": "productName",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "version",
+                        "name": "version",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "207": {
+                        "description": "Successful Partially",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/combination/translationsAndPattern": {
             "get": {
                 "description": "Get translation and pattern data by customized type",
@@ -1319,6 +1371,9 @@ var doc = `{
         }
     },
     "tags": [
+        {
+            "name": "about-version-api"
+        },
         {
             "name": "formatting-api"
         },

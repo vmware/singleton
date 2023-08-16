@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -13,6 +13,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"sgtnserver/internal/common"
 	"sgtnserver/internal/logger"
 	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/translation"
@@ -101,25 +102,25 @@ func (b *LocalBundle) GetBundleInfo(ctx context.Context) (data *translation.Bund
 
 // GetBundle ...
 func (b *LocalBundle) GetBundle(ctx context.Context, id *translation.BundleID) (data *translation.Bundle, returnErr error) {
+	bf := translation.BundleFile{}
 	_, filePath := b.getBundlePath(id)
-	contents, err := ioutil.ReadFile(filePath)
+	err := common.ReadJSONFile(filePath, &bf)
 	if err == nil {
-		var bf translation.BundleFile
-		if err = json.Unmarshal(contents, &bf); err == nil {
-			if !strings.EqualFold(bf.Locale, id.Locale) || !strings.EqualFold(bf.Component, id.Component) {
-				logger.FromContext(ctx).Error("Bundle file content is wrong!",
-					zap.String(translation.Locale, bf.Locale+"?="+id.Locale),
-					zap.String(translation.Component, bf.Component+"?="+id.Component))
-			}
-			return &translation.Bundle{ID: *id, Messages: bf.Messages}, nil
+		if !strings.EqualFold(bf.Locale, id.Locale) || !strings.EqualFold(bf.Component, id.Component) {
+			logger.FromContext(ctx).Error("Bundle file content is wrong!",
+				zap.String(translation.Locale, bf.Locale+"?="+id.Locale),
+				zap.String(translation.Component, bf.Component+"?="+id.Component))
 		}
+		return &translation.Bundle{ID: *id, Messages: bf.Messages}, nil
 	}
+
 	if os.IsNotExist(err) {
 		returnErr = sgtnerror.StatusNotFound.WrapErrorWithMessage(err, translation.FailToReadBundle, id.Name, id.Version, id.Locale, id.Component)
 	} else {
 		returnErr = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, translation.FailToReadBundle, id.Name, id.Version, id.Locale, id.Component)
 	}
 	logger.FromContext(ctx).Error(returnErr.Error())
+
 	return nil, returnErr
 }
 
@@ -166,4 +167,22 @@ func (b *LocalBundle) getBundlePath(id *translation.BundleID) (string, string) {
 	fullPath := filepath.Join(dirPath, fileName)
 
 	return dirPath, fullPath
+}
+
+func (b *LocalBundle) GetVersionInfo(ctx context.Context, name, version string) (data map[string]interface{}, err error) {
+	filePath := filepath.Join(b.BasePath, name, version, translation.VersionInfoFile)
+	data = make(map[string]interface{})
+	err = common.ReadJSONFile(filePath, &data)
+	if err == nil {
+		return
+	}
+	
+	if os.IsNotExist(err) {
+		err = sgtnerror.StatusNotFound.WrapErrorWithMessage(err, translation.FailToReadFile)
+	} else {
+		err = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, translation.FailToReadFile)
+	}
+	logger.FromContext(ctx).Error(err.Error())
+
+	return
 }
