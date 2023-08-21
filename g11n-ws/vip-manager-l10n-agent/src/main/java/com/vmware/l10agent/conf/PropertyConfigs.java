@@ -75,6 +75,9 @@ public class PropertyConfigs {
 	@Value("${vip.sync.batch.size:50}")
 	private int syncBatchSize;
 
+	@Value("${vip.sync.batch.requestBody.size:8M}")
+	private String reqBodySizeStr;
+
 
 	public long getSyncStartDatetime() {
 		
@@ -197,4 +200,8 @@ public class PropertyConfigs {
 	public int getSyncBatchSize() { return (syncBatchSize - 1); }
 
 	public boolean isSyncBatchEnable() { return syncBatchEnable; }
+
+	public int getSyncReqBodySize(){
+		return (1024*1024*Integer.valueOf(this.reqBodySizeStr.toUpperCase().replaceAll("M", "").trim())) - (512*1024);
+	}
 }
