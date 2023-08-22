@@ -21,7 +21,7 @@ Server:
   RunMode: debug # debug, release
   Schema: http # http, https, http&https
   HTTPSPort: 8090
-  HTTPPort: 8091
+  HTTPPort: 9091
   ReadTimeout: 0s
   WriteTimeout: 0s
   CertFile: testdata/https/server.pem
@@ -52,5 +52,4 @@ Cache:
 
 SwaggerUI: true
 
-AllowList: true
-AllowedProducts: "{VPE: ['*'], ABC: [1.0.0,1.0.1]}"
+AllowListFile: tests/testdata/config/config.yaml

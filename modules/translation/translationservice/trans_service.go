@@ -390,5 +390,5 @@ func init() {
 
 	initLocaleMap()
 
-	initAllowedProducts()
+	InitAllowList()
 }

@@ -46,7 +46,7 @@ func DoVersionFallback(c *gin.Context, name, version string) string {
 }
 
 func HandleAllowList(c *gin.Context) {
-	if !config.Settings.AllowList {
+	if config.Settings.AllowListFile == "" {
 		return
 	}
 

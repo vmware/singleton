@@ -136,8 +136,7 @@ type Config struct {
 		MaxAge           time.Duration `json:"MaxAge" yaml:"MaxAge"`
 	} `json:"CrossDomain" yaml:"CrossDomain"`
 
-	AllowList       bool   `yaml:"AllowList"`
-	AllowedProducts string `json:"AllowedProducts" yaml:"AllowedProducts"`
+	AllowListFile string `json:"AllowListFile" yaml:"AllowListFile"`
 }
 
 var Settings Config

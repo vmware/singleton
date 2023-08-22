@@ -20,6 +20,7 @@ import (
 	"sgtnserver/internal/config"
 	"sgtnserver/internal/logger"
 	"sgtnserver/internal/sgtnerror"
+	"sgtnserver/modules/translation/translationservice"
 
 	"github.com/emirpasic/gods/sets/hashset"
 	"github.com/gin-gonic/gin"
@@ -285,9 +286,13 @@ func TestPartialSuccess(t *testing.T) {
 }
 
 func TestAllowList(t *testing.T) {
-	oldvalue := config.Settings.AllowList
-	config.Settings.AllowList = true
-	defer func() { config.Settings.AllowList = oldvalue }()
+	oldvalue := config.Settings.AllowListFile
+	config.Settings.AllowListFile = "{VPE: ['*'], ABC: [1.0.0,1.0.1]}"
+	translationservice.InitAllowList()
+	defer func() {
+		config.Settings.AllowListFile = oldvalue
+		translationservice.InitAllowList()
+	}()
 
 	e := CreateHTTPExpect(t, GinTestEngine)
 	resp := e.GET(GetBundleURL, "not-found", Version, "zh-Hans", "sunglow").Expect()
