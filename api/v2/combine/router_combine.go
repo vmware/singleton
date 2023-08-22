@@ -18,13 +18,13 @@ type combineRouter struct{}
 func (r *combineRouter) Init(e *gin.RouterGroup) {
 	logger.Log.Debug("Initialize combination router")
 
-	e.GET("/locale/supportedLanguageList", translation.HandleVersionFallback, getLanguageListOfDispLang)
+	e.GET("/locale/supportedLanguageList", translation.HandleAllowList, translation.HandleVersionFallback, getLanguageListOfDispLang)
 
 	// translations and pattern combined interface
-	e.GET("/combination/translationsAndPattern", translation.HandleVersionFallback, getCombinedData)
+	e.GET("/combination/translationsAndPattern", translation.HandleAllowList, translation.HandleVersionFallback, getCombinedData)
 
 	// translations and pattern combined interface by POST (deprecated)
-	e.POST("/combination/translationsAndPattern", getCombinedDataByPost)
+	e.POST("/combination/translationsAndPattern", translation.HandleAllowList, getCombinedDataByPost)
 
 }
 func init() {

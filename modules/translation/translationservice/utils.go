@@ -114,10 +114,6 @@ func PickupVersion(name, desiredVersion string) string {
 	return desiredVersion
 }
 
-func IsProductExist(name string) bool {
-	return bundleinfo.IsProductExist(name)
-}
-
 var allowedProducts = map[string]mapset.Set[string]{}
 
 func initAllowedProducts() {
@@ -149,23 +145,23 @@ func initAllowedProducts() {
 	}
 }
 
-func IsReleaseAllowed(name, version string) bool {
-	if versions, ok := allowedProducts[name]; ok {
-		if versions.Contains(version) {
-			return true
-		}
-	}
-
-	return false
-}
-
-// func IsProductAllowed(name string) bool {
-// 	if _, ok := allowedProducts[name]; ok {
-// 		return true
+// func IsReleaseAllowed(name, version string) bool {
+// 	if versions, ok := allowedProducts[name]; ok {
+// 		if versions.Contains(version) {
+// 			return true
+// 		}
 // 	}
 
 // 	return false
 // }
+
+func IsProductAllowed(name string) bool {
+	if _, ok := allowedProducts[name]; ok {
+		return true
+	}
+
+	return false
+}
 
 func initLocaleMap() {
 	logger.Log.Debug("Initialize locale mapping")

@@ -257,11 +257,11 @@ func TestPutBundle(t *testing.T) {
 		name, version, locale string
 		wantedCode            int
 	}{
-		// {TestName: "Normal", name: Name, version: Version, locale: Locale, wantedCode: http.StatusOK},
+		{TestName: "Normal", name: Name, version: Version, locale: Locale, wantedCode: http.StatusOK},
 		{TestName: "NewProduct", name: newProduct, version: Version, locale: Locale, wantedCode: http.StatusBadRequest},
-		// {TestName: "NewVersion", name: Name, version: newVersion, locale: Locale, wantedCode: http.StatusOK},
-		// {TestName: "inValidProduct", name: "---", version: Version, locale: Locale, wantedCode: http.StatusBadRequest},
-		// {TestName: "invalidVersion", name: Name, version: "---", locale: Locale, wantedCode: http.StatusBadRequest},
+		{TestName: "NewVersion", name: Name, version: newVersion, locale: Locale, wantedCode: http.StatusOK},
+		{TestName: "inValidProduct", name: "---", version: Version, locale: Locale, wantedCode: http.StatusBadRequest},
+		{TestName: "invalidVersion", name: Name, version: "---", locale: Locale, wantedCode: http.StatusBadRequest},
 	}
 
 	os.RemoveAll(path.Join(config.Settings.LocalBundle.BasePath, newProduct))
