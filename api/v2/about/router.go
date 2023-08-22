@@ -18,7 +18,7 @@ type aboutRouter struct{}
 func (r *aboutRouter) Init(e *gin.RouterGroup) {
 	logger.Log.Debug("Initialize about router")
 
-	e.GET("/about/version", translation.HandleAllowList, translation.HandleVersionFallback, GetAboutInfo)
+	e.GET("/about/version", translation.HandleAllowList, GetAboutInfo)
 }
 
 func init() {

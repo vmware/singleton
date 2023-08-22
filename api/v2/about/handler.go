@@ -36,15 +36,13 @@ func GetAboutInfo(c *gin.Context) {
 		return
 	}
 
-	version := c.GetString(api.SgtnVersionKey)
-
 	var returnErr *sgtnerror.MultiError
 	ctx := logger.NewContext(c, c.MustGet(api.LoggerKey))
 	serviceInfo := serverinfo.GetServerInfo(ctx)
 	data := gin.H{"service": serviceInfo}
-	if params.ProductName != "" && version != "" {
-		if bundleInfo, err := translationservice.GetService().GetVersionInfo(ctx, params.ProductName, version); err == nil {
-			data["bundle"] = gin.H{api.ProductNameAPIKey: params.ProductName, api.VersionAPIKey: version, "changeId": bundleInfo["drop_id"]}
+	if params.ProductName != "" && params.Version != "" {
+		if bundleInfo, err := translationservice.GetService().GetVersionInfo(ctx, params.ProductName, params.Version); err == nil {
+			data["bundle"] = gin.H{api.ProductNameAPIKey: params.ProductName, api.VersionAPIKey: params.Version, "changeId": bundleInfo["drop_id"]}
 		} else {
 			returnErr = sgtnerror.Append(nil, err) // Add nil because service is always successful.
 		}
