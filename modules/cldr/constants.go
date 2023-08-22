@@ -22,6 +22,7 @@ const (
 	CoreSplmtLanguageData
 	CoreSplmtLikelySubTags
 	CoreSplmtNumberingSystems
+	CoreSplmtDates
 	CoreAvaLocales
 
 	RegionToLanguage
@@ -43,4 +44,5 @@ const (
 	LocaleLanguages   = "LocaleLanguages"
 	LocaleTerritories = "LocaleTerritories"
 	TimeZoneName      = "TimeZoneName"
+	LocaleCities      = "LocaleCities"
 )

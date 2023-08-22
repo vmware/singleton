@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -32,6 +32,7 @@ var (
 	componentsRegex                 = regexp.MustCompile(`^` + letterAndNumberAndValidCharString + `(,\s*` + letterAndNumberAndValidCharString + `)*$`)
 	localesRegex                    = componentsRegex
 	patternScopeRegex               = regexp.MustCompile(`^(\s*[a-zA-Z]+\s*)(,\s*[a-zA-Z]+\s*)*$`)
+	asciiCharsRegex                 = regexp.MustCompile(`\A[[:ascii:]]+\z`)
 )
 
 var validatorInfoArray = [][]interface{}{
@@ -44,7 +45,7 @@ var validatorInfoArray = [][]interface{}{
 	{"scopeFilter", regexp.MustCompile(`^\^?[-_a-zA-Z\d,]+$`), "Incorrect scope filter"},
 	{ComponentsAPIKey, componentsRegex, fmt.Sprintf(letterAndNumberAndValidCharStringError, ComponentsAPIKey)},
 	{LocalesAPIKey, localesRegex, fmt.Sprintf(letterAndNumberAndValidCharStringError, LocalesAPIKey)},
-	{KeyAPIKey, letterAndNumberAndValidCharRegx, fmt.Sprintf(letterAndNumberAndValidCharStringError, KeyAPIKey)},
+	{KeyAPIKey, asciiCharsRegex, "'{0}' is invalid(only standard ASCII characters are allowed)"},
 }
 
 var enTranslator ut.Translator
@@ -77,7 +78,7 @@ func InitValidator() {
 					return ut.Add(name, info[2].(string), true)
 				},
 				func(ut ut.Translator, fe validator.FieldError) string {
-					t, err := ut.T(fe.Tag())
+					t, err := ut.T(fe.Tag(), fmt.Sprintf("%v", fe.Value()))
 					if err != nil {
 						logger.Log.Warn(err.Error())
 					}

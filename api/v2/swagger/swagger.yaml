@@ -87,6 +87,40 @@ info:
   title: Singleton Service API
   version: "2.0"
 paths:
+  /about/version:
+    get:
+      description: Get service build and translation bundle information
+      parameters:
+      - description: product name
+        in: query
+        name: productName
+        type: string
+      - description: version
+        in: query
+        name: version
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "207":
+          description: Successful Partially
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get service build information and translation bundle information
+      tags:
+      - about-version-api
   /combination/translationsAndPattern:
     get:
       description: Get translation and pattern data by customized type
@@ -392,10 +426,20 @@ paths:
     get:
       description: Get region names in a specified locale
       parameters:
-      - description: 'the supported language list, separated by commas. e.g. ''en,zh,ja'' '
+      - description: the supported language list, separated by commas. e.g. 'en,zh,ja'
         in: query
         name: supportedLanguageList
         required: true
+        type: string
+      - default: false
+        description: a flag for returning cities
+        in: query
+        name: displayCity
+        type: boolean
+      - description: a string which represents regions, separated by commas. e.g.
+          'US,PT,CN'
+        in: query
+        name: regions
         type: string
       produces:
       - application/json
@@ -404,7 +448,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/api.Response'
-        "206":
+        "207":
           description: Successful Partially
           schema:
             $ref: '#/definitions/api.Response'
@@ -884,6 +928,7 @@ paths:
       - translation-product-component-key-api
 swagger: "2.0"
 tags:
+- name: about-version-api
 - name: formatting-api
 - name: formatting-pattern-api
 - name: locale-api

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -11,8 +11,8 @@ import (
 	"sgtnserver/internal/logger"
 
 	"github.com/gin-gonic/gin"
-	ginSwagger "github.com/swaggo/gin-swagger"
 	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 // @title Singleton Service API
@@ -20,6 +20,7 @@ import (
 // @description This is a Singleton server
 // @termsOfService
 
+// @tag.name about-version-api
 // @tag.name formatting-api
 // @tag.name formatting-pattern-api
 // @tag.name locale-api

@@ -7,6 +7,7 @@ package localeutil
 
 import (
 	"context"
+	"strings"
 
 	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/cldr"
@@ -112,4 +113,27 @@ func GetTimeZoneNames(ctx context.Context, locale string, defaultTerritory bool)
 	data.TimeZoneNames[metaZonesKey] = newMetaZones
 
 	return
+}
+
+func GetLocaleCities(ctx context.Context, locale string, regions []string) (data map[string]jsoniter.Any, err error) {
+	cldrLocale := coreutil.GetCLDRLocale(locale)
+	if cldrLocale == "" {
+		err = sgtnerror.StatusBadRequest.WithUserMessage(cldr.InvalidLocale, locale)
+		return
+	}
+
+	data = map[string]jsoniter.Any{}
+	err = GetLocaleData(ctx, locale, cldr.LocaleCities, &data)
+	if err != nil {
+		return nil, err
+	}
+	if len(regions) == 0 {
+		return
+	}
+
+	newData := make(map[string]jsoniter.Any, len(regions))
+	for _, region := range regions {
+		newData[region] = data[strings.ToUpper(region)]
+	}
+	return newData, err
 }

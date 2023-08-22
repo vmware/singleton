@@ -11,6 +11,7 @@ import (
 	_ "sgtnserver/api/v1/cldr"
 	_ "sgtnserver/api/v1/formatting"
 	_ "sgtnserver/api/v1/translation"
+	_ "sgtnserver/api/v2/about"
 	_ "sgtnserver/api/v2/cldr"
 	_ "sgtnserver/api/v2/combine"
 	_ "sgtnserver/api/v2/formatting"

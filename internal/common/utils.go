@@ -8,18 +8,22 @@ package common
 import (
 	"context"
 	"errors"
+	"io/ioutil"
 	"reflect"
+	"regexp"
 	"strings"
 	"time"
 
 	"sgtnserver/internal/logger"
 
+	jsoniter "github.com/json-iterator/go"
 	"go.uber.org/zap"
 )
 
 // Contains ...
 // return < 0 not found
-//        >=0 the index
+//
+//	>=0 the index
 func Contains(s []string, e string) int {
 	for i, a := range s {
 		if a == e {
@@ -31,7 +35,8 @@ func Contains(s []string, e string) int {
 
 // ContainsIgnoreCase
 // return < 0 not found
-//        >=0 the index
+//
+//	>=0 the index
 func ContainsIgnoreCase(s []string, e string) int {
 	for i, a := range s {
 		if strings.EqualFold(a, e) {
@@ -84,4 +89,21 @@ func DoAndCheck(ctx context.Context, done chan struct{}, doer func() error, chec
 
 func IsZeroOfUnderlyingType(x interface{}) bool {
 	return reflect.DeepEqual(x, reflect.Zero(reflect.TypeOf(x)).Interface())
+}
+
+func SplitParameter(param string, reg *regexp.Regexp) []string {
+	param = strings.TrimSpace(param)
+	if len(param) == 0 {
+		return nil
+	}
+
+	return reg.Split(param, -1)
+}
+
+func ReadJSONFile(filePath string, data interface{}) error {
+	contents, err := ioutil.ReadFile(filePath)
+	if err == nil {
+		err = jsoniter.Unmarshal(contents, data)
+	}
+	return err
 }

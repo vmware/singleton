@@ -367,6 +367,11 @@ func (ts Service) GetTranslationStatus(ctx context.Context, id *translation.Bund
 	return result, err
 }
 
+func (ts Service) GetVersionInfo(ctx context.Context, name, version string) (data map[string]interface{}, err error) {
+	logger.FromContext(ctx).Debug("get bundle verison information", zap.String(translation.Name, name), zap.String(translation.Version, version))
+	return ts.msgOrigin.GetVersionInfo(ctx, name, version)
+}
+
 var service Service
 
 func newService() Service {
