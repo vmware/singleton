@@ -82,7 +82,6 @@ public class PropertyConfigs {
 	private String reqBodySizeStr;
 
 
-
 	public long getSyncStartDatetime() {
 		
 		try {
