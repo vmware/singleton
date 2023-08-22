@@ -117,6 +117,10 @@ func PickupVersion(name, desiredVersion string) string {
 var allowedProducts mapset.Set[string]
 
 func InitAllowList() {
+	if config.Settings.AllowListFile == "" {
+		return
+	}
+
 	allowList := map[string]interface{}{}
 	err := common.ReadJSONFile(config.Settings.AllowListFile, &allowList)
 	if err != nil {
