@@ -22,7 +22,7 @@ type serverInfo struct {
 	CreatedBy   string `json:"createdBy,omitempty" yaml:"createdBy"`
 	BuildDate   string `json:"buildDate,omitempty" yaml:"buildDate"`
 	BuildNumber string `json:"buildNumber,omitempty" yaml:"buildNumber"`
-	ChangeId    string `json:"changeId,omitempty" yaml:"changeId"`
+	ChangeID    string `json:"changeId,omitempty" yaml:"changeId"`
 }
 
 var (
