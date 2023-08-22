@@ -21,7 +21,7 @@ Server:
   RunMode: debug # debug, release
   Schema: http # http, https, http&https
   HTTPSPort: 8090
-  HTTPPort: 9091
+  HTTPPort: 8091
   ReadTimeout: 0s
   WriteTimeout: 0s
   CertFile: testdata/https/server.pem
@@ -52,7 +52,7 @@ Cache:
 
 SwaggerUI: true
 
-AllowListFile: tests/testdata/config/config.yaml
+AllowListFile: testdata/allowlist.json
 
 BuildInfo:
   name: singleton-i18n

@@ -10,6 +10,8 @@ import (
 	"strings"
 
 	"sgtnserver/internal/bindata"
+	"sgtnserver/internal/common"
+	"sgtnserver/internal/config"
 	"sgtnserver/internal/logger"
 	"sgtnserver/modules/cldr"
 	"sgtnserver/modules/cldr/coreutil"
@@ -112,40 +114,20 @@ func PickupVersion(name, desiredVersion string) string {
 	return desiredVersion
 }
 
-var allowedProducts map[string]mapset.Set[string]
+var allowedProducts mapset.Set[string]
 
 func InitAllowList() {
-	allowedProducts = map[string]mapset.Set[string]{}
-	newProductVersions := mapset.NewSet[string]()
-	allowedProducts[product] = newProductVersions
-	for _, version := range versions {
-		if version == "*" {
-			for _, v := range allExistingVersions.Values() {
-				newProductVersions.Add(v.(string))
-			}
-			break
-		}
-
-			newProductVersions.Add(version)
+	allowList := map[string]interface{}{}
+	err := common.ReadJSONFile(config.Settings.AllowListFile, &allowList)
+	if err != nil {
+		logger.Log.Fatal("fail to read allow list file", zap.String("path", config.Settings.AllowListFile), zap.Error(err))
 	}
+
+	allowedProducts = mapset.NewSetFromMapKeys[string](allowList)
 }
 
-// func IsReleaseAllowed(name, version string) bool {
-// 	if versions, ok := allowedProducts[name]; ok {
-// 		if versions.Contains(version) {
-// 			return true
-// 		}
-// 	}
-
-// 	return false
-// }
-
 func IsProductAllowed(name string) bool {
-	if _, ok := allowedProducts[name]; ok {
-		return true
-	}
-
-	return false
+	return allowedProducts.Contains(name)
 }
 
 func initLocaleMap() {

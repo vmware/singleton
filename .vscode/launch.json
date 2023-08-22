@@ -12,8 +12,7 @@
             "buildFlags": "-tags='jsoniter'",
             "args": [
                 "--config=${workspaceFolder}/tests/testdata/config/config.yaml",
-                "--local-bundle.base-path=${workspaceFolder}/tests/testdata/bundles",
-                // "--AllowedProducts=abc,ded"
+                "--local-bundle.base-path=${workspaceFolder}/tests/testdata/bundles"
             ],
         },
         {
@@ -25,7 +24,7 @@
             "buildFlags": "-tags=jsoniter",
             "args": [
                 "-test.v",
-                "-test.run=^TestPutBundle$",
+                // "-test.run=^TestGetPatternByLangReg$",
                 "--config=${workspaceFolder}/tests/testdata/config/config.yaml"
             ]
         },

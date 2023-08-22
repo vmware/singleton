@@ -287,7 +287,7 @@ func TestPartialSuccess(t *testing.T) {
 
 func TestAllowList(t *testing.T) {
 	oldvalue := config.Settings.AllowListFile
-	config.Settings.AllowListFile = "{VPE: ['*'], ABC: [1.0.0,1.0.1]}"
+	config.Settings.AllowListFile = "testdata/allowlist.json"
 	translationservice.InitAllowList()
 	defer func() {
 		config.Settings.AllowListFile = oldvalue
