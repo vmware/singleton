@@ -17,7 +17,6 @@ import (
 	"sgtnserver/modules/cldr/coreutil"
 	"sgtnserver/modules/translation/bundleinfo"
 
-	mapset "github.com/deckarep/golang-set/v2"
 	"github.com/emirpasic/gods/sets"
 	jsoniter "github.com/json-iterator/go"
 	"go.uber.org/zap"
@@ -114,24 +113,22 @@ func PickupVersion(name, desiredVersion string) string {
 	return desiredVersion
 }
 
-var allowedProducts mapset.Set[string]
+var allowList = map[string]interface{}{}
 
 func InitAllowList() {
 	if config.Settings.AllowListFile == "" {
 		return
 	}
 
-	allowList := map[string]interface{}{}
 	err := common.ReadJSONFile(config.Settings.AllowListFile, &allowList)
 	if err != nil {
-		logger.Log.Fatal("fail to read allow list file", zap.String("path", config.Settings.AllowListFile), zap.Error(err))
+		logger.Log.Fatal("fail to read allowlist file", zap.String("path", config.Settings.AllowListFile), zap.Error(err))
 	}
-
-	allowedProducts = mapset.NewSetFromMapKeys[string](allowList)
 }
 
-func IsProductAllowed(name string) bool {
-	return allowedProducts.Contains(name)
+func IsProductAllowed(name string) (found bool) {
+	_, found = allowList[name]
+	return
 }
 
 func initLocaleMap() {
