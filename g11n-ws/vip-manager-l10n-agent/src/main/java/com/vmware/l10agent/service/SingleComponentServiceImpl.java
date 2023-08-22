@@ -344,8 +344,9 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 			keySourceModel.setSource((String) entry.getValue());
 			sourceModels.add(keySourceModel);
 			count++;
-			if (sourceModels.size() > configs.getSyncBatchSize() || count == model.getMessages().size()) {
-				logger.info("sync to remote batch size: {}",urlStr, count);
+			byte[] valByte = JSONArray.toJSONBytes(sourceModels);
+			if (sourceModels.size() > configs.getSyncBatchSize() || count == model.getMessages().size() || valByte.length > configs.getSyncReqBodySize()) {
+				logger.info("sync to remote url: {}, batch size: {}, request body byte: {}",urlStr, count, valByte.length);
 				boolean reqResult = postBatchData(sourceModels, urlStr);
 				if (reqResult){
 					sourceModels = new ArrayList<>();
