@@ -90,7 +90,10 @@ public class WebConfiguration implements WebMvcConfigurer {
 	private String requestIdsStr; 
 	
 	@Value("${source.request.max-size}")
-	private Integer sourceReqBodySize; 
+	private Integer sourceReqBodySize;
+
+	@Value("${allow.list.path:}")
+	private String allowListPath;
 
 	@Autowired
 	private CSPTokenService cspTokenService;
@@ -130,7 +133,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 		 */
 
 		// Request Validation
-		InterceptorRegistration apival = registry.addInterceptor(new APIValidationInterceptor(productService.getAllowPrductList(), this.requestIdsStr)).addPathPatterns("/**")
+		InterceptorRegistration apival = registry.addInterceptor(new APIValidationInterceptor(productService.getAllowProductList(this.allowListPath), this.requestIdsStr)).addPathPatterns("/**")
 				.excludePathPatterns(API.I18N_API_ROOT+"doc/**", "/swagger-ui/**");
 
 		// authentication

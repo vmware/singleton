@@ -75,8 +75,14 @@ public class PropertyConfigs {
 	@Value("${vip.sync.batch.size:50}")
 	private int syncBatchSize;
 
+
 	@Value("${vip.sync.source.base64.enable:false}")
 	private boolean base64Enable;
+  
+	@Value("${vip.sync.batch.requestBody.size:8M}")
+	private String reqBodySizeStr;
+
+
 
 	public long getSyncStartDatetime() {
 		
@@ -196,11 +202,14 @@ public class PropertyConfigs {
 
 	public String getUserAgent() { return userAgent; }
 
-	public int getSyncBatchSize() { return syncBatchSize; }
+	public int getSyncBatchSize() { return (syncBatchSize - 1); }
 
 	public boolean isSyncBatchEnable() { return syncBatchEnable; }
 
 	public boolean isBase64Enable() {
 		return base64Enable;
+  }
+	public int getSyncReqBodySize(){
+		return (1024*1024*Integer.valueOf(this.reqBodySizeStr.toUpperCase().replaceAll("M", "").trim())) - (512*1024);
 	}
 }

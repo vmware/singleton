@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.common.constants;
@@ -13,4 +13,5 @@ public class ConstantsUnicode {
     public static final String UTF8 = "UTF-8";
     public static final String EN_US = "en_US";
     public static final String EN = "en";
+    public static final String ALT = "-alt-";
 }
