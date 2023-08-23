@@ -24,7 +24,7 @@ func TestAboutInfo(t *testing.T) {
 	}{
 		{"normal", Name, Version,
 			`{"response":{"code":200,"message":"OK"},"data":{"bundle":{"changeId":"drop_id-222","productName":"VPE","version":"1.0.0"},"service":{"name":"xxxx","version":"xxx","author":"xxx","createdBy":"xxx","buildDate":"xxx","changeId":"xxx"}}}`},
-		{"version doesn't exist", Name, "1.0.0.1",
+		{"version doesn't exist", Name, "0.0.0.1",
 			`{"response":{"code":207,"message":"Successful Partially"},"data":{"service":{"name":"xxxx","version":"xxx","author":"xxx","createdBy":"xxx","buildDate":"xxx","changeId":"xxx"}}}`},
 	}
 
