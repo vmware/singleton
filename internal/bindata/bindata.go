@@ -82,7 +82,7 @@ func infoYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "info.yaml", size: 111, mode: os.FileMode(420), modTime: time.Unix(1692771662, 0)}
+	info := bindataFileInfo{name: "info.yaml", size: 0, mode: os.FileMode(0), modTime: time.Unix(0, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -102,7 +102,7 @@ func localemapJson() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "localemap.json", size: 100, mode: os.FileMode(420), modTime: time.Unix(1685851043, 0)}
+	info := bindataFileInfo{name: "localemap.json", size: 0, mode: os.FileMode(0), modTime: time.Unix(0, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
