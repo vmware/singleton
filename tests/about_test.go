@@ -23,9 +23,9 @@ func TestAboutInfo(t *testing.T) {
 		desc, productName, version, wanted string
 	}{
 		{"normal", Name, Version,
-			`{"response":{"code":200,"message":"OK"},"data":{"bundle":{"changeId":"drop_id-222","productName":"VPE","version":"1.0.0"},"service":{"name":"xxxx","version":"xxx","author":"xxx","createdBy":"xxx","buildDate":"xxx","changeId":"xxx"}}}`},
+			`{"response":{"code":200,"message":"OK"},"data":{"bundle":{"changeId":"drop_id-222","productName":"VPE","version":"1.0.0"},"service":{"name":"singleton-go-server","version":"xxx","author":"VMware","createdBy":"xxx","buildDate":"xxx","changeId":"xxx"}}}`},
 		{"version doesn't exist", Name, "0.0.0.1",
-			`{"response":{"code":207,"message":"Successful Partially"},"data":{"service":{"name":"xxxx","version":"xxx","author":"xxx","createdBy":"xxx","buildDate":"xxx","changeId":"xxx"}}}`},
+			`{"response":{"code":207,"message":"Successful Partially"},"data":{"service":{"name":"singleton-go-server","version":"xxx","author":"VMware","createdBy":"xxx","buildDate":"xxx","changeId":"xxx"}}}`},
 	}
 
 	for _, tt := range tests {
