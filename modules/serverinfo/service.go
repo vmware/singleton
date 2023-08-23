@@ -8,8 +8,8 @@ package serverinfo
 import (
 	"context"
 
+	otherbindata "sgtnserver/internal/bindata/other"
 	"sgtnserver/internal/logger"
-	"sgtnserver/internal/otherbindata"
 
 	"go.uber.org/zap"
 	"gopkg.in/yaml.v3"

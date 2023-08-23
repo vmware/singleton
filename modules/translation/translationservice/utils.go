@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"strings"
 
-	"sgtnserver/internal/bindata"
+	otherbindata "sgtnserver/internal/bindata/other"
 	"sgtnserver/internal/logger"
 	"sgtnserver/modules/cldr"
 	"sgtnserver/modules/cldr/coreutil"
@@ -118,8 +118,8 @@ func IsProductExist(name string) bool {
 func initLocaleMap() {
 	logger.Log.Debug("Initialize locale mapping")
 
-	const localeMapFile = "localemap.json"
-	bts, err := bindata.Asset(localeMapFile)
+	const localeMapFile = "other/localemap.json"
+	bts, err := otherbindata.Asset(localeMapFile)
 	if err == nil {
 		err = json.Unmarshal(bts, &localeMap)
 	}
