@@ -346,14 +346,28 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 			count++;
 			byte[] valByte = JSONArray.toJSONBytes(sourceModels);
 			if (sourceModels.size() > configs.getSyncBatchSize() || count == model.getMessages().size() || valByte.length > configs.getSyncReqBodySize()) {
-				logger.info("sync to remote url: {}, batch size: {}, request body byte: {}",urlStr, count, valByte.length);
-				boolean reqResult = postBatchData(sourceModels, urlStr);
-				if (reqResult){
-					sourceModels = new ArrayList<>();
+				if(valByte.length < configs.getSyncReqBodySize() || sourceModels.size() == 1){
+					logger.info("sync to remote url: {}, batch size: {}, request body byte: {}",urlStr, count, valByte.length);
+					boolean reqResult = postBatchData(sourceModels, urlStr);
+					if (reqResult){
+						sourceModels = new ArrayList<>();
+					}else {
+						return  false;
+					}
 				}else {
-					return  false;
+					KeySourceModel lastItem = sourceModels.remove(sourceModels.size()-1);
+					boolean reqResult = postBatchData(sourceModels, urlStr);
+					if (reqResult){
+						sourceModels = new ArrayList<>();
+						sourceModels.add(lastItem);
+					}else {
+						return  false;
+					}
+
 				}
+
 			}
+
 		}
 		return true;
 	}
