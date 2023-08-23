@@ -13,23 +13,24 @@ import (
 	"sgtnserver/internal/logger"
 	"sgtnserver/modules/translation"
 	"sgtnserver/modules/translation/bundleinfo"
+	"sgtnserver/modules/translation/dao/interfaces"
 
 	jsoniter "github.com/json-iterator/go"
 	"go.uber.org/zap"
 )
 
 type decorator struct {
-	translation.MessageOrigin
+	interfaces.SgtnBundles
 	locks sync.Map
 }
 
-func NewDAODecorator(dao translation.MessageOrigin) translation.MessageOrigin {
-	return &decorator{MessageOrigin: dao}
+func NewDAODecorator(dao interfaces.SgtnBundles) interfaces.SgtnBundles {
+	return &decorator{SgtnBundles: dao}
 }
 
 func (d *decorator) GetBundleInfo(ctx context.Context) (*translation.BundleInfo, error) {
 	logger.Log.Debug("Read bundle information from storage")
-	return d.MessageOrigin.GetBundleInfo(ctx)
+	return d.SgtnBundles.GetBundleInfo(ctx)
 }
 
 func (d *decorator) GetBundle(ctx context.Context, id *translation.BundleID) (*translation.Bundle, error) {
@@ -52,7 +53,7 @@ func (d *decorator) GetBundle(ctx context.Context, id *translation.BundleID) (*t
 	locker.RLock()
 	defer locker.RUnlock()
 
-	b, err := d.MessageOrigin.GetBundle(ctx, id)
+	b, err := d.SgtnBundles.GetBundle(ctx, id)
 	if err == nil {
 		bundleinfo.AddBundle(id)
 	}
@@ -77,12 +78,12 @@ func (d *decorator) PutBundle(ctx context.Context, bundleData *translation.Bundl
 		ce.Write(zap.String("content", bundleData.Messages.ToString()))
 	}
 
-	existingBundle, err := d.MessageOrigin.GetBundle(ctx, &bundleData.ID)
+	existingBundle, err := d.SgtnBundles.GetBundle(ctx, &bundleData.ID)
 	if err == nil {
 		d.mergeBundle(bundleData, existingBundle)
 	}
 
-	err = d.MessageOrigin.PutBundle(ctx, bundleData)
+	err = d.SgtnBundles.PutBundle(ctx, bundleData)
 	if err == nil {
 		bundleinfo.AddBundle(&bundleData.ID)
 	}
@@ -115,7 +116,7 @@ func (d *decorator) mergeBundle(bundle *translation.Bundle, existingBundle *tran
 // 	locker.Lock()
 // 	defer locker.Unlock()
 
-// 	err := d.MessageOrigin.DeleteBundle(ctx, bundleID)
+// 	err := d.SgtnBundles.DeleteBundle(ctx, bundleID)
 // 	if err == nil {
 // 		bundleinfo.DeleteBundle(bundleID)
 // 	}

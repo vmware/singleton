@@ -176,7 +176,7 @@ func (b *LocalBundle) GetVersionInfo(ctx context.Context, name, version string) 
 	if err == nil {
 		return
 	}
-	
+
 	if os.IsNotExist(err) {
 		err = sgtnerror.StatusNotFound.WrapErrorWithMessage(err, translation.FailToReadFile)
 	} else {
@@ -185,4 +185,8 @@ func (b *LocalBundle) GetVersionInfo(ctx context.Context, name, version string) 
 	logger.FromContext(ctx).Error(err.Error())
 
 	return
+}
+
+func (b *LocalBundle) ReadJSONFile(ctx context.Context, path string, data interface{}) error {
+	return common.ReadJSONFile(path, data)
 }

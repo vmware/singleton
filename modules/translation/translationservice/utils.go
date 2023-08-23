@@ -6,16 +6,17 @@
 package translationservice
 
 import (
+	"context"
 	"strconv"
 	"strings"
 
 	"sgtnserver/internal/bindata"
-	"sgtnserver/internal/common"
 	"sgtnserver/internal/config"
 	"sgtnserver/internal/logger"
 	"sgtnserver/modules/cldr"
 	"sgtnserver/modules/cldr/coreutil"
 	"sgtnserver/modules/translation/bundleinfo"
+	"sgtnserver/modules/translation/dao"
 
 	"github.com/emirpasic/gods/sets"
 	jsoniter "github.com/json-iterator/go"
@@ -120,7 +121,7 @@ func InitAllowList() {
 		return
 	}
 
-	err := common.ReadJSONFile(config.Settings.AllowListFile, &allowList)
+	err := dao.GetInst().ReadJSONFile(context.TODO(), config.Settings.AllowListFile, &allowList)
 	if err != nil {
 		logger.Log.Fatal("fail to read allowlist file", zap.String("path", config.Settings.AllowListFile), zap.Error(err))
 	}
