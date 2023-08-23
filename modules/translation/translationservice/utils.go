@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"strings"
 
-	otherbindata "sgtnserver/internal/bindata/other"
+	"sgtnserver/internal/bindata"
 	"sgtnserver/internal/logger"
 	"sgtnserver/modules/cldr"
 	"sgtnserver/modules/cldr/coreutil"
@@ -118,8 +118,8 @@ func IsProductExist(name string) bool {
 func initLocaleMap() {
 	logger.Log.Debug("Initialize locale mapping")
 
-	const localeMapFile = "other/localemap.json"
-	bts, err := otherbindata.Asset(localeMapFile)
+	const localeMapFile = "localemap.json"
+	bts, err := bindata.Asset(localeMapFile)
 	if err == nil {
 		err = json.Unmarshal(bts, &localeMap)
 	}

@@ -8,7 +8,7 @@ package serverinfo
 import (
 	"context"
 
-	otherbindata "sgtnserver/internal/bindata/other"
+	"sgtnserver/internal/bindata"
 	"sgtnserver/internal/logger"
 
 	"go.uber.org/zap"
@@ -26,7 +26,7 @@ type serverInfo struct {
 }
 
 var (
-	filePath = "other/info.yaml"
+	filePath = "info.yaml"
 	info     serverInfo
 )
 
@@ -35,7 +35,7 @@ func GetServerInfo(_ctx context.Context) interface{} {
 }
 
 func init() {
-	bts, err := otherbindata.Asset(filePath)
+	bts, err := bindata.Asset(filePath)
 	if err != nil {
 		logger.Log.Error("fail to read information file", zap.Error(err))
 		return
