@@ -37,7 +37,7 @@ func GetServerInfo(_ctx context.Context) interface{} {
 func init() {
 	bts, err := bindata.Asset(filePath)
 	if err != nil {
-		logger.Log.Error("fail to read information file", zap.Error(err))
+		logger.Log.Error("fail to read information file", zap.String("path", filePath), zap.Error(err))
 		return
 	}
 
