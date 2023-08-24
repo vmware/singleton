@@ -28,7 +28,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          fetch-depth: 2.  
+          fetch-depth: 0
       - name: Get commit range
         id: get-commit-range-action
         uses: ./.github/actions/get-commit-range-action
@@ -127,18 +127,18 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v2
         with:
-          go-version: 1.16
-      - name: Set up JDK 8
+          go-version: 1.17
+      - name: Set up JDK
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
-          java-version: '8'
+          java-version: '17'
       - name: Smoke Test
         run: |
-          export PATH=${PATH/:\/usr\/local\/lib\/jvm\/openjdk11\/bin:/:}
+          export PATH=${PATH/:\/usr\/local\/lib\/jvm\/openjdk17\/bin:/:}
           sudo apt-get update
-          sudo apt-get install -y openjdk-8-jdk
-          export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
+          sudo apt-get install -y openjdk-17-jdk
+          export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
           java -version
           git clone --branch=master https://github.com/vmware/singleton.git server
           git clone --branch=devops https://github.com/vmware/singleton.git devops
@@ -162,5 +162,6 @@ jobs:
           go mod download github.com/json-iterator/go
           go get github.com/json-iterator/go@v1.1.9
           go get github.com/smartystreets/goconvey/convey@v1.7.2
+          go mod tidy
           go test -v ./...
           echo $str Smoke Test End $str        
