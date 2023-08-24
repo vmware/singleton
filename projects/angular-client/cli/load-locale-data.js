@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 const ArgumentParser = require('argparse').ArgumentParser;
@@ -100,76 +100,76 @@ class LoadLocaleData {
 function run() {
     // get path argument
     let parser = new ArgumentParser({
-        addHelp: true,
+        add_help: true,
         description: 'Download i18n resource files into local project'
     });
 
-    parser.addArgument(
-        ['-d', '--directory'],
+    parser.add_argument(
+        ('-d', '--directory'),
         {
             help: 'The location that i18n files should be added',
             required: true
         }
     );
 
-    parser.addArgument(
-        ['-p', '--product'],
+    parser.add_argument(
+        ('-p', '--product'),
         {
-            help: 'VIP product name',
+            help: 'Singleton product name',
             required: true,
         }
     );
 
-    parser.addArgument(
-        ['-v', '--version'],
+    parser.add_argument(
+        ('-v', '--version'),
         {
-            help: 'VIP product version',
+            help: 'Singleton product version',
             required: true,
         }
     );
 
-    parser.addArgument(
-        ['-c', '--component'],
+    parser.add_argument(
+        ('-c', '--component'),
         {
-            help: 'VIP product component, usually AngularJS2',
+            help: 'Singleton product component, usually AngularJS2',
             required: true,
         }
     );
 
-    parser.addArgument(
-        ['--host'],
+    parser.add_argument(
+        ('--host'),
         {
-            help: 'VIP host',
+            help: 'Singleton host',
             required: true,
         }
     );
 
-    parser.addArgument(
-        ['--locales'],
+    parser.add_argument(
+        ('--locales'),
         {
             help: 'The locales you want to download from vip',
             required: true,
         }
     );
 
-    parser.addArgument(
-        ['--scope'],
+    parser.add_argument(
+        ('--scope'),
         {
             help: 'The pattern categories',
             required: false
         }
     );
 
-    parser.addArgument(
-        ['--verbose'],
+    parser.add_argument(
+        ('--verbose'),
         {
             help: 'show more log info',
             required: false,
-            action: 'storeTrue'
+            action: 'store_true'
         }
     );
 
-    let args = parser.parseArgs();
+    let args = parser.parse_args();
     const logger = LogService.getLogServiceInstance(args.verbose ? true : false);
 
     logger.debug('command line args', args);

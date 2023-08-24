@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 let fs = require('fs');
@@ -14,23 +14,23 @@ let arg_parser = new ArgumentParser({
     description: "Convert pipe 'translate' to 'vtranslate'"
 });
 
-arg_parser.addArgument(
-    ['-s', '--source-dir'],
+arg_parser.add_argument(
+    ('-s', '--source-dir'),
     {
         help: 'Source Directory',
         required: true,
     }
 );
 
-arg_parser.addArgument(
-    ['-t', '--target-dir'],
+arg_parser.add_argument(
+    ('-t', '--target-dir'),
     {
         help: 'Target Directory',
         required: true,
     }
 );
 
-let args = arg_parser.parseArgs();
+let args = arg_parser.parse_args();
 
 var util = new extract_util.Util()
 var ex = new extract_util.Extract()

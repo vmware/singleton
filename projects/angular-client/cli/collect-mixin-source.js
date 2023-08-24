@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 require('ts-node').register({
@@ -25,59 +25,59 @@ var log = debug('app:log');
 log.log = console.log.bind(console);
 
 let parser = new ArgumentParser({
-    addHelp: true,
+    add_help: true,
     description: 'Collect English source from LocalizedComponents'
 });
 
-parser.addArgument(
-    ['-s', '--source-dir'],
+parser.add_argument(
+    ('-s', '--source-dir'),
     {
-        help: 'path to source directory where script will look for files ending in .l10n.ts',
+        help: 'Path to source directory where script will look for files ending in .l10n.ts',
         required: true,
     }
 );
 
-parser.addArgument(
-    ['-p', '--product'],
+parser.add_argument(
+    ('-p', '--product'),
     {
-        help: 'VIP product name',
+        help: 'Singleton product name',
         required: true,
     }
 );
 
-parser.addArgument(
-    ['-v', '--version'],
+parser.add_argument(
+    ('-v', '--version'),
     {
-        help: 'VIP product version',
+        help: 'Singleton product version',
         required: true,
     }
 );
 
-parser.addArgument(
-    ['-c', '--component'],
+parser.add_argument(
+    ('-c', '--component'),
     {
-        help: 'VIP product component, usually AngularJS2',
+        help: 'Singleton product component, usually AngularJS2',
         required: true,
     }
 );
 
-parser.addArgument(
-    ['--host'],
+parser.add_argument(
+    ('--host'),
     {
-        help: 'VIP host',
+        help: 'Singleton host',
         required: true,
     }
 );
 
-parser.addArgument(
-    ['-r', '--refresh-token'],
+parser.add_argument(
+    ('-r', '--refresh-token'),
     {
         help: 'Refresh token for CSP',
         required: false,
     }
 );
 
-let args = parser.parseArgs();
+let args = parser.parse_args();
 
 // When we import a TS file that imports Clarity Icons, we need to have
 // some shimming available to avoid a crash and a failure to collect the
