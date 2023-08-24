@@ -347,7 +347,6 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 			byte[] valByte = JSONArray.toJSONBytes(sourceModels);
 			if (sourceModels.size() > configs.getSyncBatchSize() || count == model.getMessages().size() || valByte.length > configs.getSyncReqBodySize()) {
 				if(valByte.length < configs.getSyncReqBodySize() || sourceModels.size() == 1){
-					logger.info("sync to remote url: {}, batch size: {}, request body byte: {}",urlStr, count, valByte.length);
 					boolean reqResult = postBatchData(sourceModels, urlStr);
 					if (reqResult){
 						sourceModels = new ArrayList<>();
@@ -356,6 +355,7 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 					}
 				}else {
 					KeySourceModel lastItem = sourceModels.remove(sourceModels.size()-1);
+					valByte = JSONArray.toJSONBytes(sourceModels);
 					boolean reqResult = postBatchData(sourceModels, urlStr);
 					if (reqResult){
 						sourceModels = new ArrayList<>();
@@ -365,9 +365,18 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 					}
 
 				}
-
+				if (valByte.length > configs.getSyncReqBodySize()){
+					logger.warn("sync bigger than request body key:{},  batch size: {}, request body byte size: {}",sourceModels.get(0).getKey(), sourceModels.size(), valByte.length);
+				}
 			}
 
+		}
+		if (sourceModels.size() > 0){
+			byte[] valByte = JSONArray.toJSONBytes(sourceModels);
+			if (valByte.length > configs.getSyncReqBodySize()){
+				logger.warn("sync bigger than request body key:{},  batch size: {}, request body byte size: {}",sourceModels.get(0).getKey(), sourceModels.size(), valByte.length);
+			}
+			return postBatchData(sourceModels, urlStr);
 		}
 		return true;
 	}
