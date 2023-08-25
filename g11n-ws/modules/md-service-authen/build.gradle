@@ -31,7 +31,7 @@ dependencies {
         exclude group: "org.apache.httpcomponents.core5"
         exclude group: "commons-fileupload"
 	}
-    implementation("commons-fileupload:commons-fileupload:1.5")
+    compileOnly("commons-fileupload:commons-fileupload:1.5")
     compileOnly("io.jsonwebtoken:jjwt:$jjwtVersion")
     compileOnly("org.apache.commons:commons-lang3:$commonsLangVersion")
     compileOnly("org.springdoc:springdoc-openapi-starter-webmvc-api:$springdocVersion")
