@@ -97,7 +97,11 @@ public class TranslationProductAPITest {
     private static String versionFallbackSupportLanguageList = "/i18n/api/v2/locale/supportedLanguageList?displayLanguage=es&productName=MULTCOMP&version=2.0.0";
     private static String versionFallbackComponentlist ="/i18n/api/v2/translation/products/MULTCOMP/versions/2.0.0/componentlist";
     private static String versionFallbackLocalelist="/i18n/api/v2/translation/products/MULTCOMP/versions/2.0.0/localelist";
-    
+    private static String versionList="/i18n/api/v2/translation/products/MULTCOMP/versionlist";
+    private static String versionListNoProduct="/i18n/api/v2/translation/products/NULLMULTCOMP/versionlist";
+    private static String versionListNull="/i18n/api/v2/translation/products/MULTCOMPTEST/versionlist";
+
+
     @Before
     public void setup() throws Exception {
         String authenticationResult=RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.POST, ConstantsForTest.AuthenticationAPIURI);
@@ -118,7 +122,14 @@ public class TranslationProductAPITest {
                 +"MULTCOMP"+  File.separator  + "1.0.0" + File.separator + "component2" +File.separator
                   + "messages_es.json";
         FileUtils.write(new File(comp2_esPath), comp2_es, "UTF-8", false);
-        
+
+        String product_esPath = "."+File.separator + ConstantsFile.L10N_BUNDLES_PATH
+                +"MULTCOMPTEST"+  File.separator;
+        File productTestFile = new File(product_esPath);
+        productTestFile.deleteOnExit();
+        productTestFile.mkdirs();
+
+
     }
 
     /**
@@ -266,5 +277,36 @@ public class TranslationProductAPITest {
         Assert.assertTrue(code==604L);
        
     }
+
+    @Test
+    public void testVersionList() throws Exception {
+        String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, versionList);
+        @SuppressWarnings("unchecked")
+        Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
+        long code = (long) dataMap.get("code");
+        Assert.assertTrue(code==200L);
+
+    }
+    @Test
+    public void testVersionListNoProduct() throws Exception {
+        String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, versionListNoProduct);
+        @SuppressWarnings("unchecked")
+        Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
+        long code = (long) dataMap.get("code");
+
+        Assert.assertTrue(code==404L);
+
+    }
+    @Test
+    public void testVersionListIsNull() throws Exception {
+        String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, versionListNull);
+        @SuppressWarnings("unchecked")
+        Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
+        long code = (long) dataMap.get("code");
+
+        Assert.assertTrue(code==200L);
+
+    }
+
  
 }
