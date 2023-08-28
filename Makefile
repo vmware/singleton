@@ -71,11 +71,11 @@ endif
 	go tool cover -html=${Cover} -o coverage.html
 	go tool cover -func ${Cover}
 
-bindata: downloadgo-bindata
-	go generate ./...
+cldr-bindata: downloadgo-bindata
+	go generate assets/cldrdata_generator.go
 
-internal/bindata/bindata.go: downloadgo-bindata
-	go generate ./...
+bindata: downloadgo-bindata
+	go generate assets/bindata_generator.go
 
 downloadgo-bindata:
 	go get -u github.com/go-bindata/go-bindata/...
