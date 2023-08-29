@@ -45,14 +45,14 @@ jobs:
     name: Get Lang Version
     runs-on: ubuntu-latest
     outputs:
-        LangVersion: ${{ steps.set-ver.outputs.lang-version }}
+        LangVersion: ${{ steps.get-ver.outputs.lang-version }}
     steps:
-      - name: Get Lang Version
+      - name: Checkout code
         uses: actions/checkout@v3
         with:
           fetch-depth: 2
-      - name: Set Lang Version
-        id: set-ver
+      - name: Get Lang Version
+        id: get-ver
         run: |
           LangVersion=$(cat go.mod|grep '^go\s[0-9]\.[0-9]*'|grep -o '[0-9]\.[0-9]*')
           echo "lang-version=$LangVersion" >> "$GITHUB_OUTPUT"
@@ -148,10 +148,10 @@ jobs:
       - name: Smoke Test
         run: |
           java -version
-          wget https://services.gradle.org/distributions/gradle-5.6.2-bin.zip -P /tmp
+          wget https://services.gradle.org/distributions/gradle-7.6.2-bin.zip -P /tmp
           sudo unzip -d /opt/gradle /tmp/gradle-*.zip
-          ls /opt/gradle/gradle-5.6.2
-          export GRADLE_HOME=/opt/gradle/gradle-5.6.2
+          ls /opt/gradle/gradle-7.6.2
+          export GRADLE_HOME=/opt/gradle/gradle-7.6.2
           export PATH=${GRADLE_HOME}/bin:${PATH}
           gradle -v
           git clone --branch=devops https://github.com/vmware/singleton.git devops
