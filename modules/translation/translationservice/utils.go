@@ -1,19 +1,22 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
 package translationservice
 
 import (
+	"context"
 	"strconv"
 	"strings"
 
 	"sgtnserver/internal/bindata"
+	"sgtnserver/internal/config"
 	"sgtnserver/internal/logger"
 	"sgtnserver/modules/cldr"
 	"sgtnserver/modules/cldr/coreutil"
 	"sgtnserver/modules/translation/bundleinfo"
+	"sgtnserver/modules/translation/dao"
 
 	"github.com/emirpasic/gods/sets"
 	jsoniter "github.com/json-iterator/go"
@@ -111,8 +114,22 @@ func PickupVersion(name, desiredVersion string) string {
 	return desiredVersion
 }
 
-func IsProductExist(name string) bool {
-	return bundleinfo.IsProductExist(name)
+var allowList = map[string]interface{}{}
+
+func InitAllowList() {
+	if config.Settings.AllowListFile == "" {
+		return
+	}
+
+	err := dao.GetInst().ReadJSONFile(context.TODO(), config.Settings.AllowListFile, &allowList)
+	if err != nil {
+		logger.Log.Fatal("fail to read allowlist file", zap.String("path", config.Settings.AllowListFile), zap.Error(err))
+	}
+}
+
+func IsProductAllowed(name string) (found bool) {
+	_, found = allowList[name]
+	return
 }
 
 func initLocaleMap() {

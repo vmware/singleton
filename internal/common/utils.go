@@ -8,7 +8,7 @@ package common
 import (
 	"context"
 	"errors"
-	"io/ioutil"
+	"os"
 	"reflect"
 	"regexp"
 	"strings"
@@ -101,7 +101,7 @@ func SplitParameter(param string, reg *regexp.Regexp) []string {
 }
 
 func ReadJSONFile(filePath string, data interface{}) error {
-	contents, err := ioutil.ReadFile(filePath)
+	contents, err := os.ReadFile(filePath)
 	if err == nil {
 		err = jsoniter.Unmarshal(contents, data)
 	}
