@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -46,7 +46,7 @@ func DoVersionFallback(c *gin.Context, name, version string) string {
 }
 
 func HandleAllowList(c *gin.Context) {
-	if !config.Settings.AllowList {
+	if config.Settings.AllowListFile == "" {
 		return
 	}
 
@@ -58,7 +58,7 @@ func HandleAllowList(c *gin.Context) {
 		}
 	}
 
-	if !translationservice.IsProductExist(productName) {
+	if !translationservice.IsProductAllowed(productName) {
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("Product '%s' doesn't exist", productName))
 	}
 }

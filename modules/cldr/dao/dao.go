@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -11,7 +11,7 @@ import (
 	"os"
 	"strings"
 
-	"sgtnserver/internal/bindata"
+	cldrbindata "sgtnserver/internal/bindata/cldr"
 	"sgtnserver/internal/logger"
 	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/cldr"
@@ -73,7 +73,7 @@ func (cldrDAO) GetLocaleData(ctx context.Context, locale, dataType string, data 
 }
 
 func readDataFromBinary(filePath string, data interface{}, jsonPath ...interface{}) error {
-	bts, err := bindata.Asset(filePath)
+	bts, err := cldrbindata.Asset(filePath)
 	if err != nil {
 		return err
 	}

@@ -136,17 +136,7 @@ type Config struct {
 		MaxAge           time.Duration `json:"MaxAge" yaml:"MaxAge"`
 	} `json:"CrossDomain" yaml:"CrossDomain"`
 
-	AllowList bool `yaml:"AllowList"`
-
-	BuildInfo struct {
-		Name        string `json:"name,omitempty" yaml:"name"`
-		Version     string `json:"version,omitempty" yaml:"version"`
-		Author      string `json:"author,omitempty" yaml:"author"`
-		CreatedBy   string `json:"createdBy,omitempty" yaml:"createdBy"`
-		BuildDate   string `json:"buildDate,omitempty" yaml:"buildDate"`
-		BuildNumber string `json:"buildNumber,omitempty" yaml:"buildNumber"`
-		ChangeId    string `json:"changeId,omitempty" yaml:"changeId"`
-	} `json:"BuildInfo" yaml:"BuildInfo"`
+	AllowListFile string `json:"AllowListFile" yaml:"AllowListFile"`
 }
 
 var Settings Config

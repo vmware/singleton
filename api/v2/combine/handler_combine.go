@@ -169,7 +169,7 @@ func getCombinedDataByPost(c *gin.Context) {
 		return
 	}
 
-	if !translationservice.IsProductExist(params.ProductName) {
+	if !translationservice.IsProductAllowed(params.ProductName) {
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("Product '%s' doesn't exist", params.ProductName))
 		return
 	}
