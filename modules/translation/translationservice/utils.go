@@ -89,6 +89,11 @@ func PickupVersion(name, desiredVersion string) string {
 	if !ok {
 		return desiredVersion
 	}
+
+	if versions.Size() == 1 {
+		return versions.Values()[0].(string)
+	}
+
 	if versions.Contains(desiredVersion) {
 		return desiredVersion
 	}
