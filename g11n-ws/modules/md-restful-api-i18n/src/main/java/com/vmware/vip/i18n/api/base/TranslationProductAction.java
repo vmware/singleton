@@ -282,4 +282,12 @@ public class TranslationProductAction  extends BaseAction {
         data.put("versioninfo", versioninfo);
         return super.handleVersionFallbackResponse(version, availableVersion, data);
     }
+
+    protected APIResponseDTO getVersionList(String productName) throws L3APIException {
+        List<String> versionList = productService.getSupportVersionList(productName);
+        Map<String,Object> data = new HashMap<String,Object>();
+        data.put(PRODUCT_NAME, productName);
+        data.put("versions", versionList);
+        return super.handleResponse(APIResponseStatus.OK, data);
+    }
 }

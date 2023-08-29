@@ -15,7 +15,8 @@ public class APIOperation {
 	public final static String PRODUCT_COMPONENT_LIST_NOTES = "Get the component list by the specific version.";
 	public final static String PRODUCT_VERSIONINFO_VALUE = "Get drop version info";
 	public final static String PRODUCT_VERSIONINFO_NOTES = "Get drop version info by the specific version, including drop create date(long id), compnent changed date(long id), etc.";
-
+	public final static String PRODUCT_VERSION_LIST_VALUE = "Get the version list";
+	public final static String PRODUCT_VERSION_LIST_NOTES = "Get the version list by the specific product name.";
 
 	public final static String MULT_COMPONENT_TRANSLATION_VALUE = "Get multiple components' translation";
 	public final static String MULT_COMPONENT_TRANSLATION_NOTES = "Get multiple components' by the specific version";

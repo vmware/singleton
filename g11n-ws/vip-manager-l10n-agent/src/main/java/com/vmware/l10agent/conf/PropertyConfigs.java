@@ -22,6 +22,7 @@ import com.vmware.l10agent.base.PropertyContantKeys;
  */
 @Configuration
 public class PropertyConfigs {
+	private final static int ONE_M = 1024 * 1024;
 	private  SimpleDateFormat sdf1=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	/** the path of local resource file,can be configed in spring config file **/
 	@Value("${source.bundle.file.basepath}")
@@ -208,6 +209,6 @@ public class PropertyConfigs {
 		return base64Enable;
 	}
 	public int getSyncReqBodySize(){
-		return (1024*1024*Integer.valueOf(this.reqBodySizeStr.toUpperCase().replaceAll("M", "").trim())) - (512*1024);
+		return (ONE_M * Integer.valueOf(this.reqBodySizeStr.toUpperCase().replaceAll("M", "").trim())) - 1024;
 	}
 }

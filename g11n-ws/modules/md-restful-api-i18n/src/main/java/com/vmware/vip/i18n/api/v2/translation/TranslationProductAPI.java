@@ -91,4 +91,17 @@ public class TranslationProductAPI  extends StreamProductAction {
             HttpServletRequest request) throws L3APIException {
         return super.getVersionInfo(productName, version);
     }
+
+    /**
+     * Provide version's names by product name.
+     *
+     */
+    @Operation(summary = APIOperation.PRODUCT_VERSION_LIST_VALUE, description = APIOperation.PRODUCT_VERSION_LIST_NOTES)
+    @RequestMapping(value = APIV2.PRODUCT_VERSION_LIST_GET, method = RequestMethod.GET, produces = {API.API_CHARSET})
+    @ResponseStatus(HttpStatus.OK)
+    public APIResponseDTO getVersionNameList(
+            @Parameter(name = APIParamName.PRODUCT_NAME, required = true, description = APIParamValue.PRODUCT_NAME) @PathVariable(APIParamName.PRODUCT_NAME) String productName,
+            HttpServletRequest request)  throws Exception {
+        return super.getVersionList(productName);
+    }
 }
