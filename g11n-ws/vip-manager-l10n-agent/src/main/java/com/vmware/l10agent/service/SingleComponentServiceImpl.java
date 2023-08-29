@@ -8,10 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
 
 import com.alibaba.fastjson.JSONArray;
@@ -250,14 +247,17 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 	private boolean  syncSingleSource(RecordModel record, ComponentSourceModel model){
 		if (model != null) {
 			String sourceFormat = null;
-			if (configs.isBase64Enable()){
-				sourceFormat = PropertyContantKeys.BASE64_REQ_PARAMETER;
-			}
+
 			for (Entry<String, Object> entry : model.getMessages().entrySet()) {
 				try {
-					boolean result = syncKey2VipL10n(record, entry.getKey(), (String) entry.getValue(),sourceFormat);
+					String sourceVal = (String)entry.getValue();
+					if (configs.isBase64Enable()){
+						sourceFormat = PropertyContantKeys.BASE64_REQ_PARAMETER;
+						sourceVal = Base64.getEncoder().encodeToString(sourceVal.getBytes("UTF-8"));
+					}
+					boolean result = syncKey2VipL10n(record, entry.getKey(), sourceVal,sourceFormat);
 					if (!result) {
-						result = syncKey2VipI18n(record, entry.getKey(), (String) entry.getValue(), null, sourceFormat);
+						result = syncKey2VipI18n(record, entry.getKey(), sourceVal, null, sourceFormat);
 						if (!result) {
 							try {
 								if (record.getStatus() < 5) {
@@ -352,6 +352,14 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 			keySourceModel.setSource((String) entry.getValue());
 			if (configs.isBase64Enable()){
 				keySourceModel.setSourceFormat(PropertyContantKeys.BASE64_REQ_PARAMETER);
+				try {
+					byte[] bytes = ((String) entry.getValue()).getBytes("UTF-8");
+					keySourceModel.setSource(Base64.getEncoder().encodeToString(bytes));
+				} catch (UnsupportedEncodingException e) {
+					logger.error(e.getMessage(), e);
+				}
+			}else {
+				keySourceModel.setSource((String) entry.getValue());
 			}
 			sourceModels.add(keySourceModel);
 			count++;
