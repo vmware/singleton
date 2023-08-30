@@ -104,4 +104,17 @@ public class TranslationProductAPI  extends StreamProductAction {
             HttpServletRequest request)  throws Exception {
         return super.getVersionList(productName);
     }
+
+    @Operation(summary = APIOperation.PRODUCT_MULTI_VERSION_KEY_VALUE, description = APIOperation.PRODUCT_MULTI_VERSION_KEY_NOTES)
+    @RequestMapping(value = APIV2.KEY_MULTI_VERSION_TRANSLATION_GET, method = RequestMethod.GET, produces = {API.API_CHARSET})
+    @ResponseStatus(HttpStatus.OK)
+    public APIResponseDTO getMultiVersionKey(
+            @Parameter(name = APIParamName.PRODUCT_NAME, required = true, description = APIParamValue.PRODUCT_NAME) @PathVariable(APIParamName.PRODUCT_NAME) String productName,
+            @Parameter(name = APIParamName.VERSIONS, required = true, description = APIParamValue.VERSIONS) @RequestParam(value = APIParamName.VERSIONS) String versions,
+            @Parameter(name = APIParamName.LOCALE, required = true, description = APIParamValue.LOCALE) @RequestParam(value = APIParamName.LOCALE) String locale,
+            @Parameter(name = APIParamName.COMPONENT, required = true, description = APIParamValue.COMPONENT) @RequestParam(APIParamName.COMPONENT) String component,
+            @Parameter(name = APIParamName.KEY, required = true, description = APIParamValue.KEY) @RequestParam(APIParamName.KEY) String key,
+            HttpServletRequest request)  throws Exception {
+        return super.getVersionsTransByGet(productName, versions, component, locale, key);
+    }
 }

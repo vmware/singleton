@@ -9,6 +9,8 @@ import com.vmware.vip.common.i18n.dto.StringBasedDTO;
 import com.vmware.vip.core.messages.exception.L3APIException;
 import com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO;
 
+import java.util.List;
+
 /**
  * This class handles the translation by String.
  *
@@ -43,4 +45,6 @@ public interface IStringService {
      * @throws L3APIException
      */
 	public SingleComponentDTO getMultKeyTranslation(ComponentMessagesDTO compMsg, String[] keyArr)throws L3APIException;
+
+    public List<StringBasedDTO> getMultiVersionKeyTranslation(ComponentMessagesDTO compMsg, List<String> versionList, String key)throws L3APIException;
 }

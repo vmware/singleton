@@ -7,6 +7,7 @@ package com.vmware.vip.api.rest;
 public class APIParamName {
 	public final static String PRODUCT_NAME = "productName";
 	public final static String VERSION = "version";
+	public final static String VERSIONS = "versions";
 	public final static String VERSION2 = "version:.+";
 	public final static String COMPONENT = "component";
 	public final static String COMPONENTS = "components";
