@@ -285,11 +285,13 @@ public class TranslationProductAction  extends BaseAction {
     }
 
     protected APIResponseDTO getVersionsTransByGet(String productName, String versions, String component, String locale,String key) throws L3APIException {
-        String[] versionArr = null;
-        if (versions.contains(ConstantsChar.COMMA)) {
-            versionArr = versions.split(ConstantsChar.COMMA);
+        List<String> versionList = null;
+        if (versions.equals(ConstantsKeys.ALL)){
+            versionList = productService.getSupportVersionList(productName);
+        }else if (versions.contains(ConstantsChar.COMMA)) {
+            versionList = Arrays.asList(versions.split(ConstantsChar.COMMA));
         } else {
-            versionArr = new String[]{versions};
+            versionList = Arrays.asList(versions);
         }
         ComponentMessagesDTO compReq = new ComponentMessagesDTO();
         compReq.setProductName(productName);
@@ -297,7 +299,7 @@ public class TranslationProductAction  extends BaseAction {
         compReq.setLocale(locale);
         compReq.setPseudo(false);
 
-        List<StringBasedDTO> data = stringBasedService.getMultiVersionKeyTranslation(compReq, Arrays.asList(versionArr), key);
+        List<StringBasedDTO> data = stringBasedService.getMultiVersionKeyTranslation(compReq, versionList, key);
         return super.handleResponse(APIResponseStatus.OK, data);
     }
 

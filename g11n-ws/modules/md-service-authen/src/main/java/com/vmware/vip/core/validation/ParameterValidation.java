@@ -120,7 +120,7 @@ public class ParameterValidation implements IVlidation {
 		if (StringUtils.isEmpty(versions)) {
 			return;
 		}
-		if (!RegExpValidatorUtils.IsNumberDotAndComm(versions)) {
+		if (!RegExpValidatorUtils.IsAllOrNumberDotAndComm(versions)) {
 			throw new ValidationException(ValidationMsg.VERSIONS_NOT_VALIDE);
 		}
 	}

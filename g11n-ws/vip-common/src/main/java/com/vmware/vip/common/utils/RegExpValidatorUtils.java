@@ -55,8 +55,8 @@ public final class RegExpValidatorUtils {
 	/*
 	 * is number dot and comm
 	 */
-	public static boolean IsNumberDotAndComm(String str) {
-		String regex = "^[0-9\\.\\,]+";
+	public static boolean IsAllOrNumberDotAndComm(String str) {
+		String regex = "^(all|[0-9\\.\\,]+)$";
 		return match(regex, str);
 	}
 	/*
