@@ -300,6 +300,9 @@ public class TranslationProductAction  extends BaseAction {
         compReq.setPseudo(false);
 
         List<StringBasedDTO> data = stringBasedService.getMultiVersionKeyTranslation(compReq, versionList, key);
+        if (versionList.size() != data.size()){
+            return super.handleResponse(APIResponseStatus.MULTTRANSLATION_PART_CONTENT, data);
+        }
         return super.handleResponse(APIResponseStatus.OK, data);
     }
 
