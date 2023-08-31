@@ -7,6 +7,7 @@ package com.vmware.vipclient.i18n.messages.service;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Locale;
+import java.util.concurrent.Semaphore;
 import java.util.Map;
 import java.util.Set;
 
@@ -150,8 +151,14 @@ public class ComponentService {
 		CacheService cacheService = new CacheService(dto);
 		MessageCacheItem cacheItem = cacheService.getCacheOfComponent();
 		if (cacheItem != null) { // Item is in cache
-			if (cacheItem.isExpired())
-				refreshCacheItemTask(cacheItem); // Refresh the cacheItem in a separate thread
+			if (cacheItem.isExpired()) {
+				if(cacheItem.getSem().tryAcquire()) { // Launch another thread only if sem permit was acquired.
+					if (cacheItem.isExpired()) // Check again after acquiring sem permit.
+						refreshCacheItemTask(cacheItem); // Refresh the cacheItem and release permit in a separate thread.
+					else
+						cacheItem.getSem().release(); 
+				}
+			}
 		} else { // Item is not in cache.
 			cacheItem = createCacheItem(); // Fetch for the requested locale from data store, create cacheItem and store in cache
 			if (cacheItem.getCachedData().isEmpty())  // Failed to fetch messages for the requested locale
@@ -194,15 +201,20 @@ public class ComponentService {
 	 */
     private MessageCacheItem createCacheItem() {
 		CacheService cacheService = new CacheService(dto);
-		// Create a new cacheItem object to be stored in cache
-		MessageCacheItem cacheItem = new MessageCacheItem();
 
-		refreshCacheItem(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().iterator());
-		if (!cacheItem.getCachedData().isEmpty()) {
-			cacheService.addCacheOfComponent(cacheItem);
+		// Allow only one thread to create the new cache item
+		synchronized (dto.getCompositStrAsCacheKey().intern()) { // Allow only one thread to refresh the cacheItem
+			MessageCacheItem cacheItem = cacheService.getCacheOfComponent();
+			if (cacheItem == null) { // Check again after acquiring lock
+				cacheItem = new MessageCacheItem(); // Create a new cacheItem object to be stored in cache
+
+				refreshCacheItem(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().iterator());
+				if (!cacheItem.getCachedData().isEmpty()) {
+					cacheService.addCacheOfComponent(cacheItem);
+				}
+			}
+			return cacheItem;
 		}
-
-		return cacheItem;
 	}
 
 	private void refreshCacheItemTask(MessageCacheItem cacheItem) {
@@ -211,6 +223,7 @@ public class ComponentService {
     			refreshCacheItem(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
     		} catch (Exception e) {
 		    }
+    		cacheItem.getSem().release(); // Release cacheItem's semaphore permit
 		};
 		new Thread(runnable).start();
 	}

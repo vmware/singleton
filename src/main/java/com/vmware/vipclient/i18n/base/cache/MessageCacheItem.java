@@ -7,10 +7,22 @@ package com.vmware.vipclient.i18n.base.cache;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.Semaphore;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 
 public class MessageCacheItem extends CacheItem {
+
+	private Semaphore sem = new Semaphore(1);
+
+	public Semaphore getSem() {
+		return sem;
+	}
+
+	public void setSem(Semaphore sem) {
+		this.sem = sem;
+	}
+	
 	public MessageCacheItem() {
 		
 	}
