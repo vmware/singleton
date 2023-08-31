@@ -244,6 +244,7 @@ public class StringService implements IStringService {
 					stringBasedDTO.setLocale(compMsg.getLocale());
 					stringBasedDTO.setKey(key);
 					stringBasedDTO.setTranslation(translation);
+					stringBasedDTO.setStatus(ConstantsMsg.SOURCE_IS_NOT_PROVIDE);
 					stringBasedDTOs.add(stringBasedDTO);
 				}
 			}catch (Exception e){
