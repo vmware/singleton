@@ -40,7 +40,8 @@ public interface PropertyContantKeys {
 
 	public static final String L10n_Source_Collect_Url="/i18n/l10n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key}";
 	public static final String L10N_SOURCE_COLLECT_SET_URL="/i18n/l10n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys?collectSource=true";
-	
+
+	public static final String BASE64_REQ_PARAMETER= "BASE64,STRING";
 	
 
 }

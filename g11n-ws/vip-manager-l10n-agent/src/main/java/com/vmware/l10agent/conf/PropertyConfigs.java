@@ -76,6 +76,9 @@ public class PropertyConfigs {
 	@Value("${vip.sync.batch.size:50}")
 	private int syncBatchSize;
 
+	@Value("${vip.sync.source.base64.enable:false}")
+	private boolean base64Enable;
+  
 	@Value("${vip.sync.batch.requestBody.size:8M}")
 	private String reqBodySizeStr;
 
@@ -202,6 +205,9 @@ public class PropertyConfigs {
 
 	public boolean isSyncBatchEnable() { return syncBatchEnable; }
 
+	public boolean isBase64Enable() {
+		return base64Enable;
+	}
 	public int getSyncReqBodySize(){
 		return (ONE_M * Integer.valueOf(this.reqBodySizeStr.toUpperCase().replaceAll("M", "").trim())) - 1024;
 	}
