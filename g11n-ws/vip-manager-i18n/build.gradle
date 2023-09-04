@@ -65,9 +65,9 @@ dependencies {
 
 
     
-    //swagger UI -START  
-    implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.1.0'
-    implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-api', version: '2.1.0'
+    //swagger UI -START
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$springdocVersion")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-api:$springdocVersion")
     //swagger UI -END
 
 
