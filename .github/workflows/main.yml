@@ -75,7 +75,7 @@ jobs:
       - name: Coverage
         run: |
           make coverage
-          sed -i "/^.*internal\/bindata\/cldr\/bindata.go.*$/d" ./cover.out
+          sed -i "/^.*internal\/bindata\/cldr.*$/d" ./cover.out
       - name: Upload Codecov report for go-coverage
         uses: codecov/codecov-action@v2
         with:
