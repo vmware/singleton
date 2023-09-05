@@ -75,6 +75,7 @@ jobs:
       - name: Coverage
         run: |
           make coverage
+          sed -i "/^.*internal\/bindata\/cldr\/bindata.go.*$/d" ./cover.out
       - name: Upload Codecov report for go-coverage
         uses: codecov/codecov-action@v2
         with:
@@ -119,7 +120,6 @@ jobs:
           format: sarif
           # Adjust severity of non-security issues
           gh-code-scanning-compat: true
-          # Force 0 exit code to allow SARIF file generation
           # This will handover control about PR rejection to the GitHub side
           max-allowed-issues: 2147483647  
       # Upload the SARIF file generated in the previous step  
@@ -141,17 +141,17 @@ jobs:
         with:
           go-version: ${{needs.get-lang-version.outputs.LangVersion}}
       - name: Set up JDK 
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v3
         with:
           distribution: 'adopt'
-          java-version: '8'
+          java-version: '17'
       - name: Smoke Test
         run: |
           java -version
-          wget https://services.gradle.org/distributions/gradle-5.6.2-bin.zip -P /tmp
+          wget https://services.gradle.org/distributions/gradle-7.6.2-bin.zip -P /tmp
           sudo unzip -d /opt/gradle /tmp/gradle-*.zip
-          ls /opt/gradle/gradle-5.6.2
-          export GRADLE_HOME=/opt/gradle/gradle-5.6.2
+          ls /opt/gradle/gradle-7.6.2
+          export GRADLE_HOME=/opt/gradle/gradle-7.6.2
           export PATH=${GRADLE_HOME}/bin:${PATH}
           gradle -v
           git clone --branch=devops https://github.com/vmware/singleton.git devops
