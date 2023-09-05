@@ -163,7 +163,7 @@ var doc = `{
                             "$ref": "#/definitions/api.Response"
                         }
                     },
-                    "206": {
+                    "207": {
                         "description": "Successful Partially",
                         "schema": {
                             "$ref": "#/definitions/api.Response"
@@ -217,7 +217,7 @@ var doc = `{
                             "$ref": "#/definitions/api.Response"
                         }
                     },
-                    "206": {
+                    "207": {
                         "description": "Successful Partially",
                         "schema": {
                             "$ref": "#/definitions/api.Response"
@@ -412,7 +412,7 @@ var doc = `{
                             "$ref": "#/definitions/api.Response"
                         }
                     },
-                    "206": {
+                    "207": {
                         "description": "Successful Partially",
                         "schema": {
                             "$ref": "#/definitions/api.Response"
@@ -478,7 +478,7 @@ var doc = `{
                             "$ref": "#/definitions/api.Response"
                         }
                     },
-                    "206": {
+                    "207": {
                         "description": "Successful Partially",
                         "schema": {
                             "$ref": "#/definitions/api.Response"
@@ -492,6 +492,65 @@ var doc = `{
                     },
                     "404": {
                         "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/image/countryFlag": {
+            "get": {
+                "description": "Get a country flag with region and scale",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "countryflag-api"
+                ],
+                "summary": "Get the svg image of a country flag",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "a string which represents a region, e.g. US",
+                        "name": "region",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "scale of the flag. 1 represents 1x1, 2 represents 3x2, default is 1",
+                        "name": "scale",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "response types. Available types are 'svg' and 'json'. Default type is 'json'",
+                        "name": "type",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "207": {
+                        "description": "Successful Partially",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
                         "schema": {
                             "type": "string"
                         }
@@ -610,7 +669,7 @@ var doc = `{
                             "$ref": "#/definitions/api.Response"
                         }
                     },
-                    "206": {
+                    "207": {
                         "description": "Successful Partially",
                         "schema": {
                             "$ref": "#/definitions/api.Response"
@@ -689,7 +748,7 @@ var doc = `{
                             "$ref": "#/definitions/api.Response"
                         }
                     },
-                    "206": {
+                    "207": {
                         "description": "Successful Partially",
                         "schema": {
                             "$ref": "#/definitions/api.Response"
@@ -759,7 +818,7 @@ var doc = `{
                             "$ref": "#/definitions/api.Response"
                         }
                     },
-                    "206": {
+                    "207": {
                         "description": "Successful Partially",
                         "schema": {
                             "$ref": "#/definitions/api.Response"
@@ -1382,6 +1441,9 @@ var doc = `{
         },
         {
             "name": "locale-api"
+        },
+        {
+            "name": "countryflag-api"
         },
         {
             "name": "translation-product-api"
