@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	flagTypeJson = "json"
+	flagTypeJSON = "json"
 	flagTypeSvg  = "svg"
 )
 
@@ -36,7 +36,7 @@ func GetCountryFlag(c *gin.Context) {
 		Region string                `form:"region" binding:"required,region"`
 		Scale  countryflag.FlagScale `form:"scale" binding:"oneof=1 2"`
 		Type   string                `form:"type" binding:"omitempty,oneof=json svg"`
-	}{Scale: countryflag.Flag1x1, Type: flagTypeJson}
+	}{Scale: countryflag.Flag1x1, Type: flagTypeJSON}
 
 	if err := api.ExtractParameters(c, nil, &params); err != nil {
 		return
@@ -44,7 +44,7 @@ func GetCountryFlag(c *gin.Context) {
 
 	flag, err := countryflag.GetFlag(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.Region, params.Scale)
 	switch params.Type {
-	case flagTypeJson:
+	case flagTypeJSON:
 		data := gin.H{"image": flag, "type": "svg", "region": params.Region}
 		api.HandleResponse(c, data, err)
 	case flagTypeSvg:
