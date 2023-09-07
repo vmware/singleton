@@ -162,9 +162,11 @@ jobs:
           sed -i 's/CertFile: ###/CertFile: tests\/testdata\/https\/server.pem/' config.yml
           sed -i 's/KeyFile: ###/KeyFile: tests\/testdata\/https\/server.key/' config.yml
           cat $GITHUB_WORKSPACE/config/config.yml
-          cd $GITHUB_WORKSPACE && make build
+          cd $GITHUB_WORKSPACE 
+          make build
           $GITHUB_WORKSPACE/builds/singleton-linux-amd64 --config=$GITHUB_WORKSPACE/config/config.yml &
-          cd $GITHUB_WORKSPACE/devops/autotest/service/goservice && gradle build
-          "$JAVA_HOME/bin/java" -cp "./target/*:./resource/*:./" org.testng.TestNG -d test-output testng.xml || true
+          cd $GITHUB_WORKSPACE/devops/autotest/service/goservice 
+          gradle build
+          "$JAVA_HOME/bin/java" -cp "./target/*:./resource/*:./" org.testng.TestNG -d test-output testng.xml 
 
 
