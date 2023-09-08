@@ -14,6 +14,7 @@ import (
 	_ "sgtnserver/api/v2/about"
 	_ "sgtnserver/api/v2/cldr"
 	_ "sgtnserver/api/v2/combine"
+	_ "sgtnserver/api/v2/countryflag"
 	_ "sgtnserver/api/v2/formatting"
 	_ "sgtnserver/api/v2/translation"
 	"sgtnserver/internal/logger"

@@ -177,7 +177,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/api.Response'
-        "206":
+        "207":
           description: Successful Partially
           schema:
             $ref: '#/definitions/api.Response'
@@ -213,7 +213,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/api.Response'
-        "206":
+        "207":
           description: Successful Partially
           schema:
             $ref: '#/definitions/api.Response'
@@ -358,7 +358,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/api.Response'
-        "206":
+        "207":
           description: Successful Partially
           schema:
             $ref: '#/definitions/api.Response'
@@ -403,7 +403,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/api.Response'
-        "206":
+        "207":
           description: Successful Partially
           schema:
             $ref: '#/definitions/api.Response'
@@ -422,6 +422,47 @@ paths:
       summary: Get pattern data
       tags:
       - formatting-pattern-api
+  /image/countryFlag:
+    get:
+      description: Get a country flag with region and scale
+      parameters:
+      - description: a string which represents a region, e.g. US
+        in: query
+        name: region
+        required: true
+        type: string
+      - description: scale of the flag. 1 represents 1x1, 2 represents 3x2, default
+          is 1
+        in: query
+        name: scale
+        type: integer
+      - description: response types. Available types are 'svg' and 'json'. Default
+          type is 'json'
+        in: query
+        name: type
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "207":
+          description: Successful Partially
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get the svg image of a country flag
+      tags:
+      - countryflag-api
   /locale/regionList:
     get:
       description: Get region names in a specified locale
@@ -492,7 +533,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/api.Response'
-        "206":
+        "207":
           description: Successful Partially
           schema:
             $ref: '#/definitions/api.Response'
@@ -545,7 +586,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/api.Response'
-        "206":
+        "207":
           description: Successful Partially
           schema:
             $ref: '#/definitions/api.Response'
@@ -592,7 +633,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/api.Response'
-        "206":
+        "207":
           description: Successful Partially
           schema:
             $ref: '#/definitions/api.Response'
@@ -932,6 +973,7 @@ tags:
 - name: formatting-api
 - name: formatting-pattern-api
 - name: locale-api
+- name: countryflag-api
 - name: translation-product-api
 - name: translation-product-component-api
 - name: translation-product-component-key-api
