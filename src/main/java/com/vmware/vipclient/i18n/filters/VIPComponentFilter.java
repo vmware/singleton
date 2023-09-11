@@ -1,10 +1,9 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.filters;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Map;
@@ -15,8 +14,9 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
 
+import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
+import com.vmware.vipclient.i18n.util.StringUtil;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,63 +37,34 @@ public class VIPComponentFilter implements Filter {
 
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain) throws IOException, ServletException {
-        String locale = this.getParamFromQuery(request, "locale");
-        String component = this.getParamFromURI(request, "component");
-        Map<String, String> ctmap;
-        String messages = "{}";
-        if (!LocaleUtility.isDefaultLocale(locale) && translation != null) {
-            ctmap = translation.getMessages(LocaleUtility.fmtToMappedLocale(locale),
-                    component);
-            if (ctmap != null) {
-                messages = JSONObject.toJSONString(ctmap);
-            }
-        }
-        OutputStream os = response.getOutputStream();
-        response.setContentType("text/javascript;charset=UTF-8");
-        os.write(("var translation = {" + "\"messages\" : " + messages + ", "
-                + "\"productName\" : \"" + gc.getInstance().getProductName()
-                + "\", " + "\"version\" : \"" + gc.getInstance().getVersion()
-                + "\", " + "\"vipServer\" : \""
-                + gc.getInstance().getVipServer() + "\", " + "\"pseudo\" : \""
-                + gc.getInstance().isPseudo() + "\", "
-                + "\"collectSource\" : \"" + gc.getInstance().isCollectSource() + "\"};")
-                        .getBytes("UTF-8"));
-    }
-
-    private String getParamFromURI(ServletRequest request, String paramName) {
-        HttpServletRequest res = (HttpServletRequest) request;
-        String path = res.getRequestURI();
-        String localepath = path
-                .substring(path.indexOf(paramName) + paramName.length() + 1,
-                        path.length());
-        return localepath.substring(0,
-                localepath.indexOf('/') >= 0 ? localepath.indexOf('/')
-                        : localepath.length());
-    }
-
-    private String getParamFromQuery(ServletRequest request, String paramName) {
-        HttpServletRequest res = (HttpServletRequest) request;
-        String queryStr = res.getQueryString();
-        String localepath = queryStr.substring(queryStr.indexOf(paramName)
-                + paramName.length() + 1, queryStr.length());
-        return localepath.substring(0,
-                localepath.indexOf('/') >= 0 ? localepath.indexOf('/')
-                        : localepath.length());
-    }
-
-    private String getSourceFromBody(ServletRequest request) {
-        BufferedReader br;
-        String line;
-        StringBuilder source = new StringBuilder("");
         try {
-            br = request.getReader();
-            while ((line = br.readLine()) != null) {
-                source.append(line);
+            String component = FilterUtils.getParamFromURI(request, "component");
+            logger.debug("component: " + component);
+            String locale = FilterUtils.getParamFromQuery(request, "locale");
+            logger.debug("locale: " + locale);
+            String messages = "{}";
+            if (!StringUtil.isEmpty(component) && !StringUtil.isEmpty(locale) && !LocaleUtility.isDefaultLocale(locale) && translation != null) {
+                Map<String, String> ctmap = translation.getMessages(LocaleUtility.fmtToMappedLocale(locale),
+                        component);
+                if (ctmap != null) {
+                    messages = JSONObject.toJSONString(ctmap);
+                }
             }
-        } catch (IOException e) {
-            logger.error(e.getMessage());
+            OutputStream os = response.getOutputStream();
+            response.setContentType("text/javascript;charset=UTF-8");
+            os.write(("var translation = {" + "\"messages\" : " + messages + ", "
+                    + "\"productName\" : \"" + gc.getInstance().getProductName()
+                    + "\", " + "\"version\" : \"" + gc.getInstance().getVersion()
+                    + "\", " + "\"vipServer\" : \""
+                    + gc.getInstance().getVipServer() + "\", " + "\"pseudo\" : \""
+                    + gc.getInstance().isPseudo() + "\", "
+                    + "\"collectSource\" : \"" + gc.getInstance().isCollectSource() + "\"};")
+                    .getBytes("UTF-8"));
+        } catch (VIPJavaClientException e) {
+            logger.error(e.getMessage(), e);
+            String errorMsg = "{\"code\":400, \"message\": \""+e.getMessage()+"\"}";
+            FilterUtils.printErrorMsg(response, errorMsg);
         }
-        return source.toString();
     }
 
     public void destroy() {
