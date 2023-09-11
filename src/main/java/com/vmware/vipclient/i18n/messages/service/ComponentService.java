@@ -92,7 +92,7 @@ public class ComponentService {
 		 * Do not block refreshCacheItem if set of supported locales is not in cache (i.e. supportedLocales.isEmpty()).
 		 * This happens either when cache is not initialized, OR previous attempts to fetch the set had failed.
 		 */
-		return (supportedLocales.isEmpty() || supportedLocales.contains(dto.getLocale()) || VIPCfg.getInstance().isPseudo());
+		return (supportedLocales.isEmpty() || supportedLocales.contains(dto.getLocale()) || ConstantsKeys.SOURCE.equals(dto.getLocale())|| VIPCfg.getInstance().isPseudo());
 	}
 
 	/**
