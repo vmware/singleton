@@ -29,7 +29,7 @@ func (d dao) GetFlag(ctx context.Context, region string, scale FlagScale) (data 
 	contents, err := flagbindata.Asset(filePath)
 	if err != nil {
 		if fmt.Sprintf("Asset %s not found", filePath) == err.Error() {
-			returnErr = sgtnerror.StatusBadRequest.WrapErrorWithMessage(err, "not found")
+			returnErr = sgtnerror.StatusBadRequest.WrapErrorWithMessage(err, "the flag for region '%s' and scale '%s' is unavailable", region, scale)
 		} else {
 			returnErr = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, "fail to read file")
 		}
