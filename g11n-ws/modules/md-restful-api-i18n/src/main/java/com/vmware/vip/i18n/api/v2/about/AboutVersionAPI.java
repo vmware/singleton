@@ -51,14 +51,22 @@ public class AboutVersionAPI extends BaseAction {
         BuildVersionDTO buildVersionDTO = new BuildVersionDTO();
         ServiceVersionDTO serviceVersionDTO = versionService.getServiceVersion();
         buildVersionDTO.setService(serviceVersionDTO);
-        if(StringUtils.isEmpty(productName) && StringUtils.isEmpty(version)) {
+        if (StringUtils.isEmpty(productName) && StringUtils.isEmpty(version)) {
             return super.handleResponse(APIResponseStatus.OK, buildVersionDTO);
-        }else if(!StringUtils.isEmpty(productName) && !StringUtils.isEmpty(version)){
-            String availableVersion = super.getAvailableVersion(productName, version);
-            BundleVersionDTO bundleVersionDTO = versionService.getBundleVersion(productName, availableVersion);
-            buildVersionDTO.setBundle(bundleVersionDTO);
-            return super.handleVersionFallbackResponse(version, availableVersion, buildVersionDTO);
-        }else{
+        } else if (!StringUtils.isEmpty(productName) && !StringUtils.isEmpty(version)) {
+            String availableVersion = null;
+            try {
+                availableVersion = super.getAvailableVersion(productName, version);
+            }catch (Exception ex){}
+            if (availableVersion != null){
+                BundleVersionDTO bundleVersionDTO = versionService.getBundleVersion(productName, availableVersion);
+                buildVersionDTO.setBundle(bundleVersionDTO);
+                return super.handleVersionFallbackResponse(version, availableVersion, buildVersionDTO);
+            }else {
+                return super.handleResponse(APIResponseStatus.MULTTRANSLATION_PART_CONTENT.getCode(), ConstantsMsg.FAILED_GET_BUNDLES_INFO, buildVersionDTO);
+            }
+
+        } else{
             return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.PRODUCT_OR_VERSION_MISSING, null);
         }
     }
