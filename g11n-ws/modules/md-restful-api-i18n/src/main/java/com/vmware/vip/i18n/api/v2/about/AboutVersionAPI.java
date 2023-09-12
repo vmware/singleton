@@ -54,15 +54,12 @@ public class AboutVersionAPI extends BaseAction {
         if (StringUtils.isEmpty(productName) && StringUtils.isEmpty(version)) {
             return super.handleResponse(APIResponseStatus.OK, buildVersionDTO);
         } else if (!StringUtils.isEmpty(productName) && !StringUtils.isEmpty(version)) {
-            String availableVersion = null;
             try {
-                availableVersion = super.getAvailableVersion(productName, version);
-            }catch (Exception ex){}
-            if (availableVersion != null){
+                String availableVersion = super.getAvailableVersion(productName, version);
                 BundleVersionDTO bundleVersionDTO = versionService.getBundleVersion(productName, availableVersion);
                 buildVersionDTO.setBundle(bundleVersionDTO);
                 return super.handleVersionFallbackResponse(version, availableVersion, buildVersionDTO);
-            }else {
+            }catch (Exception ex){
                 return super.handleResponse(APIResponseStatus.MULTTRANSLATION_PART_CONTENT.getCode(), ConstantsMsg.FAILED_GET_BUNDLES_INFO, buildVersionDTO);
             }
 
