@@ -158,7 +158,7 @@ jobs:
           cp -r $GITHUB_WORKSPACE/devops/autotest/service/goservice/l10n/bundles $GITHUB_WORKSPACE/tests/testdata/bundles
           cp -r $GITHUB_WORKSPACE/devops/autotest/service/goservice/l10n/https $GITHUB_WORKSPACE/tests/testdata/https
           cd $GITHUB_WORKSPACE/config && mv config_template.yaml config.yml
-          sed -i 's/BasePath: ###/BasePath: $GITHUB_WORKSPACE\/tests\/testdata\/bundles/' config.yml
+          sed -i "s/BasePath: ###/BasePath: $GITHUB_WORKSPACE\/tests\/testdata\/bundles/" config.yml
           sed -i 's/CertFile: ###/CertFile: tests\/testdata\/https\/server.pem/' config.yml
           sed -i 's/KeyFile: ###/KeyFile: tests\/testdata\/https\/server.key/' config.yml
           cat $GITHUB_WORKSPACE/config/config.yml
