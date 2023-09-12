@@ -1,4 +1,4 @@
-import os,json,HTMLTestRunner,unittest,sys,jpype
+import os,json,HTMLTestRunner,unittest,sys,jpype,ast
 from excelutility import excelutil
 from ddt import ddt,data
 from datetime import datetime
@@ -6,14 +6,14 @@ from zipfile import ZipFile
 import constant
 
 
-def curfoldercount(dir):
-    return str(len(os.listdir(dir)))
+def curfoldercount(directory):
+    return str(len(os.listdir(directory)))
 
-def curfilecount(dir):
-    return str(len(os.listdir(dir)))
+def curfilecount(directory):
+    return str(len(os.listdir(directory)))
 
 
-def readzipfile(zipdir, innerzipdir, filename, key ):
+def readzipfile(zipdir, innerzipdir, filename, key):
     with ZipFile(constant.rootdir+zipdir) as zf:
         file_data = zf.read(innerzipdir+filename)
         json_str = file_data.decode('utf-8')
@@ -29,8 +29,8 @@ def readzipfile(zipdir, innerzipdir, filename, key ):
 
 
 
-def readjson(dir, filename, key):
-    with open(dir+filename, 'r', encoding='utf-8') as f:
+def readjson(directory, filename, key):
+    with open(directory+filename, 'r', encoding='utf-8') as f:
         temp = json.load(f)
         keylist = key.split('.')
         for i in keylist:
@@ -38,39 +38,67 @@ def readjson(dir, filename, key):
     return str(temp)
 
 
-def rootfoldercount(dir):
+def rootfoldercount(directory):
     L = []
-    for paths in os.walk(dir):
+    for paths in os.walk(directory):
         L.append(paths)
     # L includes the root, should -1 to get the folder count under it
     return str(len(L)-1)
 
-def rootfilecount(dir):
+def rootfilecount(directory):
     L = []
-    for paths, folders, files in os.walk(dir):
+    for paths, folders, files in os.walk(directory):
         L.extend(files)
     return str(len(L))
 
-def curfilename(dir):
+def curfilename(directory):
     L = []
-    for paths, folders, files in os.walk(dir):
+    for paths, folders, files in os.walk(directory):
         L.extend(files)
     return L
 
-def unzipfile(dir, path):
+def curfoldername(directory):
+    L = []
+    for paths, folders, files in os.walk(directory):
+        L.extend(folders)
+    return L
+
+def rootfilename(directory, listvalue, externalfile):
+    result = True
+    listvalue = ast.literal_eval(listvalue)
+    for paths, folders, files in os.walk(directory):
+        # only folder under root, different
+        if paths == directory:
+            continue
+        elif paths == directory + '\en' or paths == directory + '/en':
+            if externalfile is None:
+                if sorted(files) != sorted(listvalue):
+                    print("there is missing/external file: ", paths, files)
+                    result = False
+            else:
+                newlistvalue = listvalue + ast.literal_eval(externalfile)
+                if sorted(files) != sorted(newlistvalue):
+                    print("there is missing/external file: ", paths, files)
+                    result = False
+        else:
+            if sorted(files) != sorted(listvalue):
+                print("there is missing/external file: ", paths, files)
+                result = False
+    return result
+
+def unzipfile(directory, path):
     try:
-        filename = curfilename(dir)
+        filename = curfilename(directory)
         for i in filename:
-            with ZipFile(constant.rootdir + constant.version + "/" + i) as zf:
+            file = directory + "/" + i
+            with ZipFile(file) as zf:
                 for f in zf.namelist():
                     zf.extract(f, path)
         zf.close()
     except Exception as e:
         print("%s is unzipped failed with error '%s'" % (i,repr(e)))
 
-# unzipfile('./32.0.0', './new')
-
-
+# unzipfile('./jar', './new')
 
 
 @ddt
@@ -79,6 +107,7 @@ class Test(unittest.TestCase):
     @data(*excelutil())
     def test(self, case):
         #invoke interface in jar package
+        #global javaInstance
         javaClass = jpype.JClass("com.vmware.vipclient.sample.Format2")
         javaInstance = javaClass()
         javaInstance.initVIPServer()
@@ -88,22 +117,62 @@ class Test(unittest.TestCase):
             print('############Case ID: %s #####Case Name: %s############' % (case['caseid'], case['casename']))
             curfolder = curfoldercount(constant.unzipfile_dir + case['innerzipdir'])
             self.assertEqual(curfolder, case['expected'])
+
         #Check the count of files
-        if (case['category'] == 'FileCountCheck'):
+        elif (case['category'] == 'FileCountCheck'):
             print('############Case ID: %s #####Case Name: %s############' % (case['caseid'], case['casename']))
             curfile = curfilecount(constant.unzipfile_dir + case['innerzipdir'])
             self.assertEqual(curfile, case['expected'])
+
         #Check the included files are correct and no loss
         elif (case['category'] == 'FileNameCheck'):
             print('############Case ID: %s #####Case Name: %s############' % (case['caseid'], case['casename']))
-            curfileList = curfilename(constant.rootdir + case['zipdir'])
-            self.assertEqual(curfileList.sort(), eval(case['expected']).sort())
-        #Check the data in json file is correct
+            if (case['filesource'] == 'jar'):
+                curfileList = curfilename(constant.unzipfile_dir + case['zipdir'])
+                print('file name is: %s', curfileList)
+                self.assertEqual(curfileList.sort(), eval(case['expected']).sort())
+                # for file source is zip
+            else:
+                curfileList = curfilename(constant.rootdir + case['zipdir'])
+                self.assertEqual(curfileList.sort(), eval(case['expected']).sort())
+
+        # Check the folder name
+        elif (case['category'] == 'FolderNameCheck'):
+            print('############Case ID: %s #####Case Name: %s############' % (case['caseid'], case['casename']))
+            curfolderList = curfoldername(constant.unzipfile_dir + case['zipdir'])
+            self.assertIn(case['expected'], curfolderList)
+
+        #Check the data in json file that is in zip is correct
         elif (case['category'] == 'JsonValueCheck'):
             print('############Case ID: %s #####Case Name: %s############' % (case['caseid'], case['casename']))
             result = readzipfile(case['zipdir'], case['innerzipdir'], case['filename'], case['key'])
             self.assertEqual(result, case['expected'])
-        # Check the cldr jar package works well
+
+        #Check the data in json is correct
+        elif (case['category'] == 'PureJsonValueCheck'):
+            print('############Case ID: %s #####Case Name: %s############' % (case['caseid'], case['casename']))
+            if (case['filesource'] == 'jar'):
+                result = readjson(constant.unzipfile_dir + case['zipdir'], case['filename'], case['key'])
+                print('result: %s', result)
+                self.assertEqual(result, case['expected'])
+            # for file source is zip
+            else:
+                result = readjson(case['zipdir'], case['filename'], case['key'])
+                print('result: %s', result)
+                self.assertEqual(result, case['expected'])
+        # Check no file is lost in locale folder
+        elif (case['category'] == 'LocaleFileNameCheck'):
+            print('############Case ID: %s #####Case Name: %s############' % (case['caseid'], case['casename']))
+            result = rootfilename(constant.unzipfile_dir + case['zipdir'], case['expected'], case['key'])
+            self.assertTrue(result)
+
+        # Check the number of files in all locale folders
+        elif (case['category'] == 'LocaleFileCountCheck'):
+            print('############Case ID: %s #####Case Name: %s############' % (case['caseid'], case['casename']))
+            result = rootfilecount(constant.unzipfile_dir + case['zipdir'])
+            self.assertEqual(result, case['expected'])
+
+        # Check the cldr jar package works well with java client
         elif (case['category'] == 'CLDRJar'):
 
             print('############Case ID: %s #####Case Name: %s############' % (case['caseid'], case['casename']))
@@ -127,7 +196,9 @@ class Test(unittest.TestCase):
 if __name__ == "__main__":
 
     print('=====AutoTest Start======')
+    startime = datetime.today()
     unzipfile(constant.rootdir + constant.version, constant.unzipfile_dir)
+    unzipfile(constant.jarrootdir, constant.unzipfile_dir)
     #start JVM environment before cases execution
     jvmpath = jpype.getDefaultJVMPath()
     jpype.startJVM(jvmpath, "-ea", "-Djava.class.path=%s" % constant.jar_path)
@@ -150,6 +221,9 @@ if __name__ == "__main__":
     fp.close()
     # close JVM environment after case execution
     jpype.shutdownJVM()
+    endtime = datetime.today()
+    detal = endtime - startime
+    print('Execution time: ', detal)
     print('=====AutoTest End======')
     if (unpass > 0):
         sys.exit(1)

@@ -1,0 +1,20 @@
+on: workflow_call
+jobs:
+  pre-process:
+    name: Pre process
+    runs-on: ubuntu-latest
+    outputs:
+      were-only-docs-updated: ${{ steps.were-only-docs-updated-action.outputs.were-only-docs-updated }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2.
+      - name: Get commit range
+        id: get-commit-range-action
+        uses: vmware/singleton/.github/actions/get-commit-range-action@devops
+      - name: Were only docs updated
+        id: were-only-docs-updated-action
+        uses: vmware/singleton/.github/actions/were-only-docs-updated-action@devops
+        with:
+          commit-range: ${{ steps.get-commit-range-action.outputs.commit-range }}

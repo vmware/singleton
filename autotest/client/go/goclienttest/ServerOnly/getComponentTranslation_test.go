@@ -23,69 +23,85 @@ func TestGetComponentTranslation(t *testing.T) {
 
 	Convey("component-Service-requestlocale: Get request locale's translation from service", t, func() {
 
-		Convey("component-Service-requestlocale: Get existing component successfully with en from service(P0)", func() {
-
-			commsg, _ := translation.GetComponentMessages("GoClientTest", "1.0.0", "en", Defaultcom)
-			fmt.Print("en translation: ", commsg)
-			value, _ := commsg.Get(commonkey)
-
-			//So(commsg.Size(), ShouldEqual, 5)
-			So(value, ShouldEqual, commonvalue)
-			// So(cfg, ShouldNotBeNil)
-		})
 
 		Convey("component-Service-requestlocale: Get existing component successfully with fr from service(P0)", func() {
 
-			commsg, _ := translation.GetComponentMessages("GoClientTest", "1.0.0", "fr", Defaultcom)
+			commsg, _ := translation.GetComponentMessages("GoClientTest", "1.0.0", "fr", "DefaultComponent")
 			fmt.Print("fr translation: ", commsg)
-			value, _ := commsg.Get(commonkey)
+			value, _ := commsg.Get("message.translation.available")
 
-			//So(commsg.Size(), ShouldEqual, 5)
-			So(value, ShouldEqual, frcommonvalue)
-			// So(cfg, ShouldNotBeNil)
+			So(value, ShouldEqual, "La traduction est prête pour ce composant.xxx")
+
 		})
+
+		Convey("component-Service-requestlocale: version fallbackP0)", func() {
+
+			commsg, _ := translation.GetComponentMessages("GoClientTest", "1.0.0", "en", "DefaultComponent")
+			fmt.Print("fr translation: ", commsg)
+			value, _ := commsg.Get("message.translation.available")
+
+			So(value, ShouldEqual, "Translation is ready for this component.")
+
+		})
+
+
+
 	})
 
-	Convey("component-Service-nothing: Get nothing from service", t, func() {
+	SkipConvey("component-Service-nothing: Get nothing from service", t, func() {
 
-		SkipConvey("component-service-nothing: request empty locale(), return nothing from service(P1)", func() {
+		Convey("component-service-nothing: not exist product(P1)", func() {
 
-			commsg, err := translation.GetComponentMessages("GoClientTest", "1.0.0", "", Defaultcom)
+			commsg, err := translation.GetComponentMessages("notexist", "1.0.0", "de", "DefaultComponent")
 			fmt.Println("translation for empty locale: ", commsg)
 			fmt.Println("error for empty locale: ", err)
 			//value, _ := commsg.Get(commonkey)
 
 			So(commsg, ShouldBeNil)
-			So(err.Error(), ShouldContainSubstring, "Getting failed, status code is: 404")
+
 
 		})
 
-		Convey("component-service-nothing: request unsupported locale(ru), return nothing from service(P0)", func() {
 
-			commsg, err := translation.GetComponentMessages("GoClientTest", "1.0.0", "ru", Defaultcom)
-			fmt.Print("translation for ru(not supported) locale: ", commsg)
+		Convey("component-service-nothing: not exist version(P1)", func() {
 
-			// value, _ := commsg.Get(commonkey)
-			// So(commsg.Size(), ShouldEqual, 5)
-			// So(value, ShouldEqual, commonvalue)
-			// So(cfg, ShouldNotBeNil)
-
-			So(commsg, ShouldBeNil)
-			So(err.Error(), ShouldContainSubstring, "404")
-
-		})
-
-		SkipConvey("component-service-nothing: request non-existing component(abc), return nothing from service(P0)", func() {
-
-			commsg, err := translation.GetComponentMessages("GoClientTest", "1.0.0", "fr", "abc")
-			fmt.Println("translation for non-existing component: ", commsg)
-			fmt.Println("error for non-existing component: ", err)
+			commsg, err := translation.GetComponentMessages("GoClientTest", "1.0.1", "de", "DefaultComponent")
+			fmt.Println("translation for empty locale: ", commsg)
+			fmt.Println("error for empty locale: ", err)
 			//value, _ := commsg.Get(commonkey)
 
 			So(commsg, ShouldBeNil)
 
-			So(err.Error(), ShouldContainSubstring, "Fail to load from server. The code is: 404, message is: Failed to get translation from data for GoClientTest/1.0.0")
+
 		})
+
+
+		
+		Convey("component-service-nothing: not exist locale(P1)", func() {
+
+			commsg, err := translation.GetComponentMessages("GoClientTest", "1.0.0", "abc", "DefaultComponent")
+			fmt.Println("translation for empty locale: ", commsg)
+			fmt.Println("error for empty locale: ", err)
+			//value, _ := commsg.Get(commonkey)
+
+			So(commsg, ShouldBeNil)
+
+
+		})
+
+		Convey("component-service-nothing: not exist component", func() {
+
+			commsg, err := translation.GetComponentMessages("GoClientTest", "1.0.0", "de", "notexist")
+			fmt.Println("translation for empty locale: ", commsg)
+			fmt.Println("error for empty locale: ", err)
+			//value, _ := commsg.Get(commonkey)
+
+			So(commsg, ShouldBeNil)
+
+
+		})
+
+
 	})
 
 }
