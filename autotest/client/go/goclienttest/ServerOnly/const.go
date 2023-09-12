@@ -10,7 +10,7 @@ const (
 	Defaultcom      = "DefaultComponent"
 	commonkey       = "message.translation.available"
 	commonvalue     = "Translation is ready for this component."
-	frcommonvalue   = "La traduction est prête pour ce composant."
+	frcommonvalue   = "La traduction est prête pour ce composant.xxx"
 	dlcncommonvalue = "该组件已准备好翻译。"
 
 	holderkey       = "message.argument"

@@ -17,14 +17,16 @@ repositories {
 }
 
 dependencies {
-    compile group: 'org.testng', name: 'testng', version:'6.14.3'
-    compile group: 'com.jayway.jsonpath', name: 'json-path', version:'2.4.0'
-    compile group: 'org.json', name: 'json', version:'20171018'
-    compile group: 'org.apache.poi', name: 'poi', version:'3.17'
-    compile group: 'org.apache.poi', name: 'poi-ooxml', version:'3.17'
-    compile group: 'org.apache.xmlbeans', name: 'xmlbeans', version:'2.6.0'
-    compile group: 'com.github.virtuald', name: 'curvesapi', version:'1.04'
+    implementation group: 'org.testng', name: 'testng', version:'6.14.3'
+    implementation group: 'com.jayway.jsonpath', name: 'json-path', version:'2.4.0'
+    implementation group: 'org.json', name: 'json', version:'20171018'
+    implementation group: 'org.apache.poi', name: 'poi', version:'3.17'
+    implementation group: 'org.apache.poi', name: 'poi-ooxml', version:'3.17'
+    implementation group: 'org.apache.xmlbeans', name: 'xmlbeans', version:'2.6.0'
+    implementation group: 'com.github.virtuald', name: 'curvesapi', version:'1.04'
 }
+
+configurations.implementation.setCanBeResolved(true)
 
 task copy(type: Copy) {
     from('build/libs') {
@@ -34,7 +36,7 @@ task copy(type: Copy) {
 }
 
 task copyDependencies(type: Copy, dependsOn: [copy]) {
-    from configurations.compile
+    from configurations.implementation
     into 'target'
 }
 

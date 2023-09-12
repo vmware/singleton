@@ -15,41 +15,33 @@ import (
 )
 
 func TestLocaleList(t *testing.T) {
+	cfPath := "config.json"
+	cfg, _ := sgtn.LoadConfig(cfPath)
+	//fmt.Print(cfg)
+	sgtn.Initialize(cfg)
+	//fmt.Print(inst)
+	translation := sgtn.GetTranslation()
 
 	Convey("Get all locales successfully(P0)", t, func() {
 
-		cfPath := "config.json"
-		cfg, _ := sgtn.LoadConfig(cfPath)
-		//fmt.Print(cfg)
-		sgtn.Initialize(cfg)
-		//fmt.Print(inst)
-		translation := sgtn.GetTranslation()
-
-		localelist, err := translation.GetLocaleList("GoClientTest", "1.0.0")
+		localelist, err := translation.GetLocaleList("GoClientTest", "1.0")
 		fmt.Print(localelist)
 		fmt.Print(err)
-
-		So(len(localelist), ShouldEqual, 9)
+		So(localelist, ShouldContain, "es")
+		So(len(localelist), ShouldEqual, 10)
 		// So(cfg, ShouldNotBeNil)
 	})
 
-	// SkipConvey("Get nothing for non-existing product-(P1)", t, func() {
+	SkipConvey("Get nothing for non-existing product-(P1)", t, func() {
 
-	// 	cfPath1 := "confignull.yaml"
-	// 	cfg1, _ := sgtn.NewConfig(cfPath1)
-	// 	//fmt.Print(cfg)
-	// 	inst1, _ := sgtn.NewInst(*cfg1)
-	// 	//fmt.Print(inst)
-	// 	translation1 := inst1.GetTranslation()
+		localelist1, err1 := translation.GetLocaleList("NoxxxxxxxxxxxExistcomponent", "1.0")
+		fmt.Println(localelist1)
+		fmt.Println(err1)
 
-	// 	localelist1, err1 := translation1.GetLocaleList()
-	// 	fmt.Println(localelist1)
-	// 	fmt.Println(err1)
+		So(len(localelist1), ShouldEqual, 0)
+		//So(err1, ShouldBeNil)
+		//So(cfg, ShouldNotBeNil)
 
-	// 	So(len(localelist1), ShouldEqual, 0)
-	// 	So(err1, ShouldBeNil)
-	// 	// So(cfg, ShouldNotBeNil)
-
-	// })
+	})
 
 }

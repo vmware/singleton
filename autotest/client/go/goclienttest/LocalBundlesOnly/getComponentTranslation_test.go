@@ -21,41 +21,87 @@ func TestGetComponentTranslation(t *testing.T) {
 	sgtn.Initialize(cfg)
 	translation := sgtn.GetTranslation()
 
-	Convey("component-localbundles-requestlocale: Get request locale's translation from localbundles", t, func() {
 
-		Convey("component-localbundle-requestlocale: request locale(fr) is in localebundle, return request locale translation from localbundles(P0)", func() {
+	Convey("component-Service-requestlocale: Get request locale's translation from service", t, func() {
 
-			commsg, _ := translation.GetComponentMessages("GoClientTest", "1.0.0", "fr", contactcom)
-			fmt.Print(commsg)
-			value, _ := commsg.Get(messagekey)
 
-			//So(commsg.Size(), ShouldEqual, 6)
-			So(value, ShouldEqual, frmessagevalue)
-			// So(cfg, ShouldNotBeNil)
+		Convey("component-Service-requestlocale: Get existing component successfully with fr from service(P0)", func() {
+
+			commsg, _ := translation.GetComponentMessages("GoClientTest", "1.0.0", "fr", "DefaultComponent")
+			fmt.Print("fr translation: ", commsg)
+			value, _ := commsg.Get("message.translation.available")
+
+			So(value, ShouldEqual, "La traduction est prête pour ce composant.xxx")
+
 		})
 
-		// SkipConvey("component-localbundle-requestlocale: request non-existing locale(abc) is in localebundle(P1)", func() {
+		Convey("component-Service-requestlocale: version fallbackP0)", func() {
 
-		// 	commsg, err := translation.GetComponentMessages("abc", contactcom)
-		// 	//fmt.Println("commsg:", commsg)
-		// 	//fmt.Println("err", err)
-		// 	So(commsg, ShouldBeNil)
-		// 	So(err.Error(), ShouldContainSubstring, "open ..\\testdata\\localBundles\\GoClientTest\\1.0.0\\contact\\messages_abc.json: The system cannot find the file specifie")
+			commsg, _ := translation.GetComponentMessages("GoClientTest", "1.0.0", "en", "DefaultComponent")
+			fmt.Print("fr translation: ", commsg)
+			value, _ := commsg.Get("message.translation.available")
 
-		// })
+			So(value, ShouldEqual, "Translation is ready for this component.xxx")
 
-		// SkipConvey("component-localbundle-nothing: request empty locale() and non-existing component, return nothing and error(P1)", func() {
+		})
 
-		// 	commsg, err := translation.GetComponentMessages("", "non-exiting-component")
-		// 	fmt.Print(commsg)
-		// 	fmt.Print(err)
-		// 	//value, _ := commsg.Get(messagekey)
 
-		// 	So(commsg, ShouldBeNil)
-		// 	So(err.Error(), ShouldContainSubstring, "open ..\\testdata\\localBundles\\GoClientTest\\1.0.0\\non-exiting-component: The system cannot find the file specified")
-		// 	// So(cfg, ShouldNotBeNil)
-		// })
 
 	})
 
+	SkipConvey("component-Service-nothing: Get nothing from service", t, func() {
+
+		Convey("component-service-nothing: not exist product(P1)", func() {
+
+			commsg, err := translation.GetComponentMessages("notexist", "1.0.0", "de", "DefaultComponent")
+			fmt.Println("translation for empty locale: ", commsg)
+			fmt.Println("error for empty locale: ", err)
+			//value, _ := commsg.Get(commonkey)
+
+			So(commsg, ShouldBeNil)
+
+
+		})
+
+
+		Convey("component-service-nothing: not exist version(P1)", func() {
+
+			commsg, err := translation.GetComponentMessages("GoClientTest", "1.0.1", "de", "DefaultComponent")
+			fmt.Println("translation for empty locale: ", commsg)
+			fmt.Println("error for empty locale: ", err)
+			//value, _ := commsg.Get(commonkey)
+
+			So(commsg, ShouldBeNil)
+
+
+		})
+
+
+		
+		Convey("component-service-nothing: not exist locale(P1)", func() {
+
+			commsg, err := translation.GetComponentMessages("GoClientTest", "1.0.0", "abc", "DefaultComponent")
+			fmt.Println("translation for empty locale: ", commsg)
+			fmt.Println("error for empty locale: ", err)
+			//value, _ := commsg.Get(commonkey)
+
+			So(commsg, ShouldBeNil)
+
+
+		})
+
+		Convey("component-service-nothing: not exist component", func() {
+
+			commsg, err := translation.GetComponentMessages("GoClientTest", "1.0.0", "de", "notexist")
+			fmt.Println("translation for empty locale: ", commsg)
+			fmt.Println("error for empty locale: ", err)
+			//value, _ := commsg.Get(commonkey)
+
+			So(commsg, ShouldBeNil)
+
+
+		})
+
+
+	})
 }

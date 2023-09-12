@@ -1,4 +1,4 @@
-FROM adoptopenjdk:8u292-b10-jdk-hotspot-focal
+FROM openjdk:17.0.2-slim
 
 MAINTAINER singleton.io@outlook.com
 
