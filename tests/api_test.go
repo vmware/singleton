@@ -20,6 +20,7 @@ import (
 	"sgtnserver/internal/config"
 	"sgtnserver/internal/logger"
 	"sgtnserver/internal/sgtnerror"
+	"sgtnserver/modules/translation"
 	"sgtnserver/modules/translation/translationservice"
 
 	"github.com/emirpasic/gods/sets/hashset"
@@ -294,10 +295,11 @@ func TestAllowList(t *testing.T) {
 		translationservice.InitAllowList()
 	}()
 
+	notFoundProduct := "not-found"
 	e := CreateHTTPExpect(t, GinTestEngine)
-	resp := e.GET(GetBundleURL, "not-found", Version, "zh-Hans", "sunglow").Expect()
+	resp := e.GET(GetBundleURL, notFoundProduct, Version, "zh-Hans", "sunglow").Expect()
 	resp.Status(http.StatusOK)
-	resp.Body().Contains("doesn't exist")
+	resp.Body().Contains(fmt.Sprintf(translation.ProductNotSupported, notFoundProduct))
 }
 
 func TestEtag(t *testing.T) {
