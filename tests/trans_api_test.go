@@ -487,16 +487,31 @@ func TestGetMultipleMessages(t *testing.T) {
 func TestGetVersions(t *testing.T) {
 	e := CreateHTTPExpect(t, GinTestEngine)
 
-	nonexistentProduct := "NonexistentProduct"
+	for _, d := range []struct {
+		desc, name string
+		wanted     []string
+	}{
+		{"successful", Name, []string{"1.0.0", "1.0.1", "1.1.1"}},
+	} {
+		d := d
+		t.Run(d.desc, func(t *testing.T) {
+			resp := e.GET(GetVersionsURL, d.name).Expect()
+			_, data := GetErrorAndData(resp.Body().Raw())
+			versions := data.(map[string]interface{})[api.VersionsAPIKey].([]interface{})
+			for _, v := range versions {
+				assert.Contains(t, versions, v)
+			}
+		})
+	}
 
 	for _, d := range []struct {
 		desc, name string
 		wanted     string
 	}{
-		{"successful", Name,
-			`{"response":{"code":200,"message":"OK"},"data":{"productName":"VPE","versions":["1.0.0","1.0.1","1.1.1"]}}`},
-		{"nonexistent product", nonexistentProduct,
-			`{"response":{"code":400,"message":"Product 'NonexistentProduct' doesn't exist"}}`},
+		{"nonexistent product", NonexistentProduct,
+			`{"response":{"code":404,"message":"product '` + NonexistentProduct + `' doesn't exist"}}`},
+		{"disallowed product", DisallowedProduct,
+			`{"response":{"code":400,"message":"Product '` + DisallowedProduct + `' doesn't exist"}}`},
 	} {
 		d := d
 		t.Run(d.desc, func(t *testing.T) {

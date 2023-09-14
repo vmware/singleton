@@ -64,6 +64,10 @@ const (
 	Language, Region                 = "en", "US"
 	Key, Msg                         = "message", "Message-en"
 )
+const (
+	NonexistentProduct = "ocean"
+	DisallowedProduct  = "ABC"
+)
 
 var ID = translation.BundleID{Name: Name, Version: Version, Locale: Locale, Component: Component}
 

@@ -62,10 +62,10 @@ coverage: TEMPCover := ${Cover}.temp
 coverage:
 	${TEST_CMD} -coverprofile=${TEMPCover} -coverpkg=./...
 ifeq ($(OS),Windows_NT)
-	type ${TEMPCover} | findstr /B /L /V /C:sgtnserver/internal/bindata/bindata.go > ${Cover}
+	type ${TEMPCover} | findstr /B /V ^sgtnserver/internal/bindata/.* > ${Cover}
 	del ${TEMPCover}
 else
-	cat ${TEMPCover} | grep -v sgtnserver/internal/bindata/bindata.go > ${Cover}
+	cat ${TEMPCover} | grep -v -e ^sgtnserver/internal/bindata/.* > ${Cover}
 	rm ${TEMPCover}
 endif
 	go tool cover -html=${Cover} -o coverage.html
