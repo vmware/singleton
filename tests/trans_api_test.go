@@ -483,3 +483,25 @@ func TestGetMultipleMessages(t *testing.T) {
 		})
 	}
 }
+
+func TestGetVersions(t *testing.T) {
+	e := CreateHTTPExpect(t, GinTestEngine)
+
+	nonexistentProduct := "NonexistentProduct"
+
+	for _, d := range []struct {
+		desc, name string
+		wanted     string
+	}{
+		{"successful", Name,
+			`{"response":{"code":200,"message":"OK"},"data":{"productName":"VPE","versions":["1.0.0","1.0.1","1.1.1"]}}`},
+		{"nonexistent product", nonexistentProduct,
+			`{"response":{"code":400,"message":"Product 'NonexistentProduct' doesn't exist"}}`},
+	} {
+		d := d
+		t.Run(d.desc, func(t *testing.T) {
+			resp := e.GET(GetVersionsURL, d.name).Expect()
+			assert.JSONEq(t, d.wanted, resp.Body().Raw())
+		})
+	}
+}

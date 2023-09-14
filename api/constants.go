@@ -13,6 +13,7 @@ const (
 const (
 	ProductNameAPIKey = "productName"
 	VersionAPIKey     = "version"
+	VersionsAPIKey    = "versions"
 	ComponentAPIKey   = "component"
 	LocaleAPIKey      = "locale"
 	LanguageAPIKey    = "language"

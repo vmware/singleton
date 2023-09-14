@@ -31,6 +31,34 @@ func GetService(pseudo bool) translation.Service {
 	}
 }
 
+// GetProductVersions godoc
+// @Summary Get available versions of a product
+// @Description Get available versions of a product
+// @Tags translation-product-api
+// @Produce json
+// @Param productName path string true "product name"
+// @Success 200 {object} api.Response "OK"
+// @Failure 400 {string} string "Bad Request"
+// @Failure 404 {string} string "Not Found"
+// @Failure 500 {string} string "Internal Server Error"
+// @Router /translation/products/{productName}/versionlist [get]
+func GetProductVersions(c *gin.Context) {
+	params := struct {
+		ProductName string `uri:"productName" binding:"alphanum"`
+	}{}
+	if err := api.ExtractParameters(c, &params, nil); err != nil {
+		return
+	}
+
+	versions, err := l3Service.GetAvailableVersions(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.ProductName)
+	if err == nil {
+		data := gin.H{api.ProductNameAPIKey: params.ProductName, api.VersionsAPIKey: versions}
+		api.HandleResponse(c, data, err)
+	} else {
+		api.HandleResponse(c, nil, err)
+	}
+}
+
 // GetAvailableComponents godoc
 // @Summary Get component names
 // @Description Get available component names in the product

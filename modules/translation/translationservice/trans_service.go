@@ -28,6 +28,21 @@ type Service struct {
 	msgOrigin translation.MessageOrigin
 }
 
+// GetAvailableVersions ...
+func (ts Service) GetAvailableVersions(ctx context.Context, name string) (data []string, returnErr error) {
+	log := logger.FromContext(ctx)
+	log.Debug("Get available versions", zap.String(translation.Name, name))
+
+	versions, ok := bundleinfo.GetReleaseNames(name)
+	if !ok {
+		returnErr = sgtnerror.StatusNotFound.WithUserMessage(translation.ProductNonexistent, name)
+		log.Error(returnErr.Error())
+		return nil, returnErr
+	}
+
+	return convertSetToList(versions), nil
+}
+
 // GetAvailableComponents ...
 func (ts Service) GetAvailableComponents(ctx context.Context, name, version string) (data []string, returnErr error) {
 	log := logger.FromContext(ctx)
