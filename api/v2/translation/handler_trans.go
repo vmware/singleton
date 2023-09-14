@@ -126,7 +126,7 @@ func GetAvailableLocales(c *gin.Context) {
 // @Param components query string false "components"
 // @Param pseudo query boolean false "a flag for returnning pseudo translation" default(false)
 // @Success 200 {object} api.Response "OK"
-// @Success 206 {object} api.Response "Successful Partially"
+// @Success 207 {object} api.Response "Successful Partially"
 // @Failure 400 {string} string "Bad Request"
 // @Failure 404 {string} string "Not Found"
 // @Failure 500 {string} string "Internal Server Error"
@@ -339,7 +339,7 @@ func GetStringByPost(c *gin.Context) {
 // @Param version path string true "version"
 // @Param translationData body UpdateTranslationDTO true "translationData"
 // @Success 200 {object} api.Response "OK"
-// @Success 206 {object} api.Response "Successful Partially"
+// @Success 207 {object} api.Response "Successful Partially"
 // @Failure 400 {string} string "Bad Request"
 // @Failure 404 {string} string "Not Found"
 // @Failure 500 {string} string "Internal Server Error"

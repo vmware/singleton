@@ -392,7 +392,7 @@ var service Service
 func newService() Service {
 	logger.Log.Debug("Initialize translation service")
 
-	origin := dao.GetInst()
+	var origin translation.MessageOrigin = dao.GetInst()
 	if config.Settings.Cache.Enable {
 		origin = translationcache.NewCacheManager(origin, cache.NewCache("translation", structs.Map(config.Settings.Cache)))
 	}
@@ -409,4 +409,6 @@ func init() {
 	service = newService()
 
 	initLocaleMap()
+
+	InitAllowList()
 }

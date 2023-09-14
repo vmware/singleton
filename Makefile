@@ -35,7 +35,7 @@ build_all:
 	$(foreach GOARCH, $(ARCHITECTURES), $(shell export GOOS=$(GOOS); export GOARCH=$(GOARCH); ${BUILD_CMD})))
 
 run:
-	go run -tags="${ALL_TAGS}" ${LDFLAGS} "${PKG_PATH}" --config="${config}" --local-bundle.base-path=tests/testdata/bundles
+	go run -tags="${ALL_TAGS}" ${LDFLAGS} "${PKG_PATH}" --config="${config}" --local-bundle.base-path=tests/testdata/bundles --AllowListFile=tests/testdata/allowlist.json
 
 clean:
 ifeq ($(OS),Windows_NT)
@@ -71,11 +71,14 @@ endif
 	go tool cover -html=${Cover} -o coverage.html
 	go tool cover -func ${Cover}
 
-bindata: downloadgo-bindata
-	go generate ./...
+cldr-bindata: downloadgo-bindata
+	go generate assets/cldrdata_generator.go
 
-internal/bindata/bindata.go: downloadgo-bindata
-	go generate ./...
+bindata: downloadgo-bindata
+	go generate assets/bindata_generator.go
+
+flag-bindata: downloadgo-bindata
+	go generate assets/flagdata_generator.go
 
 downloadgo-bindata:
 	go get -u github.com/go-bindata/go-bindata/...

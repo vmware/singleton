@@ -188,7 +188,7 @@ var doc = `{
                             "$ref": "#/definitions/api.Response"
                         }
                     },
-                    "206": {
+                    "207": {
                         "description": "Successful Partially",
                         "schema": {
                             "$ref": "#/definitions/api.Response"
@@ -262,7 +262,7 @@ var doc = `{
                             "$ref": "#/definitions/api.Response"
                         }
                     },
-                    "206": {
+                    "207": {
                         "description": "Successful Partially",
                         "schema": {
                             "$ref": "#/definitions/api.Response"
@@ -419,7 +419,7 @@ var doc = `{
                             "$ref": "#/definitions/api.Response"
                         }
                     },
-                    "206": {
+                    "207": {
                         "description": "Successful Partially",
                         "schema": {
                             "$ref": "#/definitions/api.Response"
@@ -664,7 +664,7 @@ var doc = `{
                             "$ref": "#/definitions/api.Response"
                         }
                     },
-                    "206": {
+                    "207": {
                         "description": "Successful Partially",
                         "schema": {
                             "$ref": "#/definitions/api.Response"
@@ -818,7 +818,7 @@ var doc = `{
                             "$ref": "#/definitions/api.Response"
                         }
                     },
-                    "206": {
+                    "207": {
                         "description": "Successful Partially",
                         "schema": {
                             "$ref": "#/definitions/api.Response"
