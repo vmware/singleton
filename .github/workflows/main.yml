@@ -157,14 +157,14 @@ jobs:
           git clone --branch=devops https://github.com/vmware/singleton.git devops
           cp -r $GITHUB_WORKSPACE/devops/autotest/service/goservice/l10n/bundles $GITHUB_WORKSPACE/tests/testdata/bundles
           cp -r $GITHUB_WORKSPACE/devops/autotest/service/goservice/l10n/https $GITHUB_WORKSPACE/tests/testdata/https
-          cd $GITHUB_WORKSPACE/config && mv config_template.yaml config.yml
-          sed -i "s/BasePath: ###/BasePath: (${GITHUB_WORKSPACE//\//'\/'})\/tests\/testdata\/bundles/" config.yml
-          sed -i 's/CertFile: ###/CertFile: tests\/testdata\/https\/server.pem/' config.yml
-          sed -i 's/KeyFile: ###/KeyFile: tests\/testdata\/https\/server.key/' config.yml
-          cat $GITHUB_WORKSPACE/config/config.yml
+          cd $GITHUB_WORKSPACE/config && mv config_template.yaml config.yaml
+          sed -i "s/BasePath: ###/BasePath: ${GITHUB_WORKSPACE//\//'\/'}\/tests\/testdata\/bundles/" config.yaml
+          sed -i "s/CertFile: ###/CertFile: ${GITHUB_WORKSPACE//\//'\/'}\/tests\/testdata\/https\/server.pem/" config.yaml
+          sed -i "s/KeyFile: ###/KeyFile: ${GITHUB_WORKSPACE//\//'\/'}\/tests\/testdata\/https\/server.key/" config.yaml
+          cat $GITHUB_WORKSPACE/config/config.yaml
           cd $GITHUB_WORKSPACE 
           make build
-          $GITHUB_WORKSPACE/builds/singleton-linux-amd64 --config=$GITHUB_WORKSPACE/config/config.yml &
+          $GITHUB_WORKSPACE/builds/singleton-linux-amd64 --config=$GITHUB_WORKSPACE/config/config.yaml &
           cd $GITHUB_WORKSPACE/devops/autotest/service/goservice 
           gradle build
           "$JAVA_HOME/bin/java" -cp "./target/*:./resource/*:./" org.testng.TestNG -d test-output testng.xml 
