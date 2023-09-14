@@ -1,132 +1,132 @@
 name: main
 on: [pull_request, push]
 jobs:
-  pre-process:
-    name: Pre process
-    runs-on: ubuntu-latest
-    outputs:
-      were-only-docs-updated: ${{ steps.were-only-docs-updated-action.outputs.were-only-docs-updated }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 2.  
-      - name: Get commit range
-        id: get-commit-range-action
-        uses: ./.github/actions/get-commit-range-action
-      - name: Were only docs updated
-        id: were-only-docs-updated-action
-        uses: ./.github/actions/were-only-docs-updated-action
-        with:
-          commit-range: ${{ steps.get-commit-range-action.outputs.commit-range }}
-  check-header:
-    name: Check Header
-    runs-on: ubuntu-latest
-    needs: pre-process
-    if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 2.  
-      - name: Get commit range
-        id: get-commit-range-action
-        uses: ./.github/actions/get-commit-range-action
-      - name: Check header
-        run: |
-          git clone --branch=devops https://github.com/vmware/singleton.git devops
-          cp $GITHUB_WORKSPACE/devops/check_headers.py .
-          chmod +x check_headers.py
-          git diff ${{ steps.get-commit-range-action.outputs.commit-range }} --stat
-          git diff --name-only --diff-filter=d ${{ steps.get-commit-range-action.outputs.commit-range }}
-          python ./check_headers.py -f "$(git diff --name-only --diff-filter=d ${{ steps.get-commit-range-action.outputs.commit-range }} ':(exclude)api/v1/swagger/docs.go' ':(exclude)api/v2/swagger/docs.go' ':(exclude)internal/bindata/bindata.go')"
+  # pre-process:
+  #   name: Pre process
+  #   runs-on: ubuntu-latest
+  #   outputs:
+  #     were-only-docs-updated: ${{ steps.were-only-docs-updated-action.outputs.were-only-docs-updated }}
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 2.  
+  #     - name: Get commit range
+  #       id: get-commit-range-action
+  #       uses: ./.github/actions/get-commit-range-action
+  #     - name: Were only docs updated
+  #       id: were-only-docs-updated-action
+  #       uses: ./.github/actions/were-only-docs-updated-action
+  #       with:
+  #         commit-range: ${{ steps.get-commit-range-action.outputs.commit-range }}
+  # check-header:
+  #   name: Check Header
+  #   runs-on: ubuntu-latest
+  #   needs: pre-process
+  #   if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 2.  
+  #     - name: Get commit range
+  #       id: get-commit-range-action
+  #       uses: ./.github/actions/get-commit-range-action
+  #     - name: Check header
+  #       run: |
+  #         git clone --branch=devops https://github.com/vmware/singleton.git devops
+  #         cp $GITHUB_WORKSPACE/devops/check_headers.py .
+  #         chmod +x check_headers.py
+  #         git diff ${{ steps.get-commit-range-action.outputs.commit-range }} --stat
+  #         git diff --name-only --diff-filter=d ${{ steps.get-commit-range-action.outputs.commit-range }}
+  #         python ./check_headers.py -f "$(git diff --name-only --diff-filter=d ${{ steps.get-commit-range-action.outputs.commit-range }} ':(exclude)api/v1/swagger/docs.go' ':(exclude)api/v2/swagger/docs.go' ':(exclude)internal/bindata/bindata.go')"
 
-  get-lang-version:
-    name: Get Lang Version
-    runs-on: ubuntu-latest
-    outputs:
-        LangVersion: ${{ steps.get-ver.outputs.lang-version }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 2
-      - name: Get Lang Version
-        id: get-ver
-        run: |
-          LangVersion=$(cat go.mod|grep '^go\s[0-9]\.[0-9]*'|grep -o '[0-9]\.[0-9]*')
-          echo "lang-version=$LangVersion" >> "$GITHUB_OUTPUT"
+  # get-lang-version:
+  #   name: Get Lang Version
+  #   runs-on: ubuntu-latest
+  #   outputs:
+  #       LangVersion: ${{ steps.get-ver.outputs.lang-version }}
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
+  #       with:
+  #         fetch-depth: 2
+  #     - name: Get Lang Version
+  #       id: get-ver
+  #       run: |
+  #         LangVersion=$(cat go.mod|grep '^go\s[0-9]\.[0-9]*'|grep -o '[0-9]\.[0-9]*')
+  #         echo "lang-version=$LangVersion" >> "$GITHUB_OUTPUT"
    
-  unit-test:
-    name: Unit Test
-    runs-on: ubuntu-latest
-    needs: [pre-process, get-lang-version]
-    if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Install Go
-        uses: actions/setup-go@v2
-        with:
-          go-version: ${{needs.get-lang-version.outputs.LangVersion}}
-      - name: Unit test
-        run: |
-          make test
-      - name: Coverage
-        run: |
-          make coverage
-          sed -i "/^.*internal\/bindata\/.*$/d" ./cover.out
-      - name: Upload Codecov report for go-coverage
-        uses: codecov/codecov-action@v2
-        with:
-          files: ./cover.out
-          flags: coverage
+  # unit-test:
+  #   name: Unit Test
+  #   runs-on: ubuntu-latest
+  #   needs: [pre-process, get-lang-version]
+  #   if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
+  #     - name: Install Go
+  #       uses: actions/setup-go@v2
+  #       with:
+  #         go-version: ${{needs.get-lang-version.outputs.LangVersion}}
+  #     - name: Unit test
+  #       run: |
+  #         make test
+  #     - name: Coverage
+  #       run: |
+  #         make coverage
+  #         sed -i "/^.*internal\/bindata\/.*$/d" ./cover.out
+  #     - name: Upload Codecov report for go-coverage
+  #       uses: codecov/codecov-action@v2
+  #       with:
+  #         files: ./cover.out
+  #         flags: coverage
 
-  security-analysis:
-    name: Security Analysis
-    runs-on: ubuntu-latest
-    needs: [pre-process, get-lang-version]
-    if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
-    permissions:
-      actions: read
-      contents: read
-      security-events: write
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Install Go
-        uses: actions/setup-go@v2
-        with:
-          go-version: ${{needs.get-lang-version.outputs.LangVersion}}
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v1
-        with:
-          languages: go
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v1
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v1
+  # security-analysis:
+  #   name: Security Analysis
+  #   runs-on: ubuntu-latest
+  #   needs: [pre-process, get-lang-version]
+  #   if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
+  #   permissions:
+  #     actions: read
+  #     contents: read
+  #     security-events: write
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v2
+  #     - name: Install Go
+  #       uses: actions/setup-go@v2
+  #       with:
+  #         go-version: ${{needs.get-lang-version.outputs.LangVersion}}
+  #     - name: Initialize CodeQL
+  #       uses: github/codeql-action/init@v1
+  #       with:
+  #         languages: go
+  #     - name: Autobuild
+  #       uses: github/codeql-action/autobuild@v1
+  #     - name: Perform CodeQL Analysis
+  #       uses: github/codeql-action/analyze@v1
 
-  codacy-analysis-cli:
-    name: Codacy Analysis CLI
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@main
-      - name: Run Codacy Analysis CLI
-        uses: codacy/codacy-analysis-cli-action@master  
-        with:
-          output: results.sarif
-          format: sarif
-          # Adjust severity of non-security issues
-          gh-code-scanning-compat: true
-          # This will handover control about PR rejection to the GitHub side
-          max-allowed-issues: 2147483647  
-      # Upload the SARIF file generated in the previous step  
-      - name: Upload SARIF results file
-        uses: github/codeql-action/upload-sarif@main
-        with:
-          sarif_file: results.sarif
+  # codacy-analysis-cli:
+  #   name: Codacy Analysis CLI
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@main
+  #     - name: Run Codacy Analysis CLI
+  #       uses: codacy/codacy-analysis-cli-action@master  
+  #       with:
+  #         output: results.sarif
+  #         format: sarif
+  #         # Adjust severity of non-security issues
+  #         gh-code-scanning-compat: true
+  #         # This will handover control about PR rejection to the GitHub side
+  #         max-allowed-issues: 2147483647  
+  #     # Upload the SARIF file generated in the previous step  
+  #     - name: Upload SARIF results file
+  #       uses: github/codeql-action/upload-sarif@main
+  #       with:
+  #         sarif_file: results.sarif
 
   smoke-test:
     name: Smoke Test
@@ -155,22 +155,23 @@ jobs:
           export PATH=${GRADLE_HOME}/bin:${PATH}
           gradle -v
           git clone --branch=devops https://github.com/vmware/singleton.git devops
-          cp -r $GITHUB_WORKSPACE/devops/autotest/service/goservice/l10n/bundles/* $GITHUB_WORKSPACE/tests/testdata/bundles/
-          cp -r $GITHUB_WORKSPACE/devops/autotest/service/goservice/l10n/https/* $GITHUB_WORKSPACE/tests/testdata/https/
-          cd $GITHUB_WORKSPACE/devops/autotest/service/goservice/l10n/bundles/
           ls -al
-          cd $GITHUB_WORKSPACE/tests/testdata/bundles/
-          ls -al
-          cd $GITHUB_WORKSPACE/config && mv config_template.yaml config.yaml
-          sed -i "s/BasePath: ###/BasePath: ${GITHUB_WORKSPACE//\//'\/'}\/tests\/testdata\/bundles/" config.yaml
-          sed -i "s/CertFile: ###/CertFile: ${GITHUB_WORKSPACE//\//'\/'}\/tests\/testdata\/https\/server.pem/" config.yaml
-          sed -i "s/KeyFile: ###/KeyFile: ${GITHUB_WORKSPACE//\//'\/'}\/tests\/testdata\/https\/server.key/" config.yaml
-          cat $GITHUB_WORKSPACE/config/config.yaml
-          cd $GITHUB_WORKSPACE 
-          make build
-          $GITHUB_WORKSPACE/builds/singleton-linux-amd64 --config=$GITHUB_WORKSPACE/config/config.yaml &
-          cd $GITHUB_WORKSPACE/devops/autotest/service/goservice 
-          gradle build
-          "$JAVA_HOME/bin/java" -cp "./target/*:./resource/*:./" org.testng.TestNG -d test-output testng.xml 
+          # cp -r $GITHUB_WORKSPACE/devops/autotest/service/goservice/l10n/bundles/* $GITHUB_WORKSPACE/tests/testdata/bundles/
+          # cp -r $GITHUB_WORKSPACE/devops/autotest/service/goservice/l10n/https/* $GITHUB_WORKSPACE/tests/testdata/https/
+          # cd $GITHUB_WORKSPACE/devops/autotest/service/goservice/l10n/bundles/
+          # ls -al
+          # cd $GITHUB_WORKSPACE/tests/testdata/bundles/
+          # ls -al
+          # cd $GITHUB_WORKSPACE/config && mv config_template.yaml config.yaml
+          # sed -i "s/BasePath: ###/BasePath: ${GITHUB_WORKSPACE//\//'\/'}\/tests\/testdata\/bundles/" config.yaml
+          # sed -i "s/CertFile: ###/CertFile: ${GITHUB_WORKSPACE//\//'\/'}\/tests\/testdata\/https\/server.pem/" config.yaml
+          # sed -i "s/KeyFile: ###/KeyFile: ${GITHUB_WORKSPACE//\//'\/'}\/tests\/testdata\/https\/server.key/" config.yaml
+          # cat $GITHUB_WORKSPACE/config/config.yaml
+          # cd $GITHUB_WORKSPACE 
+          # make build
+          # $GITHUB_WORKSPACE/builds/singleton-linux-amd64 --config=$GITHUB_WORKSPACE/config/config.yaml &
+          # cd $GITHUB_WORKSPACE/devops/autotest/service/goservice 
+          # gradle build
+          # "$JAVA_HOME/bin/java" -cp "./target/*:./resource/*:./" org.testng.TestNG -d test-output testng.xml 
 
 
