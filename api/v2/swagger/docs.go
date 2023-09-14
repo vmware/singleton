@@ -696,6 +696,53 @@ var doc = `{
                 }
             }
         },
+        "/translation/products/{productName}/versionlist": {
+            "get": {
+                "description": "Get available versions of a product",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "translation-product-api"
+                ],
+                "summary": "Get available versions of a product",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "product name",
+                        "name": "productName",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/translation/products/{productName}/versions/{version}": {
             "get": {
                 "description": "Get messages of all the product or parts of the product",
