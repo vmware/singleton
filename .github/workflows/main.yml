@@ -155,13 +155,12 @@ jobs:
           export PATH=${GRADLE_HOME}/bin:${PATH}
           gradle -v
           git clone --branch=devops https://github.com/vmware/singleton.git devops
+          sudo cp -r $GITHUB_WORKSPACE/devops/autotest/service/goservice/l10n/bundles/* $GITHUB_WORKSPACE/tests/testdata/bundles/
+          sudo cp -r $GITHUB_WORKSPACE/devops/autotest/service/goservice/l10n/https/* $GITHUB_WORKSPACE/tests/testdata/https/
+          cd $GITHUB_WORKSPACE/devops/autotest/service/goservice/l10n/bundles/
           ls -al
-          # cp -r $GITHUB_WORKSPACE/devops/autotest/service/goservice/l10n/bundles/* $GITHUB_WORKSPACE/tests/testdata/bundles/
-          # cp -r $GITHUB_WORKSPACE/devops/autotest/service/goservice/l10n/https/* $GITHUB_WORKSPACE/tests/testdata/https/
-          # cd $GITHUB_WORKSPACE/devops/autotest/service/goservice/l10n/bundles/
-          # ls -al
-          # cd $GITHUB_WORKSPACE/tests/testdata/bundles/
-          # ls -al
+          cd $GITHUB_WORKSPACE/tests/testdata/bundles/
+          ls -al
           # cd $GITHUB_WORKSPACE/config && mv config_template.yaml config.yaml
           # sed -i "s/BasePath: ###/BasePath: ${GITHUB_WORKSPACE//\//'\/'}\/tests\/testdata\/bundles/" config.yaml
           # sed -i "s/CertFile: ###/CertFile: ${GITHUB_WORKSPACE//\//'\/'}\/tests\/testdata\/https\/server.pem/" config.yaml
