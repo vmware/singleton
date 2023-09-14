@@ -6,6 +6,7 @@
 package countryflag
 
 import (
+	"net/http"
 	"sgtnserver/api"
 	"sgtnserver/internal/logger"
 	"sgtnserver/modules/countryflag"
@@ -43,11 +44,16 @@ func GetCountryFlag(c *gin.Context) {
 	}
 
 	flag, err := countryflag.GetFlag(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.Region, params.Scale)
+	if err != nil {
+		api.HandleResponse(c, nil, err)
+		return
+	}
+
 	switch params.Type {
 	case flagTypeJSON:
 		data := gin.H{"image": flag, "type": "svg", "region": params.Region}
 		api.HandleResponse(c, data, err)
 	case flagTypeSvg:
-		c.Data(api.ToBusinessError(err).HTTPCode, "image/svg+xml", []byte(flag))
+		c.Data(http.StatusOK, "image/svg+xml", []byte(flag))
 	}
 }
