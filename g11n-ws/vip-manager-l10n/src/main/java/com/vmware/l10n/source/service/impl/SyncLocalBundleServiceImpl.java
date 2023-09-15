@@ -78,7 +78,7 @@ public class SyncLocalBundleServiceImpl implements SyncLocalBundleService {
 	 * Synchronize the updated source to local bundle file
 	 */
 	@Override
-	public synchronized void mergeSourceToLocalBundle(){
+	public synchronized void mergeSourceToLocalBundle() {
 		
 		LOGGER.debug("--Synchronize the updated source to local--");
 		List<File> queueFiles = DiskQueueUtils.listSourceQueueFile(basePath);
@@ -86,7 +86,7 @@ public class SyncLocalBundleServiceImpl implements SyncLocalBundleService {
 			return;
 		}
 		LOGGER.debug("the source cache file size---{}", queueFiles.size());
-        boolean moveFileFlag = true;
+		boolean moveFileFlag = true;
 		for (File quefile : queueFiles) {
 			try {
 				Map<String, ComponentSourceDTO> mapObj = DiskQueueUtils.getQueueFile2Obj(quefile);
