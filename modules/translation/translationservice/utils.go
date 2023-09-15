@@ -133,6 +133,10 @@ func InitAllowList() {
 }
 
 func IsProductAllowed(name string) (found bool) {
+	if config.Settings.AllowListFile == "" {
+		return true
+	}
+
 	_, found = allowList[name]
 	return
 }
