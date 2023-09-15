@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.source.service.impl;
@@ -86,7 +86,7 @@ public class SyncLocalBundleServiceImpl implements SyncLocalBundleService {
 			return;
 		}
 		LOGGER.debug("the source cache file size---{}", queueFiles.size());
-
+		boolean moveFileFlag = true;
 		for (File quefile : queueFiles) {
 			try {
 				Map<String, ComponentSourceDTO> mapObj = DiskQueueUtils.getQueueFile2Obj(quefile);
@@ -104,14 +104,23 @@ public class SyncLocalBundleServiceImpl implements SyncLocalBundleService {
 					}
 				}
 
-				processSendFilePath(this.basePath, quefile);
-
 			} catch (L10nAPIException e) {
-				// process s3 update bundle failure
 				LOGGER.error(e.getMessage(), e);
+				moveFileFlag = false;
+				break;
 			} catch (Exception e) {
 				LOGGER.error(e.getMessage(), e);
 				DiskQueueUtils.moveFile2ExceptPath(basePath, quefile, LOCAL_STR);
+			}
+		}
+
+		if (moveFileFlag){
+			for (File delFile : queueFiles){
+				try {
+					processSendFilePath(this.basePath, delFile);
+				} catch (IOException e) {
+					DiskQueueUtils.moveFile2ExceptPath(basePath, delFile, LOCAL_STR);
+				}
 			}
 		}
 
