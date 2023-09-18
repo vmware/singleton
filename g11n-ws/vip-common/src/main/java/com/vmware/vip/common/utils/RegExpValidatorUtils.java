@@ -53,6 +53,13 @@ public final class RegExpValidatorUtils {
 	}
 
 	/*
+	 * is number dot and comm
+	 */
+	public static boolean IsAllOrNumberDotAndComm(String str) {
+		String regex = "^(all|[0-9\\.\\,]+)$";
+		return match(regex, str);
+	}
+	/*
 	 * is number and dot and length is (5,10)
 	 */
 	public static boolean isOneOrTwo(String str) {

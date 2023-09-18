@@ -77,4 +77,6 @@ public class APIOperation {
 
 	public static final String IMAGE_COUNTRY_FLAG_VALUE = "Get the country flag svg image";
 	public static final String IMAGE_COUNTRY_FLAG_NOTES = "Get the country flag svg image with region and scale";
+	public static final String PRODUCT_MULTI_VERSION_KEY_VALUE = "Get a key's request versions all translation";
+	public static final String PRODUCT_MULTI_VERSION_KEY_NOTES = "Get a key's all translation in specific version list";
 }

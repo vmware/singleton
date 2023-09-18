@@ -7,6 +7,7 @@ package com.vmware.vip.common.constants;
 public final class ValidationMsg {
 	public final static String PRODUCTNAME_NOT_VALIDE = "Incorrect produtName(only allows letter and number)";
 	public final static String VERSION_NOT_VALIDE = "Incorrect version(only allows number and dot, e.g. 1.2.0)";
+	public final static String VERSIONS_NOT_VALIDE = "Incorrect versions(only allows all or number, dot, comm. e.g. 1.2.0,2.2.0)";
 	public final static String COMPONENT_NOT_VALIDE = "Incorrect component(only allows letter, number, dot, underline, dashline)";
 	public final static String COMPONENTS_NOT_VALIDE = "Incorrect components(only allows letter, number, comma, dot, underline, dashline)";
 	public final static String KEY_NOT_VALIDE = "Incorrect key(only allows standard ASCII char)";

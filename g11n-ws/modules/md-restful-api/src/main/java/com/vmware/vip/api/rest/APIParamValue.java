@@ -7,6 +7,7 @@ package com.vmware.vip.api.rest;
 public class APIParamValue {
 	public final static String PRODUCT_NAME   = "product name";
 	public final static String VERSION        = "translation version";
+	public final static String VERSIONS        = "a String contains multiple translation version, separated by commas.";
 	public final static String COMPONENT      = "component name";
 	public final static String COMPONENTS     = "a String contains multiple components, separated by commas. e.g. 'cim, common, cpa, cpu'";
 	public final static String LOCALE         = "locale String. e.g. 'en-US'";
