@@ -1,10 +1,10 @@
 {
 	"groups" : [
 	    {
-	        "name": "formatting-date-api",
+	        "name": "formatting-api",
 	        "apis" : [
 	            {
-	                "name": "formatDateUsingGET",
+	                "name": "get_date_localizedDate",
 	                "path": "/i18n/api/v1/date/localizedDate",
 	                "description" : "Get localized date by specific locale and pattern",
 					"method" : "get",
@@ -72,7 +72,7 @@
 	        "name": "formatting-pattern-api",
 	        "apis" : [
 	            {
-	                "name": "getI18nPatternUsingGET",
+	                "name": "get_i18nPattern",
 	                "path": "/i18n/api/v1/i18nPattern",
 	                "description" : "Get i18n pattern by specific locale and scope",
 					"method" : "get",
@@ -89,8 +89,8 @@
 							"required" : false,
 							"desc" : "The pattern locale scope, 'true' will return all locales pattern, 'false' return the common used, default 'false'",
 							"paramType" : "query",
-							"dataType" : "boolean"
-					    }
+							"dataType" : "string"
+					    },					    {					        "name" : "scopeFilter",							"required" : false,							"desc" : "a string for filtering the pattern data, separated by comma and underline. e.g. ‘dates_eras,dates_dateTimeFormats’",							"paramType" : "query",							"dataType" : "string"					    }
 					]
 	            }
 	        ]
@@ -118,9 +118,9 @@
 	        "name": "translation-component-api",
 	        "apis" : [
 	            {
-	                "name": "getSingleComponentTranslationUsingGET",
+	                "name": "get_translation_component",
 	                "path": "/i18n/api/v1/translation/component",
-	                "description" : "Provide translation based on single component",
+	                "description" : "Get a component’s translation by the specific version",
 					"method" : "get",
 					"params" : [
 					    {
@@ -139,7 +139,7 @@
 						},
 						{
 							"name" : "component",
-							"required" : false,
+							"required" : true,
 							"desc" : "Component name, If this parameter is null, will use default component",
 							"paramType" : "query",
 							"dataType" : "string"
@@ -150,20 +150,13 @@
 							"desc" : "If this parameter is null, will use en locale.",
 							"paramType" : "query",
 							"dataType" : "string"
-						},
-						{
-							"name" : "pseudo",
-							"required" : false,
-							"desc" : "If pseudo=true, will return result with pseudo tag",
-							"paramType" : "query",
-							"dataType" : "string"
-						}
+						},						{							"name" : "pseudo",							"required" : false,							"desc" : "If pseudo=true, will return result with pseudo tag",							"paramType" : "query",							"dataType" : "boolean"						}
 					]
 	            },
 	            {
-	                "name": "getMultipleComponentsTranslationUsingGET",
+	                "name": "get_translation_components",
 	                "path": "/i18n/api/v1/translation/components",
-	                "description" : "Provide translation based on multiple component",
+	                "description" : "Get multiple components’ by the specific version",
 					"method" : "get",
 					"params" : [
 					    {
@@ -193,14 +186,7 @@
 							"desc" : "Separated by commas. If this parameter is null, will use en locale.",
 							"paramType" : "query",
 							"dataType" : "string"
-						},
-						{
-							"name" : "pseudo",
-							"required" : false,
-							"desc" : "If pseudo=true, will return result with pseudo tag",
-							"paramType" : "query",
-							"dataType" : "string"
-						}
+						},						{							"name" : "pseudo",							"required" : false,							"desc" : "If pseudo=true, will return result with pseudo tag",							"paramType" : "query",							"dataType" : "boolean"						}
 					]
 	            }
 	        ]
@@ -209,9 +195,9 @@
 	        "name": "translation-key-api",
 	        "apis" : [
 	            {
-	                "name": "getStringTranslationUsingGET",
+	                "name": "get_translation_string",
 	                "path": "/i18n/api/v1/translation/string",
-	                "description" : "Get string's translation",
+	                "description" : "Get a key’s translation in specific component",
 					"method" : "get",
 					"params" : [
 					    {
@@ -244,7 +230,7 @@
 						},
 						{
 							"name" : "component",
-							"required" : false,
+							"required" : true,
 							"desc" : "Component Name",
 							"paramType" : "query",
 							"dataType" : "string"
@@ -255,35 +241,7 @@
 							"desc" : "If this parameter is null, will use en locale.",
 							"paramType" : "query",
 							"dataType" : "string"
-						},
-						{
-							"name" : "commentForSource",
-							"required" : false,
-							"desc" : "Comments for new string",
-							"paramType" : "query",
-							"dataType" : "string"
-						},
-						{
-							"name" : "sourceFormat",
-							"required" : false,
-							"desc" : "The source's format which value would be HTML, XML, etc.",
-							"paramType" : "query",
-							"dataType" : "string"
-						},
-						{
-							"name" : "collectSource",
-							"required" : false,
-							"desc" : "If collectSource=true, collect source; else if collectSource = false, won't collect source.",
-							"paramType" : "query",
-							"dataType" : "string"
-						},
-						{
-							"name" : "pseudo",
-							"required" : false,
-							"desc" : "If pseudo=true, will return result with pseudo tag.",
-							"paramType" : "query",
-							"dataType" : "string"
-						}
+						},						{							"name" : "commentForSource",							"required" : false,							"desc" : "Comments for new string",							"paramType" : "query",							"dataType" : "string"						},						{							"name" : "sourceFormat",							"required" : false,							"desc" : "The source's format which value would be HTML, XML, etc.",							"paramType" : "query",							"dataType" : "string"						},						{							"name" : "collectSource",							"required" : false,							"desc" : "If collectSource=true, collect source; else if collectSource = false, won't collect source.",							"paramType" : "query",							"dataType" : "string"						},						{							"name" : "pseudo",							"required" : false,							"desc" : "If pseudo=true, will return result with pseudo tag.",							"paramType" : "query",							"dataType" : "boolean"						}
 					]
 	            }
 	        ]
@@ -292,9 +250,9 @@
 	        "name": "translation-product-api",
 	        "apis" : [
 	            {
-	                "name": "getProductTranslationUsingGET",
+	                "name": "get_translation",
 	                "path": "/i18n/api/v1/translation",
-	                "description" : "Provide translation based on product.",
+	                "description" : "Get the product’s translations by the specific version.",
 					"method" : "get",
 					"params" : [
 					    {
@@ -317,18 +275,11 @@
 							"desc" : "If this parameter is null, will use en locale.",
 							"paramType" : "query",
 							"dataType" : "string"
-						},
-						{
-							"name" : "pseudo",
-							"required" : false,
-							"desc" : "If pseudo=true, will return result with pseudo tag.",
-							"paramType" : "query",
-							"dataType" : "string"
-						}
+						},						{							"name" : "pseudo",							"required" : false,							"desc" : "If pseudo=true, will return result with pseudo tag.",							"paramType" : "query",							"dataType" : "boolean"						}
 					]
 	            },
 	            {
-	                "name": "getSupportedLocalesUsingGET",
+	                "name": "get_translation_product__productName__version__version__supportedLocales",
 	                "path": "/i18n/api/v1/translation/product/{productName}/version/{version}/supportedLocales",
 	                "description" : "Get supported locale list by product info (productName,version)",
 					"method" : "get",
@@ -350,9 +301,9 @@
 					]
 	            },
 	            {
-	                "name": "getComponentNameListUsingGET",
-	                "path": "/l10n/api/v1/bundles/components",
-	                "description" : "Get component name list by product info (productName,version)",
+	                "name": "get_bundles_components",
+	                "path": "/i18n/api/v1/bundles/components",
+	                "description" : "Get the component list by the specific version.",
 					"method" : "get",
 					"params" : [
 					    {
@@ -377,9 +328,9 @@
 	        "name": "translation-product-component-api",
 	        "apis" : [
 	            {
-	                "name": "getSingleComponentTranslationUsingGET_1",
+	                "name": "get_translation_product__productName__component__component_",
 	                "path": "/i18n/api/v1/translation/product/{productName}/component/{component}",
-	                "description" : "Provide translation based on single component.",
+	                "description" : "Get a component’s translation by the specific version",
 					"method" : "get",
 					"params" : [
 					    {
@@ -415,14 +366,14 @@
 							"required" : false,
 							"desc" : "If pseudo=true, will return result with pseudo tag.",
 							"paramType" : "query",
-							"dataType" : "string"
+							"dataType" : "boolean"
 						}
 					]
 	            },
 	            {
-	                "name": "getMultipleComponentsTranslationUsingGET_1",
+	                "name": "get_translation_product__productName__components__components_",
 	                "path": "/i18n/api/v1/translation/product/{productName}/components/{components}",
-	                "description" : "Provide translation based on multiple component.",
+	                "description" : "Get multiple components’ by the specific version",
 					"method" : "get",
 					"params" : [
 					    {
@@ -448,7 +399,7 @@
 						},
 						{
 							"name" : "locales",
-							"required" : false,
+							"required" : true,
 							"desc" : "If this parameter is null, will use en locale.",
 							"paramType" : "query",
 							"dataType" : "string"
@@ -458,7 +409,7 @@
 							"required" : false,
 							"desc" : "If pseudo=true, will return result with pseudo tag.",
 							"paramType" : "query",
-							"dataType" : "string"
+							"dataType" : "boolean"
 						}
 					]
 	            }
@@ -468,7 +419,7 @@
 	        "name": "translation-product-component-key-api",
 	        "apis" : [
 	            {
-	                "name": "getStringTranslationContainComponentUsingGET",
+	                "name": "get_translation_product__productName__component__component__key__key_",
 	                "path": "/i18n/api/v1/translation/product/{productName}/component/{component}/key/{key}",
 	                "description" : "Get string's translation",
 					"method" : "get",
@@ -541,7 +492,7 @@
 							"required" : false,
 							"desc" : "If pseudo=true, will return result with pseudo tag.",
 							"paramType" : "query",
-							"dataType" : "string"
+							"dataType" : "boolean"
 						}
 					]
 	            },
@@ -624,9 +575,9 @@
 					]
 	            },
 	            {
-	                "name": "getStringTranslationExclusiveComponentUsingGET",
+	                "name": "get_translation_product__productName__key__key_",
 	                "path": "/i18n/api/v1/translation/product/{productName}/key/{key}",
-	                "description" : "Get string's translation",
+	                "description" : "Get a key’s translation in specific component",
 					"method" : "get",
 					"params" : [
 					    {
@@ -690,7 +641,7 @@
 							"required" : false,
 							"desc" : "If pseudo=true, will return result with pseudo tag.",
 							"paramType" : "query",
-							"dataType" : "string"
+							"dataType" : "boolean"
 						}
 					]
 	            }
@@ -759,7 +710,7 @@
 							"required" : false,
 							"desc" : "If pseudo=true, will return result with pseudo tag.",
 							"paramType" : "query",
-							"dataType" : "string"
+							"dataType" : "boolean"
 						}
 					]
 	            },
@@ -833,7 +784,7 @@
 	        "name": "translation-sync-api",
 	        "apis" : [
 	            {
-	                "name": "updateTranslationUsingPUT",
+	                "name": "put_translation_product__productName__version__version_",
 	                "path": "/i18n/api/v1/translation/product/{productName}/version/{version}",
 	                "description" : "",
 					"method" : "put",
@@ -853,9 +804,9 @@
 							"dataType" : "string"
 						},
 						{
-							"name" : "updateTranslationDTO",
-							"required" : false,
-							"desc" : "If pseudo=true, will return result with pseudo tag.",
+							"name" : "translationData",
+							"required" : true,
+							"desc" : "translation Data",
 							"paramType" : "body",
 							"dataType" : "model"
 						}
