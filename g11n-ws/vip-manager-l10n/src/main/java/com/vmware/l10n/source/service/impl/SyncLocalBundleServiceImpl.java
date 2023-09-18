@@ -107,6 +107,12 @@ public class SyncLocalBundleServiceImpl implements SyncLocalBundleService {
 			} catch (L10nAPIException e) {
 				LOGGER.error(e.getMessage(), e);
 				moveFileFlag = false;
+				try {
+					Thread.sleep(30000);
+				} catch (InterruptedException ex) {
+					LOGGER.error(ex.getMessage(), ex);
+				}
+				DiskQueueUtils.copyFile2ExceptPath(basePath, quefile, this.activeDaoType);
 				break;
 			} catch (Exception e) {
 				LOGGER.error(e.getMessage(), e);
