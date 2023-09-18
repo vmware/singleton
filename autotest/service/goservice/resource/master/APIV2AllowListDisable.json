@@ -1,0 +1,819 @@
+{
+	"groups": [{
+			"name": "formatting-pattern-api",
+			"apis": [{
+					"name": "get_formatting_patterns_locales__locale_",
+					"path": "/i18n/api/v2/formatting/patterns/locales/{locale}",
+					"description": "get 18n pattern",
+					"method": "get",
+					"params": [{
+							"name": "locale",
+							"required": true,
+							"desc": "",
+							"paramType": "path",
+							"dataType": "string"
+						},
+						{
+							"name": "scope",
+							"required": true,
+							"desc": "",
+							"paramType": "query",
+							"dataType": "boolean"
+						},
+						{
+							"name": "scopeFilter",
+							"required": false,
+							"desc": "",
+							"paramType": "query",
+							"dataType": "string"
+						}
+					]
+				},
+				{
+					"name": "get_formatting_patterns",
+					"path": "/i18n/api/v2/formatting/patterns",
+					"description": "Get pattern by language and region",
+					"method": "get",
+					"params": [{
+							"name": "language",
+							"required": true,
+							"desc": "language string",
+							"paramType": "query",
+							"dataType": "string"
+						},
+						{
+							"name": "region",
+							"required": true,
+							"desc": "region",
+							"paramType": "query",
+							"dataType": "string"
+						},
+						{
+							"name": "scope",
+							"required": true,
+							"desc": "pattern scope",
+							"paramType": "query",
+							"dataType": "string"
+						},
+						{
+							"name": "scopeFilter",
+							"required": false,
+							"desc": "",
+							"paramType": "query",
+							"dataType": "string"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "translation-product-api",
+			"apis": [{
+					"name": "get_translation_products__productName__versions__version_",
+					"path": "/i18n/api/v2/translation/products/{productName}/versions/{version}",
+					"description": "Get all of the product's translations by the specific version.",
+					"method": "get",
+					"params": [{
+							"name": "productName",
+							"required": true,
+							"desc": "",
+							"paramType": "path",
+							"dataType": "string"
+						},
+						{
+							"name": "version",
+							"required": true,
+							"desc": "",
+							"paramType": "path",
+							"dataType": "string"
+						},
+						{
+							"name": "components",
+							"required": false,
+							"desc": "",
+							"paramType": "query",
+							"dataType": "string"
+						},
+						{
+							"name": "locales",
+							"required": false,
+							"desc": "",
+							"paramType": "query",
+							"dataType": "string"
+						},
+						{
+							"name": "pseudo",
+							"required": false,
+							"desc": "",
+							"paramType": "query",
+							"dataType": "boolean"
+						}
+					]
+				},
+				{
+					"name": "get_translation_products__productName__versions__version__componentlist",
+					"path": "/i18n/api/v2/translation/products/{productName}/versions/{version}/componentlist",
+					"description": "Get a component list by the specific version.",
+					"method": "get",
+					"params": [{
+							"name": "productName",
+							"required": true,
+							"desc": "",
+							"paramType": "path",
+							"dataType": "string"
+						},
+						{
+							"name": "version",
+							"required": true,
+							"desc": "",
+							"paramType": "path",
+							"dataType": "string"
+						}
+					]
+				},
+				{
+					"name": "get_translation_products__productName__versions__version__localelist",
+					"path": "/i18n/api/v2/translation/products/{productName}/versions/{version}/localelist",
+					"description": "Get a locale list which contains all suppported locale by the specific version.",
+					"method": "get",
+					"params": [{
+							"name": "productName",
+							"required": true,
+							"desc": "",
+							"paramType": "path",
+							"dataType": "string"
+						},
+						{
+							"name": "version",
+							"required": true,
+							"desc": "",
+							"paramType": "path",
+							"dataType": "string"
+						}
+					]
+				},
+				{
+					"name": "getDropInfoUsingGET",
+					"path": "/i18n/api/v2/translation/products/{productName}/versions/{version}/versioninfo",
+					"description": "Get drop version info by the specific version, including drop create date(long id), compnent changed date(long id), etc.",
+					"method": "get",
+					"params": [{
+							"name": "productName",
+							"required": true,
+							"desc": "product name",
+							"paramType": "path",
+							"dataType": "string"
+						},
+						{
+							"name": "version",
+							"required": true,
+							"desc": "translation version",
+							"paramType": "path",
+							"dataType": "string"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "translation-product-component-api",
+			"apis": [{
+				"name": "get_translation_products__productName__versions__version__locales__locale__components__component_",
+				"path": "/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}",
+				"description": "",
+				"method": "get",
+				"params": [{
+						"name": "productName",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "version",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "locale",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "component",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "pseudo",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "boolean"
+					},
+					{
+						"name": "machineTranslation",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "string"
+					},
+					{
+						"name": "checkTranslationStatus",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "string"
+					}
+				]
+			}]
+		},
+		{
+			"name": "translation-source-api",
+			"apis": [{
+				"name": "createSourceUsingPOST_1",
+				"path": "/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}",
+				"description": "",
+				"method": "post",
+				"params": [{
+						"name": "productName",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "version",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "locale",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "component",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "source",
+						"required": false,
+						"desc": "",
+						"paramType": "body",
+						"dataType": "string"
+					},
+					{
+						"name": "sourceFormat",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "string"
+					},
+					{
+						"name": "collectSource",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "string"
+					},
+					{
+						"name": "pseudo",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "string"
+					}
+				]
+			}]
+		},
+		{
+			"name": "translation-product-component-key-api",
+			"apis": [{
+				"name": "post_translation_products__productName__versions__version__locales__locale__components__component__keys__key_",
+				"path": "/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key}",
+				"description": "Post a key/source in the specific component to VIP",
+				"method": "post",
+				"params": [{
+						"name": "productName",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "version",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "locale",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "component",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "key",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "source",
+						"required": false,
+						"desc": "",
+						"paramType": "body",
+						"dataType": "string"
+					},
+					{
+						"name": "commentForSource",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "string"
+					},
+					{
+						"name": "sourceFormat",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "string"
+					},
+					{
+						"name": "collectSource",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "string"
+					},
+					{
+						"name": "pseudo",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "boolean"
+					},
+					{
+						"name": "checkTranslationStatus",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "string"
+					},
+					{
+						"name": "machineTranslation",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "string"
+					}
+				]
+			},
+			{
+				"name": "get_translation_products__productName__versions__version__locales__locale__components__component__keys__key_",
+				"path": "/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key}",
+				"description": "Get a key’s translation in specific component",
+				"method": "get",
+				"params": [{
+						"name": "productName",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "version",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "locale",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "component",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "key",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "source",
+						"required": true,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "string"
+					},
+					{
+						"name": "commentForSource",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "string"
+					},
+					{
+						"name": "sourceFormat",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "string"
+					},
+					{
+						"name": "collectSource",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "string"
+					},
+					{
+						"name": "pseudo",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "boolean"
+					},
+					{
+						"name": "sourceFormat",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "string"
+					}
+				]
+			}
+			]
+		},
+		{
+			"name": "translation-sync-api",
+			"apis": [{
+				"name": "put_translation_products__productName__versions__version_",
+				"path": "/i18n/api/v2/translation/products/{productName}/versions/{version}",
+				"description": "",
+				"method": "put",
+				"params": [{
+						"name": "productName",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "version",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "updateTranslationDTO",
+						"required": true,
+						"desc": "",
+						"paramType": "body",
+						"dataType": "object"
+					}
+				]
+			}]
+		},
+		{
+			"name": "locale-api",
+			"apis": [{
+					"name": "get_locale_regionList",
+					"path": "/i18n/api/v2/locale/regionList",
+					"description": "Get the region list from CLDR by the language",
+					"method": "get",
+					"params": [{
+						"name": "supportedLanguageList",
+						"required": true,
+						"desc": "the supported language list, separated by commas. e.g. 'en, zh, ja'",
+						"paramType": "query",
+						"dataType": "string"
+					},
+					{
+						"name": "displayCity",
+						"required": false,
+						"desc": "a flag for displaying all the cities, e.g. true, false",
+						"paramType": "query",
+						"dataType": "string"
+					},
+					{
+						"name": "regions",
+						"required": false,
+						"desc": "a string which represents regions, separated by commas. e.g. US, PT, CN",
+						"paramType": "query",
+						"dataType": "string"
+					}]
+				},
+				{
+					"name": "get_locale_supportedLanguageList",
+					"path": "/i18n/api/v2/locale/supportedLanguageList",
+					"description": "Get the region list from CLDR by the language",
+					"method": "get",
+					"params": [{
+							"name": "productName",
+							"required": true,
+							"desc": "product name",
+							"paramType": "query",
+							"dataType": "string"
+						},
+						{
+							"name": "version",
+							"required": true,
+							"desc": "translation version",
+							"paramType": "query",
+							"dataType": "string"
+						},
+						{
+							"name": "displayLanguage",
+							"required": true,
+							"desc": "the display language. e.g. 'en'",
+							"paramType": "query",
+							"dataType": "string"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "formatting-date-api",
+			"apis": [{
+				"name": "get_formatting_date_localizedDate",
+				"path": "/i18n/api/v2/formatting/date/localizedDate",
+				"description": "Get localized date by locale and pattern",
+				"method": "get",
+				"params": [{
+						"name": "locale",
+						"required": true,
+						"desc": "locale String",
+						"paramType": "query",
+						"dataType": "string"
+					},
+					{
+						"name": "longDate",
+						"required": true,
+						"desc": "long value of the date",
+						"paramType": "query",
+						"dataType": "string"
+					},
+					{
+						"name": "pattern",
+						"required": true,
+						"desc": "pattern used to format the long date",
+						"paramType": "query",
+						"dataType": "string"
+					}
+				]
+			},
+			{
+				"name": "getDisplayTimezoneNameListUsingGET",
+				"path": "/i18n/api/v2/formatting/date/timezoneNameList",
+				"description": "Get localized timezone name by language",
+				"method": "get",
+				"params": [{
+						"name": "defaultTerritory",
+						"required": false,
+						"desc": "a boolean value to get the default territory timezone name or not, default is true",
+						"paramType": "query",
+						"dataType": "string"
+					},
+					{
+						"name": "displayLanguage",
+						"required": true,
+						"desc": "the display language. e.g. ‘en’",
+						"paramType": "query",
+						"dataType": "string"
+					}
+				]
+			}]
+		},
+		{
+			"name": "formatting-number-api",
+			"apis": [{
+				"name": "formatDateUsingGET_3",
+				"path": "/i18n/api/v2/formatting/number/localizedNumber",
+				"description": "Get localized number by locale and scale",
+				"method": "get",
+				"params": [{
+						"name": "locale",
+						"required": true,
+						"desc": "locale String",
+						"paramType": "query",
+						"dataType": "string"
+					},
+					{
+						"name": "number",
+						"required": true,
+						"desc": "number",
+						"paramType": "query",
+						"dataType": "string"
+					},
+					{
+						"name": "scale",
+						"required": false,
+						"desc": "decimal digits",
+						"paramType": "query",
+						"dataType": "integer"
+					}
+				]
+			}]
+		},
+		{
+			"name": "translation-with-pattern-api",
+			"apis": [{
+					"name": "get_combination_translationsAndPattern",
+					"path": "/i18n/api/v2/combination/translationsAndPattern",
+					"description": "Get combination of translaiton and pattern",
+					"method": "get",
+					"params": [{
+							"name": "combine",
+							"required": true,
+							"desc": "which type: 1:language+region;2:locale",
+							"paramType": "query",
+							"dataType": "integer"
+						},
+						{
+							"name": "components",
+							"required": true,
+							"desc": "compoonents",
+							"paramType": "query",
+							"dataType": "string"
+						},
+						{
+							"name": "language",
+							"required": true,
+							"desc": "language",
+							"paramType": "query",
+							"dataType": "string"
+						},
+						{
+							"name": "productName",
+							"required": true,
+							"desc": "product name",
+							"paramType": "query",
+							"dataType": "string"
+						},
+						{
+							"name": "pseudo",
+							"required": false,
+							"desc": "pseudo",
+							"paramType": "query",
+							"dataType": "boolean"
+						},
+						{
+							"name": "region",
+							"required": false,
+							"desc": "region",
+							"paramType": "query",
+							"dataType": "string"
+						},
+						{
+							"name": "scope",
+							"required": true,
+							"desc": "scope",
+							"paramType": "query",
+							"dataType": "string"
+						},
+						{
+							"name": "version",
+							"required": true,
+							"desc": "version",
+							"paramType": "query",
+							"dataType": "string"
+						},
+						{
+							"name": "scopeFilter",
+							"required": false,
+							"desc": "scopeFilter",
+							"paramType": "query",
+							"dataType": "string"
+						}
+					]
+				},
+				{
+					"name": "post_combination_translationsAndPattern",
+					"path": "/i18n/api/v2/combination/translationsAndPattern",
+					"description": "Get combination of translaiton and pattern",
+					"method": "post",
+					"params": [{
+						"name": "data",
+						"required": true,
+						"desc": "all parameters",
+						"paramType": "body",
+						"dataType": "object"
+					}]
+				}
+			]
+		},
+		{
+			"name": "postSourcesUsingPOST",
+			"apis": [{
+				"name": "postSourcesUsingPOST",
+				"path": "/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys",
+				"description": "Post a set of sources under the component",
+				"method": "post",
+				"params": [{
+						"name": "productName",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "version",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "locale",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "component",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "sourceSet",
+						"required": true,
+						"desc": "",
+						"paramType": "body",
+						"dataType": "Model Schema"
+					},
+					{
+						"name": "collectSource",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "string"
+					}
+				]
+			}]
+		},
+		{
+			"name": "about-version-api",
+			"apis": [{
+				"name": "getVersionInfoUsingGET",
+				"path": "/i18n/api/v2/about/version",
+				"description": "Get the build's version information",
+				"method": "get",
+				"params": [{
+						"name": "productName",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "string"
+					},
+					{
+						"name": "version",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "string"
+					}
+				]
+			}]
+		}
+	]
+}

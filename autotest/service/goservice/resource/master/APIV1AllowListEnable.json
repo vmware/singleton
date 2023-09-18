@@ -1,0 +1,818 @@
+{
+	"groups" : [
+	    {
+	        "name": "formatting-api",
+	        "apis" : [
+	            {
+	                "name": "get_date_localizedDate",
+	                "path": "/i18n/api/v1/date/localizedDate",
+	                "description" : "Get localized date by specific locale and pattern",
+					"method" : "get",
+					"params" : [
+					    {
+					        "name" : "locale",
+							"required" : true,
+							"desc" : "e.g. ja_JP, zh_CN and so on",
+							"paramType" : "query",
+							"dataType" : "string"
+					    },
+					    {
+					        "name" : "longDate",
+							"required" : true,
+							"desc" : "Java Timestamp format, e.g. 1472728030290",
+							"paramType" : "query",
+							"dataType" : "string"
+					    },
+					    {
+					        "name" : "pattern",
+							"required" : true,
+							"desc" : "Date Pattern list:YEAR = \"y\",QUARTER = \"QQQQ\",ABBR_QUARTER = \"QQQ\",QUARTER_YEAR = \"QQQQy\",QUARTER_ABBR_YEAR = \"QQQy\",MONTH = \"MMMM\",ABBR_MONTH = \"MMM\",NUM_MONTH = \"M\",MONTH_YEAR = \"MMMMy\",MONTH_ABBR_YEAR = \"MMMy\",MONTH_NUM_YEAR = \"My\",DAY = \"d\",MONTH_DAY_YEAR = \"MMMMdy\",ABBR_MONTH_DAY_YEAR = \"MMMdy\",NUM_MONTH_DAY_YEAR = \"Mdy\",WEEKDAY = \"EEEE\",ABBR_WEEKDAY = \"E\",WEEKDAY_MONTH_DAY_YEAR = \"EEEEMMMMdy\",ABBR_WEEKDAY_MONTH_DAY_YEAR = \"EMMMdy\",NUM_WEEKDAY_MONTH_DAY_YEAR = \"EMdy\",MONTH_DAY = \"MMMMd\",ABBR_MONTH_DAY = \"MMMd\",NUM_MONTH_DAY = \"Md\",WEEKDAY_MONTH_DAY = \"EEEEMMMMd\",ABBR_WEEKDAY_MONTH_DAY = \"EMMMd\",NUM_WEEKDAY_MONTH_DAY = \"EMd\"",
+							"paramType" : "query",
+							"dataType" : "string"
+					    }
+					]
+	            }
+	        ]
+	    },
+	    {
+	        "name": "formatting-number-api",
+	        "apis" : [
+	            {
+	                "name": "formatNumberUsingGET",
+	                "path": "/i18n/api/v1/number/localizedNumber",
+	                "description" : "Get localized Number by specific locale and scale",
+					"method" : "get",
+					"params" : [
+					    {
+					        "name" : "locale",
+							"required" : true,
+							"desc" : "e.g. ja_JP, zh_CN and so on",
+							"paramType" : "query",
+							"dataType" : "string"
+					    },
+					    {
+					        "name" : "number",
+							"required" : true,
+							"desc" : "Digits",
+							"paramType" : "query",
+							"dataType" : "string"
+					    },
+					    {
+					        "name" : "scale",
+							"required" : false,
+							"desc" : "Digital precision, decimal digits",
+							"paramType" : "query",
+							"dataType" : "integer"
+					    }
+					]
+	            }
+	        ]
+	    },
+	    {
+	        "name": "formatting-pattern-api",
+	        "apis" : [
+	            {
+	                "name": "get_i18nPattern",
+	                "path": "/i18n/api/v1/i18nPattern",
+	                "description" : "Get i18n pattern by specific locale and scope",
+					"method" : "get",
+					"params" : [
+					    {
+					        "name" : "locale",
+							"required" : true,
+							"desc" : "e.g. ja_JP, zh_CN and so on",
+							"paramType" : "query",
+							"dataType" : "string"
+					    },
+					    {
+					        "name" : "scope",
+							"required" : false,
+							"desc" : "The pattern locale scope, 'true' will return all locales pattern, 'false' return the common used, default 'false'",
+							"paramType" : "query",
+							"dataType" : "string"
+					    },					    {					        "name" : "scopeFilter",							"required" : false,							"desc" : "a string for filtering the pattern data, separated by comma and underline. e.g. ‘dates_eras,dates_dateTimeFormats’",							"paramType" : "query",							"dataType" : "string"					    }
+					]
+	            }
+	        ]
+	    },
+	    {
+	        "name": "locale-api",
+	        "apis" : [
+	            {
+	                "name": "getBrowserLocaleUsingGET",
+	                "path": "/i18n/api/v1/locale/browserLocale",
+	                "description" : "Pick first locale from browser's language setting",
+					"method" : "get",
+					"params" : []
+	            },
+	            {
+	                "name": "getNormalizedBrowserLocaleUsingGET",
+	                "path": "/i18n/api/v1/locale/normalizedBrowserLocale",
+	                "description" : "Pick first locale from browser's language setting and normalize it.",
+					"method" : "get",
+					"params" : []
+	            }
+	        ]
+	    },
+	    {
+	        "name": "translation-component-api",
+	        "apis" : [
+	            {
+	                "name": "get_translation_component",
+	                "path": "/i18n/api/v1/translation/component",
+	                "description" : "Get a component’s translation by the specific version",
+					"method" : "get",
+					"params" : [
+					    {
+							"name" : "productName",
+							"required" : true,
+							"desc" : "Product name",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "version",
+							"required" : true,
+							"desc" : "Product's release version",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "component",
+							"required" : true,
+							"desc" : "Component name, If this parameter is null, will use default component",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "locale",
+							"required" : false,
+							"desc" : "If this parameter is null, will use en locale.",
+							"paramType" : "query",
+							"dataType" : "string"
+						},						{							"name" : "pseudo",							"required" : false,							"desc" : "If pseudo=true, will return result with pseudo tag",							"paramType" : "query",							"dataType" : "boolean"						}
+					]
+	            },
+	            {
+	                "name": "get_translation_components",
+	                "path": "/i18n/api/v1/translation/components",
+	                "description" : "Get multiple components’ by the specific version",
+					"method" : "get",
+					"params" : [
+					    {
+							"name" : "productName",
+							"required" : true,
+							"desc" : "Product name",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "version",
+							"required" : true,
+							"desc" : "Product's release version",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "components",
+							"required" : false,
+							"desc" : "The multiple components , Separated by commas. If this parameter is null, will use default component.",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "locales",
+							"required" : false,
+							"desc" : "Separated by commas. If this parameter is null, will use en locale.",
+							"paramType" : "query",
+							"dataType" : "string"
+						},						{							"name" : "pseudo",							"required" : false,							"desc" : "If pseudo=true, will return result with pseudo tag",							"paramType" : "query",							"dataType" : "boolean"						}
+					]
+	            }
+	        ]
+	    },
+	    {
+	        "name": "translation-key-api",
+	        "apis" : [
+	            {
+	                "name": "get_translation_string",
+	                "path": "/i18n/api/v1/translation/string",
+	                "description" : "Get a key’s translation in specific component",
+					"method" : "get",
+					"params" : [
+					    {
+							"name" : "productName",
+							"required" : true,
+							"desc" : "Product name",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "key",
+							"required" : true,
+							"desc" : "The translation's ID.",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "source",
+							"required" : false,
+							"desc" : "The english string that you want to translate.",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "version",
+							"required" : true,
+							"desc" : "The version of the translation, by the service.",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "component",
+							"required" : true,
+							"desc" : "Component Name",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "locale",
+							"required" : false,
+							"desc" : "If this parameter is null, will use en locale.",
+							"paramType" : "query",
+							"dataType" : "string"
+						},						{							"name" : "commentForSource",							"required" : false,							"desc" : "Comments for new string",							"paramType" : "query",							"dataType" : "string"						},						{							"name" : "sourceFormat",							"required" : false,							"desc" : "The source's format which value would be HTML, XML, etc.",							"paramType" : "query",							"dataType" : "string"						},						{							"name" : "collectSource",							"required" : false,							"desc" : "If collectSource=true, collect source; else if collectSource = false, won't collect source.",							"paramType" : "query",							"dataType" : "string"						},						{							"name" : "pseudo",							"required" : false,							"desc" : "If pseudo=true, will return result with pseudo tag.",							"paramType" : "query",							"dataType" : "boolean"						}
+					]
+	            }
+	        ]
+	    },
+	    {
+	        "name": "translation-product-api",
+	        "apis" : [
+	            {
+	                "name": "get_translation",
+	                "path": "/i18n/api/v1/translation",
+	                "description" : "Get the product’s translations by the specific version.",
+					"method" : "get",
+					"params" : [
+					    {
+							"name" : "productName",
+							"required" : true,
+							"desc" : "Product name",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "version",
+							"required" : true,
+							"desc" : "Product's release version",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "locale",
+							"required" : false,
+							"desc" : "If this parameter is null, will use en locale.",
+							"paramType" : "query",
+							"dataType" : "string"
+						},						{							"name" : "pseudo",							"required" : false,							"desc" : "If pseudo=true, will return result with pseudo tag.",							"paramType" : "query",							"dataType" : "boolean"						}
+					]
+	            },
+	            {
+	                "name": "get_translation_product__productName__version__version__supportedLocales",
+	                "path": "/i18n/api/v1/translation/product/{productName}/version/{version}/supportedLocales",
+	                "description" : "Get supported locale list by product info (productName,version)",
+					"method" : "get",
+					"params" : [
+					    {
+							"name" : "productName",
+							"required" : true,
+							"desc" : "Product name",
+							"paramType" : "path",
+							"dataType" : "string"
+						},
+						{
+							"name" : "version",
+							"required" : true,
+							"desc" : "Product's release version",
+							"paramType" : "path",
+							"dataType" : "string"
+						}
+					]
+	            },
+	            {
+	                "name": "get_bundles_components",
+	                "path": "/i18n/api/v1/bundles/components",
+	                "description" : "Get the component list by the specific version.",
+					"method" : "get",
+					"params" : [
+					    {
+							"name" : "productName",
+							"required" : true,
+							"desc" : "Product name",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "version",
+							"required" : true,
+							"desc" : "Product's release version",
+							"paramType" : "query",
+							"dataType" : "string"
+						}
+					]
+	            }
+	        ]
+	    },
+	    {
+	        "name": "translation-product-component-api",
+	        "apis" : [
+	            {
+	                "name": "get_translation_product__productName__component__component_",
+	                "path": "/i18n/api/v1/translation/product/{productName}/component/{component}",
+	                "description" : "Get a component’s translation by the specific version",
+					"method" : "get",
+					"params" : [
+					    {
+							"name" : "productName",
+							"required" : true,
+							"desc" : "Product name",
+							"paramType" : "path",
+							"dataType" : "string"
+						},
+						{
+							"name" : "component",
+							"required" : true,
+							"desc" : "Component name",
+							"paramType" : "path",
+							"dataType" : "string"
+						},
+						{
+							"name" : "version",
+							"required" : true,
+							"desc" : "Product's release version",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "locale",
+							"required" : false,
+							"desc" : "If this parameter is null, will use en locale.",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "pseudo",
+							"required" : false,
+							"desc" : "If pseudo=true, will return result with pseudo tag.",
+							"paramType" : "query",
+							"dataType" : "boolean"
+						}
+					]
+	            },
+	            {
+	                "name": "get_translation_product__productName__components__components_",
+	                "path": "/i18n/api/v1/translation/product/{productName}/components/{components}",
+	                "description" : "Get multiple components’ by the specific version",
+					"method" : "get",
+					"params" : [
+					    {
+							"name" : "productName",
+							"required" : true,
+							"desc" : "Product name",
+							"paramType" : "path",
+							"dataType" : "string"
+						},
+						{
+							"name" : "components",
+							"required" : true,
+							"desc" : "Multiple components , Separated by commas.",
+							"paramType" : "path",
+							"dataType" : "string"
+						},
+						{
+							"name" : "version",
+							"required" : true,
+							"desc" : "Product's release version",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "locales",
+							"required" : true,
+							"desc" : "If this parameter is null, will use en locale.",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "pseudo",
+							"required" : false,
+							"desc" : "If pseudo=true, will return result with pseudo tag.",
+							"paramType" : "query",
+							"dataType" : "boolean"
+						}
+					]
+	            }
+	        ]
+	    },
+	    {
+	        "name": "translation-product-component-key-api",
+	        "apis" : [
+	            {
+	                "name": "get_translation_product__productName__component__component__key__key_",
+	                "path": "/i18n/api/v1/translation/product/{productName}/component/{component}/key/{key}",
+	                "description" : "Get string's translation",
+					"method" : "get",
+					"params" : [
+					    {
+							"name" : "productName",
+							"required" : true,
+							"desc" : "Product name",
+							"paramType" : "path",
+							"dataType" : "string"
+						},
+						{
+							"name" : "component",
+							"required" : true,
+							"desc" : "Component name",
+							"paramType" : "path",
+							"dataType" : "string"
+						},
+						{
+							"name" : "key",
+							"required" : true,
+							"desc" : "The translation's ID.",
+							"paramType" : "path",
+							"dataType" : "string"
+						},
+						{
+							"name" : "source",
+							"required" : false,
+							"desc" : "The english string that you want to translate.",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "version",
+							"required" : true,
+							"desc" : "Product's release version",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "locale",
+							"required" : false,
+							"desc" : "If this parameter is null, will use en locale.",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "commentForSource",
+							"required" : false,
+							"desc" : "Comments for new string",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "sourceFormat",
+							"required" : false,
+							"desc" : "The source's format which value would be HTML, XML, etc.",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "collectSource",
+							"required" : false,
+							"desc" : "If collectSource=true, collect source; else if collectSource = false, won't collect source.",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "pseudo",
+							"required" : false,
+							"desc" : "If pseudo=true, will return result with pseudo tag.",
+							"paramType" : "query",
+							"dataType" : "boolean"
+						}
+					]
+	            },
+	            {
+	                "name": "createSourceUsingPOST",
+	                "path": "/i18n/api/v1/translation/product/{productName}/component/{component}/key/{key}",
+	                "description" : "Create source under the component",
+					"method" : "post",
+					"params" : [
+					    {
+							"name" : "productName",
+							"required" : true,
+							"desc" : "Product name",
+							"paramType" : "path",
+							"dataType" : "string"
+						},
+						{
+							"name" : "component",
+							"required" : true,
+							"desc" : "Component name",
+							"paramType" : "path",
+							"dataType" : "string"
+						},
+						{
+							"name" : "key",
+							"required" : true,
+							"desc" : "The translation's ID.",
+							"paramType" : "path",
+							"dataType" : "string"
+						},
+						{
+							"name" : "source",
+							"required" : false,
+							"desc" : "The source string needs translation",
+							"paramType" : "body",
+							"dataType" : "string"
+						},
+						{
+							"name" : "version",
+							"required" : true,
+							"desc" : "Product's release version",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "locale",
+							"required" : false,
+							"desc" : "If this parameter is null, will use en locale.",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "commentForSource",
+							"required" : false,
+							"desc" : "Comments for new string",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "sourceFormat",
+							"required" : false,
+							"desc" : "The source's format which value would be HTML, XML, etc.",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "collectSource",
+							"required" : false,
+							"desc" : "If collectSource=true, collect source; else if collectSource = false, won't collect source.",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "pseudo",
+							"required" : false,
+							"desc" : "If pseudo=true, will return result with pseudo tag.",
+							"paramType" : "query",
+							"dataType" : "string"
+						}
+					]
+	            },
+	            {
+	                "name": "get_translation_product__productName__key__key_",
+	                "path": "/i18n/api/v1/translation/product/{productName}/key/{key}",
+	                "description" : "Get a key’s translation in specific component",
+					"method" : "get",
+					"params" : [
+					    {
+							"name" : "productName",
+							"required" : true,
+							"desc" : "Product name",
+							"paramType" : "path",
+							"dataType" : "string"
+						},
+						{
+							"name" : "key",
+							"required" : true,
+							"desc" : "The translation's ID.",
+							"paramType" : "path",
+							"dataType" : "string"
+						},
+						{
+							"name" : "source",
+							"required" : false,
+							"desc" : "The source string needs translation",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "version",
+							"required" : true,
+							"desc" : "Product's release version",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "locale",
+							"required" : false,
+							"desc" : "If this parameter is null, will use en locale.",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "commentForSource",
+							"required" : false,
+							"desc" : "Comments for new string",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "sourceFormat",
+							"required" : false,
+							"desc" : "The source's format which value would be HTML, XML, etc.",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "collectSource",
+							"required" : false,
+							"desc" : "If collectSource=true, collect source; else if collectSource = false, won't collect source.",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "pseudo",
+							"required" : false,
+							"desc" : "If pseudo=true, will return result with pseudo tag.",
+							"paramType" : "query",
+							"dataType" : "boolean"
+						}
+					]
+	            }
+	        ]
+	    },
+	    {
+	        "name": "translation-source-api",
+	        "apis" : [
+	            {
+	                "name": "getTranslationBySourceUsingGET",
+	                "path": "/i18n/api/v1/translation/product/{productName}/component/{component}/sources",
+	                "description" : "Get string's translation",
+					"method" : "get",
+					"params" : [
+					    {
+							"name" : "productName",
+							"required" : true,
+							"desc" : "Product name",
+							"paramType" : "path",
+							"dataType" : "string"
+						},
+						{
+							"name" : "component",
+							"required" : true,
+							"desc" : "Component name",
+							"paramType" : "path",
+							"dataType" : "string"
+						},
+						{
+							"name" : "version",
+							"required" : true,
+							"desc" : "Product's release version",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "locale",
+							"required" : false,
+							"desc" : "If this parameter is null, will use en locale.",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "source",
+							"required" : true,
+							"desc" : "The english string that you want to translate.",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "sourceFormat",
+							"required" : false,
+							"desc" : "The source's format which value would be HTML, XML, etc.",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "collectSource",
+							"required" : false,
+							"desc" : "If collectSource=true, collect source; else if collectSource = false, won't collect source.",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "pseudo",
+							"required" : false,
+							"desc" : "If pseudo=true, will return result with pseudo tag.",
+							"paramType" : "query",
+							"dataType" : "boolean"
+						}
+					]
+	            },
+	            {
+	                "name": "createSourceUsingPOST_1",
+	                "path": "/i18n/api/v1/translation/product/{productName}/component/{component}/sources",
+	                "description" : "Create source under the component",
+					"method" : "post",
+					"params" : [
+					    {
+							"name" : "productName",
+							"required" : true,
+							"desc" : "Product name",
+							"paramType" : "path",
+							"dataType" : "string"
+						},
+						{
+							"name" : "component",
+							"required" : true,
+							"desc" : "Component name",
+							"paramType" : "path",
+							"dataType" : "string"
+						},
+						{
+							"name" : "version",
+							"required" : true,
+							"desc" : "Product's release version",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "locale",
+							"required" : false,
+							"desc" : "If this parameter is null, will use en locale.",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "source",
+							"required" : true,
+							"desc" : "The source string needs translation",
+							"paramType" : "body",
+							"dataType" : "string"
+						},
+						{
+							"name" : "sourceFormat",
+							"required" : false,
+							"desc" : "The source's format which value would be HTML, XML, etc.",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "collectSource",
+							"required" : false,
+							"desc" : "If collectSource=true, collect source; else if collectSource = false, won't collect source.",
+							"paramType" : "query",
+							"dataType" : "string"
+						},
+						{
+							"name" : "pseudo",
+							"required" : false,
+							"desc" : "If pseudo=true, will return result with pseudo tag.",
+							"paramType" : "query",
+							"dataType" : "string"
+						}
+					]
+	            }
+	        ]
+	    },
+	    {
+	        "name": "translation-sync-api",
+	        "apis" : [
+	            {
+	                "name": "put_translation_product__productName__version__version_",
+	                "path": "/i18n/api/v1/translation/product/{productName}/version/{version}",
+	                "description" : "",
+					"method" : "put",
+					"params" : [
+					    {
+							"name" : "productName",
+							"required" : true,
+							"desc" : "Product name",
+							"paramType" : "path",
+							"dataType" : "string"
+						},
+						{
+							"name" : "version",
+							"required" : true,
+							"desc" : "Product version",
+							"paramType" : "path",
+							"dataType" : "string"
+						},
+						{
+							"name" : "translationData",
+							"required" : true,
+							"desc" : "translation Data",
+							"paramType" : "body",
+							"dataType" : "model"
+						}
+					]
+	            }
+	        ]
+	    }
+	]
+}
