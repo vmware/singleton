@@ -15,6 +15,7 @@ const (
 	FailToStoreBundle   = "fail to store %v/%v/%v/%v"
 	KeyNotFound         = "key '%s' isn't found"
 	FailToReadFile      = "fail to read file"
+	ProductNotSupported = "product '%v' isn't supported"
 )
 
 var ErrStringNotFound = fmt.Errorf("key isn't found")

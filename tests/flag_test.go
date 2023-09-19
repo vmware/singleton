@@ -36,7 +36,7 @@ func TestCountryFlag(t *testing.T) {
 		{testName: "Specify Values", region: "CN", scale: 2, imageType: "svg", wantedHTTPCode: http.StatusOK,
 			wantedBody: "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 513 342\">\n<rect fill=\"#D80027\" width=\"513\" height=\"342\"/>\n<g fill=\"#FFDA44\">\n\t<polygon points=\"226.8,239.2 217.1,223.6 199.2,228 211.1,213.9 201.4,198.3 218.5,205.2 230.3,191.1 229,209.5\n\t\t246.1,216.4 228.2,220.8 \t\"/>\n\t<polygon points=\"290.6,82 280.5,97.4 292.1,111.7 274.4,106.9 264.3,122.4 263.3,104 245.6,99.2 262.8,92.6\n\t\t261.8,74.2 273.4,88.5 \t\"/>\n\t<polygon points=\"236.2,25.4 234.2,43.7 251,51.3 233,55.1 231,73.4 221.8,57.4 203.9,61.2 216.2,47.5 207,31.6\n\t\t223.8,39.1 \t\"/>\n\t<polygon points=\"292.8,161.8 277.9,172.7 283.7,190.2 268.8,179.4 253.9,190.4 259.5,172.8 244.6,162.1 263,162\n\t\t268.6,144.4 274.4,161.9 \t\"/>\n  <polygon points=\"115,46.3 132.3,99.8 188.5,99.8 143.1,132.7 160.4,186.2 115,153.2 69.5,186.2 86.9,132.7 41.4,99.8\n\t97.7,99.8 \"/>\n</g>\n</svg>\n"},
 		{testName: "nonexistent region", region: "xxx", wantedHTTPCode: http.StatusOK,
-			wantedBody: "{\"response\":{\"code\":400,\"message\":\"not found\"},\"data\":{\"image\":\"\",\"region\":\"xxx\",\"type\":\"svg\"}}"},
+			wantedBody: "{\"response\":{\"code\":400,\"message\":\"the flag for region 'xxx' and scale '1x1' is unavailable\"}}"},
 		{testName: "invalid scale", region: Region, scale: 3, wantedHTTPCode: http.StatusOK,
 			wantedBody: `{"response":{"code":400,"message":"Scale must be one of [1 2]"}}`},
 		{testName: "invalid type", region: Region, imageType: "abc", wantedHTTPCode: http.StatusOK,

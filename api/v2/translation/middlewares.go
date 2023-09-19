@@ -9,6 +9,7 @@ import (
 	"sgtnserver/api"
 	"sgtnserver/internal/config"
 	"sgtnserver/internal/sgtnerror"
+	"sgtnserver/modules/translation"
 	"sgtnserver/modules/translation/translationservice"
 
 	"github.com/gin-gonic/gin"
@@ -59,6 +60,6 @@ func HandleAllowList(c *gin.Context) {
 	}
 
 	if !translationservice.IsProductAllowed(productName) {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("Product '%s' doesn't exist", productName))
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(translation.ProductNotSupported, productName))
 	}
 }
