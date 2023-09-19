@@ -288,7 +288,7 @@ func GetString(c *gin.Context) {
 // @Tags translation-product-api
 // @Produce json
 // @Param productName path string true "product name"
-// @Param versions query string true "versions to get translation, separated by commas"
+// @Param versions query string true "versions to get translation, separated by commas. 'all' means all versions"
 // @Param locale query string true "locale of translation"
 // @Param component query string true "component of translation"
 // @Param key query string true "key of translation"

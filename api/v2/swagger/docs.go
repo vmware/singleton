@@ -716,7 +716,7 @@ var doc = `{
                     },
                     {
                         "type": "string",
-                        "description": "versions to get translation, separated by commas",
+                        "description": "versions to get translation, separated by commas. 'all' means all versions",
                         "name": "versions",
                         "in": "query",
                         "required": true
