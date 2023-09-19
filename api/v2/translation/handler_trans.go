@@ -249,9 +249,35 @@ func GetString(c *gin.Context) {
 
 	version := c.GetString(api.SgtnVersionKey)
 
-	internalID := translation.MessageID{Name: params.ProductName, Version: version, Locale: params.Locale, Component: params.Component, Key: params.Key}
-	result, err := GetService(params.Pseudo).GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, params.Source)
-	api.HandleResponse(c, result, err)
+	if version == api.AllVersions {
+		result, err := getVersionsKey(c, params)
+		api.HandleResponse(c, result, err)
+	} else {
+		internalID := translation.MessageID{Name: params.ProductName, Version: version, Locale: params.Locale, Component: params.Component, Key: params.Key}
+		result, err := GetService(params.Pseudo).GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, params.Source)
+		api.HandleResponse(c, result, err)
+	}
+}
+
+
+func getVersionsKey(c *gin.Context, params GetStringReq) (messages []interface{}, returnErr error) {
+	newContext := logger.NewContext(c, c.MustGet(api.LoggerKey))
+
+	versions, returnErr := l3Service.GetAvailableVersions(newContext, params.ProductName)
+	if returnErr != nil {
+		return
+	}
+
+	for _, v := range versions {
+		internalID := translation.MessageID{Name: params.ProductName, Version: v, Locale: params.Locale, Component: params.Component, Key: params.Key}
+		message, err := GetService(params.Pseudo).GetStringWithSource(newContext, &internalID, params.Source)
+		if err == nil {
+			messages = append(messages, message)
+		}
+		returnErr = sgtnerror.Append(returnErr, err)
+	}
+
+	return
 }
 
 // GetStringByPost godoc

@@ -29,6 +29,7 @@ const (
 var (
 	letterAndNumberAndValidCharRegx = regexp.MustCompile(`^` + letterAndNumberAndValidCharString + `$`)
 	versionRegex                    = regexp.MustCompile(`^\d+(\.\d+)*$`)
+	// versionsRegex                    = regexp.MustCompile(``)
 	componentsRegex                 = regexp.MustCompile(`^` + letterAndNumberAndValidCharString + `(,\s*` + letterAndNumberAndValidCharString + `)*$`)
 	localesRegex                    = componentsRegex
 	patternScopeRegex               = regexp.MustCompile(`^(\s*[a-zA-Z]+\s*)(,\s*[a-zA-Z]+\s*)*$`)

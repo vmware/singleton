@@ -23,6 +23,10 @@ const (
 	KeyAPIKey         = "key"
 )
 
+const (
+	AllVersions = "all"
+)
+
 const LoggerKey = "logger"
 
 const (
