@@ -277,35 +277,63 @@ func GetString(c *gin.Context) {
 
 	version := c.GetString(api.SgtnVersionKey)
 
-	if version == api.AllVersions {
-		result, err := getVersionsKey(c, params)
-		api.HandleResponse(c, result, err)
-	} else {
-		internalID := translation.MessageID{Name: params.ProductName, Version: version, Locale: params.Locale, Component: params.Component, Key: params.Key}
-		result, err := GetService(params.Pseudo).GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, params.Source)
-		api.HandleResponse(c, result, err)
-	}
+	internalID := translation.MessageID{Name: params.ProductName, Version: version, Locale: params.Locale, Component: params.Component, Key: params.Key}
+	result, err := GetService(params.Pseudo).GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, params.Source)
+	api.HandleResponse(c, result, err)
 }
 
-
-func getVersionsKey(c *gin.Context, params GetStringReq) (messages []interface{}, returnErr error) {
-	newContext := logger.NewContext(c, c.MustGet(api.LoggerKey))
-
-	versions, returnErr := l3Service.GetAvailableVersions(newContext, params.ProductName)
-	if returnErr != nil {
+// GetMultiVersionsKey godoc
+// @Summary Get translation strings of the same key in multiple versions of a product
+// @Description Get translation strings of the same key in multiple versions of a product
+// @Tags translation-product-api
+// @Produce json
+// @Param productName path string true "product name"
+// @Param versions query string true "versions to get translation, separated by commas"
+// @Param locale query string true "locale of translation"
+// @Param component query string true "component of translation"
+// @Param key query string true "key of translation"
+// @Success 200 {object} api.Response "OK"
+// @Failure 400 {string} string "Bad Request"
+// @Failure 404 {string} string "Not Found"
+// @Failure 500 {string} string "Internal Server Error"
+// @Router /translation/products/{productName}/multiVersionKey [get]
+func GetMultiVersionsKey(c *gin.Context) {
+	name := ProductName{}
+	params := struct {
+		Versions  string `form:"versions" binding:"versions"`
+		Locale    string `form:"locale" binding:"locale"`
+		Component string `form:"component" binding:"component"`
+		Key       string `form:"key" binding:"key"`
+	}{}
+	err := api.ExtractParameters(c, &name, &params)
+	if err != nil {
 		return
 	}
 
+	newContext := logger.NewContext(c, c.MustGet(api.LoggerKey))
+
+	var versions []string
+	if params.Versions == api.AllVersions {
+		if versions, err = l3Service.GetAvailableVersions(newContext, name.ProductName); err != nil {
+			api.HandleResponse(c, nil, err)
+			return
+		}
+	} else {
+		versions = strings.Split(params.Versions, common.ParamSep)
+	}
+
+	var messages []interface{}
+	var returnErr *sgtnerror.MultiError
 	for _, v := range versions {
-		internalID := translation.MessageID{Name: params.ProductName, Version: v, Locale: params.Locale, Component: params.Component, Key: params.Key}
-		message, err := GetService(params.Pseudo).GetStringWithSource(newContext, &internalID, params.Source)
+		internalID := translation.MessageID{Name: name.ProductName, Version: v, Locale: params.Locale, Component: params.Component, Key: params.Key}
+		message, err := l3Service.GetStringWithSource(newContext, &internalID, "")
 		if err == nil {
 			messages = append(messages, message)
 		}
 		returnErr = sgtnerror.Append(returnErr, err)
 	}
 
-	return
+	api.HandleResponse(c, messages, returnErr)
 }
 
 // GetStringByPost godoc

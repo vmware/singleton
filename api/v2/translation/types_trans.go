@@ -11,6 +11,10 @@ import (
 
 // Request
 type (
+	ProductName struct {
+		ProductName string `uri:"productName" form:"productName" binding:"alphanum"`
+	}
+
 	ReleaseID struct {
 		ProductName string `uri:"productName" form:"productName" binding:"alphanum"`
 		Version     string `uri:"version" form:"version" binding:"version"`

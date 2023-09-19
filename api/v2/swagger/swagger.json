@@ -679,6 +679,81 @@
                 }
             }
         },
+        "/translation/products/{productName}/multiVersionKey": {
+            "get": {
+                "description": "Get translation strings of the same key in multiple versions of a product",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "translation-product-api"
+                ],
+                "summary": "Get translation strings of the same key in multiple versions of a product",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "product name",
+                        "name": "productName",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "versions to get translation, separated by commas",
+                        "name": "versions",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "locale of translation",
+                        "name": "locale",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "component of translation",
+                        "name": "component",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "key of translation",
+                        "name": "key",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/translation/products/{productName}/versionlist": {
             "get": {
                 "description": "Get available versions of a product",

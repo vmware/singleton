@@ -23,13 +23,14 @@ import (
 const (
 	letterAndNumberAndValidCharString      = `[A-Za-z0-9_\-\.]+`
 	letterAndNumberAndValidCharStringError = "Incorrect %s(only allows letter, number, dot, underline, dash)"
+	versionRegexString                     = `\d+(\.\d+)*`
 )
 
 // Regular expression
 var (
 	letterAndNumberAndValidCharRegx = regexp.MustCompile(`^` + letterAndNumberAndValidCharString + `$`)
-	versionRegex                    = regexp.MustCompile(`^\d+(\.\d+)*$`)
-	// versionsRegex                    = regexp.MustCompile(``)
+	versionRegex                    = regexp.MustCompile(`^` + versionRegexString + `$`)
+	versionsRegex                   = regexp.MustCompile(`^(` + versionRegexString + `(,\s*` + versionRegexString + `)*` + `|all` + `)$`)
 	componentsRegex                 = regexp.MustCompile(`^` + letterAndNumberAndValidCharString + `(,\s*` + letterAndNumberAndValidCharString + `)*$`)
 	localesRegex                    = componentsRegex
 	patternScopeRegex               = regexp.MustCompile(`^(\s*[a-zA-Z]+\s*)(,\s*[a-zA-Z]+\s*)*$`)
@@ -37,7 +38,8 @@ var (
 )
 
 var validatorInfoArray = [][]interface{}{
-	{VersionAPIKey, versionRegex, "Incorrect " + VersionAPIKey + "(only allows number, dot. such as 1.0.0)"},
+	{VersionAPIKey, versionRegex, "Incorrect " + VersionAPIKey + "(only allows number or dot. such as 1.0.0)"},
+	{VersionsAPIKey, versionsRegex, "Incorrect " + VersionsAPIKey + "(allows version number list separated by comma, or string 'all')"},
 	{ComponentAPIKey, letterAndNumberAndValidCharRegx, fmt.Sprintf(letterAndNumberAndValidCharStringError, ComponentAPIKey)},
 	{LocaleAPIKey, letterAndNumberAndValidCharRegx, fmt.Sprintf(letterAndNumberAndValidCharStringError, LocaleAPIKey)},
 	{LanguageAPIKey, letterAndNumberAndValidCharRegx, fmt.Sprintf(letterAndNumberAndValidCharStringError, LanguageAPIKey)},
