@@ -43,9 +43,7 @@ func GetService(pseudo bool) translation.Service {
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /translation/products/{productName}/versionlist [get]
 func GetProductVersions(c *gin.Context) {
-	params := struct {
-		ProductName string `uri:"productName" binding:"alphanum"`
-	}{}
+	params := ProductName{}
 	if err := api.ExtractParameters(c, &params, nil); err != nil {
 		return
 	}
