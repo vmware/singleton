@@ -552,6 +552,37 @@ paths:
       summary: Get language display names
       tags:
       - locale-api
+  /translation/products/{productName}/versionlist:
+    get:
+      description: Get available versions of a product
+      parameters:
+      - description: product name
+        in: path
+        name: productName
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get available versions of a product
+      tags:
+      - translation-product-api
   /translation/products/{productName}/versions/{version}:
     get:
       description: Get messages of all the product or parts of the product
