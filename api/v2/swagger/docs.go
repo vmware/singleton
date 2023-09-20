@@ -750,6 +750,12 @@ var doc = `{
                             "$ref": "#/definitions/api.Response"
                         }
                     },
+                    "207": {
+                        "description": "Successful Partially",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
