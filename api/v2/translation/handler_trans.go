@@ -291,6 +291,7 @@ func GetString(c *gin.Context) {
 // @Param component query string true "component of translation"
 // @Param key query string true "key of translation"
 // @Success 200 {object} api.Response "OK"
+// @Success 207 {object} api.Response "Successful Partially"
 // @Failure 400 {string} string "Bad Request"
 // @Failure 404 {string} string "Not Found"
 // @Failure 500 {string} string "Internal Server Error"
