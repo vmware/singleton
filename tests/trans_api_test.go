@@ -511,7 +511,7 @@ func TestGetVersions(t *testing.T) {
 		{"nonexistent product", NonexistentProduct,
 			`{"response":{"code":404,"message":"product '` + NonexistentProduct + `' doesn't exist"}}`},
 		{"disallowed product", DisallowedProduct,
-			`{"response":{"code":400,"message":"Product '` + DisallowedProduct + `' doesn't exist"}}`},
+			`{"response":{"code":400,"message":"product '` + DisallowedProduct + `' isn't supported"}}`},
 	} {
 		d := d
 		t.Run(d.desc, func(t *testing.T) {
