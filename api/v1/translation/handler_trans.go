@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -61,7 +61,7 @@ func GetBundle2(c *gin.Context) {
 // @Param components query string true "components"
 // @Param pseudo query boolean false "a flag for returnning pseudo translation" default(false)
 // @Success 200 {object} api.Response "OK"
-// @Success 206 {object} api.Response "Successful Partially"
+// @Success 207 {object} api.Response "Successful Partially"
 // @Failure 400 {string} string "Bad Request"
 // @Failure 404 {string} string "Not Found"
 // @Failure 500 {string} string "Internal Server Error"
@@ -124,7 +124,7 @@ func GetString2(c *gin.Context) {
 // @Param locale query string false "locale String. e.g. 'en-US'"
 // @Param pseudo query boolean false "a flag for returnning pseudo translation" default(false)
 // @Success 200 {object} api.Response "OK"
-// @Success 206 {object} api.Response "Successful Partially"
+// @Success 207 {object} api.Response "Successful Partially"
 // @Failure 400 {string} string "Bad Request"
 // @Failure 404 {string} string "Not Found"
 // @Failure 500 {string} string "Internal Server Error"
@@ -238,7 +238,7 @@ func GetBundle(c *gin.Context) {
 // @Param components path string true "components"
 // @Param pseudo query boolean false "a flag for returnning pseudo translation" default(false)
 // @Success 200 {object} api.Response "OK"
-// @Success 206 {object} api.Response "Successful Partially"
+// @Success 207 {object} api.Response "Successful Partially"
 // @Failure 400 {string} string "Bad Request"
 // @Failure 404 {string} string "Not Found"
 // @Failure 500 {string} string "Internal Server Error"
@@ -353,7 +353,7 @@ func GetString3(c *gin.Context) {
 // @Param version path string true "version"
 // @Param translationData body UpdateTranslationDTO true "translationData"
 // @Success 200 {object} api.Response "OK"
-// @Success 206 {object} api.Response "Successful Partially"
+// @Success 207 {object} api.Response "Successful Partially"
 // @Failure 400 {string} string "Bad Request"
 // @Failure 404 {string} string "Not Found"
 // @Failure 500 {string} string "Internal Server Error"

@@ -8,6 +8,7 @@ package translation
 import "fmt"
 
 const (
+	ProductNonexistent  = "product '%s' doesn't exist"
 	ReleaseNonexistent  = "%s/%s doesn't exist"
 	FailToReadBundle    = "Fail to get translation for %s/%s/%s/%s"
 	FailToGetBundleInfo = "fail to get bundle info"
@@ -15,6 +16,7 @@ const (
 	FailToStoreBundle   = "fail to store %v/%v/%v/%v"
 	KeyNotFound         = "key '%s' isn't found"
 	FailToReadFile      = "fail to read file"
+	ProductNotSupported = "product '%v' isn't supported"
 )
 
 var ErrStringNotFound = fmt.Errorf("key isn't found")

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -20,6 +20,8 @@ import (
 	"sgtnserver/internal/config"
 	"sgtnserver/internal/logger"
 	"sgtnserver/internal/sgtnerror"
+	"sgtnserver/modules/translation"
+	"sgtnserver/modules/translation/translationservice"
 
 	"github.com/emirpasic/gods/sets/hashset"
 	"github.com/gin-gonic/gin"
@@ -285,14 +287,19 @@ func TestPartialSuccess(t *testing.T) {
 }
 
 func TestAllowList(t *testing.T) {
-	oldvalue := config.Settings.AllowList
-	config.Settings.AllowList = true
-	defer func() { config.Settings.AllowList = oldvalue }()
+	oldvalue := config.Settings.AllowListFile
+	config.Settings.AllowListFile = "testdata/allowlist.json"
+	translationservice.InitAllowList()
+	defer func() {
+		config.Settings.AllowListFile = oldvalue
+		translationservice.InitAllowList()
+	}()
 
+	notFoundProduct := "not-found"
 	e := CreateHTTPExpect(t, GinTestEngine)
-	resp := e.GET(GetBundleURL, "not-found", Version, "zh-Hans", "sunglow").Expect()
+	resp := e.GET(GetBundleURL, notFoundProduct, Version, "zh-Hans", "sunglow").Expect()
 	resp.Status(http.StatusOK)
-	resp.Body().Contains("doesn't exist")
+	resp.Body().Contains(fmt.Sprintf(translation.ProductNotSupported, notFoundProduct))
 }
 
 func TestEtag(t *testing.T) {

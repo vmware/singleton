@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -10,8 +10,8 @@ import (
 
 	"sgtnserver/internal/config"
 	"sgtnserver/internal/logger"
-	"sgtnserver/modules/translation"
 	"sgtnserver/modules/translation/dao/decorator"
+	"sgtnserver/modules/translation/dao/interfaces"
 	"sgtnserver/modules/translation/dao/localbundle"
 	"sgtnserver/modules/translation/dao/s3bundle"
 )
@@ -19,9 +19,9 @@ import (
 const bundleInLocal = "local"
 const bundleInS3 = "s3"
 
-var inst translation.MessageOrigin
+var inst interfaces.SgtnBundles
 
-func GetInst() translation.MessageOrigin {
+func GetInst() interfaces.SgtnBundles {
 	return inst
 }
 

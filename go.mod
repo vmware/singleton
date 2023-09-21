@@ -17,7 +17,7 @@ require (
 	github.com/go-http-utils/headers v0.0.0-20181008091004-fed159eddc2a
 	github.com/go-playground/locales v0.14.1
 	github.com/go-playground/universal-translator v0.18.1
-	github.com/go-playground/validator/v10 v10.14.1
+	github.com/go-playground/validator/v10 v10.15.1
 	github.com/go-test/deep v1.0.8
 	github.com/golang/mock v1.6.0
 	github.com/hashicorp/go-multierror v1.1.1
@@ -27,7 +27,7 @@ require (
 	github.com/mackerelio/go-osstat v0.2.3
 	github.com/pkg/fileutils v0.0.0-20181114200823-d734b7f202ba
 	github.com/spf13/pflag v1.0.5
-	github.com/stretchr/objx v0.5.0
+	github.com/stretchr/objx v0.5.1
 	github.com/stretchr/testify v1.8.4
 	github.com/swaggo/files v0.0.0-20220610200504-28940afbdbfe
 	github.com/swaggo/gin-swagger v1.5.0
@@ -35,7 +35,7 @@ require (
 	github.com/xiaochao8/format v0.1.1
 	go.uber.org/zap v1.25.0
 	golang.org/x/exp v0.0.0-20230522175609-2e198f4a06a1
-	golang.org/x/text v0.11.0
+	golang.org/x/text v0.13.0
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0
 	gopkg.in/yaml.v3 v3.0.1
 )

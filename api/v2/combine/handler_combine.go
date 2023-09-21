@@ -43,7 +43,7 @@ var l3Service translation.Service = translationservice.GetService()
 // @Param scopeFilter query string false "a string for filtering the pattern data, separated by comma and underline. e.g. 'dates_eras,dates_dateTimeFormats'"
 // @Param pseudo query boolean false "a flag for returnning pseudo translation" default(false)
 // @Success 200 {object} api.Response "OK"
-// @Success 206 {object} api.Response "Successful Partially"
+// @Success 207 {object} api.Response "Successful Partially"
 // @Failure 400 {string} string "Bad Request"
 // @Failure 404 {string} string "Not Found"
 // @Failure 500 {string} string "Internal Server Error"
@@ -67,7 +67,7 @@ func getCombinedData(c *gin.Context) {
 // @Param version query string true "version"
 // @Param displayLanguage query string false "displayLanguage"
 // @Success 200 {object} api.Response "OK"
-// @Success 206 {object} api.Response "Successful Partially"
+// @Success 207 {object} api.Response "Successful Partially"
 // @Failure 400 {string} string "Bad Request"
 // @Failure 404 {string} string "Not Found"
 // @Failure 500 {string} string "Internal Server Error"
@@ -156,7 +156,7 @@ func getLanguageListOfDispLang(c *gin.Context) {
 // @Produce json
 // @Param data body translationWithPatternPostReq true "translationWithPatternPostReq"
 // @Success 200 {object} api.Response "OK"
-// @Success 206 {object} api.Response "Successful Partially"
+// @Success 207 {object} api.Response "Successful Partially"
 // @Failure 400 {string} string "Bad Request"
 // @Failure 404 {string} string "Not Found"
 // @Failure 500 {string} string "Internal Server Error"
@@ -169,8 +169,8 @@ func getCombinedDataByPost(c *gin.Context) {
 		return
 	}
 
-	if !translationservice.IsProductExist(params.ProductName) {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("Product '%s' doesn't exist", params.ProductName))
+	if !translationservice.IsProductAllowed(params.ProductName) {
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(translation.ProductNotSupported, params.ProductName))
 		return
 	}
 
