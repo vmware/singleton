@@ -31,6 +31,7 @@ public class ConstantsMsg {
    public static final String NO_PATTERN_FOUND = "Data not found, no format pattern found due to no mapping language found for region and no plural/dateFields data found if they are included in 'scope'!";
    public static final String PART_PATTERN_FOUND = "Only part of data found, either no format pattern found due to no mapping language found for region or no plural/dateFields data found if they are included in 'scope'!";
    public static final String SCOPE_FILTER_NOT_VALIDATE = "The request parameter scopeFilter is invalid, only one filtering method is supported";
+   public static final String FAILED_GET_BUNDLES_INFO = "Failed to get bundles information";
    public static final String PRODUCT_OR_VERSION_MISSING = "Only one parameter of 'productName' and 'version' is provided, they should be used in pairs!";
    public static final String SOURCE_IS_NOT_PROVIDE = "Source is not provided, the existing translation is found and returned";
    public static final String IMAGE_NOT_SUPPORT_REGION = "Current request region '%s' is not support.";
