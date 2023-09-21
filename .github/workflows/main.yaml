@@ -200,6 +200,7 @@ jobs:
       - name: Start Singleton Service
         run: |
           git clone --branch=devops https://github.com/vmware/singleton.git devops
+          mkdir -p l10n/bundles
           cp -r devops/autotest/client/csharp/l10n/bundles/CSharpClient l10n/bundles
           ls -la $GITHUB_WORKSPACE/l10n/bundles
           nohup java -jar singleton.jar > singletonService.log 2>&1 &
