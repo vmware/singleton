@@ -199,11 +199,11 @@ jobs:
           name: singleton-service
       - name: Start Singleton Service
         run: |
-          nohup java -jar singleton.jar > singletonService.log 2>&1 &
-          until [ -d l10n/bundles ] ; do sleep 2; echo waiting for bundles. . . ; done
           git clone --branch=devops https://github.com/vmware/singleton.git devops
           cp -r devops/autotest/client/csharp/l10n/bundles/CSharpClient l10n/bundles
           ls -la $GITHUB_WORKSPACE/l10n/bundles
+          nohup java -jar singleton.jar > singletonService.log 2>&1 &
+          until [ -d l10n/bundles ] ; do sleep 2; echo waiting for bundles. . . ; done
       - name: Run Smoke Test
         run: |
           export VSTEST="/c/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/Extensions/TestPlatform"
