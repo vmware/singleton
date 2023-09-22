@@ -387,6 +387,68 @@ func (ts Service) GetVersionInfo(ctx context.Context, name, version string) (dat
 	return ts.msgOrigin.GetVersionInfo(ctx, name, version)
 }
 
+func (ts Service) GetTranslation(ctx context.Context, products, versions, locales, components, keys []string) ([]translation.Bundle, error) {
+	log := logger.FromContext(ctx)
+	log.Debug("Get translation", zap.Strings("products", products), zap.Strings("versions", versions),
+		zap.Strings("locales", locales), zap.Strings("components", components), zap.Strings("keys", keys))
+
+	var returnErr *sgtnerror.MultiError
+	var messages []translation.Bundle
+	var err error
+
+	for _, product := range products {
+		if len(versions) == 0 {
+			if versions, err = ts.GetAvailableVersions(ctx, product); err != nil {
+				returnErr = sgtnerror.Append(returnErr, err)
+				continue
+			}
+		}
+		for _, version := range versions {
+			var localesEmpty, componentsEmpty bool
+			if len(locales) == 0 {
+				localesEmpty = true
+				if locales, err = ts.GetAvailableLocales(ctx, product, version); err != nil {
+					returnErr = sgtnerror.Append(returnErr, err)
+					continue
+				}
+			}
+			if len(components) == 0 {
+				componentsEmpty = true
+				if components, err = ts.GetAvailableComponents(ctx, product, version); err != nil {
+					returnErr = sgtnerror.Append(returnErr, err)
+					continue
+				}
+			}
+			for _, locale := range locales {
+				for _, component := range components {
+					if !bundleinfo.IsBundleExist(&translation.BundleID{Name: product, Version: version, Locale: locale, Component: component}) {
+						if !(localesEmpty || componentsEmpty) {
+							returnErr = sgtnerror.Append(returnErr, sgtnerror.StatusNotFound.WithUserMessage(translation.BundleNonexistent, locale, component))
+						}
+						continue
+					}
+
+					if len(keys) == 0 {
+						bundle, err := ts.GetBundle(ctx, &translation.BundleID{Name: product, Version: version, Locale: locale, Component: component})
+						if err == nil {
+							messages = append(messages, *bundle)
+						}
+						returnErr = sgtnerror.Append(returnErr, err)
+					} else {
+						translationsOfKeys, err := ts.GetStrings(ctx, &translation.BundleID{Name: product, Version: version, Locale: locale, Component: component}, keys)
+						if translationsOfKeys != nil {
+							messages = append(messages, *translationsOfKeys)
+						}
+						returnErr = sgtnerror.Append(returnErr, err)
+					}
+				}
+			}
+		}
+	}
+
+	return messages, returnErr.ErrorOrNil()
+}
+
 var service Service
 
 func newService() Service {

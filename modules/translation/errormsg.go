@@ -17,6 +17,7 @@ const (
 	KeyNotFound         = "key '%s' isn't found"
 	FailToReadFile      = "fail to read file"
 	ProductNotSupported = "product '%v' isn't supported"
+	BundleNonexistent   = "translation bundle %s/%s doesn't exist"
 )
 
 var ErrStringNotFound = fmt.Errorf("key isn't found")

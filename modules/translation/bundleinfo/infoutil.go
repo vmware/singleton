@@ -99,12 +99,12 @@ func GetReleaseNames(name string) (data sets.Set, ok bool) {
 	return
 }
 
-// func IsBundleExist(id *translation.BundleID) bool {
-// 	if bundles, _ := GetAvailableBundles(id.Name, id.Version); bundles != nil {
-// 		return bundles.Contains(translation.CompactBundleID{Locale: id.Locale, Component: id.Component})
-// 	}
-// 	return false
-// }
+func IsBundleExist(id *translation.BundleID) bool {
+	if bundles, _ := GetAvailableBundles(id.Name, id.Version); bundles != nil {
+		return bundles.Contains(translation.CompactBundleID{Locale: id.Locale, Component: id.Component})
+	}
+	return false
+}
 
 func IsProductExist(name string) bool {
 	_, ok := getBundleInfo().GetProductInfo(name)

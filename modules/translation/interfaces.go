@@ -31,4 +31,6 @@ type Service interface {
 	PutBundles(ctx context.Context, bundleData []*Bundle) error
 
 	GetTranslationStatus(ctx context.Context, id *BundleID) (map[string]interface{}, error)
+
+	GetTranslation(ctx context.Context, products, versions, locales, components, keys []string) ([]Bundle, error)
 }

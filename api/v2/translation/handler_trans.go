@@ -304,35 +304,28 @@ func GetMultiVersionsKey(c *gin.Context) {
 		Component string `form:"component" binding:"component"`
 		Key       string `form:"key" binding:"key"`
 	}{}
-	err := api.ExtractParameters(c, &name, &params)
-	if err != nil {
+	if err := api.ExtractParameters(c, &name, &params); err != nil {
 		return
 	}
 
-	newContext := logger.NewContext(c, c.MustGet(api.LoggerKey))
-
 	var versions []string
-	if params.Versions == api.AllVersions {
-		if versions, err = l3Service.GetAvailableVersions(newContext, name.ProductName); err != nil {
-			api.HandleResponse(c, nil, err)
-			return
-		}
-	} else {
+	if params.Versions != api.AllVersions {
 		versions = strings.Split(params.Versions, common.ParamSep)
 	}
 
-	var messages []interface{}
-	var returnErr *sgtnerror.MultiError
-	for _, v := range versions {
-		internalID := translation.MessageID{Name: name.ProductName, Version: v, Locale: params.Locale, Component: params.Component, Key: params.Key}
-		message, err := l3Service.GetStringWithSource(newContext, &internalID, "")
-		if err == nil {
-			messages = append(messages, message)
+	var result []interface{}
+	bundlesMessages, err := l3Service.GetTranslation(logger.NewContext(c, c.MustGet(api.LoggerKey)),
+		[]string{name.ProductName}, versions, []string{params.Locale}, []string{params.Component}, []string{params.Key})
+	for _, bundle := range bundlesMessages {
+		mapMsgs := make(map[string]string)
+		bundle.Messages.ToVal(&mapMsgs)
+		for k, v := range mapMsgs {
+			result = append(result, translation.StringMessage{Name: bundle.ID.Name, Version: bundle.ID.Version,
+				Locale: bundle.ID.Locale, Component: bundle.ID.Component, Key: k, Translation: v})
 		}
-		returnErr = sgtnerror.Append(returnErr, err)
 	}
 
-	api.HandleResponse(c, messages, returnErr)
+	api.HandleResponse(c, result, err)
 }
 
 // GetStringByPost godoc

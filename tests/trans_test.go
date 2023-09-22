@@ -436,3 +436,43 @@ func TestBundleInfoByPutBundle(t *testing.T) {
 	assert.True(t, ok)
 	assert.Contains(t, locales.Values(), locale)
 }
+
+func TestGetTranslation(t *testing.T) {
+	tests := []struct {
+		desc                                          string
+		products, versions, locales, components, keys []string
+		successfully                                  bool
+		wantedBundleSize                              int
+		wantedKeySize                                 int
+	}{
+		{desc: "Get 2 products and successfully partially", products: []string{Name, NonexistentProduct}, versions: []string{Version}, locales: []string{Locale}, components: []string{Component},
+			successfully: false, wantedBundleSize: 1},
+		{desc: "Get 2 versions and successfully partially", products: []string{Name}, versions: []string{Version, "1.0.1"}, locales: []string{Locale}, components: []string{Component},
+			successfully: false, wantedBundleSize: 1},
+		{desc: "Get all versions and successfully partially", products: []string{Name}, versions: nil, locales: []string{Locale}, components: []string{Component},
+			successfully: false, wantedBundleSize: 1},
+		{desc: "Get a bundle", products: []string{Name}, versions: []string{Version}, locales: []string{Locale}, components: []string{Component},
+			successfully: true, wantedBundleSize: 1},
+		{desc: "Get multiple bundles in a release", products: []string{Name}, versions: []string{Version}, locales: []string{Locale}, components: []string{Component, Component2},
+			successfully: true, wantedBundleSize: 2},
+		{desc: "Get all components in a release", products: []string{Name}, versions: []string{Version}, locales: []string{Locale},
+			successfully: true, wantedBundleSize: 2},
+		{desc: "Get all locales in a release", products: []string{Name}, versions: []string{Version}, components: []string{Component},
+			successfully: true, wantedBundleSize: 16},
+		{desc: "Get a key in multiple bundles", products: []string{Name}, versions: []string{Version}, locales: []string{Locale}, components: []string{Component, Component2}, keys: []string{"plural.files"},
+			successfully: true, wantedBundleSize: 2, wantedKeySize: 1},
+		{desc: "Get all versions of a nonexistent product", products: []string{NonexistentProduct}, versions: nil, locales: []string{Locale}, components: []string{Component},
+			successfully: false, wantedBundleSize: 0},
+		{desc: "Get all locales of a nonexistent version", products: []string{Name}, versions: []string{"0.0.0"}, locales: nil, components: []string{Component},
+			successfully: false, wantedBundleSize: 0},
+	}
+	for _, tt := range tests {
+		tt := tt
+
+		t.Run(tt.desc, func(t *testing.T) {
+			actual, err := l3Service.GetTranslation(context.TODO(), tt.products, tt.versions, tt.locales, tt.components, tt.keys)
+			assert.Equal(t, tt.successfully, err == nil)
+			assert.Equal(t, tt.wantedBundleSize, len(actual))
+		})
+	}
+}
