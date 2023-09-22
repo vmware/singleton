@@ -397,13 +397,24 @@ func (ts Service) GetTranslation(ctx context.Context, products, versions, locale
 	var err error
 
 	for _, product := range products {
+		if !bundleinfo.IsProductExist(product) {
+			returnErr = sgtnerror.Append(returnErr, sgtnerror.StatusNotFound.WithUserMessage(translation.ProductNonexistent, product))
+			continue
+		}
+
 		if len(versions) == 0 {
 			if versions, err = ts.GetAvailableVersions(ctx, product); err != nil {
 				returnErr = sgtnerror.Append(returnErr, err)
 				continue
 			}
 		}
+
 		for _, version := range versions {
+			if !bundleinfo.IsReleaseExist(product, version) {
+				returnErr = sgtnerror.Append(returnErr, sgtnerror.StatusNotFound.WithUserMessage(translation.ReleaseNonexistent, product, version))
+				continue
+			}
+
 			var localesEmpty, componentsEmpty bool
 			if len(locales) == 0 {
 				localesEmpty = true
@@ -419,8 +430,19 @@ func (ts Service) GetTranslation(ctx context.Context, products, versions, locale
 					continue
 				}
 			}
-			for _, locale := range locales {
-				for _, component := range components {
+
+			for _, component := range components {
+				if !bundleinfo.IsComponentAvailable(product, version, component) {
+					returnErr = sgtnerror.Append(returnErr, sgtnerror.StatusNotFound.WithUserMessage(translation.ComponentNonexistent, product, version, component))
+					continue
+				}
+
+				for _, locale := range locales {
+					if !bundleinfo.IsLocaleAvailable(product, version, locale) {
+						returnErr = sgtnerror.Append(returnErr, sgtnerror.StatusNotFound.WithUserMessage(translation.LocaleNotSupported, locale, product, version))
+						continue
+					}
+
 					if !bundleinfo.IsBundleExist(&translation.BundleID{Name: product, Version: version, Locale: locale, Component: component}) {
 						if !(localesEmpty || componentsEmpty) {
 							returnErr = sgtnerror.Append(returnErr, sgtnerror.StatusNotFound.WithUserMessage(translation.BundleNonexistent, locale, component))
