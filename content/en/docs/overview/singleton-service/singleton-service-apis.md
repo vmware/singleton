@@ -702,6 +702,7 @@ Request all the versions have key translations
 }
 ```
 Request versions string only part version key have translations
+
 **{Singleton service}**/i18n/api/v2/translation/products/MULTCOMP/multiVersionKey?versions=2.0.0%2C3.0.0&locale=en&component=component1&key=key.test1
 
 ```
