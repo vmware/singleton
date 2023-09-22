@@ -597,7 +597,135 @@ Example:
 }
 ```
 
+# **API - Get Mult-version Key translation**
+The API is used to get multi-version key's translation
 
+#### **GET**/i18n/api/v2/translation/products/{productName}/multiVersionKey
 
+**Parameters:**
 
+productName: **(required)** (String), to indicate the product name registered in Singleton; e.g. Testing
 
+versions: **(required)** (String), a string contains multiple translation version, separated by commas,(if versions string is ‘all’, It will get all version translation)
+
+locale: **(required)** (String), locale string
+
+component: **(required)** (String), component name
+
+key: **(required)** (String), an id value to identify translation 
+
+**Return value:**
+
+(JSON Object) According to mult-version key request parameter get translation list
+
+Example:
+Request all the versions have key translations
+
+**{Singleton service}**/i18n/api/v2/translation/products/MULTCOMP/multiVersionKey?versions=1.0.0%2C2.0.0&locale=en&component=component1&key=key.test1
+
+```
+{
+  "response": {
+    "code": 200,
+    "message": "OK",
+    "serverTime": ""
+  },
+  "signature": "",
+  "data": [
+    {
+      "productName": "MULTCOMP",
+      "version": "1.0.0",
+      "dataOrigin": "",
+      "pseudo": false,
+      "machineTranslation": false,
+      "source": "",
+      "translation": "this is a test11",
+      "locale": "en",
+      "key": "key.test1",
+      "component": "component1",
+      "status": "Source is not provided, the existing translation is found and returned"
+    },
+    {
+      "productName": "MULTCOMP",
+      "version": "2.0.0",
+      "dataOrigin": "",
+      "pseudo": false,
+      "machineTranslation": false,
+      "source": "",
+      "translation": "this is a test11",
+      "locale": "en",
+      "key": "key.test1",
+      "component": "component1",
+      "status": "Source is not provided, the existing translation is found and returned"
+    }
+  ]
+}
+```
+**{Singleton service}**/i18n/api/v2/translation/products/MULTCOMP/multiVersionKey?versions=all&locale=en&component=component1&key=key.test1
+
+```
+{
+  "response": {
+    "code": 200,
+    "message": "OK",
+    "serverTime": ""
+  },
+  "signature": "",
+  "data": [
+    {
+      "productName": "MULTCOMP",
+      "version": "1.0.0",
+      "dataOrigin": "",
+      "pseudo": false,
+      "machineTranslation": false,
+      "source": "",
+      "translation": "this is a test11",
+      "locale": "en",
+      "key": "key.test1",
+      "component": "component1",
+      "status": "Source is not provided, the existing translation is found and returned"
+    },
+    {
+      "productName": "MULTCOMP",
+      "version": "2.0.0",
+      "dataOrigin": "",
+      "pseudo": false,
+      "machineTranslation": false,
+      "source": "",
+      "translation": "this is a test11",
+      "locale": "en",
+      "key": "key.test1",
+      "component": "component1",
+      "status": "Source is not provided, the existing translation is found and returned"
+    }
+  ]
+}
+```
+Request versions string only part version key have translations
+**{Singleton service}**/i18n/api/v2/translation/products/MULTCOMP/multiVersionKey?versions=2.0.0%2C3.0.0&locale=en&component=component1&key=key.test1
+
+```
+{
+  "response": {
+    "code": 207,
+    "message": "Part of the translation is available",
+    "serverTime": ""
+  },
+  "signature": "",
+  "data": [
+    {
+      "productName": "MULTCOMP",
+      "version": "2.0.0",
+      "dataOrigin": "",
+      "pseudo": false,
+      "machineTranslation": false,
+      "source": "",
+      "translation": "this is a test11",
+      "locale": "en",
+      "key": "key.test1",
+      "component": "component1",
+      "status": "Source is not provided, the existing translation is found and returned"
+    }
+  ]
+}
+```
