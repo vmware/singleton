@@ -573,7 +573,29 @@ The value of 2 returns the formatted pattern data according to the provided lang
 8. machineTranslation: "true" or "false"
 9. checkTranslationStatus: "true" or "false"
 
+# **API - Get Version list API**
+This API is used to get a product name's all available versions
 
+#### **GET**/i18n/api/v2/translation/products/{productName}/versionlist
+
+**Parameters:**
+
+productName: **(required)** (String), to indicate the product name registered in Singleton; e.g. Testing
+
+**Return value:**
+
+(JSON Object) The request productName's all version list.
+
+Example:
+**{Singleton service}**/i18n/api/v2/translation/products/MULTCOMP/versionlist
+
+```
+{
+ "response":{"code":200,"message":"OK","serverTime":""},
+ "signature":"",
+ "data":{"versions":["1.0.0"],"productName":"MULTCOMP"}
+}
+```
 
 
 
