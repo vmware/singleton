@@ -5,27 +5,41 @@
 package com.vmware.vipclient.i18n.messages.service;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
+import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentBasedOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.server.StringBasedOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
+import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.JSONUtils;
+import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Deprecated
 public class StringService {
     Logger              logger = LoggerFactory.getLogger(StringService.class);
-    
+
+    private MessagesDTO dto    = null;
+
+    public StringService() {
+    }
+
+    public StringService(MessagesDTO dto) {
+        this.dto = dto;
+    }
+
     @SuppressWarnings("unchecked")
     @Deprecated
     public String getString(MessagesDTO dto) {
@@ -101,5 +115,125 @@ public class StringService {
             r = "1".equalsIgnoreCase(status);
         }
         return r;
+    }
+
+    public ComponentService.TranslationsDTO getMultiVersionKeyTranslations(String version) {
+        Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
+        return this.getMultiVersionKeyTranslations(version, fallbackLocalesIter);
+    }
+
+    public ComponentService.TranslationsDTO getMultiVersionKeyTranslations(String version, Iterator<Locale> fallbackLocalesIter) {
+        return this.getMultiVersionKeyCacheItem(version, fallbackLocalesIter);
+    }
+
+    public ComponentService.TranslationsDTO getMultiVersionKeyCacheItem(String version, Iterator<Locale> fallbackLocalesIter) {
+        MessagesDTO dto4LocaleList = new MessagesDTO(this.dto);
+        dto4LocaleList.setVersion(version);
+        dto4LocaleList.setLocale(this.dto.getLocale());
+        this.doLocaleMatching(dto4LocaleList);
+        this.dto.setLocale(dto4LocaleList.getLocale());
+
+        CacheService cacheService = new CacheService(this.dto);
+        MessageCacheItem cacheItem = cacheService.getCacheOfMultiVersionKey();
+        if (cacheItem != null) { // Item is in cache
+            if (cacheItem.isExpired())
+                refreshMultiVersionKeyCacheItemTask(dto4LocaleList, cacheItem); // Refresh the cacheItem in a separate thread
+        } else { // Item is not in cache.
+            cacheItem = createMultiVersionKeyCacheItem(dto4LocaleList); // Fetch for the requested locale from data store, create cacheItem and store in cache
+            if (cacheItem.getCachedData().isEmpty()) {  // Failed to fetch messages for the requested locale
+                //Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
+                return getFallbackLocaleMessages(version, fallbackLocalesIter);
+            }
+        }
+        return new ComponentService.TranslationsDTO(dto.getLocale(), cacheItem);
+    }
+
+    private ComponentService.TranslationsDTO getFallbackLocaleMessages(String version, Iterator<Locale> fallbackLocalesIter) {
+        if (fallbackLocalesIter != null && fallbackLocalesIter.hasNext()) {
+            Locale fallbackLocale = fallbackLocalesIter.next();
+            if (fallbackLocale.toLanguageTag().equals(dto.getLocale())) {
+                return getFallbackLocaleMessages(version, fallbackLocalesIter);
+            }
+            // Use MessageCacheItem of the next fallback locale.
+            MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getProductID(), dto.getVersion(), dto.getComponent(), fallbackLocale.toLanguageTag(), dto.getKey());
+            return new StringService(fallbackLocaleDTO).getMultiVersionKeyCacheItem(version, fallbackLocalesIter);
+        }
+        return new ComponentService.TranslationsDTO(dto.getLocale(), new MessageCacheItem());
+    }
+
+    private MessageCacheItem createMultiVersionKeyCacheItem(MessagesDTO dto4LocaleList) {
+        CacheService cacheService = new CacheService(dto);
+        // Create a new cacheItem object to be stored in cache
+        MessageCacheItem cacheItem = new MessageCacheItem();
+
+        refreshMultiVersionKeyCacheItem(dto4LocaleList, cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().iterator());
+        if (!cacheItem.getCachedData().isEmpty()) {
+            cacheService.addCacheOfMultiVersionKey(cacheItem);
+        }
+        return cacheItem;
+    }
+
+    public void refreshMultiVersionKeyCacheItem(MessagesDTO dto4LocaleList, MessageCacheItem cacheItem, Iterator<DataSourceEnum> msgSourceQueueIter) {
+        if (!msgSourceQueueIter.hasNext()) {
+            logger.debug(FormatUtils.format(ConstantsMsg.GET_MULTI_VERSION_KEY_MESSAGES_FAILED_ALL, dto.getVersion(), dto.getComponent(), dto.getLocale(), dto.getKey()));
+            return;
+        }
+
+        DataSourceEnum dataSource = msgSourceQueueIter.next();
+
+        if (!proceed(dto4LocaleList, dataSource)) { //Requested locale is not supported, does not match any supported locales
+            refreshMultiVersionKeyCacheItem(dto4LocaleList, cacheItem, msgSourceQueueIter); // Try the next dataSource
+        } else {
+            long timestampOld = cacheItem.getTimestamp();
+            String localeOrig = dto.getLocale();
+            if (dataSource.equals(DataSourceEnum.VIP) && dto.getLocale().equals(ConstantsKeys.SOURCE)) {
+                dto.setLocale(ConstantsKeys.LATEST);
+            }
+            dataSource.createKeyBasedOpt(dto).getMultiVersionKeyMessages(cacheItem);
+            long timestamp = cacheItem.getTimestamp();
+            if (timestampOld == timestamp) {
+                logger.debug(FormatUtils.format(ConstantsMsg.GET_MULTI_VERSION_KEY_MESSAGES_FAILED, dto.getVersion(), dto.getComponent(), dto.getLocale(), dto.getKey(), dataSource.toString()));
+            }
+            dto.setLocale(localeOrig);
+
+            // If timestamp is 0, it means that cacheItem not yet in cache. So try the next data source.
+            if (timestamp == 0) {
+                // Try the next dataSource in the queue
+                refreshMultiVersionKeyCacheItem(dto4LocaleList, cacheItem, msgSourceQueueIter);
+            }
+        }
+    }
+
+    private void refreshMultiVersionKeyCacheItemTask(MessagesDTO dto4LocaleList, MessageCacheItem cacheItem) {
+        Runnable runnable = () -> {
+            try {
+                refreshMultiVersionKeyCacheItem(dto4LocaleList, cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
+            } catch (Exception e) {
+            }
+        };
+        new Thread(runnable).start();
+    }
+
+    public void doLocaleMatching(MessagesDTO dto) {
+        dto.setLocale(LocaleUtility.fmtToMappedLocale(dto.getLocale()).toLanguageTag());
+
+        //Match against list of supported locales that is already in the cache
+        Set<Locale> supportedLocales = LocaleUtility.langTagtoLocaleSet(new ProductService(dto).getCachedSupportedLocales());
+        Locale matchedLocale = LocaleUtility.pickupLocaleFromList(supportedLocales, Locale.forLanguageTag(dto.getLocale()));
+        if (matchedLocale != null) { // Requested locale matches a supported locale (eg. requested locale "fr_CA matches supported locale "fr")
+            dto.setLocale(matchedLocale.toLanguageTag());
+        }
+    }
+
+    private boolean proceed(MessagesDTO dto4LocaleList, DataSourceEnum dataSource) {
+        ProductService ps = new ProductService(dto4LocaleList);
+        Set<String> supportedLocales = ps.getCachedSupportedLocales(dataSource);
+        logger.debug("supported languages: [{}]", supportedLocales);
+
+        /*
+         * Do not block refreshCacheItem if set of supported locales is not in cache (i.e. supportedLocales.isEmpty()).
+         * This happens either when cache is not initialized, OR previous attempts to fetch the set had failed.
+         */
+        return (supportedLocales.isEmpty() || supportedLocales.contains(dto.getLocale()) || ConstantsKeys.SOURCE.equals(dto.getLocale())|| VIPCfg.getInstance().isPseudo());
     }
 }

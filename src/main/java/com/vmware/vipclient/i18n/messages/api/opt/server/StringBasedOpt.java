@@ -4,9 +4,14 @@
  */
 package com.vmware.vipclient.i18n.messages.api.opt.server;
 
+import java.net.HttpURLConnection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
+import com.vmware.vipclient.i18n.messages.api.opt.KeyBasedOpt;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import com.vmware.vipclient.i18n.VIPCfg;
@@ -16,8 +21,13 @@ import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
+import org.json.simple.JSONValue;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class StringBasedOpt extends BaseOpt implements Opt {
+public class StringBasedOpt extends BaseOpt implements Opt, KeyBasedOpt {
+    private final Logger logger = LoggerFactory.getLogger(StringBasedOpt.class);
+
     private MessagesDTO dto = null;
 
     public StringBasedOpt(MessagesDTO dto) {
@@ -104,5 +114,52 @@ public class StringBasedOpt extends BaseOpt implements Opt {
             }
         }
         return status;
+    }
+
+    public void getMultiVersionKeyMessages(MessageCacheItem cacheItem) {
+        String url = V2URL.getMultiVersionKeyTranslationURL(this.dto,
+                VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());
+
+        Map<String, String> headers = new HashMap<String, String>();
+        if (cacheItem.getEtag() != null)
+            headers.put(URLUtils.IF_NONE_MATCH_HEADER, cacheItem.getEtag());
+
+        Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester()
+                .request(url, ConstantsKeys.GET,null, headers);
+
+        Integer responseCode = (Integer) response.get(URLUtils.RESPONSE_CODE);
+
+        if (responseCode != null && (responseCode.equals(HttpURLConnection.HTTP_OK) ||
+                responseCode.equals(HttpURLConnection.HTTP_NOT_MODIFIED))) {
+
+            long timestamp = response.get(URLUtils.RESPONSE_TIMESTAMP) == null ?
+                    System.currentTimeMillis() : (long) response.get(URLUtils.RESPONSE_TIMESTAMP);
+            String etag = URLUtils.createEtagString((Map<String, List<String>>) response.get(URLUtils.HEADERS));
+            Long maxAgeMillis = response.get(URLUtils.MAX_AGE_MILLIS) == null ? null : (Long) response.get(URLUtils.MAX_AGE_MILLIS);
+
+            if (responseCode.equals(HttpURLConnection.HTTP_OK)) {
+                JSONObject respObj = (JSONObject) JSONValue.parse((String) response.get(URLUtils.BODY));
+                try {
+                    int businessCode = getResponseCode(respObj);
+                    if (businessCode == 200) {
+                        JSONArray dataArray = (JSONArray) this.getDataPart(respObj);
+                        Map<String,String> messages = new HashMap<>();
+                        for(Object obj : dataArray){
+                            JSONObject keyTranslationObj = (JSONObject) obj;
+                            messages.put((String) keyTranslationObj.get(ConstantsKeys.VERSION), (String) keyTranslationObj.get(ConstantsKeys.TRANSLATION));
+                        }
+                        if (messages != null) {
+                            cacheItem.setCacheItem(messages, etag, timestamp, maxAgeMillis);
+                        }
+                    }else{
+                        logger.warn("Failed to get messages from Singleton service, error message: " + getResponseMessage(respObj));
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                cacheItem.setCacheItem(etag, timestamp, maxAgeMillis);
+            }
+        }
     }
 }

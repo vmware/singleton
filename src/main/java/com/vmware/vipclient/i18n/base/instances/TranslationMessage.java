@@ -10,6 +10,7 @@ import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.ComponentService;
 import com.vmware.vipclient.i18n.messages.service.ComponentsService;
+import com.vmware.vipclient.i18n.messages.service.ProductService;
 import com.vmware.vipclient.i18n.messages.service.StringService;
 import com.vmware.vipclient.i18n.util.*;
 import org.json.simple.JSONObject;
@@ -147,6 +148,65 @@ public class TranslationMessage implements Message {
         return FormatUtils.formatMsg(message, Locale.forLanguageTag(msgsItemDTO.getLocale()), args);
     }
 
+    /**
+     * Get one version's key based message if there is multiple versions for one product, the message's arguments are put in a variable object
+     *
+     * @param locale
+     * @param version
+     * @param component
+     * @param key
+     * @param args
+     * @return
+     */
+    public String getMultiVersionMessage(final Locale locale, final String version, final String component, final String key, final Object... args) {
+        return getMultiVersionMessageWithArgs(null, locale, version, component, key, args);
+    }
+
+    /**
+     * Get one version's key based message if there is multiple versions for one product, the message's arguments are put in a Map
+     *
+     * @param locale
+     * @param version
+     * @param component
+     * @param key
+     * @param args
+     * @return
+     */
+    public String getMultiVersionMessage(final Locale locale, final String version, final String component, final String key, final Map<String, Object> args) {
+        return getMultiVersionMessageWithArgs(null, locale, version, component, key, args);
+    }
+
+    private String getMultiVersionMessageWithArgs(String resourceBundle, final Locale locale, final String version, final String component, final String key, final Object args) {
+        // Use source message if the message hasn't been collected/translated
+        String source = null;
+        try {
+            source = resourceBundle != null ? ResourceBundle.getBundle(resourceBundle).getString(key) :
+                    getMultiVersionMessagesOfKey(Locale.forLanguageTag(ConstantsKeys.SOURCE), version, component, key,false).getMessages().get(version);
+        }catch(Exception e){
+            logger.error(e.getMessage());
+        }
+        if (source!=null && !source.isEmpty()) {
+            String collectedSource = getMultiVersionMessagesOfKey(LocaleUtility.getSourceLocale(), version, component, key,false).getMessages().get(version);
+            if (!source.equals(collectedSource)) {
+                return FormatUtils.formatMsg(source, LocaleUtility.getSourceLocale(), args);
+            }
+        }
+        if(locale == null){
+            throw new VIPJavaClientException(ConstantsMsg.LOCALE_CANNOT_NULL);
+        }
+        if(StringUtil.isEmpty(component)){
+            throw new VIPJavaClientException(ConstantsMsg.COMPONENT_CANNOT_EMPTY);
+        }
+        ComponentService.TranslationsDTO msgsItemDTO = getMultiVersionMessagesOfKey(locale, version, component, key,true);
+        String message = msgsItemDTO.getMessages().get(version);
+        if (message == null || message.isEmpty()) {
+            if (source != null)
+                return source;
+            throw new VIPJavaClientException(FormatUtils.format(ConstantsMsg.GET_VERSION_KEY_MESSAGE_FAILED, key, version, component, locale));
+        }
+
+        return FormatUtils.formatMsg(message, Locale.forLanguageTag(msgsItemDTO.getLocale()), args);
+    }
     /**
      * get a translation under the component of the configured product
      *
@@ -481,6 +541,14 @@ public class TranslationMessage implements Message {
             return new ComponentService(dto).getTranslations();
         else
             return new ComponentService(dto).getTranslations(null);
+    }
+
+    private ComponentService.TranslationsDTO getMultiVersionMessagesOfKey(final Locale locale, final String version, final String component, final String key, boolean useLocaleFallback) {
+        MessagesDTO dto = new MessagesDTO(component, key, null, locale.toLanguageTag(), this.cfg);
+        if (useLocaleFallback)
+            return new StringService(dto).getMultiVersionKeyTranslations(version);
+        else
+            return new StringService(dto).getMultiVersionKeyTranslations(version, null);
     }
 
     /**

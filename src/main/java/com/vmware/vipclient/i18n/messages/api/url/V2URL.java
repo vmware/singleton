@@ -152,6 +152,28 @@ public class V2URL {
         return url.toString();
     }
 
+    public static String getMultiVersionKeyTranslationURL(final MessagesDTO dto, final String baseURL) {
+        StringBuilder url = new StringBuilder(baseURL);
+        String url2 = "";
+        try {
+            url2 = APIV2.PRODUCT_MULTI_VERSION_KEY_GET.replace("{" + APIParamName.PRODUCT_NAME + "}", dto.getProductID());
+            url.append(url2);
+
+            URLUtils.appendParamToURL(url, ConstantsKeys.VERSIONS, dto.getVersion().replaceAll(" ", ""));
+
+            URLUtils.appendParamToURL(url, ConstantsKeys.LOCALE, dto.getLocale());
+
+            URLUtils.appendParamToURL(url, ConstantsKeys.COMPONENT, dto.getComponent());
+
+            URLUtils.appendParamToURL(url, ConstantsKeys.KEY,
+                    URLEncoder.encode(dto.getKey(), ConstantsKeys.UTF8));
+        } catch (UnsupportedEncodingException e) {
+            logger.info(e.getMessage());
+        }
+
+        return url.toString();
+    }
+
     /**
      * get the url of key-set-post API
      *
