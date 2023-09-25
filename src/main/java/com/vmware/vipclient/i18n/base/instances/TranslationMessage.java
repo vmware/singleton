@@ -10,7 +10,6 @@ import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.ComponentService;
 import com.vmware.vipclient.i18n.messages.service.ComponentsService;
-import com.vmware.vipclient.i18n.messages.service.ProductService;
 import com.vmware.vipclient.i18n.messages.service.StringService;
 import com.vmware.vipclient.i18n.util.*;
 import org.json.simple.JSONObject;
