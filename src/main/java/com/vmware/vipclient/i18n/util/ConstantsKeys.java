@@ -22,6 +22,7 @@ public class ConstantsKeys {
     public static final String      KEY                                = "key";
     public static final String      SOURCE                             = "source";
     public static final String      VERSION                            = "version";
+    public static final String      VERSIONS                            = "versions";
     public static final String      COMPONENT                          = "component";
     public static final String      COMPONENTS                         = "components";
     public static final String      LOCALE                             = "locale";
