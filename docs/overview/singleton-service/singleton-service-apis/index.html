@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Singleton Service APIs - Singleton</title>
 <meta name="description" content="One-fits-all Internationalization Solution">
-<meta name="generator" content="Hugo 0.111.3">
+<meta name="generator" content="Hugo 0.105.0">
 <link href="https://vmware.github.io/singleton//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-apis/">
 <link rel="stylesheet" href="https://vmware.github.io/singleton/css/theme.min.css">
@@ -21,17 +21,18 @@
 <meta property="og:description" content="Singleton Service has two API versions available at present: v1 and v2. API v1 was created in the early times of Singleton, while API v2 has been validated with many VMware products over years, which includes the largest number of APIs, and is closer to the Restful style. It is recommended to use API v2 in practice. This version provides two types of APIs: Formatting API, which is used to" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-apis/" /><meta property="og:image" content="https://vmware.github.io/singleton/images/og-image.png"/><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2019-09-24T20:05:55+08:00" />
-<meta property="article:modified_time" content="2019-09-24T20:05:55+08:00" /><meta property="og:site_name" content="Hugo Techdoc Theme" />
+<meta property="article:published_time" content="2023-09-25T14:27:55+08:00" />
+<meta property="article:modified_time" content="2023-09-25T14:27:55+08:00" /><meta property="og:site_name" content="Hugo Techdoc Theme" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://vmware.github.io/singleton/images/og-image.png"/>
 
 <meta name="twitter:title" content="Singleton Service APIs"/>
 <meta name="twitter:description" content="Singleton Service has two API versions available at present: v1 and v2. API v1 was created in the early times of Singleton, while API v2 has been validated with many VMware products over years, which includes the largest number of APIs, and is closer to the Restful style. It is recommended to use API v2 in practice. This version provides two types of APIs: Formatting API, which is used to"/>
 <meta itemprop="name" content="Singleton Service APIs">
-<meta itemprop="description" content="Singleton Service has two API versions available at present: v1 and v2. API v1 was created in the early times of Singleton, while API v2 has been validated with many VMware products over years, which includes the largest number of APIs, and is closer to the Restful style. It is recommended to use API v2 in practice. This version provides two types of APIs: Formatting API, which is used to"><meta itemprop="datePublished" content="2019-09-24T20:05:55+08:00" />
-<meta itemprop="dateModified" content="2019-09-24T20:05:55+08:00" />
-<meta itemprop="wordCount" content="2333"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
+<meta itemprop="description" content="Singleton Service has two API versions available at present: v1 and v2. API v1 was created in the early times of Singleton, while API v2 has been validated with many VMware products over years, which includes the largest number of APIs, and is closer to the Restful style. It is recommended to use API v2 in practice. This version provides two types of APIs: Formatting API, which is used to"><meta itemprop="datePublished" content="2023-09-25T14:27:55+08:00" />
+<meta itemprop="dateModified" content="2023-09-25T14:27:55+08:00" />
+<meta itemprop="wordCount" content="2759"><meta itemprop="image" content="https://vmware.github.io/singleton/images/og-image.png"/>
 <meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>Singleton</h1><span class="version">Version 0.6</span><a href="https://github.com/vmware/singleton" class="github"><i class="fab fa-github"></i></a>
@@ -346,14 +347,140 @@
 <li>machineTranslation: &ldquo;true&rdquo; or &ldquo;false&rdquo;</li>
 <li>checkTranslationStatus: &ldquo;true&rdquo; or &ldquo;false&rdquo;</li>
 </ol>
-<div class="edit-meta">
-Last updated on 24 Sep 2019
+<h1 id="api---get-version-list-api"><strong>API - Get Version list API</strong></h1>
+<p>This API is used to get a product name&rsquo;s all available versions</p>
+<h4 id="geti18napiv2translationproductsproductnameversionlist"><strong>GET</strong>/i18n/api/v2/translation/products/{productName}/versionlist</h4>
+<p><strong>Parameters:</strong></p>
+<p>productName: <strong>(required)</strong> (String), to indicate the product name registered in Singleton; e.g. Testing</p>
+<p><strong>Return value:</strong></p>
+<p><strong>type:</strong> (JSON Object), <strong>description:</strong> The request productName&rsquo;s all version list.</p>
+<p>Example:
+<strong>{Singleton service}</strong>/i18n/api/v2/translation/products/MULTCOMP/versionlist</p>
+<pre tabindex="0"><code>{
+ &#34;response&#34;:{&#34;code&#34;:200,&#34;message&#34;:&#34;OK&#34;,&#34;serverTime&#34;:&#34;&#34;},
+ &#34;signature&#34;:&#34;&#34;,
+ &#34;data&#34;:{&#34;versions&#34;:[&#34;1.0.0&#34;],&#34;productName&#34;:&#34;MULTCOMP&#34;}
+}
+</code></pre><h1 id="api---get-multiple-versions-key-translations"><strong>API - Get Multiple Versions Key translations</strong></h1>
+<p>The API is used to get multiple versions key&rsquo;s translations</p>
+<h4 id="geti18napiv2translationproductsproductnamemultiversionkey"><strong>GET</strong>/i18n/api/v2/translation/products/{productName}/multiVersionKey</h4>
+<p><strong>Parameters:</strong></p>
+<p>productName: <strong>(required)</strong> <strong>type (String)</strong>, to indicate the product name registered in Singleton; e.g. Testing</p>
+<p>versions: <strong>(required)</strong> <strong>type (String)</strong>, a string contains multiple translation version, separated by commas,(if versions string is ‘all’, It will get all version translation)</p>
+<p>locale: <strong>(required)</strong> <strong>type (String)</strong>, locale string</p>
+<p>component: <strong>(required)</strong> <strong>type (String)</strong>, component name</p>
+<p>key: <strong>(required)</strong> <strong>type (String)</strong>, an id value to identify translation</p>
+<p><strong>Return value:</strong></p>
+<p><strong>type:</strong> (JSON Object), <strong>description:</strong> According to multiple versions key request parameter get translation list</p>
+<p>Example:
+Request all the versions have key translations</p>
+<p><strong>{Singleton service}</strong>/i18n/api/v2/translation/products/MULTCOMP/multiVersionKey?versions=1.0.0%2C2.0.0&amp;locale=en&amp;component=component1&amp;key=key.test1</p>
+<pre tabindex="0"><code>{
+  &#34;response&#34;: {
+    &#34;code&#34;: 200,
+    &#34;message&#34;: &#34;OK&#34;,
+    &#34;serverTime&#34;: &#34;&#34;
+  },
+  &#34;signature&#34;: &#34;&#34;,
+  &#34;data&#34;: [
+    {
+      &#34;productName&#34;: &#34;MULTCOMP&#34;,
+      &#34;version&#34;: &#34;1.0.0&#34;,
+      &#34;dataOrigin&#34;: &#34;&#34;,
+      &#34;pseudo&#34;: false,
+      &#34;machineTranslation&#34;: false,
+      &#34;source&#34;: &#34;&#34;,
+      &#34;translation&#34;: &#34;this is a test11&#34;,
+      &#34;locale&#34;: &#34;en&#34;,
+      &#34;key&#34;: &#34;key.test1&#34;,
+      &#34;component&#34;: &#34;component1&#34;,
+      &#34;status&#34;: &#34;Source is not provided, the existing translation is found and returned&#34;
+    },
+    {
+      &#34;productName&#34;: &#34;MULTCOMP&#34;,
+      &#34;version&#34;: &#34;2.0.0&#34;,
+      &#34;dataOrigin&#34;: &#34;&#34;,
+      &#34;pseudo&#34;: false,
+      &#34;machineTranslation&#34;: false,
+      &#34;source&#34;: &#34;&#34;,
+      &#34;translation&#34;: &#34;this is a test11&#34;,
+      &#34;locale&#34;: &#34;en&#34;,
+      &#34;key&#34;: &#34;key.test1&#34;,
+      &#34;component&#34;: &#34;component1&#34;,
+      &#34;status&#34;: &#34;Source is not provided, the existing translation is found and returned&#34;
+    }
+  ]
+}
+</code></pre><p><strong>{Singleton service}</strong>/i18n/api/v2/translation/products/MULTCOMP/multiVersionKey?versions=all&amp;locale=en&amp;component=component1&amp;key=key.test1</p>
+<pre tabindex="0"><code>{
+  &#34;response&#34;: {
+    &#34;code&#34;: 200,
+    &#34;message&#34;: &#34;OK&#34;,
+    &#34;serverTime&#34;: &#34;&#34;
+  },
+  &#34;signature&#34;: &#34;&#34;,
+  &#34;data&#34;: [
+    {
+      &#34;productName&#34;: &#34;MULTCOMP&#34;,
+      &#34;version&#34;: &#34;1.0.0&#34;,
+      &#34;dataOrigin&#34;: &#34;&#34;,
+      &#34;pseudo&#34;: false,
+      &#34;machineTranslation&#34;: false,
+      &#34;source&#34;: &#34;&#34;,
+      &#34;translation&#34;: &#34;this is a test11&#34;,
+      &#34;locale&#34;: &#34;en&#34;,
+      &#34;key&#34;: &#34;key.test1&#34;,
+      &#34;component&#34;: &#34;component1&#34;,
+      &#34;status&#34;: &#34;Source is not provided, the existing translation is found and returned&#34;
+    },
+    {
+      &#34;productName&#34;: &#34;MULTCOMP&#34;,
+      &#34;version&#34;: &#34;2.0.0&#34;,
+      &#34;dataOrigin&#34;: &#34;&#34;,
+      &#34;pseudo&#34;: false,
+      &#34;machineTranslation&#34;: false,
+      &#34;source&#34;: &#34;&#34;,
+      &#34;translation&#34;: &#34;this is a test11&#34;,
+      &#34;locale&#34;: &#34;en&#34;,
+      &#34;key&#34;: &#34;key.test1&#34;,
+      &#34;component&#34;: &#34;component1&#34;,
+      &#34;status&#34;: &#34;Source is not provided, the existing translation is found and returned&#34;
+    }
+  ]
+}
+</code></pre><p>According to request parameters: productName, versions list, component, locale, key, the result only part of versions(in request version list) have key translations</p>
+<p><strong>{Singleton service}</strong>/i18n/api/v2/translation/products/MULTCOMP/multiVersionKey?versions=2.0.0%2C3.0.0&amp;locale=en&amp;component=component1&amp;key=key.test1</p>
+<pre tabindex="0"><code>{
+  &#34;response&#34;: {
+    &#34;code&#34;: 207,
+    &#34;message&#34;: &#34;Part of the translation is available&#34;,
+    &#34;serverTime&#34;: &#34;&#34;
+  },
+  &#34;signature&#34;: &#34;&#34;,
+  &#34;data&#34;: [
+    {
+      &#34;productName&#34;: &#34;MULTCOMP&#34;,
+      &#34;version&#34;: &#34;2.0.0&#34;,
+      &#34;dataOrigin&#34;: &#34;&#34;,
+      &#34;pseudo&#34;: false,
+      &#34;machineTranslation&#34;: false,
+      &#34;source&#34;: &#34;&#34;,
+      &#34;translation&#34;: &#34;this is a test11&#34;,
+      &#34;locale&#34;: &#34;en&#34;,
+      &#34;key&#34;: &#34;key.test1&#34;,
+      &#34;component&#34;: &#34;component1&#34;,
+      &#34;status&#34;: &#34;Source is not provided, the existing translation is found and returned&#34;
+    }
+  ]
+}
+</code></pre><div class="edit-meta">
+Last updated on 25 Sep 2023
 
 
 <br>
-Published on 24 Sep 2019
-<br><a href="https://github.com/thingsym/hugo-theme-techdoc/edit/master/docs/overview/singleton-service/singleton-service-apis.md" class="edit-page"><i class="fas fa-pen-square"></i>&nbsp;Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-storage/" title="Enable S3 Storage"><i class="fas fa-arrow-left" aria-hidden="true"></i>&nbsp;Prev - Enable S3 Storage</a>
-<a class="nav nav-next" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/" title="Singleton SDK">Next - Singleton SDK <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+Published on 25 Sep 2023
+<br><a href="https://github.com/thingsym/hugo-theme-techdoc/edit/master/docs/overview/singleton-service/singleton-service-apis.md" class="edit-page"><i class="fas fa-pen-square"></i>&nbsp;Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/" title="DB builder for User guideline"><i class="fas fa-arrow-left" aria-hidden="true"></i>&nbsp;Prev - DB builder for User guideline</a>
+<a class="nav nav-next" href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/" title="Singleton Service Custom Log">Next - Singleton Service Custom Log <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
 </footer>
 </main>
@@ -384,6 +511,7 @@ Published on 24 Sep 2019
   
 <ul class="sub-menu">
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></li>
+<li class="active"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-apis/">Singleton Service APIs</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-custom-log/">Singleton Service Custom Log</a></li>
 <li class=""><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></li>
 
@@ -399,7 +527,6 @@ Published on 24 Sep 2019
 </ul>
   
 </li>
-<li class="active"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-apis/">Singleton Service APIs</a></li>
 </ul>
   
 </li>
