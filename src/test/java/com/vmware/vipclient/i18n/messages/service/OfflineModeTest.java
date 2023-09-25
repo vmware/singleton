@@ -416,7 +416,7 @@ public class OfflineModeTest extends BaseTestClass {
     	assertNull(cacheItem);
     	
     	MessagesDTO defaultLocaleDTO = new MessagesDTO(dto.getComponent(), 
-				dto.getKey(), dto.getSource(), LocaleUtility.getDefaultLocale().toLanguageTag(), null);
+				dto.getKey(), dto.getSource(), LocaleUtility.getDefaultLocale().toLanguageTag(), (VIPCfg) null);
     	CacheService csDefault = new CacheService(defaultLocaleDTO);
         assertEquals(message, FormatUtils.format(csDefault.getCacheOfComponent().getCachedData().get(key), args));
 

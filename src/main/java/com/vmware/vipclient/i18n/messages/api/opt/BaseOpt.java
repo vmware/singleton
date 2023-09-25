@@ -67,12 +67,12 @@ public class BaseOpt {
         }
     }
 
-    public JSONObject getDataPart(JSONObject obj) {
-        return (JSONObject) obj.get(ConstantsKeys.DATA);
+    public Object getDataPart(JSONObject obj) {
+        return obj.get(ConstantsKeys.DATA);
     }
     
     public String getLocale(JSONObject obj) {
-    	return (String) getDataPart(obj).get(ConstantsKeys.LOCALE);
+    	return (String) ((JSONObject)getDataPart(obj)).get(ConstantsKeys.LOCALE);
     }
 
     public JSONObject getResponsePart(JSONObject obj) {

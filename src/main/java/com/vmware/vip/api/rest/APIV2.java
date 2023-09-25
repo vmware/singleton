@@ -15,6 +15,7 @@ public class APIV2 {
 	public static final String PRODUCT_LOCALE_LIST_GET     = API_TRANSLATOIN + "/products/{"+APIParamName.PRODUCT_NAME+"}/versions/{"+APIParamName.VERSION2+"}/localelist";
 	public static final String PRODUCT_COMPONENT_LIST_GET  = API_TRANSLATOIN + "/products/{"+APIParamName.PRODUCT_NAME+"}/versions/{"+APIParamName.VERSION2+"}/componentlist";
 	public static final String PRODUCT_TRANSLATION_SYNC_PUT = API_TRANSLATOIN +"/products/{"+APIParamName.PRODUCT_NAME+"}/versions/{"+APIParamName.VERSION2+"}/synch";
+	public static final String PRODUCT_MULTI_VERSION_KEY_GET = API_TRANSLATOIN + "/products/{"+APIParamName.PRODUCT_NAME+"}/multiVersionKey";
 	// key-based
 	public static final String KEY_TRANSLATION_GET         = API_TRANSLATOIN + "/products/{"+APIParamName.PRODUCT_NAME+"}/versions/{"+APIParamName.VERSION2+"}/locales/{"+APIParamName.LOCALE+"}/components/{"+APIParamName.COMPONENT+"}/keys/{"+APIParamName.KEY2+"}";
 	public static final String KEY_TRANSLATION_POST        = API_TRANSLATOIN + "/products/{"+APIParamName.PRODUCT_NAME+"}/versions/{"+APIParamName.VERSION2+"}/locales/{"+APIParamName.LOCALE+"}/components/{"+APIParamName.COMPONENT+"}/keys/{"+APIParamName.KEY2+"}";

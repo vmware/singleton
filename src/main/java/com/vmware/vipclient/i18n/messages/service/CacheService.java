@@ -11,6 +11,7 @@ import com.vmware.vipclient.i18n.base.cache.CacheItem;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
+import com.vmware.vipclient.i18n.util.ConstantsKeys;
 
 import java.util.*;
 
@@ -68,6 +69,16 @@ public class CacheService {
     public void addCacheOfLocales(MessageCacheItem itemToCache, DataSourceEnum dataSource) {
         String cacheKey = dto.getLocalesCacheKey(dataSource);
         addCacheItem(cacheKey, itemToCache);
+    }
+
+    public MessageCacheItem getCacheOfMultiVersionKey() {
+        String cacheKey = dto.getCompositStrAsCacheKey() + ConstantsKeys.UNDERLINE + dto.getKey();
+        return (MessageCacheItem) this.getCacheItem(cacheKey);
+    }
+
+    public void addCacheOfMultiVersionKey(MessageCacheItem itemToCache) {
+        String cacheKey = dto.getCompositStrAsCacheKey() + ConstantsKeys.UNDERLINE + dto.getKey();
+        this.addCacheItem(cacheKey, itemToCache);
     }
 
     private void addCacheItem(String key, CacheItem cacheItem) {

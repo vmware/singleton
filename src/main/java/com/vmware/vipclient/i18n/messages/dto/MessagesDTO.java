@@ -30,13 +30,11 @@ public class MessagesDTO extends BaseDTO {
     private String locale;
 
     public MessagesDTO() {
-        super.setProductID(VIPCfg.getInstance().getProductName());
-        super.setVersion(VIPCfg.getInstance().getVersion());
+        super();
     }
 
     public MessagesDTO(BaseDTO dto) {
-        super.setProductID(dto.getProductID());
-        super.setVersion(dto.getVersion());
+        super(dto.getProductID(), dto.getVersion());
     }
 
     public MessagesDTO(String component, String localeLanguageTag, String productName, String version) {
@@ -44,6 +42,14 @@ public class MessagesDTO extends BaseDTO {
         this.setLocale(localeLanguageTag);
         this.setProductID(productName);
         this.setVersion(version);
+    }
+
+    public MessagesDTO(String productName, String version, String component, String localeLanguageTag, String key) {
+        this.setProductID(productName);
+        this.setVersion(version);
+        this.setComponent(component);
+        this.setLocale(localeLanguageTag);
+        this.setKey(key);
     }
 
     public MessagesDTO(String component, String key, String source, String localeLanguageTag, VIPCfg cfg) {

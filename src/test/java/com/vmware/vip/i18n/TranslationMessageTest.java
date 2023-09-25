@@ -97,7 +97,47 @@ public class TranslationMessageTest extends BaseTestClass {
         Assert.assertEquals("[a] 測試警示", message6);
 
     }
-    
+
+    @Test
+    public void testGetMessageWithMultiVersion() {
+        String originalVersion = vipCfg.getVersion();
+        vipCfg.setVersion("all");
+        String component = "JAVA";
+        String key = "LeadTest";
+        Object[] args = { "a" };
+
+        Locale localeEn = new Locale("en");
+        Locale localeDe = new Locale("de", "DE");
+        Locale localeZh = new Locale("zh","CN");
+
+        //test getting 'all' version message
+        String message1 = translation.getMultiVersionMessage(localeEn, "1.0.0", component, key, args);
+        Assert.assertEquals("[a] Test alert", message1);
+
+        String message2 = translation.getMultiVersionMessage(localeEn, "2.0.0", component, key, args);
+        Assert.assertEquals("[a] Test alert", message2);
+
+
+        //test locale matching
+        String message3 = translation.getMultiVersionMessage(localeZh, "1.0.0", component, key, args);
+        Assert.assertEquals("[a] 测试警示", message3);
+
+
+        //test locale fallback
+        String message4 = translation.getMultiVersionMessage(localeDe, "1.0.0", component, key, args);
+        Assert.assertEquals("[a] Test alert", message4);
+
+
+        //test multiple version
+        vipCfg.setVersion("1.0.0, 2.0.0");
+        String message5 = translation.getMultiVersionMessage(localeDe, "1.0.0", component, key, args);
+        Assert.assertEquals("[a] Test alert", message5);
+
+
+        //restore the 'version' to value in config file
+        vipCfg.setVersion(originalVersion);
+    }
+
     @Test
     @Deprecated
     public void testGetMessageWithBundle() {

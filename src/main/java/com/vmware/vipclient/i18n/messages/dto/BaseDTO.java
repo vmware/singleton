@@ -4,11 +4,26 @@
  */
 package com.vmware.vipclient.i18n.messages.dto;
 
+import com.vmware.vipclient.i18n.VIPCfg;
+
 /**
  * DTO objects for cache data encapsulation
  *
  */
 public class BaseDTO {
+    private String productID;
+    private String version;
+
+    public BaseDTO() {
+        this.productID = VIPCfg.getInstance().getProductName();
+        this.version = VIPCfg.getInstance().getVersion();
+    }
+
+    public BaseDTO(String productID, String version) {
+        this.productID = productID;
+        this.version = version;
+    }
+
     public String getProductID() {
         return productID;
     }
@@ -24,8 +39,4 @@ public class BaseDTO {
     public void setVersion(String version) {
         this.version = version;
     }
-
-    private String productID;
-    private String version;
-
 }

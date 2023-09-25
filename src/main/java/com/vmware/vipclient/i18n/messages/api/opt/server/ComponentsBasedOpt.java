@@ -64,6 +64,6 @@ public class ComponentsBasedOpt extends BaseOpt implements Opt {
         int statusCode = this.getResponseCode(this.responseJsonObj);
         if (!this.isSuccess(statusCode))
             logger.error(String.format(ConstantsMsg.SERVER_RETURN_ERROR, statusCode, this.getResponseMessage(this.responseJsonObj)));
-        return getDataPart(this.responseJsonObj);
+        return (JSONObject) getDataPart(this.responseJsonObj);
     }
 }

@@ -236,7 +236,7 @@ public class ComponentService {
 	/**
 	 * A Data Transfer Object (DTO) for localized messages retrieved from cache.
 	 */
-	public class TranslationsDTO {
+	public static class TranslationsDTO {
 		String locale;
 		Map<String, String> messages;
 

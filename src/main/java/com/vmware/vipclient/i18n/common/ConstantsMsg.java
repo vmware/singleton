@@ -20,6 +20,9 @@ public class ConstantsMsg {
     public static final String GET_MESSAGES_FAILED_ALL  = "Failed to get messages for component {0}, locale: {1} from any available data source";
     public static final String GET_FALLBACK_MESSAGES_FAILED = "Failed to get fallback messages for component {0}, locale: {1}";
     public static final String GET_MESSAGE_FAILED   = "Failed to get any message for key: {0} of component {1}, requested locale: {2}";
+    public static final String GET_MULTI_VERSION_KEY_MESSAGES_FAILED  = "Failed to get messages for versions {0}, component {1}, locale: {2}, key {3}, data source: {4}.";
+    public static final String GET_MULTI_VERSION_KEY_MESSAGES_FAILED_ALL  = "Failed to get messages for versions {0}, component {1}, locale: {2}, key {3} from any available data source";
+    public static final String GET_VERSION_KEY_MESSAGE_FAILED   = "Failed to get any message for key: {0} of version {1} component {2} locale {3}";
 
     //failed messages for l2
     public static final String GET_LANGUAGES_FAILED   = "Failed to get supported languages for locale {0} from {1} data source";
