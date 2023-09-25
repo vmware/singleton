@@ -1,6 +1,6 @@
 ---
 title: "Singleton Service APIs"
-date: 2019-09-24T20:05:55+08:00
+date: 2023-09-25T14:27:55+08:00
 draft: false
 ---
 
@@ -701,7 +701,7 @@ Request all the versions have key translations
   ]
 }
 ```
-Request versions string only part version key have translations
+According to request parameters: productName, versions list, component, locale, key, the result only part of versions(in request version list) have key translations
 
 **{Singleton service}**/i18n/api/v2/translation/products/MULTCOMP/multiVersionKey?versions=2.0.0%2C3.0.0&locale=en&component=component1&key=key.test1
 
