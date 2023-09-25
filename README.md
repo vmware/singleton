@@ -29,7 +29,7 @@ Upcoming features
 
 Prerequisites
 ---------
- * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) (Java 9+ are not supported, will get compiler issue)
+ * [Java 17](https://www.oracle.com/java/technologies/downloads/#jdk17) 
  * [Git](https://git-scm.com/downloads)
 
 Building from source code
