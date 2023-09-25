@@ -584,7 +584,7 @@ productName: **(required)** (String), to indicate the product name registered in
 
 **Return value:**
 
-(JSON Object) The request productName's all version list.
+   **type:** (JSON Object), **description:** The request productName's all version list.
 
 Example:
 **{Singleton service}**/i18n/api/v2/translation/products/MULTCOMP/versionlist
@@ -597,26 +597,26 @@ Example:
 }
 ```
 
-# **API - Get Mult-version Key translation**
-The API is used to get multi-version key's translation
+# **API - Get Multiple Versions Key translations**
+The API is used to get multiple versions key's translations
 
 #### **GET**/i18n/api/v2/translation/products/{productName}/multiVersionKey
 
 **Parameters:**
 
-productName: **(required)** (String), to indicate the product name registered in Singleton; e.g. Testing
+productName: **(required)** **type (String)**, to indicate the product name registered in Singleton; e.g. Testing
 
-versions: **(required)** (String), a string contains multiple translation version, separated by commas,(if versions string is ‘all’, It will get all version translation)
+versions: **(required)** **type (String)**, a string contains multiple translation version, separated by commas,(if versions string is ‘all’, It will get all version translation)
 
-locale: **(required)** (String), locale string
+locale: **(required)** **type (String)**, locale string
 
-component: **(required)** (String), component name
+component: **(required)** **type (String)**, component name
 
-key: **(required)** (String), an id value to identify translation 
+key: **(required)** **type (String)**, an id value to identify translation 
 
 **Return value:**
 
-(JSON Object) According to mult-version key request parameter get translation list
+**type:** (JSON Object), **description:** According to multiple versions key request parameter get translation list
 
 Example:
 Request all the versions have key translations
