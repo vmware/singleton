@@ -86,7 +86,6 @@ public class SyncLocalBundleServiceImpl implements SyncLocalBundleService {
 			return;
 		}
 		LOGGER.debug("the source cache file size---{}", queueFiles.size());
-		boolean moveFileFlag = true;
 		for (File quefile : queueFiles) {
 			try {
 				Map<String, ComponentSourceDTO> mapObj = DiskQueueUtils.getQueueFile2Obj(quefile);
@@ -101,12 +100,12 @@ public class SyncLocalBundleServiceImpl implements SyncLocalBundleService {
 						if (!updateFlag) {
 							throw new L10nAPIException("Failed to update source:" + ehcachekey);
 						}
+
 					}
 				}
-
+				processSendFilePath(this.basePath, quefile);
 			} catch (L10nAPIException e) {
 				LOGGER.error(e.getMessage(), e);
-				moveFileFlag = false;
 				try {
 					Thread.sleep(30000);
 				} catch (InterruptedException ex) {
@@ -120,15 +119,6 @@ public class SyncLocalBundleServiceImpl implements SyncLocalBundleService {
 			}
 		}
 
-		if (moveFileFlag){
-			for (File delFile : queueFiles){
-				try {
-					processSendFilePath(this.basePath, delFile);
-				} catch (IOException e) {
-					DiskQueueUtils.moveFile2ExceptPath(basePath, delFile, LOCAL_STR);
-				}
-			}
-		}
 
 	}
 
