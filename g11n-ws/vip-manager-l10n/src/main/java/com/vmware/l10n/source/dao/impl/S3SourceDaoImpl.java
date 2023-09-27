@@ -6,6 +6,7 @@ import com.amazonaws.services.s3.model.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.vmware.l10n.conf.S3Cfg;
 import com.vmware.l10n.conf.S3Client;
 import com.vmware.l10n.record.model.RecordModel;
@@ -31,7 +32,9 @@ import org.springframework.stereotype.Repository;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 @Profile("s3")
@@ -52,7 +55,7 @@ public class S3SourceDaoImpl implements SourceDao {
 
     @Value("${source.sync.s3.compare.version.count:3}")
     private int compareVersionNum = 3;
-    ObjectWriter objectWriter = new ObjectMapper().writerWithDefaultPrettyPrinter();
+    private ObjectWriter objectWriter = new ObjectMapper().writer(SerializationFeature.ORDER_MAP_ENTRIES_BY_KEYS).withDefaultPrettyPrinter();
 
     @PostConstruct
     private void init() {
@@ -102,18 +105,18 @@ public class S3SourceDaoImpl implements SourceDao {
             String content = null;
             String updatedVersionId = null;
             if (reqS3Obj == null){
-                content = objectWriter.writeValueAsString(componentMessagesDTO);
+                content = getOrderBundleJson(componentMessagesDTO);
+                logger.info(content);
                 if (!s3Client.isObjectExist(bundlePath)){
                     PutObjectResult putResult = s3Client.getS3Client().putObject(config.getBucketName(), bundlePath, content);
                     updatedVersionId = putResult.getVersionId();
                     VersionListing versionListing = s3Client.getS3Client().listVersions(lvr);
-                    String getVersionId = versionListing.getVersionSummaries().get(0).getVersionId();
-                    int size = versionListing.getVersionSummaries().size();
-                    if (size == 1 && updatedVersionId.equals(getVersionId)) {
+                    String latestVersionId = versionListing.getVersionSummaries().get(0).getVersionId();
+                    if (updatedVersionId.equals(latestVersionId)) {
                         return true;
                     }else {
                        s3Client.getS3Client().deleteVersion(config.getBucketName(), bundlePath, updatedVersionId);
-                       logger.warn("index 0, delete key: {},  no source version: {} ", bundlePath, updatedVersionId);
+                       logger.warn("index 0, summarySize: {}, delete key: {},  no source version: {} ", versionListing.getVersionSummaries().size(), bundlePath, updatedVersionId);
                        logger.warn(content);
                     }
                 }
@@ -128,7 +131,8 @@ public class S3SourceDaoImpl implements SourceDao {
                     throw new RuntimeException(e.getMessage(), e);
                 }
                 SingleComponentDTO latestDTO = SourceUtils.mergeCacheWithBundle(componentMessagesDTO, existingBundle);
-                content = objectWriter.writeValueAsString(componentMessagesDTO);
+                content = getOrderBundleJson(latestDTO);
+                logger.info(content);
                 VersionListing sourceVersionListing = s3Client.getS3Client().listVersions(lvr);
                 String preVersionId = sourceVersionListing.getVersionSummaries().get(0).getVersionId();
                 if (sourceVersionId.equals(preVersionId)) {
@@ -252,5 +256,13 @@ public class S3SourceDaoImpl implements SourceDao {
         path.append(version);
         path.append(ConstantsChar.BACKSLASH);
         return path.toString();
+    }
+    private String getOrderBundleJson(SingleComponentDTO componentDTO) throws JsonProcessingException {
+        Map<String, Object> json = new HashMap<>();
+        json.put(ConstantsKeys.COMPONENT, componentDTO.getComponent());
+        json.put(ConstantsKeys.lOCALE, componentDTO.getLocale());
+        json.put(ConstantsKeys.MESSAGES, componentDTO.getMessages());
+        json.put(ConstantsKeys.ID, componentDTO.getId());
+        return this.objectWriter.writeValueAsString(json);
     }
 }
