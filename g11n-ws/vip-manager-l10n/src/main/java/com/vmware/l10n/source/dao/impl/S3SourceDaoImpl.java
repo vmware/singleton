@@ -40,7 +40,7 @@ import java.util.Map;
 @Profile("s3")
 public class S3SourceDaoImpl implements SourceDao {
     private static Logger logger = LoggerFactory.getLogger(S3SourceDaoImpl.class);
-    private static long deadLineTime = 1024*32;
+    private static long deadLineTime = 1024*64;
     @Autowired
     private S3Client s3Client;
     @Autowired
@@ -106,7 +106,7 @@ public class S3SourceDaoImpl implements SourceDao {
             String updatedVersionId = null;
             if (reqS3Obj == null){
                 content = getOrderBundleJson(componentMessagesDTO);
-                logger.info(content);
+               // logger.info(content);
                 if (!s3Client.isObjectExist(bundlePath)){
                     PutObjectResult putResult = s3Client.getS3Client().putObject(config.getBucketName(), bundlePath, content);
                     updatedVersionId = putResult.getVersionId();
@@ -132,7 +132,7 @@ public class S3SourceDaoImpl implements SourceDao {
                 }
                 SingleComponentDTO latestDTO = SourceUtils.mergeCacheWithBundle(componentMessagesDTO, existingBundle);
                 content = getOrderBundleJson(latestDTO);
-                logger.info(content);
+                //logger.info(content);
                 VersionListing sourceVersionListing = s3Client.getS3Client().listVersions(lvr);
                 String preVersionId = sourceVersionListing.getVersionSummaries().get(0).getVersionId();
                 if (sourceVersionId.equals(preVersionId)) {
@@ -168,9 +168,11 @@ public class S3SourceDaoImpl implements SourceDao {
             }
 
             if (sleepTime > deadLineTime){
+                logger.warn("sleep Time {}", sleepTime);
                 flag = false;
             }else {
                 try {
+                    logger.warn("sleep Time {}", sleepTime);
                     Thread.sleep(sleepTime);
                 } catch (InterruptedException e) {
                     logger.warn(e.getMessage(), e);
