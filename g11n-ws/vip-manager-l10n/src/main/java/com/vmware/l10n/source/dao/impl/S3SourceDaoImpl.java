@@ -90,7 +90,14 @@ public class S3SourceDaoImpl implements SourceDao {
         long sleepTime = 512L;
         boolean flag = true;
         do {
-            S3Object reqS3Obj = s3Client.getS3Client().getObject(config.getBucketName(), bundlePath);
+            S3Object reqS3Obj = null;
+            try {
+                reqS3Obj = s3Client.getS3Client().getObject(config.getBucketName(), bundlePath);
+            }catch (Exception ex){
+                logger.info("create new key:{}", bundlePath);
+                reqS3Obj = null;
+            }
+
             String sourceVersionId = null;
             String content = null;
             String updatedVersionId = null;
@@ -106,6 +113,8 @@ public class S3SourceDaoImpl implements SourceDao {
                         return true;
                     }else {
                        s3Client.getS3Client().deleteVersion(config.getBucketName(), bundlePath, updatedVersionId);
+                       logger.warn("index 0, delete key: {},  no source version: {} ", bundlePath, updatedVersionId);
+                       logger.warn(content);
                     }
                 }
 
@@ -133,11 +142,16 @@ public class S3SourceDaoImpl implements SourceDao {
                             if (!updatedVersionId.equals(updateVersionSummary.get(i).getVersionId())) {
                                 s3Client.getS3Client().deleteVersion(config.getBucketName(), bundlePath, updatedVersionId);
                                 isNotBreak = false;
+                                logger.warn("index{}, delete key: {},  no source version: {} ",i, bundlePath, updatedVersionId);
+                                logger.warn(content);
                                 break;
                             }
                         } else {
-                            if (!updateVersionSummary.get(i).getVersionId().equals(sourceVersionListing.getVersionSummaries().get(i-1))) {
+                            if (!updateVersionSummary.get(i).getVersionId().equals(sourceVersionListing.getVersionSummaries().get(i-1).getVersionId())) {
                                 s3Client.getS3Client().deleteVersion(config.getBucketName(), bundlePath, updatedVersionId);
+                                logger.warn("delete key: {},  no source version: {} ", bundlePath, updatedVersionId);
+                                logger.warn("index{}, updated {}, source{}", i, updateVersionSummary.get(i).getVersionId(),  sourceVersionListing.getVersionSummaries().get(i-1).getVersionId());
+                                logger.warn(content);
                                 isNotBreak = false;
                                 break;
                             }
