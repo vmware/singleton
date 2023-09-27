@@ -19,9 +19,11 @@ func (r *translationRouter) Init(e *gin.RouterGroup) {
 
 	tranGroup := e.Group("/translation", HandleAllowList, HandleVersionFallback)
 	{
-		tranGroup.GET("/products/:productName/versionlist", GetProductVersions)
+		productPart := "/products/:productName"
+		tranGroup.GET(productPart+"/versionlist", GetProductVersions)
+		tranGroup.GET(productPart+"/multiVersionKey", GetMultiVersionsKey)
 
-		productVersionPart := "/products/:productName/versions/:version"
+		productVersionPart := productPart + "/versions/:version"
 
 		// Product APIs
 		tranGroup.GET(productVersionPart, GetMultipleBundles)

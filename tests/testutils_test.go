@@ -60,9 +60,9 @@ const (
 )
 
 const (
-	Name, Version, Locale, Component = "VPE", "1.0.0", "en", "sunglow"
-	Language, Region                 = "en", "US"
-	Key, Msg                         = "message", "Message-en"
+	Name, Version, Locale, Component, Component2 = "VPE", "1.0.0", "en", "sunglow", "users"
+	Language, Region                             = "en", "US"
+	Key, Msg                                     = "message", "Message-en"
 )
 const (
 	NonexistentProduct = "ocean"
