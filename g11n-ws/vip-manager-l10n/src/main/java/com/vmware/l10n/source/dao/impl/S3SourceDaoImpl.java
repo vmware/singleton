@@ -40,7 +40,7 @@ import java.util.Map;
 @Profile("s3")
 public class S3SourceDaoImpl implements SourceDao {
     private static Logger logger = LoggerFactory.getLogger(S3SourceDaoImpl.class);
-    private static long deadLineTime = 1024*64;
+    private static long deadLineTime = 1024*32;
     @Autowired
     private S3Client s3Client;
     @Autowired
