@@ -106,7 +106,7 @@
 							"required": false,
 							"desc": "",
 							"paramType": "query",
-							"dataType": "string"
+							"dataType": "boolean"
 						}
 					]
 				},
@@ -215,7 +215,7 @@
 						"required": false,
 						"desc": "",
 						"paramType": "query",
-						"dataType": "string"
+						"dataType": "boolean"
 					},
 					{
 						"name": "machineTranslation",
@@ -375,7 +375,7 @@
 						"required": false,
 						"desc": "",
 						"paramType": "query",
-						"dataType": "string"
+						"dataType": "boolean"
 					},
 					{
 						"name": "checkTranslationStatus",
@@ -397,7 +397,7 @@
 				"name": "get_translation_products__productName__versions__version__locales__locale__components__component__keys__key_",
 				"path": "/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key}",
 				"description": "Get a key’s translation in specific component",
-				"method": "post",
+				"method": "get",
 				"params": [{
 						"name": "productName",
 						"required": true,
@@ -466,7 +466,7 @@
 						"required": false,
 						"desc": "",
 						"paramType": "query",
-						"dataType": "string"
+						"dataType": "boolean"
 					},
 					{
 						"name": "sourceFormat",
@@ -505,7 +505,7 @@
 						"required": true,
 						"desc": "",
 						"paramType": "body",
-						"dataType": "string"
+						"dataType": "object"
 					}
 				]
 			}]
@@ -692,7 +692,7 @@
 							"required": false,
 							"desc": "pseudo",
 							"paramType": "query",
-							"dataType": "string"
+							"dataType": "boolean"
 						},
 						{
 							"name": "region",
@@ -734,7 +734,7 @@
 						"required": true,
 						"desc": "all parameters",
 						"paramType": "body",
-						"dataType": "Model Schema"
+						"dataType": "object"
 					}]
 				}
 			]
