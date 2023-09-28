@@ -6,6 +6,7 @@ package com.vmware.vip.i18n.api.base;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 import com.vmware.vip.common.i18n.dto.StringBasedDTO;
@@ -289,7 +290,7 @@ public class TranslationProductAction  extends BaseAction {
         if (versions.equals(ConstantsKeys.ALL)){
             versionList = productService.getSupportVersionList(productName);
         }else if (versions.contains(ConstantsChar.COMMA)) {
-            versionList = Arrays.asList(versions.split(ConstantsChar.COMMA));
+            versionList = Arrays.stream(versions.split(ConstantsChar.COMMA)).distinct().collect(Collectors.toList());
         } else {
             versionList = Arrays.asList(versions);
         }
