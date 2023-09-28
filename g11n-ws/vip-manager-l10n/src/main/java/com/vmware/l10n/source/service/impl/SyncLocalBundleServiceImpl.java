@@ -105,13 +105,8 @@ public class SyncLocalBundleServiceImpl implements SyncLocalBundleService {
 				}
 				processSendFilePath(this.basePath, quefile);
 			} catch (L10nAPIException e) {
-				LOGGER.error(e.getMessage(), e);
-				try {
-					Thread.sleep(30000);
-				} catch (InterruptedException ex) {
-					LOGGER.error(ex.getMessage(), ex);
-				}
-				DiskQueueUtils.copyFile2ExceptPath(basePath, quefile, this.activeDaoType);
+				LOGGER.warn(e.getMessage(), e);
+				LOGGER.warn("The source cache file:{} will re-update to {}", quefile.getAbsolutePath(), this.activeDaoType);
 				break;
 			} catch (Exception e) {
 				LOGGER.error(e.getMessage(), e);
