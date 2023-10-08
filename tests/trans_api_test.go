@@ -483,3 +483,40 @@ func TestGetMultipleMessages(t *testing.T) {
 		})
 	}
 }
+
+func TestGetVersions(t *testing.T) {
+	e := CreateHTTPExpect(t, GinTestEngine)
+
+	for _, d := range []struct {
+		desc, name string
+		wanted     []string
+	}{
+		{"successful", Name, []string{"1.0.0", "1.0.1", "1.1.1"}},
+	} {
+		d := d
+		t.Run(d.desc, func(t *testing.T) {
+			resp := e.GET(GetVersionsURL, d.name).Expect()
+			_, data := GetErrorAndData(resp.Body().Raw())
+			versions := data.(map[string]interface{})[api.VersionsAPIKey].([]interface{})
+			for _, v := range versions {
+				assert.Contains(t, versions, v)
+			}
+		})
+	}
+
+	for _, d := range []struct {
+		desc, name string
+		wanted     string
+	}{
+		{"nonexistent product", NonexistentProduct,
+			`{"response":{"code":404,"message":"product '` + NonexistentProduct + `' doesn't exist"}}`},
+		{"disallowed product", DisallowedProduct,
+			`{"response":{"code":400,"message":"product '` + DisallowedProduct + `' isn't supported"}}`},
+	} {
+		d := d
+		t.Run(d.desc, func(t *testing.T) {
+			resp := e.GET(GetVersionsURL, d.name).Expect()
+			assert.JSONEq(t, d.wanted, resp.Body().Raw())
+		})
+	}
+}

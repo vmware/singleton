@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -91,6 +91,7 @@ func GetLocaleNames(name, version string) (data sets.Set, ok bool) {
 	}
 	return nil, false
 }
+
 func GetReleaseNames(name string) (data sets.Set, ok bool) {
 	p, ok := getBundleInfo().GetProductInfo(name)
 	if ok {
@@ -99,14 +100,33 @@ func GetReleaseNames(name string) (data sets.Set, ok bool) {
 	return
 }
 
-// func IsBundleExist(id *translation.BundleID) bool {
-// 	if bundles, _ := GetAvailableBundles(id.Name, id.Version); bundles != nil {
-// 		return bundles.Contains(translation.CompactBundleID{Locale: id.Locale, Component: id.Component})
-// 	}
-// 	return false
-// }
+func IsLocaleAvailable(name, version, locale string) bool {
+	if locales, ok := GetLocaleNames(name, version); ok {
+		return locales.Contains(locale)
+	}
+	return false
+}
+
+func IsComponentAvailable(name, version, component string) bool {
+	if components, ok := GetComponentNames(name, version); ok {
+		return components.Contains(component)
+	}
+	return false
+}
+
+func IsBundleExist(id *translation.BundleID) bool {
+	if bundles, _ := GetAvailableBundles(id.Name, id.Version); bundles != nil {
+		return bundles.Contains(translation.CompactBundleID{Locale: id.Locale, Component: id.Component})
+	}
+	return false
+}
 
 func IsProductExist(name string) bool {
 	_, ok := getBundleInfo().GetProductInfo(name)
+	return ok
+}
+
+func IsReleaseExist(name, version string) bool {
+	_, ok := getReleaseInfo(name, version)
 	return ok
 }

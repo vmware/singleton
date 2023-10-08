@@ -35,7 +35,7 @@ build_all:
 	$(foreach GOARCH, $(ARCHITECTURES), $(shell export GOOS=$(GOOS); export GOARCH=$(GOARCH); ${BUILD_CMD})))
 
 run:
-	go run -tags="${ALL_TAGS}" ${LDFLAGS} "${PKG_PATH}" --config="${config}" --local-bundle.base-path=tests/testdata/bundles
+	go run -tags="${ALL_TAGS}" ${LDFLAGS} "${PKG_PATH}" --config="${config}" --local-bundle.base-path=tests/testdata/bundles --AllowListFile=tests/testdata/allowlist.json
 
 clean:
 ifeq ($(OS),Windows_NT)
@@ -62,10 +62,10 @@ coverage: TEMPCover := ${Cover}.temp
 coverage:
 	${TEST_CMD} -coverprofile=${TEMPCover} -coverpkg=./...
 ifeq ($(OS),Windows_NT)
-	type ${TEMPCover} | findstr /B /L /V /C:sgtnserver/internal/bindata/bindata.go > ${Cover}
+	type ${TEMPCover} | findstr /B /V ^sgtnserver/internal/bindata/.* > ${Cover}
 	del ${TEMPCover}
 else
-	cat ${TEMPCover} | grep -v sgtnserver/internal/bindata/bindata.go > ${Cover}
+	cat ${TEMPCover} | grep -v -e ^sgtnserver/internal/bindata/.* > ${Cover}
 	rm ${TEMPCover}
 endif
 	go tool cover -html=${Cover} -o coverage.html
@@ -76,6 +76,9 @@ cldr-bindata: downloadgo-bindata
 
 bindata: downloadgo-bindata
 	go generate assets/bindata_generator.go
+
+flag-bindata: downloadgo-bindata
+	go generate assets/flagdata_generator.go
 
 downloadgo-bindata:
 	go get -u github.com/go-bindata/go-bindata/...

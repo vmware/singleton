@@ -22,6 +22,8 @@ type Service interface {
 
 	GetMultipleBundles(ctx context.Context, name, version, localeString, componentString string) (data *Release, err error)
 
+	GetAvailableVersions(ctx context.Context, name string) (data []string, returnErr error)
+
 	GetAvailableLocales(ctx context.Context, name, version string) (data []string, returnErr error)
 
 	GetAvailableComponents(ctx context.Context, name, version string) (data []string, returnErr error)
@@ -29,4 +31,6 @@ type Service interface {
 	PutBundles(ctx context.Context, bundleData []*Bundle) error
 
 	GetTranslationStatus(ctx context.Context, id *BundleID) (map[string]interface{}, error)
+
+	GetTranslation(ctx context.Context, products, versions, locales, components, keys []string) ([]Bundle, error)
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -11,6 +11,10 @@ import (
 
 // Request
 type (
+	ProductName struct {
+		ProductName string `uri:"productName" form:"productName" binding:"alphanum"`
+	}
+
 	ReleaseID struct {
 		ProductName string `uri:"productName" form:"productName" binding:"alphanum"`
 		Version     string `uri:"version" form:"version" binding:"version"`
