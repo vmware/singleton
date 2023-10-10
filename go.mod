@@ -5,7 +5,7 @@ go 1.20
 require (
 	github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751
 	github.com/anargu/gin-brotli v0.0.0-20220116052358-12bf532d5267
-	github.com/aws/aws-sdk-go-v2/service/sts v1.21.2
+	github.com/aws/aws-sdk-go-v2/service/sts v1.23.1
 	github.com/buf1024/golib v0.0.0-20180525093050-357ea6b5733d
 	github.com/dgraph-io/ristretto v0.1.0
 	github.com/emirpasic/gods v1.18.1
