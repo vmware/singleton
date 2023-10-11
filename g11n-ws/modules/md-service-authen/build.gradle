@@ -35,6 +35,7 @@ dependencies {
         exclude group: "org.apache.httpcomponents.client5"
         exclude group: "org.apache.httpcomponents.core5"
         exclude group: "commons-fileupload"
+        exclude group: "org.apache.xmlgraphics"
 	}
     compileOnly("commons-fileupload:commons-fileupload:1.5")
     compileOnly("io.jsonwebtoken:jjwt:$jjwtVersion")
