@@ -106,7 +106,6 @@ public class S3SourceDaoImpl implements SourceDao {
             String updatedVersionId = null;
             if (reqS3Obj == null){
                 content = getOrderBundleJson(componentMessagesDTO);
-               // logger.info(content);
                 if (!s3Client.isObjectExist(bundlePath)){
                     PutObjectResult putResult = s3Client.getS3Client().putObject(config.getBucketName(), bundlePath, content);
                     updatedVersionId = putResult.getVersionId();
@@ -132,7 +131,6 @@ public class S3SourceDaoImpl implements SourceDao {
                 }
                 SingleComponentDTO latestDTO = SourceUtils.mergeCacheWithBundle(componentMessagesDTO, existingBundle);
                 content = getOrderBundleJson(latestDTO);
-                //logger.info(content);
                 VersionListing sourceVersionListing = s3Client.getS3Client().listVersions(lvr);
                 String preVersionId = sourceVersionListing.getVersionSummaries().get(0).getVersionId();
                 if (sourceVersionId.equals(preVersionId)) {
