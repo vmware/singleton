@@ -134,6 +134,11 @@ public class TranslationMessageTest extends BaseTestClass {
         Assert.assertEquals("[a] Test alert", message5);
 
 
+        //test part of versions exsit in Singleton service scenario, that is  service return 207 scenario
+        vipCfg.setVersion("1.0.0, 2.0.0, 3.0.0");
+        String message6 = translation.getMultiVersionMessage(localeDe, "1.0.0", component, key, args);
+        Assert.assertEquals("[a] Test alert", message6);
+
         //restore the 'version' to value in config file
         vipCfg.setVersion(originalVersion);
     }
