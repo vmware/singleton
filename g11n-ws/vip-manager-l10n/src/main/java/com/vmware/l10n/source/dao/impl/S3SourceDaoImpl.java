@@ -1,5 +1,7 @@
-//Copyright 2019-2023 VMware, Inc.
-//SPDX-License-Identifier: EPL-2.0
+/*
+ * Copyright 2019-2023 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
 package com.vmware.l10n.source.dao.impl;
 
 import com.amazonaws.services.s3.model.*;
@@ -82,7 +84,7 @@ public class S3SourceDaoImpl implements SourceDao {
     }
 
     @Override
-    public boolean updateToBundle(ComponentMessagesDTO componentMessagesDTO) throws JsonProcessingException{
+    public boolean updateToBundle(ComponentMessagesDTO componentMessagesDTO) throws IOException{
 
         String bundlePath = getBundleFilePath(basePath, componentMessagesDTO);
         ListVersionsRequest lvr = new ListVersionsRequest();
@@ -127,7 +129,7 @@ public class S3SourceDaoImpl implements SourceDao {
                     existingBundle = convertS3Obj2Str(reqS3Obj);
                 } catch (IOException e) {
                     logger.error(e.getMessage(), e);
-                    throw new RuntimeException(e.getMessage(), e);
+                    throw e;
                 }
                 SingleComponentDTO latestDTO = SourceUtils.mergeCacheWithBundle(componentMessagesDTO, existingBundle);
                 content = getOrderBundleJson(latestDTO);
