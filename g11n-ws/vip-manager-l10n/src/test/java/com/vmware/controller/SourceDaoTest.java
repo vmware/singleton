@@ -4,9 +4,11 @@
  */
 package com.vmware.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.logging.log4j.core.util.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -31,7 +33,7 @@ public class SourceDaoTest {
 
 	
 @Test
-public void  test001() throws Exception {
+public void  test001() throws IOException {
 	SourceDao sourceDao = webApplicationContext.getBean(SourceDao.class);	
 	ComponentMessagesDTO single= new ComponentMessagesDTO();
 	
@@ -50,8 +52,8 @@ public void  test001() throws Exception {
 	map.put("dc.unittest.new", "this is unit test new value");
 	
 	sourceDao.updateToBundle(single);
-	
-	sourceDao.getFromBundle(single);
+
+	Assert.isNonEmpty(sourceDao.getFromBundle(single));
 	
 }
 	
