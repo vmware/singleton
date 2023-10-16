@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.logging.log4j.core.util.Assert;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -53,7 +53,7 @@ public void  test001() throws IOException {
 	
 	sourceDao.updateToBundle(single);
 
-	Assert.isNonEmpty(sourceDao.getFromBundle(single));
+	Assert.assertNotNull(sourceDao.getFromBundle(single));
 	
 }
 	
