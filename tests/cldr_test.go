@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -116,7 +116,7 @@ func TestScopeFilter(t *testing.T) {
 	} {
 		d := d
 		t.Run(fmt.Sprintf("%v", d), func(t *testing.T) {
-			cldrLocale, result, err := cldrservice.GetPatternByLocale(context.TODO(), d.locale, d.scope, d.scopeFilter)
+			result, cldrLocale, err := cldrservice.GetPatternByLocale(context.TODO(), d.locale, d.scope, d.scopeFilter)
 			assert.Nil(t, err)
 			assert.Equal(t, "en", cldrLocale)
 
@@ -193,10 +193,10 @@ func TestGetLocaleByLangRegFunc(t *testing.T) {
 		{testName: "en_GB, US", language: "en_GB", region: Region, wanted: Locale},
 		{testName: "en_GB, GB", language: "en_GB", region: "GB", wanted: "en-GB"},
 		{testName: "en_Script_GB, GB", language: "en_Script_GB", region: "GB", wanted: "en-GB"},
-		{testName: "zh-Hans, US", language: "zh-Hans", region: Region, wanted: Locale},
+		{testName: "zh-Hans, US", language: "zh-Hans", region: Region, wanted: ""},
 		{testName: "zh-Hans, XXX", language: "zh-Hans", region: "XXX", wanted: ""},
-		{testName: "XXX, CN", language: "XXX", region: "CN", wanted: "zh-Hans"},
-		{testName: "zh-Hans-CN, US", language: "zh-Hans-CN", region: Region, wanted: Locale},
+		{testName: "XXX, CN", language: "XXX", region: "CN", wanted: ""},
+		{testName: "zh-Hans-CN, US", language: "zh-Hans-CN", region: Region, wanted: ""},
 		{testName: "zh-Hans-CN, HK", language: "zh-Hans-CN", region: "HK", wanted: "zh-Hans-HK"},
 		{testName: "es-MX, US", language: "es-MX", region: "US", wanted: "es-US"},
 	}

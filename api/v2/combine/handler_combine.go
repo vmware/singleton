@@ -230,7 +230,7 @@ func doGetCombinedData(c *gin.Context, params *translationWithPatternReq) {
 		transData, translationError = transApi.GetService(params.Pseudo).GetMultipleBundles(ctx, params.ProductName, params.Version, params.Language, params.Components)
 	// get pattern use parameter: language, scope, get the translation use parameters language, productName, version, component
 	case 2:
-		localeToSet, patternDataMap, patternError = cldrservice.GetPatternByLocale(ctx, params.Language, params.Scope, params.ScopeFilter)
+		patternDataMap, localeToSet, patternError = cldrservice.GetPatternByLocale(ctx, params.Language, params.Scope, params.ScopeFilter)
 		if localeToSet != "" && len(patternDataMap) > 0 {
 			parts := strings.Split(localeToSet, cldr.LocalePartSep)
 			language = parts[0]

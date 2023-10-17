@@ -40,7 +40,7 @@ func GetPatternData(c *gin.Context) {
 	}
 
 	ctx := logger.NewContext(c, c.MustGet(api.LoggerKey))
-	cldrLocale, dataMap, err := cldrservice.GetPatternByLocale(ctx, params.Locale, params.Scope, params.ScopeFilter)
+	dataMap, cldrLocale, err := cldrservice.GetPatternByLocale(ctx, params.Locale, params.Scope, params.ScopeFilter)
 	var data interface{}
 	if len(dataMap) > 0 {
 		parts := strings.Split(cldrLocale, cldr.LocalePartSep)
