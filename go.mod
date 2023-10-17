@@ -17,7 +17,7 @@ require (
 	github.com/go-http-utils/headers v0.0.0-20181008091004-fed159eddc2a
 	github.com/go-playground/locales v0.14.1
 	github.com/go-playground/universal-translator v0.18.1
-	github.com/go-playground/validator/v10 v10.15.1
+	github.com/go-playground/validator/v10 v10.15.5
 	github.com/go-test/deep v1.0.8
 	github.com/golang/mock v1.6.0
 	github.com/hashicorp/go-multierror v1.1.1
