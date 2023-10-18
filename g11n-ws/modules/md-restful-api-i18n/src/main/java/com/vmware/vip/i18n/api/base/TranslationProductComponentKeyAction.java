@@ -5,8 +5,10 @@
 package com.vmware.vip.i18n.api.base;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -151,7 +153,7 @@ public class TranslationProductComponentKeyAction extends BaseAction {
 
 		String[] keyArr = null;
 		if(keys.contains(ConstantsChar.COMMA)) {
-			keyArr = keys.split(ConstantsChar.COMMA);
+			keyArr = Arrays.stream(keys.split(ConstantsChar.COMMA)).distinct().toArray(size -> new String[size]);
 		}else {
 			keyArr = new String[]{keys};
 		}
