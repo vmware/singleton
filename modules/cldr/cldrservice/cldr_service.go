@@ -7,7 +7,6 @@ package cldrservice
 
 import (
 	"context"
-	"regexp"
 	"strings"
 
 	"sgtnserver/internal/common"
@@ -24,10 +23,8 @@ import (
 )
 
 var (
-	ArgSplitter = regexp.MustCompile(`\s*` + common.ParamSep + `\s*`)
-
-	// categoriesFromLanguage these are always form language
-	categoriesFromLanguage = hashset.New(cldr.PatternDateFields, cldr.PatternPlurals, cldr.PatternMeasurements, cldr.PatternCurrencies)
+	// categoriesFromLanguage these categories are from language when combined locale is invalid
+	categoriesFromLanguage = hashset.New(cldr.PatternDateFields, cldr.PatternPlurals, cldr.PatternMeasurements)
 
 	// categoriesWithSupplement Need to get some extra data for these categories for front end requirements
 	categoriesWithSupplement = map[string]cldr.CoreDataType{
@@ -36,9 +33,9 @@ var (
 		cldr.PatternDates:      cldr.CoreSplmtDates,
 	}
 
-	// categoriesNeedOtherCategories these categories need other categories for front end requirements
+	// categoriesNeedOtherCategories these categories need other categories for frontend requirements
 	categoriesNeedOtherCategories = map[string][]string{
-		cldr.PatternCurrencies:   {cldr.PatternNumbers},
+		cldr.PatternCurrencies:   {cldr.PatternPlurals, cldr.PatternNumbers},
 		cldr.PatternPlurals:      {cldr.PatternNumbers},
 		cldr.PatternDateFields:   {cldr.PatternPlurals, cldr.PatternNumbers},
 		cldr.PatternMeasurements: {cldr.PatternPlurals, cldr.PatternNumbers},
@@ -54,18 +51,30 @@ func GetPatternByLangReg(ctx context.Context, language, region, catgs, filter st
 	log := logger.FromContext(ctx)
 	log.Debug("Get pattern by language and region", zap.String("language", language), zap.String("region", region), zap.String("scope", catgs), zap.String("scopeFilter", filter))
 
-	combinedLocale := coreutil.GetLocaleByLangReg(language, region)
-	normalizedLanguage := coreutil.GetCLDRLocale(language)
+	var combinedLocale, normalizedLanguage, regionDefaultLocale string
+	combinedLocale = coreutil.GetLocaleByLangReg(language, region)
+	if combinedLocale != "" {
+		return GetPatternByLocale(ctx, combinedLocale, catgs, filter)
+	}
+
+	normalizedLanguage = coreutil.GetCLDRLocale(language)
+	regionDefaultLocale = coreutil.GetRegionDefaultLocale(region)
+	if normalizedLanguage == "" && regionDefaultLocale == "" {
+		err = sgtnerror.StatusNotFound.WithUserMessage("no valid locale for language '%s' and region '%s'", language, region)
+		log.Error(err.Error())
+		return nil, "", err
+	}
+
 	var returnErr *sgtnerror.MultiError
 
 	catgFromLanguageSize := 0
 	resultMap = map[string]interface{}{}
-	categories := ArgSplitter.Split(catgs, -1)
+	categories := common.ParamSepSplitRegexp.Split(catgs, -1)
 	for i := 0; i < len(categories); i++ {
 		catg := categories[i]
 		var catgData jsoniter.Any
 		var err error
-		if categoriesFromLanguage.Contains(catg) { // dateFields and Plural always follow language
+		if categoriesFromLanguage.Contains(catg) {
 			if normalizedLanguage == "" {
 				err = sgtnerror.StatusBadRequest.WithUserMessage(cldr.InvalidLocale, language)
 				log.Error(err.Error())
@@ -73,11 +82,11 @@ func GetPatternByLangReg(ctx context.Context, language, region, catgs, filter st
 				catgFromLanguageSize++
 			}
 		} else {
-			if combinedLocale == "" {
-				err = sgtnerror.StatusBadRequest.WithUserMessage("Can't get a locale ID with '%s' and '%s'", language, region)
+			if regionDefaultLocale == "" {
+				err = sgtnerror.StatusBadRequest.WithUserMessage("invalid region '%s'", region)
 				log.Error(err.Error())
 			} else {
-				catgData, err = localeutil.GetPatternData(ctx, combinedLocale, catg)
+				catgData, err = localeutil.GetPatternData(ctx, regionDefaultLocale, catg)
 			}
 		}
 		returnErr = sgtnerror.Append(returnErr, err)
@@ -90,33 +99,32 @@ func GetPatternByLangReg(ctx context.Context, language, region, catgs, filter st
 	resultMap = processFilters(resultMap, filter)
 	getSupplementalData(ctx, resultMap, returnErr)
 
-	localeToSet := combinedLocale
+	localeToSet := ""
 	switch {
 	case len(resultMap) == 0:
-		localeToSet = ""
 	case catgFromLanguageSize == len(resultMap):
 		localeToSet = normalizedLanguage
-	case catgFromLanguageSize != 0 && combinedLocale != normalizedLanguage:
-		localeToSet = ""
+	case catgFromLanguageSize == 0:
+		localeToSet = regionDefaultLocale
 	}
 
 	return resultMap, localeToSet, returnErr.ErrorOrNil()
 }
 
-func GetPatternByLocale(ctx context.Context, locale, catgs, filter string) (newLocale string, resultMap map[string]interface{}, err error) {
+func GetPatternByLocale(ctx context.Context, locale, catgs, filter string) (resultMap map[string]interface{}, newLocale string, err error) {
 	log := logger.FromContext(ctx)
 	log.Debug("Get pattern by locale", zap.String("locale", locale), zap.String("scope", catgs), zap.String("scopeFilter", filter))
 	newLocale = coreutil.GetCLDRLocale(locale)
 	if newLocale == "" {
 		err := sgtnerror.StatusBadRequest.WithUserMessage(cldr.InvalidLocale, locale)
 		log.Error(err.Error())
-		return "", nil, err
+		return nil, "", err
 	}
 
 	var returnErr *sgtnerror.MultiError
 
 	resultMap = map[string]interface{}{}
-	categories := ArgSplitter.Split(catgs, -1)
+	categories := common.ParamSepSplitRegexp.Split(catgs, -1)
 	for i := 0; i < len(categories); i++ {
 		catg := categories[i]
 		catgData, err := localeutil.GetPatternData(ctx, newLocale, catg)
@@ -130,7 +138,7 @@ func GetPatternByLocale(ctx context.Context, locale, catgs, filter string) (newL
 	resultMap = processFilters(resultMap, filter)
 	getSupplementalData(ctx, resultMap, returnErr)
 
-	return newLocale, resultMap, returnErr.ErrorOrNil()
+	return resultMap, newLocale, returnErr.ErrorOrNil()
 }
 
 func getSupplementalData(ctx context.Context, resultMap map[string]interface{}, returnErr *sgtnerror.MultiError) {

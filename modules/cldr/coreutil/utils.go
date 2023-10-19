@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -100,9 +100,13 @@ func GetLocaleByLangReg(language, region string) string {
 		}
 	}
 
+	return ""
+}
+
+func GetRegionDefaultLocale(region string) string {
 	langFromRegion := RegionToLangMap[strings.ToUpper(region)]
 	if langFromRegion != "" {
-		locale = langFromRegion + cldr.LocalePartSep + region
+		locale := langFromRegion + cldr.LocalePartSep + region
 		return GetCLDRLocale(locale)
 	}
 
