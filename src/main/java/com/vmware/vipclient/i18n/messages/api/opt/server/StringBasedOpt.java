@@ -116,7 +116,7 @@ public class StringBasedOpt extends BaseOpt implements Opt, KeyBasedOpt {
         return status;
     }
 
-    public void getMultiVersionKeyMessages(MessageCacheItem cacheItem) {
+    public void fetchMultiVersionKeyMessages(MessageCacheItem cacheItem) {
         String url = V2URL.getMultiVersionKeyTranslationURL(this.dto,
                 VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());
 

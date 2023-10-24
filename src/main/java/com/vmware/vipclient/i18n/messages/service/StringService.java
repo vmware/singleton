@@ -117,15 +117,6 @@ public class StringService {
         return r;
     }
 
-    public ComponentService.TranslationsDTO getMultiVersionKeyTranslations(String version) {
-        Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
-        return this.getMultiVersionKeyTranslations(version, fallbackLocalesIter);
-    }
-
-    public ComponentService.TranslationsDTO getMultiVersionKeyTranslations(String version, Iterator<Locale> fallbackLocalesIter) {
-        return this.getMultiVersionKeyCacheItem(version, fallbackLocalesIter);
-    }
-
     public ComponentService.TranslationsDTO getMultiVersionKeyCacheItem(String version, Iterator<Locale> fallbackLocalesIter) {
         MessagesDTO dto4LocaleList = new MessagesDTO(this.dto);
         dto4LocaleList.setVersion(version);
@@ -141,7 +132,6 @@ public class StringService {
         } else { // Item is not in cache.
             cacheItem = createMultiVersionKeyCacheItem(dto4LocaleList); // Fetch for the requested locale from data store, create cacheItem and store in cache
             if (cacheItem.getCachedData().isEmpty()) {  // Failed to fetch messages for the requested locale
-                //Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
                 return getFallbackLocaleMessages(version, fallbackLocalesIter);
             }
         }
@@ -189,7 +179,7 @@ public class StringService {
             if (dataSource.equals(DataSourceEnum.VIP) && dto.getLocale().equals(ConstantsKeys.SOURCE)) {
                 dto.setLocale(ConstantsKeys.LATEST);
             }
-            dataSource.createKeyBasedOpt(dto).getMultiVersionKeyMessages(cacheItem);
+            dataSource.createKeyBasedOpt(dto).fetchMultiVersionKeyMessages(cacheItem);
             long timestamp = cacheItem.getTimestamp();
             if (timestampOld == timestamp) {
                 logger.debug(FormatUtils.format(ConstantsMsg.GET_MULTI_VERSION_KEY_MESSAGES_FAILED, dto.getVersion(), dto.getComponent(), dto.getLocale(), dto.getKey(), dataSource.toString()));

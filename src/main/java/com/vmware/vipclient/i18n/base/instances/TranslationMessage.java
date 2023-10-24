@@ -115,7 +115,14 @@ public class TranslationMessage implements Message {
         return getMessageWithArgs(resourceBundle, locale, component, key, args);
     }
 
-    private String getMessageWithArgs(String resourceBundle, final Locale locale, final String component, final String key, final Object args) {
+    private String getMessageWithArgs(String resourceBundle, Locale locale, final String component, final String key, final Object args) {
+        if(locale == null){
+            locale = LocaleUtility.getDefaultLocale();
+        }
+        if(StringUtil.isEmpty(component)){
+            throw new VIPJavaClientException(ConstantsMsg.COMPONENT_CANNOT_EMPTY);
+        }
+
         // Use source message if the message hasn't been collected/translated
         String source = null;
         try {
@@ -130,12 +137,7 @@ public class TranslationMessage implements Message {
                 return FormatUtils.formatMsg(source, LocaleUtility.getSourceLocale(), args);
             }
         }
-        if(locale == null){
-            throw new VIPJavaClientException(ConstantsMsg.LOCALE_CANNOT_NULL);
-        }
-        if(StringUtil.isEmpty(component)){
-            throw new VIPJavaClientException(ConstantsMsg.COMPONENT_CANNOT_EMPTY);
-        }
+
         ComponentService.TranslationsDTO msgsItemDTO = getMessages(locale, component, true);
         String message = msgsItemDTO.getMessages().get(key);
         if (message == null || message.isEmpty()) {
@@ -175,7 +177,14 @@ public class TranslationMessage implements Message {
         return getMultiVersionMessageWithArgs(null, locale, version, component, key, args);
     }
 
-    private String getMultiVersionMessageWithArgs(String resourceBundle, final Locale locale, final String version, final String component, final String key, final Object args) {
+    private String getMultiVersionMessageWithArgs(String resourceBundle, Locale locale, final String version, final String component, final String key, final Object args) {
+        if(locale == null){
+            locale = LocaleUtility.getDefaultLocale();
+        }
+        if(StringUtil.isEmpty(component)){
+            throw new VIPJavaClientException(ConstantsMsg.COMPONENT_CANNOT_EMPTY);
+        }
+
         // Use source message if the message hasn't been collected/translated
         String source = null;
         try {
@@ -190,12 +199,7 @@ public class TranslationMessage implements Message {
                 return FormatUtils.formatMsg(source, LocaleUtility.getSourceLocale(), args);
             }
         }
-        if(locale == null){
-            throw new VIPJavaClientException(ConstantsMsg.LOCALE_CANNOT_NULL);
-        }
-        if(StringUtil.isEmpty(component)){
-            throw new VIPJavaClientException(ConstantsMsg.COMPONENT_CANNOT_EMPTY);
-        }
+
         ComponentService.TranslationsDTO msgsItemDTO = getMultiVersionMessagesOfKey(locale, version, component, key,true);
         String message = msgsItemDTO.getMessages().get(version);
         if (message == null || message.isEmpty()) {
@@ -544,10 +548,13 @@ public class TranslationMessage implements Message {
 
     private ComponentService.TranslationsDTO getMultiVersionMessagesOfKey(final Locale locale, final String version, final String component, final String key, boolean useLocaleFallback) {
         MessagesDTO dto = new MessagesDTO(component, key, null, locale.toLanguageTag(), this.cfg);
-        if (useLocaleFallback)
-            return new StringService(dto).getMultiVersionKeyTranslations(version);
-        else
-            return new StringService(dto).getMultiVersionKeyTranslations(version, null);
+        StringService stringService = new StringService(dto);
+        if (useLocaleFallback) {
+            Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
+            return stringService.getMultiVersionKeyCacheItem(version, fallbackLocalesIter);
+        }else {
+            return stringService.getMultiVersionKeyCacheItem(version, null);
+        }
     }
 
     /**
