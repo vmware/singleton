@@ -132,6 +132,62 @@
 					]
 				},
 				{
+					"name": "get_translation_products__productName__versionlist",
+					"path": "/i18n/api/v2/translation/products/{productName}/versionlist",
+					"description": "Get available versions of a product",
+					"method": "get",
+					"params": [{
+							"name": "productName",
+							"required": true,
+							"desc": "",
+							"paramType": "path",
+							"dataType": "string"
+						}
+					]
+				},
+				{
+					"name": "get_translation_products__productName__multiVersionKey",
+					"path": "/i18n/api/v2/translation/products/{productName}/multiVersionKey",
+					"description": "Get translation strings of the same key in multiple versions of a product",
+					"method": "get",
+					"params": [{
+							"name": "productName",
+							"required": true,
+							"desc": "",
+							"paramType": "path",
+							"dataType": "string"
+						},
+						{
+							"name": "versions",
+							"required": true,
+							"desc": "",
+							"paramType": "query",
+							"dataType": "string"
+						},
+						{
+							"name": "component",
+							"required": true,
+							"desc": "",
+							"paramType": "query",
+							"dataType": "string"
+						},
+						{
+							"name": "locale",
+							"required": true,
+							"desc": "",
+							"paramType": "query",
+							"dataType": "string"
+						},
+						{
+							"name": "key",
+							"required": true,
+							"desc": "",
+							"paramType": "query",
+							"dataType": "string"
+						}
+					]
+				},
+				{
 					"name": "get_translation_products__productName__versions__version__localelist",
 					"path": "/i18n/api/v2/translation/products/{productName}/versions/{version}/localelist",
 					"description": "Get a locale list which contains all suppported locale by the specific version.",
@@ -436,6 +492,90 @@
 					{
 						"name": "source",
 						"required": true,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "string"
+					},
+					{
+						"name": "commentForSource",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "string"
+					},
+					{
+						"name": "sourceFormat",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "string"
+					},
+					{
+						"name": "collectSource",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "string"
+					},
+					{
+						"name": "pseudo",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "boolean"
+					},
+					{
+						"name": "sourceFormat",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "string"
+					}
+				]
+			},
+			{
+				"name": "get_translation_products__productName__versions__version__locales__locale__components__component__keys",
+				"path": "/i18n/api/v2//translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys",
+				"description": "Get multiple translations together by their keys",
+				"method": "get",
+				"params": [{
+						"name": "productName",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "version",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "locale",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "component",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "keys",
+						"required": true,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "string"
+					},
+					{
+						"name": "source",
+						"required": false,
 						"desc": "",
 						"paramType": "query",
 						"dataType": "string"
@@ -792,15 +932,46 @@
 			}]
 		},
 		{
+			"name": "countryflag-api",
+			"apis": [{
+				"name": "get_image_countryFlag",
+				"path": "/i18n/api/v2//image/countryFlag",
+				"description": "Get the svg image of a country flag",
+				"method": "get",
+				"params": [{
+						"name": "region",
+						"required": true,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "string"
+					},
+					{
+						"name": "scale",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "integer"
+					},
+					{
+						"name": "type",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "string"
+					}
+				]
+			}]
+		},
+		{
 			"name": "about-version-api",
 			"apis": [{
-				"name": "getVersionInfoUsingGET",
+				"name": "get_about_version",
 				"path": "/i18n/api/v2/about/version",
-				"description": "Get the build's version information",
+				"description": "Get service build and translation bundle information",
 				"method": "get",
 				"params": [{
 						"name": "productName",
-						"required": false,
+						"required": false,  
 						"desc": "",
 						"paramType": "query",
 						"dataType": "string"
