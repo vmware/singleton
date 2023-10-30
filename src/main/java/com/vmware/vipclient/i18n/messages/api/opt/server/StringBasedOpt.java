@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
+import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.messages.api.opt.KeyBasedOpt;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -141,7 +142,7 @@ public class StringBasedOpt extends BaseOpt implements Opt, KeyBasedOpt {
                 JSONObject respObj = (JSONObject) JSONValue.parse((String) response.get(URLUtils.BODY));
                 try {
                     int businessCode = getResponseCode(respObj);
-                    if (businessCode == 200) {
+                    if (isSuccess(businessCode)) {
                         JSONArray dataArray = (JSONArray) this.getDataPart(respObj);
                         Map<String,String> messages = new HashMap<>();
                         for(Object obj : dataArray){
@@ -152,7 +153,7 @@ public class StringBasedOpt extends BaseOpt implements Opt, KeyBasedOpt {
                             cacheItem.setCacheItem(messages, etag, timestamp, maxAgeMillis);
                         }
                     }else{
-                        logger.warn("Failed to get messages from Singleton service, error message: " + getResponseMessage(respObj));
+                        logger.warn(String.format(ConstantsMsg.SERVER_RETURN_ERROR, businessCode,  getResponseMessage(respObj)));
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
