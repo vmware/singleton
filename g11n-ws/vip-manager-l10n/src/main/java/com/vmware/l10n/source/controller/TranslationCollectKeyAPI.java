@@ -6,24 +6,23 @@ package com.vmware.l10n.source.controller;
 
 import java.util.List;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.vmware.vip.common.i18n.status.APIResponseStatus;
+import com.vmware.vip.common.i18n.status.Response;
 import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.servlet.http.HttpServletRequest;
 
 import com.vmware.vip.common.utils.SourceFormatUtils;
+import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.vmware.l10n.source.dto.SourceAPIResponseDTO;
 import com.vmware.l10n.source.service.SourceService;
@@ -238,7 +237,18 @@ public class TranslationCollectKeyAPI {
 	
 		return SourceUtils.handleSourceResponse(true); 
 	}
-	
-	
+
+	@ExceptionHandler(HttpMessageNotReadableException.class)
+	public void handleRequestBodyNull(HttpServletResponse resp){
+		Response respObj =  new Response(APIResponseStatus.BAD_REQUEST.getCode(), ValidationMsg.SOURCE_NOT_SUPPORT_NULL);
+		resp.setContentType("application/json;charset=utf-8");
+		try {
+			resp.getWriter().write(
+					new ObjectMapper().writerWithDefaultPrettyPrinter()
+							.writeValueAsString(respObj));
+		} catch (Exception e) {
+			logger.error(e.getMessage(),e);
+		}
+	}
 
 }
