@@ -176,11 +176,11 @@ func (b *LocalBundle) GetVersionInfo(ctx context.Context, name, version string) 
 	if err == nil {
 		return
 	}
-	
+
 	if os.IsNotExist(err) {
-		err = sgtnerror.StatusNotFound.WrapErrorWithMessage(err, translation.FailToReadFile)
+		err = sgtnerror.StatusNotFound.WrapErrorWithMessage(err, translation.FailToReadFile, filePath)
 	} else {
-		err = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, translation.FailToReadFile)
+		err = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, translation.FailToReadFile, filePath)
 	}
 	logger.FromContext(ctx).Error(err.Error())
 

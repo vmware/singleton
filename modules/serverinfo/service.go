@@ -10,6 +10,7 @@ import (
 
 	"sgtnserver/internal/bindata"
 	"sgtnserver/internal/logger"
+	"sgtnserver/internal/sgtnerror"
 
 	"go.uber.org/zap"
 	"gopkg.in/yaml.v3"
@@ -27,11 +28,14 @@ type serverInfo struct {
 
 var (
 	filePath = "info.yaml"
-	info     serverInfo
+	info     *serverInfo
 )
 
-func GetServerInfo(_ctx context.Context) interface{} {
-	return info
+func GetServerInfo(_ctx context.Context) (interface{}, error) {
+	if info == nil {
+		return nil, sgtnerror.StatusNotFound.WithUserMessage("service infomation is unavailable")
+	}
+	return info, nil
 }
 
 func init() {
