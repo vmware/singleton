@@ -175,9 +175,9 @@ func (b *S3Bundle) ReadJSONFile(ctx context.Context, filePath string, data inter
 
 	var noSuchKeyErr *types.NoSuchKey
 	if errors.As(err, &noSuchKeyErr) {
-		err = sgtnerror.StatusNotFound.WrapErrorWithMessage(err, translation.FailToReadFile, *filePath)
+		err = sgtnerror.StatusNotFound.WrapErrorWithMessage(err, translation.FailToReadFile, filePath)
 	} else {
-		err = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, translation.FailToReadFile, *filePath)
+		err = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, translation.FailToReadFile, filePath)
 	}
 	logger.FromContext(ctx).Error(err.Error())
 
