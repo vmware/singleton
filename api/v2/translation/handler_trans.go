@@ -31,6 +31,32 @@ func GetService(pseudo bool) translation.Service {
 	}
 }
 
+// GetProductVersions godoc
+// @Summary Get available versions of a product
+// @Description Get available versions of a product
+// @Tags translation-product-api
+// @Produce json
+// @Param productName path string true "product name"
+// @Success 200 {object} api.Response "OK"
+// @Failure 400 {string} string "Bad Request"
+// @Failure 404 {string} string "Not Found"
+// @Failure 500 {string} string "Internal Server Error"
+// @Router /translation/products/{productName}/versionlist [get]
+func GetProductVersions(c *gin.Context) {
+	params := ProductName{}
+	if err := api.ExtractParameters(c, &params, nil); err != nil {
+		return
+	}
+
+	versions, err := l3Service.GetAvailableVersions(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.ProductName)
+	if err == nil {
+		data := gin.H{api.ProductNameAPIKey: params.ProductName, api.VersionsAPIKey: versions}
+		api.HandleResponse(c, data, err)
+	} else {
+		api.HandleResponse(c, nil, err)
+	}
+}
+
 // GetAvailableComponents godoc
 // @Summary Get component names
 // @Description Get available component names in the product
@@ -98,7 +124,7 @@ func GetAvailableLocales(c *gin.Context) {
 // @Param components query string false "components"
 // @Param pseudo query boolean false "a flag for returnning pseudo translation" default(false)
 // @Success 200 {object} api.Response "OK"
-// @Success 206 {object} api.Response "Successful Partially"
+// @Success 207 {object} api.Response "Successful Partially"
 // @Failure 400 {string} string "Bad Request"
 // @Failure 404 {string} string "Not Found"
 // @Failure 500 {string} string "Internal Server Error"
@@ -254,6 +280,54 @@ func GetString(c *gin.Context) {
 	api.HandleResponse(c, result, err)
 }
 
+// GetMultiVersionsKey godoc
+// @Summary Get translation strings of the same key in multiple versions of a product
+// @Description Get translation strings of the same key in multiple versions of a product
+// @Tags translation-product-api
+// @Produce json
+// @Param productName path string true "product name"
+// @Param versions query string true "versions to get translation, separated by commas. 'all' means all versions"
+// @Param locale query string true "locale of translation"
+// @Param component query string true "component of translation"
+// @Param key query string true "key of translation"
+// @Success 200 {object} api.Response "OK"
+// @Success 207 {object} api.Response "Successful Partially"
+// @Failure 400 {string} string "Bad Request"
+// @Failure 404 {string} string "Not Found"
+// @Failure 500 {string} string "Internal Server Error"
+// @Router /translation/products/{productName}/multiVersionKey [get]
+func GetMultiVersionsKey(c *gin.Context) {
+	name := ProductName{}
+	params := struct {
+		Versions  string `form:"versions" binding:"versions"`
+		Locale    string `form:"locale" binding:"locale"`
+		Component string `form:"component" binding:"component"`
+		Key       string `form:"key" binding:"key"`
+	}{}
+	if err := api.ExtractParameters(c, &name, &params); err != nil {
+		return
+	}
+
+	var versions []string
+	if params.Versions != api.AllVersions {
+		versions = strings.Split(params.Versions, common.ParamSep)
+	}
+
+	var result []interface{}
+	bundlesMessages, err := l3Service.GetTranslation(logger.NewContext(c, c.MustGet(api.LoggerKey)),
+		[]string{name.ProductName}, versions, []string{params.Locale}, []string{params.Component}, []string{params.Key})
+	for _, bundle := range bundlesMessages {
+		mapMsgs := make(map[string]string)
+		bundle.Messages.ToVal(&mapMsgs)
+		for k, v := range mapMsgs {
+			result = append(result, translation.StringMessage{Name: bundle.ID.Name, Version: bundle.ID.Version,
+				Locale: bundle.ID.Locale, Component: bundle.ID.Component, Key: k, Translation: v})
+		}
+	}
+
+	api.HandleResponse(c, result, err)
+}
+
 // GetStringByPost godoc
 // @Summary Post a source
 // @Description Post a source
@@ -311,7 +385,7 @@ func GetStringByPost(c *gin.Context) {
 // @Param version path string true "version"
 // @Param translationData body UpdateTranslationDTO true "translationData"
 // @Success 200 {object} api.Response "OK"
-// @Success 206 {object} api.Response "Successful Partially"
+// @Success 207 {object} api.Response "Successful Partially"
 // @Failure 400 {string} string "Bad Request"
 // @Failure 404 {string} string "Not Found"
 // @Failure 500 {string} string "Internal Server Error"

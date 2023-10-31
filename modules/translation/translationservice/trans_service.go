@@ -28,6 +28,21 @@ type Service struct {
 	msgOrigin translation.MessageOrigin
 }
 
+// GetAvailableVersions ...
+func (ts Service) GetAvailableVersions(ctx context.Context, name string) (data []string, returnErr error) {
+	log := logger.FromContext(ctx)
+	log.Debug("Get available versions", zap.String(translation.Name, name))
+
+	versions, ok := bundleinfo.GetReleaseNames(name)
+	if !ok {
+		returnErr = sgtnerror.StatusNotFound.WithUserMessage(translation.ProductNonexistent, name)
+		log.Error(returnErr.Error())
+		return nil, returnErr
+	}
+
+	return convertSetToList(versions), nil
+}
+
 // GetAvailableComponents ...
 func (ts Service) GetAvailableComponents(ctx context.Context, name, version string) (data []string, returnErr error) {
 	log := logger.FromContext(ctx)
@@ -372,12 +387,96 @@ func (ts Service) GetVersionInfo(ctx context.Context, name, version string) (dat
 	return ts.msgOrigin.GetVersionInfo(ctx, name, version)
 }
 
+func (ts Service) GetTranslation(ctx context.Context, products, versions, locales, components, keys []string) ([]translation.Bundle, error) {
+	log := logger.FromContext(ctx)
+	log.Debug("Get translation", zap.Strings("products", products), zap.Strings("versions", versions),
+		zap.Strings("locales", locales), zap.Strings("components", components), zap.Strings("keys", keys))
+
+	var returnErr *sgtnerror.MultiError
+	var messages []translation.Bundle
+	var err error
+
+	for _, product := range products {
+		if !bundleinfo.IsProductExist(product) {
+			returnErr = sgtnerror.Append(returnErr, sgtnerror.StatusNotFound.WithUserMessage(translation.ProductNonexistent, product))
+			continue
+		}
+
+		if len(versions) == 0 {
+			if versions, err = ts.GetAvailableVersions(ctx, product); err != nil {
+				returnErr = sgtnerror.Append(returnErr, err)
+				continue
+			}
+		}
+
+		for _, version := range versions {
+			if !bundleinfo.IsReleaseExist(product, version) {
+				returnErr = sgtnerror.Append(returnErr, sgtnerror.StatusNotFound.WithUserMessage(translation.ReleaseNonexistent, product, version))
+				continue
+			}
+
+			var localesEmpty, componentsEmpty bool
+			if len(locales) == 0 {
+				localesEmpty = true
+				if locales, err = ts.GetAvailableLocales(ctx, product, version); err != nil {
+					returnErr = sgtnerror.Append(returnErr, err)
+					continue
+				}
+			}
+			if len(components) == 0 {
+				componentsEmpty = true
+				if components, err = ts.GetAvailableComponents(ctx, product, version); err != nil {
+					returnErr = sgtnerror.Append(returnErr, err)
+					continue
+				}
+			}
+
+			for _, component := range components {
+				if !bundleinfo.IsComponentAvailable(product, version, component) {
+					returnErr = sgtnerror.Append(returnErr, sgtnerror.StatusNotFound.WithUserMessage(translation.ComponentNonexistent, product, version, component))
+					continue
+				}
+
+				for _, locale := range locales {
+					if !bundleinfo.IsLocaleAvailable(product, version, locale) {
+						returnErr = sgtnerror.Append(returnErr, sgtnerror.StatusNotFound.WithUserMessage(translation.LocaleNotSupported, locale, product, version))
+						continue
+					}
+
+					if !bundleinfo.IsBundleExist(&translation.BundleID{Name: product, Version: version, Locale: locale, Component: component}) {
+						if !(localesEmpty || componentsEmpty) {
+							returnErr = sgtnerror.Append(returnErr, sgtnerror.StatusNotFound.WithUserMessage(translation.BundleNonexistent, locale, component))
+						}
+						continue
+					}
+
+					if len(keys) == 0 {
+						bundle, err := ts.GetBundle(ctx, &translation.BundleID{Name: product, Version: version, Locale: locale, Component: component})
+						if err == nil {
+							messages = append(messages, *bundle)
+						}
+						returnErr = sgtnerror.Append(returnErr, err)
+					} else {
+						translationsOfKeys, err := ts.GetStrings(ctx, &translation.BundleID{Name: product, Version: version, Locale: locale, Component: component}, keys)
+						if translationsOfKeys != nil {
+							messages = append(messages, *translationsOfKeys)
+						}
+						returnErr = sgtnerror.Append(returnErr, err)
+					}
+				}
+			}
+		}
+	}
+
+	return messages, returnErr.ErrorOrNil()
+}
+
 var service Service
 
 func newService() Service {
 	logger.Log.Debug("Initialize translation service")
 
-	origin := dao.GetInst()
+	var origin translation.MessageOrigin = dao.GetInst()
 	if config.Settings.Cache.Enable {
 		origin = translationcache.NewCacheManager(origin, cache.NewCache("translation", structs.Map(config.Settings.Cache)))
 	}
@@ -394,4 +493,6 @@ func init() {
 	service = newService()
 
 	initLocaleMap()
+
+	InitAllowList()
 }

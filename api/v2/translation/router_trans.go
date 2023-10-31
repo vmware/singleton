@@ -19,22 +19,26 @@ func (r *translationRouter) Init(e *gin.RouterGroup) {
 
 	tranGroup := e.Group("/translation", HandleAllowList, HandleVersionFallback)
 	{
-		productPart := "/products/:productName/versions/:version"
+		productPart := "/products/:productName"
+		tranGroup.GET(productPart+"/versionlist", GetProductVersions)
+		tranGroup.GET(productPart+"/multiVersionKey", GetMultiVersionsKey)
+
+		productVersionPart := productPart + "/versions/:version"
 
 		// Product APIs
-		tranGroup.GET(productPart, GetMultipleBundles)
+		tranGroup.GET(productVersionPart, GetMultipleBundles)
 
-		tranGroup.GET(productPart+"/localelist", GetAvailableLocales)
-		tranGroup.GET(productPart+"/componentlist", GetAvailableComponents)
+		tranGroup.GET(productVersionPart+"/localelist", GetAvailableLocales)
+		tranGroup.GET(productVersionPart+"/componentlist", GetAvailableComponents)
 
 		// Component API
-		tranGroup.GET(productPart+"/locales/:locale/components/:component", GetBundle)
+		tranGroup.GET(productVersionPart+"/locales/:locale/components/:component", GetBundle)
 
 		// Key API
-		tranGroup.GET(productPart+"/locales/:locale/components/:component/keys/:key", GetString)
+		tranGroup.GET(productVersionPart+"/locales/:locale/components/:component/keys/:key", GetString)
 
 		// Keys API
-		tranGroup.GET(productPart+"/locales/:locale/components/:component/keys", GetStrings)
+		tranGroup.GET(productVersionPart+"/locales/:locale/components/:component/keys", GetStrings)
 	}
 
 	e.POST("/translation/products/:productName/versions/:version/locales/:locale/components/:component/keys/:key", HandleAllowList, GetStringByPost)

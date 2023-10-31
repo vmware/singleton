@@ -46,6 +46,7 @@ const (
 	GetKeyURL                 = BaseURL + "/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key}"
 	GetKeysURL                = BaseURL + "/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys"
 	GetRegionsOfLanguagesURL  = BaseURL + "/locale/regionList"
+	GetVersionsURL            = BaseURL + "/translation/products/{productName}/versionlist"
 )
 const (
 	GetCombinedURL              = BaseURL + "/combination/translationsAndPattern"
@@ -59,9 +60,13 @@ const (
 )
 
 const (
-	Name, Version, Locale, Component = "VPE", "1.0.0", "en", "sunglow"
-	Language, Region                 = "en", "US"
-	Key, Msg                         = "message", "Message-en"
+	Name, Version, Locale, Component, Component2 = "VPE", "1.0.0", "en", "sunglow", "users"
+	Language, Region                             = "en", "US"
+	Key, Msg                                     = "message", "Message-en"
+)
+const (
+	NonexistentProduct = "ocean"
+	DisallowedProduct  = "ABC"
 )
 
 var ID = translation.BundleID{Name: Name, Version: Version, Locale: Locale, Component: Component}

@@ -186,3 +186,7 @@ func (b *LocalBundle) GetVersionInfo(ctx context.Context, name, version string) 
 
 	return
 }
+
+func (b *LocalBundle) ReadJSONFile(_ context.Context, path string, data interface{}) error {
+	return common.ReadJSONFile(path, data)
+}

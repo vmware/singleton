@@ -99,7 +99,7 @@ func (b *S3Bundle) GetBundleInfo(ctx context.Context) (*translation.BundleInfo, 
 // GetBundle ...
 func (b *S3Bundle) GetBundle(ctx context.Context, id *translation.BundleID) (bundle *translation.Bundle, returnErr error) {
 	bf := translation.BundleFile{}
-	err := b.ReadS3JSONFile(ctx, b.GetKey(id), &bf)
+	err := b.ReadJSONFile(ctx, *b.GetKey(id), &bf)
 	if err == nil {
 		if !strings.EqualFold(bf.Locale, id.Locale) || !strings.EqualFold(bf.Component, id.Component) {
 			logger.FromContext(ctx).Error("Bundle file content is wrong!",
@@ -162,8 +162,8 @@ func (b *S3Bundle) createBucket() error {
 	return err
 }
 
-func (b *S3Bundle) ReadS3JSONFile(ctx context.Context, filePath *string, data interface{}) error {
-	input := s3.GetObjectInput{Bucket: b.Bucket, Key: filePath}
+func (b *S3Bundle) ReadJSONFile(ctx context.Context, filePath string, data interface{}) error {
+	input := s3.GetObjectInput{Bucket: b.Bucket, Key: &filePath}
 	output, err := GetS3Client(b.Config).GetObject(ctx, &input)
 	if err == nil {
 		defer output.Body.Close()
@@ -187,6 +187,6 @@ func (b *S3Bundle) ReadS3JSONFile(ctx context.Context, filePath *string, data in
 func (b *S3Bundle) GetVersionInfo(ctx context.Context, name, version string) (data map[string]interface{}, err error) {
 	filePath := b.RootPrefix + name + slash + version + slash + translation.VersionInfoFile
 	data = make(map[string]interface{})
-	err = b.ReadS3JSONFile(ctx, &filePath, &data)
+	err = b.ReadJSONFile(ctx, filePath, &data)
 	return
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -13,6 +13,7 @@ const (
 const (
 	ProductNameAPIKey = "productName"
 	VersionAPIKey     = "version"
+	VersionsAPIKey    = "versions"
 	ComponentAPIKey   = "component"
 	LocaleAPIKey      = "locale"
 	LanguageAPIKey    = "language"
@@ -21,6 +22,10 @@ const (
 	ComponentsAPIKey  = "components"
 	LocalesAPIKey     = "locales"
 	KeyAPIKey         = "key"
+)
+
+const (
+	AllVersions = "all"
 )
 
 const LoggerKey = "logger"

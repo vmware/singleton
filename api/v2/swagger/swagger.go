@@ -24,6 +24,7 @@ import (
 // @tag.name formatting-api
 // @tag.name formatting-pattern-api
 // @tag.name locale-api
+// @tag.name countryflag-api
 // @tag.name translation-product-api
 // @tag.name translation-product-component-api
 // @tag.name translation-product-component-key-api
