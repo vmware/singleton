@@ -18,7 +18,7 @@ public class LocalKeyBasedOpt extends BaseOpt implements Opt, KeyBasedOpt {
     }
 
     @Override
-    public void getMultiVersionKeyMessages(MessageCacheItem cacheItem) {
+    public void fetchMultiVersionKeyMessages(MessageCacheItem cacheItem) {
         //TODO
         logger.info(dto.getVersion());
     }

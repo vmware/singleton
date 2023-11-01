@@ -28,7 +28,7 @@ import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class StringService {
+public class StringService extends BaseService{
     Logger              logger = LoggerFactory.getLogger(StringService.class);
 
     private MessagesDTO dto    = null;
@@ -117,15 +117,6 @@ public class StringService {
         return r;
     }
 
-    public ComponentService.TranslationsDTO getMultiVersionKeyTranslations(String version) {
-        Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
-        return this.getMultiVersionKeyTranslations(version, fallbackLocalesIter);
-    }
-
-    public ComponentService.TranslationsDTO getMultiVersionKeyTranslations(String version, Iterator<Locale> fallbackLocalesIter) {
-        return this.getMultiVersionKeyCacheItem(version, fallbackLocalesIter);
-    }
-
     public ComponentService.TranslationsDTO getMultiVersionKeyCacheItem(String version, Iterator<Locale> fallbackLocalesIter) {
         MessagesDTO dto4LocaleList = new MessagesDTO(this.dto);
         dto4LocaleList.setVersion(version);
@@ -141,7 +132,6 @@ public class StringService {
         } else { // Item is not in cache.
             cacheItem = createMultiVersionKeyCacheItem(dto4LocaleList); // Fetch for the requested locale from data store, create cacheItem and store in cache
             if (cacheItem.getCachedData().isEmpty()) {  // Failed to fetch messages for the requested locale
-                //Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
                 return getFallbackLocaleMessages(version, fallbackLocalesIter);
             }
         }
@@ -189,7 +179,7 @@ public class StringService {
             if (dataSource.equals(DataSourceEnum.VIP) && dto.getLocale().equals(ConstantsKeys.SOURCE)) {
                 dto.setLocale(ConstantsKeys.LATEST);
             }
-            dataSource.createKeyBasedOpt(dto).getMultiVersionKeyMessages(cacheItem);
+            dataSource.createKeyBasedOpt(dto).fetchMultiVersionKeyMessages(cacheItem);
             long timestamp = cacheItem.getTimestamp();
             if (timestampOld == timestamp) {
                 logger.debug(FormatUtils.format(ConstantsMsg.GET_MULTI_VERSION_KEY_MESSAGES_FAILED, dto.getVersion(), dto.getComponent(), dto.getLocale(), dto.getKey(), dataSource.toString()));
@@ -212,28 +202,5 @@ public class StringService {
             }
         };
         new Thread(runnable).start();
-    }
-
-    public void doLocaleMatching(MessagesDTO dto) {
-        dto.setLocale(LocaleUtility.fmtToMappedLocale(dto.getLocale()).toLanguageTag());
-
-        //Match against list of supported locales that is already in the cache
-        Set<Locale> supportedLocales = LocaleUtility.langTagtoLocaleSet(new ProductService(dto).getCachedSupportedLocales());
-        Locale matchedLocale = LocaleUtility.pickupLocaleFromList(supportedLocales, Locale.forLanguageTag(dto.getLocale()));
-        if (matchedLocale != null) { // Requested locale matches a supported locale (eg. requested locale "fr_CA matches supported locale "fr")
-            dto.setLocale(matchedLocale.toLanguageTag());
-        }
-    }
-
-    private boolean proceed(MessagesDTO dto4LocaleList, DataSourceEnum dataSource) {
-        ProductService ps = new ProductService(dto4LocaleList);
-        Set<String> supportedLocales = ps.getCachedSupportedLocales(dataSource);
-        logger.debug("supported languages: [{}]", supportedLocales);
-
-        /*
-         * Do not block refreshCacheItem if set of supported locales is not in cache (i.e. supportedLocales.isEmpty()).
-         * This happens either when cache is not initialized, OR previous attempts to fetch the set had failed.
-         */
-        return (supportedLocales.isEmpty() || supportedLocales.contains(dto.getLocale()) || ConstantsKeys.SOURCE.equals(dto.getLocale())|| VIPCfg.getInstance().isPseudo());
     }
 }

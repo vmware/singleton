@@ -7,7 +7,7 @@ package com.vmware.vipclient.i18n.common;
 public class ConstantsMsg {
 
     public static final String WRONG_PARAMETER      = "Wrong parameter(s)! ";
-    public static final String LOCALE_CANNOT_NULL   = "Locale can't be null!";
+    public static final String LOCALE_IS_NULL   = "'locale' is null, use default locale '%s' instead！";
     public static final String COMPONENT_CANNOT_EMPTY   = "Component can't be empty!";
     public static final String EXCEPTION_OCCUR      = "An exception occured! ";
     public static final String SERVER_RETURN_EMPTY  = "Server returned empty.";

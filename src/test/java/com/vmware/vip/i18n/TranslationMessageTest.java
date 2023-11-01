@@ -70,17 +70,23 @@ public class TranslationMessageTest extends BaseTestClass {
 
         this.init();
         vipCfg.setPseudo(false);
+
+        Locale locale0 = null;
+        String message0 = translation.getMessage(locale0, component, key, args);
+        Assert.assertEquals("[a] Test alert", message0);
+
+        Locale locale1 = new Locale("en");
+        String message1 = translation.getMessage(locale1, component, key, args);
+        Assert.assertEquals("[a] Test alert", message1);
+
         Locale locale2 = new Locale("de");
-        
         String message2 = translation.getMessage(locale2, component, key, args);
-       
         Assert.assertEquals("[a] Testwarnung", message2);
 
         this.init();
         vipCfg.setPseudo(false);
         Locale locale3 = Locale.forLanguageTag("zh-Hans");
         String message3 = translation.getMessage(locale3, component, key, args);
-        
         Assert.assertEquals("[a] 测试警示", message3);
 
         Locale locale4 = Locale.forLanguageTag("zh-Hant");
@@ -89,7 +95,6 @@ public class TranslationMessageTest extends BaseTestClass {
 
         Locale locale5 = Locale.forLanguageTag("zh-Hans-CN");
         String message5 = translation.getMessage(locale5, component, key, args);
-       
         Assert.assertEquals("[a] 测试警示", message5);
 
         Locale locale6 = Locale.forLanguageTag("zh-Hant-TW");
@@ -109,6 +114,10 @@ public class TranslationMessageTest extends BaseTestClass {
         Locale localeEn = new Locale("en");
         Locale localeDe = new Locale("de", "DE");
         Locale localeZh = new Locale("zh","CN");
+
+        //test locale is null
+        String message0 = translation.getMultiVersionMessage(null, "1.0.0", component, key, args);
+        Assert.assertEquals("[a] Test alert", message0);
 
         //test getting 'all' version message
         String message1 = translation.getMultiVersionMessage(localeEn, "1.0.0", component, key, args);
@@ -139,7 +148,10 @@ public class TranslationMessageTest extends BaseTestClass {
         String message6 = translation.getMultiVersionMessage(localeDe, "1.0.0", component, key, args);
         Assert.assertEquals("[a] Test alert", message6);
 
-        //restore the 'version' to value in config file
+
+        //restore the 'version' to value in config file to avoid impacting other unit tests
+        //since 'getMultiVersionMessage' can't be called with other methods like 'getMessage' and 'getMessages'
+        //at the same time.
         vipCfg.setVersion(originalVersion);
     }
 
@@ -279,6 +291,10 @@ public class TranslationMessageTest extends BaseTestClass {
         String message_de = "Benutzername";
         String message_zh_CN = "用户名";
         String message_zh_TW = "使用者名稱";
+
+        Map<String, String> retMap0 = translation.getMessages(null, component);
+        Assert.assertEquals(message_en_US, retMap0.get(key));
+
         Map<String, String> retMap1 = translation.getMessages(new Locale("en", "US"), component);
         Assert.assertEquals(message_en_US, retMap1.get(key));
 
