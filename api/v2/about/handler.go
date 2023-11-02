@@ -56,7 +56,7 @@ func GetAboutInfo(c *gin.Context) {
 		}
 	case params.ProductName == "" && version == "":
 	case params.ProductName == "" || version == "":
-		returnErr = sgtnerror.Append(returnErr, sgtnerror.StatusBadRequest.WithUserMessage("ProductName and Version must be provided together"))
+		returnErr = sgtnerror.Append(returnErr, sgtnerror.StatusBadRequest.WithUserMessage("'productName' and 'version' must be provided together"))
 	}
 
 	if len(data) == 0 {
