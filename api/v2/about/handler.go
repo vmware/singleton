@@ -29,8 +29,8 @@ import (
 // @Router /about/version [get]
 func GetAboutInfo(c *gin.Context) {
 	params := struct {
-		ProductName string `form:"productName" binding:"omitempty,alphanum"`
-		Version     string `form:"version" binding:"omitempty,version"`
+		ProductName string `form:"productName" binding:"required_with=Version,omitempty,alphanum"`
+		Version     string `form:"version" binding:"required_with=ProductName,omitempty,version"`
 	}{}
 	if err := api.ExtractParameters(c, nil, &params); err != nil {
 		return
@@ -47,16 +47,12 @@ func GetAboutInfo(c *gin.Context) {
 		data["service"] = serviceInfo
 	}
 
-	switch {
-	case params.ProductName != "" && version != "":
+	if params.ProductName != "" && version != "" {
 		bundleInfo, err := translationservice.GetService().GetVersionInfo(ctx, params.ProductName, version)
 		returnErr = sgtnerror.Append(returnErr, err)
 		if err == nil {
 			data["bundle"] = gin.H{api.ProductNameAPIKey: params.ProductName, api.VersionAPIKey: version, "changeId": bundleInfo["drop_id"]}
 		}
-	case params.ProductName == "" && version == "":
-	case params.ProductName == "" || version == "":
-		returnErr = sgtnerror.Append(returnErr, sgtnerror.StatusBadRequest.WithUserMessage("'productName' and 'version' must be provided together"))
 	}
 
 	if len(data) == 0 {
