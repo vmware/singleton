@@ -38,15 +38,19 @@ func GetAboutInfo(c *gin.Context) {
 
 	version := c.GetString(api.SgtnVersionKey)
 
+	data := gin.H{}
 	var returnErr *sgtnerror.MultiError
 	ctx := logger.NewContext(c, c.MustGet(api.LoggerKey))
-	serviceInfo := serverinfo.GetServerInfo(ctx)
-	data := gin.H{"service": serviceInfo}
+	serviceInfo, serviceErr := serverinfo.GetServerInfo(ctx)
+	returnErr = sgtnerror.Append(returnErr, serviceErr)
+	if serviceErr == nil {
+		data["service"] = serviceInfo
+	}
 	if params.ProductName != "" && version != "" {
-		if bundleInfo, err := translationservice.GetService().GetVersionInfo(ctx, params.ProductName, version); err == nil {
+		bundleInfo, err := translationservice.GetService().GetVersionInfo(ctx, params.ProductName, version)
+		returnErr = sgtnerror.Append(returnErr, err)
+		if err == nil {
 			data["bundle"] = gin.H{api.ProductNameAPIKey: params.ProductName, api.VersionAPIKey: version, "changeId": bundleInfo["drop_id"]}
-		} else {
-			returnErr = sgtnerror.Append(nil, err) // Add nil because service is always successful.
 		}
 	}
 
