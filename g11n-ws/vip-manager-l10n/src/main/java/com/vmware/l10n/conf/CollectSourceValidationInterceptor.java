@@ -193,15 +193,13 @@ public class CollectSourceValidationInterceptor implements HandlerInterceptor {
 
 	private static void validateCollectsource(HttpServletRequest request)
 			throws ValidationException {
-		String collectsource = request
+		String collectSource = request
 				.getParameter(APIParamName.COLLECT_SOURCE) == null ? ConstantsKeys.EMPTY_STRING
 				: request.getParameter(APIParamName.COLLECT_SOURCE);
-		if (StringUtils.isEmpty(collectsource)) {
+		if (StringUtils.isEmpty(collectSource)) {
 			return;
 		}
-		if (!RegExpValidatorUtils.IsTrueOrFalse(collectsource)) {
-			throw new ValidationException(ValidationMsg.COLLECTSOURCE_NOT_VALIDE_L10N);
-		}else if(collectsource.toLowerCase().equals("false")){
+		if (!RegExpValidatorUtils.IsTrueOrFalse(collectSource) || collectSource.toLowerCase().equals("false")) {
 			throw new ValidationException(ValidationMsg.COLLECTSOURCE_NOT_VALIDE_L10N);
 		}
 	}
