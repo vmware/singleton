@@ -26,11 +26,15 @@ dependencies {
     compileOnly ('org.springframework.boot:spring-boot-starter-log4j2')
     compileOnly("commons-codec:commons-codec:$commonsCodecVersion")
     api("com.auth0:java-jwt:3.18.2")
+
     implementation("org.owasp.esapi:esapi:$esapiVersion"){
         exclude group: "org.apache.httpcomponents.client5"
         exclude group: "org.apache.httpcomponents.core5"
         exclude group: "commons-fileupload"
+        exclude group: "org.apache.xmlgraphics"
+        exclude group: "org.owasp.antisamy"
 	}
+
     compileOnly("commons-fileupload:commons-fileupload:1.5")
     compileOnly("io.jsonwebtoken:jjwt:$jjwtVersion")
     compileOnly("org.apache.commons:commons-lang3:$commonsLangVersion")

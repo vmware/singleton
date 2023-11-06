@@ -27,8 +27,10 @@ import java.nio.channels.FileChannel;
 import java.nio.channels.ReadableByteChannel;
 import java.nio.channels.WritableByteChannel;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StreamProductAction extends TranslationProductAction {
     private static byte[] byteComm = (ConstantsChar.COMMA + "\r\n").getBytes();
@@ -93,10 +95,7 @@ public class StreamProductAction extends TranslationProductAction {
         if (StringUtils.isEmpty(components)) {
             componentList = productService.getComponentNameList(productName, versionStr);
         } else {
-            componentList = new ArrayList<String>();
-            for (String component : components.split(",")) {
-                componentList.add(component.trim());
-            }
+            componentList = Arrays.stream(components.split(ConstantsChar.COMMA)).map(comp -> comp.trim()).distinct().collect(Collectors.toList());
         }
 
         return componentList;
