@@ -199,7 +199,7 @@ public class CollectSourceValidationInterceptor implements HandlerInterceptor {
 		if (StringUtils.isEmpty(collectSource)) {
 			return;
 		}
-		if (!RegExpValidatorUtils.IsTrueOrFalse(collectSource) || collectSource.toLowerCase().equals("false")) {
+		if (!RegExpValidatorUtils.IsTrueOrFalse(collectSource) || collectSource.equalsIgnoreCase("false")) {
 			throw new ValidationException(ValidationMsg.COLLECTSOURCE_NOT_VALIDE_L10N);
 		}
 	}
