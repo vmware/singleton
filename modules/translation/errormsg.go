@@ -15,7 +15,7 @@ const (
 	WrongBundleContent   = "wrong data content in %v/%v/%v/%v"
 	FailToStoreBundle    = "fail to store %v/%v/%v/%v"
 	KeyNotFound          = "key '%s' isn't found"
-	FailToReadFile       = "fail to read file"
+	FailToReadFile       = "fail to read file: '%s'"
 	ProductNotSupported  = "product '%v' isn't supported"
 	ComponentNonexistent = "component %s/%s/%s doesn't exist"
 	LocaleNotSupported   = "locale '%s' isn't supported in %s/%s"

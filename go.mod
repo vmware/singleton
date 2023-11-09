@@ -11,7 +11,7 @@ require (
 	github.com/dgraph-io/ristretto v0.1.0
 	github.com/emirpasic/gods v1.18.1
 	github.com/fatih/structs v1.1.0
-	github.com/gavv/httpexpect/v2 v2.3.1
+	github.com/gavv/httpexpect/v2 v2.16.0
 	github.com/gin-contrib/cors v1.4.0
 	github.com/gin-contrib/gzip v0.0.6
 	github.com/gin-gonic/gin v1.9.1
@@ -34,7 +34,7 @@ require (
 	github.com/swaggo/gin-swagger v1.5.0
 	github.com/swaggo/swag v1.16.2
 	github.com/xiaochao8/format v0.1.1
-	go.uber.org/zap v1.25.0
+	go.uber.org/zap v1.26.0
 	golang.org/x/exp v0.0.0-20230522175609-2e198f4a06a1
 	golang.org/x/text v0.13.0
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0
@@ -42,12 +42,22 @@ require (
 )
 
 require (
+	github.com/TylerBrock/colorjson v0.0.0-20200706003622-8a50f05110d2 // indirect
 	github.com/bytedance/sonic v1.9.1 // indirect
 	github.com/chenzhuoyu/base64x v0.0.0-20221115062448-fe3a3abad311 // indirect
+	github.com/fatih/color v1.15.0 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.2 // indirect
+	github.com/gobwas/glob v0.2.3 // indirect
+	github.com/hpcloud/tail v1.0.0 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.4 // indirect
+	github.com/mattn/go-colorable v0.1.13 // indirect
+	github.com/mitchellh/go-wordwrap v1.0.1 // indirect
+	github.com/sanity-io/litter v1.5.5 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	golang.org/x/arch v0.3.0 // indirect
+	gopkg.in/fsnotify.v1 v1.4.7 // indirect
+	gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7 // indirect
+	moul.io/http2curl/v2 v2.3.0 // indirect
 )
 
 require (
@@ -115,5 +125,4 @@ require (
 	golang.org/x/tools v0.7.0 // indirect
 	google.golang.org/protobuf v1.30.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	moul.io/http2curl v1.0.1-0.20190925090545-5cd742060b0e // indirect
 )

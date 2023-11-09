@@ -29,8 +29,8 @@ import (
 // @Router /about/version [get]
 func GetAboutInfo(c *gin.Context) {
 	params := struct {
-		ProductName string `form:"productName" binding:"omitempty,alphanum"`
-		Version     string `form:"version" binding:"omitempty,version"`
+		ProductName string `form:"productName" binding:"required_with=Version,omitempty,alphanum"`
+		Version     string `form:"version" binding:"required_with=ProductName,omitempty,version"`
 	}{}
 	if err := api.ExtractParameters(c, nil, &params); err != nil {
 		return
@@ -38,16 +38,25 @@ func GetAboutInfo(c *gin.Context) {
 
 	version := c.GetString(api.SgtnVersionKey)
 
+	data := gin.H{}
 	var returnErr *sgtnerror.MultiError
 	ctx := logger.NewContext(c, c.MustGet(api.LoggerKey))
-	serviceInfo := serverinfo.GetServerInfo(ctx)
-	data := gin.H{"service": serviceInfo}
+	serviceInfo, serviceErr := serverinfo.GetServerInfo(ctx)
+	returnErr = sgtnerror.Append(returnErr, serviceErr)
+	if serviceErr == nil {
+		data["service"] = serviceInfo
+	}
+
 	if params.ProductName != "" && version != "" {
-		if bundleInfo, err := translationservice.GetService().GetVersionInfo(ctx, params.ProductName, version); err == nil {
+		bundleInfo, err := translationservice.GetService().GetVersionInfo(ctx, params.ProductName, version)
+		returnErr = sgtnerror.Append(returnErr, err)
+		if err == nil {
 			data["bundle"] = gin.H{api.ProductNameAPIKey: params.ProductName, api.VersionAPIKey: version, "changeId": bundleInfo["drop_id"]}
-		} else {
-			returnErr = sgtnerror.Append(nil, err) // Add nil because service is always successful.
 		}
+	}
+
+	if len(data) == 0 {
+		data = nil
 	}
 
 	api.HandleResponse(c, data, returnErr)
