@@ -3,6 +3,7 @@ module sgtnserver
 go 1.20
 
 require (
+	github.com/StudioSol/set v1.0.0
 	github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751
 	github.com/anargu/gin-brotli v0.0.0-20220116052358-12bf532d5267
 	github.com/aws/aws-sdk-go-v2/service/sts v1.23.2
