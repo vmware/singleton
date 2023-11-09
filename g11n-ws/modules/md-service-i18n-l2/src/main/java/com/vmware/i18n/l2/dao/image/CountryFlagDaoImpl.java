@@ -26,6 +26,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -78,7 +79,7 @@ public class CountryFlagDaoImpl implements ICountryFlagDao {
     private void writeCountryFlagResult(String sourcePathStr, String fileContent, String newFileNameSuffix) throws IOException {
 
         String pathStr = ConstantsKeys.IMAGE + sourcePathStr;
-        pathStr = pathStr.replaceAll(ConstantsChar.BACKSLASH, File.separator);
+        pathStr = pathStr.replaceAll(ConstantsChar.BACKSLASH, Matcher.quoteReplacement(File.separator));
         pathStr = pathStr.replaceAll(ConstantsFile.FILE_TYPE_SVG, newFileNameSuffix);
         File file = new File(pathStr);
         if (!file.getParentFile().exists()) {
