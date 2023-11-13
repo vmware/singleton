@@ -81,26 +81,22 @@ public class LocaleService implements ILocaleService {
 			cacheKey = productName + "_" + version + "_" + locale;
 		}
 		jsonMap = TranslationCache3.getCachedObject(CacheName.LANGUAGE, cacheKey, HashMap.class);
+		Map<String, String> languageMap = languageList.stream().collect(Collectors.toMap(language ->language, language -> LocaleUtils.normalizeToLanguageTag(language)));
 		if (jsonMap == null) {
 			logger.info("get data from file");
-			languageList = languageList.stream().map(language -> LocaleUtils.normalizeToLanguageTag(language))
-					.collect(Collectors.toList());
 			Map<String, String> tmp = new HashMap<String, String>();
 			Map<String, Object> displayNamesMap = null;
 			if (StringUtils.isEmpty(dispLanguage)) {
-				for (String language : languageList) {
-					String diplayLanguage = language;
-					if(language.indexOf(ConstantsUnicode.ALT)>0)//handle languages like en-US-alt-short
-						 diplayLanguage = language.substring(0, language.indexOf(ConstantsUnicode.ALT));
-					normalizedDispLanguage = CommonUtil.getCLDRLocale(diplayLanguage, localePathMap, localeAliasesMap);
+				for (String language : languageMap.keySet()) {
+					normalizedDispLanguage = CommonUtil.getCLDRLocale(languageMap.get(language), localePathMap, localeAliasesMap);
 					displayNamesMap = languagesParser.getDisplayNames(normalizedDispLanguage);
-					getDisplayNameForLanguage(language, displayNamesMap, tmp);
+					getDisplayNameForLanguage(language, languageMap.get(language), displayNamesMap, tmp);
 				}
 			} else {
 				// VIP-2001:[Get LanguageList API]Can't parse the language(i.e. en-US) which in default content json file.
 				displayNamesMap = languagesParser.getDisplayNames(normalizedDispLanguage);
-				for (String language : languageList) {
-					getDisplayNameForLanguage(language, displayNamesMap, tmp);
+				for (String language : languageMap.keySet()) {
+					getDisplayNameForLanguage(language, languageMap.get(language), displayNamesMap, tmp);
 				}
 			}
 			if (tmp.size() == 0) {
@@ -112,33 +108,38 @@ public class LocaleService implements ILocaleService {
 		}
 		languagesMap = (Map<String, String>) jsonMap.get(LANGUAGE_STR);
 
-		for (String language : languageList) {
+		for (String language : languageMap.keySet()) {
 			Map<String, String> displayNameMap = null;
 			if (StringUtils.isEmpty(dispLanguage)) {
-				displayNameMap = getDisplayNameMap(language, languagesParser, languagesMap.get(language));
+				normalizedDispLanguage = CommonUtil.getCLDRLocale(languageMap.get(language), localePathMap, localeAliasesMap);
+				displayNameMap = getDisplayNameMap(normalizedDispLanguage, languagesParser, languagesMap.get(language));
 			} else {
 				String disPlayLocale = CommonUtil.getCLDRLocale(dispLanguage.replace("_", "-"),
 						localePathMap, localeAliasesMap);
 				displayNameMap = getDisplayNameMap(disPlayLocale, languagesParser, languagesMap.get(language));
 			}
 			dto = new DisplayLanguageDTO();
+			if(language.indexOf(ConstantsUnicode.ALT)>0) {//handle languages like en-US-alt-short
+				dto.setLanguageTag(language);
+			}else{
+				dto.setLanguageTag(languageMap.get(language));
+			}
 			dto.setDisplayName(languagesMap.get(language) == null ? "" : languagesMap.get(language));
 			dto.setDisplayName_sentenceBeginning(StringUtils.isEmpty(displayNameMap.get(DISPLAY_NAME_SENTENCE_BEGINNING)) ? dto.getDisplayName() : displayNameMap.get(DISPLAY_NAME_SENTENCE_BEGINNING));
 			dto.setDisplayName_uiListOrMenu(StringUtils.isEmpty(displayNameMap.get(DISPLAY_NAME_UI_LIST)) ? dto.getDisplayName() : displayNameMap.get(DISPLAY_NAME_UI_LIST));
 			dto.setDisplayName_standalone(StringUtils.isEmpty(displayNameMap.get(DISPLAY_NAME_STANDALONE)) ? dto.getDisplayName() : displayNameMap.get(DISPLAY_NAME_STANDALONE));
-			dto.setLanguageTag(language);
 			dtoList.add(dto);
 		}
 		return dtoList;
 	}
 
-	private void getDisplayNameForLanguage(String language, Map<String, Object> displayNamesMap, Map<String, String> languageNameMap){
+	private void getDisplayNameForLanguage(String language, String normalizedLanguage, Map<String, Object> displayNamesMap, Map<String, String> languageNameMap){
 		if(displayNamesMap != null && displayNamesMap.get(LANGUAGE_STR) != null){
 			Map<String, Object> languageMap = (Map<String, Object>) displayNamesMap.get(LANGUAGE_STR);
 			if(languageMap != null && languageMap.get(LANGUAGE_STR) != null && ((Map<String, String>)languageMap.get(LANGUAGE_STR)).get(language) != null) {
 				languageNameMap.put(language, ((Map<String, String>)languageMap.get(LANGUAGE_STR)).get(language));
 			}else {
-				languageNameMap.put(language, getDisplayNameByLocaleElements(language, displayNamesMap));
+				languageNameMap.put(language, getDisplayNameByLocaleElements(normalizedLanguage, displayNamesMap));
 			}
 		}else{
 			languageNameMap.put(language, "");
@@ -168,23 +169,28 @@ public class LocaleService implements ILocaleService {
 		boolean hasVariant = variant !=null && variant.length() > 0;
 
 		String languageName = languageData.get(language);
-		StringBuilder buf = new StringBuilder();
-		if(hasScript){
-			String scriptName = scriptsData.get(script);
-			if(scriptName != null)
-				buf.append(scriptName);
+
+		if (!StringUtils.isEmpty(languageName)) {
+			StringBuilder buf = new StringBuilder();
+			if (hasScript) {
+				String scriptName = scriptsData.get(script);
+				if (scriptName != null) {buf.append(scriptName);}
+			}
+			if (hasCountry) {
+				String countryName = regionData.get(country);
+				if (countryName != null) {appendWithSep(buf, localeSeparator, countryName);}
+			}
+			if (hasVariant) {
+				String variantName = variantsData.get(variant);
+				if (variantName != null) {appendWithSep(buf, localeSeparator, variantName);}
+			}
+
+			if (buf.isEmpty()) {
+				displayName = languageName;
+			} else {
+				displayName = MessageFormat.format(localePattern, languageName, buf.toString());
+			}
 		}
-		if(hasCountry){
-			String countryName = regionData.get(country);
-			if(countryName != null)
-				appendWithSep(buf, localeSeparator, countryName);
-		}
-		if(hasVariant){
-			String variantName = variantsData.get(variant);
-			if(variantName != null)
-				appendWithSep(buf, localeSeparator, variantName);
-		}
-		displayName = MessageFormat.format(localePattern, languageName, buf.toString());
 		return displayName;
 	}
 
