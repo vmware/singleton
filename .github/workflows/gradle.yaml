@@ -51,6 +51,8 @@ jobs:
           java-version: '11'
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
+        with:
+          languages: java
       - name: Autobuild
         uses: github/codeql-action/autobuild@v2
       - name: Perform CodeQL Analysis
