@@ -78,7 +78,7 @@ public class LocaleService implements ILocaleService {
 		}else{
 			String locale = dispLanguage.replace("_", "-");
 			normalizedDispLanguage = CommonUtil.getCLDRLocale(locale, localePathMap, localeAliasesMap);
-			cacheKey = productName + "_" + version + "_" + locale;
+			cacheKey = productName + "_" + version + "_" + normalizedDispLanguage;
 		}
 		jsonMap = TranslationCache3.getCachedObject(CacheName.LANGUAGE, cacheKey, HashMap.class);
 		Map<String, String> languageMap = languageList.stream().collect(Collectors.toMap(language ->language, language -> LocaleUtils.normalizeToLanguageTag(language)));
@@ -89,7 +89,9 @@ public class LocaleService implements ILocaleService {
 			if (StringUtils.isEmpty(dispLanguage)) {
 				for (String language : languageMap.keySet()) {
 					normalizedDispLanguage = CommonUtil.getCLDRLocale(languageMap.get(language), localePathMap, localeAliasesMap);
-					displayNamesMap = languagesParser.getDisplayNames(normalizedDispLanguage);
+					if(!StringUtils.isEmpty(normalizedDispLanguage)) {
+						displayNamesMap = languagesParser.getDisplayNames(normalizedDispLanguage);
+					}
 					getDisplayNameForLanguage(language, languageMap.get(language), displayNamesMap, tmp);
 				}
 			} else {
@@ -112,12 +114,8 @@ public class LocaleService implements ILocaleService {
 			Map<String, String> displayNameMap = null;
 			if (StringUtils.isEmpty(dispLanguage)) {
 				normalizedDispLanguage = CommonUtil.getCLDRLocale(languageMap.get(language), localePathMap, localeAliasesMap);
-				displayNameMap = getDisplayNameMap(normalizedDispLanguage, languagesParser, languagesMap.get(language));
-			} else {
-				String disPlayLocale = CommonUtil.getCLDRLocale(dispLanguage.replace("_", "-"),
-						localePathMap, localeAliasesMap);
-				displayNameMap = getDisplayNameMap(disPlayLocale, languagesParser, languagesMap.get(language));
 			}
+			displayNameMap = getDisplayNameMap(normalizedDispLanguage, languagesParser, languagesMap.get(language));
 			dto = new DisplayLanguageDTO();
 			if(language.indexOf(ConstantsUnicode.ALT)>0) {//handle languages like en-US-alt-short
 				dto.setLanguageTag(language);
@@ -205,20 +203,22 @@ public class LocaleService implements ILocaleService {
 	}
 
 	private Map<String, String> getDisplayNameMap(String displayLanguage, LanguagesFileParser languagesParser, String displayName) {
-		Map<String, Object> tmpContext = languagesParser.getContextTransforms(displayLanguage);
 		Map<String, String> displayNameMap = new HashMap<>();
 		displayNameMap.put(DISPLAY_NAME_UI_LIST, "");
 		displayNameMap.put(DISPLAY_NAME_STANDALONE, "");
 		displayNameMap.put(DISPLAY_NAME_SENTENCE_BEGINNING, tittleCase(displayName));
-		if (tmpContext != null && tmpContext.get(CONTEXT_TRANSFORMS) != null) {
-			Map<String, Map<String, String>> contextTransformMap = (Map<String, Map<String, String>>) tmpContext.get(CONTEXT_TRANSFORMS);
-			if (contextTransformMap != null && contextTransformMap.get(LANGUAGE_STR) != null) {
-				Map<String, String> languageMap = contextTransformMap.get(LANGUAGE_STR);
-				if (languageMap.get(STAND_ALONE) != null) {
-					displayNameMap.put(DISPLAY_NAME_STANDALONE, languageMap.get(STAND_ALONE).equals(NO_CHANGES) ? displayName : tittleCase(displayName));
-				}
-				if (languageMap.get(UI_LIST_OR_MENU) != null) {
-					displayNameMap.put(DISPLAY_NAME_UI_LIST, languageMap.get(UI_LIST_OR_MENU).equals(NO_CHANGES) ? displayName : tittleCase(displayName));
+		if(!StringUtils.isEmpty(displayLanguage)) {
+			Map<String, Object> tmpContext = languagesParser.getContextTransforms(displayLanguage);
+			if (tmpContext != null && tmpContext.get(CONTEXT_TRANSFORMS) != null) {
+				Map<String, Map<String, String>> contextTransformMap = (Map<String, Map<String, String>>) tmpContext.get(CONTEXT_TRANSFORMS);
+				if (contextTransformMap != null && contextTransformMap.get(LANGUAGE_STR) != null) {
+					Map<String, String> languageMap = contextTransformMap.get(LANGUAGE_STR);
+					if (languageMap.get(STAND_ALONE) != null) {
+						displayNameMap.put(DISPLAY_NAME_STANDALONE, languageMap.get(STAND_ALONE).equals(NO_CHANGES) ? displayName : tittleCase(displayName));
+					}
+					if (languageMap.get(UI_LIST_OR_MENU) != null) {
+						displayNameMap.put(DISPLAY_NAME_UI_LIST, languageMap.get(UI_LIST_OR_MENU).equals(NO_CHANGES) ? displayName : tittleCase(displayName));
+					}
 				}
 			}
 		}
