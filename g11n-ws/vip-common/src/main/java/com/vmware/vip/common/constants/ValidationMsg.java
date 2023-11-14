@@ -7,6 +7,7 @@ package com.vmware.vip.common.constants;
 public final class ValidationMsg {
 	public final static String PRODUCTNAME_NOT_VALIDE = "Incorrect produtName(only allows letter and number)";
 	public final static String VERSION_NOT_VALIDE = "Incorrect version(only allows number and dot, e.g. 1.2.0)";
+	public final static String VERSIONS_NOT_VALIDE = "Incorrect versions(only allows all or number, dot, comm. e.g. 1.2.0,2.2.0)";
 	public final static String COMPONENT_NOT_VALIDE = "Incorrect component(only allows letter, number, dot, underline, dashline)";
 	public final static String COMPONENTS_NOT_VALIDE = "Incorrect components(only allows letter, number, comma, dot, underline, dashline)";
 	public final static String KEY_NOT_VALIDE = "Incorrect key(only allows standard ASCII char)";
@@ -21,7 +22,7 @@ public final class ValidationMsg {
 	public final static String COMBINE_NOT_VALIDE = "Incorrect combine(only 1 or 2)";
 	public final static String SCOPE_NOT_VALIDE = "Incorrect scope(allows letter, comma)";
 	public final static String COLLECTSOURCE_NOT_VALIDE = "Incorrect collectsource(only allows true, false)";
-	public final static String COLLECTSOURCE_NOT_VALIDE_L10N = "Incorrect collectsource(only allows true)";
+	public final static String COLLECTSOURCE_NOT_VALIDE_L10N = "Incorrect collectSource(only allows true, please use translation-product-component-api to confirm received source status)";
 	public final static String COLLECTSOURCE_REQUEST_BODY_NOT_VALIDE = "Incorrect source collection request body (max size: %d bytes, current size: %s bytes)";
 	public final static String PSEUDO_NOT_VALIDE = "Incorrect pseudo(only allows true, false)";
 	public final static String NUMBER_NOT_VALIDE = "Incorrect number";
@@ -34,4 +35,5 @@ public final class ValidationMsg {
 	public final static String LOCALENAME_NOT_SUPPORTED= "The locale '%s' is NOT supported yet!";
 	public final static String APPID_NOT_VALIDE = "Incorrect appId(only allows letter and number)";
 	public final static String IMAGE_TYPE_NOT_VALIDE = "The image response type '%s' not support (only allows empty, svg, json)";
+    public final static String SOURCE_NOT_SUPPORT_NULL = "Don't support the key with NULL source";
 }

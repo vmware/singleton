@@ -179,7 +179,24 @@ public class DiskQueueUtils {
 			logger.error("move file to Exception path error:", e);
 		}
     }
-    
+	/**
+	 * copy the source cached file to L10N_TMP_EXCEP_PATH Directory and add the prefix in target file name
+	 * @param basePath
+	 * @param source
+	 * @param prefix
+	 */
+	public static void copyFile2ExceptPath(String basePath, File source, String prefix){
+		String targetFileName = basePath+L10N_TMP_EXCEP_PATH+source.getName().replace(SourceStr, SourceStr+prefix+ConstantsChar.UNDERLINE);
+		File target = new File(targetFileName);
+		try {
+			if(!target.getParentFile().exists()) {
+				target.getParentFile().mkdirs();
+			}
+			Files.copy(source.toPath(), target.toPath(), StandardCopyOption.REPLACE_EXISTING);
+		} catch (IOException e) {
+			logger.error("move file to Exception path error:", e);
+		}
+	}
     /**
      * List the all files in Directory of L10N_TMP_EXCEP_PATH 
      * @param basePath

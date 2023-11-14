@@ -8,10 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
 
 import com.alibaba.fastjson.JSONArray;
@@ -187,7 +184,7 @@ public class SingleComponentServiceImpl implements SingleComponentService{
         return true;
 	}
 
-	private boolean syncKey2VipL10n(RecordModel record,  String key, String srcValue) throws UnsupportedEncodingException{
+	private boolean syncKey2VipL10n(RecordModel record,  String key, String srcValue, String sourceFormatVal) throws UnsupportedEncodingException{
 		if(configs.getVipBaseL10nUrl().equalsIgnoreCase(PropertyContantKeys.LOCAL)) {
 			return false;
 		}
@@ -199,6 +196,10 @@ public class SingleComponentServiceImpl implements SingleComponentService{
                 .replace("{" + APIParamName.LOCALE + "}", record.getLocale())
                 .replace("{" + APIParamName.KEY + "}", key));
           logger.info("source:{}", srcValue);
+		  if (sourceFormatVal != null){
+			  urlStr.append("?sourceFormat=");
+			  urlStr.append(URLEncoder.encode(sourceFormatVal, ConstantsUnicode.UTF8));
+		  }
         try {
             logger.info("-----Start to send source----------");
             logger.debug("{}----------{}", key, srcValue);
@@ -245,11 +246,18 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 
 	private boolean  syncSingleSource(RecordModel record, ComponentSourceModel model){
 		if (model != null) {
+			String sourceFormat = null;
+
 			for (Entry<String, Object> entry : model.getMessages().entrySet()) {
 				try {
-					boolean result = syncKey2VipL10n(record, entry.getKey(), (String) entry.getValue());
+					String sourceVal = (String)entry.getValue();
+					if (configs.isBase64Enable()){
+						sourceFormat = PropertyContantKeys.BASE64_REQ_PARAMETER;
+						sourceVal = Base64.getEncoder().encodeToString(sourceVal.getBytes("UTF-8"));
+					}
+					boolean result = syncKey2VipL10n(record, entry.getKey(), sourceVal,sourceFormat);
 					if (!result) {
-						result = syncKey2VipI18n(record, entry.getKey(), (String) entry.getValue(), null, null);
+						result = syncKey2VipI18n(record, entry.getKey(), sourceVal, null, sourceFormat);
 						if (!result) {
 							try {
 								if (record.getStatus() < 5) {
@@ -342,17 +350,52 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 			KeySourceModel keySourceModel = new KeySourceModel();
 			keySourceModel.setKey(entry.getKey());
 			keySourceModel.setSource((String) entry.getValue());
+			if (configs.isBase64Enable()){
+				keySourceModel.setSourceFormat(PropertyContantKeys.BASE64_REQ_PARAMETER);
+				try {
+					byte[] bytes = ((String) entry.getValue()).getBytes("UTF-8");
+					keySourceModel.setSource(Base64.getEncoder().encodeToString(bytes));
+				} catch (UnsupportedEncodingException e) {
+					logger.error(e.getMessage(), e);
+				}
+			}else {
+				keySourceModel.setSource((String) entry.getValue());
+			}
 			sourceModels.add(keySourceModel);
 			count++;
-			if (sourceModels.size() > configs.getSyncBatchSize() || count == model.getMessages().size()) {
-				logger.info("sync to remote batch size: {}",urlStr, count);
-				boolean reqResult = postBatchData(sourceModels, urlStr);
-				if (reqResult){
-					sourceModels = new ArrayList<>();
+			byte[] valByte = JSONArray.toJSONBytes(sourceModels);
+			if (sourceModels.size() > configs.getSyncBatchSize() || count == model.getMessages().size() || valByte.length > configs.getSyncReqBodySize()) {
+				if(valByte.length < configs.getSyncReqBodySize() || sourceModels.size() == 1){
+					boolean reqResult = postBatchData(sourceModels, urlStr);
+					if (reqResult){
+						sourceModels = new ArrayList<>();
+					}else {
+						return  false;
+					}
 				}else {
-					return  false;
+					KeySourceModel lastItem = sourceModels.remove(sourceModels.size()-1);
+					valByte = JSONArray.toJSONBytes(sourceModels);
+					boolean reqResult = postBatchData(sourceModels, urlStr);
+					if (reqResult){
+						sourceModels = new ArrayList<>();
+						sourceModels.add(lastItem);
+					}else {
+						return  false;
+					}
+
+				}
+				if (valByte.length > configs.getSyncReqBodySize()){
+					logger.warn("sync bigger than request body key:{},  batch size: {}, request body byte size: {}",sourceModels.get(0).getKey(), sourceModels.size(), valByte.length);
 				}
 			}
+
+		}
+		if (sourceModels.size() > 0){
+			byte[] valByte = JSONArray.toJSONBytes(sourceModels);
+			if (valByte.length > configs.getSyncReqBodySize()){
+				logger.warn("sync bigger than request body key:{},  batch size: {}, request body byte size: {}",sourceModels.get(0).getKey(), sourceModels.size(), valByte.length);
+			}
+			return postBatchData(sourceModels, urlStr);
 		}
 		return true;
 	}

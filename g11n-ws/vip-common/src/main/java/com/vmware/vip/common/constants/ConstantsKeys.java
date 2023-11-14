@@ -108,6 +108,7 @@ public class ConstantsKeys {
    public static final String FLAGS = "flags";
    public static final String SVG = "svg";
    public static final String JSON = "json";
+   public static final String ALL = "all";
 
    public final static Map<String,String> IMAGE_TYPE_MAP = Map.of("svg", "image/svg+xml", "json", "application/json;charset=utf-8");
 

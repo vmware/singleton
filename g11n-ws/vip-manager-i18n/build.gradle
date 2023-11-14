@@ -45,8 +45,11 @@ dependencies {
     }
 
     implementation('org.springframework.boot:spring-boot-starter-log4j2')
-    implementation("org.springframework.boot:spring-boot-starter-web")
-
+    implementation("org.springframework.boot:spring-boot-starter-web"){
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+    }
+    implementation("org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion")
+    implementation("org.apache.tomcat:tomcat-annotations-api:$tomcatVersion")
     implementation("org.apache.commons:commons-lang3:$commonsLangVersion")
     implementation("commons-io:commons-io:$commonsIoVersion")
     implementation("commons-codec:commons-codec:$commonsCodecVersion")
@@ -56,7 +59,7 @@ dependencies {
            requireCapability('org.ehcache:ehcache-jakarta')
         }
     }
-    implementation 'org.glassfish.jaxb:jaxb-runtime:4.0.3'
+    implementation 'org.glassfish.jaxb:jaxb-runtime:4.0.4'
 
     implementation("com.google.guava:guava:$guavaVersion")
     implementation("com.ibm.icu:icu4j:$icu4jVersion")
@@ -65,9 +68,9 @@ dependencies {
 
 
     
-    //swagger UI -START  
-    implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.1.0'
-    implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-api', version: '2.1.0'
+    //swagger UI -START
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$springdocVersion")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-api:$springdocVersion")
     //swagger UI -END
 
 

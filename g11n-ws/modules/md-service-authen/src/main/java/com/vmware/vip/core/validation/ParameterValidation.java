@@ -33,6 +33,7 @@ public class ParameterValidation implements IVlidation {
 		validateAppId(request);
 		validateProductname(request);
 		validateVersion(request);
+		validateVersions(request);
 		validateComponent(request);
 		validateComponents(request);
 		validateKey(request);
@@ -107,6 +108,20 @@ public class ParameterValidation implements IVlidation {
 		}
 		if (!RegExpValidatorUtils.IsNumberAndDot(version)) {
 			throw new ValidationException(ValidationMsg.VERSION_NOT_VALIDE);
+		}
+	}
+	private void validateVersions(HttpServletRequest request)
+			throws ValidationException {
+		Map<String, String> pathVariables = (Map<String, String>) request
+				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
+		String versions = pathVariables.get(APIParamName.VERSIONS) == null ? request
+				.getParameter(APIParamName.VERSIONS) : pathVariables
+				.get(APIParamName.VERSIONS);
+		if (StringUtils.isEmpty(versions)) {
+			return;
+		}
+		if (!RegExpValidatorUtils.IsAllOrNumberDotAndComm(versions)) {
+			throw new ValidationException(ValidationMsg.VERSIONS_NOT_VALIDE);
 		}
 	}
 

@@ -18,8 +18,10 @@ public class APIV2 {
 	public static final String PRODUCT_VERSIONINFO_GET       = API_TRANSLATOIN + "/products/{"+APIParamName.PRODUCT_NAME+"}/versions/{"+APIParamName.VERSION2+"}/versioninfo";
 	public static final String PRODUCT_LOCALE_LIST_GET    = API_TRANSLATOIN + "/products/{"+APIParamName.PRODUCT_NAME+"}/versions/{"+APIParamName.VERSION2+"}/localelist";
 	public static final String PRODUCT_COMPONENT_LIST_GET = API_TRANSLATOIN + "/products/{"+APIParamName.PRODUCT_NAME+"}/versions/{"+APIParamName.VERSION2+"}/componentlist";
+	public static final String PRODUCT_VERSION_LIST_GET   = API_TRANSLATOIN + "/products/{"+APIParamName.PRODUCT_NAME+"}/versionlist";
 	public static final String PRODUCT_TRANSLATION_SYNC_PUT = API_TRANSLATOIN +"/products/{"+APIParamName.PRODUCT_NAME+"}/versions/{"+APIParamName.VERSION2+"}/synch";
 	// key-based
+	public static final String KEY_MULTI_VERSION_TRANSLATION_GET   = API_TRANSLATOIN + "/products/{"+APIParamName.PRODUCT_NAME+"}/multiVersionKey";
 	public static final String KEY_TRANSLATION_GET        = API_TRANSLATOIN + "/products/{"+APIParamName.PRODUCT_NAME+"}/versions/{"+APIParamName.VERSION2+"}/locales/{"+APIParamName.LOCALE+"}/components/{"+APIParamName.COMPONENT+"}/keys/{"+APIParamName.KEY2+"}";
 	public static final String KEY_TRANSLATION_POST       = API_TRANSLATOIN + "/products/{"+APIParamName.PRODUCT_NAME+"}/versions/{"+APIParamName.VERSION2+"}/locales/{"+APIParamName.LOCALE+"}/components/{"+APIParamName.COMPONENT+"}/keys/{"+APIParamName.KEY2+"}";
 	public static final String KEY_SET_POST               = API_TRANSLATOIN + "/products/{"+APIParamName.PRODUCT_NAME+"}/versions/{"+APIParamName.VERSION2+"}/locales/{"+APIParamName.LOCALE+"}/components/{"+APIParamName.COMPONENT+"}/keys";

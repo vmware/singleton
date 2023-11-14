@@ -30,10 +30,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ResourceUtils;
 import org.springframework.util.StringUtils;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -313,10 +318,17 @@ public class ProductService implements IProductService {
      * get the allow product list
      */
     @Override
-    public Map<String, Object> getAllowPrductList(){
-        String content;
+    public Map<String, Object> getAllowProductList(String path){
+
+
+        String content = null;
         try {
-            content = productdao.getAllowProductListContent();
+			if (path.startsWith(ResourceUtils.CLASSPATH_URL_PREFIX)){
+				content = getClasspathAllowList(path);
+			}else{
+				content = productdao.getAllowProductListContent(path);
+			}
+
         } catch (DataException e1) {
             logger.warn(e1.getMessage());
             content =null;
@@ -339,4 +351,19 @@ public class ProductService implements IProductService {
             return null;
         }
     }
+	private String getClasspathAllowList(String path){
+		Resource allowResource = new PathMatchingResourcePatternResolver().getResource(path);
+		try(BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(allowResource.getInputStream()))) {
+			StringBuilder sb = new StringBuilder();
+			String temp = "";
+			while ((temp = bufferedReader.readLine()) != null) {
+				sb.append(temp + "\n");
+			}
+			return sb.toString();
+		} catch (IOException e) {
+			logger.error(e.getMessage(), e);
+			return null;
+		}
+	}
+
 }

@@ -22,6 +22,7 @@ import com.vmware.l10agent.base.PropertyContantKeys;
  */
 @Configuration
 public class PropertyConfigs {
+	private final static int ONE_M = 1024 * 1024;
 	private  SimpleDateFormat sdf1=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	/** the path of local resource file,can be configed in spring config file **/
 	@Value("${source.bundle.file.basepath}")
@@ -74,6 +75,12 @@ public class PropertyConfigs {
 	private boolean syncBatchEnable;
 	@Value("${vip.sync.batch.size:50}")
 	private int syncBatchSize;
+
+	@Value("${vip.sync.source.base64.enable:false}")
+	private boolean base64Enable;
+  
+	@Value("${vip.sync.batch.requestBody.size:8M}")
+	private String reqBodySizeStr;
 
 
 	public long getSyncStartDatetime() {
@@ -194,7 +201,14 @@ public class PropertyConfigs {
 
 	public String getUserAgent() { return userAgent; }
 
-	public int getSyncBatchSize() { return syncBatchSize; }
+	public int getSyncBatchSize() { return (syncBatchSize - 1); }
 
 	public boolean isSyncBatchEnable() { return syncBatchEnable; }
+
+	public boolean isBase64Enable() {
+		return base64Enable;
+	}
+	public int getSyncReqBodySize(){
+		return (ONE_M * Integer.valueOf(this.reqBodySizeStr.toUpperCase().replaceAll("M", "").trim())) - 1024;
+	}
 }

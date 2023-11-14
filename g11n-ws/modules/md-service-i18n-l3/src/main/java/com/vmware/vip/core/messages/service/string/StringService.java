@@ -24,7 +24,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -45,7 +47,7 @@ public class StringService implements IStringService {
 	 * If the translation is cached, get it directly, otherwise get it from
 	 * local bundle.
 	 *
-	 * @param componentMessagesDTO
+	 * @param comDTO
 	 *            the object of ComponentMessagesDTO.
 	 * @param key
 	 *            The unique identify for source in component's resource file.
@@ -214,5 +216,45 @@ public class StringService implements IStringService {
 		} else {
 			return null;
 		}
+	}
+
+	/**
+	 * Get translation of multi version key.
+	 *
+	 * @param compMsg
+	 *            the object of ComponentMessagesDTO.
+	 * @param versionList
+	 *            the list of version string.
+	 * @param key
+	 *            The unique identify for source in component's resource file.
+	 */
+	@Override
+	public List<StringBasedDTO> getMultiVersionKeyTranslation(ComponentMessagesDTO compMsg, List<String> versionList, String key) throws L3APIException {
+		List<StringBasedDTO> stringBasedDTOs = new ArrayList<>();
+		for(String versionStr : versionList){
+			compMsg.setVersion(versionStr.trim());
+			try{
+				ComponentMessagesDTO compData = singleComponentService.getComponentTranslation(compMsg);
+				String translation = null;
+				if(compData.getMessages()!= null && (translation = (String)((Map)compData.getMessages()).get(key)) != null){
+					StringBasedDTO stringBasedDTO = new StringBasedDTO();
+					stringBasedDTO.setProductName(compMsg.getProductName());
+					stringBasedDTO.setVersion(compMsg.getVersion());
+					stringBasedDTO.setComponent(compMsg.getComponent());
+					stringBasedDTO.setLocale(compMsg.getLocale());
+					stringBasedDTO.setKey(key);
+					stringBasedDTO.setTranslation(translation);
+					stringBasedDTO.setStatus(ConstantsMsg.SOURCE_IS_NOT_PROVIDE);
+					stringBasedDTOs.add(stringBasedDTO);
+				}
+			}catch (Exception e){
+				logger.error(e.getMessage(), e);
+			}
+
+		}
+        if (stringBasedDTOs.size() == 0){
+			throw new L3APIException(ConstantsMsg.TRANS_IS_NOT_FOUND);
+		}
+		return stringBasedDTOs;
 	}
 }

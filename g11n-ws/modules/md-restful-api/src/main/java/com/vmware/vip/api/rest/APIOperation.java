@@ -15,7 +15,8 @@ public class APIOperation {
 	public final static String PRODUCT_COMPONENT_LIST_NOTES = "Get the component list by the specific version.";
 	public final static String PRODUCT_VERSIONINFO_VALUE = "Get drop version info";
 	public final static String PRODUCT_VERSIONINFO_NOTES = "Get drop version info by the specific version, including drop create date(long id), compnent changed date(long id), etc.";
-
+	public final static String PRODUCT_VERSION_LIST_VALUE = "Get the version list";
+	public final static String PRODUCT_VERSION_LIST_NOTES = "Get the version list by the specific product name.";
 
 	public final static String MULT_COMPONENT_TRANSLATION_VALUE = "Get multiple components' translation";
 	public final static String MULT_COMPONENT_TRANSLATION_NOTES = "Get multiple components' by the specific version";
@@ -76,4 +77,6 @@ public class APIOperation {
 
 	public static final String IMAGE_COUNTRY_FLAG_VALUE = "Get the country flag svg image";
 	public static final String IMAGE_COUNTRY_FLAG_NOTES = "Get the country flag svg image with region and scale";
+	public static final String PRODUCT_MULTI_VERSION_KEY_VALUE = "Get a key's request versions all translation";
+	public static final String PRODUCT_MULTI_VERSION_KEY_NOTES = "Get a key's all translation in specific version list";
 }
