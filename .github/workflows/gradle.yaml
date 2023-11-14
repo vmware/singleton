@@ -26,7 +26,8 @@ jobs:
           java-version: '11'
       - name: Unit test
         run: |
-          ./gradlew test jacocoTestReport
+          ./gradlew test
+          # ./gradlew test jacocoTestReport
       - name: Upload Codecov report
         uses: codecov/codecov-action@v3
         with:
