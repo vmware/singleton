@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.vmware.i18n.PatternUtil;
+import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.utils.JSONUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -26,16 +27,19 @@ public class LanguagesFileParser {
 			Map<String, Object> variantsMap = JSONUtils.getMapFromJson(variantsJson);
 			String localeDisplayNamesJson = PatternUtil.getLocaleDisplayNamesFromLib(displayLanguage);
 			Map<String, Object> localeDisplayNamesMap = JSONUtils.getMapFromJson(localeDisplayNamesJson);
-			displayNamesMap.put("languages", languageMap);
-			displayNamesMap.put("regions", regionMap);
-			displayNamesMap.put("scripts", scriptsMap);
-			displayNamesMap.put("variants", variantsMap);
-			displayNamesMap.put("localeDisplayNames", localeDisplayNamesMap);
+			displayNamesMap.put(ConstantsKeys.LANGUAGES, languageMap);
+			displayNamesMap.put(ConstantsKeys.REGIONS, regionMap);
+			displayNamesMap.put(ConstantsKeys.SCRIPTS, scriptsMap);
+			displayNamesMap.put(ConstantsKeys.VARIANTS, variantsMap);
+			displayNamesMap.put(ConstantsKeys.LOCALE_DISPLAY_NAMES, localeDisplayNamesMap);
 		}
 		return displayNamesMap;
 	}
 
 	public Map<String, Object> getContextTransforms(String displayLanguage){
+		if(StringUtils.isEmpty(displayLanguage)) {
+			return null;
+		}
 		String json = PatternUtil.getContextTransformFromLib(displayLanguage);
 		return JSONUtils.getMapFromJson(json);
 	}

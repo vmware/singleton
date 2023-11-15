@@ -43,6 +43,14 @@ public class ConstantsKeys {
    public static final String TOKEN_INTERCEP_PATH = "/**/api/**";
    public static final String AUTHENTICATION_PATH = "/**/security/authentication/**";
    public static final String LANGUAGES = "languages";
+   public static final String REGIONS = "regions";
+   public static final String SCRIPTS = "scripts";
+   public static final String VARIANTS = "variants";
+   public static final String LOCALE_DISPLAY_NAMES = "localeDisplayNames";
+   public static final String LOCALE_DISPLAY_PATTERN = "localeDisplayPattern";
+   public static final String LOCALE_PATTERN = "localePattern";
+   public static final String LOCALE_SEPARATOR = "localeSeparator";
+
    public static final String DISPLAY_LANGUAGE = "displayLanguage";
    public static final String TERRITORIES = "territories";
    public static final String DEFAULT_REGION_CODE = "defaultRegionCode";

@@ -9,6 +9,7 @@ import com.vmware.i18n.cldr.CLDR;
 import com.vmware.i18n.utils.CommonUtil;
 import com.vmware.vip.common.cache.CacheName;
 import com.vmware.vip.common.cache.TranslationCache3;
+import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ConstantsUnicode;
 import com.vmware.vip.common.utils.LocaleUtils;
 import com.vmware.vip.core.messages.service.product.IProductService;
@@ -30,7 +31,6 @@ import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localePath
  */
 @Service
 public class LocaleService implements ILocaleService {
-    private static final String LANGUAGE_STR="languages";
 	private static final String CONTEXT_TRANSFORMS = "contextTransforms";
 	private static final String DISPLAY_NAME_SENTENCE_BEGINNING = "displayName-sentenceBeginning";
 	private static final String DISPLAY_NAME_UI_LIST = "displayName-uiListOrMenu";
@@ -62,82 +62,74 @@ public class LocaleService implements ILocaleService {
 	@Override
 	public List<DisplayLanguageDTO> getDisplayNamesFromCLDR(String productName, String version, String dispLanguage)
 			throws Exception {
-		LanguagesFileParser languagesParser = new LanguagesFileParser();
-		List<DisplayLanguageDTO> dtoList = new ArrayList<DisplayLanguageDTO>();
-		DisplayLanguageDTO dto = null;
-		Map<String, String> languagesMap = null;
-		Map<String, Object> jsonMap = null;
-		List<String> languageList = this.productService.getSupportedLanguageList(productName, version);
-		if (languageList.size() == 0 || languageList == null){
-			return dtoList;
+		List<String> supportedLanguageList = this.productService.getSupportedLanguageList(productName, version);
+		if (supportedLanguageList.size() == 0 || supportedLanguageList == null) {
+			return null;
 		}
+
 		String normalizedDispLanguage = "";
 		String cacheKey = "";
 		if (StringUtils.isEmpty(dispLanguage)) {
-			cacheKey = productName + "_" + version + "_" + languageList.size();
-		}else{
+			cacheKey = productName + "_" + version;
+		} else {
 			String locale = dispLanguage.replace("_", "-");
 			normalizedDispLanguage = CommonUtil.getCLDRLocale(locale, localePathMap, localeAliasesMap);
 			cacheKey = productName + "_" + version + "_" + normalizedDispLanguage;
 		}
-		jsonMap = TranslationCache3.getCachedObject(CacheName.LANGUAGE, cacheKey, HashMap.class);
-		Map<String, String> languageMap = languageList.stream().collect(Collectors.toMap(language ->language, language -> LocaleUtils.normalizeToLanguageTag(language)));
-		if (jsonMap == null) {
-			logger.info("get data from file");
-			Map<String, String> tmp = new HashMap<String, String>();
-			Map<String, Object> displayNamesMap = null;
-			if (StringUtils.isEmpty(dispLanguage)) {
-				for (String language : languageMap.keySet()) {
-					normalizedDispLanguage = CommonUtil.getCLDRLocale(languageMap.get(language), localePathMap, localeAliasesMap);
-					if(!StringUtils.isEmpty(normalizedDispLanguage)) {
-						displayNamesMap = languagesParser.getDisplayNames(normalizedDispLanguage);
-					}
-					getDisplayNameForLanguage(language, languageMap.get(language), displayNamesMap, tmp);
-				}
-			} else {
-				// VIP-2001:[Get LanguageList API]Can't parse the language(i.e. en-US) which in default content json file.
-				displayNamesMap = languagesParser.getDisplayNames(normalizedDispLanguage);
-				for (String language : languageMap.keySet()) {
-					getDisplayNameForLanguage(language, languageMap.get(language), displayNamesMap, tmp);
-				}
-			}
-			if (tmp.size() == 0) {
-				return dtoList;
-			}
-			jsonMap = new HashMap<String, Object>();
-			jsonMap.put(LANGUAGE_STR, tmp);
-			TranslationCache3.addCachedObject(CacheName.LANGUAGE, cacheKey,HashMap.class,  (HashMap<String, Object>)jsonMap);
-		}
-		languagesMap = (Map<String, String>) jsonMap.get(LANGUAGE_STR);
 
-		for (String language : languageMap.keySet()) {
-			Map<String, String> displayNameMap = null;
-			if (StringUtils.isEmpty(dispLanguage)) {
-				normalizedDispLanguage = CommonUtil.getCLDRLocale(languageMap.get(language), localePathMap, localeAliasesMap);
+		ArrayList<DisplayLanguageDTO> dtoList = TranslationCache3.getCachedObject(CacheName.LANGUAGE, cacheKey, ArrayList.class);
+		if (dtoList == null) {
+			logger.info("get data from file");
+			dtoList = new ArrayList<DisplayLanguageDTO>();
+			Map<String, String> supportedLanguageMap = supportedLanguageList.stream().collect(Collectors.toMap(language -> language, language -> LocaleUtils.normalizeToLanguageTag(language)));
+			Map<String, String> supportedLanguageNameMap = new HashMap<String, String>();
+			Map<String, Object> allLangDisplayNamesMap = null;
+			Map<String, Object> contextTransforms = null;
+			LanguagesFileParser languagesParser = new LanguagesFileParser();
+
+			if (!StringUtils.isEmpty(dispLanguage)) {
+				allLangDisplayNamesMap = languagesParser.getDisplayNames(normalizedDispLanguage);
+				contextTransforms = languagesParser.getContextTransforms(normalizedDispLanguage);
 			}
-			displayNameMap = getDisplayNameMap(normalizedDispLanguage, languagesParser, languagesMap.get(language));
-			dto = new DisplayLanguageDTO();
-			if(language.indexOf(ConstantsUnicode.ALT)>0) {//handle languages like en-US-alt-short
-				dto.setLanguageTag(language);
-			}else{
-				dto.setLanguageTag(languageMap.get(language));
+
+			for (String supportedLanguage : supportedLanguageMap.keySet()) {
+				String normalizedSuppLanguage = supportedLanguageMap.get(supportedLanguage);
+				if (StringUtils.isEmpty(dispLanguage)) {
+					normalizedDispLanguage = CommonUtil.getCLDRLocale(normalizedSuppLanguage, localePathMap, localeAliasesMap);
+					allLangDisplayNamesMap = languagesParser.getDisplayNames(normalizedDispLanguage);
+					contextTransforms = languagesParser.getContextTransforms(normalizedDispLanguage);
+				}
+
+				getDisplayNameForLanguage(supportedLanguage, normalizedSuppLanguage, allLangDisplayNamesMap, supportedLanguageNameMap);
+
+				String displayName = supportedLanguageNameMap.get(supportedLanguage);
+				Map<String, String> layoutDisplayNameMap = getLayoutDisplayNameMap(contextTransforms, displayName);
+
+				DisplayLanguageDTO dto = new DisplayLanguageDTO();
+				if (supportedLanguage.indexOf(ConstantsUnicode.ALT) > 0) {//handle languages like en-US-alt-short
+					dto.setLanguageTag(supportedLanguage);
+				} else {
+					dto.setLanguageTag(normalizedSuppLanguage);
+				}
+				dto.setDisplayName(displayName);
+				dto.setDisplayName_sentenceBeginning(layoutDisplayNameMap.get(DISPLAY_NAME_SENTENCE_BEGINNING));
+				dto.setDisplayName_uiListOrMenu(layoutDisplayNameMap.get(DISPLAY_NAME_UI_LIST));
+				dto.setDisplayName_standalone(layoutDisplayNameMap.get(DISPLAY_NAME_STANDALONE));
+				dtoList.add(dto);
 			}
-			dto.setDisplayName(languagesMap.get(language) == null ? "" : languagesMap.get(language));
-			dto.setDisplayName_sentenceBeginning(StringUtils.isEmpty(displayNameMap.get(DISPLAY_NAME_SENTENCE_BEGINNING)) ? dto.getDisplayName() : displayNameMap.get(DISPLAY_NAME_SENTENCE_BEGINNING));
-			dto.setDisplayName_uiListOrMenu(StringUtils.isEmpty(displayNameMap.get(DISPLAY_NAME_UI_LIST)) ? dto.getDisplayName() : displayNameMap.get(DISPLAY_NAME_UI_LIST));
-			dto.setDisplayName_standalone(StringUtils.isEmpty(displayNameMap.get(DISPLAY_NAME_STANDALONE)) ? dto.getDisplayName() : displayNameMap.get(DISPLAY_NAME_STANDALONE));
-			dtoList.add(dto);
+
+			TranslationCache3.addCachedObject(CacheName.LANGUAGE, cacheKey, ArrayList.class, dtoList);
 		}
 		return dtoList;
 	}
 
-	private void getDisplayNameForLanguage(String language, String normalizedLanguage, Map<String, Object> displayNamesMap, Map<String, String> languageNameMap){
-		if(displayNamesMap != null && displayNamesMap.get(LANGUAGE_STR) != null){
-			Map<String, Object> languageMap = (Map<String, Object>) displayNamesMap.get(LANGUAGE_STR);
-			if(languageMap != null && languageMap.get(LANGUAGE_STR) != null && ((Map<String, String>)languageMap.get(LANGUAGE_STR)).get(language) != null) {
-				languageNameMap.put(language, ((Map<String, String>)languageMap.get(LANGUAGE_STR)).get(language));
+	private void getDisplayNameForLanguage(String language, String normalizedLanguage, Map<String, Object> allLangDisplayNamesMap, Map<String, String> languageNameMap){
+		if(allLangDisplayNamesMap != null && allLangDisplayNamesMap.get(ConstantsKeys.LANGUAGES) != null){
+			Map<String, Object> languageMap = (Map<String, Object>) allLangDisplayNamesMap.get(ConstantsKeys.LANGUAGES);
+			if(languageMap != null && languageMap.get(ConstantsKeys.LANGUAGES) != null && ((Map<String, String>)languageMap.get(ConstantsKeys.LANGUAGES)).get(language) != null) {
+				languageNameMap.put(language, ((Map<String, String>)languageMap.get(ConstantsKeys.LANGUAGES)).get(language));
 			}else {
-				languageNameMap.put(language, getDisplayNameByLocaleElements(normalizedLanguage, displayNamesMap));
+				languageNameMap.put(language, getDisplayNameByLocaleElements(normalizedLanguage, allLangDisplayNamesMap));
 			}
 		}else{
 			languageNameMap.put(language, "");
@@ -146,15 +138,15 @@ public class LocaleService implements ILocaleService {
 
 	private String getDisplayNameByLocaleElements(String locale, Map<String, Object> displayNamesMap) {
 		String displayName ="";
-		Map<String, Object> localeDisplayNamesMap = (Map<String, Object>) displayNamesMap.get("localeDisplayNames");
-		Map<String, String> languageData = (Map<String, String>) ((Map<String, Object>)displayNamesMap.get("languages")).get("languages");
-		Map<String, String> regionData = (Map<String, String>) ((Map<String, Object>) displayNamesMap.get("regions")).get("territories");
-		Map<String, String> scriptsData = (Map<String, String>) ((Map<String, Object>) displayNamesMap.get("scripts")).get("scripts");
-		Map<String, String> variantsData = (Map<String, String>) ((Map<String, Object>)displayNamesMap.get("variants")).get("variants");
-		Map<String, Object> localeDisplayNamesData = (Map<String, Object>) localeDisplayNamesMap.get("localeDisplayNames");
-		Map<String, String> localeDisplayPattern = (Map<String, String>) localeDisplayNamesData.get("localeDisplayPattern");
-		String localePattern = localeDisplayPattern.get("localePattern");
-		String localeSeparator = localeDisplayPattern.get("localeSeparator");
+		Map<String, Object> localeDisplayNamesMap = (Map<String, Object>) displayNamesMap.get(ConstantsKeys.LOCALE_DISPLAY_NAMES);
+		Map<String, String> languageData = (Map<String, String>) ((Map<String, Object>)displayNamesMap.get(ConstantsKeys.LANGUAGES)).get(ConstantsKeys.LANGUAGES);
+		Map<String, String> regionData = (Map<String, String>) ((Map<String, Object>) displayNamesMap.get(ConstantsKeys.REGIONS)).get(ConstantsKeys.TERRITORIES);
+		Map<String, String> scriptsData = (Map<String, String>) ((Map<String, Object>) displayNamesMap.get(ConstantsKeys.SCRIPTS)).get(ConstantsKeys.SCRIPTS);
+		Map<String, String> variantsData = (Map<String, String>) ((Map<String, Object>)displayNamesMap.get(ConstantsKeys.VARIANTS)).get(ConstantsKeys.VARIANTS);
+		Map<String, Object> localeDisplayNamesData = (Map<String, Object>) localeDisplayNamesMap.get(ConstantsKeys.LOCALE_DISPLAY_NAMES);
+		Map<String, String> localeDisplayPattern = (Map<String, String>) localeDisplayNamesData.get(ConstantsKeys.LOCALE_DISPLAY_PATTERN);
+		String localePattern = localeDisplayPattern.get(ConstantsKeys.LOCALE_PATTERN);
+		String localeSeparator = localeDisplayPattern.get(ConstantsKeys.LOCALE_SEPARATOR);
 
 		Locale localeObj = Locale.forLanguageTag(locale);
 		String language = localeObj.getLanguage();
@@ -202,27 +194,24 @@ public class LocaleService implements ILocaleService {
 		return b;
 	}
 
-	private Map<String, String> getDisplayNameMap(String displayLanguage, LanguagesFileParser languagesParser, String displayName) {
-		Map<String, String> displayNameMap = new HashMap<>();
-		displayNameMap.put(DISPLAY_NAME_UI_LIST, "");
-		displayNameMap.put(DISPLAY_NAME_STANDALONE, "");
-		displayNameMap.put(DISPLAY_NAME_SENTENCE_BEGINNING, tittleCase(displayName));
-		if(!StringUtils.isEmpty(displayLanguage)) {
-			Map<String, Object> tmpContext = languagesParser.getContextTransforms(displayLanguage);
-			if (tmpContext != null && tmpContext.get(CONTEXT_TRANSFORMS) != null) {
-				Map<String, Map<String, String>> contextTransformMap = (Map<String, Map<String, String>>) tmpContext.get(CONTEXT_TRANSFORMS);
-				if (contextTransformMap != null && contextTransformMap.get(LANGUAGE_STR) != null) {
-					Map<String, String> languageMap = contextTransformMap.get(LANGUAGE_STR);
-					if (languageMap.get(STAND_ALONE) != null) {
-						displayNameMap.put(DISPLAY_NAME_STANDALONE, languageMap.get(STAND_ALONE).equals(NO_CHANGES) ? displayName : tittleCase(displayName));
-					}
-					if (languageMap.get(UI_LIST_OR_MENU) != null) {
-						displayNameMap.put(DISPLAY_NAME_UI_LIST, languageMap.get(UI_LIST_OR_MENU).equals(NO_CHANGES) ? displayName : tittleCase(displayName));
-					}
+	private Map<String, String> getLayoutDisplayNameMap(Map<String, Object> contextTransforms, String displayName) {
+		Map<String, String> layoutDisplayNameMap = new HashMap<>();
+		layoutDisplayNameMap.put(DISPLAY_NAME_UI_LIST, displayName);
+		layoutDisplayNameMap.put(DISPLAY_NAME_STANDALONE, displayName);
+		layoutDisplayNameMap.put(DISPLAY_NAME_SENTENCE_BEGINNING, tittleCase(displayName));
+		if (contextTransforms != null && contextTransforms.get(CONTEXT_TRANSFORMS) != null) {
+			Map<String, Map<String, String>> contextTransformMap = (Map<String, Map<String, String>>) contextTransforms.get(CONTEXT_TRANSFORMS);
+			if (contextTransformMap != null && contextTransformMap.get(ConstantsKeys.LANGUAGES) != null) {
+				Map<String, String> languageMap = contextTransformMap.get(ConstantsKeys.LANGUAGES);
+				if (languageMap.get(STAND_ALONE) != null) {
+					layoutDisplayNameMap.put(DISPLAY_NAME_STANDALONE, languageMap.get(STAND_ALONE).equals(NO_CHANGES) ? displayName : tittleCase(displayName));
+				}
+				if (languageMap.get(UI_LIST_OR_MENU) != null) {
+					layoutDisplayNameMap.put(DISPLAY_NAME_UI_LIST, languageMap.get(UI_LIST_OR_MENU).equals(NO_CHANGES) ? displayName : tittleCase(displayName));
 				}
 			}
 		}
-		return displayNameMap;
+		return layoutDisplayNameMap;
 	}
 
 	private String tittleCase(String displayName) {
