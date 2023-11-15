@@ -26,7 +26,7 @@ jobs:
           java-version: '11'
       - name: Unit test
         run: |
-          ./gradlew test
+          sudo ./gradlew test
           # ./gradlew test jacocoTestReport
       - name: Upload Codecov report
         uses: codecov/codecov-action@v3
@@ -94,11 +94,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Set up JDK 11
+      - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           distribution: 'adopt'
-          java-version: '11'
+          java-version: '17'
       - name: Smoke Test
         run: |
           git clone --branch=master https://github.com/vmware/singleton.git server

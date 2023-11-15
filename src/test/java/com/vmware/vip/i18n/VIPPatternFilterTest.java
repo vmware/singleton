@@ -27,7 +27,7 @@ public class VIPPatternFilterTest extends BaseTestClass{
     public void testDoFilter() throws IOException, ServletException {
         String errorMsg = "{\"code\":400, \"message\": \"Request parameter 'locale' is required!\"}";
 
-        String uri = "https://127.0.0.1/i18n/pattern";
+        String uri = "https://localhost/i18n/pattern";
         MockHttpServletRequest request = new MockHttpServletRequest();
         request.setRequestURI(uri);
         MockHttpServletResponse response = new MockHttpServletResponse();

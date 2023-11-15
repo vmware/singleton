@@ -26,7 +26,7 @@ public class HttpRequesterTest extends BaseTestClass {
     @Rule
     public WireMockRule   wireMockRule = new WireMockRule(8089);
 
-    private static String mockServer   = "http://127.0.0.1:8089";
+    private static String mockServer   = "http://localhost:8089";
 
     private String        realServer   = null;
 
