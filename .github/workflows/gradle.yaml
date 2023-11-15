@@ -22,11 +22,11 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          distribution: 'adopt-openj9'
+          distribution: 'adopt'
           java-version: '11'
+          cache: 'gradle'
       - name: Unit test
         run: |
-          ./gradlew build -x test
           ./gradlew test
           # ./gradlew test jacocoTestReport
       # - name: Upload Codecov report
