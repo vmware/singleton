@@ -22,8 +22,8 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          distribution: 'adopt'
-          java-version: '9'
+          distribution: 'adopt-openj9'
+          java-version: '11'
       - name: Unit test
         run: |
           ./gradlew build -x test
