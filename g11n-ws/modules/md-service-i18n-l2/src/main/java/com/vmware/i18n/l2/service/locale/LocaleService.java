@@ -5,7 +5,6 @@
 package com.vmware.i18n.l2.service.locale;
 
 import com.ibm.icu.impl.LocaleUtility;
-import com.vmware.i18n.cldr.CLDR;
 import com.vmware.i18n.utils.CommonUtil;
 import com.vmware.vip.common.cache.CacheName;
 import com.vmware.vip.common.cache.TranslationCache3;

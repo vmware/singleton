@@ -104,11 +104,11 @@ public class LocaleUtils {
         if(null ==localeStr || "".equalsIgnoreCase(localeStr)){
             return localeStr;
         }
-		localeStr = localeStr.replace("_", "-");
-		if(localeStr.indexOf(ConstantsUnicode.ALT)>0)//handle languages like en-US-alt-short
-			localeStr = localeStr.substring(0, localeStr.indexOf(ConstantsUnicode.ALT));
-        if (isLanguageTag(localeStr)) {
-            return Locale.forLanguageTag(localeStr).toLanguageTag();
+		String localeTag = localeStr.replace("_", "-");
+		if(localeTag.indexOf(ConstantsUnicode.ALT)>0)//handle languages like en-US-alt-short
+			localeTag = localeTag.substring(0, localeTag.indexOf(ConstantsUnicode.ALT));
+        if (isLanguageTag(localeTag)) {
+            return Locale.forLanguageTag(localeTag).toLanguageTag();
         } else {
             String language = "", country = "", script = "";
             String[] os = localeStr.split("-");
