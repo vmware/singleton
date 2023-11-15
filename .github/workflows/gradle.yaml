@@ -13,7 +13,7 @@ jobs:
 
   unit-test:
     name: Unit Test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     # needs: pre-process
     # if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
     steps:
