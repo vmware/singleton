@@ -22,17 +22,16 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          distribution: 'microsoft'
+          distribution: 'adopt-openj9'
           java-version: '11'
           cache: 'gradle'
       - name: Unit test
         run: |
-          ./gradlew test
-          # ./gradlew test jacocoTestReport
-      # - name: Upload Codecov report
-      #   uses: codecov/codecov-action@v3
-      #   with:
-      #     files: ./build/reports/jacoco.xml
+          ./gradlew test jacocoTestReport
+      - name: Upload Codecov report
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./build/reports/jacoco.xml
 
   # security-analysis:
   #   name: Security Analysis
