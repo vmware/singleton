@@ -14,7 +14,7 @@ jobs:
   unit-test:
     name: Unit Test
     runs-on: windows-latest
-    needs: pre-process
+    needs: [pre-process, preflight-smoke-test-check]
     if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
     steps:
       - name: Checkout code
