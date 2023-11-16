@@ -37,6 +37,7 @@ public class VIPComponentFilter implements Filter {
 
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain) throws IOException, ServletException {
+        logger.info("Vip Server: " + gc.getVipServer() +gc.getProductName() +gc.getVersion());
         try {
             String component = FilterUtils.getParamFromURI(request, "component");
             logger.debug("component: " + component);
@@ -75,16 +76,14 @@ public class VIPComponentFilter implements Filter {
     private VIPCfg             gc = VIPCfg.getInstance();
 
     public void init(FilterConfig filterConfig) throws ServletException {
-        if (gc.getVipService() == null) {
+        I18nFactory i18n = I18nFactory.getInstance();
+        if (i18n == null){
             try {
-                gc.initialize("vipconfig");
+                throw new VIPClientInitException("Haven't init I18nFactory, please init VIPCfg with your vip config first, then initialize I18nFactory with VIPCfg!");
             } catch (VIPClientInitException e) {
-                logger.error(e.getMessage());
+                e.printStackTrace();
             }
-            gc.initializeVIPService();
         }
-        gc.createTranslationCache(MessageCache.class);
-        I18nFactory i18n = I18nFactory.getInstance(gc);
         translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
     }
 }

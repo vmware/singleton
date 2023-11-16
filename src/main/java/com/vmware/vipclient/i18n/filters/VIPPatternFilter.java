@@ -42,6 +42,7 @@ public class VIPPatternFilter implements Filter {
     @Override
     public void doFilter(final ServletRequest request, ServletResponse response,
             FilterChain chain) throws IOException, ServletException {
+        logger.info("Vip Server: " + gc.getVipServer() +gc.getProductName() +gc.getVersion()+"  "+gc.getMsgOriginsQueue().size());
         try {
             String locale = FilterUtils.getParamFromQuery(request, "locale");
             logger.debug("locale: " + locale);
@@ -70,16 +71,14 @@ public class VIPPatternFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        if (gc.getVipService() == null) {
+        I18nFactory i18n = I18nFactory.getInstance();
+        if (i18n == null){
             try {
-                gc.initialize("vipconfig");
+                throw new VIPClientInitException("Haven't init I18nFactory, please init VIPCfg with your vip config first, then initialize I18nFactory with VIPCfg!");
             } catch (VIPClientInitException e) {
-                logger.error(e.getMessage());
+                e.printStackTrace();
             }
-            gc.initializeVIPService();
         }
-        gc.createFormattingCache(FormattingCache.class);
-        I18nFactory i18n = I18nFactory.getInstance(gc);
         patternMessage = (PatternMessage) i18n.getMessageInstance(PatternMessage.class);
     }
 }
