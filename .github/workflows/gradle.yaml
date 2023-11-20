@@ -142,4 +142,3 @@ jobs:
           echo $str Smoke Test Start $str
           cd target && java -cp '.:./*' org.testng.TestNG -d test-output testng.xml
           cd $GITHUB_WORKSPACE/devops/autotest/client/java_client_sample_app && ./sample_app_sanity_test.sh $GITHUB_WORKSPACE
-          echo $str Smoke Test End $str
