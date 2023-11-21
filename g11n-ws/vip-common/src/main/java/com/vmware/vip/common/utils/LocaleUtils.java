@@ -9,6 +9,7 @@ import java.util.IllformedLocaleException;
 import java.util.List;
 import java.util.Locale;
 
+import com.vmware.vip.common.constants.ConstantsUnicode;
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -103,11 +104,14 @@ public class LocaleUtils {
         if(null ==localeStr || "".equalsIgnoreCase(localeStr)){
             return localeStr;
         }
-        if (isLanguageTag(localeStr)) {
-            return Locale.forLanguageTag(localeStr).toLanguageTag();
+		String localeTag = localeStr.replace("_", "-");
+		if(localeTag.indexOf(ConstantsUnicode.ALT)>0)//handle languages like en-US-alt-short
+			localeTag = localeTag.substring(0, localeTag.indexOf(ConstantsUnicode.ALT));
+        if (isLanguageTag(localeTag)) {
+            return Locale.forLanguageTag(localeTag).toLanguageTag();
         } else {
             String language = "", country = "", script = "";
-            String[] os = localeStr.split("_");
+            String[] os = localeStr.split("-");
             for (int i = 0; i < os.length; i++) {
                 switch (i) {
                 case 0:
