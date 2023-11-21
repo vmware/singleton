@@ -131,14 +131,18 @@ jobs:
           mv singleton.jar $GITHUB_WORKSPACE/server/publish/
           git clone --branch=devops https://github.com/vmware/singleton.git devops
           cp $GITHUB_WORKSPACE/devops/deploy/i18n-service/Dockerfile $GITHUB_WORKSPACE/server/publish/
-          cd $GITHUB_WORKSPACE/server/publish && mv singleton.jar i18n-service.jar
+          cd $GITHUB_WORKSPACE/server/publish 
+          mv singleton.jar i18n-service.jar
           docker build -t singleton .
           docker run -d -p 8090:8090 --name singleton singleton
           docker ps
-          cd $GITHUB_WORKSPACE && ./gradlew clean build -x test && cp ./build/libs/*.jar $GITHUB_WORKSPACE/devops/autotest/client/java/lib/
-          cd $GITHUB_WORKSPACE/devops/autotest/client/java && ./gradlew build -x test
+          cd $GITHUB_WORKSPACE 
+          ./gradlew clean build -x test 
+          cp ./build/libs/*.jar $GITHUB_WORKSPACE/devops/autotest/client/java/lib/
+          cd $GITHUB_WORKSPACE/devops/autotest/client/java 
+          ./gradlew build -x test
           docker cp src/main/resources/l10n singleton:/
-          str=$(printf '=%.0s' {1..50})
-          echo $str Smoke Test Start $str
-          cd target && java -cp '.:./*' org.testng.TestNG -d test-output testng.xml
-          cd $GITHUB_WORKSPACE/devops/autotest/client/java_client_sample_app && ./sample_app_sanity_test.sh $GITHUB_WORKSPACE
+          cd target 
+          java -cp '.:./*' org.testng.TestNG -d test-output testng.xml
+          cd $GITHUB_WORKSPACE/devops/autotest/client/java_client_sample_app 
+          ./sample_app_sanity_test.sh $GITHUB_WORKSPACE
