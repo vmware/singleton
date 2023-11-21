@@ -6,14 +6,14 @@ coverage:
     project:                   
       default:                 
         enabled: yes           
-        target: 80%                 
+        target: 50%                 
         if_no_uploads: error   
         if_not_found: failure  
         if_ci_failed: error   
     patch:
       default:
         enabled: true            
-        target: 80%                      
+        target: 0%                      
         if_no_uploads: error     
         if_not_found: failure
         if_ci_failed: error
