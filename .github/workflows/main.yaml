@@ -166,7 +166,7 @@ jobs:
       - name: Package Singleton Service
         run: |
           git clone --branch=master https://github.com/vmware/singleton.git service
-          git clone --branch=devops https://github.com/junw-33455432/singleton.git devops
+          git clone --branch=devops https://github.com/vmware/singleton.git devops
           cp -r devops/autotest/client/jscoresdk/resources/bundles/JSCoreSDKTest service/g11n-ws/vip-manager-i18n/src/main/resources/l10n/bundles/
           echo "source.cache.flag = true" >> service/g11n-ws/vip-manager-i18n/src/main/resources/application-bundle.properties
           cd $GITHUB_WORKSPACE/service/g11n-ws && ./gradlew build -x test
@@ -201,7 +201,7 @@ jobs:
         run: |
           nohup java -jar singleton.jar > singletonService.log 2>&1 &
           until [ -d l10n/bundles ] ; do sleep 2; echo waiting for bundles. . . ; done
-          git clone --branch=devops https://github.com/junw-33455432/singleton.git devops
+          git clone --branch=devops https://github.com/vmware/singleton.git devops
           cp -r devops/autotest/client/csharp/l10n/bundles/CSharpClient l10n/bundles
           ls -la $GITHUB_WORKSPACE/l10n/bundles
       - name: Run Smoke Test
