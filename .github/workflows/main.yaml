@@ -197,14 +197,15 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: singleton-service
-      - name: Run Smoke Test
+      - name: Start Singleton Service
         run: |
-          git clone --branch=devops https://github.com/junw-33455432/singleton.git devops
-          mkdir -p l10n/bundles
-          cp -r devops/autotest/client/csharp/l10n/bundles/CSharpClient l10n/bundles
-          ls -la $GITHUB_WORKSPACE/l10n/bundles
           nohup java -jar singleton.jar > singletonService.log 2>&1 &
           until [ -d l10n/bundles ] ; do sleep 2; echo waiting for bundles. . . ; done
+          git clone --branch=devops https://github.com/junw-33455432/singleton.git devops
+          cp -r devops/autotest/client/csharp/l10n/bundles/CSharpClient l10n/bundles
+          ls -la $GITHUB_WORKSPACE/l10n/bundles
+      - name: Run Smoke Test
+        run: |                
           export VSTEST="/c/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/Extensions/TestPlatform"
           export PATH="$PATH:$VSTEST"
           cd $GITHUB_WORKSPACE/singletonclient && nuget restore SingletonClient.sln
@@ -213,7 +214,7 @@ jobs:
           cd $GITHUB_WORKSPACE/devops/autotest/client/csharp && nuget restore csharp.sln
           cd $GITHUB_WORKSPACE/devops/autotest/client/csharp/CSharp && MSBuild.exe CSharp.csproj -t:rebuild -p:WarningLevel=0
           cd bin/Debug && pwd && ls -la
-          # curl -X GET 'http://localhost:8091/i18n/api/v2/formatting/patterns?language=en&region=TW&scope=dates'
+          curl -X GET 'http://localhost:8091/i18n/api/v2/formatting/patterns?language=en&region=TW&scope=dates'
           powershell -Command 'vstest.console CSharp.dll /TestCaseFilter:"Priority=0" /Logger:trx'
           powershell -Command 'Get-Process -Name java | Stop-Process'
       - uses: actions/upload-artifact@v2
