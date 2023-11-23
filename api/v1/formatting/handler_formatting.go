@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -27,4 +27,21 @@ import (
 // @Deprecated
 func GetLocalizedDate(c *gin.Context) {
 	formatting.GetLocalizedDate(c)
+}
+
+// GetLocalizedNumber godoc
+// @Summary Get localized number
+// @Description Get localized number by locale and scale
+// @Tags formatting-api
+// @Produce json
+// @Param locale query string true "locale String. e.g. 'en-US'"
+// @Param number query number true "number to format"
+// @Param scale query int false "decimal digits"
+// @Success 200 {object} api.Response "OK"
+// @Failure 400 {string} string "Bad Request"
+// @Failure 500 {string} string "Internal Server Error"
+// @Router /number/localizedNumber [get]
+// @Deprecated
+func GetLocalizedNumber(c *gin.Context) {
+	formatting.GetLocalizedNumber(c)
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -18,7 +18,9 @@ func (r *formattingRouter) Init(e *gin.RouterGroup) {
 	logger.Log.Debug("Initialize formatting router")
 
 	e.GET("/date/localizedDate", GetLocalizedDate)
+	e.GET("/number/localizedNumber", GetLocalizedNumber)
 }
+
 func init() {
 	v1.Register(&formattingRouter{})
 }

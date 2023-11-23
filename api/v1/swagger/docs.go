@@ -215,6 +215,61 @@ var doc = `{
                 }
             }
         },
+        "/number/localizedNumber": {
+            "get": {
+                "description": "Get localized number by locale and scale",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "formatting-api"
+                ],
+                "summary": "Get localized number",
+                "deprecated": true,
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "locale String. e.g. 'en-US'",
+                        "name": "locale",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "number",
+                        "description": "number to format",
+                        "name": "number",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "decimal digits",
+                        "name": "scale",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/translation": {
             "get": {
                 "description": "Get the product's translations by the specific version.",

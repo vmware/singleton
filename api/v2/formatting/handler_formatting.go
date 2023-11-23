@@ -1,15 +1,21 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
 package formatting
 
 import (
+	"strconv"
 	"time"
+
+	"golang.org/x/text/language"
+	"golang.org/x/text/message"
+	"golang.org/x/text/number"
 
 	"sgtnserver/api"
 	"sgtnserver/internal/logger"
+	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/formatting"
 
 	"github.com/gin-gonic/gin"
@@ -45,4 +51,38 @@ func GetLocalizedDate(c *gin.Context) {
 		FormattedDate: formatted}
 
 	api.HandleResponse(c, data, err)
+}
+
+// GetLocalizedNumber godoc
+// @Summary Get localized number
+// @Description Get localized number by locale and scale
+// @Tags formatting-api
+// @Produce json
+// @Param locale query string true "locale String. e.g. 'en-US'"
+// @Param number query number true "number to format"
+// @Param scale query int false "decimal digits"
+// @Success 200 {object} api.Response "OK"
+// @Failure 400 {string} string "Bad Request"
+// @Failure 500 {string} string "Internal Server Error"
+// @Router /formatting/number/localizedNumber [get]
+// @Deprecated
+func GetLocalizedNumber(c *gin.Context) {
+	params := NumberRequest{}
+	if err := api.ExtractParameters(c, nil, &params); err != nil {
+		return
+	}
+
+	language_tag, err := language.Parse(params.Locale)
+	if err != nil {
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WrapErrorWithMessage(err, "invalid Locale '%s'", params.Locale))
+		return
+	}
+
+	result := message.NewPrinter(language_tag).Sprint(number.Decimal(params.Number, number.MinFractionDigits(int(params.Scale))))
+	data := NumberResp{
+		Locale:          params.Locale,
+		Number:          strconv.FormatFloat(params.Number, 'f', -1, 64),
+		Scale:           strconv.FormatInt(int64(params.Scale), 10),
+		FormattedNumber: result}
+	api.HandleResponse(c, data, nil)
 }

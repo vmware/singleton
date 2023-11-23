@@ -327,6 +327,43 @@ paths:
       summary: Get timezone names
       tags:
       - formatting-api
+  /formatting/number/localizedNumber:
+    get:
+      deprecated: true
+      description: Get localized number by locale and scale
+      parameters:
+      - description: locale String. e.g. 'en-US'
+        in: query
+        name: locale
+        required: true
+        type: string
+      - description: number to format
+        in: query
+        name: number
+        required: true
+        type: number
+      - description: decimal digits
+        in: query
+        name: scale
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get localized number
+      tags:
+      - formatting-api
   /formatting/patterns:
     get:
       description: Get pattern data with language, region
