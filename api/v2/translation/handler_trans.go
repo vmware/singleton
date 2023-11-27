@@ -6,15 +6,17 @@
 package translation
 
 import (
-	"io/ioutil"
+	"io"
+	"strings"
+
 	"sgtnserver/api"
 	"sgtnserver/internal/common"
 	"sgtnserver/internal/logger"
 	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/translation"
 	"sgtnserver/modules/translation/translationservice"
-	"strings"
 
+	"github.com/StudioSol/set"
 	"github.com/emirpasic/gods/sets/linkedhashset"
 	"github.com/gin-gonic/gin"
 	jsoniter "github.com/json-iterator/go"
@@ -311,6 +313,7 @@ func GetMultiVersionsKey(c *gin.Context) {
 	var versions []string
 	if params.Versions != api.AllVersions {
 		versions = strings.Split(params.Versions, common.ParamSep)
+		versions = set.NewLinkedHashSetString(versions...).AsSlice()
 	}
 
 	var result []interface{}
@@ -354,7 +357,7 @@ func GetStringByPost(c *gin.Context) {
 	}
 
 	if c.Request.Body != nil {
-		if bts, err := ioutil.ReadAll(c.Request.Body); err != nil {
+		if bts, err := io.ReadAll(c.Request.Body); err != nil {
 			api.AbortWithError(c, sgtnerror.StatusBadRequest.WrapErrorWithMessage(err, "fail to read request body"))
 			return
 		} else {
