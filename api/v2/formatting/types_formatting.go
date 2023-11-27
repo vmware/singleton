@@ -6,6 +6,7 @@
 package formatting
 
 // Request
+
 type (
 	DateReq struct {
 		Locale   string `form:"locale" binding:"locale"`
@@ -21,6 +22,7 @@ type (
 )
 
 // Response
+
 type (
 	DateResp struct {
 		Pattern       string `json:"pattern"`
