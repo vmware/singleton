@@ -14,9 +14,9 @@ type (
 	}
 
 	NumberRequest struct {
-		Locale string  `form:"locale" binding:"locale" json:"locale"`
-		Number float64 `form:"number" binding:"number" json:"number"`
-		Scale  int     `form:"scale"  binding:"number" json:"scale"`
+		Locale string `form:"locale" binding:"locale"`
+		Number string `form:"number" binding:"numeric"`
+		Scale  int    `form:"scale"  binding:"number"`
 	}
 )
 

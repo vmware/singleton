@@ -6,16 +6,17 @@
 package formatting
 
 import (
+	"math/big"
+	"regexp"
 	"strconv"
+	"strings"
 	"time"
-
-	"golang.org/x/text/language"
-	"golang.org/x/text/message"
-	"golang.org/x/text/number"
 
 	"sgtnserver/api"
 	"sgtnserver/internal/logger"
 	"sgtnserver/internal/sgtnerror"
+	"sgtnserver/modules/cldr"
+	"sgtnserver/modules/cldr/localeutil"
 	"sgtnserver/modules/formatting"
 
 	"github.com/gin-gonic/gin"
@@ -72,17 +73,55 @@ func GetLocalizedNumber(c *gin.Context) {
 		return
 	}
 
-	language_tag, err := language.Parse(params.Locale)
+	numbers, err := localeutil.GetPatternData(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.Locale, cldr.PatternNumbers)
 	if err != nil {
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WrapErrorWithMessage(err, "invalid Locale '%s'", params.Locale))
 		return
 	}
 
-	result := message.NewPrinter(language_tag).Sprint(number.Decimal(params.Number, number.MinFractionDigits(int(params.Scale))))
+	decimalFormats := numbers.Get("numberFormats", "decimalFormats").ToString()
+	numberSymbols := numbers.Get("numberSymbols")
+	decimalSign := numberSymbols.Get("decimal").ToString()
+	groupSign := numberSymbols.Get("group").ToString()
+
+	re := regexp.MustCompile(`^#,(?:(#+),)*(#*0*)\..*$`)
+	stringSubmatch := re.FindStringSubmatch(decimalFormats)
+	groupLength := len(stringSubmatch[1])
+	if groupLength == 0 {
+		groupLength = len(stringSubmatch[2])
+	}
+
+	bigFloat, _, _ := big.ParseFloat(params.Number, 10, 0, big.ToNearestAway)
+	roundedNumberStr := bigFloat.Text('f', params.Scale)
+
+	decimalPointIndex := strings.LastIndex(roundedNumberStr, ".")
+	if decimalPointIndex == -1 {
+		decimalPointIndex = len(roundedNumberStr)
+	}
+
+	var sb strings.Builder
+	i := (decimalPointIndex - len(stringSubmatch[2])) % groupLength
+	if i != 0 {
+		sb.WriteString(roundedNumberStr[:i])
+		if !(i == 1 && (roundedNumberStr[0] == '+' || roundedNumberStr[0] == '-')) {
+			sb.WriteString(groupSign)
+		}
+	}
+	for ; i < decimalPointIndex-len(stringSubmatch[2]); i += groupLength {
+		sb.WriteString(roundedNumberStr[i : i+groupLength])
+		sb.WriteString(groupSign)
+	}
+
+	sb.WriteString(roundedNumberStr[i:decimalPointIndex])
+	if params.Scale > 0 {
+		sb.WriteString(decimalSign)
+		sb.WriteString(roundedNumberStr[decimalPointIndex+1:])
+	}
+
 	data := NumberResp{
 		Locale:          params.Locale,
-		Number:          strconv.FormatFloat(params.Number, 'f', -1, 64),
+		Number:          params.Number,
 		Scale:           strconv.FormatInt(int64(params.Scale), 10),
-		FormattedNumber: result}
+		FormattedNumber: sb.String()}
 	api.HandleResponse(c, data, nil)
 }
