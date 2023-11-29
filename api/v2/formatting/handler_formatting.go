@@ -1,15 +1,22 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
 package formatting
 
 import (
+	"math/big"
+	"regexp"
+	"strconv"
+	"strings"
 	"time"
 
 	"sgtnserver/api"
 	"sgtnserver/internal/logger"
+	"sgtnserver/internal/sgtnerror"
+	"sgtnserver/modules/cldr"
+	"sgtnserver/modules/cldr/localeutil"
 	"sgtnserver/modules/formatting"
 
 	"github.com/gin-gonic/gin"
@@ -45,4 +52,76 @@ func GetLocalizedDate(c *gin.Context) {
 		FormattedDate: formatted}
 
 	api.HandleResponse(c, data, err)
+}
+
+// GetLocalizedNumber godoc
+// @Summary Get localized number
+// @Description Get localized number by locale and scale
+// @Tags formatting-api
+// @Produce json
+// @Param locale query string true "locale String. e.g. 'en-US'"
+// @Param number query number true "number to format"
+// @Param scale query int false "decimal digits"
+// @Success 200 {object} api.Response "OK"
+// @Failure 400 {string} string "Bad Request"
+// @Failure 500 {string} string "Internal Server Error"
+// @Router /formatting/number/localizedNumber [get]
+// @Deprecated
+func GetLocalizedNumber(c *gin.Context) {
+	params := NumberRequest{}
+	if err := api.ExtractParameters(c, nil, &params); err != nil {
+		return
+	}
+
+	numbers, err := localeutil.GetPatternData(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.Locale, cldr.PatternNumbers)
+	if err != nil {
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WrapErrorWithMessage(err, "invalid Locale '%s'", params.Locale))
+		return
+	}
+
+	decimalFormats := numbers.Get("numberFormats", "decimalFormats").ToString()
+	numberSymbols := numbers.Get("numberSymbols")
+	decimalSign := numberSymbols.Get("decimal").ToString()
+	groupSign := numberSymbols.Get("group").ToString()
+
+	re := regexp.MustCompile(`^#,(?:(#+),)*(#*0*)\..*$`)
+	stringSubmatch := re.FindStringSubmatch(decimalFormats)
+	groupLength := len(stringSubmatch[1])
+	if groupLength == 0 {
+		groupLength = len(stringSubmatch[2])
+	}
+
+	bigFloat, _, _ := big.ParseFloat(params.Number, 10, 0, big.ToNearestAway)
+	roundedNumberStr := bigFloat.Text('f', params.Scale)
+
+	decimalPointIndex := strings.LastIndex(roundedNumberStr, ".")
+	if decimalPointIndex == -1 {
+		decimalPointIndex = len(roundedNumberStr)
+	}
+
+	var sb strings.Builder
+	i := (decimalPointIndex - len(stringSubmatch[2])) % groupLength
+	if i != 0 {
+		sb.WriteString(roundedNumberStr[:i])
+		if !(i == 1 && (roundedNumberStr[0] == '+' || roundedNumberStr[0] == '-')) {
+			sb.WriteString(groupSign)
+		}
+	}
+	for ; i < decimalPointIndex-len(stringSubmatch[2]); i += groupLength {
+		sb.WriteString(roundedNumberStr[i : i+groupLength])
+		sb.WriteString(groupSign)
+	}
+
+	sb.WriteString(roundedNumberStr[i:decimalPointIndex])
+	if params.Scale > 0 {
+		sb.WriteString(decimalSign)
+		sb.WriteString(roundedNumberStr[decimalPointIndex+1:])
+	}
+
+	data := NumberResp{
+		Locale:          params.Locale,
+		Number:          params.Number,
+		Scale:           strconv.FormatInt(int64(params.Scale), 10),
+		FormattedNumber: sb.String()}
+	api.HandleResponse(c, data, nil)
 }
