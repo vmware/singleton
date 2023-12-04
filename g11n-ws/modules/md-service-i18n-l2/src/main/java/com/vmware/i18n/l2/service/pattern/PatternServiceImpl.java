@@ -9,7 +9,7 @@ import com.vmware.i18n.dto.LocaleDataDTO;
 import com.vmware.i18n.l2.dao.pattern.IPatternDao;
 import com.vmware.i18n.utils.CommonUtil;
 import com.vmware.vip.common.cache.CacheName;
-import com.vmware.vip.common.cache.TranslationCache3;
+import com.vmware.vip.common.cache.SingletonCache;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.exceptions.VIPCacheException;
@@ -44,6 +44,9 @@ public class PatternServiceImpl implements IPatternService {
 	@Autowired
 	private IPatternDao patternDao;
 
+	@Autowired
+	private SingletonCache singletonCache;
+
 	/**
 	 *
 	 * @param locale
@@ -72,7 +75,7 @@ public class PatternServiceImpl implements IPatternService {
 
 		Map<String, Object> patternMap = null;
 		String patternJson = "";
-		patternJson = TranslationCache3.getCachedObject(CacheName.PATTERN, locale, String.class);
+		patternJson = singletonCache.getCachedObject(CacheName.PATTERN, locale, String.class);
 	
 		if (StringUtils.isEmpty(patternJson)) {
 			logger.info("get pattern data from file");
@@ -81,7 +84,7 @@ public class PatternServiceImpl implements IPatternService {
 				logger.info("file data don't exist");
 				return buildPatternMap(locale);
 			}
-			TranslationCache3.addCachedObject(CacheName.PATTERN, locale, String.class, patternJson);
+			singletonCache.addCachedObject(CacheName.PATTERN, locale, String.class, patternJson);
 		}
 		logger.info("get pattern data from cache");
 		patternMap = JSONUtils.getMapFromJson(patternJson);
@@ -124,7 +127,7 @@ public class PatternServiceImpl implements IPatternService {
 		LocaleDataDTO resultData = CommonUtil.getLocale(language, region);
 		String locale = resultData.getLocale();
 		logger.info(locale);
-		patternJson = TranslationCache3.getCachedObject(CacheName.PATTERN, locale, String.class);
+		patternJson = singletonCache.getCachedObject(CacheName.PATTERN, locale, String.class);
 		if (StringUtils.isEmpty(patternJson)) {
 			logger.info("get pattern data from file");
 			patternJson = patternDao.getPattern(locale, null);
@@ -132,7 +135,7 @@ public class PatternServiceImpl implements IPatternService {
 				logger.info("file data don't exist");
 				return buildPatternMap(language, region, patternJson, categoryList, scopeFilter, resultData);
 			}
-			TranslationCache3.addCachedObject(CacheName.PATTERN, locale, String.class, patternJson);
+			singletonCache.addCachedObject(CacheName.PATTERN, locale, String.class, patternJson);
 		}
 		logger.info("get pattern data from cache");
 		patternMap = buildPatternMap(language, region, patternJson, categoryList, scopeFilter, resultData);

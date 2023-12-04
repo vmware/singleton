@@ -6,6 +6,7 @@ package com.vmware.vip.core.messages.service.mt;
 
 import java.util.List;
 
+import com.vmware.vip.common.cache.SingletonCache;
 import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +17,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.vmware.vip.common.cache.CacheName;
-import com.vmware.vip.common.cache.TranslationCache3;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.exceptions.VIPCacheException;
@@ -38,6 +38,9 @@ public class SourceToLatestCron {
 
 	@Autowired
 	private IOneComponentService oneComponentService;
+
+	@Autowired
+	private SingletonCache singletonCache;
 	
 	
 	@Scheduled(cron = "0 0/1 * * * ?")
@@ -46,17 +49,17 @@ public class SourceToLatestCron {
 		    	List<String> keys;
 		    	try {
 		    		try {
-		    		keys = TranslationCache3.getKeys(CacheName.MTSOURCE, ComponentMessagesDTO.class);
+		    		keys = singletonCache.getKeys(CacheName.MTSOURCE, ComponentMessagesDTO.class);
 		    		}catch(NullPointerException e) {
 		    			keys = null;
 		    		}
 		    		if(keys != null) {
 		    			for(String key: keys) {
-			    			ComponentMessagesDTO d = TranslationCache3.getCachedObject(CacheName.MTSOURCE, key, ComponentMessagesDTO.class);
+			    			ComponentMessagesDTO d = singletonCache.getCachedObject(CacheName.MTSOURCE, key, ComponentMessagesDTO.class);
 			    			if(d != null && !StringUtils.isEmpty(d.getMessages()) && key.contains(ConstantsKeys.LATEST + ConstantsChar.UNDERLINE + ConstantsKeys.MT)) {
 			    				LOGGER.info("Sync data to latest.json for " + key);
 			    				productService.updateTranslation(d);
-			    				TranslationCache3.deleteCachedObject(CacheName.MTSOURCE, key, ComponentMessagesDTO.class);
+			    				singletonCache.deleteCachedObject(CacheName.MTSOURCE, key, ComponentMessagesDTO.class);
 			    			}
 			    		}
 		    		}

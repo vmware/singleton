@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Locale;
 
 
+import com.vmware.vip.common.cache.SingletonCache;
 import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +20,6 @@ import org.springframework.util.StringUtils;
 
 import com.vmware.vip.common.cache.CacheName;
 import com.vmware.vip.common.cache.CachedKeyGetter;
-import com.vmware.vip.common.cache.TranslationCache3;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.TranslationQueryStatusType;
@@ -51,6 +51,9 @@ public class OneComponentService implements IOneComponentService {
 	@Autowired
 	private PseudoConfig pseudoConfig;
 
+	@Autowired
+	private SingletonCache singletonCache;
+
 	/**
 	 * Get the translation of a component from cache and disk/db
 	 * <p>
@@ -80,7 +83,7 @@ public class OneComponentService implements IOneComponentService {
 		String key = CachedKeyGetter
 				.getOneCompnentCachedKey(componentMessagesDTO);
 		try {
-			result =  TranslationCache3.getCachedObject(
+			result =  singletonCache.getCachedObject(
 					CacheName.ONECOMPONENT, key, ComponentMessagesDTO.class);
 			if (StringUtils.isEmpty(result) || StringUtils.isEmpty(result.getMessages()) || StringUtils.isEmpty(result.getComponent())) {
 				LOGGER.info("Get data from local, since it's not found in the cache.");
@@ -91,7 +94,7 @@ public class OneComponentService implements IOneComponentService {
 						String msg = "The result from disk is: {}" + result.toString();
 						LOGGER.debug(msg);
 					}
-					TranslationCache3.addCachedObject(CacheName.ONECOMPONENT,
+					singletonCache.addCachedObject(CacheName.ONECOMPONENT,
 							key, ComponentMessagesDTO.class, result);
 				}
 			} else {

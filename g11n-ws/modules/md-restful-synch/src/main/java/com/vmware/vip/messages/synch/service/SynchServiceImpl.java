@@ -10,6 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import com.vmware.vip.common.cache.SingletonCache;
 import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +20,6 @@ import org.springframework.util.StringUtils;
 
 import com.vmware.vip.common.cache.CacheName;
 import com.vmware.vip.common.cache.CachedKeyGetter;
-import com.vmware.vip.common.cache.TranslationCache3;
 import com.vmware.vip.common.exceptions.VIPCacheException;
 import com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO;
 import com.vmware.vip.messages.data.dao.exception.DataException;
@@ -31,6 +31,9 @@ public class SynchServiceImpl implements SynchService{
 	
 	@Autowired
 	private SynchComponentDao syschComponentDao;
+
+	@Autowired
+	private SingletonCache singletonCache;
 	
 	@Override
 	public List<String> updateTranslationBatch(List<ComponentMessagesDTO> comps) {
@@ -77,7 +80,7 @@ public class SynchServiceImpl implements SynchService{
 				throws DataException, ParseException, VIPCacheException {
 			String key = CachedKeyGetter.getOneCompnentCachedKey(componentMessagesDTO);
 			File updateFile;
-			ComponentMessagesDTO result =  TranslationCache3.getCachedObject(CacheName.ONECOMPONENT, key, ComponentMessagesDTO.class);
+			ComponentMessagesDTO result =  singletonCache.getCachedObject(CacheName.ONECOMPONENT, key, ComponentMessagesDTO.class);
 			// merge with local bundle file
 			SyncI18nMsg syncMsg = mergeComponentMessagesDTOWithFile(componentMessagesDTO);
 			
@@ -95,7 +98,7 @@ public class SynchServiceImpl implements SynchService{
 						syncMsg.getMessages());
 				
 				componentMessagesDTO.setMessages(syncMsg.getMessages());
-				TranslationCache3.updateCachedObject(CacheName.ONECOMPONENT, key,ComponentMessagesDTO.class, componentMessagesDTO);
+				singletonCache.updateCachedObject(CacheName.ONECOMPONENT, key,ComponentMessagesDTO.class, componentMessagesDTO);
 			}
 			return updateFile;
 		}
