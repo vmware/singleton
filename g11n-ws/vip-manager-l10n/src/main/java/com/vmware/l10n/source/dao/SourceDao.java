@@ -1,9 +1,10 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.source.dao;
 
+import java.io.IOException;
 import java.util.List;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -23,9 +24,6 @@ public interface SourceDao {
 	 * 
 	 * @param singleComponentDTO
 	 *            the object which wraps the base information of a component
-	 * @param filePath
-	 *            the location where the resource file is placed, can be
-	 *            configed in spring config file
 	 * @return the content of the resource file
 	 */
 	public String getFromBundle(SingleComponentDTO singleComponentDTO);
@@ -33,15 +31,12 @@ public interface SourceDao {
 	/**
 	 * Write source strings to local resource file.
 	 * 
-	 * @param singleComponentDTO
+	 * @param componentMessagesDTO
 	 *            the object which wraps the content of a component
-	 * @param basepath
-	 *            the location where the resource file is placed, can be
-	 *            configed in spring config file
 	 * @return update result, true represents success, false represents failure.
 	 * @throws JsonProcessingException 
 	 */
-	public boolean updateToBundle(ComponentMessagesDTO componentMessagesDTO) throws JsonProcessingException;
+	public boolean updateToBundle(ComponentMessagesDTO componentMessagesDTO) throws IOException;
 	
 	/**
 	 * get the update records from bundle

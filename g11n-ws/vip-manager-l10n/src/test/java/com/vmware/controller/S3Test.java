@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.controller;
@@ -74,7 +74,7 @@ public class S3Test {
 		Runnable r1 = () -> {
 			try {
 				sourceDao.updateToBundle(single);
-			} catch (JsonProcessingException e) {
+			} catch (IOException e) {
 				logger.error(e.getMessage(), e);
 			}
 		};
@@ -84,7 +84,7 @@ public class S3Test {
 		Runnable r2 = () -> {
 			try {
 				sourceDao.updateToBundle(single);
-			} catch (JsonProcessingException e) {
+			} catch (IOException e) {
 				logger.error(e.getMessage(), e);
 			}
 		};
@@ -123,7 +123,7 @@ public class S3Test {
 	}
 
 	@Test
-	public void test002() throws IOException {
+	public void test002() throws Exception {
 		SourceDao sourceDao = webApplicationContext.getBean(SourceDao.class);
 		SingleComponentDao singleComponentDao = webApplicationContext.getBean(SingleComponentDao.class);
 		String fileNamePrefix = "messages_";
@@ -156,7 +156,7 @@ public class S3Test {
 				if (dto.getLocale().equals("latest")) {
 					try {
 						sourceDao.updateToBundle(dto);
-					} catch (JsonProcessingException e) {
+					} catch (IOException e) {
 						logger.error(e.getMessage(), e);
 					}
 					sourceDao.getFromBundle(dto);
@@ -182,7 +182,7 @@ public class S3Test {
 	}
 	
 	@Test
-	public void test003() throws JsonProcessingException {
+	public void test003() throws Exception {
 		SourceDao sourceDao = webApplicationContext.getBean(SourceDao.class);
 
 		ComponentMessagesDTO single = new ComponentMessagesDTO();
