@@ -27,7 +27,7 @@
             "buildFlags": "-tags=jsoniter",
             "args": [
                 "-test.v",
-                "-test.run=^TestAuthTestSuite$",
+                // "-test.run=^TestGetPatternByLangReg$",
                 "--config=${workspaceFolder}/tests/testdata/config/config.yaml",
                 "--AllowListFile=${workspaceFolder}/tests/testdata/allowlist.json",
                 "--Crypto.RSAPrivateKeyFile=${workspaceFolder}/tests/testdata/rsa/private.key",
