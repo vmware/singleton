@@ -157,5 +157,6 @@ func ldapAuthFunc(ctx context.Context, r *http.Request, userName, password strin
 }
 
 var GetLDAPConn = func() (ldap.Client, error) {
-	return ldap.DialURL(config.Settings.Authentication.LDAPServerURL, ldap.DialWithTLSConfig(&tls.Config{InsecureSkipVerify: true}))
+	tlsConfig := tls.Config{MinVersion: tls.VersionTLS13}
+	return ldap.DialURL(config.Settings.Authentication.LDAPServerURL, ldap.DialWithTLSConfig(&tlsConfig))
 }
