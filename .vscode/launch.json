@@ -13,7 +13,9 @@
             "args": [
                 "--config=${workspaceFolder}/tests/testdata/config/config.yaml",
                 "--local-bundle.base-path=${workspaceFolder}/tests/testdata/bundles",
-                "--AllowListFile=${workspaceFolder}/tests/testdata/allowlist.json"
+                "--AllowListFile=${workspaceFolder}/tests/testdata/allowlist.json",
+                "--Crypto.RSAPrivateKeyFile=${workspaceFolder}/tests/testdata/rsa/private.key",
+                "--Crypto.RSAPublicKeyFile=${workspaceFolder}/tests/testdata/rsa/public.key"
             ],
         },
         {
@@ -25,8 +27,11 @@
             "buildFlags": "-tags=jsoniter",
             "args": [
                 "-test.v",
-                // "-test.run=^TestGetPatternByLangReg$",
-                "--config=${workspaceFolder}/tests/testdata/config/config.yaml"
+                "-test.run=^TestAuthTestSuite$",
+                "--config=${workspaceFolder}/tests/testdata/config/config.yaml",
+                "--AllowListFile=${workspaceFolder}/tests/testdata/allowlist.json",
+                "--Crypto.RSAPrivateKeyFile=${workspaceFolder}/tests/testdata/rsa/private.key",
+                "--Crypto.RSAPublicKeyFile=${workspaceFolder}/tests/testdata/rsa/public.key"
             ]
         },
         {

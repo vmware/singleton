@@ -1,22 +1,19 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
 package s3bundle
 
 import (
-	"crypto/rsa"
-	"crypto/x509"
-	"io/ioutil"
-
+	"sgtnserver/internal/common"
 	"sgtnserver/internal/logger"
 )
 
 type (
 	S3Config struct {
 		publicKeyFile, accessKey, secretKey, roleArn, region string
-		sessionDuration int32
+		sessionDuration                                      int32
 	}
 )
 
@@ -32,31 +29,20 @@ func NewS3Config(publicKeyFile, accessKey, secretKey, roleArn string, sessionDur
 
 	if len(config.publicKeyFile) != 0 {
 		// Get public key
-		fileContent, err := ioutil.ReadFile(config.publicKeyFile)
+		rsaPubKey, err := common.GetPublicKeyFromFile(config.publicKeyFile)
 		if err != nil {
 			logger.Log.Fatal(err.Error())
 		}
-
-		decodedData, err := Base64Decode(fileContent)
-		if err != nil {
-			logger.Log.Fatal(err.Error())
-		}
-
-		pubKey, err := x509.ParsePKIXPublicKey(decodedData)
-		if err != nil {
-			logger.Log.Fatal(err.Error())
-		}
-		rsaPubKey := pubKey.(*rsa.PublicKey)
 
 		// Get AccessKey
-		accessKey, err := Decrypt([]byte(config.accessKey), rsaPubKey)
+		accessKey, err := common.Decrypt([]byte(config.accessKey), rsaPubKey)
 		if err != nil {
 			logger.Log.Fatal(err.Error())
 		}
 		config.accessKey = string(accessKey)
 
 		// Get SecretKey
-		secretKey, err := Decrypt([]byte(config.secretKey), rsaPubKey)
+		secretKey, err := common.Decrypt([]byte(config.secretKey), rsaPubKey)
 		if err != nil {
 			logger.Log.Fatal(err.Error())
 		}

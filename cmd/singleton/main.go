@@ -8,6 +8,7 @@ package main
 import (
 	"sgtnserver/api"
 	_ "sgtnserver/api/actuator"
+	_ "sgtnserver/api/authentication"
 	_ "sgtnserver/api/v1/cldr"
 	_ "sgtnserver/api/v1/formatting"
 	_ "sgtnserver/api/v1/translation"

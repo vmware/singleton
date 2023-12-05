@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -17,6 +17,7 @@ var (
 	StatusPartialSuccess = Error{code: 207, httpCode: http.StatusOK, message: "Successful Partially"}
 
 	StatusBadRequest    = Error{code: http.StatusBadRequest, httpCode: http.StatusBadRequest, message: "Bad Request"}
+	StatusUnauthorized  = Error{code: http.StatusUnauthorized, httpCode: http.StatusBadRequest, message: http.StatusText(http.StatusUnauthorized)}
 	StatusNotFound      = Error{code: http.StatusNotFound, httpCode: http.StatusBadRequest}
 	StatusInvalidToken  = Error{code: 498, httpCode: 498, message: "Invalid Token"}
 	StatusTokenRequired = Error{code: 499, httpCode: 499, message: "Token Required"}
