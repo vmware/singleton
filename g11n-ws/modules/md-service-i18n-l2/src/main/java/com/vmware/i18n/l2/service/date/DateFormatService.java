@@ -4,17 +4,6 @@
  */
 package com.vmware.i18n.l2.service.date;
 
-import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localeAliasesMap;
-import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localePathMap;
-
-import java.util.Date;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ibm.icu.text.SimpleDateFormat;
 import com.ibm.icu.util.ULocale;
@@ -22,11 +11,21 @@ import com.vmware.i18n.l2.dao.pattern.IPatternDao;
 import com.vmware.i18n.utils.CommonUtil;
 import com.vmware.i18n.utils.timezone.TimeZoneName;
 import com.vmware.vip.common.cache.CacheName;
-import com.vmware.vip.common.cache.TranslationCache3;
+import com.vmware.vip.common.cache.SingletonCache;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ValidationMsg;
 import com.vmware.vip.common.exceptions.VIPCacheException;
 import com.vmware.vip.core.messages.exception.L2APIException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+
+import java.util.Date;
+
+import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localeAliasesMap;
+import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localePathMap;
 
 /**
  * The class represents date formatting
@@ -38,6 +37,9 @@ public class DateFormatService implements IDateFormatService{
 	
 	@Autowired
 	private IPatternDao patternDao;
+
+	@Autowired
+	private SingletonCache singletonCache;
 	
 	/**
 	 * Format a long date to localized date
@@ -77,7 +79,7 @@ public class DateFormatService implements IDateFormatService{
 		}
 		String timezoneNameJson = null;
 		try {
-			timezoneNameJson = TranslationCache3.getCachedObject(CacheName.PATTERN, getTimeZoneNameKey(newLocale, defaultTerritory), String.class);
+			timezoneNameJson = singletonCache.getCachedObject(CacheName.PATTERN, getTimeZoneNameKey(newLocale, defaultTerritory), String.class);
 		} catch (VIPCacheException e) {
 			timezoneNameJson = null;
 		}
@@ -91,7 +93,7 @@ public class DateFormatService implements IDateFormatService{
 			}
 			try {
 				timezoneNameJson = new ObjectMapper().writeValueAsString(timeZoneName);
-				TranslationCache3.addCachedObject(CacheName.PATTERN, getTimeZoneNameKey(newLocale, defaultTerritory),
+				singletonCache.addCachedObject(CacheName.PATTERN, getTimeZoneNameKey(newLocale, defaultTerritory),
 						String.class, timezoneNameJson);
 			} catch (Exception e) {
 				throw new L2APIException(e.getMessage());
