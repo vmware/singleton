@@ -4,12 +4,12 @@
  */
 package com.vmware.l10n.source.service.impl;
 
-import com.vmware.l10n.source.dao.SourceDao;
-import com.vmware.l10n.source.service.SyncLocalBundleService;
-import com.vmware.l10n.utils.DiskQueueUtils;
-import com.vmware.vip.common.l10n.exception.L10nAPIException;
-import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
-import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -18,11 +18,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+import com.vmware.l10n.source.dao.SourceDao;
+import com.vmware.l10n.source.service.SyncLocalBundleService;
+import com.vmware.l10n.utils.DiskQueueUtils;
+import com.vmware.vip.common.l10n.exception.L10nAPIException;
+import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
+import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
 
 /**
  * 
