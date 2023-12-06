@@ -1,21 +1,15 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.controller;
 
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Stream;
-
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.vmware.l10n.BootApplication;
+import com.vmware.l10n.source.dao.SourceDao;
+import com.vmware.l10n.translation.dao.SingleComponentDao;
+import com.vmware.vip.common.l10n.exception.L10nAPIException;
+import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -30,12 +24,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.vmware.l10n.BootApplication;
-import com.vmware.l10n.source.dao.SourceDao;
-import com.vmware.l10n.translation.dao.SingleComponentDao;
-import com.vmware.vip.common.l10n.exception.L10nAPIException;
-import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Stream;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BootApplication.class)
@@ -74,7 +73,7 @@ public class S3Test {
 		Runnable r1 = () -> {
 			try {
 				sourceDao.updateToBundle(single);
-			} catch (JsonProcessingException e) {
+			} catch (IOException e) {
 				logger.error(e.getMessage(), e);
 			}
 		};
@@ -84,7 +83,7 @@ public class S3Test {
 		Runnable r2 = () -> {
 			try {
 				sourceDao.updateToBundle(single);
-			} catch (JsonProcessingException e) {
+			} catch (IOException e) {
 				logger.error(e.getMessage(), e);
 			}
 		};
@@ -123,7 +122,7 @@ public class S3Test {
 	}
 
 	@Test
-	public void test002() throws IOException {
+	public void test002() throws Exception {
 		SourceDao sourceDao = webApplicationContext.getBean(SourceDao.class);
 		SingleComponentDao singleComponentDao = webApplicationContext.getBean(SingleComponentDao.class);
 		String fileNamePrefix = "messages_";
@@ -156,7 +155,7 @@ public class S3Test {
 				if (dto.getLocale().equals("latest")) {
 					try {
 						sourceDao.updateToBundle(dto);
-					} catch (JsonProcessingException e) {
+					} catch (IOException e) {
 						logger.error(e.getMessage(), e);
 					}
 					sourceDao.getFromBundle(dto);
@@ -182,7 +181,7 @@ public class S3Test {
 	}
 	
 	@Test
-	public void test003() throws JsonProcessingException {
+	public void test003() throws Exception {
 		SourceDao sourceDao = webApplicationContext.getBean(SourceDao.class);
 
 		ComponentMessagesDTO single = new ComponentMessagesDTO();

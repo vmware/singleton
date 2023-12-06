@@ -4,12 +4,12 @@
  */
 package com.vmware.l10n.source.service.impl;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
+import com.vmware.l10n.source.dao.SourceDao;
+import com.vmware.l10n.source.service.SyncLocalBundleService;
+import com.vmware.l10n.utils.DiskQueueUtils;
+import com.vmware.vip.common.l10n.exception.L10nAPIException;
+import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
+import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -18,12 +18,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.vmware.l10n.source.dao.SourceDao;
-import com.vmware.l10n.source.service.SyncLocalBundleService;
-import com.vmware.l10n.utils.DiskQueueUtils;
-import com.vmware.vip.common.l10n.exception.L10nAPIException;
-import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
-import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 /**
  * 
@@ -86,7 +85,6 @@ public class SyncLocalBundleServiceImpl implements SyncLocalBundleService {
 			return;
 		}
 		LOGGER.debug("the source cache file size---{}", queueFiles.size());
-		boolean moveFileFlag = true;
 		for (File quefile : queueFiles) {
 			try {
 				Map<String, ComponentSourceDTO> mapObj = DiskQueueUtils.getQueueFile2Obj(quefile);
@@ -101,18 +99,13 @@ public class SyncLocalBundleServiceImpl implements SyncLocalBundleService {
 						if (!updateFlag) {
 							throw new L10nAPIException("Failed to update source:" + ehcachekey);
 						}
+
 					}
 				}
-
+				processSendFilePath(this.basePath, quefile);
 			} catch (L10nAPIException e) {
-				LOGGER.error(e.getMessage(), e);
-				moveFileFlag = false;
-				try {
-					Thread.sleep(30000);
-				} catch (InterruptedException ex) {
-					LOGGER.error(ex.getMessage(), ex);
-				}
-				DiskQueueUtils.copyFile2ExceptPath(basePath, quefile, this.activeDaoType);
+				LOGGER.warn(e.getMessage(), e);
+				LOGGER.warn("The source cache file:{} will re-update to {}", quefile.getAbsolutePath(), this.activeDaoType);
 				break;
 			} catch (Exception e) {
 				LOGGER.error(e.getMessage(), e);
@@ -120,15 +113,6 @@ public class SyncLocalBundleServiceImpl implements SyncLocalBundleService {
 			}
 		}
 
-		if (moveFileFlag){
-			for (File delFile : queueFiles){
-				try {
-					processSendFilePath(this.basePath, delFile);
-				} catch (IOException e) {
-					DiskQueueUtils.moveFile2ExceptPath(basePath, delFile, LOCAL_STR);
-				}
-			}
-		}
 
 	}
 
