@@ -13,13 +13,17 @@ import com.vmware.vip.common.i18n.status.Response;
 import com.vmware.vip.core.about.exception.AboutAPIException;
 import com.vmware.vip.core.messages.exception.L2APIException;
 import com.vmware.vip.core.messages.exception.L3APIException;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.IOException;
 import java.text.MessageFormat;
 
 
@@ -74,4 +78,12 @@ public class ExceptionHandle {
 		logger.info(endHandle);
 		return response;
 	}
+
+	@ExceptionHandler(value = HttpRequestMethodNotSupportedException.class)
+	private void processHttpRequestMethodNotSupportedException (HttpServletRequest request, HttpServletResponse response, HttpRequestMethodNotSupportedException me) throws ServletException, IOException {
+		logger.error(me.getMessage(), me);
+		response.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+		request.getRequestDispatcher("/error").forward(request, response);
+	}
+
 }
