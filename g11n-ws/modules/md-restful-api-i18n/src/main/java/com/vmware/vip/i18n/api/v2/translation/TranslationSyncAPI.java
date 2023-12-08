@@ -30,6 +30,7 @@ import io.swagger.annotations.ApiOperation;
  *
  */
 @RestController("v2-TranslationSyncAPI")
+@ConditionalOnProperty(name = "translation.update.enable", havingValue = "true", matchIfMissing = true)
 public class TranslationSyncAPI extends TranslationSyncAction {
 
 	/**

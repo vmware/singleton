@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.v1.translation;
@@ -30,6 +30,7 @@ import io.swagger.annotations.ApiOperation;
  *
  */
 @RestController
+@ConditionalOnProperty(name = "translation.update.enable", havingValue = "true", matchIfMissing = true)
 public class TranslationSyncAPI extends TranslationSyncAction {
 	
 	/**
