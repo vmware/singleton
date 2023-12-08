@@ -1,5 +1,5 @@
 <!--
-Copyright 2019-2022 VMware, Inc.
+Copyright 2019-2023 VMware, Inc.
 SPDX-License-Identifier: EPL-2.0
 -->
 <config xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
@@ -62,7 +62,7 @@ SPDX-License-Identifier: EPL-2.0
 
 	<cache alias="LANGUAGE" uses-template="default">
 		<key-type>java.lang.String</key-type>
-		<value-type>java.util.HashMap</value-type>
+		<value-type>java.util.ArrayList</value-type>
 		<expiry>
 			<tti unit="hours">1</tti>
 			<!--<ttl unit="hours">24</ttl> -->
