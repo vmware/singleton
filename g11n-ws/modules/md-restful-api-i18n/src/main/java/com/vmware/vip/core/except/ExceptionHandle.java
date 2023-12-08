@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.except;
@@ -15,13 +15,17 @@ import com.vmware.vip.core.messages.exception.L2APIException;
 import com.vmware.vip.core.messages.exception.L3APIException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.text.MessageFormat;
+import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
 
 @ControllerAdvice
 public class ExceptionHandle {
@@ -73,5 +77,13 @@ public class ExceptionHandle {
 		String endHandle = "[thread-" + Thread.currentThread().getId() + "] End to handle request.";
 		logger.info(endHandle);
 		return response;
+	}
+
+
+	@ExceptionHandler(value = HttpRequestMethodNotSupportedException.class)
+	private void processHttpRequestMethodNotSupportedException (HttpServletRequest request, HttpServletResponse response, HttpRequestMethodNotSupportedException me) throws ServletException, IOException {
+		logger.error(me.getMessage(), me);
+		response.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+		request.getRequestDispatcher("/error").forward(request, response);
 	}
 }

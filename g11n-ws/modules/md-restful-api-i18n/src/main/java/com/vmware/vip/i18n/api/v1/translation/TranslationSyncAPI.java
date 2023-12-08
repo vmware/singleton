@@ -1,11 +1,12 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2023 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.v1.translation;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,6 +31,7 @@ import io.swagger.annotations.ApiOperation;
  *
  */
 @RestController
+@ConditionalOnProperty(name = "translation.update.enable", havingValue = "true", matchIfMissing = true)
 public class TranslationSyncAPI extends TranslationSyncAction {
 	
 	/**
