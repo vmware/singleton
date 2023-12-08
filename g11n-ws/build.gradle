@@ -3,7 +3,7 @@
 
 buildscript {
     ext {
-     springBootVersion = '2.7.16'
+     springBootVersion = '2.7.18'
     }
     repositories {
         mavenLocal()
@@ -53,8 +53,8 @@ subprojects{
     ext {
    	       
         projectVersion = '0.0.1-SNAPSHOT'
-        springWebVersion='5.3.30'
-        tomcatVersion= '9.0.82'
+        springWebVersion='5.3.31'
+        tomcatVersion= '9.0.83'
         httpclient='4.5.13'
         jacksonVersion = '2.16.0'
     	sqliteVersion= '3.42.0.0'
@@ -75,7 +75,7 @@ subprojects{
     	hibernateJpa21Api = "1.0.2"
     	log4j2Version="2.18.0"
     	slf4jVersion="1.7.32"
-    	esapiVersion="2.5.2.0"
+    	esapiVersion="2.5.3.1"
        
     	postgresqlVersion = "42.1.4"
     	druidVersion = "1.1.8"
