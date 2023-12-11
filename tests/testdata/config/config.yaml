@@ -53,3 +53,16 @@ Cache:
 SwaggerUI: true
 
 AllowListFile: testdata/allowlist.json
+
+Authentication:
+  Enable: false
+  LDAPServerURL: "ldap://example.com"
+  LDAPBaseDN: "dc=example,dc=com"
+  LDAPUserDN: "%s@example.com"
+  LDAPFilter: "(AccountName=%s)"
+  JWTSecret: "SVGmOrhsGifQKy2xXd8IgtT13bnXyRB+McXUFCSba9oFQxQ8R2q8o9FfG8Qia2DlMevU5iijKWg+tzp9HpiGN6B/khrrmSyZankyFwlwRT00In0OXlQx4YpGjUiEfaLyK4XKNbbhg9FNtcLm+Vc/yoWvkL2cesdZF/IYxyTQMoo429mmPJsOKmkYBuX/fjsADgRE/jwpeyvCNBViEEGkP3LI5QXgcxWDv4E7BrUMfp+d+oqHQiFmHtYK1PChjfgaQWJy9bPixi3QCq1kW0C1NC4A0MfRpRDwbydHbMyYoU62cpoKCYlj7Y1NMSf6vCv6h52Ztsj+XGcsmhIWGZY15A=="
+  AppTokenExpDuration: 10h
+
+Crypto:
+  RSAPublicKeyFile: ./testdata/rsa/public.key
+  RSAPrivateKeyFile: ./testdata/rsa/private.key

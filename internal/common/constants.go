@@ -8,8 +8,9 @@ package common
 import "regexp"
 
 const (
-	ParamAnd = "&"
-	ParamSep = ","
+	ParamAnd  = "&"
+	ParamSep  = ","
+	CharColon = ":"
 )
 
 var (

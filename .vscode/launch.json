@@ -13,7 +13,9 @@
             "args": [
                 "--config=${workspaceFolder}/tests/testdata/config/config.yaml",
                 "--local-bundle.base-path=${workspaceFolder}/tests/testdata/bundles",
-                "--AllowListFile=${workspaceFolder}/tests/testdata/allowlist.json"
+                "--AllowListFile=${workspaceFolder}/tests/testdata/allowlist.json",
+                "--Crypto.RSAPrivateKeyFile=${workspaceFolder}/tests/testdata/rsa/private.key",
+                "--Crypto.RSAPublicKeyFile=${workspaceFolder}/tests/testdata/rsa/public.key"
             ],
         },
         {
@@ -26,7 +28,10 @@
             "args": [
                 "-test.v",
                 // "-test.run=^TestGetPatternByLangReg$",
-                "--config=${workspaceFolder}/tests/testdata/config/config.yaml"
+                "--config=${workspaceFolder}/tests/testdata/config/config.yaml",
+                "--AllowListFile=${workspaceFolder}/tests/testdata/allowlist.json",
+                "--Crypto.RSAPrivateKeyFile=${workspaceFolder}/tests/testdata/rsa/private.key",
+                "--Crypto.RSAPublicKeyFile=${workspaceFolder}/tests/testdata/rsa/public.key"
             ]
         },
         {

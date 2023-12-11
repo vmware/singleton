@@ -137,6 +137,21 @@ type Config struct {
 	} `json:"CrossDomain" yaml:"CrossDomain"`
 
 	AllowListFile string `json:"AllowListFile" yaml:"AllowListFile"`
+
+	Authentication struct {
+		Enable              bool          `json:"Enable" yaml:"Enable"`
+		LDAPServerURL       string        `json:"LDAPServerURL" yaml:"LDAPServerURL"`
+		LDAPBaseDN          string        `json:"LDAPBaseDN" yaml:"LDAPBaseDN"`
+		LDAPUserDN          string        `json:"LDAPUserDN" yaml:"LDAPUserDN"`
+		LDAPFilter          string        `json:"LDAPFilter" yaml:"LDAPFilter"`
+		JWTSecret           string        `json:"JWTSecret" yaml:"JWTSecret"`
+		AppTokenExpDuration time.Duration `json:"AppTokenExpDuration" yaml:"AppTokenExpDuration"`
+	} `json:"Authentication" yaml:"Authentication"`
+
+	Crypto struct {
+		RSAPublicKeyFile  string `json:"RSAPublicKeyFile" yaml:"RSAPublicKeyFile"`
+		RSAPrivateKeyFile string `json:"RSAPrivateKeyFile" yaml:"RSAPrivateKeyFile"`
+	} `json:"Crypto" yaml:"Crypto"`
 }
 
 var Settings Config
