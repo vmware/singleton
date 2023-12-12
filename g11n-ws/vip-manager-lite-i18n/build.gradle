@@ -46,6 +46,13 @@ dependencies {
           exclude group: 'junit'
     }
 
+    implementation("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
+    implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
+    implementation("com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$jacksonVersion")
+    implementation("com.fasterxml.jackson.module:jackson-module-parameter-names:$jacksonVersion")
+
     implementation('org.springframework.boot:spring-boot-starter-log4j2')
     implementation("org.springframework.boot:spring-boot-starter-web"){
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
