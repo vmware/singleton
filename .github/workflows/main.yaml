@@ -158,11 +158,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Set up JDK 8
-        uses: actions/setup-java@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v3
         with:
           distribution: 'adopt'
-          java-version: '8'
+          java-version: '17'
       - name: Package Singleton Service
         run: |
           git clone --branch=master https://github.com/vmware/singleton.git service
@@ -189,11 +189,11 @@ jobs:
         uses: actions/checkout@v2
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.1
-      - name: Set up JDK 8
-        uses: actions/setup-java@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v3
         with:
           distribution: 'adopt'
-          java-version: '8'
+          java-version: '17'
       - uses: actions/download-artifact@v2
         with:
           name: singleton-service
@@ -205,7 +205,7 @@ jobs:
           cp -r devops/autotest/client/csharp/l10n/bundles/CSharpClient l10n/bundles
           ls -la $GITHUB_WORKSPACE/l10n/bundles
       - name: Run Smoke Test
-        run: |
+        run: |                
           export VSTEST="/c/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/Extensions/TestPlatform"
           export PATH="$PATH:$VSTEST"
           cd $GITHUB_WORKSPACE/singletonclient && nuget restore SingletonClient.sln
