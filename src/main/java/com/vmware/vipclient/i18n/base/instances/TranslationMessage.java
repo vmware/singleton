@@ -152,7 +152,10 @@ public class TranslationMessage implements Message {
     }
 
     /**
-     * Get one version's key based message if there is multiple versions for one product, the message's arguments are put in a variable object
+     * Get one version's key based message if there is multiple versions for one product, the message's arguments are put in a variable object.
+     * This method is designed specially for product which need  multiple version's translation at runtime,
+     * if your product only need one version at runtime, please use @code getMessage API, they can't be called
+     * at the same time in one product code.
      *
      * @param locale
      * @param version
@@ -167,7 +170,9 @@ public class TranslationMessage implements Message {
 
     /**
      * Get one version's key based message if there is multiple versions for one product, the message's arguments are put in a Map
-     *
+     * This method is designed specially for product which need  multiple version's translation at runtime,
+     * if your product only need one version at runtime, please use @code getMessage API, they can't be called
+     * at the same time in one product code.
      * @param locale
      * @param version
      * @param component
