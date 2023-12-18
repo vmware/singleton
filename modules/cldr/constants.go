@@ -6,9 +6,11 @@
 package cldr
 
 const (
-	LanguageStr  = "languages"
-	StandAlone   = "stand-alone"
-	UIListOrMenu = "uiListOrMenu"
+	LanguageStr          = "languages"
+	CTStandAlone         = "stand-alone"
+	CTUIListOrMenu       = "uiListOrMenu"
+	CTNoChange           = "no-change"
+	CTTitlecaseFirstword = "titlecase-firstword"
 )
 
 const LocalePartSep = "-"

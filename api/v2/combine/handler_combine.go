@@ -127,13 +127,13 @@ func getLanguageListOfDispLang(c *gin.Context) {
 			DisplayNameUIListOrMenu:      dispName,
 			DisplayNameStandalone:        dispName,
 		}
-		if cd, ok := contextData[cldr.LanguageStr]; ok {
-			if cdMap, ok := cd.(map[string]interface{}); ok {
-				if v, ok := cdMap[cldr.UIListOrMenu]; ok {
-					resultDataOfCurLang.DisplayNameUIListOrMenu = v.(string)
+		if ctLanguages, ok := contextData[cldr.LanguageStr]; ok {
+			if ctLanguagesMap, ok := ctLanguages.(map[string]interface{}); ok {
+				if v, ok := ctLanguagesMap[cldr.CTUIListOrMenu]; ok {
+					resultDataOfCurLang.DisplayNameUIListOrMenu = localeutil.ContextTransform(dispName, v.(string))
 				}
-				if v, ok := cdMap[cldr.StandAlone]; ok {
-					resultDataOfCurLang.DisplayNameStandalone = v.(string)
+				if v, ok := ctLanguagesMap[cldr.CTStandAlone]; ok {
+					resultDataOfCurLang.DisplayNameStandalone = localeutil.ContextTransform(dispName, v.(string))
 				}
 			}
 		}

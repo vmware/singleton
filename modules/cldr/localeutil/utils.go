@@ -9,6 +9,7 @@ import (
 	"context"
 	"strings"
 
+	"sgtnserver/internal/common"
 	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/cldr"
 	"sgtnserver/modules/cldr/coreutil"
@@ -136,4 +137,13 @@ func GetLocaleCities(ctx context.Context, locale string, regions []string) (data
 		newData[region] = data[strings.ToUpper(region)]
 	}
 	return newData, err
+}
+
+func ContextTransform(originalValue, format string) string {
+	switch format {
+	case cldr.CTTitlecaseFirstword:
+		return common.TitleCase(originalValue)
+	default:
+		return originalValue
+	}
 }
