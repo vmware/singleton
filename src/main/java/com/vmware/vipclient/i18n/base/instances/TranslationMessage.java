@@ -153,15 +153,22 @@ public class TranslationMessage implements Message {
 
     /**
      * Get one version's key based message if there is multiple versions for one product, the message's arguments are put in a variable object.
-     * This method is designed specially for product which need  multiple version's translation at runtime,
-     * if your product only need one version at runtime, please use @code getMessage API, they can't be called
-     * at the same time in one product code.
      *
-     * @param locale
+     * This method is designed specially for product which need multiple version's message at runtime by configuring the 'version' item
+     * in your config file for singleton client as multiple versions separated by comma or 'all'; if your product only need one version's message
+     * at runtime, please use @code getMessage API by configuring the 'version' as one specified version. They can't be called
+     * at the same time in one product's code since the value of the configured 'version' is conflict, but can be used simultaneously in
+     * different products' code as different products have different config file which avoids conflict.
+     *
+     * If the source message at your local or sent to Singleton service is different with that for translation, will return the former directly;
+     * if the requested message is not found, will fallback to source message; if the source message is empty, will throw VIPJavaClientException.
+     *
+     * @param locale Set as default locale if empty
      * @param version
-     * @param component
+     * @param component throw VIPJavaClientException if empty
      * @param key
      * @param args
+     * @throws VIPJavaClientException
      * @return
      */
     public String getMultiVersionMessage(final Locale locale, final String version, final String component, final String key, final Object... args) {
@@ -170,14 +177,22 @@ public class TranslationMessage implements Message {
 
     /**
      * Get one version's key based message if there is multiple versions for one product, the message's arguments are put in a Map
-     * This method is designed specially for product which need  multiple version's translation at runtime,
-     * if your product only need one version at runtime, please use @code getMessage API, they can't be called
-     * at the same time in one product code.
-     * @param locale
+     *
+     * This method is designed specially for product which need multiple version's message at runtime by configuring the 'version' item
+     * in your config file for singleton client as multiple versions separated by comma or 'all'; if your product only need one version's message
+     * at runtime, please use @code getMessage API by configuring the 'version' as one specified version. They can't be called
+     * at the same time in one product's code since the value of the configured 'version' is conflict, but can be used simultaneously in
+     * different products' code as different products have different config file which avoids conflict.
+     *
+     * If the source message at your local or sent to Singleton service is different with that for translation, will return the former directly;
+     * if the requested message is not found, will fallback to source message; if the source message is empty, will throw VIPJavaClientException.
+     *
+     * @param locale Set as default locale if empty
      * @param version
-     * @param component
+     * @param component throw VIPJavaClientException if empty
      * @param key
      * @param args
+     * @throws VIPJavaClientException
      * @return
      */
     public String getMultiVersionMessage(final Locale locale, final String version, final String component, final String key, final Map<String, Object> args) {
