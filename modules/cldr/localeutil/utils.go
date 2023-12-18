@@ -10,6 +10,7 @@ import (
 	"strings"
 
 	"sgtnserver/internal/common"
+	"sgtnserver/internal/logger"
 	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/cldr"
 	"sgtnserver/modules/cldr/coreutil"
@@ -139,11 +140,14 @@ func GetLocaleCities(ctx context.Context, locale string, regions []string) (data
 	return newData, err
 }
 
-func ContextTransform(originalValue, format string) string {
+func ContextTransform(ctx context.Context, originalValue, format string) string {
 	switch format {
 	case cldr.CTTitlecaseFirstword:
 		return common.TitleCase(originalValue)
+	case cldr.CTNoChange:
+		return originalValue
 	default:
+		logger.FromContext(ctx).Error("Unsupported context transform format: " + format)
 		return originalValue
 	}
 }
