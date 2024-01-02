@@ -8,75 +8,127 @@ updates:
     schedule:
       interval: "weekly"
       day: "monday"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]
+
   - package-ecosystem: "gradle"
     target-branch: "master"
     directory: "/g11n-ws/vip-manager-lite-i18n/"
     schedule:
       interval: "weekly"
       day: "monday"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]
+        
   - package-ecosystem: "gradle"
     target-branch: "master"
     directory: "/g11n-ws/vip-manager-l10n/"
     schedule:
       interval: "weekly"
       day: "monday"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]
+        
   - package-ecosystem: "npm"
     target-branch: "g11n-angular-client"
     directory: "/"
     schedule:
       interval: "weekly"
       day: "monday"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]
+        
   - package-ecosystem: "gradle"
     target-branch: "g11n-cldr-pattern"
     directory: "/"
     schedule:
       interval: "weekly"
       day: "monday"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]
+        
   - package-ecosystem: "nuget"
     target-branch: "g11n-csharp-client"
     directory: "/singletonclient"
     schedule:
       interval: "weekly"
       day: "monday"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]
+        
   - package-ecosystem: "gomod"
     target-branch: "g11n-go-client"
     directory: "/"
     schedule:
       interval: "weekly"
       day: "monday"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]
+        
   - package-ecosystem: "gomod"
     target-branch: "g11n-go-service"
     directory: "/"
     schedule:
       interval: "weekly"
       day: "monday"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]
+        
   - package-ecosystem: "gradle"
     target-branch: "g11n-java-client"
     directory: "/"
     schedule:
       interval: "weekly"
       day: "monday"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]
+        
   - package-ecosystem: "npm"
     target-branch: "g11n-js-client"
     directory: "/"
     schedule:
       interval: "weekly"
       day: "monday"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]
+        
   - package-ecosystem: "npm"
     target-branch: "g11n-js-sdk"
     directory: "/"
     schedule:
       interval: "weekly"
       day: "monday"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]
+        
   - package-ecosystem: "pip"
     target-branch: "g11n-python-client"
     directory: "/sgtn4python"
     schedule:
       interval: "weekly"
       day: "monday"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]
+        
   - package-ecosystem: "bundler"
     target-branch: "g11n-ruby-client"
     directory: "/"
     schedule:
       interval: "weekly"
       day: "monday"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]
+        
