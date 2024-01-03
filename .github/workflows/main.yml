@@ -1,5 +1,6 @@
 name: main
 on: [pull_request, push]
+
 jobs:
   pre-process:
     name: Pre process
@@ -19,6 +20,7 @@ jobs:
         uses: ./.github/actions/were-only-docs-updated-action
         with:
           commit-range: ${{ steps.get-commit-range-action.outputs.commit-range }}
+
   check-header:
     name: Check Header
     runs-on: ubuntu-latest
@@ -40,6 +42,7 @@ jobs:
           git diff ${{ steps.get-commit-range-action.outputs.commit-range }} --stat
           git diff --name-only --diff-filter=d ${{ steps.get-commit-range-action.outputs.commit-range }}
           python ./check_headers.py -f "$(git diff --name-only --diff-filter=d ${{ steps.get-commit-range-action.outputs.commit-range }})"
+
   unit-test:
     name: Unit Test
     runs-on: ubuntu-latest
@@ -72,6 +75,7 @@ jobs:
         with:
           files: ./g11n-ws/vip-manager-lite-i18n/build/reports/jacoco.xml
           flags: vip-manager-lite-i18n
+
   security-analysis:
     name: Security Analysis
     runs-on: ubuntu-latest
@@ -90,13 +94,12 @@ jobs:
           distribution: 'adopt'
           java-version: '17'
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v1
+        uses: github/codeql-action/init@v2
       - name: Autobuild
-        uses: github/codeql-action/autobuild@v1
+        uses: github/codeql-action/autobuild@v2
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v1
+        uses: github/codeql-action/analyze@v2
 
-  
   codacy-analysis-cli:
     name: Codacy Analysis CLI
     runs-on: ubuntu-latest
@@ -108,12 +111,8 @@ jobs:
         with:
           output: results.sarif
           format: sarif
-          # Adjust severity of non-security issues
           gh-code-scanning-compat: true
-          # Force 0 exit code to allow SARIF file generation
-          # This will handover control about PR rejection to the GitHub side
           max-allowed-issues: 2147483647  
-      # Upload the SARIF file generated in the previous step  
       - name: Upload SARIF results file
         uses: github/codeql-action/upload-sarif@main
         with:
