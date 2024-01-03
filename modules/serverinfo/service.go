@@ -33,7 +33,7 @@ var (
 
 func GetServerInfo(_ context.Context) (interface{}, error) {
 	if info == nil {
-		return nil, sgtnerror.StatusNotFound.WithUserMessage("service infomation is unavailable")
+		return nil, sgtnerror.StatusNotFound.WithUserMessage("service information is unavailable")
 	}
 	return info, nil
 }

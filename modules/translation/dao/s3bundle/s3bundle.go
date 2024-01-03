@@ -188,5 +188,13 @@ func (b *S3Bundle) GetVersionInfo(ctx context.Context, name, version string) (da
 	filePath := b.RootPrefix + name + slash + version + slash + translation.VersionInfoFile
 	data = make(map[string]interface{})
 	err = b.ReadJSONFile(ctx, filePath, &data)
+	if err != nil {
+		if sgtnerror.GetCode(err) == sgtnerror.StatusNotFound.Code() {
+			err = sgtnerror.StatusNotFound.WithUserMessage(translation.BundleInfoUnavailable)
+		} else {
+			err = sgtnerror.StatusInternalServerError.WithUserMessage(translation.BundleInfoFailure)
+		}
+	}
+
 	return
 }
