@@ -7,7 +7,7 @@ package com.vmware.i18n.l2.service.locale;
 import com.ibm.icu.impl.LocaleUtility;
 import com.vmware.i18n.utils.CommonUtil;
 import com.vmware.vip.common.cache.CacheName;
-import com.vmware.vip.common.cache.TranslationCache3;
+import com.vmware.vip.common.cache.SingletonCache;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ConstantsUnicode;
 import com.vmware.vip.common.utils.LocaleUtils;
@@ -44,6 +44,9 @@ public class LocaleService implements ILocaleService {
 	@Autowired
 	IProductService productService;
 
+	@Autowired
+	private SingletonCache singletonCache;
+
 	/**
 	 * A function to convert a string of the form aa_BB_CC to a locale object
 	 *
@@ -76,7 +79,7 @@ public class LocaleService implements ILocaleService {
 			cacheKey = productName + "_" + version + "_" + normalizedDispLanguage;
 		}
 
-		ArrayList<DisplayLanguageDTO> dtoList = TranslationCache3.getCachedObject(CacheName.LANGUAGE, cacheKey, ArrayList.class);
+		ArrayList<DisplayLanguageDTO> dtoList = singletonCache.getCachedObject(CacheName.LANGUAGE, cacheKey, ArrayList.class);
 		if (dtoList == null) {
 			logger.info("get data from file");
 			dtoList = new ArrayList<DisplayLanguageDTO>();
@@ -117,7 +120,7 @@ public class LocaleService implements ILocaleService {
 				dtoList.add(dto);
 			}
 
-			TranslationCache3.addCachedObject(CacheName.LANGUAGE, cacheKey, ArrayList.class, dtoList);
+			singletonCache.addCachedObject(CacheName.LANGUAGE, cacheKey, ArrayList.class, dtoList);
 		}
 		return dtoList;
 	}
@@ -235,24 +238,24 @@ public class LocaleService implements ILocaleService {
 			String locale = lang.replace("_", "-");
 			lang = CommonUtil.getCLDRLocale(locale, localePathMap, localeAliasesMap).toLowerCase();
 			logger.info("get data from cache");
-			TerritoryDTO cacheTerritoryRegions = TranslationCache3.getCachedObject(CacheName.REGION,
+			TerritoryDTO cacheTerritoryRegions = singletonCache.getCachedObject(CacheName.REGION,
 					TERRITORY_REGIONS + lang, TerritoryDTO.class);
 			if (cacheTerritoryRegions == null) {
 				logger.info("cache regions is null, get data from file");
 				cacheTerritoryRegions = territoriesParser.getRegionsByLanguage(lang);
 				if (cacheTerritoryRegions.getTerritories() != null) {
-					TranslationCache3.addCachedObject(CacheName.REGION, TERRITORY_REGIONS + lang, TerritoryDTO.class,
+					singletonCache.addCachedObject(CacheName.REGION, TERRITORY_REGIONS + lang, TerritoryDTO.class,
 							cacheTerritoryRegions);
 				}
 			}
 			if (Boolean.parseBoolean(displayCity)) {
-				TerritoryDTO cacheTerritoryCities = TranslationCache3.getCachedObject(CacheName.REGION,
+				TerritoryDTO cacheTerritoryCities = singletonCache.getCachedObject(CacheName.REGION,
 						TERRITORY_CITIES + lang, TerritoryDTO.class);
 				if (cacheTerritoryCities == null) {
 					logger.info("cache cities is null, get data from file");
 					cacheTerritoryCities = territoriesParser.getCitiesByLanguage(lang);
 					if (cacheTerritoryCities.getCities() != null) {
-						TranslationCache3.addCachedObject(CacheName.REGION, TERRITORY_CITIES + lang, TerritoryDTO.class,
+						singletonCache.addCachedObject(CacheName.REGION, TERRITORY_CITIES + lang, TerritoryDTO.class,
 								cacheTerritoryCities);
 					}
 				}

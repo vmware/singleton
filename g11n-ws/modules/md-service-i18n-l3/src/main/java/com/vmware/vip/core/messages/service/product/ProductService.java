@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vmware.vip.common.cache.CacheName;
 import com.vmware.vip.common.cache.CachedKeyGetter;
-import com.vmware.vip.common.cache.TranslationCache3;
+import com.vmware.vip.common.cache.SingletonCache;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.TranslationQueryStatusType;
@@ -39,12 +39,7 @@ import org.springframework.util.StringUtils;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class ProductService implements IProductService {
@@ -56,6 +51,9 @@ public class ProductService implements IProductService {
 
 	@Autowired
 	private IOneComponentDao oneComponentDao;
+
+	@Autowired
+	private SingletonCache singletonCache;
 
 	@Override
 	public List<String> getSupportedLocaleList(String productName,
@@ -192,11 +190,11 @@ public class ProductService implements IProductService {
 				.getOneCompnentCachedKey(componentMessagesDTO);
 		boolean updateFlag = false;
 		ComponentMessagesDTO result = null;
-		result =  TranslationCache3.getCachedObject(CacheName.ONECOMPONENT, key,ComponentMessagesDTO.class);
+		result =  singletonCache.getCachedObject(CacheName.ONECOMPONENT, key,ComponentMessagesDTO.class);
 		// merge with local bundle file
 		componentMessagesDTO = mergeComponentMessagesDTOWithFile(componentMessagesDTO);
 		if (StringUtils.isEmpty(result)) {// not exist in cache
-			TranslationCache3.addCachedObject(CacheName.ONECOMPONENT, key,ComponentMessagesDTO.class, componentMessagesDTO);
+			singletonCache.addCachedObject(CacheName.ONECOMPONENT, key,ComponentMessagesDTO.class, componentMessagesDTO);
 			updateFlag = oneComponentDao.update(componentMessagesDTO.getProductName(),
 					componentMessagesDTO.getVersion(),
 					componentMessagesDTO.getComponent(),
@@ -209,7 +207,7 @@ public class ProductService implements IProductService {
 					componentMessagesDTO.getComponent(),
 					componentMessagesDTO.getLocale(),
 					(Map<String, String>) componentMessagesDTO.getMessages());
-			TranslationCache3.updateCachedObject(CacheName.ONECOMPONENT, key,
+			singletonCache.updateCachedObject(CacheName.ONECOMPONENT, key,
 					ComponentMessagesDTO.class, componentMessagesDTO);
 		}
 		return updateFlag;
@@ -266,7 +264,7 @@ public class ProductService implements IProductService {
 	 * @return ComponentMessagesDTO object
 	 * @throws DataException
 	 * @throws ParseException
-	 * @see com.vmware.vip.core.translation.dao.BaseComponentDao#getTranslation(java.lang.Object)
+	 * @see com.vmware.vip.core.translation.dao.BaseComponentDao#getTranslation(Object)
 	 */
 	private ComponentMessagesDTO getLinkedTranslation(
 			ComponentMessagesDTO componentMessagesDTO) throws DataException,
