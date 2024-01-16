@@ -1,5 +1,5 @@
 /*
- * Copyright 2022-2023 VMware, Inc.
+ * Copyright 2022-2024 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -178,9 +178,9 @@ func (b *LocalBundle) GetVersionInfo(ctx context.Context, name, version string) 
 	}
 
 	if os.IsNotExist(err) {
-		err = sgtnerror.StatusNotFound.WrapErrorWithMessage(err, translation.FailToReadFile, filePath)
+		err = sgtnerror.StatusNotFound.WrapErrorWithMessage(err, translation.BundleInfoUnavailable)
 	} else {
-		err = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, translation.FailToReadFile, filePath)
+		err = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, translation.BundleInfoFailure)
 	}
 	logger.FromContext(ctx).Error(err.Error())
 
