@@ -4,11 +4,13 @@
  */
 package com.vmware.vip.remote.config;
 
+import com.vmware.vip.remote.config.model.RemoteConfigModel;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.env.EnvironmentPostProcessor;
 import org.springframework.core.Ordered;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.PropertiesPropertySource;
+import  com.vmware.vip.remote.config.constant.RemoteConfigConstant;
 
 import java.util.List;
 import java.util.Properties;
@@ -25,16 +27,22 @@ public class RemoteConfigEnvironmentPostProcessor implements EnvironmentPostProc
 
         environment.getPropertySources().forEach(t ->{
           if(t.getName().contains(defaultConfigNameProperty) || t.getName().contains(defaultConfigNameYml) || t.getName().contains(defaultConfigNameYaml)){
-             if (t.getProperty(RemoteConfigInitor.GIT_ENABLE) != null && Boolean.valueOf((String) t.getProperty(RemoteConfigInitor.GIT_ENABLE))){
+             if (t.getProperty(RemoteConfigConstant.GIT_ENABLE) != null && Boolean.valueOf((String) t.getProperty(RemoteConfigConstant.GIT_ENABLE))){
 
                  try {
-                     List<Properties> propList = RemoteConfigInitor.formatRemoteConfig(
-                             (String) t.getProperty(RemoteConfigInitor.GIT_URI),
-                             (String) t.getProperty(RemoteConfigInitor.GIT_BASEDIR),
-                             (String) t.getProperty(RemoteConfigInitor.GIT_BRANCH),
-                             (String) t.getProperty(RemoteConfigInitor.PROFILES_ACTIVE));
+                     RemoteConfigModel model = new RemoteConfigModel();
+                     model.setGitUrl((String) t.getProperty(RemoteConfigConstant.GIT_URI));
+                     model.setGitBaseDir((String) t.getProperty(RemoteConfigConstant.GIT_BASEDIR));
+                     model.setGitBranch((String) t.getProperty(RemoteConfigConstant.GIT_BRANCH));
+                     model.setSpringProfilesActive((String) t.getProperty(RemoteConfigConstant.PROFILES_ACTIVE));
+                     if (t.getProperty(RemoteConfigConstant.GIT_LOCAL_REPOSITORY) != null){
+                         model.setGitLocalRepository((String)t.getProperty(RemoteConfigConstant.GIT_LOCAL_REPOSITORY));
+                     }
 
-                     String gitConfigBranchName = "remote git configuration branch Name["+ t.getProperty(RemoteConfigInitor.GIT_BRANCH)+"]";
+                     RemoteConfigInitor.initConfig(model);
+                     List<Properties> propList = RemoteConfigInitor.formatRemoteConfig();
+
+                     String gitConfigBranchName = "remote git configuration branch Name["+ t.getProperty(RemoteConfigConstant.GIT_BRANCH)+"]";
                      System.out.println(gitConfigBranchName);
                      String remoteConfigName = "remote git configuration[baseConfig]";
                      environment.getPropertySources().addFirst(new PropertiesPropertySource(remoteConfigName, propList.get(0)));

@@ -2,7 +2,7 @@
  * Copyright 2019-2024 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
-package com.vmware.vip.remote.config;
+package com.vmware.vip.remote.config.service;
 
 import java.io.File;
 import java.io.IOException;

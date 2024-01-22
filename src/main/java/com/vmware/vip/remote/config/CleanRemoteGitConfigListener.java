@@ -10,6 +10,6 @@ import org.springframework.context.event.ContextClosedEvent;
 public class CleanRemoteGitConfigListener implements ApplicationListener<ContextClosedEvent> {
     @Override
     public void onApplicationEvent(ContextClosedEvent event) {
-        RunOSGitUtil.deleteLocalRepo();
+        RemoteConfigInitor.deleteLocalRepo();
     }
 }

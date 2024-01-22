@@ -4,33 +4,50 @@
  */
 package com.vmware.vip.remote.config;
 
+import com.vmware.vip.remote.config.model.RemoteConfigModel;
+import static com.vmware.vip.remote.config.constant.RemoteConfigConstant.*;
+
+import com.vmware.vip.remote.config.service.LocalFileUtil;
+import com.vmware.vip.remote.config.service.RunOSGitUtil;
 import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
 import org.springframework.core.io.FileSystemResource;
 
 import java.io.*;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
 import java.util.*;
 
 public class RemoteConfigInitor {
 
-    public final static String GIT_ENABLE = "spring.profiles.remote.config.enable";
-    public final static String GIT_URI = "spring.profiles.remote.config.git.uri";
-    public final static String GIT_BRANCH = "spring.profiles.remote.config.git.branch";
-    public final static String GIT_BASEDIR= "spring.profiles.remote.config.git.basedir";
-    public final static String PROFILES_ACTIVE = "spring.profiles.active";
+    private static RemoteConfigModel configModel = null;
+    public static synchronized boolean initConfig(RemoteConfigModel remoteConfigModel){
+      if(configModel == null){
+          configModel = remoteConfigModel;
+          return true;
+      }
+      return false;
+    }
 
-    public static final String FILE_TYPE_PROPERTIES = ".properties";
-    public static final String FILE_TYPE_YML = ".yml";
-    public static final String FILE_TYPE_YAML = ".yaml";
+    public static void deleteLocalRepo(){
+        if (configModel != null){
+            File file = new File(configModel.getGitLocalRepository());
+            if (file.exists()) {
+                try {
+                    System.err.println("begin delete remote config cache");
+                    LocalFileUtil.deleteFolder(file);
+                    System.err.println("delete remote config cache successfully!");
+                }catch (Exception e){
+                    e.printStackTrace();
+                    System.err.println("delete remote config cache failure");
+                }
 
-    public static List<Properties> formatRemoteConfig(String sshRepo, String filterPath, String branch, String profileActive) throws IOException, InterruptedException {
-        File baseDir = RunOSGitUtil.runOSGit(sshRepo, filterPath, branch);
+            }
+        }
+    }
+
+    public static List<Properties> formatRemoteConfig() throws IOException, InterruptedException {
+
+        File baseDir = RunOSGitUtil.runOSGit(configModel);
         List<File> files = LocalFileUtil.listFile(baseDir.toPath());
-        File baseFile = findBaseConfigFile(files, profileActive);
+        File baseFile = findBaseConfigFile(files, configModel.getSpringProfilesActive());
         List<Properties> result = null;
         if (baseFile != null && (baseFile.getName().endsWith(FILE_TYPE_YML)
                 || baseFile.getName().endsWith(FILE_TYPE_YAML))) {
