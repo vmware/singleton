@@ -1,32 +1,37 @@
-plugins {
-	id 'java'
-	id 'org.springframework.boot' version '3.2.2'
-	id 'io.spring.dependency-management' version '1.1.4'
+allprojects {
+	version = "1.0.0"
+	group = 'com.vmware'
 }
 
-group = 'com.vmware.vip'
-version = '0.0.1-SNAPSHOT'
+subprojects {
+	apply plugin: 'java'
+	apply plugin: 'maven-publish'
 
-java {
-	sourceCompatibility = '17'
-}
+	sourceCompatibility = 17 // java 17
+	targetCompatibility = 17
 
-repositories {
-	mavenLocal()
-	maven { url "https://repo1.maven.org/maven2/" }
-	mavenCentral()
-	jcenter()
-}
+	repositories {
+		mavenLocal()
+		maven { url "https://repo1.maven.org/maven2/" }
+		mavenCentral()
+		jcenter()
+	}
 
-dependencies {
-	compileOnly("org.springframework.boot:spring-boot-autoconfigure")
-}
 
-bootJar {
-	enabled = false
-}
-jar {
-	enabled = true
-}
+	java {
+		withSourcesJar()
+		withJavadocJar()
+	}
 
+	publishing {
+		publications {
+			maven(MavenPublication) {
+				groupId project.group
+				artifactId project.name
+				version project.version
+				from components.java
+			}
+		}
+	}
+}
 
