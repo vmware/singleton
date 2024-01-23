@@ -1,8 +1,16 @@
+/*
+ * Copyright 2019-2024 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
 package com.vmware.vip.remote.config.model;
 
 
 import com.vmware.vip.remote.config.constant.RemoteConfigConstant;
 
+/**
+ * the remote config model items
+ * @author Shi Hu
+ */
 public class RemoteConfigModel {
     private String gitUrl;
     private String gitBranch;

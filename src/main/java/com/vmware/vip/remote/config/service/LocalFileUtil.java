@@ -14,6 +14,10 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * the utils for local file method
+ * @author Shi Hu
+ */
 public class LocalFileUtil {
     private LocalFileUtil(){}
     public static void deleteFolder(File file) {
@@ -28,6 +32,12 @@ public class LocalFileUtil {
         }
     }
 
+    /**
+     * list path's all file include sub dir
+     * @param path
+     * @return
+     * @throws IOException
+     */
     public static List<File> listFile(Path path) throws IOException {
         final List<File> files = new ArrayList<File>();
         SimpleFileVisitor<Path> finder = new SimpleFileVisitor<Path>() {

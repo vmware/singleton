@@ -15,9 +15,20 @@ import org.springframework.core.io.FileSystemResource;
 import java.io.*;
 import java.util.*;
 
+/**
+ * It use to init config, load configuration and format load configuration
+ *  @author Shi Hu
+ *
+ */
 public class RemoteConfigInitor {
 
     private static RemoteConfigModel configModel = null;
+
+    /**
+     * init the remote config
+     * @param remoteConfigModel
+     * @return
+     */
     public static synchronized boolean initConfig(RemoteConfigModel remoteConfigModel){
       if(configModel == null){
           configModel = remoteConfigModel;
@@ -26,6 +37,9 @@ public class RemoteConfigInitor {
       return false;
     }
 
+    /**
+     * delete the cache local repository
+     */
     public static void deleteLocalRepo(){
         if (configModel != null){
             File file = new File(configModel.getGitLocalRepository());
@@ -43,6 +57,12 @@ public class RemoteConfigInitor {
         }
     }
 
+    /**
+     * load the remote config, format and remap it
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public static List<Properties> formatRemoteConfig() throws IOException, InterruptedException {
 
         File baseDir = RunOSGitUtil.runOSGit(configModel);

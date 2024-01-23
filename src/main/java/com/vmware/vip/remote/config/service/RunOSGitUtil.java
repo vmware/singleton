@@ -9,10 +9,20 @@ import com.vmware.vip.remote.config.model.RemoteConfigModel;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Base the OS init different run git command OS service implement
+ */
 public class RunOSGitUtil {
 
     private RunOSGitUtil(){}
 
+    /**
+     * Base the OS, load the config from remote git repository
+     * @param configModel
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public static File runOSGit(RemoteConfigModel configModel) throws IOException, InterruptedException {
         File file = new File(configModel.getGitLocalRepository());
         if (file.exists()) {

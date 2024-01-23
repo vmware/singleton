@@ -15,6 +15,11 @@ import  com.vmware.vip.remote.config.constant.RemoteConfigConstant;
 import java.util.List;
 import java.util.Properties;
 
+/**
+ * Implement environmentPostProcessor to trigger load the remote config and add the configuration to
+ * spring context
+ *  @author Shi Hu
+ */
 public class RemoteConfigEnvironmentPostProcessor implements EnvironmentPostProcessor, Ordered {
 
     private static String defaultConfigNameProperty = "application.properties";

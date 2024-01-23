@@ -1,5 +1,13 @@
+/*
+ * Copyright 2019-2024 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
 package com.vmware.vip.remote.config.constant;
 
+/**
+ * the constant of the git remote configs
+ *  @author Shi Hu
+ */
 public interface RemoteConfigConstant {
 
     public final static String GIT_ENABLE = "spring.profiles.remote.config.enable";
