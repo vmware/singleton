@@ -48,3 +48,7 @@ const (
 	TimeZoneName      = "TimeZoneName"
 	LocaleCities      = "LocaleCities"
 )
+
+const (
+	EnLocale = "en"
+)

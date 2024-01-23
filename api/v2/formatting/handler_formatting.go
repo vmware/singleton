@@ -16,10 +16,11 @@ import (
 	"sgtnserver/internal/logger"
 	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/cldr"
-	"sgtnserver/modules/cldr/localeutil"
+	"sgtnserver/modules/cldr/cldrservice"
 	"sgtnserver/modules/formatting"
 
 	"github.com/gin-gonic/gin"
+	jsoniter "github.com/json-iterator/go"
 )
 
 // GetLocalizedDate godoc
@@ -73,12 +74,17 @@ func GetLocalizedNumber(c *gin.Context) {
 		return
 	}
 
-	numbers, err := localeutil.GetPatternData(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.Locale, cldr.PatternNumbers)
+	ctxWithLog := logger.NewContext(c, c.MustGet(api.LoggerKey))
+	patterData, cldrLocale, err := cldrservice.GetPatternByLocale(ctxWithLog, params.Locale, cldr.PatternNumbers, "")
 	if err != nil {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WrapErrorWithMessage(err, "invalid Locale '%s'", params.Locale))
+		patterData, cldrLocale, err = cldrservice.GetPatternByLocale(ctxWithLog, cldr.EnLocale, cldr.PatternNumbers, "")
+	}
+	if err != nil {
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WrapErrorWithMessage(err, "fail to get pattern data"))
 		return
 	}
 
+	numbers := patterData["numbers"].(jsoniter.Any)
 	decimalFormats := numbers.Get("numberFormats", "decimalFormats").ToString()
 	numberSymbols := numbers.Get("numberSymbols")
 	decimalSign := numberSymbols.Get("decimal").ToString()
@@ -93,6 +99,11 @@ func GetLocalizedNumber(c *gin.Context) {
 
 	bigFloat, _, _ := big.ParseFloat(params.Number, 10, 0, big.ToNearestAway)
 	roundedNumberStr := bigFloat.Text('f', params.Scale)
+	sign := ""
+	if roundedNumberStr[0] == '-' {
+		sign = "-"
+		roundedNumberStr = roundedNumberStr[1:]
+	}
 
 	decimalPointIndex := strings.LastIndex(roundedNumberStr, ".")
 	if decimalPointIndex == -1 {
@@ -100,26 +111,30 @@ func GetLocalizedNumber(c *gin.Context) {
 	}
 
 	var sb strings.Builder
-	i := (decimalPointIndex - len(stringSubmatch[2])) % groupLength
-	if i != 0 {
-		sb.WriteString(roundedNumberStr[:i])
-		if !(i == 1 && (roundedNumberStr[0] == '+' || roundedNumberStr[0] == '-')) {
+	sb.WriteString(sign)
+	firstPartLength := decimalPointIndex - len(stringSubmatch[2]) // Remove the decimal part and the last group of the integer part
+	if firstPartLength > 0 {
+		i := firstPartLength % groupLength // the first group length
+		if i != 0 {
+			sb.WriteString(roundedNumberStr[:i])
 			sb.WriteString(groupSign)
 		}
-	}
-	for ; i < decimalPointIndex-len(stringSubmatch[2]); i += groupLength {
-		sb.WriteString(roundedNumberStr[i : i+groupLength])
-		sb.WriteString(groupSign)
+		for ; i < firstPartLength; i += groupLength {
+			sb.WriteString(roundedNumberStr[i : i+groupLength])
+			sb.WriteString(groupSign)
+		}
+		sb.WriteString(roundedNumberStr[i:decimalPointIndex])
+	} else {
+		sb.WriteString(roundedNumberStr[:decimalPointIndex])
 	}
 
-	sb.WriteString(roundedNumberStr[i:decimalPointIndex])
 	if params.Scale > 0 {
 		sb.WriteString(decimalSign)
 		sb.WriteString(roundedNumberStr[decimalPointIndex+1:])
 	}
 
 	data := NumberResp{
-		Locale:          params.Locale,
+		Locale:          cldrLocale,
 		Number:          params.Number,
 		Scale:           strconv.FormatInt(int64(params.Scale), 10),
 		FormattedNumber: sb.String()}
