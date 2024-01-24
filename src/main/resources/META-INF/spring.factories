@@ -1,0 +1,6 @@
+# Copyright 2019-2024 VMware, Inc.
+# SPDX-License-Identifier: EPL-2.0
+# EnvironmentPostProcessor
+org.springframework.boot.env.EnvironmentPostProcessor=com.vmware.vip.remote.config.RemoteConfigEnvironmentPostProcessor
+# Application Listeners
+org.springframework.context.ApplicationListener=com.vmware.vip.remote.config.CleanRemoteGitConfigListener
