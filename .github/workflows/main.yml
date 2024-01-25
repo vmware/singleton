@@ -3,45 +3,14 @@ on: [pull_request, push]
 
 jobs:
   pre-process:
-    name: Pre process
-    runs-on: ubuntu-latest
-    outputs:
-      were-only-docs-updated: ${{ steps.were-only-docs-updated-action.outputs.were-only-docs-updated }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Get commit range
-        id: get-commit-range-action
-        uses: ./.github/actions/get-commit-range-action
-      - name: Were only docs updated
-        id: were-only-docs-updated-action
-        uses: ./.github/actions/were-only-docs-updated-action
-        with:
-          commit-range: ${{ steps.get-commit-range-action.outputs.commit-range }}
+    name: Pre-process
+    uses: vmware/singleton/.github/workflows/pre-process.yml@devops
 
   check-header:
     name: Check Header
-    runs-on: ubuntu-latest
     needs: pre-process
     if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 2.  
-      - name: Get commit range
-        id: get-commit-range-action
-        uses: ./.github/actions/get-commit-range-action
-      - name: Check header
-        run: |
-          git clone --branch=devops https://github.com/vmware/singleton.git devops
-          cp $GITHUB_WORKSPACE/devops/check_headers.py .
-          chmod +x check_headers.py
-          git diff ${{ steps.get-commit-range-action.outputs.commit-range }} --stat
-          git diff --name-only --diff-filter=d ${{ steps.get-commit-range-action.outputs.commit-range }}
-          python ./check_headers.py -f "$(git diff --name-only --diff-filter=d ${{ steps.get-commit-range-action.outputs.commit-range }})"
+    uses: vmware/singleton/.github/workflows/check.yml@devops
 
   unit-test:
     name: Unit Test
