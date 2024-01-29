@@ -1,11 +1,15 @@
 /**
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2024 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.conf;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
+import com.vmware.vip.common.constants.ConstantsFile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,6 +17,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import com.vmware.vip.common.utils.RsaCryptUtils;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 /**
  * the configuration of the S3 client
@@ -126,16 +132,32 @@ public class S3Cfg {
 	}
 
 	public String getPublicKey() {
-		File file = new File(this.publicKey);
-		if(file.exists()) {
-			String content = RsaCryptUtils.getPublicKeyStrFromFile(file);
-			logger.debug("public key: {}", content);
-			return content;
-		}else {
-			logger.error("not found public key file: {}", file.getAbsoluteFile());
+		try {
+			if (this.publicKey.startsWith(ConstantsFile.CLASS_PATH_PREFIX)
+					|| this.publicKey.startsWith(ConstantsFile.FILE_PATH_PREFIX)) {
+				Resource resource = new PathMatchingResourcePatternResolver().getResource(this.publicKey);
+				String content = RsaCryptUtils.getPublicKeyStrFromInputStream(resource.getInputStream());
+				logger.debug("public key: {}", content);
+				return content;
+			} else {
+				File file = new File(this.publicKey);
+				if (file.exists()) {
+					String content = null;
+
+					content = RsaCryptUtils.getPublicKeyStrFromInputStream(new FileInputStream(file));
+					logger.debug("public key: {}", content);
+					return content;
+				} else {
+					logger.error("not found public key file: {}", file.getAbsoluteFile());
+					return null;
+				}
+			}
+		} catch (IOException e) {
+            logger.error(e.getMessage(), e);
 			return null;
-		}
-	}
+        }
+
+    }
 
 	public void setPublicKey(String publicKey) {
 		this.publicKey = publicKey;
