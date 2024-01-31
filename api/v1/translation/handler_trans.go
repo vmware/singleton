@@ -1,5 +1,5 @@
 /*
- * Copyright 2022-2023 VMware, Inc.
+ * Copyright 2022-2024 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -286,7 +286,7 @@ func GetString(c *gin.Context) {
 	uriPart := struct {
 		ProductName string `uri:"productName" binding:"alphanum"`
 		Component   string `uri:"component" binding:"component"`
-		Key         string `uri:"key" binding:"key"`
+		Key         string `uri:"key" binding:"nonHTML,key"`
 	}{}
 	formPart := struct {
 		Version string `form:"version" binding:"version"`
@@ -325,7 +325,7 @@ func GetString3(c *gin.Context) {
 	uriPart := struct {
 		ProductName string `uri:"productName" binding:"alphanum"`
 		Component   string
-		Key         string `uri:"key" binding:"key"`
+		Key         string `uri:"key" binding:"nonHTML,key"`
 	}{Component: "default"}
 	formPart := struct {
 		Version string `form:"version" binding:"version"`

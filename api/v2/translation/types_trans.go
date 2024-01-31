@@ -1,5 +1,5 @@
 /*
- * Copyright 2022-2023 VMware, Inc.
+ * Copyright 2022-2024 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -28,7 +28,7 @@ type (
 
 	StringID struct {
 		BundleID
-		Key string `uri:"key" binding:"key"`
+		Key string `uri:"key" binding:"nonHTML,key"`
 	}
 
 	GetStringReq struct {

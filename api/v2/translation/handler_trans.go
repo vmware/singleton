@@ -1,5 +1,5 @@
 /*
- * Copyright 2022-2023 VMware, Inc.
+ * Copyright 2022-2024 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -237,7 +237,7 @@ func GetBundle(c *gin.Context) {
 func GetStrings(c *gin.Context) {
 	uriPart := BundleID{}
 	formPart := struct {
-		Keys   string `form:"keys" binding:"required"`
+		Keys   string `form:"keys" binding:"nonHTML,sgtnkeys"`
 		Pseudo bool   `form:"pseudo"`
 	}{}
 	if err := api.ExtractParameters(c, &uriPart, &formPart); err != nil {
