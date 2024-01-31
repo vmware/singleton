@@ -1,13 +1,10 @@
 /**
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2024 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.common.utils;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.security.InvalidKeyException;
 import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
@@ -67,12 +64,12 @@ public class RsaCryptUtils {
 	/**
 	 * get public key string from file
 	 * 
-	 * @param file
+	 * @param inputStream
 	 * @return
 	 */
-	public static String getPublicKeyStrFromFile(File file) {
+	public static String getPublicKeyStrFromInputStream(InputStream inputStream) {
 		StringBuilder sb = new StringBuilder();
-		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+		try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
 			String input;
 			while ((input = br.readLine()) != null) {
 				sb.append(input);

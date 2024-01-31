@@ -1,14 +1,10 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2024 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.security;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.security.InvalidKeyException;
 import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
@@ -36,7 +32,6 @@ public class RSAUtils {
      * @param privateInfoStr
      * @return
      * @throws IOException
-     * @throws InvalidCipherTextException
      */
     public static String encryptData(String data, String privateInfoStr) throws IOException, InvalidKeySpecException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, BadPaddingException, IllegalBlockSizeException {
  
@@ -97,12 +92,12 @@ public class RSAUtils {
 	/**
 	 * get public key string from file
 	 * 
-	 * @param file
+	 * @param inputStream
 	 * @return
 	 */
-	public static String getKeyStrFromFile(File file) {
+	public static String getKeyStrFromInputStream(InputStream inputStream) {
 		StringBuilder sb = new StringBuilder();
-		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+		try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
 			String input;
 			while ((input = br.readLine()) != null) {
 				sb.append(input);

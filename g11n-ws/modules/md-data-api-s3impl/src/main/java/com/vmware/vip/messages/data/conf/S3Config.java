@@ -1,11 +1,14 @@
 /**
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2024 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.messages.data.conf;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 
+import com.vmware.vip.common.constants.ConstantsFile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,6 +17,8 @@ import org.springframework.context.annotation.Profile;
 
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.utils.RsaCryptUtils;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 /**
  * the configuration of the S3 client
@@ -122,17 +127,30 @@ public class S3Config {
 		if(this.publicKey.startsWith(ConstantsChar.POUND)) {
 			filePath = this.publicKeyPath;
 		}else {
-			filePath = this.publicKey;
+			return this.publicKey;
 		}
-		File file = new File(filePath);
-		if(file.exists()) {
-			String content = RsaCryptUtils.getPublicKeyStrFromFile(file);
-			logger.debug("public key: {}", content);
-			return content;
-			
-		}else {
-			 logger.error("not found public key file: {}", file.getAbsoluteFile());
-		 return null;	
+		try {
+			if (this.publicKeyPath.startsWith(ConstantsFile.CLASS_PATH_PREFIX)
+					|| this.publicKeyPath.startsWith(ConstantsFile.FILE_PATH_PREFIX)) {
+				Resource resource = new PathMatchingResourcePatternResolver().getResource(this.publicKeyPath);
+				this.publicKey = RsaCryptUtils.getPublicKeyStrFromInputStream(resource.getInputStream());
+				logger.debug("public key: {}", this.publicKey);
+				return this.publicKey;
+			}else {
+				File file = new File(filePath);
+				if (file.exists()) {
+					this.publicKey  = RsaCryptUtils.getPublicKeyStrFromInputStream(new FileInputStream(file));
+					logger.debug("public key: {}", this.publicKey);
+					return this.publicKey;
+
+				} else {
+					logger.error("not found public key file: {}", file.getAbsoluteFile());
+					return null;
+				}
+			}
+		} catch (IOException e) {
+			logger.error(e.getMessage(), e);
+			return  null;
 		}
 	}
 

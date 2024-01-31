@@ -1,17 +1,23 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2024 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.login;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
+import com.vmware.vip.common.constants.ConstantsFile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
 import com.vmware.vip.core.security.RSAUtils;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 
 @Configuration
@@ -124,31 +130,55 @@ public class VipAuthConfig {
 	
 	public String getPrivateKey() {
 		if(this.privateKey == null) {
-			File file = new File(this.privateKeyPath);
-			logger.info("the RSA private key path: {}", this.privateKeyPath);
-			if(file.exists()) {
-				this.privateKey = RSAUtils.getKeyStrFromFile(file);
-				logger.debug("private key: {}", this.privateKey);
+			try {
+			if (this.privateKeyPath.startsWith(ConstantsFile.CLASS_PATH_PREFIX)
+					|| this.privateKeyPath.startsWith(ConstantsFile.FILE_PATH_PREFIX)){
+				Resource resource = new PathMatchingResourcePatternResolver().getResource(this.privateKeyPath);
+				this.privateKey = RSAUtils.getKeyStrFromInputStream(resource.getInputStream());
 			}else {
-				 logger.error("not found private key file: {}", file.getAbsoluteFile());
-			 return null;	
-			} 
-		}
+				File file = new File(this.privateKeyPath);
+				logger.info("the RSA private key path: {}", this.privateKeyPath);
+				if(file.exists()) {
+
+						this.privateKey = RSAUtils.getKeyStrFromInputStream(new FileInputStream(file));
+					logger.debug("private key: {}", this.privateKey);
+				}else {
+					logger.error("not found private key file: {}", file.getAbsoluteFile());
+					return null;
+				}
+			}
+			} catch (IOException e) {
+				logger.error(e.getMessage(), e);
+				return  null;
+			}
+        }
 		return this.privateKey;
 	}
 	
 	public String getPublicKey() {
 		if(this.publicKey == null) {
-			logger.info("the RSA public key path: {}", this.publicKeyPath);
-			File file = new File(this.publicKeyPath);
-			if(file.exists()) {
-				this.publicKey = RSAUtils.getKeyStrFromFile(file);
-				logger.debug("public key: {}", this.publicKey);
-			}else {
-				 logger.error("not found public key file: {}", file.getAbsoluteFile());
-			 return null;	
-			} 
-		}
+			try {
+				if (this.publicKeyPath.startsWith(ConstantsFile.CLASS_PATH_PREFIX)
+						|| this.publicKeyPath.startsWith(ConstantsFile.FILE_PATH_PREFIX)) {
+					Resource resource = new PathMatchingResourcePatternResolver().getResource(this.publicKeyPath);
+					this.publicKey = RSAUtils.getKeyStrFromInputStream(resource.getInputStream());
+
+				} else {
+					logger.info("the RSA public key path: {}", this.publicKeyPath);
+					File file = new File(this.publicKeyPath);
+					if (file.exists()) {
+						this.publicKey = RSAUtils.getKeyStrFromInputStream(new FileInputStream(file));
+						logger.debug("public key: {}", this.publicKey);
+					} else {
+						logger.error("not found public key file: {}", file.getAbsoluteFile());
+						return null;
+					}
+				}
+			} catch (IOException e) {
+				logger.error(e.getMessage(), e);
+				return  null;
+			}
+        }
 		return this.publicKey;
 	}
 

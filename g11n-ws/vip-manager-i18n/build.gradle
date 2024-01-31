@@ -1,4 +1,4 @@
-//Copyright 2019-2023 VMware, Inc.
+//Copyright 2019-2024 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java-library'
 apply plugin: 'org.springframework.boot'
@@ -44,6 +44,7 @@ dependencies {
        api project(":md-restful-synch")
     }
 
+    implementation("com.vmware.singleton:spring-boot-remote-git-autoconfigure:0.1.0")
     implementation('org.springframework.boot:spring-boot-starter-log4j2')
     implementation("org.springframework.boot:spring-boot-starter-web"){
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'

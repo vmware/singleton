@@ -1,4 +1,4 @@
-//Copyright 2019-2023 VMware, Inc.
+//Copyright 2019-2024 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java-library'
 apply plugin: 'org.springframework.boot'
@@ -21,6 +21,8 @@ dependencies {
     if (project.hasProperty('datatype') && project.getProperty('datatype') == 'bundle' && project.getProperty('syncdata') == 'true') {
         implementation project(":md-restful-l10n-synch")
     }
+    implementation("com.vmware.singleton:spring-boot-remote-git-autoconfigure:0.1.0")
+
    // implementation("org.apache.commons:commons-lang3:$commonsLangVersion")
     implementation("commons-io:commons-io:$commonsIoVersion")
    // implementation("commons-codec:commons-codec:$commonsCodecVersion")
