@@ -35,7 +35,7 @@ var (
 	localesRegex                    = componentsRegex
 	patternScopeRegex               = regexp.MustCompile(`^(\s*[a-zA-Z]+\s*)(,\s*[a-zA-Z]+\s*)*$`)
 	asciiCharsRegex                 = regexp.MustCompile(`\A[[:ascii:]]+\z`)
-	multiAsciiStringRegex           = regexp.MustCompile(`\A([[:ascii:]]+)(,[[:ascii:]]+)*\z`)
+	multiASCIIStringRegex           = regexp.MustCompile(`\A([[:ascii:]]+)(,[[:ascii:]]+)*\z`)
 	hTMLRegex                       = regexp.MustCompile(`<[/]?([a-zA-Z]+).*?>`)
 )
 
@@ -51,7 +51,7 @@ var validatorInfoArray = [][]interface{}{
 	{ComponentsAPIKey, componentsRegex, fmt.Sprintf(letterAndNumberAndValidCharStringError, ComponentsAPIKey)},
 	{LocalesAPIKey, localesRegex, fmt.Sprintf(letterAndNumberAndValidCharStringError, LocalesAPIKey)},
 	{KeyAPIKey, asciiCharsRegex, "'{0}' is invalid(only standard ASCII characters are allowed)"},
-	{"sgtnkeys", multiAsciiStringRegex, "'{0}' is invalid(only standard ASCII characters are allowed)"},
+	{"sgtnkeys", multiASCIIStringRegex, "'{0}' is invalid(only standard ASCII characters are allowed)"},
 	{"nonHTML", func(fl validator.FieldLevel) bool { return !hTMLRegex.MatchString(fl.Field().String()) }, "HTML tags aren't allowed"},
 }
 
