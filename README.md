@@ -2,8 +2,11 @@ spring-boot-remote-git-autoconfigure
 =======================================
 It can download the Spring Boot configurations from remote git repo and load the configuration to Spring boot APP
 
+# How to use the spring-boot-remote-git-autoconfigure in Spring Boot App
 ## Prerequisites
-You should install the git client successfully and the configure the ssh auto verify with remote git repo successfully. It mean that you can use the OS git command pull the remote configuration repo item successfully.
+You should install the git client successfully and configure the ssh auto verify with remote git repo successfully. 
+It means that you can use the OS git command pull the remote configuration repo item successfully.
+
 
 ## Add the dependency jar 
   maven:
