@@ -1,5 +1,5 @@
 /*
- * Copyright 2022-2023 VMware, Inc.
+ * Copyright 2022-2024 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -47,4 +47,8 @@ const (
 	LocaleTerritories = "LocaleTerritories"
 	TimeZoneName      = "TimeZoneName"
 	LocaleCities      = "LocaleCities"
+)
+
+const (
+	EnLocale = "en"
 )
