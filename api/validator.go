@@ -1,5 +1,5 @@
 /*
- * Copyright 2022-2023 VMware, Inc.
+ * Copyright 2022-2024 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -35,6 +35,8 @@ var (
 	localesRegex                    = componentsRegex
 	patternScopeRegex               = regexp.MustCompile(`^(\s*[a-zA-Z]+\s*)(,\s*[a-zA-Z]+\s*)*$`)
 	asciiCharsRegex                 = regexp.MustCompile(`\A[[:ascii:]]+\z`)
+	multiASCIIStringRegex           = regexp.MustCompile(`\A([[:ascii:]]+)(,[[:ascii:]]+)*\z`)
+	hTMLRegex                       = regexp.MustCompile(`<[/]?([a-zA-Z]+).*?>`)
 )
 
 var validatorInfoArray = [][]interface{}{
@@ -49,6 +51,8 @@ var validatorInfoArray = [][]interface{}{
 	{ComponentsAPIKey, componentsRegex, fmt.Sprintf(letterAndNumberAndValidCharStringError, ComponentsAPIKey)},
 	{LocalesAPIKey, localesRegex, fmt.Sprintf(letterAndNumberAndValidCharStringError, LocalesAPIKey)},
 	{KeyAPIKey, asciiCharsRegex, "'{0}' is invalid(only standard ASCII characters are allowed)"},
+	{"sgtnkeys", multiASCIIStringRegex, "'{0}' is invalid(only standard ASCII characters are allowed)"},
+	{"nonHTML", func(fl validator.FieldLevel) bool { return !hTMLRegex.MatchString(fl.Field().String()) }, "HTML tags aren't allowed"},
 }
 
 var enTranslator ut.Translator
@@ -70,11 +74,20 @@ func InitValidator() {
 	}
 
 	for _, info := range validatorInfoArray {
-		name, r := info[0].(string), info[1].(*regexp.Regexp)
-		err := validate.RegisterValidation(name,
-			func(fl validator.FieldLevel) bool {
-				return r.MatchString(fl.Field().String())
-			})
+		name, verification := info[0].(string), info[1]
+		var err error
+		switch actual := verification.(type) {
+		case *regexp.Regexp:
+			err = validate.RegisterValidation(name,
+				func(fl validator.FieldLevel) bool {
+					return actual.MatchString(fl.Field().String())
+				})
+		case func(fl validator.FieldLevel) bool:
+			err = validate.RegisterValidation(name, actual)
+		default:
+			logger.SLog.Fatal("wrong validator method: %v", name)
+		}
+
 		if err == nil {
 			err = validate.RegisterTranslation(name, enTranslator,
 				func(ut ut.Translator) error {

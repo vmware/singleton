@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 VMware, Inc.
+ * Copyright 2022-2024 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -14,7 +14,7 @@ type (
 		ReleaseID
 		Locale    string `form:"locale" binding:"locale"`
 		Component string `form:"component" binding:"component"`
-		Key       string `form:"key" binding:"key"`
+		Key       string `form:"key" binding:"nonHTML,key"`
 		Source    string `form:"source"`
 		Pseudo    bool   `form:"pseudo" binding:"omitempty"`
 	}
