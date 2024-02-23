@@ -70,17 +70,11 @@ dependencies {
 }
 
 bootJar {
-    baseName = 'vip-manager-l10n'
+    archiveBaseName = 'vip-manager-l10n'
     version = "$branchName"
-    classifier = "$buildNumber"
+    archiveClassifier = "$buildNumber"
 }
 
-task copyCommonJars(type: Copy, dependsOn: bootJar) {
-    from "$buildDir/libs"
-    into "$rootDir/../publish/"
-    println "The build was output to -> $rootDir/../publish/"
-    include "**/*.jar", "**/*.war"
-}
 
 bootJar.doFirst {
     def propPath = "${buildDir}/resources/main/application.properties"
@@ -92,7 +86,6 @@ bootJar.doFirst {
 }
 
 jar {
-    classifier = ''
 	enabled = false
 }
 
@@ -109,7 +102,7 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-assemble.dependsOn.add copyCommonJars
+
 
 if (JavaVersion.current().isJava8Compatible()) {
     allprojects {
@@ -120,12 +113,12 @@ if (JavaVersion.current().isJava8Compatible()) {
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = 'sources'
+    archiveClassifier = 'sources'
     from sourceSets.main.allJava
 }
  
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
+    archiveClassifier = 'javadoc'
     from javadoc.destinationDir
 }
  
@@ -141,9 +134,6 @@ artifacts {
 
 jacocoTestReport {
     reports {
-        xml.enabled true
-        csv.enabled false
-        html.enabled false
         xml.destination file("${buildDir}/reports/jacoco.xml")
     }
 }
@@ -154,3 +144,11 @@ test {
     }
 }
 
+task copyCommonJars(type: Copy, dependsOn: bootJar) {
+    from "$buildDir/libs"
+    into "$rootDir/../publish/"
+    println "The build was output to -> $rootDir/../publish/"
+    include "**/*.jar", "**/*.war"
+}
+
+assemble.dependsOn.add copyCommonJars

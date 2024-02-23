@@ -32,9 +32,9 @@ sourceSets {
 }
 
 jar {
-    baseName = 'locale-libs'
+    archiveBaseName = 'locale-libs'
     version = "$branchName"
-    classifier = "$buildNumber"
+    archiveClassifier = "$buildNumber"
 }
 
 task copyCommonJars(type :Copy, dependsOn: jar) {

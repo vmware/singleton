@@ -22,9 +22,9 @@ dependencies {
 }
 
 jar {
-    baseName = 'vip-common'
+    archiveBaseName = 'vip-common'
     version = "$branchName"
-    classifier = "$buildNumber"
+    archiveClassifier = "$buildNumber"
 }
 
 task copyCommonJars(type :Copy, dependsOn: jar) {

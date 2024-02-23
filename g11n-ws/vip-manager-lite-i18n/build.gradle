@@ -19,7 +19,8 @@ configurations {
 sourceSets {
 test {
     java.srcDirs = ['src/test/java']
-    java.outputDir = file('build/classes/test')
+    //java.outputDir = file('build/classes/test')
+    java.destinationDirectory.set(file('build/classes/test'))
     output.resourcesDir = file('build/classes/test')
     resources.srcDirs = ['src/test/resources']
   }
@@ -117,12 +118,11 @@ bootJar.doFirst {
 }
 
 bootJar{
-  classifier = 'boot'
+  archiveClassifier = 'boot'
   enabled = true  
 }
 
 jar {
-    classifier = ''
 	enabled = false
 }
 
@@ -131,9 +131,9 @@ assemble.dependsOn.add copyLibs
 
 jacocoTestReport {
     reports {
-        xml.enabled true
-        csv.enabled false
-        html.enabled false
+        xml.required.set(true)
+        csv.required.set(false)
+        html.required.set(false)
         xml.destination file("${buildDir}/reports/jacoco.xml")
     }
 }
@@ -145,12 +145,12 @@ test {
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = 'sources'
+    archiveClassifier = 'sources'
     from sourceSets.main.allJava
 }
  
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
+    archiveClassifier = 'javadoc'
     from javadoc.destinationDir
 }
  

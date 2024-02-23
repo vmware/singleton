@@ -31,13 +31,12 @@ dependencies {
 }
 
 bootJar {
-    baseName = 'vip-manager-l10n-agent'
+    archiveBaseName = 'vip-manager-l10n-agent'
     version =  "$branchName"
-    classifier = "$buildNumber"
+    archiveClassifier = "$buildNumber"
 }
 
 jar {
-    classifier = ''
 	enabled = false
 }
 

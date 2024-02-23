@@ -21,9 +21,9 @@ dependencies {
 }
 
 jar {
-    baseName = 'translation-fetcher'
+    archiveBaseName = 'translation-fetcher'
     version = "$branchName"
-    classifier = "$buildNumber"
+    archiveClassifier = "$buildNumber"
     /**
     from {
          configurations.api.collect { it.isDirectory() ? it : zipTree(it) }
