@@ -1,3 +1,5 @@
+@rem Copyright 2019-2024 VMware, Inc.
+@rem SPDX-License-Identifier: EPL-2.0
 @rem
 @rem Copyright 2015 the original author or authors.
 @rem
