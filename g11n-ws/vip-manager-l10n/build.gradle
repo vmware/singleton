@@ -113,12 +113,12 @@ if (JavaVersion.current().isJava8Compatible()) {
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
-    archiveClassifier = 'sources'
+    archiveClassifier = "$buildNumber-sources"
     from sourceSets.main.allJava
 }
  
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    archiveClassifier = 'javadoc'
+    archiveClassifier = "$buildNumber-javadoc"
     from javadoc.destinationDir
 }
  
@@ -144,11 +144,11 @@ test {
     }
 }
 
-task copyCommonJars(type: Copy, dependsOn: bootJar) {
+task copyL10nLibs(type: Copy) {
+    mustRunAfter('bootJar', 'sourcesJar', 'javadocJar')
     from "$buildDir/libs"
     into "$rootDir/../publish/"
     println "The build was output to -> $rootDir/../publish/"
-    include "**/*.jar", "**/*.war"
+    include "*.jar"
 }
-
-assemble.dependsOn.add copyCommonJars
+assemble.dependsOn.add copyL10nLibs

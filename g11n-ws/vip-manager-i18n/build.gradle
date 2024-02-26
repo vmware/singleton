@@ -92,18 +92,21 @@ dependencies {
     testImplementation("junit:junit:$junitVersion")
 }
 
-
+// translation task
 task copyTranslation(type: Copy) {
     dependsOn project(":tool-trans-fetcher").fetchTranslation
 }
 
 
 task zipTranslation(type: Zip, dependsOn: copyTranslation) {
+    mustRunAfter('processResources')
     archiveFileName = 'resources.zip'
     from "$buildDir/resources/main/l10n"
-
     into "l10n"
 }
+
+
+
 
 task fetchTranslationForTest(type: JavaExec, dependsOn: classes) {
     println "running fetchTranslationForTest"
@@ -121,11 +124,7 @@ task fetchTranslationForTest(type: JavaExec, dependsOn: classes) {
 }
 
 
-task zipSingletonScripts(type: Zip, dependsOn: bootJar) {
-    from "$rootDir/scripts/"
-    into "$rootDir/../publish/"
-    archiveBaseName = 'singletonScripts'
-}
+
 
 processResources() {
     excludes = []
@@ -147,6 +146,8 @@ bootJar.doFirst {
         def updatedPgdbContent = new File(propPath).getText('UTF-8').replaceFirst("spring.profiles.active=bundle", "spring.profiles.active=pgdb")
         new File(propPath).write(updatedPgdbContent, 'UTF-8')
     }
+
+
 }
 
 
@@ -163,6 +164,15 @@ bootJar {
     }
     version = "$branchName"
     archiveClassifier = "$buildNumber"
+
+    dependsOn zipTranslation
+    from "$buildDir/distributions"
+
+    dependsOn test
+    from ("${baseOutputDir}/html5") {
+        into 'static/i18n/docs'
+    }
+
 }
 
 bootJar.doLast {
@@ -173,7 +183,7 @@ jar {
     enabled = false
 }
 
-assemble.dependsOn.add zipSingletonScripts
+
 
 task testFetchedTranslation(type: JavaExec, dependsOn: classes) {
     def jarPath = "${project(":vip-manager-i18n").buildDir}/libs/"
@@ -211,12 +221,12 @@ test.dependsOn.add testFetchedTranslation
  }
  **/
 task sourcesJar(type: Jar, dependsOn: classes) {
-    archiveClassifier = 'sources'
+    archiveClassifier = "$buildNumber-source"
     from sourceSets.main.allJava
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    archiveClassifier = 'javadoc'
+    archiveClassifier = "$buildNumber-javadoc"
     from javadoc.destinationDir
 }
 
@@ -247,17 +257,25 @@ test {
     }
 }
 
-/**
-task copyLibs(type: Copy, dependsOn: bootJar) {
-    from "$buildDir/libs"
-    into "$rootDir/../publish/"
-    println "The build was output to -> $rootDir/../publish/"
-    include "*.jar"
+
+
+task zipSingletonScripts(type: Zip) {
+    mustRunAfter('copyLibs')
+    archiveBaseName = 'singletonScripts'
+    archiveClassifier = "$buildNumber"
+    from "$rootDir/scripts/"
+    destinationDirectory.set(file("$rootDir/../publish/"))
 }
+assemble.dependsOn.add zipSingletonScripts
+
+ task copyLibs(type: Copy) {
+     mustRunAfter('bootJar', 'sourcesJar', 'javadocJar')
+     from "$buildDir/libs"
+     into "$rootDir/../publish/"
+     println "The build was output to -> $rootDir/../publish/"
+     include "*.jar"
+ }
  assemble.dependsOn.add copyLibs
- **/
-
-
 
 
 

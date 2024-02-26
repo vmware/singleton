@@ -97,12 +97,7 @@ processResources {
     }
 }
 
-task copyLibs(type :Copy, dependsOn: bootJar) {
-    from "$buildDir/libs"
-    into "$rootDir/../publish/"
-    println "The build was output to -> $rootDir/../publish/"
-    include "**/*.jar"
-}
+
 
 bootJar.doFirst {
       def propPath = "${buildDir}/resources/main/application.properties"
@@ -126,7 +121,6 @@ jar {
 	enabled = false
 }
 
-assemble.dependsOn.add copyLibs
 
 
 jacocoTestReport {
@@ -145,12 +139,12 @@ test {
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
-    archiveClassifier = 'sources'
+    archiveClassifier = 'boot-sources'
     from sourceSets.main.allJava
 }
  
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    archiveClassifier = 'javadoc'
+    archiveClassifier = 'boot-javadoc'
     from javadoc.destinationDir
 }
  
@@ -164,3 +158,12 @@ artifacts {
     archives sourcesJar
     archives javadocJar
 }
+
+task copyLiteI18nLibs(type: Copy) {
+    mustRunAfter('bootJar', 'sourcesJar', 'javadocJar')
+    from "$buildDir/libs"
+    into "$rootDir/../publish/"
+    println "The build was output to -> $rootDir/../publish/"
+    include "*.jar"
+}
+assemble.dependsOn.add copyLiteI18nLibs
