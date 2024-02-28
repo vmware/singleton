@@ -8,32 +8,33 @@ apply plugin: 'io.spring.dependency-management'
 description = 'singleton server'
 archivesBaseName = 'singleton'
 configurations {
-	bootJar
+    bootJar
     war
     providedRuntime
-   // remove default logger
+    // remove default logger
     all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
     all*.exclude group: 'commons-logging', module: 'commons-logging'
 }
 
 sourceSets {
-  test {
-    java.srcDirs = ['src/test/java']
-    java.outputDir = file('build/classes/test')
-    output.resourcesDir = file('build/classes/test')
-    resources.srcDirs = ['src/test/resources']
-  }
+    test {
+        java.srcDirs = ['src/test/java']
+        //java.outputDir = file('build/classes/test')
+        java.destinationDirectory.set(file('build/classes/test'))
+        resources.srcDirs = ['src/test/resources']
+        output.resourcesDir = file('build/classes/test')
+    }
 }
 
 ext {
-	baseOutputDir = file("src/docs/asciidoc")
+    baseOutputDir = file("src/docs/asciidoc")
 }
 
 
 dependencies {
-  if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
+    if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
         api project(":md-data-api-pgimpl")
-    }else{
+    } else {
         api project(":md-data-api-s3impl")
         api project(":md-data-api-bundleimpl")
     }
@@ -41,12 +42,12 @@ dependencies {
     api project(":md-restful-api-i18n")
     api project(":md-service-authen")
     if (project.hasProperty('datatype') && project.getProperty('datatype') == 'bundle' && project.getProperty('syncdata') == 'true') {
-       api project(":md-restful-synch")
+        api project(":md-restful-synch")
     }
 
     implementation("com.vmware.singleton:spring-boot-remote-git-autoconfigure:0.1.0")
     implementation('org.springframework.boot:spring-boot-starter-log4j2')
-    implementation("org.springframework.boot:spring-boot-starter-web"){
+    implementation("org.springframework.boot:spring-boot-starter-web") {
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
     }
     implementation("org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion")
@@ -66,7 +67,7 @@ dependencies {
 
     implementation("org.ehcache:ehcache:$ehCacheVersion") {
         capabilities {
-           requireCapability('org.ehcache:ehcache-jakarta')
+            requireCapability('org.ehcache:ehcache-jakarta')
         }
     }
     implementation 'org.glassfish.jaxb:jaxb-runtime:4.0.4'
@@ -77,7 +78,6 @@ dependencies {
     implementation("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$hibernateJpa21Api")
 
 
-    
     //swagger UI -START
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$springdocVersion")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-api:$springdocVersion")
@@ -85,24 +85,28 @@ dependencies {
 
 
     // Actuator - START
-    implementation ('org.springframework.boot:spring-boot-starter-actuator')
+    implementation('org.springframework.boot:spring-boot-starter-actuator')
     // Actuator - END
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("junit:junit:$junitVersion")
 }
 
-
+// translation task
 task copyTranslation(type: Copy) {
     dependsOn project(":tool-trans-fetcher").fetchTranslation
 }
 
 
-task zipTranslation(type: Zip,dependsOn: copyTranslation) {
-	archiveName='resources.zip'
+task zipTranslation(type: Zip, dependsOn: copyTranslation) {
+    mustRunAfter('processResources')
+    archiveFileName = 'resources.zip'
     from "$buildDir/resources/main/l10n"
-	into "l10n"
+    into "l10n"
 }
+
+
+
 
 task fetchTranslationForTest(type: JavaExec, dependsOn: classes) {
     println "running fetchTranslationForTest"
@@ -119,57 +123,48 @@ task fetchTranslationForTest(type: JavaExec, dependsOn: classes) {
     classpath = sourceSets.test.runtimeClasspath
 }
 
-task copyLibs(type :Copy, dependsOn: bootJar) {
-    from "$buildDir/libs"
-    into "$rootDir/../publish/"
-    println "The build was output to -> $rootDir/../publish/"
-    include "**/*.jar","**/*.war"
-}
 
 
-task zipSingletonScripts(type: Zip,dependsOn: bootJar) {
-	from "$rootDir/scripts/"
-	destinationDir file("$rootDir/../publish/")
-	baseName 'singletonScripts'
-}
 
-processResources {
-    excludes =[]
-     if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
+processResources() {
+    excludes = []
+    if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
         println "begin to exclude S3 and bundle builder configuration files"
-        excludes=['**/application-s3.properties', '**/application-bundle.properties', '/l10n']
-    }else {
+        excludes = ['**/application-s3.properties', '**/application-bundle.properties', '/l10n']
+    } else {
         println "begin to exclude pgdb builder configuration file"
-        excludes=['**/application-pgdb.properties']
-      
+        excludes = ['**/application-pgdb.properties']
+
     }
 }
 
 
-
 bootJar.doFirst {
-      def propPath = "${buildDir}/resources/main/application.properties"
-       println propPath
-     if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
-       def updatedPgdbContent = new File(propPath).getText('UTF-8').replaceFirst("spring.profiles.active=bundle", "spring.profiles.active=pgdb")
-       new File(propPath).write(updatedPgdbContent, 'UTF-8')
-	  }
+    def propPath = "${buildDir}/resources/main/application.properties"
+    println propPath
+    if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
+        def updatedPgdbContent = new File(propPath).getText('UTF-8').replaceFirst("spring.profiles.active=bundle", "spring.profiles.active=pgdb")
+        new File(propPath).write(updatedPgdbContent, 'UTF-8')
+    }
+
+
 }
 
 
 bootJar {
-    baseName = "singleton"
-    if(project.hasProperty('productName')){
-      def productName = project.getProperty('productName')
-      if(productName == ''){
-        productName = 'all'
-      }
-      baseName = "singleton-$productName"
-    }else{
-      baseName = "singleton"
+    archiveBaseName = "singleton"
+    if (project.hasProperty('productName')) {
+        def productName = project.getProperty('productName')
+        if (productName == '') {
+            productName = 'all'
+        }
+        archiveBaseName = "singleton-$productName"
+    } else {
+        archiveBaseName = "singleton"
     }
     version = "$branchName"
-    classifier = "$buildNumber"
+    archiveClassifier = "$buildNumber"
+
     dependsOn zipTranslation
     from "$buildDir/distributions"
 
@@ -177,41 +172,23 @@ bootJar {
     from ("${baseOutputDir}/html5") {
         into 'static/i18n/docs'
     }
-  
+
 }
 
 bootJar.doLast {
-	delete "${baseOutputDir}/generated","${baseOutputDir}/html5"
+    delete "${baseOutputDir}/generated", "${baseOutputDir}/html5"
 }
 
 jar {
-    classifier = ''
-	enabled = false
+    enabled = false
 }
 
-/**
-war {
-    baseName = "singleton"
-    if(project.hasProperty('productName')){
-      def productName = project.getProperty('productName')
-      if(productName == ''){
-        productName = 'all'
-      }
-      baseName = "singleton-$productName"
-    }else{
-      baseName = "singleton"
-    }
-    version = "$branchName"
-    classifier = "$buildNumber"
-}
-**/
-assemble.dependsOn.add copyLibs
-assemble.dependsOn.add zipSingletonScripts
+
 
 task testFetchedTranslation(type: JavaExec, dependsOn: classes) {
     def jarPath = "${project(":vip-manager-i18n").buildDir}/libs/"
     args(jarPath)
-    args("${project(":vip-manager-i18n").jar.archiveName}")
+    args("${project(":vip-manager-i18n").jar.archiveFileName}")
     if (project.hasProperty('productName')) {
         args(project.getProperty('productName'))
     }
@@ -223,12 +200,12 @@ task testFetchedTranslation(type: JavaExec, dependsOn: classes) {
 }
 
 task profile {
-	if(project.hasProperty('profileType')){
-		def profileType = project.getProperty('profileType')
-		ant.propertyfile(file: file("$rootDir/vip-manager-i18n/src/main/resources/application.properties")){
-			entry(key:"spring.profiles.active",value:profileType)
-		}
-	}
+    if (project.hasProperty('profileType')) {
+        def profileType = project.getProperty('profileType')
+        ant.propertyfile(file: file("$rootDir/vip-manager-i18n/src/main/resources/application.properties")) {
+            entry(key: "spring.profiles.active", value: profileType)
+        }
+    }
 }
 
 tasks.withType(JavaCompile) {
@@ -239,26 +216,26 @@ tasks.withType(JavaCompile) {
 test.dependsOn.add testFetchedTranslation
 
 /**
-if (project.hasProperty('datatype') && (project.getProperty('datatype') == 'pgdb') || (project.getProperty('datatype') == 's3') ) {
-	check.dependsOn.remove(test)
-}
-**/
+ if (project.hasProperty('datatype') && (project.getProperty('datatype') == 'pgdb') || (project.getProperty('datatype') == 's3') ) {
+ check.dependsOn.remove(test)
+ }
+ **/
 task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = 'sources'
+    archiveClassifier = "$buildNumber-source"
     from sourceSets.main.allJava
 }
- 
+
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
+    archiveClassifier = "$buildNumber-javadoc"
     from javadoc.destinationDir
 }
- 
+
 tasks.withType(Javadoc) {
     options.addStringOption('Xdoclint:none', '-quiet')
     options.addStringOption('encoding', 'UTF-8')
     options.addStringOption('charSet', 'UTF-8')
 }
- 
+
 artifacts {
     archives sourcesJar
     archives javadocJar
@@ -267,9 +244,9 @@ artifacts {
 
 jacocoTestReport {
     reports {
-        xml.enabled true
-        csv.enabled false
-        html.enabled false
+        xml.required.set(true)
+        csv.required.set(false)
+        html.required.set(false)
         xml.destination file("${buildDir}/reports/jacoco.xml")
     }
 }
@@ -279,6 +256,27 @@ test {
         events "passed", "skipped", "failed"
     }
 }
+
+
+
+task zipSingletonScripts(type: Zip) {
+    mustRunAfter('copyLibs')
+    archiveBaseName = 'singletonScripts'
+    archiveClassifier = "$buildNumber"
+    from "$rootDir/scripts/"
+    destinationDirectory.set(file("$rootDir/../publish/"))
+}
+assemble.dependsOn.add zipSingletonScripts
+
+ task copyLibs(type: Copy) {
+     mustRunAfter('bootJar', 'sourcesJar', 'javadocJar')
+     from "$buildDir/libs"
+     into "$rootDir/../publish/"
+     println "The build was output to -> $rootDir/../publish/"
+     include "*.jar"
+ }
+ assemble.dependsOn.add copyLibs
+
 
 
     

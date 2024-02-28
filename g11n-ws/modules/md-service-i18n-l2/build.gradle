@@ -1,4 +1,4 @@
-//Copyright 2019-2023 VMware, Inc.
+//Copyright 2019-2024 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java-library'
 apply plugin: 'io.spring.dependency-management'
@@ -32,9 +32,9 @@ sourceSets {
 }
 
 jar {
-    baseName = 'locale-libs'
+    archiveBaseName = 'locale-libs'
     version = "$branchName"
-    classifier = "$buildNumber"
+    archiveClassifier = "$buildNumber"
 }
 
 task copyCommonJars(type :Copy, dependsOn: jar) {

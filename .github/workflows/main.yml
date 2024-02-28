@@ -106,7 +106,7 @@ jobs:
           cd $GITHUB_WORKSPACE/g11n-ws && ./gradlew build -x test
           cp $GITHUB_WORKSPACE/devops/deploy/i18n-service/Dockerfile $GITHUB_WORKSPACE/publish/
           cd $GITHUB_WORKSPACE/publish && ls
-          mv singleton-[0~9]*.jar i18n-service.jar && ls
+          mv singleton-[0~9]*[0~9].jar i18n-service.jar && ls
           docker build -t singleton .
           docker run -d -p 8090:8090 --name singleton singleton
           docker ps
@@ -142,7 +142,7 @@ jobs:
           cd $GITHUB_WORKSPACE/g11n-ws && ./gradlew build -x test
           cp $GITHUB_WORKSPACE/devops/performancetest/Dockerfile $GITHUB_WORKSPACE/publish/
           cd $GITHUB_WORKSPACE/publish && ls
-          mv singleton-[0~9]*.jar i18n-service.jar && ls
+          mv singleton-[0~9]*[0~9].jar i18n-service.jar && ls
           cp -r $GITHUB_WORKSPACE/devops/performancetest/resource/l10n l10n
           docker build -t singleton .
           docker run -d -p 8090:8090 --name singleton singleton
