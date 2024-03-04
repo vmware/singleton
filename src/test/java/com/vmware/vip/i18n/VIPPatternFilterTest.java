@@ -4,6 +4,10 @@
  */
 package com.vmware.vip.i18n;
 
+import com.vmware.vipclient.i18n.I18nFactory;
+import com.vmware.vipclient.i18n.VIPCfg;
+import com.vmware.vipclient.i18n.base.cache.FormattingCache;
+import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.filters.VIPPatternFilter;
 import org.junit.Assert;
 import org.junit.Before;
@@ -18,12 +22,21 @@ import java.io.IOException;
 public class VIPPatternFilterTest extends BaseTestClass{
     VIPPatternFilter patternFilter = new VIPPatternFilter();
 
-    //@Before
+    @Before
     public void init() throws ServletException {
+        VIPCfg gc = VIPCfg.getInstance();
+        try {
+            gc.initialize("vipconfig");
+        } catch (VIPClientInitException e) {
+            logger.error(e.getMessage());
+        }
+        gc.createFormattingCache(FormattingCache.class);
+        I18nFactory i18n = I18nFactory.getInstance(gc);
+
         patternFilter.init(null);
     }
 
-    //@Test
+    @Test
     public void testDoFilter() throws IOException, ServletException {
         String errorMsg = "{\"code\":400, \"message\": \"Request parameter 'locale' is required!\"}";
 

@@ -23,9 +23,7 @@ import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
-import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
-import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
 
 /**
@@ -37,14 +35,13 @@ public class VIPComponentFilter implements Filter {
 
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain) throws IOException, ServletException {
-        logger.info("Vip Server: " + gc.getVipServer() +gc.getProductName() +gc.getVersion());
         try {
             String component = FilterUtils.getParamFromURI(request, "component");
             logger.debug("component: " + component);
             String locale = FilterUtils.getParamFromQuery(request, "locale");
             logger.debug("locale: " + locale);
             String messages = "{}";
-            if (!StringUtil.isEmpty(component) && !StringUtil.isEmpty(locale) && !LocaleUtility.isDefaultLocale(locale) && translation != null) {
+            if (!StringUtil.isEmpty(component) && !StringUtil.isEmpty(locale) && !LocaleUtility.isDefaultLocale(locale)) {
                 Map<String, String> ctmap = translation.getMessages(LocaleUtility.fmtToMappedLocale(locale),
                         component);
                 if (ctmap != null) {
@@ -75,15 +72,24 @@ public class VIPComponentFilter implements Filter {
     private TranslationMessage translation;
     private VIPCfg             gc = VIPCfg.getInstance();
 
+    /**
+     * Here will create TranslationMessage instance, but create it requires I18nFactory instance created first, and creation of I18nFactory
+     * requires VIPCfg instance. Hence you must create VIPCfg instance and I18nFactory instance before this filter initialize, so recommend
+     * you create them at your service starts, that is in listener class that implements ServletContextListener, or will throw ServletException.
+     *
+     * Furthermore when initialize VIPCfg you had better rename your config file to avoid config loading error. You can write it in web.xml
+     * as <context-param> to avoid hardcoding the config file in code and make the whole application share the same config.
+     *
+     * @param filterConfig
+     * @throws ServletException
+     */
     public void init(FilterConfig filterConfig) throws ServletException {
         I18nFactory i18n = I18nFactory.getInstance();
-        if (i18n == null){
-            try {
-                throw new VIPClientInitException("Haven't init I18nFactory, please init VIPCfg with your vip config first, then initialize I18nFactory with VIPCfg!");
-            } catch (VIPClientInitException e) {
-                e.printStackTrace();
-            }
+        try {
+            translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
+        } catch(NullPointerException e){
+            throw new ServletException("Haven't init I18nFactory, please init VIPCfg with your config first when your service starts" +
+                    "(for example init VIPCfg in listener), then initialize I18nFactory with VIPCfg!", e);
         }
-        translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
     }
 }
