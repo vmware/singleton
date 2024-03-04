@@ -42,7 +42,7 @@ public class VIPComponentFilter implements Filter {
             logger.debug("locale: " + locale);
             String messages = "{}";
             if (!StringUtil.isEmpty(component) && !StringUtil.isEmpty(locale) && !LocaleUtility.isDefaultLocale(locale)) {
-                Map<String, String> ctmap = translation.getMessages(LocaleUtility.fmtToMappedLocale(locale),
+                Map<String, String> ctmap = translation.getStrings(LocaleUtility.fmtToMappedLocale(locale),
                         component);
                 if (ctmap != null) {
                     messages = JSONObject.toJSONString(ctmap);
