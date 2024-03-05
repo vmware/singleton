@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2024 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.fmt.common;
@@ -16,15 +16,12 @@ import javax.servlet.jsp.tagext.BodyTagSupport;
 import javax.servlet.jsp.tagext.Tag;
 
 import org.apache.taglibs.standard.tag.common.core.Util;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
 
 public class MessageSupport extends BodyTagSupport {
-    private Logger logger = LoggerFactory.getLogger(MessageSupport.class);
 
     public static final Locale defaultLocale = new Locale("en", "US");
     private PageContext        pageContext;
