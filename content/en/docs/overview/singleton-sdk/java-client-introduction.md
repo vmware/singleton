@@ -64,7 +64,7 @@ After initialization, the client application may already use the following API t
 
 |L10n Data Type|Javadoc|
 |----------|----------|
-|Translation|[TranslationMessage](https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/java-client/0.6.1/javadoc/com/vmware/vipclient/i18n/base/instances/TranslationMessage.html)|
-|Date|[DateFormatting](https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/java-client/0.6.1/javadoc/com/vmware/vipclient/i18n/base/instances/DateFormatting.html)|
-|Number|[NumberFormatting](https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/java-client/0.6.1/javadoc/com/vmware/vipclient/i18n/base/instances/NumberFormatting.html)|
-|Supported Locales|[LocaleMessage](https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/java-client/0.6.1/javadoc/com/vmware/vipclient/i18n/base/instances/LocaleMessage.html)|
+|Translation|[TranslationMessage](https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/java-client/0.6.3/javadoc/com/vmware/vipclient/i18n/base/instances/TranslationMessage.html)|
+|Date|[DateFormatting](https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/java-client/0.6.3/javadoc/com/vmware/vipclient/i18n/base/instances/DateFormatting.html)|
+|Number|[NumberFormatting](https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/java-client/0.6.3/javadoc/com/vmware/vipclient/i18n/base/instances/NumberFormatting.html)|
+|Supported Locales|[LocaleMessage](https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/java-client/0.6.3/javadoc/com/vmware/vipclient/i18n/base/instances/LocaleMessage.html)|
