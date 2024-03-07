@@ -1,9 +1,13 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2024 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n;
 
+import com.vmware.vipclient.i18n.I18nFactory;
+import com.vmware.vipclient.i18n.VIPCfg;
+import com.vmware.vipclient.i18n.base.cache.MessageCache;
+import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.filters.VIPComponentFilter;
 import org.junit.Assert;
 import org.junit.Before;
@@ -19,14 +23,27 @@ import java.io.IOException;
 public class VIPComponentFilterTest extends BaseTestClass{
     VIPComponentFilter componentFilter = new VIPComponentFilter();
 
-    //@Before
+    @Before
     public void init() throws ServletException {
+        VIPCfg gc = VIPCfg.getInstance();
+        try {
+            gc.initialize("vipconfig");
+        } catch (VIPClientInitException e) {
+            logger.error(e.getMessage());
+        }
+        gc.createTranslationCache(MessageCache.class);
+        I18nFactory i18n = I18nFactory.getInstance(gc);
+
         componentFilter.init(null);
     }
 
-    //@Test
+    @Test
     public void testDoFilter() throws IOException, ServletException {
-        String normalMsg = "var translation = {\"messages\" : {\"LeadTest\":\"[{0}] 测试警示\",\"table.host\":\"主机\",\"global_text_username\":\"用户名\",\"sample.plural.key1\":\"{0, plural, other{\\\"{1}\\\"上有#个文件。}}\"}, \"productName\" : \"JavaclientTest\", \"version\" : \"1.0.0\", \"vipServer\" : \"http://localhost:8099\", \"pseudo\" : \"false\", \"collectSource\" : \"false\"};";
+        String normalMsg = "var translation = {\"messages\" : {\"LeadTest\":\"[{0}] 测试警示\",\"table.host\":\"主机\",\"global_text_username\":\"用户名\"," +
+                "\"sample.plural.key1\":\"{0, plural, other{\\\"{1}\\\"上有#个文件。}}\"}," +
+                " \"productName\" : \"JavaclientTest\", \"version\" : \"1.0.0\", \"vipServer\" : \"http://localhost:8099\", " +
+                "\"pseudo\" : \"false\", \"collectSource\" : \"false\"};";
+
         String errorMsg = "{\"code\":400, \"message\": \"Request parameter 'locale' is required!\"}";
 
         String uri = "https://localhost/i18n/component/JAVA";

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2024 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.fmt.common;
@@ -18,10 +18,7 @@ import javax.servlet.jsp.tagext.Tag;
 import org.apache.taglibs.standard.tag.common.core.Util;
 
 import com.vmware.vipclient.i18n.I18nFactory;
-import com.vmware.vipclient.i18n.VIPCfg;
-import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
-import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
 
 public class MessageSupport extends BodyTagSupport {
@@ -46,16 +43,6 @@ public class MessageSupport extends BodyTagSupport {
         this.scope = 1;
         this.keyAttrValue = null;
         this.keySpecified = false;
-        VIPCfg gc = VIPCfg.getInstance();
-        try {
-            gc.initialize("vipconfig");
-        } catch (VIPClientInitException e) {
-
-        }
-        gc.initializeVIPService();
-        gc.createTranslationCache(MessageCache.class);
-        I18nFactory i18n = I18nFactory.getInstance(gc);
-        translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
     }
 
     public int doStartTag() throws JspException {
@@ -81,8 +68,14 @@ public class MessageSupport extends BodyTagSupport {
         }
         Locale locale = LocaleUtility.getLocale();
         Object[] args = this.params.isEmpty() ? null : this.params.toArray();
-        String message = translation == null ? ""
-                : translation.getString2(component, bundle, locale, key, "TranslationCache", args);
+        try{
+            I18nFactory i18n = I18nFactory.getInstance();
+            translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
+        } catch(NullPointerException e){
+            throw new JspTagException("Haven't init I18nFactory, please init VIPCfg with your config first when your service starts" +
+                    "(for example init VIPCfg in listener), then initialize I18nFactory with VIPCfg!", e);
+        }
+        String message = translation.getString2(component, bundle, locale, key, "TranslationCache", args);
         if (this.var != null) {
             this.pageContext.setAttribute(this.var, message, this.scope);
         } else {

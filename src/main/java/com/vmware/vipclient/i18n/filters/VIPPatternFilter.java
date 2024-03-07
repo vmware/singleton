@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2024 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.filters;
@@ -18,9 +18,7 @@ import javax.servlet.ServletResponse;
 
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
-import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.base.instances.PatternMessage;
-import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.util.StringUtil;
 import org.json.simple.JSONObject;
@@ -68,18 +66,25 @@ public class VIPPatternFilter implements Filter {
         // Do Nothing
     }
 
+    /**
+     * Here will create TranslationMessage instance, but create it requires I18nFactory instance created first, and creation of I18nFactory
+     * requires VIPCfg instance. Hence you must create VIPCfg instance and I18nFactory instance before this filter initialize, so recommend
+     * you create them at your service starts, that is in listener class that implements ServletContextListener, or will throw ServletException.
+     *
+     * Furthermore when initialize VIPCfg you had better rename your config file to avoid config loading error. You can write it in web.xml
+     * as <context-param> to avoid hardcoding the config file in code and make the whole application share the same config.
+     *
+     * @param filterConfig
+     * @throws ServletException
+     */
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        if (gc.getVipService() == null) {
-            try {
-                gc.initialize("vipconfig");
-            } catch (VIPClientInitException e) {
-                logger.error(e.getMessage());
-            }
-            gc.initializeVIPService();
+        I18nFactory i18n = I18nFactory.getInstance();
+        try {
+            patternMessage = (PatternMessage) i18n.getMessageInstance(PatternMessage.class);
+        } catch(NullPointerException e){
+            throw new ServletException("Haven't init I18nFactory, please init VIPCfg with your config first when your service starts" +
+                    "(for example init VIPCfg in listener), then initialize I18nFactory with VIPCfg!", e);
         }
-        gc.createFormattingCache(FormattingCache.class);
-        I18nFactory i18n = I18nFactory.getInstance(gc);
-        patternMessage = (PatternMessage) i18n.getMessageInstance(PatternMessage.class);
     }
 }
