@@ -124,24 +124,25 @@ public class S3Config {
 
 	public String getPublicKey() {
 		String filePath = "";
-		if(this.publicKey.startsWith(ConstantsChar.POUND)) {
+        if(this.publicKey.startsWith(ConstantsChar.POUND)) {
 			filePath = this.publicKeyPath;
 		}else {
-			return this.publicKey;
+			filePath = this.publicKey;
 		}
+		logger.info("S3 decrypt public key path: {}", filePath);
 		try {
-			if (this.publicKeyPath.startsWith(ConstantsFile.CLASS_PATH_PREFIX)
-					|| this.publicKeyPath.startsWith(ConstantsFile.FILE_PATH_PREFIX)) {
-				Resource resource = new PathMatchingResourcePatternResolver().getResource(this.publicKeyPath);
-				this.publicKey = RsaCryptUtils.getPublicKeyStrFromInputStream(resource.getInputStream());
-				logger.debug("public key: {}", this.publicKey);
-				return this.publicKey;
+			if (filePath.startsWith(ConstantsFile.CLASS_PATH_PREFIX)
+					|| filePath.startsWith(ConstantsFile.FILE_PATH_PREFIX)) {
+				Resource resource = new PathMatchingResourcePatternResolver().getResource(filePath);
+				String content = RsaCryptUtils.getPublicKeyStrFromInputStream(resource.getInputStream());
+				logger.debug("public key: {}", content);
+				return content;
 			}else {
 				File file = new File(filePath);
 				if (file.exists()) {
-					this.publicKey  = RsaCryptUtils.getPublicKeyStrFromInputStream(new FileInputStream(file));
-					logger.debug("public key: {}", this.publicKey);
-					return this.publicKey;
+					String content  = RsaCryptUtils.getPublicKeyStrFromInputStream(new FileInputStream(file));
+					logger.debug("public key: {}", content);
+					return content;
 
 				} else {
 					logger.error("not found public key file: {}", file.getAbsoluteFile());
