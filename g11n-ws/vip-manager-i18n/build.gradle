@@ -49,8 +49,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web"){
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
     }
-    implementation 'org.springframework:spring-web:6.0.18'
-    implementation 'org.springframework:spring-webmvc:6.0.18'
+    implementation 'org.springframework:spring-web:6.1.5'
+    implementation 'org.springframework:spring-webmvc:6.1.5'
     implementation("org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion")
     implementation("org.apache.tomcat:tomcat-annotations-api:$tomcatVersion")
     implementation("org.apache.commons:commons-lang3:$commonsLangVersion")
