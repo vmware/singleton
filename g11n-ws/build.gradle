@@ -3,7 +3,7 @@
 
 buildscript {
     ext {
-     springBootVersion = '3.1.10'
+     springBootVersion = '3.1.11'
     }
     repositories {
         mavenLocal()
@@ -22,14 +22,14 @@ buildscript {
 
 allprojects{
     version = project.getProperty('buildNumber')
-    
+
     apply plugin: 'java'
     apply plugin: 'eclipse'
     apply plugin: 'idea'
     apply plugin: "org.sonarqube"
     apply plugin: "jacoco"
 
-    
+
     group = 'com.vmware'
     sourceCompatibility = '17'
 
@@ -39,12 +39,7 @@ allprojects{
         maven { url "https://repo1.maven.org/maven2/" }
         mavenCentral()
         jcenter()
-       
-       
     }
-     
-   
-     
 }
 
 subprojects{
@@ -52,12 +47,11 @@ subprojects{
 
 
     ext {
-   	       
         projectVersion = '0.0.1-SNAPSHOT'
         httpclient='4.5.13'
         jacksonVersion = '2.16.0'
         springdocVersion='2.2.0'
-        tomcatVersion= '10.1.18'
+        tomcatVersion= '10.1.20'
 
     	ehCacheVersion = '3.10.8'
     	cacheApiVersion='1.1.1'
@@ -68,7 +62,7 @@ subprojects{
     	commonsLangVersion = '3.12.0'
     	commonsIoVersion = '2.11.0'
     	commonsCodecVersion='1.15'
-    	
+
     	guavaVersion="32.1.2-jre"
     	snakeyam="2.0"
     	jjwtVersion="0.9.1"
@@ -76,21 +70,19 @@ subprojects{
     	log4j2Version="2.18.0"
     	slf4jVersion="1.7.32"
     	esapiVersion="2.5.3.1"
-       
+
     	postgresqlVersion = "42.1.4"
     	druidVersion = "1.1.8"
     	awsS3Version = "1.12.497"
         swaggerVersion = "3.0.0"
         icu4jVersion = "60.3"
-        
+
     	buildRelease = 'beta'
     	remoteServer = ""
     	deployPath="$rootDir/../publish/"
     }
-    
+
    tasks.withType(JavaCompile) {
        options.encoding = "UTF-8"
     }
-    
-
 }
