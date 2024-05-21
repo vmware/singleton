@@ -52,7 +52,6 @@ public class VIPComponentFilter implements Filter {
             response.setContentType("text/javascript;charset=UTF-8");
             os.write(("var translation = {" + "\"messages\" : " + messages + ", "
                     + "\"productName\" : \"" + gc.getInstance().getProductName()
-                    + "\", " + "\"version\" : \"" + gc.getInstance().getVersion()
                     + "\", " + "\"vipServer\" : \""
                     + gc.getInstance().getVipServer() + "\", " + "\"pseudo\" : \""
                     + gc.getInstance().isPseudo() + "\", "
