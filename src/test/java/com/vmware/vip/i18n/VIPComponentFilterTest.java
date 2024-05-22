@@ -41,7 +41,7 @@ public class VIPComponentFilterTest extends BaseTestClass{
     public void testDoFilter() throws IOException, ServletException {
         String normalMsg = "var translation = {\"messages\" : {\"LeadTest\":\"[{0}] 测试警示\",\"table.host\":\"主机\",\"global_text_username\":\"用户名\"," +
                 "\"sample.plural.key1\":\"{0, plural, other{\\\"{1}\\\"上有#个文件。}}\"}," +
-                " \"productName\" : \"JavaclientTest\", \"version\" : \"1.0.0\", \"vipServer\" : \"http://localhost:8099\", " +
+                " \"productName\" : \"JavaclientTest\", \"vipServer\" : \"http://localhost:8099\", " +
                 "\"pseudo\" : \"false\", \"collectSource\" : \"false\"};";
 
         String errorMsg = "{\"code\":400, \"message\": \"Request parameter 'locale' is required!\"}";
