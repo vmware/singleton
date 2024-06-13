@@ -34,6 +34,7 @@ bootJar {
     baseName = 'vip-manager-l10n-agent'
     version =  "$branchName"
     classifier = "$buildNumber"
+    loaderImplementation = org.springframework.boot.loader.tools.LoaderImplementation.CLASSIC
 }
 
 jar {
