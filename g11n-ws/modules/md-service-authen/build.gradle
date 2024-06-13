@@ -1,4 +1,4 @@
-//Copyright 2019-2023 VMware, Inc.
+//Copyright 2019-2024 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java-library'
 apply plugin: 'org.springframework.boot'
@@ -39,7 +39,7 @@ dependencies {
     compileOnly("io.jsonwebtoken:jjwt:$jjwtVersion")
     compileOnly("org.apache.commons:commons-lang3:$commonsLangVersion")
     compileOnly("org.springdoc:springdoc-openapi-starter-webmvc-api:$springdocVersion")
-    implementation("com.nimbusds:nimbus-jose-jwt:9.27")
+    implementation("com.nimbusds:nimbus-jose-jwt:9.37.3")
 }
 
 bootJar {
