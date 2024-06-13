@@ -74,6 +74,7 @@ bootJar {
     baseName = 'vip-manager-l10n'
     version = "$branchName"
     classifier = "$buildNumber"
+    loaderImplementation = org.springframework.boot.loader.tools.LoaderImplementation.CLASSIC
 }
 
 task copyCommonJars(type: Copy, dependsOn: bootJar) {
