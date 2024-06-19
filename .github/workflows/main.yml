@@ -82,10 +82,13 @@ jobs:
           format: sarif
           gh-code-scanning-compat: true
           max-allowed-issues: 2147483647  
+      - name: Clean duplicates
+        run: |
+          jq '.runs |= unique_by({tool, invocations, results})' results.sarif > final-results.sarif
       - name: Upload SARIF results file
         uses: github/codeql-action/upload-sarif@main
         with:
-          sarif_file: results.sarif  
+          sarif_file: final-results.sarif  
               
   smoke-test:
     name: Smoke Test
@@ -116,7 +119,12 @@ jobs:
           echo $str Smoke Test Start $str
           date
           locale
-          java -cp "target/*:resource/*" org.testng.TestNG testng.xml
+          sleep 10
+          java -cp "target/*:resource/*" org.testng.TestNG testng.xml || test_status=$?
+          if [[ ${test_status} -ne 0 ]]; then
+              docker logs singleton
+              exit ${test_status}
+          fi
           echo $str Smoke Test End $str
 
   performance-test:
