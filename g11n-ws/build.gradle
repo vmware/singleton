@@ -9,12 +9,12 @@ buildscript {
         mavenLocal()
         maven { url "https://repo1.maven.org/maven2/" }
         mavenCentral()
-        jcenter()
+        gradlePluginPortal()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
         classpath("org.asciidoctor:asciidoctor-gradle-plugin:1.5.7")
-        classpath("io.github.swagger2markup:swagger2markup-gradle-plugin:1.3.3")
+        // classpath("io.github.swagger2markup:swagger2markup-gradle-plugin:1.3.3")
         classpath("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.7.1")
     }
 }
@@ -38,7 +38,6 @@ allprojects{
         mavenLocal() 
         maven { url "https://repo1.maven.org/maven2/" }
         mavenCentral()
-        jcenter()
     }
 }
 
