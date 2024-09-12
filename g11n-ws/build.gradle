@@ -22,7 +22,6 @@ buildscript {
 
 allprojects{
     version = project.getProperty('buildNumber')
-
     apply plugin: 'java'
     apply plugin: 'eclipse'
     apply plugin: 'idea'
