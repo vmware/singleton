@@ -120,6 +120,7 @@ bootJar.doFirst {
 bootJar{
   classifier = 'boot'
   enabled = true  
+  loaderImplementation = org.springframework.boot.loader.tools.LoaderImplementation.CLASSIC
 }
 
 jar {
