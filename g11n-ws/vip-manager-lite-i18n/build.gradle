@@ -60,6 +60,7 @@ dependencies {
 
     implementation("org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion")
     implementation("org.apache.tomcat:tomcat-annotations-api:$tomcatVersion")
+    implementation("org.springframework:spring-webmvc:$springWebMvcVersion")
 
     implementation("org.ehcache:ehcache:$ehCacheVersion") {
         capabilities {
