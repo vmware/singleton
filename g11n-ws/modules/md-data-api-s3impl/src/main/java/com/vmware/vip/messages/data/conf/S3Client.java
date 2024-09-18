@@ -1,5 +1,5 @@
 /**
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2024 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.messages.data.conf;
@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.amazonaws.ClientConfiguration;
 import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
@@ -112,8 +113,9 @@ public class S3Client {
 			   sessionCreds.getAccessKeyId(),
 			   sessionCreds.getSecretAccessKey(),
 			   sessionCreds.getSessionToken());
+	   ClientConfiguration clientConfiguration = new ClientConfiguration().withMaxErrorRetry(5).withMaxConnections(config.getS3ClientMaxConnections());
 	   return AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(sessionCredentials))
-			.withRegion(config.getS3Region()).enablePathStyleAccess().build();
+			.withRegion(config.getS3Region()).withClientConfiguration(clientConfiguration).enablePathStyleAccess().build();
    }
    
 
