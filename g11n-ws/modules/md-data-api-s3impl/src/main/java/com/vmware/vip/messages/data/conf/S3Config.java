@@ -80,7 +80,8 @@ public class S3Config {
 	@Value("${allow.list.path.bucketName:}")
 	private String allowListBucketName;
 	
-	
+	@Value("${s3.client.max.connections:500}")
+	private int s3ClientMaxConnections;
 	
 	public String getAccessKey() {
 		if (this.encryption) {
@@ -157,6 +158,10 @@ public class S3Config {
 
 	public String getRoleArn() {
 		return roleArn;
+	}
+
+	public int getS3ClientMaxConnections() {
+		return s3ClientMaxConnections;
 	}
 
 	public String getAllowListBucketName() {
