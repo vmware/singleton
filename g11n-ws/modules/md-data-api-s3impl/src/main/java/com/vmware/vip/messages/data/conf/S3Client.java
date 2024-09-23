@@ -113,7 +113,7 @@ public class S3Client {
 			   sessionCreds.getAccessKeyId(),
 			   sessionCreds.getSecretAccessKey(),
 			   sessionCreds.getSessionToken());
-	   ClientConfiguration clientConfiguration = new ClientConfiguration().withMaxErrorRetry(5).withMaxConnections(config.getS3ClientMaxConnections());
+	   ClientConfiguration clientConfiguration = new ClientConfiguration().withMaxConnections(config.getS3ClientMaxConnections());
 	   return AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(sessionCredentials))
 			.withRegion(config.getS3Region()).withClientConfiguration(clientConfiguration).enablePathStyleAccess().build();
    }
