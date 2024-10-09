@@ -166,3 +166,4 @@ func ShutdownServer() {
 type Router interface {
 	Init(*gin.RouterGroup)
 }
+
