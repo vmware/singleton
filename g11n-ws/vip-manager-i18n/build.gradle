@@ -35,6 +35,7 @@ dependencies {
         api project(":md-data-api-pgimpl")
     }else{
         api project(":md-data-api-s3impl")
+        api project(":md-data-api-gcsimpl")
         api project(":md-data-api-bundleimpl")
     }
     api project(":vip-common")
@@ -139,7 +140,7 @@ processResources {
     excludes =[]
      if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
         println "begin to exclude S3 and bundle builder configuration files"
-        excludes=['**/application-s3.properties', '**/application-bundle.properties', '/l10n']
+        excludes=['**/application-s3.properties', '**/application-gcs.properties', '**/application-bundle.properties', '/l10n']
     }else {
         println "begin to exclude pgdb builder configuration file"
         excludes=['**/application-pgdb.properties']
