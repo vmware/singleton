@@ -1,4 +1,4 @@
-//Copyright 2019-2022 VMware, Inc.
+//Copyright 2019-2024 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 rootProject.name = 'singleton'
 include ':vip-common'
@@ -22,9 +22,11 @@ include ':md-restful-l10n-synch'
 include ':tool-trans-fetcher'
 include ':vip-resources'
 include ':md-data-api-s3impl'
+include ':md-data-api-gcsimpl'
 include ':vip-manager-lite-i18n'
 project(':vip-manager-lite-i18n').projectDir       = "$rootDir/vip-manager-lite-i18n" as File
 project(':md-data-api-s3impl').projectDir     = "$rootDir/modules/md-data-api-s3impl" as File
+project(':md-data-api-gcsimpl').projectDir     = "$rootDir/modules/md-data-api-gcsimpl" as File
 project(':vip-common').projectDir             = "$rootDir/vip-common" as File
 project(':vip-manager-i18n').projectDir       = "$rootDir/vip-manager-i18n" as File
 project(':vip-manager-l10n').projectDir       = "$rootDir/vip-manager-l10n" as File
