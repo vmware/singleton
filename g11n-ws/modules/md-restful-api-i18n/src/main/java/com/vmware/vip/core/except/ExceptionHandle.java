@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2024 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.except;
@@ -70,7 +70,7 @@ public class ExceptionHandle {
 		} else {
 			response.setResponse(new Response(APIResponseStatus.UNKNOWN_ERROR.getCode(), e.getMessage()));
 			String errorStr = MessageFormat.format("unknown error: {0}" ,e.getMessage());
-			logger.error(errorStr);
+			logger.error(errorStr, e);
 		}
 		String rstr = "[response] " + response.getResponse().toJSONString();
 		logger.info(rstr);
