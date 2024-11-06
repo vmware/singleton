@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2024 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.base;
@@ -80,7 +80,7 @@ public class BaseAction {
 		r.setMessage(message);
 		r.setServerTime(LocalDateTime.now().toString());
 		d.setResponse(r);
-		if (logger.isDebugEnabled()) {
+		if (logger.isDebugEnabled() && d.getData() != null) {
 			String logOfResData = "The response data: "
 					+ d.getData().toString();
 			logger.debug(logOfResData);
