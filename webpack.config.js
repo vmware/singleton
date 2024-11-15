@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2024 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 const helpers = require('./config/helpers');
@@ -44,13 +44,13 @@ module: {
 const nodeConfig = {
     mode: 'production',
     target: 'node',
-    
+
     resolve: {
         extensions: ['.ts', '.js']
     },
-    
+
     entry: helpers.root('index.ts'),
-    
+
     output: {
         path: helpers.root('bundles'),
         publicPath: '/',
@@ -58,7 +58,7 @@ const nodeConfig = {
         library: 'singletoncore',
         libraryTarget: 'umd'
     },
-    
+
     module: {
         rules: [{
             enforce: 'pre',
@@ -77,4 +77,3 @@ const nodeConfig = {
     };
 
     module.exports = [ webConfig, nodeConfig ];
-    

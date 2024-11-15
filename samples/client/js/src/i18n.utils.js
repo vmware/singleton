@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2024 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 import * as singletonCore from '@singleton-i18n/js-core-sdk';
@@ -7,17 +7,17 @@ import { ENGLISH } from './source.l10n';
 import { config as defaultConfig } from './config';
 
 /**
- * Should be executed in the html file that needs to be localized. 
- * 
+ * Should be executed in the html file that needs to be localized.
+ *
  * @param {*} config object that provides the configuration with the following format
  *      {
- *          productID, version, component, host, localizeAttribute, langCookieName, localStoragePseudoKey 
- *      } 
+ *          productID, version, component, host, localizeAttribute, langCookieName, localStoragePseudoKey
+ *      }
  */
 export function localize(config) {
 
     config = config ? config : {};
-    // If some properties aren't provided by the given config 
+    // If some properties aren't provided by the given config
     // we are getting them from the defaultConfig
     config = Object.assign(defaultConfig, config);
     const lang = detectLanguage(config);
@@ -39,16 +39,20 @@ export function localize(config) {
             language: lang,
             sourceBundle: ENGLISH,
             // Uncommend if you don't want to load your translation from singleton but from your sources
-            //i18nAssets: 'src/translations/', 
+            //i18nAssets: 'src/translations/',
             isPseudo: shouldUsePseudoTranslations(),
+            // It offers the feature to self-custom header for target product
+            httpOptions: {
+                headers: {'vrni-header': 'vrni_custom'}
+            }
         }
     );
     loadAndShowTranslations(i18nClient, config);
 }
 
 /**
- *  Collects all elements from the page that have the l10n attribute. 
- *  Gets the attribute's value which is the key for the message, localizes the message 
+ *  Collects all elements from the page that have the l10n attribute.
+ *  Gets the attribute's value which is the key for the message, localizes the message
  *  and inserts it in the element.
  */
 function loadAndShowTranslations(i18nClient, config) {
@@ -65,12 +69,12 @@ function loadAndShowTranslations(i18nClient, config) {
 }
 
 /**
- *  Function that gets the current language. 
- *  If not set in the cookies it tries to detect the browser's. 
- *  If the browser's language isn't supported by singleton, falls back to english. 
+ *  Function that gets the current language.
+ *  If not set in the cookies it tries to detect the browser's.
+ *  If the browser's language isn't supported by singleton, falls back to english.
  */
 function detectLanguage(config) {
-    // First checks for lang in the cookie 
+    // First checks for lang in the cookie
     let language = getCookie(config.langCookieName);
     if (language) {
         return language;
@@ -81,8 +85,8 @@ function detectLanguage(config) {
     return language || undefined;
 }
 
-/** 
- * Gets a cookie by its name.  
+/**
+ * Gets a cookie by its name.
  */
 function getCookie(name) {
     function escape(s) { return s.replace(/([.*+?\^${}()|\[\]\/\\])/g, '\\$1'); };

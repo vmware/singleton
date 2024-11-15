@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2024 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 import { Loader, HttpRequestOptions } from '../loader';
@@ -62,7 +62,7 @@ export class CoreService {
          * on which some products might rely to handle .then() method
         1. language = 'en-US'
         2. language = 'en', region = 'US'
-        3. language = 'en' 
+        3. language = 'en'
         */
         return Promise.resolve({});
     }
