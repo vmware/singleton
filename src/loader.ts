@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2024 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 import axios from 'axios';
@@ -8,6 +8,11 @@ import { basedLogger, Logger } from './logger';
 export interface HttpRequestOptions {
     timeout?: number;
     withCredentials?: boolean;
+    headers?: HttpHeaders;
+}
+
+export interface HttpHeaders {
+    [key: string]: string;
 }
 
 export abstract class Loader {

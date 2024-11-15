@@ -13,7 +13,7 @@ jobs:
   pre-process:
     name: Pre process
     runs-on: ubuntu-latest
-    outputs: 
+    outputs:
       were-only-docs-updated: ${{ steps.were-only-docs-updated-action.outputs.were-only-docs-updated }}
     steps:
       - name: Checkout code
@@ -38,7 +38,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          fetch-depth: 2.  
+          fetch-depth: 2.
       - name: Get commit range
         id: get-commit-range-action
         uses: ./.github/actions/get-commit-range-action
@@ -86,28 +86,28 @@ jobs:
       security-events: write
     strategy:
       matrix:
-        node-version: [10.x]    
+        node-version: [14.x]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Create cache folder
         run: |
           mkdir -p /home/runner/.npm
-        continue-on-error: true  
+        continue-on-error: true
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'      
+          cache: 'npm'
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v1
+        uses: github/codeql-action/init@v2
         with:
           languages: javascript
       - name: Autobuild
-        uses: github/codeql-action/autobuild@v1
+        uses: github/codeql-action/autobuild@v2
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v1
-        
+        uses: github/codeql-action/analyze@v2
+
   codacy-analysis-cli:
     name: Codacy Analysis CLI
     runs-on: ubuntu-latest
@@ -115,7 +115,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@main
       - name: Run Codacy Analysis CLI
-        uses: codacy/codacy-analysis-cli-action@master  
+        uses: codacy/codacy-analysis-cli-action@master
         with:
           output: results.sarif
           format: sarif
@@ -123,13 +123,13 @@ jobs:
           gh-code-scanning-compat: true
           # Force 0 exit code to allow SARIF file generation
           # This will handover control about PR rejection to the GitHub side
-          max-allowed-issues: 2147483647  
-      # Upload the SARIF file generated in the previous step  
+          max-allowed-issues: 2147483647
+      # Upload the SARIF file generated in the previous step
       - name: Upload SARIF results file
         uses: github/codeql-action/upload-sarif@main
         with:
           sarif_file: results.sarif
-        
+
   smoke-test:
     name: Smoke Test
     runs-on: ubuntu-latest
@@ -141,11 +141,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Set up JDK 8
+      - name: Set up JDK 17
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
-          java-version: '8'
+          java-version: '17'
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
@@ -153,7 +153,7 @@ jobs:
           cache: 'npm'
       - name: Smoke Test
         run: |
-          TZ='Asia/Shanghai'; export TZ 
+          TZ='Asia/Shanghai'; export TZ
           mkdir -p g11n-js-client
           shopt -s extglob
           mv !(g11n-js-client) g11n-js-client/

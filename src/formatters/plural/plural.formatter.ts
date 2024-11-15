@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2024 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 import { PLURALFUNCS } from './plurals.func';
@@ -8,7 +8,7 @@ export class Plural {
     constructor() { }
     private resolveLocale(locale: string): string {
         let lang: string = locale;
-        do {      
+        do {
             if (PLURALFUNCS[lang]) {
                 return lang;
             } else if (PLURALFUNCS[lang.toLocaleLowerCase()]) {
