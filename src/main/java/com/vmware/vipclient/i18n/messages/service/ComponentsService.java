@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.messages.service;
@@ -17,8 +17,9 @@ import java.util.stream.Collectors;
 
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -93,7 +94,9 @@ public class ComponentsService {
         if(data != null) {
             final JSONArray bundles = (JSONArray) data.get(ConstantsKeys.BUNDLES);
             final JSONArray localesFromServer = (JSONArray) data.get(ConstantsKeys.LOCALES);
-            final Map<String, String> localeMap = this.makeLocaleMap(localesToQuery, localesFromServer);
+            final Map<String, String> localeMap = this.makeLocaleMap(localesToQuery, localesFromServer.toList().stream()
+            	    .map(obj -> obj == null ? null : obj.toString())
+            	    .collect(Collectors.toList()));
 
             final SortedSet<String> localesToFallback = new TreeSet<>();
             final SortedSet<String> componentsToFallback = new TreeSet<>();
@@ -101,20 +104,30 @@ public class ComponentsService {
             final Iterator<?> iter = bundles.iterator();
             while (iter.hasNext()) {
                 final JSONObject bundle = (JSONObject) iter.next();
-                final String locale = localeMap.get(bundle.get(ConstantsKeys.LOCALE));
+                final String locale = localeMap.get((String) bundle.get(ConstantsKeys.LOCALE));
                 final String comp = (String) bundle.get(ConstantsKeys.COMPONENT);
-                final JSONObject messages = (JSONObject) bundle.get(ConstantsKeys.MESSAGES);
+                JSONObject messages = null;
+                try {
+                    Object object = bundle.get(ConstantsKeys.MESSAGES);
+                    if ( object instanceof JSONObject) {
+                        messages = (JSONObject) bundle.get(ConstantsKeys.MESSAGES);
+                    }
+                } catch (JSONException e) {
+                	logger.info("can't get messages, null will be set");
+                }
 
                 if (messages != null && !"".equals(messages)) {
                     // update cache.
                     final MessagesDTO dto = new MessagesDTO();
                     dto.setComponent(comp);
                     dto.setLocale(locale);
-                    new CacheService(dto).addCacheOfComponent(new MessageCacheItem(messages, null,
+                    new CacheService(dto).addCacheOfComponent(new MessageCacheItem(messages.toMap().entrySet().stream()
+                    	     .collect(Collectors.toMap(Map.Entry::getKey, e -> (String)e.getValue())), null,
                             cacheItem.getTimestamp(), cacheItem.getMaxAgeMillis()));
 
                     // update map to return.
-                    dataMap.get(locale).put(comp, messages);
+                    dataMap.get(locale).put(comp, messages.toMap().entrySet().stream()
+                    	     .collect(Collectors.toMap(Map.Entry::getKey, e -> (String)e.getValue())));
                 } else {
                     localesToFallback.add(locale);
                     componentsToFallback.add(comp);

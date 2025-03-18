@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.l2.text;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
 
 public class SimpleDateFormat extends DateFormat {
 

@@ -1,14 +1,13 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.formats;
 
 import java.util.Map;
 
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ParseException;
+import org.json.JSONObject;
+import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -53,7 +52,7 @@ public class NumberFormat extends BaseFormat {
         }
         JSONObject retJson;
         try {
-            retJson = (JSONObject) JSONValue.parseWithException(retJsonStr);
+            retJson = new JSONObject(retJsonStr);
             if (retJson != null) {
                 JSONObject dataJson = (JSONObject) retJson
                         .get(ConstantsKeys.DATA);
@@ -63,7 +62,7 @@ public class NumberFormat extends BaseFormat {
                                     .toString();
                 }
             }
-        } catch (ParseException e) {
+        } catch (JSONException e) {
             logger.error(e.getMessage());
         }
         return format;

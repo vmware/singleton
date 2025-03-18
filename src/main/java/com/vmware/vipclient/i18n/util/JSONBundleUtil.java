@@ -1,12 +1,12 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.util;
 
 import java.nio.file.Path;
 
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
 
 public class JSONBundleUtil {
 	

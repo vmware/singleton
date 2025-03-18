@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.l2.text;
@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.HashMap;
 
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,11 +43,16 @@ public class DecimalFormat extends NumberFormat {
     public DecimalFormat(JSONObject formatData, int style) {
         JSONObject numberFormats;
         if (style == NumberFormat.CURRENCYSTYLE) {
-            this.numberSymbols = (JSONObject) ((HashMap) formatData.get(PatternCategory.NUMBERS.toString()))
+            this.numberSymbols = (JSONObject) ((JSONObject) formatData.get(PatternCategory.NUMBERS.toString()))
                     .get(PatternKeys.NUMBERSYMBOLS);
-            numberFormats = (JSONObject) ((HashMap) formatData.get(PatternCategory.NUMBERS.toString()))
+            numberFormats = (JSONObject) ((JSONObject) formatData.get(PatternCategory.NUMBERS.toString()))
                     .get(PatternKeys.NUMBERFORMATS);
-            this.fractionData = (JSONObject) formatData.get(PatternKeys.FRACTION);
+            this.fractionData = null;
+            try {
+            	this.fractionData = (JSONObject) formatData.get(PatternKeys.FRACTION);
+            } catch (org.json.JSONException e) {
+            	logger.info("Can't find fractionData, null will be set");
+            }
         } else {
             this.numberSymbols = (JSONObject) formatData.get(PatternKeys.NUMBERSYMBOLS);
             numberFormats = (JSONObject) formatData.get(PatternKeys.NUMBERFORMATS);
