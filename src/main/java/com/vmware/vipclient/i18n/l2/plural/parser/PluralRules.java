@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.l2.plural.parser;
@@ -18,10 +18,11 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -1250,7 +1251,8 @@ public class PluralRules implements Serializable {
         } catch (NullPointerException e) {
             logger.info("Lack plural pattern!");
         }
-        return getInstance(pluralRules);
+        return getInstance(pluralRules.toMap().entrySet().stream()
+        	     .collect(Collectors.toMap(Map.Entry::getKey, e -> (String)e.getValue())));
     }
 
 }

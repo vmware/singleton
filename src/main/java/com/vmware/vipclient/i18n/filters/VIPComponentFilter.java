@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2024 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.filters;
@@ -17,7 +17,7 @@ import javax.servlet.ServletResponse;
 
 import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.util.StringUtil;
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,7 +45,8 @@ public class VIPComponentFilter implements Filter {
                 Map<String, String> ctmap = translation.getStrings(LocaleUtility.fmtToMappedLocale(locale),
                         component);
                 if (ctmap != null) {
-                    messages = JSONObject.toJSONString(ctmap);
+                    JSONObject jsonObject = new JSONObject(ctmap);
+                    messages = jsonObject.toString();
                 }
             }
             OutputStream os = response.getOutputStream();

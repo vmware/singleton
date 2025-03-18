@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.messages.api.opt.local;
@@ -10,11 +10,12 @@ import com.vmware.i18n.utils.CommonUtil;
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
 import com.vmware.vipclient.i18n.messages.api.opt.PatternOpt;
 import com.vmware.vipclient.i18n.base.cache.PatternCacheItem;
-import org.json.simple.parser.JSONParser;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localeAliasesMap;
 import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localePathMap;
@@ -43,7 +44,8 @@ public class LocalPatternOpt implements PatternOpt{
             return;
         try {
             String patternStr = PatternUtil.getPatternFromLib(normalizedLocale, null);
-            Map<String, Object> patterns = (Map<String, Object>) new JSONParser().parse(patternStr);
+            JSONObject jsonObject = new JSONObject(patternStr);
+            Map<String, Object> patterns = jsonObject.toMap();
             if(patterns != null && (patterns.get(PatternKeys.CATEGORIES) != null)) {
                 logger.debug("Found the pattern from local bundle for locale [{}].\n", normalizedLocale);
                 cacheItem.set((Map<String, Object>) patterns.get(PatternKeys.CATEGORIES), System.currentTimeMillis());

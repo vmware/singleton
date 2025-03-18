@@ -1,12 +1,12 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.base.instances;
 
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.l2.common.PatternCategory;
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
 
 import java.util.Locale;
 

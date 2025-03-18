@@ -1,11 +1,12 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.util;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,9 +26,9 @@ public class FileUtil {
         JSONObject jsonObj = null;
         try (InputStream is = Files.newInputStream(path);
     			Reader reader = new InputStreamReader(is, "UTF-8");){
-			jsonObj = (JSONObject) (new JSONParser().parse(reader));
+			jsonObj = new JSONObject(new JSONTokener(reader));
 		} catch (Exception e) {
-			logger.error("Failed to read json file " + path);
+			logger.error("Failed to read json file " + path, e);
 		}
         
         return jsonObj;
@@ -50,13 +51,9 @@ public class FileUtil {
 
             try (InputStream fis = url.openStream();
                     Reader reader = new InputStreamReader(fis, "UTF-8");) {
-
-                Object o = new JSONParser().parse(reader);
-                if (o != null) {
-                    jsonObj = (JSONObject) o;
-                }
+            	jsonObj = new JSONObject(new JSONTokener(reader));
             } catch (Exception e) {
-                logger.error(e.getMessage());
+                logger.error(e.getMessage(), e);
             }
         } catch (MalformedURLException e1) {
             // TODO Auto-generated catch block
@@ -75,10 +72,7 @@ public class FileUtil {
         if (file.exists()) {
             try (InputStream fis = new FileInputStream(file);
                     Reader reader = new InputStreamReader(fis, "UTF-8");) {
-                Object o = new JSONParser().parse(reader);
-                if (o != null) {
-                    jsonObj = (JSONObject) o;
-                }
+            	jsonObj = new JSONObject(new JSONTokener(reader));
             } catch (Exception e) {
                 logger.error(e.getMessage());
             }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.sample;
@@ -7,6 +7,8 @@ package com.vmware.vipclient.sample;
 import static org.junit.Assert.assertEquals;
 
 import java.util.Date;
+import java.util.TimeZone;
+import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 import com.vmware.vipclient.i18n.I18nFactory;
@@ -134,11 +136,18 @@ public class TranslationDemo {
 				new Date(timestamp),
 				"a disturbance in the Force"
 		};
+		// get expected date string based on default timezone
+		Date d = new Date(timestamp);
+		final SimpleDateFormat df = new SimpleDateFormat("MMMMM d, yyyy");
+		df.setTimeZone(TimeZone.getDefault());
+		final SimpleDateFormat tf = new SimpleDateFormat("h:mm a");
+		tf.setTimeZone(TimeZone.getDefault());
+		String dateString = tf.format(d) + " on " + df.format(d);
 
 		String includeFormatMessage = t.getMessage(Locale.ENGLISH, component, "sample.includeFormat.message",
 				arguments);
 		System.out.println("message with number&date arguments: " + includeFormatMessage);
-		Assert.assertEquals("At 1:39 PM on November 20, 2017, there was a disturbance in the Force on planet 7.", includeFormatMessage);
+		Assert.assertEquals("At " + dateString + ", there was a disturbance in the Force on planet 7.", includeFormatMessage);
 		System.out.println(">>>>>> TranslationDemo.getMessageWithSimpleArg success");
 	}
 }

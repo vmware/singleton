@@ -1,12 +1,12 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.l2.text;
 
 import java.util.Calendar;
 
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
 
 import com.vmware.vipclient.i18n.l2.text.parser.AMPMPatternParser;
 import com.vmware.vipclient.i18n.l2.text.parser.DatePatternParser;
