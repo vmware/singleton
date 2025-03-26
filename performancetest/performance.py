@@ -14,7 +14,7 @@ from utils import read_json, TestCase, Parameters
 
 _CONFIG_ = Path(__file__).parent.joinpath("config.yaml")
 
-BASE_URL: str = "https://localhost:8090"
+BASE_URL: str = "https://34.95.120.208"
 
 config: dict = yaml.safe_load(_CONFIG_.read_bytes())
 
