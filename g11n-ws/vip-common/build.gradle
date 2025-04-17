@@ -1,4 +1,4 @@
-//Copyright 2019-2023 VMware, Inc.
+//Copyright 2019-2025 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java'
 description = 'common tools module'
@@ -22,9 +22,9 @@ dependencies {
 }
 
 jar {
-    baseName = 'vip-common'
+    archiveBaseName = 'vip-common'
     version = "$branchName"
-    classifier = "$buildNumber"
+    archiveClassifier = "$buildNumber"
 }
 
 task copyCommonJars(type :Copy, dependsOn: jar) {

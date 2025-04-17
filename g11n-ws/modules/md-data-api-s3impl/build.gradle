@@ -1,4 +1,4 @@
-//Copyright 2019-2023 VMware, Inc.
+//Copyright 2019-2025 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java-library'
 apply plugin: 'org.springframework.boot'
@@ -34,6 +34,6 @@ bootJar {
 }
     
 jar {
-    classifier = ''
+    archiveClassifier = ''
 	enabled = true
 }

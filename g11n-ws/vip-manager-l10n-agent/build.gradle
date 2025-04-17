@@ -1,4 +1,4 @@
-//Copyright 2019-2024 VMware, Inc.
+//Copyright 2019-2025 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java-library'
 apply plugin: 'org.springframework.boot'
@@ -31,14 +31,14 @@ dependencies {
 }
 
 bootJar {
-    baseName = 'vip-manager-l10n-agent'
+    archiveBaseName = 'vip-manager-l10n-agent'
     version =  "$branchName"
-    classifier = "$buildNumber"
+    archiveClassifier = "$buildNumber"
     loaderImplementation = org.springframework.boot.loader.tools.LoaderImplementation.CLASSIC
 }
 
 jar {
-    classifier = ''
+    archiveClassifier = ''
 	enabled = false
 }
 

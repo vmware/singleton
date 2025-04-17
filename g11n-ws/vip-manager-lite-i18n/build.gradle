@@ -1,4 +1,4 @@
-//Copyright 2019-2024 VMware, Inc.
+//Copyright 2019-2025 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java-library'
 apply plugin: 'org.springframework.boot'
@@ -19,7 +19,7 @@ configurations {
 sourceSets {
 test {
     java.srcDirs = ['src/test/java']
-    java.outputDir = file('build/classes/test')
+    java.destinationDirectory = file('build/classes/test')
     output.resourcesDir = file('build/classes/test')
     resources.srcDirs = ['src/test/resources']
   }
@@ -103,6 +103,9 @@ task copyLibs(type :Copy, dependsOn: bootJar) {
     into "$rootDir/../publish/"
     println "The build was output to -> $rootDir/../publish/"
     include "**/*.jar"
+	
+    it.dependsOn 'sourcesJar'
+    it.dependsOn 'javadocJar'
 }
 
 bootJar.doFirst {
@@ -119,13 +122,13 @@ bootJar.doFirst {
 }
 
 bootJar{
-  classifier = 'boot'
+  archiveClassifier = 'boot'
   enabled = true  
   loaderImplementation = org.springframework.boot.loader.tools.LoaderImplementation.CLASSIC
 }
 
 jar {
-    classifier = ''
+    archiveClassifier = ''
 	enabled = false
 }
 
@@ -134,9 +137,9 @@ assemble.dependsOn.add copyLibs
 
 jacocoTestReport {
     reports {
-        xml.enabled true
-        csv.enabled false
-        html.enabled false
+        xml.required = true
+        csv.required = false
+        html.required = false
         xml.destination file("${buildDir}/reports/jacoco.xml")
     }
 }
@@ -148,12 +151,12 @@ test {
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = 'sources'
+    archiveClassifier = 'sources'
     from sourceSets.main.allJava
 }
  
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
+    archiveClassifier = 'javadoc'
     from javadoc.destinationDir
 }
  
