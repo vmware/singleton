@@ -9,7 +9,7 @@ sourceSets {
 }
 
 jar {
-    baseName = 'apitest'
+    archiveBaseName = 'apitest'
 }
 
 repositories {
@@ -31,6 +31,7 @@ task copy(type: Copy) {
 	    include '*.jar'
 	}
 	into ('target')
+	it.dependsOn 'jar'
 }
 
 task copyDependencies(type: Copy, dependsOn: [copy]) {
