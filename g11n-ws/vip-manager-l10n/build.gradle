@@ -1,4 +1,4 @@
-//Copyright 2019-2024 VMware, Inc.
+//Copyright 2019-2025 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java-library'
 apply plugin: 'org.springframework.boot'
@@ -72,9 +72,9 @@ dependencies {
 }
 
 bootJar {
-    baseName = 'vip-manager-l10n'
+    archiveBaseName = 'vip-manager-l10n'
     version = "$branchName"
-    classifier = "$buildNumber"
+    archiveClassifier = "$buildNumber"
     loaderImplementation = org.springframework.boot.loader.tools.LoaderImplementation.CLASSIC
 }
 
@@ -83,6 +83,9 @@ task copyCommonJars(type: Copy, dependsOn: bootJar) {
     into "$rootDir/../publish/"
     println "The build was output to -> $rootDir/../publish/"
     include "**/*.jar", "**/*.war"
+	
+    it.dependsOn 'sourcesJar'
+    it.dependsOn 'javadocJar'
 }
 
 bootJar.doFirst {
@@ -95,7 +98,7 @@ bootJar.doFirst {
 }
 
 jar {
-    classifier = ''
+    archiveClassifier = ''
 	enabled = false
 }
 
@@ -123,12 +126,12 @@ if (JavaVersion.current().isJava8Compatible()) {
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = 'sources'
+    archiveClassifier = 'sources'
     from sourceSets.main.allJava
 }
  
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
+    archiveClassifier = 'javadoc'
     from javadoc.destinationDir
 }
  
@@ -144,9 +147,9 @@ artifacts {
 
 jacocoTestReport {
     reports {
-        xml.enabled true
-        csv.enabled false
-        html.enabled false
+        xml.required = true
+        csv.required = false
+        html.required = false
         xml.destination file("${buildDir}/reports/jacoco.xml")
     }
 }

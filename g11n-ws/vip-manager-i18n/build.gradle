@@ -1,4 +1,4 @@
-//Copyright 2019-2024 VMware, Inc.
+//Copyright 2019-2025 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java-library'
 apply plugin: 'org.springframework.boot'
@@ -19,7 +19,7 @@ configurations {
 sourceSets {
   test {
     java.srcDirs = ['src/test/java']
-    java.outputDir = file('build/classes/test')
+    java.destinationDirectory = file('build/classes/test')
     output.resourcesDir = file('build/classes/test')
     resources.srcDirs = ['src/test/resources']
   }
@@ -96,13 +96,13 @@ dependencies {
 }
 
 
-task copyTranslation(type: Copy) {
+task copyTranslation(type: Copy, dependsOn: processResources) {
     dependsOn project(":tool-trans-fetcher").fetchTranslation
 }
 
 
 task zipTranslation(type: Zip,dependsOn: copyTranslation) {
-	archiveName='resources.zip'
+	archiveFileName='resources.zip'
     from "$buildDir/resources/main/l10n"
 	into "l10n"
 }
@@ -127,13 +127,16 @@ task copyLibs(type :Copy, dependsOn: bootJar) {
     into "$rootDir/../publish/"
     println "The build was output to -> $rootDir/../publish/"
     include "**/*.jar","**/*.war"
+	
+    it.dependsOn 'sourcesJar'
+    it.dependsOn 'javadocJar'
 }
 
 
 task zipSingletonScripts(type: Zip,dependsOn: bootJar) {
 	from "$rootDir/scripts/"
-	destinationDir file("$rootDir/../publish/")
-	baseName 'singletonScripts'
+	destinationDirectory = file("$rootDir/../publish/")
+	archiveBaseName = 'singletonScripts'
 }
 
 processResources {
@@ -161,18 +164,18 @@ bootJar.doFirst {
 
 
 bootJar {
-    baseName = "singleton"
+    archiveBaseName = "singleton"
     if(project.hasProperty('productName')){
       def productName = project.getProperty('productName')
       if(productName == ''){
         productName = 'all'
       }
-      baseName = "singleton-$productName"
+      archiveBaseName = "singleton-$productName"
     }else{
-      baseName = "singleton"
+      archiveBaseName = "singleton"
     }
     version = "$branchName"
-    classifier = "$buildNumber"
+    archiveClassifier = "$buildNumber"
     dependsOn zipTranslation
     from "$buildDir/distributions"
 
@@ -188,7 +191,7 @@ bootJar.doLast {
 }
 
 jar {
-    classifier = ''
+    archiveClassifier = ''
 	enabled = false
 }
 
@@ -214,7 +217,7 @@ assemble.dependsOn.add zipSingletonScripts
 task testFetchedTranslation(type: JavaExec, dependsOn: classes) {
     def jarPath = "${project(":vip-manager-i18n").buildDir}/libs/"
     args(jarPath)
-    args("${project(":vip-manager-i18n").jar.archiveName}")
+    args("${project(":vip-manager-i18n").jar.archiveFileName}")
     if (project.hasProperty('productName')) {
         args(project.getProperty('productName'))
     }
@@ -247,12 +250,12 @@ if (project.hasProperty('datatype') && (project.getProperty('datatype') == 'pgdb
 }
 **/
 task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = 'sources'
+    archiveClassifier = 'sources'
     from sourceSets.main.allJava
 }
  
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
+    archiveClassifier = 'javadoc'
     from javadoc.destinationDir
 }
  
@@ -270,9 +273,9 @@ artifacts {
 
 jacocoTestReport {
     reports {
-        xml.enabled true
-        csv.enabled false
-        html.enabled false
+        xml.required = true
+        csv.required = false
+        html.required = false
         xml.destination file("${buildDir}/reports/jacoco.xml")
     }
 }
