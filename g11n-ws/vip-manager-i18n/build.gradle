@@ -136,7 +136,7 @@ task copyLibs(type :Copy, dependsOn: bootJar) {
 task zipSingletonScripts(type: Zip,dependsOn: bootJar) {
 	from "$rootDir/scripts/"
 	destinationDirectory = file("$rootDir/../publish/")
-	archiveBaseName = 'singletonScripts'
+	archiveBaseName = "singletonScripts-$buildNumber"
 }
 
 processResources {
@@ -251,11 +251,13 @@ if (project.hasProperty('datatype') && (project.getProperty('datatype') == 'pgdb
 **/
 task sourcesJar(type: Jar, dependsOn: classes) {
     archiveClassifier = 'sources'
+    archiveBaseName = "singleton-$buildNumber"
     from sourceSets.main.allJava
 }
  
 task javadocJar(type: Jar, dependsOn: javadoc) {
     archiveClassifier = 'javadoc'
+    archiveBaseName = "singleton-$buildNumber"
     from javadoc.destinationDir
 }
  
