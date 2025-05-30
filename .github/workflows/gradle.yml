@@ -158,6 +158,10 @@ jobs:
           ./gradlew build -x test
           cp build/libs/i18n-patterns-core-0.11.0.jar java-client-sample/lib
           cp build/libs/i18n-patterns-core-0.11.0.jar jarpath
+          # temporary fix, will delete after java client is updated
+          curl https://repo1.maven.org/maven2/org/json/json/20250107/json-20250107.jar -o java-client-sample/lib/json-20250107.jar
+          cp java-client-sample/lib/json-20250107.jar jarpath
+          ls java-client-sample/lib jarpath
           cd java-client-sample
           sudo chmod +x gradlew 
           ./gradlew build -x test

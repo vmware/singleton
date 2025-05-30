@@ -1,4 +1,4 @@
-//Copyright 2019-2023 VMware, Inc.
+//Copyright 2019-2025 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java'
 apply plugin: "jacoco"
@@ -54,9 +54,7 @@ repositories {
 
 dependencies {
     implementation("commons-collections:commons-collections:3.2.2")
-    implementation("com.googlecode.json-simple:json-simple:1.1.1"){
-        exclude group: 'junit'
-    }
+    implementation("org.json:json:20250107")
 
     implementation("com.fasterxml.jackson.core:jackson-databind:2.16.0")
     implementation("commons-io:commons-io:2.13.0")

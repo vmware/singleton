@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.utils;
@@ -31,8 +31,8 @@ import com.vmware.i18n.common.DayPeriodEnum;
 import com.vmware.i18n.common.OfficialStatusEnum;
 import com.vmware.i18n.utils.timezone.CldrTimeZoneUtils;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -1007,8 +1007,10 @@ public class CLDRUtils {
 			String locale = null;
 			if (!CommonUtil.isEmpty(itemMap.get(Constants.LANGUAGE_POPULATION))) {
 				Map<String, String> maxPopulationLanguage = new HashMap<>();
-				Map<String, Object> map = JSONUtil
-						.string2SortMap(itemMap.get(Constants.LANGUAGE_POPULATION).toString());
+				Map<String, Object> map = null;
+                // map = JSONUtil.string2SortMap(new ObjectMapper().writeValueAsString(itemMap.get(Constants.LANGUAGE_POPULATION)));
+				JSONObject jsonObject = new JSONObject((Map<String, Object>) itemMap.get(Constants.LANGUAGE_POPULATION));
+				map = JSONUtil.string2SortMap(jsonObject.toString());
 				for (Map.Entry<String, Object> item : map.entrySet()) {
 					Map<String, String> data = (Map<String, String>) item.getValue();
 					boolean isMaxLanguage = getMaxLanguage(maxPopulationLanguage, data);

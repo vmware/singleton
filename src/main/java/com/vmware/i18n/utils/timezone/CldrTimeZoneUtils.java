@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.utils.timezone;
@@ -17,8 +17,8 @@ import java.util.Set;
 import java.util.TimeZone;
 import java.util.TreeMap;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -33,10 +33,11 @@ public class CldrTimeZoneUtils {
 		JSONObject timzone = (JSONObject) select(metaZonesJson, "supplemental.metaZones.metazoneInfo.timezone");
 		Map<String, JSONArray> result = new TreeMap<String, JSONArray>();
 		if (timzone != null) {
-			for (Entry<String, Object> entry : (Set<Map.Entry<String, Object>>) timzone.entrySet()) {
-				String zoneKeystr1 = entry.getKey();
-				Object obj1 = entry.getValue();
-				if (obj1 instanceof List) {
+			for (String key : (Set<String>) timzone.keySet()) {
+			// for (Entry<String, Object> entry : (Set<Map.Entry<String, Object>>) timzone.entrySet()) {
+				String zoneKeystr1 = key;
+				Object obj1 = timzone.get(key);
+				if (obj1 instanceof JSONArray) {
 					JSONArray objArry = (JSONArray) obj1;
 					JSONObject usesMetazones = (JSONObject) objArry.get(0);
 					JSONObject usesMetazoneObj = (JSONObject) usesMetazones.get(Constants.TIMEZONENAME_USES_METAZONE);
@@ -46,10 +47,11 @@ public class CldrTimeZoneUtils {
 					}
 				}
 				JSONObject jsonObj1 = (JSONObject) obj1;
-				for (Entry<String, Object> entry1 : (Set<Map.Entry<String, Object>>) jsonObj1.entrySet()) {
-					String zoneKeystr2 = entry1.getKey();
-					Object obj2 = entry1.getValue();
-					if (obj2 instanceof List) {
+				for (String key1 : (Set<String>) jsonObj1.keySet()) {
+				// for (Entry<String, Object> entry1 : (Set<Map.Entry<String, Object>>) jsonObj1.entrySet()) {
+					String zoneKeystr2 = key1;
+					Object obj2 = jsonObj1.get(key1);
+					if (obj2 instanceof JSONArray) {
 						JSONArray objArry2 = (JSONArray) obj2;
 						JSONObject usesMetazones2 = (JSONObject) objArry2.get(0);
 						JSONObject usesMetazoneObj2 = (JSONObject) usesMetazones2
@@ -61,10 +63,11 @@ public class CldrTimeZoneUtils {
 						}
 					}
 					JSONObject jsonObj2 = (JSONObject) obj2;
-					for (Entry<String, Object> entry2 : (Set<Map.Entry<String, Object>>) jsonObj2.entrySet()) {
-						String zoneKeystr3 = entry2.getKey();
-						Object obj3 = entry2.getValue();
-						if (obj3 instanceof List) {
+					for (String key2 : (Set<String>) jsonObj2.keySet()) {
+					// for (Entry<String, Object> entry2 : (Set<Map.Entry<String, Object>>) jsonObj2.entrySet()) {
+						String zoneKeystr3 = key2;
+						Object obj3 = jsonObj2.get(key2);
+						if (obj3 instanceof JSONArray) {
 							JSONArray objArry3 = (JSONArray) obj3;
 							JSONObject usesMetazones3 = (JSONObject) objArry3.get(0);
 							JSONObject usesMetazoneObj3 = (JSONObject) usesMetazones3
@@ -76,10 +79,11 @@ public class CldrTimeZoneUtils {
 							}
 						}
 						JSONObject jsonObj3 = (JSONObject) obj3;
-						for (Entry<String, Object> entry3 : (Set<Map.Entry<String, Object>>) jsonObj3.entrySet()) {
-							String zoneKeystr4 = entry3.getKey();
-							Object obj4 = entry3.getValue();
-							if (obj4 instanceof List) {
+						for (String key3 : (Set<String>) jsonObj3.keySet()) {
+						// for (Entry<String, Object> entry3 : (Set<Map.Entry<String, Object>>) jsonObj3.entrySet()) {
+							String zoneKeystr4 = key3;
+							Object obj4 = jsonObj3.get(key3);
+							if (obj4 instanceof JSONArray) {
 								JSONArray objArry4 = (JSONArray) obj4;
 								JSONObject usesMetazones4 = (JSONObject) objArry4.get(0);
 								JSONObject usesMetazoneObj4 = (JSONObject) usesMetazones4
@@ -116,9 +120,9 @@ public class CldrTimeZoneUtils {
 		Map<String, JSONArray> timezoneKeysProps = findTimezoneKeys(metaZonesJson);
 		Map<String, List<JSONObject>> mapZonesMap = new TreeMap<String, List<JSONObject>>();
 		if (arry != null) {
-			Iterator<JSONObject> iterator = arry.iterator();
+			Iterator<Object> iterator = arry.iterator();
 			while (iterator.hasNext()) {
-				JSONObject objZone = iterator.next();
+				JSONObject objZone = (JSONObject) iterator.next();
 				String timezoneKey = (String) select(objZone, "mapZone._type");
 				if (mapZonesMap.get(timezoneKey) != null) {
 					mapZonesMap.get(timezoneKey).add(objZone);
@@ -139,10 +143,10 @@ public class CldrTimeZoneUtils {
 			JSONArray mataZoneP = entry.getValue();
 			cldrMetaZone.put(Constants.TIMEZONENAME_METAZONE_EXEMPLARCITY, exemplarCity);
 			cldrMetaZone.put(Constants.TIMEZONENAME_METAZONE_TIMEZONE, timeZone);
-			Iterator<JSONObject> metaiterator = mataZoneP.iterator();
+			Iterator<Object> metaiterator = mataZoneP.iterator();
 			List<Map<String, Object>> usesMetazones = new ArrayList<Map<String, Object>>();
 			while (metaiterator.hasNext()) {
-				JSONObject objZone = metaiterator.next();
+				JSONObject objZone = (JSONObject) metaiterator.next();
 				Map<String, Object> usesMetazoneMap = new TreeMap<String, Object>();
 				String metazoneKey = (String) select(objZone, "usesMetazone._mzone");
 				String _fromVal = (String) select(objZone, "usesMetazone._from");
