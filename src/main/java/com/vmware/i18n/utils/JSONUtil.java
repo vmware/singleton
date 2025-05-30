@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.utils;
@@ -9,13 +9,11 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
 import java.util.TreeMap;
 
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ContainerFactory;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import org.json.JSONObject;
+import org.json.JSONException;
 
 public class JSONUtil {
 
@@ -25,29 +23,18 @@ public class JSONUtil {
      * @return Map<String, Object> obj
      */
     @SuppressWarnings("unchecked")
-    public static Map<String, Object> getMapFromJson(String json) {
-        JSONParser parser = new JSONParser();
-        ContainerFactory containerFactory = getContainerFactory();
-        Map<String, Object> result = null;
-        try {
-            result = (Map<String, Object>) parser.parse(json, containerFactory);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return result;
-    }
-
-    private static ContainerFactory getContainerFactory() {
-        ContainerFactory containerFactory = new ContainerFactory() {
-            public List<Object> creatArrayContainer() {
-                return new LinkedList<Object>();
-            }
-
-            public Map<String, Object> createObjectContainer() {
-                return new LinkedHashMap<String, Object>();
-            }
-        };
-        return containerFactory;
+    public static Map<String, Object> getMapFromJson(String json) throws JSONException {
+    	Map<String, Object> mapping = null;
+    	try {
+    	    // mapping = new ObjectMapper().readValue(json, HashMap.class);
+    		JSONObject jsonObject = new JSONObject(json);
+    		mapping = jsonObject.toMap();
+    	} catch (JSONException e) {
+    		System.out.println("json=" + json);
+    		e.printStackTrace();
+    		throw e;
+    	}
+    	return mapping;
     }
 
     /**
@@ -65,7 +52,12 @@ public class JSONUtil {
         Object retvalue = null;
         for (int i = 0; i < patharr.length; i++) {
             String key = patharr[i];
-            retvalue = current.get(key);
+            try {
+                retvalue = current.get(key);
+            } catch (JSONException e) {
+            	retvalue = null;
+            	break;
+            }
             if (i < (patharr.length - 1)) {
                 current = (JSONObject) retvalue;
             }
@@ -81,8 +73,8 @@ public class JSONUtil {
     public static JSONObject string2JSON(String jsonStr) {
         JSONObject genreJsonObject = null;
         try {
-            genreJsonObject = (JSONObject) JSONValue.parseWithException(jsonStr);
-        } catch (ParseException e) {
+            genreJsonObject = new JSONObject(jsonStr);
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         return genreJsonObject;
@@ -100,9 +92,9 @@ public class JSONUtil {
 			}
 		});
 		try {
-			Map<String, Object> genreJsonObject = (Map<String, Object>) JSONValue.parseWithException(jsonStr);
+			Map<String, Object> genreJsonObject = (Map<String, Object>) getMapFromJson(jsonStr);
 			sortMap.putAll(genreJsonObject);
-		} catch (ParseException e) {
+		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 		return sortMap;

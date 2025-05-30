@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.utils;
@@ -7,11 +7,11 @@ package com.vmware.i18n.utils;
 import java.io.File;
 import java.text.MessageFormat;
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import com.vmware.i18n.common.Constants;
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -46,7 +46,7 @@ public class SupplementUtils {
 		Map<String, Object> regionMap = (Map<String, Object>) supplementalMap.get(Constants.REGION);
 		Map<String, String> resMap = new LinkedHashMap<String, String>();
 		for (Map.Entry<String, Object> entry : regionMap.entrySet()) {
-			LinkedList<Object> list = (LinkedList<Object>) entry.getValue();
+			List<Object> list = (List<Object>) entry.getValue();
 			for (int i = 0; i < list.size(); i++) {
 				Map<String, Object> itemMap = (Map<String, Object>) list.get(i);
 				for (Map.Entry<String, Object> item : itemMap.entrySet()) {
