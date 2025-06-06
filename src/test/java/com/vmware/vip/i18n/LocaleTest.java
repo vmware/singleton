@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n;
@@ -10,7 +10,7 @@ import com.vmware.vipclient.i18n.base.cache.*;
 import com.vmware.vipclient.i18n.base.instances.LocaleMessage;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
-import org.json.simple.parser.ParseException;
+import org.json.JSONException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -123,7 +123,7 @@ public class LocaleTest extends BaseTestClass {
     }
 
     @Test
-    public void testGetRegionList() throws ParseException {
+    public void testGetRegionList() throws JSONException {
         List<String> list = new ArrayList<String>();
         list.add("en-US");
         list.add("zh_CN");
@@ -136,7 +136,7 @@ public class LocaleTest extends BaseTestClass {
     }
 
     @Test
-    public void testGetDisplayNamesByLanguage() throws ParseException {
+    public void testGetDisplayNamesByLanguage() throws JSONException {
         Map<String, String> enResp = localeI18n.getDisplayLanguagesList("en");
         Assert.assertNotNull(enResp);
         Map<String, String> zhResp = localeI18n.getDisplayLanguagesList("zh_Hans");

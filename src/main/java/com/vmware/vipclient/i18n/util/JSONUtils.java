@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.util;
@@ -11,9 +11,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import org.json.simple.parser.ContainerFactory;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import org.json.JSONObject;
+import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,30 +21,16 @@ public class JSONUtils {
 
     @SuppressWarnings("unchecked")
     public static Map<String, Object> getMapFromJson(String json) {
-        JSONParser parser = new JSONParser();
-        ContainerFactory containerFactory = getContainerFactory();
         Map<String, Object> result = null;
         if (json != null && !"".equals(json)) {
             try {
-                result = (Map<String, Object>) parser.parse(json, containerFactory);
-            } catch (ParseException e) {
-                logger.error(e.getMessage());
+            	JSONObject jsonObject = new JSONObject(json);
+                result = jsonObject.toMap();
+            } catch (JSONException e) {
+                logger.error(e.getMessage(), e);
             }
         }
         return result;
-    }
-
-    private static ContainerFactory getContainerFactory() {
-        ContainerFactory containerFactory = new ContainerFactory() {
-            public List<Object> creatArrayContainer() {
-                return new LinkedList<Object>();
-            }
-
-            public Map<String, Object> createObjectContainer() {
-                return new LinkedHashMap<String, Object>();
-            }
-        };
-        return containerFactory;
     }
 
     public static Map<String, String> map2SortMap(Map<String, String> jsonMap) {

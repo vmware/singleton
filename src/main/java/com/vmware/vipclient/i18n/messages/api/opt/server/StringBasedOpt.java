@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.messages.api.opt.server;
@@ -12,8 +12,8 @@ import java.util.Map;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.messages.api.opt.KeyBasedOpt;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.messages.api.opt.BaseOpt;
@@ -22,7 +22,6 @@ import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
-import org.json.simple.JSONValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -139,7 +138,7 @@ public class StringBasedOpt extends BaseOpt implements Opt, KeyBasedOpt {
             Long maxAgeMillis = response.get(URLUtils.MAX_AGE_MILLIS) == null ? null : (Long) response.get(URLUtils.MAX_AGE_MILLIS);
 
             if (responseCode.equals(HttpURLConnection.HTTP_OK)) {
-                JSONObject respObj = (JSONObject) JSONValue.parse((String) response.get(URLUtils.BODY));
+                JSONObject respObj = new JSONObject((String) response.get(URLUtils.BODY));
                 try {
                     int businessCode = getResponseCode(respObj);
                     if (isSuccess(businessCode)) {
@@ -156,7 +155,7 @@ public class StringBasedOpt extends BaseOpt implements Opt, KeyBasedOpt {
                         logger.warn(String.format(ConstantsMsg.SERVER_RETURN_ERROR, businessCode,  getResponseMessage(respObj)));
                     }
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    logger.error(e.getMessage(), e);
                 }
             } else {
                 cacheItem.setCacheItem(etag, timestamp, maxAgeMillis);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 plugins {
@@ -19,8 +19,8 @@ repositories {
 
 dependencies {
 	implementation files('lib/sample-shared-library-1.0.jar')
-	implementation files('lib/vip4java-0.1.0.jar')
-	compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+	implementation files('lib/singleton-client-java-0.1.0.jar')
+	compile group: 'org.json', name: 'json', version:'20250107'
 
 	// tag::actuator[]
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'

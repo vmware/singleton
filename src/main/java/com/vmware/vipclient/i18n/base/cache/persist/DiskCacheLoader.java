@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.base.cache.persist;
@@ -15,7 +15,8 @@ import java.io.ObjectOutputStream;
 import java.util.Map;
 
 import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
-import org.json.simple.parser.JSONParser;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,10 +40,8 @@ public class DiskCacheLoader implements Loader {
                 }
             }
             reader = new InputStreamReader(fis, "UTF-8");
-            Object o = new JSONParser().parse(reader);
-            if (o != null) {
-                map = (Map) o;
-            }
+            JSONObject jsonObject = new JSONObject(new JSONTokener(reader));
+            map = jsonObject.toMap();
         } catch (Exception e) {
             logger.error(e.getMessage());
         } finally {

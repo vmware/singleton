@@ -19,7 +19,7 @@ How to build and run this sample application as an executable jar
    ```
  * Put the Singleton Java client library into the lib folder.
    ```
-   cp ../../build/libs/vip4java-0.1.0.jar ./lib/
+   cp ../../build/libs/singleton-client-java-0.1.0.jar ./lib/
    ```
  * Put the sample shared library into the lib folder. See how to build the sample shared library in [here](https://github.com/vmware/singleton/blob/g11n-java-client/sample-client-app/sample-shared-library/README.md)
    ```
@@ -46,7 +46,7 @@ How to build and run this sample application as a Spring Boot executable jar
    ```
  * Put the Singleton Java client library into the lib folder.
    ```
-   cp ../../build/libs/vip4java-0.1.0.jar ./lib/
+   cp ../../build/libs/singleton-client-java-0.1.0.jar ./lib/
    ```
  * Put the sample shared library into the lib folder. See how to build the sample shared library in [here](https://github.com/vmware/singleton/blob/g11n-java-client/sample-client-app/sample-shared-library/README.md)
    ```

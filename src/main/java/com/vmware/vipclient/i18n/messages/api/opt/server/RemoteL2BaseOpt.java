@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.messages.api.opt.server;
@@ -9,8 +9,7 @@ import com.vmware.vipclient.i18n.base.cache.FormatCacheItem;
 import com.vmware.vipclient.i18n.messages.api.opt.BaseOpt;
 import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,7 +38,7 @@ public class RemoteL2BaseOpt extends BaseOpt{
 		if (null == responseBody || responseBody.equals(""))
 			return null;
 		try {
-			JSONObject respBody = (JSONObject) JSONValue.parse(responseBody);
+			JSONObject respBody = new JSONObject(responseBody);
 			if (respBody != null && isSuccess(getResponseCode(respBody))) {
 				return respBody.get(ConstantsKeys.DATA);
 			}

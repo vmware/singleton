@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.messages.api.opt.local;
@@ -14,13 +14,14 @@ import com.vmware.vipclient.i18n.messages.dto.LocaleDTO;
 import com.vmware.vipclient.i18n.messages.service.ProductService;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.JSONUtils;
-import org.json.simple.parser.JSONParser;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localeAliasesMap;
 import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localePathMap;
@@ -70,10 +71,11 @@ public class LocalLocaleOpt implements LocaleOpt{
 		}
 		try {
 			String languagesJsonStr = PatternUtil.getLanguageFromLib(normalizedLocale);
-			Map<String, Object> languagesData = (Map<String, Object>) new JSONParser().parse(languagesJsonStr);
+			JSONObject languagesData = new JSONObject(languagesJsonStr);
 			if (languagesData != null) {
 				logger.debug("Found the languages' names from local bundle for locale [{}].\n", locale);
-				return (Map<String, String>) languagesData.get(PatternKeys.LANGUAGES);
+				return ((JSONObject) languagesData.get(PatternKeys.LANGUAGES)).toMap().entrySet().stream()
+					     .collect(Collectors.toMap(Map.Entry::getKey, e -> (String)e.getValue()));
 			}else{
 				logger.warn("Didn't find the languages' names from local bundle for locale [{}].\n", locale);
 			}
@@ -92,7 +94,8 @@ public class LocalLocaleOpt implements LocaleOpt{
 			return;
 		try {
 			String regionsJsonStr = PatternUtil.getRegionFromLib(normalizedLocale);
-			Map<String, Object> regionsData = (Map<String, Object>) new JSONParser().parse(regionsJsonStr);
+			JSONObject jsonObject = new JSONObject(regionsJsonStr);
+			Map<String, Object> regionsData = jsonObject.toMap();
 			if (regionsData != null) {
 				Map<String, String> territories = (Map<String, String>) regionsData.get(PatternKeys.TERRITORIES);
 				if(territories != null) {

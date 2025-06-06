@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2024 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.base.instances;
@@ -12,7 +12,7 @@ import com.vmware.vipclient.i18n.messages.service.ComponentService;
 import com.vmware.vipclient.i18n.messages.service.ComponentsService;
 import com.vmware.vipclient.i18n.messages.service.StringService;
 import com.vmware.vipclient.i18n.util.*;
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -529,7 +529,7 @@ public class TranslationMessage implements Message {
 
         Map<String, String> messages = new LinkedHashMap<>();
 
-        Map<String,String> sources = resourceBundle != null ? getSourcesFromBundle(resourceBundle):
+        Map<String, String> sources = resourceBundle != null ? getSourcesFromBundle(resourceBundle):
                     getMessages(Locale.forLanguageTag(ConstantsKeys.SOURCE), component, false).getMessages();
 
         if(!sources.isEmpty()) {
@@ -597,8 +597,7 @@ public class TranslationMessage implements Message {
      */
     public Map<Locale, Map<String, Map<String, String>>> getStrings(final Set<Locale> locales,
             final Set<String> components) {
-        this.logger.trace("Start to execute TranslationMessage.getStrings of multiple components of multiple locales.");
-
+        this.logger.info("Start to execute TranslationMessage.getStrings of multiple components of multiple locales.");
         Map<Locale, Map<String, Map<String, String>>> retMap = new HashMap<>();
         if (null == locales || locales.isEmpty() || null == components || components.isEmpty()) {
             this.logger.error(ConstantsMsg.WRONG_PARAMETER + "locales: {}, components: {}.", locales, components);
