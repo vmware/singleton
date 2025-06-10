@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.messages.api.opt.local;
@@ -14,8 +14,8 @@ import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.JSONBundleUtil;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class LocalMessagesOpt implements Opt, MessageOpt {
 
@@ -46,9 +47,9 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
 		InputStream is = null;
 		try {
 			is = getInputStream();
-			JSONParser jsonParser = new JSONParser();
-			JSONObject jsonObject = (JSONObject) jsonParser.parse(new InputStreamReader(is, "UTF-8"));
-			Map<String, String> messages = (JSONObject) jsonObject.get("messages");
+			JSONObject jsonObject = new JSONObject(new JSONTokener(new InputStreamReader(is, "UTF-8")));
+			Map<String, String> messages = ((JSONObject) jsonObject.get("messages")).toMap().entrySet().stream()
+				     .collect(Collectors.toMap(Map.Entry::getKey, e -> (String)e.getValue()));
 			cacheItem.setCacheItem(messages, null, System.currentTimeMillis(), null);
 		} catch (Exception e) {
 			String msg = "Failed to get offline messages for product: " + dto.getProductID() + " " + dto.getVersion() +

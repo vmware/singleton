@@ -11,7 +11,7 @@ How to build and run this sample shared library
 ------------
  * Go to the root directory of this sample application
    ```
-   g11n-java-client/sample/-client-app/sample-shared-library
+   g11n-java-client/sample-client-app/sample-shared-library
    ```
  * Create a lib folder.
    ```
@@ -19,7 +19,7 @@ How to build and run this sample shared library
    ```
  * Put the Singleton Java client library into the lib folder.
    ```
-   cp ../../build/libs/vip4java-0.1.0.jar ./lib/
+   cp ../../build/libs/singleton-client-java-0.1.0.jar ./lib/
    ```
  * Build the sample application.
    ```

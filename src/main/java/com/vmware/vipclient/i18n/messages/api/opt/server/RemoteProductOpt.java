@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.messages.api.opt.server;
@@ -12,12 +12,13 @@ import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
-import org.json.simple.JSONArray;
+import org.json.JSONArray;
 
 import java.net.HttpURLConnection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class RemoteProductOpt extends BaseOpt implements ProductOpt {
 
@@ -45,7 +46,9 @@ public class RemoteProductOpt extends BaseOpt implements ProductOpt {
                 msgObject = (JSONArray) dataObj;
             }
         }
-        return msgObject;
+        return msgObject.toList().stream()
+        	    .map(obj -> obj == null ? null : obj.toString())
+        	    .collect(Collectors.toList());
     }
 
     /**
@@ -76,7 +79,9 @@ public class RemoteProductOpt extends BaseOpt implements ProductOpt {
                 if (responseStr != null && !responseStr.isEmpty()) {
                     Object dataObj = this.getMessagesFromResponse(responseStr, ConstantsKeys.LOCALES);
                     if (dataObj != null) {
-                        List<String> supportedLocales = (JSONArray) dataObj;
+                        List<String> supportedLocales = ((JSONArray) dataObj).toList().stream()
+                        	    .map(obj -> obj == null ? null : obj.toString())
+                        	    .collect(Collectors.toList());
                         Map<String, String> languageTags = new HashMap<>();
                         if (!supportedLocales.isEmpty()) {
                             for (String languageTag : supportedLocales) {

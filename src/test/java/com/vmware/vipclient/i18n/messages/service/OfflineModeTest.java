@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.messages.service;
@@ -20,7 +20,7 @@ import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
-import org.json.simple.parser.ParseException;
+import org.json.JSONException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -350,7 +350,7 @@ public class OfflineModeTest extends BaseTestClass {
     }
 
     @Test
-    public void testGetSupportedLocalesOfflineBundles() throws ParseException {
+    public void testGetSupportedLocalesOfflineBundles() throws JSONException {
         //Enable offline mode
         String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
         cfg.setOfflineResourcesBaseUrl("offlineBundles/");

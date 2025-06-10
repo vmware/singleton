@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.l2.service;
@@ -11,7 +11,7 @@ import com.vmware.vipclient.i18n.l2.common.PatternCategory;
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
 import com.vmware.vipclient.i18n.l2.text.NumberFormat;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -140,15 +140,19 @@ public class NumberFormatService {
     private JSONObject getCurrencyRelatedData(JSONObject allCategoriesData, String currencyCode) {
         JSONObject currencyFormatData = new JSONObject();
         JSONObject numberFormatData = (JSONObject) allCategoriesData.get(PatternCategory.NUMBERS.toString());
-        JSONObject currencyData = (JSONObject) ((HashMap) allCategoriesData.get(PatternKeys.CURRENCIES))
+        JSONObject currencyData = (JSONObject) ((JSONObject) allCategoriesData.get(PatternKeys.CURRENCIES))
                 .get(currencyCode);
         if (currencyData == null) {
             throw new IllegalArgumentException("Unsupported currency code " + currencyCode + ".");
         }
-        JSONObject currencySupplementalData = (JSONObject) ((HashMap) allCategoriesData
+        JSONObject currencySupplementalData = (JSONObject) ((JSONObject) allCategoriesData
                 .get(PatternCategory.SUPPLEMENTAL.toString())).get(PatternKeys.CURRENCIES);
-        JSONObject fractionData = (JSONObject) ((HashMap) currencySupplementalData.get(PatternKeys.FRACTIONS))
-                .get(currencyCode);
+        JSONObject fractionData = null;
+        try {
+        	fractionData = (JSONObject) ((JSONObject) currencySupplementalData.get(PatternKeys.FRACTIONS)).get(currencyCode);
+        } catch (org.json.JSONException e) {
+        	logger.info("NumberFormatService - Can't find fractionData, null will be set");
+        }               
         currencyFormatData.put(PatternCategory.NUMBERS.toString(), numberFormatData);
         currencyFormatData.put(PatternKeys.CURRENCY, currencyData);
         currencyFormatData.put(PatternKeys.FRACTION, fractionData);

@@ -1,12 +1,10 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.messages.api.opt;
 
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ParseException;
+import org.json.JSONObject;
 
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 
@@ -20,8 +18,7 @@ public class BaseOpt {
     public Object getMessagesFromResponse(String responseStr, String node) {
         Object msgsObj = null;
         try {
-            JSONObject responseObj = (JSONObject) JSONValue
-                    .parseWithException(responseStr);
+            JSONObject responseObj = new JSONObject(responseStr);
             if (responseObj != null) {
                 JSONObject dataObj = (JSONObject) responseObj.get(ConstantsKeys.DATA);
                 msgsObj = dataObj.get(node);
@@ -45,8 +42,7 @@ public class BaseOpt {
         if (responseStr == null || responseStr.equalsIgnoreCase(""))
             return msgObject;
         try {
-            JSONObject responseObj = (JSONObject) JSONValue
-                    .parseWithException(responseStr);
+            JSONObject responseObj = new JSONObject(responseStr);
             if (responseObj != null) {
                 Object obj = responseObj.get(ConstantsKeys.RESPONSE);
                 if (obj != null && !obj.toString().equalsIgnoreCase("")) {
@@ -61,9 +57,9 @@ public class BaseOpt {
         return msgObject;
     }
 
-    protected void parseServerResponse() throws ParseException {
+    protected void parseServerResponse() throws Exception {
         if (null == responseJsonObj) {
-            responseJsonObj = (JSONObject) JSONValue.parseWithException(responseStr);
+            responseJsonObj = new JSONObject(responseStr);
         }
     }
 

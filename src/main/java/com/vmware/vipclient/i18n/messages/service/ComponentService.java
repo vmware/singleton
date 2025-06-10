@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.messages.service;
@@ -14,8 +14,6 @@ import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.JSONUtils;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -192,8 +190,9 @@ public class ComponentService extends BaseService{
             String json = dao.getTranslationStatus();
             if (!JSONUtils.isEmpty(json)) {
                 try {
-                    s = (Long) JSONValue.parseWithException(json);
-                } catch (ParseException e) {
+                    // s = (Long) JSONValue.parseWithException(json);
+                    s = Long.parseLong(json);
+                } catch (Exception e) {
                     logger.error(e.getMessage());
                 }
             }
