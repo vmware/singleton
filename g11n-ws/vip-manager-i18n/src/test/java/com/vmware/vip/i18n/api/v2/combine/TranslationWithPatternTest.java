@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.v2.combine;
@@ -91,8 +91,8 @@ public class TranslationWithPatternTest {
       logger.info(responseStr);
       @SuppressWarnings("unchecked")
       Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(responseStr).get("response");
-      long code = (long) dataMap.get("code");
-      Assert.assertTrue(code==200L);
+      int code = (int) dataMap.get("code");
+      Assert.assertTrue(code==200);
       
    }
 
@@ -104,8 +104,8 @@ public class TranslationWithPatternTest {
       logger.info(responseStr);
       @SuppressWarnings("unchecked")
       Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(responseStr).get("response");
-      long code = (long) dataMap.get("code");
-      Assert.assertTrue(code==200L);
+      int code = (int) dataMap.get("code");
+      Assert.assertTrue(code==200);
    }
    
    
@@ -120,8 +120,8 @@ public class TranslationWithPatternTest {
       logger.info(responseStr);
       @SuppressWarnings("unchecked")
       Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(responseStr).get("response");
-      long code = (long) dataMap.get("code");
-      Assert.assertTrue(code==200L);
+      int code = (int) dataMap.get("code");
+      Assert.assertTrue(code==200);
       
    }
 
@@ -133,8 +133,8 @@ public class TranslationWithPatternTest {
       logger.info(responseStr);
       @SuppressWarnings("unchecked")
       Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(responseStr).get("response");
-      long code = (long) dataMap.get("code");
-      Assert.assertTrue(code==200L);
+      int code = (int) dataMap.get("code");
+      Assert.assertTrue(code==200);
    }
    
    @Test
@@ -145,8 +145,8 @@ public class TranslationWithPatternTest {
       logger.info(responseStr);
       @SuppressWarnings("unchecked")
       Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(responseStr).get("response");
-      long code = (long) dataMap.get("code");
-      Assert.assertTrue(code==604L);
+      int code = (int) dataMap.get("code");
+      Assert.assertTrue(code==604);
    }
    
    @Test
@@ -157,8 +157,8 @@ public class TranslationWithPatternTest {
       logger.info(responseStr);
       @SuppressWarnings("unchecked")
       Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(responseStr).get("response");
-      long code = (long) dataMap.get("code");
-      Assert.assertTrue(code==604L);
+      int code = (int) dataMap.get("code");
+      Assert.assertTrue(code==604);
    }
 
   

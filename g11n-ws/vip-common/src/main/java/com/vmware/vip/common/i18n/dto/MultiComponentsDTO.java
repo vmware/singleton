@@ -1,15 +1,14 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.common.i18n.dto;
 
 import java.util.List;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ParseException;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONException;
 
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.exceptions.VIPAPIException;
@@ -74,7 +73,7 @@ public class MultiComponentsDTO extends BaseDTO {
         jo.put(ConstantsKeys.lOCALES, this.getLocales());
         jo.put(ConstantsKeys.COMPONENTS, this.getComponents());
         jo.put(ConstantsKeys.BUNDLES, this.getBundles());
-        return jo.toJSONString();
+        return jo.toString();
     }
 
     /*
@@ -91,8 +90,8 @@ public class MultiComponentsDTO extends BaseDTO {
 	public static MultiComponentsDTO getMultiComponentsDTO(String jsonStr) throws VIPAPIException {
         JSONObject genreJsonObject = null;
         try {
-            genreJsonObject = (JSONObject) JSONValue.parseWithException(jsonStr);
-        } catch (ParseException e) {
+            genreJsonObject = new JSONObject(jsonStr);
+        } catch (JSONException e) {
             throw new VIPAPIException("Parse string '" + jsonStr + "' failed.");
         }
         if (genreJsonObject == null) {
@@ -104,7 +103,7 @@ public class MultiComponentsDTO extends BaseDTO {
         baseTranslationDTO.setVersion((String) genreJsonObject.get(ConstantsKeys.VERSION));
         baseTranslationDTO.setLocales((List) genreJsonObject.get(ConstantsKeys.lOCALES));
         baseTranslationDTO.setComponents((List) genreJsonObject.get(ConstantsKeys.COMPONENTS));
-        baseTranslationDTO.setBundles((JSONArray) JSONValue.parse(bundleStr));
+        baseTranslationDTO.setBundles(new JSONArray(bundleStr));
         return baseTranslationDTO;
     }
 }

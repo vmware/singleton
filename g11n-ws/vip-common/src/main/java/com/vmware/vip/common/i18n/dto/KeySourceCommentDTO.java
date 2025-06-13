@@ -1,10 +1,10 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.common.i18n.dto;
 
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
 
 import com.vmware.vip.common.constants.ConstantsKeys;
 
@@ -57,7 +57,7 @@ public class KeySourceCommentDTO {
 		jo.put(ConstantsKeys.KEY, this.getKey());
 		jo.put(ConstantsKeys.COMMENT_FOR_SOURCE, this.getCommentForSource());
 		jo.put(ConstantsKeys.SOURCE_FORMAT, this.getSourceFormat());
-		return jo.toJSONString();
+		return jo.toString();
 	}
 
 	

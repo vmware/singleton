@@ -30,7 +30,7 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-autoconfigure')
     compileOnly("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
     compileOnly("org.apache.commons:commons-lang3:$commonsLangVersion")
-    implementation("com.googlecode.json-simple:json-simple:$jsonSimpleVersion"){
+    implementation("org.json:json:$jsonVersion"){
         exclude group: 'junit'
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.source.service.impl;
@@ -126,7 +126,7 @@ public class SyncI18nSourceServiceImpl implements SyncI18nSourceService {
 				String locale = ConstantsKeys.LATEST;
 				String jsonStr = "{\"data\":{\"productName\": \"" + cachedComDTO.getProductName()
 						+ "\",\"pseudo\": false,\"translation\": [{\"component\": \"" + cachedComDTO.getComponent()
-						+ "\",\"locale\": \"" + locale + "\",\"messages\": " + cachedComDTO.getMessages().toJSONString()
+						+ "\",\"locale\": \"" + locale + "\",\"messages\": " + cachedComDTO.getMessages().toString()
 						+ "}],\"version\": \"" + cachedComDTO.getVersion() + "\"},\"requester\": \""
 						+ ConstantsKeys.VL10N + "\"}";
 				Map<String, String> header = new HashMap<String, String>();
