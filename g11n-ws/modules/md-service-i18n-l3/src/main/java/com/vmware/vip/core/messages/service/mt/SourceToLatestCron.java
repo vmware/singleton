@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.messages.service.mt;
@@ -13,7 +13,7 @@ import com.vmware.vip.core.messages.service.product.IProductService;
 import com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO;
 import com.vmware.vip.core.messages.service.singlecomponent.IOneComponentService;
 import com.vmware.vip.messages.data.dao.exception.DataException;
-import org.json.simple.parser.ParseException;
+import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +62,7 @@ public class SourceToLatestCron {
 			    			}
 			    		}
 		    		}
-		    	} catch (VIPCacheException | DataException | ParseException e1) {
+		    	} catch (VIPCacheException | DataException | JSONException e1) {
 		    		// TODO Auto-generated catch block
 		    		LOGGER.error(e1.getMessage(), e1);
 		    		

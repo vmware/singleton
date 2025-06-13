@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.v2.formatting.pattern;
@@ -61,7 +61,7 @@ public class FormattingPatternAPITest {
                 .toString();
         json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET, url);
         Map<String, Object> respMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
-        Assert.assertEquals(400L, respMap.get("code"));
+        Assert.assertEquals(400, respMap.get("code"));
 
         //Test with valid 'scope' and 'scopeFilter' parameter
         url = new StringBuilder(
@@ -71,7 +71,7 @@ public class FormattingPatternAPITest {
                 .toString();
         json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET, url);
         respMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
-        Assert.assertEquals(200L, respMap.get("code"));
+        Assert.assertEquals(200, respMap.get("code"));
 
         //Test with valid 'scope' and invalid 'scopeFilter' parameter
         url = new StringBuilder(
@@ -81,7 +81,7 @@ public class FormattingPatternAPITest {
                 .toString();
         json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET, url);
         respMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
-        Assert.assertEquals(200L, respMap.get("code"));
+        Assert.assertEquals(200, respMap.get("code"));
     }
 
     @SuppressWarnings("unchecked")
@@ -114,7 +114,7 @@ public class FormattingPatternAPITest {
                 .toString();
         json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET, url);
         Map<String, Object> respMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
-        Assert.assertEquals(200L, respMap.get("code"));
+        Assert.assertEquals(200, respMap.get("code"));
     }
 
 }

@@ -1,4 +1,4 @@
-//Copyright 2019-2023 VMware, Inc.
+//Copyright 2019-2025 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 package com.vmware.l10n.translation.dao.impl;
 
@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 
 import jakarta.annotation.PostConstruct;
-import org.json.simple.parser.ParseException;
+import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -86,7 +86,7 @@ public class S3SingleComponentDaoImpl implements SingleComponentDao {
 			caseComponentMessagesDTO.setProductName(componentMessagesDTO.getProductName());
 			caseComponentMessagesDTO.setVersion(componentMessagesDTO.getVersion());
 			caseComponentMessagesDTO.setStatus(componentMessagesDTO.getStatus());
-		} catch (ParseException e) {
+		} catch (JSONException e) {
 			throw new L10nAPIException("Parsing json failed.", e);
 		}
 

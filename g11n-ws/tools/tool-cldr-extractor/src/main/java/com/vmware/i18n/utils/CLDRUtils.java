@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.utils;
@@ -30,8 +30,8 @@ import com.vmware.i18n.common.DayEnum;
 import com.vmware.i18n.common.OfficialStatusEnum;
 import com.vmware.i18n.utils.timezone.CldrTimeZoneUtils;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
