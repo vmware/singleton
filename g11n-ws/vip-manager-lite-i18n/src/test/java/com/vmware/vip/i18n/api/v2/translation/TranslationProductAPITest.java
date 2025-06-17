@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.v2.translation;
@@ -124,8 +124,8 @@ public class TranslationProductAPITest {
         String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, MultComponentTranslationAPIURI1);
         @SuppressWarnings("unchecked")
         Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
-        long code = (long) dataMap.get("code");
-        Assert.assertTrue(code==200L);
+        int code = (int) dataMap.get("code");
+        Assert.assertTrue(code==200);
     }
     
     
@@ -138,8 +138,8 @@ public class TranslationProductAPITest {
         String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, MultComponentTranslationAPIURI2);
         @SuppressWarnings("unchecked")
         Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
-        long code = (long) dataMap.get("code");
-        Assert.assertTrue(code==200L);
+        int code = (int) dataMap.get("code");
+        Assert.assertTrue(code==200);
     }
     
     /**
@@ -151,8 +151,8 @@ public class TranslationProductAPITest {
         String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, MultComponentTranslationAPIURI3);
         @SuppressWarnings("unchecked")
         Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
-        long code = (long) dataMap.get("code");
-        Assert.assertTrue(code==207L);
+        int code = (int) dataMap.get("code");
+        Assert.assertTrue(code==207);
     }
     
     /**
@@ -164,8 +164,8 @@ public class TranslationProductAPITest {
         String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, MultComponentTranslationAPIURI4);
         @SuppressWarnings("unchecked")
         Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
-        long code = (long) dataMap.get("code");
-        Assert.assertTrue(code==404L);
+        int code = (int) dataMap.get("code");
+        Assert.assertTrue(code==404);
     }
     
     @Test
@@ -173,8 +173,8 @@ public class TranslationProductAPITest {
         String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, MultComponentTranslationAPIURI5);
         @SuppressWarnings("unchecked")
         Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
-        long code = (long) dataMap.get("code");
-        Assert.assertTrue(code==200L);
+        int code = (int) dataMap.get("code");
+        Assert.assertTrue(code==200);
     }
     
     @Test
@@ -182,16 +182,16 @@ public class TranslationProductAPITest {
         String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, MultComponentTranslationAPIURI6);
         @SuppressWarnings("unchecked")
         Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
-        long code = (long) dataMap.get("code");
-        Assert.assertTrue(code==200L);
+        int code = (int) dataMap.get("code");
+        Assert.assertTrue(code==200);
     }
     @Test
     public void testMultiComponents7() throws Exception {
         String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, MultComponentTranslationAPIURI7);
         @SuppressWarnings("unchecked")
         Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
-        long code = (long) dataMap.get("code");
-        Assert.assertTrue(code==207L);
+        int code = (int) dataMap.get("code");
+        Assert.assertTrue(code==207);
     }
 
     @Test
@@ -199,8 +199,8 @@ public class TranslationProductAPITest {
       String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, SingleComponentTranslationAPIURI);
         @SuppressWarnings("unchecked")
         Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
-        long code = (long) dataMap.get("code");
-        Assert.assertTrue(code==200L);
+        int code = (int) dataMap.get("code");
+        Assert.assertTrue(code==200);
        
     }
 

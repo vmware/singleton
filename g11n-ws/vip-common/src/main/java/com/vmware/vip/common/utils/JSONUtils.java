@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.common.utils;
@@ -19,11 +19,8 @@ import java.util.Set;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ContainerFactory;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import org.json.JSONObject;
+import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,8 +47,8 @@ public class JSONUtils {
 	public static JSONObject string2JSON(String jsonStr) {
 		JSONObject genreJsonObject = null;
 		try {
-			genreJsonObject = (JSONObject) JSONValue.parseWithException(jsonStr);
-		} catch (ParseException e) {
+			genreJsonObject = new JSONObject(jsonStr);
+		} catch (JSONException e) {
 			logger.error(e.getMessage(), e);
 		}
 		return genreJsonObject;
@@ -68,8 +65,8 @@ public class JSONUtils {
 	public static Map string2Map(String jsonStr) {
 		Map genreJsonObject = null;
 		try {
-			genreJsonObject = (Map) JSONValue.parseWithException(jsonStr);
-		} catch (ParseException e) {
+			genreJsonObject = new JSONObject(jsonStr).toMap();
+		} catch (JSONException e) {
 			logger.error(e.getMessage(), e);
 		}
 		return genreJsonObject;
@@ -120,7 +117,7 @@ public class JSONUtils {
 			Set set = map.keySet();
 			Iterator it = set.iterator();
 			while (it.hasNext()) {
-				Object key = it.next();
+				String key = (String) it.next();
 				jsonObj.put(key, pseudoTag + map.get(key) + pseudoTag);
 			}
 		}
@@ -135,13 +132,11 @@ public class JSONUtils {
 	 */
 	@SuppressWarnings("unchecked")
 	public static Map<String, Object> getMapFromJson(String json) {
-		JSONParser parser = new JSONParser();
-		ContainerFactory containerFactory = getContainerFactory();
 		Map<String, Object> result = null;
 		if (!StringUtils.isEmpty(json)) {
 			try {
-				result = (Map<String, Object>) parser.parse(json, containerFactory);
-			} catch (ParseException e) {
+				result = new JSONObject(json).toMap();
+			} catch (JSONException e) {
 				logger.error(e.getMessage(), e);
 			}
 		}
@@ -186,19 +181,6 @@ public class JSONUtils {
 		} catch (IOException e) {
 			logger.error(e.getMessage(), e);
 		} 
-	}
-
-	private static ContainerFactory getContainerFactory() {
-		ContainerFactory containerFactory = new ContainerFactory() {
-			public List<Object> creatArrayContainer() {
-				return new LinkedList<Object>();
-			}
-
-			public Map<String, Object> createObjectContainer() {
-				return new LinkedHashMap<String, Object>();
-			}
-		};
-		return containerFactory;
 	}
 
 	/**

@@ -25,7 +25,7 @@ dependencies {
     compileOnly("commons-collections:commons-collections:$commonsCollectionsVersion")
     compileOnly("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
     compileOnly("org.apache.commons:commons-lang3:$commonsLangVersion")
-    compileOnly("com.googlecode.json-simple:json-simple:$jsonSimpleVersion"){
+    compileOnly("org.json:json:$jsonVersion"){
         exclude group: 'junit'
     }
 

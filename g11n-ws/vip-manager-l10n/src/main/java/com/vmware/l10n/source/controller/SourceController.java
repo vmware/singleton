@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.source.controller;
@@ -12,8 +12,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import com.vmware.vip.common.utils.SourceFormatUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONValue;
+import org.json.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -122,7 +121,7 @@ public class SourceController {
 		JSONArray listKSC = null;
 		if (ConstantsKeys.JSON_KEYSET.equalsIgnoreCase(key)
 				&& sourceStr.startsWith("[") && sourceStr.endsWith("]")) {
-			listKSC = (JSONArray) JSONValue.parseWithException(sourceStr);
+			listKSC = new JSONArray(sourceStr);
 			ObjectMapper objectMapper = new ObjectMapper();
 			for (Object kscObj : listKSC) {
 				final KeySourceCommentDTO kscDTO = objectMapper.readValue(
