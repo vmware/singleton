@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Copyright 2022 VMware, Inc.
+# Copyright 2025 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
 require 'active_support'
@@ -75,19 +75,19 @@ module Helpers
   self.defaut_value = 'defaut value'
 
   def components_stub
-    stub_request(:get, components_url).to_return(body: File.new('spec/fixtures/mock_responses/componentlist'))
+    stub_request(:get, components_url).to_return_json(body: File.new('spec/fixtures/mock_responses/componentlist').read)
   end
 
   def locales_stub
-    stub_request(:get, locales_url).to_return(body: File.new('spec/fixtures/mock_responses/localelist'))
+    stub_request(:get, locales_url).to_return_json(body: File.new('spec/fixtures/mock_responses/localelist').read)
   end
 
   def bundle_stub(component, locale, response)
-    stub_request(:get, format(bundle_url, locale, component)).to_return(body: response)
+    stub_request(:get, format(bundle_url, locale, component)).to_return_json(body: response)
   end
 
   def stub_response(file_name)
-    File.new("spec/fixtures/mock_responses/#{file_name}")
+    File.new("spec/fixtures/mock_responses/#{file_name}").read
   end
 
   def nonexistent_response

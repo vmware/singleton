@@ -1,4 +1,4 @@
-# Copyright 2022 VMware, Inc.
+# Copyright 2025 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
 require 'forwardable'
@@ -30,7 +30,7 @@ module SgtnClient # :nodoc:
     def_delegators :config, :logger, :logger=
 
     def load(config_file, env, log_file = nil)
-      configurations = YAML.load(File.read(config_file))
+      configurations = YAML.safe_load(File.read(config_file), aliases: true)
       config_hash = configurations[env]
       raise "Configuration[#{env}] NotFound" unless config_hash
 
