@@ -53,7 +53,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0.0
+          ruby-version: 3.3
       - name: Install dependencies
         run: bundle install
       - name: Unit test
@@ -80,17 +80,17 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0.0
+          ruby-version: 3.3
       - name: Install dependencies
         run: bundle install
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v1
+        uses: github/codeql-action/init@v3
         with:
           languages: ruby
       - name: Autobuild
-        uses: github/codeql-action/autobuild@v1
+        uses: github/codeql-action/autobuild@v3
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v1
+        uses: github/codeql-action/analyze@v3
 
   codacy-analysis-cli:
     name: Codacy Analysis CLI
@@ -125,25 +125,25 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0.0
+          ruby-version: 3.3
       - name: Install dependencies
         run: bundle install
-      - name: Set up JDK 8
+      - name: Set up JDK 17
         uses: actions/setup-java@v2
         with:
-          distribution: 'adopt'
-          java-version: '8'
+          distribution: 'temurin'
+          java-version: '17'
       - name: Smoke Test
         run: |
           export PATH=${PATH/:\/usr\/local\/lib\/jvm\/openjdk11\/bin:/:}
           sudo apt-get update
-          sudo apt-get install -y openjdk-8-jdk
-          export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
+          sudo apt-get install -y openjdk-17-jdk
+          export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
           git clone --branch=master https://github.com/vmware/singleton.git server
           git clone --branch=devops https://github.com/vmware/singleton.git devops
           cd $GITHUB_WORKSPACE/server/g11n-ws && ./gradlew build -x test
           cp $GITHUB_WORKSPACE/devops/deploy/i18n-service/Dockerfile $GITHUB_WORKSPACE/server/publish/
-          cd $GITHUB_WORKSPACE/server/publish && mv singleton-[0~9]*.jar i18n-service.jar
+          cd $GITHUB_WORKSPACE/server/publish && mv singleton-0.1.0.jar i18n-service.jar
           docker build -t singleton .
           docker run -d -p 8090:8090 -p 8091:8091 --name singleton singleton
           docker ps
