@@ -17,11 +17,12 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
 
   s.add_dependency('concurrent-ruby')
-  s.add_dependency('faraday')
-  s.add_dependency('faraday_middleware')
+  s.add_dependency 'faraday', '~> 2.7'
+  s.add_dependency 'faraday-gzip', '~> 3'
   s.add_dependency('i18n')
   s.add_dependency('logging')
   s.add_dependency('multi_json') # TODO
+  s.add_dependency 'observer'
   s.add_dependency('request_store')
   s.add_dependency('twitter_cldr')
 

@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-# Copyright 2022 VMware, Inc.
+# Copyright 2025 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 
 require 'faraday'
-require 'faraday_middleware'
+require 'faraday/gzip'
 require 'set'
 
 module SgtnClient
@@ -26,10 +26,10 @@ module SgtnClient
         @components_url = "#{product_root}/componentlist"
 
         @conn = Faraday.new(config.vip_server, request: REQUEST_ARGUMENTS) do |f|
-          f.response :json # decode response bodies as JSON
+          f.response :json
           f.response :raise_error
           f.response :logger, config.logger, { log_level: :debug, headers: false, bodies: true }
-          f.use :gzip
+          f.request :gzip
         end
       end
 
