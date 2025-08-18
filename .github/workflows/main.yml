@@ -68,27 +68,6 @@ jobs:
         uses: github/codeql-action/autobuild@v2
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
-
-  codacy-analysis-cli:
-    name: Codacy Analysis CLI
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@main
-      - name: Run Codacy Analysis CLI
-        uses: codacy/codacy-analysis-cli-action@master  
-        with:
-          output: results.sarif
-          format: sarif
-          gh-code-scanning-compat: true
-          max-allowed-issues: 2147483647  
-      - name: Clean duplicates
-        run: |
-          jq '.runs |= unique_by({tool, invocations, results})' results.sarif > final-results.sarif
-      - name: Upload SARIF results file
-        uses: github/codeql-action/upload-sarif@main
-        with:
-          sarif_file: final-results.sarif  
               
   smoke-test:
     name: Smoke Test
