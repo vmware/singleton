@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.messages.utils;
@@ -7,8 +7,8 @@ package com.vmware.vip.core.messages.utils;
 import java.util.Map;
 
 import org.apache.commons.lang3.SerializationUtils;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.BeanUtils;
 import org.springframework.util.StringUtils;
 
@@ -60,7 +60,7 @@ public class PseudoMessagesUtils {
                 jo.put(ConstantsKeys.MESSAGES,
                         JSONUtils.getOrderedMapForPseudo(messages,
                                 pseudoConfig.getExistSourceTag()));
-                pseudoList.add(jo);
+                pseudoList.put(jo);
             }
         }
         t.setBundles(pseudoList);

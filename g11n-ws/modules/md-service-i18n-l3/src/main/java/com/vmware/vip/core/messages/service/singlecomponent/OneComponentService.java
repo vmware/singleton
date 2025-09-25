@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.messages.service.singlecomponent;
@@ -19,7 +19,7 @@ import com.vmware.vip.core.messages.utils.PseudoConfig;
 import com.vmware.vip.core.messages.utils.PseudoMessagesUtils;
 import com.vmware.vip.messages.data.dao.api.IOneComponentDao;
 import com.vmware.vip.messages.data.dao.exception.DataException;
-import org.json.simple.parser.ParseException;
+import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -103,7 +103,7 @@ public class OneComponentService implements IOneComponentService {
 					LOGGER.debug(msg);
 				}
 			}
-		} catch (ParseException e) {
+		} catch (JSONException e) {
 			LOGGER.error(e.getMessage(), e);
 			throw new L3APIException(ConstantsKeys.FATA_ERROR + "Parse json failed.");
 		} catch (DataException e) {
@@ -157,7 +157,7 @@ public class OneComponentService implements IOneComponentService {
 	 * @see com.vmware.vip.core.translation.dao.BaseComponentDao#getTranslation(Object)
 	 */
 	public ComponentMessagesDTO getTranslationFromDisk(
-			ComponentMessagesDTO componentMessagesDTO) throws ParseException,
+			ComponentMessagesDTO componentMessagesDTO) throws JSONException,
 			DataException {
 		String result = oneComponentDao.get2JsonStr(
 				componentMessagesDTO.getProductName(),

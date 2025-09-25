@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.fetcher.translation;
@@ -10,8 +10,8 @@ import java.util.Map;
 import java.util.Properties;
 
 import org.apache.commons.lang3.StringUtils;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.exceptions.VIPResourceOperationException;
@@ -114,7 +114,7 @@ public class TranslationConverterMain {
                 JSONObject pairs = new ProToJSONConverter().getJSONFromProp(pro);
                 bundle.put(locale, pairs);
             }
-            bundles.add(bundle);
+            bundles.put(bundle);
         }
         baseTranslationDTO.setBundles(bundles);
         singleComponentDTO.setComponent("");

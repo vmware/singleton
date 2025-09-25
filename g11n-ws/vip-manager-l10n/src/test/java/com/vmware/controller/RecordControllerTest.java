@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.controller;
@@ -112,8 +112,8 @@ public class RecordControllerTest {
 			String resultStr =   mvcRS.getResponse().getContentAsString();
 			logger.info(resultStr);
 			Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(resultStr).get("response");
-			long code = (long) dataMap.get("code");
-			Assert.assertTrue(code==200L);
+			int code = (int) dataMap.get("code");
+			Assert.assertTrue(code==200);
 			List<File> queueFiles = DiskQueueUtils.listQueueFiles(new File("viprepo-bundle" + File.separator + DiskQueueUtils.L10N_TMP_GRM_PATH));
 			for (File delFile : queueFiles) {
 				DiskQueueUtils.delQueueFile(delFile);

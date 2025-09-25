@@ -1,12 +1,12 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.common.i18n.status;
 
 import java.io.Serializable;
 
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
 
 import com.vmware.vip.common.constants.ConstantsKeys;
 
@@ -68,7 +68,7 @@ public class Response implements Serializable {
 		JSONObject jo = new JSONObject();
 		jo.put(ConstantsKeys.CODE, this.getCode());
 		jo.put(ConstantsKeys.MESSAGE, this.getMessage());
-		return jo.toJSONString();
+		return jo.toString();
 	}
 
 	@Override

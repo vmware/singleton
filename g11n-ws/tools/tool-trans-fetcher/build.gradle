@@ -13,7 +13,7 @@ dependencies {
     implementation("commons-io:commons-io:$commonsIoVersion")
     implementation("org.apache.commons:commons-lang3:$commonsLangVersion")
     implementation project(":vip-common")
-    implementation("com.googlecode.json-simple:json-simple:$jsonSimpleVersion"){
+    implementation("org.json:json:$jsonVersion"){
         exclude group: 'junit'
     }
 

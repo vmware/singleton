@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.messages.service.product;
@@ -24,8 +24,8 @@ import com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO
 import com.vmware.vip.messages.data.dao.api.IOneComponentDao;
 import com.vmware.vip.messages.data.dao.api.IProductDao;
 import com.vmware.vip.messages.data.dao.exception.DataException;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.ParseException;
+import org.json.JSONObject;
+import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -158,7 +158,7 @@ public class ProductService implements IProductService {
 						+ componentMessagesDTO.getProductName()
 						+ ConstantsChar.BACKSLASH
 						+ componentMessagesDTO.getVersion(), e);
-			} catch (ParseException e) {
+			} catch (JSONException e) {
 				logger.error(e.getMessage(), e);
 				throw new L3APIException(ConstantsKeys.FATA_ERROR
 						+ "Failed to parse content for "
@@ -185,7 +185,7 @@ public class ProductService implements IProductService {
 	 */
 	@SuppressWarnings("unchecked")
 	public boolean updateTranslation(ComponentMessagesDTO componentMessagesDTO)
-			throws DataException, ParseException, VIPCacheException {
+			throws DataException, JSONException, VIPCacheException {
 		String key = CachedKeyGetter
 				.getOneCompnentCachedKey(componentMessagesDTO);
 		boolean updateFlag = false;
@@ -228,7 +228,7 @@ public class ProductService implements IProductService {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private ComponentMessagesDTO mergeComponentMessagesDTOWithFile(
 			ComponentMessagesDTO componentMessagesDTO) throws DataException,
-			ParseException {
+			JSONException {
 		ComponentMessagesDTO paramComponentMessagesDTO = new ComponentMessagesDTO();
 		BeanUtils.copyProperties(componentMessagesDTO,
 				paramComponentMessagesDTO);
@@ -237,7 +237,7 @@ public class ProductService implements IProductService {
 			result = this.getLinkedTranslation(paramComponentMessagesDTO);
 		} catch (DataException e1) {
 			logger.warn(e1.getMessage(), e1);
-		} catch (ParseException e2) {
+		} catch (JSONException e2) {
 			logger.error(e2.getMessage(), e2);
 		}
 		if(!StringUtils.isEmpty(result)) {
@@ -268,7 +268,7 @@ public class ProductService implements IProductService {
 	 */
 	private ComponentMessagesDTO getLinkedTranslation(
 			ComponentMessagesDTO componentMessagesDTO) throws DataException,
-			ParseException {
+			JSONException {
 		SingleComponentDTO caseComponentMessagesDTO = new SingleComponentDTO();
 		String result = oneComponentDao.get2JsonStr(
 				componentMessagesDTO.getProductName(),

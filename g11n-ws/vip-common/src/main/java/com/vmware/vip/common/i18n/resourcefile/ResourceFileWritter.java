@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.common.i18n.resourcefile;
@@ -16,9 +16,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ParseException;
+import org.json.JSONObject;
+import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -66,15 +65,14 @@ public class ResourceFileWritter {
 		} catch (VIPAPIException e1) {
 			e1.printStackTrace();
 		}
-		List bundles = baseTranslationDTO.getBundles();
+		List bundles = baseTranslationDTO.getBundles().toList();
 		Iterator<?> it = bundles.iterator();
 		SingleComponentDTO singleComponentDTO = new SingleComponentDTO();
 		singleComponentDTO.setProductName(baseTranslationDTO.getProductName());
 		singleComponentDTO.setVersion(baseTranslationDTO.getVersion());
 		while (it.hasNext()) {
 			try {
-				JSONObject bundleObj = (JSONObject) JSONValue
-						.parseWithException(it.next().toString());
+				JSONObject bundleObj = new JSONObject(it.next().toString());
 				String component = (String) bundleObj
 						.get(ConstantsKeys.COMPONENT);
 				singleComponentDTO.setComponent(component);
@@ -93,7 +91,7 @@ public class ResourceFileWritter {
 											.getLocalizedJSONFileName(tLocale),
 							singleComponentDTO);
 				}
-			} catch (ParseException e) {
+			} catch (JSONException e) {
 				throw new VIPResourceOperationException("Parse '"
 						+ it.next().toString() + "' failed.");
 			}
@@ -133,7 +131,7 @@ public class ResourceFileWritter {
 			outputStream = new FileOutputStream(f);
 			write = new OutputStreamWriter(outputStream, ConstantsUnicode.UTF8);
 			writer = new BufferedWriter(write);
-			writer.write(json.toJSONString());
+			writer.write(json.toString());
 		} catch (IOException e) {
 			throw new VIPResourceOperationException("Write file '"
 					+ jsonFileName + "' failed.");

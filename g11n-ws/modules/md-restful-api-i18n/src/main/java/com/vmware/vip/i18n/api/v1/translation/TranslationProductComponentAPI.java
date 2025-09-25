@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.v1.translation;
@@ -68,7 +68,7 @@ public class TranslationProductComponentAPI extends TranslationProductComponentA
 			HttpServletRequest req) throws Exception {
 		APIResponseDTO resp = super.getMultipleComponentsTrans(productName, components, version, locales, pseudo, req);
 		TranslationDTO translationDTO = (TranslationDTO) resp.getData();
-		if (translationDTO.getBundles() == null || translationDTO.getBundles().size() == 0) {
+		if (translationDTO.getBundles() == null || translationDTO.getBundles().toList().size() == 0) {
 			throw new L3APIException(
 					String.format(ConstantsMsg.TRANS_GET_FAILD, productName + ConstantsChar.BACKSLASH + version));
 		}
