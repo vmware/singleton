@@ -25,6 +25,7 @@ dependencies {
     compileOnly("org.apache.commons:commons-lang3:$commonsLangVersion")
     compileOnly("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
     implementation platform("com.google.cloud:libraries-bom:$gcpGcsVersion")
+	implementation platform("io.grpc:grpc-bom:$grpcVersion")
     implementation("com.google.cloud:google-cloud-storage")
 
 }
