@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.base;
@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 
 
 import org.apache.commons.lang3.StringUtils;
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.vmware.vip.common.constants.ConstantsKeys;
@@ -138,7 +138,7 @@ public class TranslationProductComponentAction extends BaseAction {
 				}
 			}
 			
-			((ComponentMessagesDTO)o).setStatus(JSONObject.toJSONString(r));
+			((ComponentMessagesDTO)o).setStatus(new JSONObject(r).toString());
 		}
     	if(!r.isEmpty() && !r.containsValue("0")) {
     		return super.handleResponse(APIResponseStatus.TRANSLATION_READY, resp.getData());

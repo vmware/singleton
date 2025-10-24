@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.base;
@@ -16,8 +16,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -153,7 +153,7 @@ public class TranslationProductAction  extends BaseAction {
         JSONObject object = new JSONObject();
         object.put("locale", locale);
         object.put("component", component);
-        object.put("messages", null);
+        // object.put("messages", null);
         return object;
 
     }
@@ -163,10 +163,10 @@ public class TranslationProductAction  extends BaseAction {
 
         JSONArray array = allTranslationDTO.getBundles();
         @SuppressWarnings("unchecked")
-        Iterator<JSONObject> objectIterator = array.iterator();
+        Iterator<Object> objectIterator = array.iterator();
 
         while (objectIterator.hasNext()) {
-            JSONObject object = objectIterator.next();
+            JSONObject object = (JSONObject) objectIterator.next();
             String fileLocale = (String) object.get(ConstantsKeys.lOCALE);
             String fileComponent = (String) object.get(ConstantsKeys.COMPONENT);
             if (locale.equals(fileLocale) && component.equals(fileComponent)) {
@@ -203,7 +203,7 @@ public class TranslationProductAction  extends BaseAction {
             for (String locale : reqLocales) {
                 JSONObject jsonObj = getBundle(component, locale, allTranslationDTO);
                 if (jsonObj != null) {
-                    ja.add(jsonObj);
+                    ja.put(jsonObj);
                 } else {
                     jsonNullList.add(getNUllBundle(component, locale));
                 }
@@ -215,12 +215,12 @@ public class TranslationProductAction  extends BaseAction {
 
         if (ja.isEmpty()) {
             throw new L3APIException(ConstantsMsg.TRANS_IS_NOT_FOUND);
-        } else if (ja.size() == (reqLocaleSize * reqComponentSite)) {
+        } else if (ja.toList().size() == (reqLocaleSize * reqComponentSite)) {
             resulttranslationDTO.setBundles(ja);
             return super.handleVersionFallbackResponse(oldVersion, version, resulttranslationDTO);
         } else {
             for (JSONObject jsonNullObj : jsonNullList) {
-                ja.add(jsonNullObj);
+                ja.put(jsonNullObj);
             }
             resulttranslationDTO.setBundles(ja);
             if (oldVersion.equals(version)) {
