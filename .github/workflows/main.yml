@@ -63,12 +63,25 @@ jobs:
           distribution: 'adopt'
           java-version: '17'
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v2
+        uses: github/codeql-action/init@v3
       - name: Autobuild
-        uses: github/codeql-action/autobuild@v2
+        uses: github/codeql-action/autobuild@v3
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v2
-              
+        uses: github/codeql-action/analyze@v3
+      - name: Upload SARIF results
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          category: my-analysis-tool
+
+  codacy-analysis-cli:
+    name: Codacy Analysis CLI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@main
+      - name: Run Codacy Analysis CLI
+        uses: codacy/codacy-analysis-cli-action@master
+
   smoke-test:
     name: Smoke Test
     runs-on: ubuntu-latest
