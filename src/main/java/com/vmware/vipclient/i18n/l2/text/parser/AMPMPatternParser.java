@@ -11,6 +11,7 @@ import org.json.JSONObject;
 
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
 import com.vmware.vipclient.i18n.l2.text.PatternItem;
+import com.vmware.vipclient.i18n.util.JSONUtils;
 
 /**
  * The parser to parse pattern item of 'a'.
@@ -29,13 +30,13 @@ public class AMPMPatternParser implements PatternParser {
         if (String.valueOf(item.getType()).indexOf("a") != -1) {// dayPeriodsFormat
             switch (item.getLength()) {
             case 4:
-                dayPeriodsData = (JSONArray) dayPeriodsFormat.get(PatternKeys.WIDE);
+                dayPeriodsData = (JSONArray) JSONUtils.getFromJSONObject(dayPeriodsFormat, PatternKeys.WIDE);
                 break;
             case 5:
-                dayPeriodsData = (JSONArray) dayPeriodsFormat.get(PatternKeys.NARROW);
+                dayPeriodsData = (JSONArray) JSONUtils.getFromJSONObject(dayPeriodsFormat, PatternKeys.NARROW);
                 break;
             default:
-                dayPeriodsData = (JSONArray) dayPeriodsFormat.get(PatternKeys.ABBREVIATED);
+                dayPeriodsData = (JSONArray) JSONUtils.getFromJSONObject(dayPeriodsFormat, PatternKeys.ABBREVIATED);
             }
         } else {// dayPeriodsStandalone
 

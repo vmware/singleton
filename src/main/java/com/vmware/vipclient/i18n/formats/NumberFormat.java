@@ -16,6 +16,7 @@ import com.vmware.vipclient.i18n.base.BaseFormat;
 import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
+import com.vmware.vipclient.i18n.util.JSONUtils;
 
 public class NumberFormat extends BaseFormat {
     Logger logger = LoggerFactory.getLogger(NumberFormat.class);
@@ -54,12 +55,16 @@ public class NumberFormat extends BaseFormat {
         try {
             retJson = new JSONObject(retJsonStr);
             if (retJson != null) {
-                JSONObject dataJson = (JSONObject) retJson
-                        .get(ConstantsKeys.DATA);
+                JSONObject dataJson = (JSONObject) JSONUtils.getFromJSONObject(retJson, ConstantsKeys.DATA);
+                // JSONObject dataJson = (JSONObject) retJson
+                //        .get(ConstantsKeys.DATA);
                 if (dataJson != null) {
-                    format = dataJson.get(ConstantsKeys.FORMATTED_NUMBER) == null ? ""
-                            : dataJson.get(ConstantsKeys.FORMATTED_NUMBER)
+                    format = JSONUtils.getFromJSONObject(dataJson,ConstantsKeys.FORMATTED_NUMBER) == null ? ""
+                            : JSONUtils.getFromJSONObject(dataJson,ConstantsKeys.FORMATTED_NUMBER)
                                     .toString();
+                    // format = dataJson.get(ConstantsKeys.FORMATTED_NUMBER) == null ? ""
+                    //        : dataJson.get(ConstantsKeys.FORMATTED_NUMBER)
+                    //                .toString();
                 }
             }
         } catch (JSONException e) {

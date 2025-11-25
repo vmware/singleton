@@ -15,6 +15,7 @@ import com.vmware.vipclient.i18n.l2.text.parser.DefaultPatternParser;
 import com.vmware.vipclient.i18n.l2.text.parser.EraPatternParser;
 import com.vmware.vipclient.i18n.l2.text.parser.PatternParser;
 import com.vmware.vipclient.i18n.l2.text.parser.TimeZonePatternParser;
+import com.vmware.vipclient.i18n.util.JSONUtils;
 
 public class PatternItem {
     private char type;
@@ -86,7 +87,7 @@ public class PatternItem {
         case 1: {
             // MMMM,MMM,MM,M
             if (length > 2) {
-                parser = new DateStrPatternParser((JSONObject) formatData.get("monthsFormat"));
+                parser = new DateStrPatternParser((JSONObject) JSONUtils.getFromJSONObject(formatData, "monthsFormat"));
             } else {
                 parser = new DatePatternParser(1);
             }
@@ -94,7 +95,7 @@ public class PatternItem {
         }
         case 2: {
             // LLLL
-            parser = new DateStrPatternParser((JSONObject) formatData.get("monthsFormat"));
+            parser = new DateStrPatternParser((JSONObject) JSONUtils.getFromJSONObject(formatData, "monthsFormat"));
             break;
         }
         case 5: {
@@ -109,16 +110,16 @@ public class PatternItem {
         }
         case 10: {
             // a
-            parser = new AMPMPatternParser((JSONObject) formatData.get("dayPeriodsFormat"));
+            parser = new AMPMPatternParser((JSONObject) JSONUtils.getFromJSONObject(formatData, "dayPeriodsFormat"));
             break;
 
         }
         case 11: {
             // GGGG,GGG,GG,G
             if (length == 4) {
-                parser = new EraPatternParser((JSONObject) formatData.get("eras"), true);
+                parser = new EraPatternParser((JSONObject) JSONUtils.getFromJSONObject(formatData, "eras"), true);
             } else {
-                parser = new EraPatternParser((JSONObject) formatData.get("eras"));
+                parser = new EraPatternParser((JSONObject) JSONUtils.getFromJSONObject(formatData, "eras"));
             }
             break;
         }

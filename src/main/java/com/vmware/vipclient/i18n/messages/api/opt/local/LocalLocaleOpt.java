@@ -74,7 +74,7 @@ public class LocalLocaleOpt implements LocaleOpt{
 			JSONObject languagesData = new JSONObject(languagesJsonStr);
 			if (languagesData != null) {
 				logger.debug("Found the languages' names from local bundle for locale [{}].\n", locale);
-				return ((JSONObject) languagesData.get(PatternKeys.LANGUAGES)).toMap().entrySet().stream()
+				return ((JSONObject) JSONUtils.getFromJSONObject(languagesData, PatternKeys.LANGUAGES)).toMap().entrySet().stream()
 					     .collect(Collectors.toMap(Map.Entry::getKey, e -> (String)e.getValue()));
 			}else{
 				logger.warn("Didn't find the languages' names from local bundle for locale [{}].\n", locale);

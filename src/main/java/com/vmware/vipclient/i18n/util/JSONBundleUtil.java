@@ -17,7 +17,7 @@ public class JSONBundleUtil {
     	JSONObject obj = FileUtil.readJson(path);
     	if (obj == null) 
     		return null;
-    	return (JSONObject) obj.get("messages");
+    	return (JSONObject) JSONUtils.getFromJSONObject(obj, "messages");
     }
     
     @Deprecated
@@ -27,7 +27,7 @@ public class JSONBundleUtil {
         JSONObject obj = JSONBundleUtil.readJSONFile(productName, version,
                 component, locale);
         if (obj != null) {
-            Object messages = obj.get("messages");
+            Object messages = JSONUtils.getFromJSONObject(obj, "messages");
             if (messages != null) {
                 jsonMsgs = (JSONObject) messages;
             }

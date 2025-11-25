@@ -29,6 +29,7 @@ import org.slf4j.LoggerFactory;
 import com.vmware.vipclient.i18n.l2.common.PatternCategory;
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
 import com.vmware.vipclient.i18n.messages.service.PatternService;
+import com.vmware.vipclient.i18n.util.JSONUtils;
 
 public class PluralRules implements Serializable {
     static Logger                       logger           = LoggerFactory.getLogger(PluralRules.class);
@@ -1247,7 +1248,8 @@ public class PluralRules implements Serializable {
         try {
             JSONObject pluralPattern = new PatternService().getPatternsByCategory(locale.toLanguageTag(),
                     PatternCategory.PLURALS.toString());
-            pluralRules = (JSONObject) pluralPattern.get(PatternKeys.PLURALRULES);
+            pluralRules = (JSONObject) JSONUtils.getFromJSONObject(pluralPattern, PatternKeys.PLURALRULES);
+            // pluralRules = (JSONObject) pluralPattern.get(PatternKeys.PLURALRULES);
         } catch (NullPointerException e) {
             logger.info("Lack plural pattern!");
         }

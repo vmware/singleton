@@ -16,6 +16,7 @@ import org.json.JSONObject;
 import com.vmware.vipclient.i18n.l2.common.ConstantChars;
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
 import com.vmware.vipclient.i18n.util.FormatUtils;
+import com.vmware.vipclient.i18n.util.JSONUtils;
 
 public abstract class DateFormat {
     public final static int    DATETIME = 0;
@@ -99,15 +100,24 @@ public abstract class DateFormat {
             }
         }
         if (!"".equals(patternStyle)) {
-            JSONObject patternObj = (JSONObject) formatData.get(patternStyle);
-            pattern = (String) patternObj.get(patternType);
+            JSONObject patternObj = (JSONObject) JSONUtils.getFromJSONObject(formatData, patternStyle);
+            pattern = (String) JSONUtils.getFromJSONObject(patternObj, patternType);
             if (PatternKeys.DATETIMEFORMATS.equalsIgnoreCase(patternStyle)) {
-                String datePattern = (String) ((JSONObject) formatData.get(PatternKeys.DATEFORMATS))
-                        .get(patternType);
-                String timePattern = (String) ((JSONObject) formatData.get(PatternKeys.TIMEFORMATS))
-                        .get(patternType);
+                String datePattern = (String) JSONUtils.getFromJSONObject(((JSONObject) JSONUtils.getFromJSONObject(formatData, PatternKeys.DATEFORMATS))
+                        , patternType);
+                String timePattern = (String) JSONUtils.getFromJSONObject(((JSONObject) JSONUtils.getFromJSONObject(formatData, PatternKeys.TIMEFORMATS))
+                        , patternType);
                 pattern = FormatUtils.format(pattern, timePattern, datePattern);
             }
+            // JSONObject patternObj = (JSONObject) formatData.get(patternStyle);
+            // pattern = (String) patternObj.get(patternType);
+            // if (PatternKeys.DATETIMEFORMATS.equalsIgnoreCase(patternStyle)) {
+            //     String datePattern = (String) ((JSONObject) formatData.get(PatternKeys.DATEFORMATS))
+            //             .get(patternType);
+            //     String timePattern = (String) ((JSONObject) formatData.get(PatternKeys.TIMEFORMATS))
+            //             .get(patternType);
+            //     pattern = FormatUtils.format(pattern, timePattern, datePattern);
+            // }
         } else {
             pattern = format;
         }

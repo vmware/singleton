@@ -6,6 +6,8 @@ package com.vmware.vipclient.i18n.base.instances;
 
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.l2.common.PatternCategory;
+import com.vmware.vipclient.i18n.util.JSONUtils;
+
 import org.json.JSONObject;
 
 import java.util.Locale;
@@ -78,7 +80,8 @@ public class DateFormatting implements Formatting {
         PatternMessage p = (PatternMessage) factory.getMessageInstance(PatternMessage.class);
         JSONObject localeFormatData = p.getPatternMessage(locale);
         if(localeFormatData != null)
-            dateFormatData = (JSONObject) localeFormatData.get(PatternCategory.DATES.toString());
+            dateFormatData = (JSONObject) JSONUtils.getFromJSONObject(localeFormatData, PatternCategory.DATES.toString());
+            // dateFormatData = (JSONObject) localeFormatData.get(PatternCategory.DATES.toString());
         if (dateFormatData == null) {
             throw new RuntimeException("Can't format " + obj + " without pattern data!");
         }
@@ -106,7 +109,8 @@ public class DateFormatting implements Formatting {
         PatternMessage p = (PatternMessage) factory.getMessageInstance(PatternMessage.class);
         JSONObject localeFormatData = p.getPatternMessage(language, region);
         if(localeFormatData != null)
-            dateFormatData = (JSONObject) localeFormatData.get(PatternCategory.DATES.toString());
+            dateFormatData = (JSONObject) JSONUtils.getFromJSONObject(localeFormatData, PatternCategory.DATES.toString());
+            // dateFormatData = (JSONObject) localeFormatData.get(PatternCategory.DATES.toString());
         if (dateFormatData == null) {
             throw new RuntimeException("Can't format " + obj + " without pattern data!");
         }

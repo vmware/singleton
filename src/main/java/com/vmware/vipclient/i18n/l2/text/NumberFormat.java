@@ -10,6 +10,7 @@ import java.math.BigInteger;
 import org.json.JSONObject;
 
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
+import com.vmware.vipclient.i18n.util.JSONUtils;
 
 public abstract class NumberFormat {
     public static final int NUMBERSTYLE           = 0;
@@ -50,19 +51,19 @@ public abstract class NumberFormat {
         String pattern = "";
         switch (style) {
         case 0:
-            pattern = (String) numberFormats.get(PatternKeys.DECIMALFORMATS);
+            pattern = (String) JSONUtils.getFromJSONObject(numberFormats, PatternKeys.DECIMALFORMATS);
             break;
         case 1:
-            pattern = (String) numberFormats.get(PatternKeys.CURRENCYFORMATS);
+            pattern = (String) JSONUtils.getFromJSONObject(numberFormats, PatternKeys.CURRENCYFORMATS);
             break;
         case 2:
-            pattern = (String) numberFormats.get(PatternKeys.PERCENTFORMATS);
+            pattern = (String) JSONUtils.getFromJSONObject(numberFormats, PatternKeys.PERCENTFORMATS);
             break;
         case 3:
-            pattern = (String) numberFormats.get(PatternKeys.SCIENTIFICFORMATS);
+            pattern = (String) JSONUtils.getFromJSONObject(numberFormats, PatternKeys.SCIENTIFICFORMATS);
             break;
         default:
-            pattern = (String) numberFormats.get(PatternKeys.DECIMALFORMATS);
+            pattern = (String) JSONUtils.getFromJSONObject(numberFormats, PatternKeys.DECIMALFORMATS);
         }
         return pattern;
     }

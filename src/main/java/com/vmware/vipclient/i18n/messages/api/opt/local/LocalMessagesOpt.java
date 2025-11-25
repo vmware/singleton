@@ -14,6 +14,7 @@ import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.JSONBundleUtil;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
+import com.vmware.vipclient.i18n.util.JSONUtils;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.slf4j.Logger;
@@ -48,7 +49,7 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
 		try {
 			is = getInputStream();
 			JSONObject jsonObject = new JSONObject(new JSONTokener(new InputStreamReader(is, "UTF-8")));
-			Map<String, String> messages = ((JSONObject) jsonObject.get("messages")).toMap().entrySet().stream()
+			Map<String, String> messages = ((JSONObject) JSONUtils.getFromJSONObject(jsonObject, "messages")).toMap().entrySet().stream()
 				     .collect(Collectors.toMap(Map.Entry::getKey, e -> (String)e.getValue()));
 			cacheItem.setCacheItem(messages, null, System.currentTimeMillis(), null);
 		} catch (Exception e) {

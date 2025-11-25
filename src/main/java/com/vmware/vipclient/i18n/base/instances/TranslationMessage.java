@@ -414,8 +414,10 @@ public class TranslationMessage implements Message {
         sourcesList.addAll(sources);
         List<JSONObject> removedList = new ArrayList<>();
         for (JSONObject jo : sourcesList) {
-            String key = (String) jo.get(ConstantsKeys.KEY);
-            String source = (String) jo.get(ConstantsKeys.SOURCE);
+            String key = (String) JSONUtils.getFromJSONObject(jo, ConstantsKeys.KEY);
+            String source = (String) JSONUtils.getFromJSONObject(jo, ConstantsKeys.SOURCE);
+            // String key = (String) jo.get(ConstantsKeys.KEY);
+            // String source = (String) jo.get(ConstantsKeys.SOURCE);
             dto.setKey(key);
             dto.setSource(source);
             dto.setLocale(ConstantsKeys.LATEST);

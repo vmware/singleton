@@ -7,6 +7,7 @@ package com.vmware.vipclient.i18n.l2.number.parser;
 import org.json.JSONObject;
 
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
+import com.vmware.vipclient.i18n.util.JSONUtils;
 
 public class IntegerDigitsParser {
     private JSONObject numberSymbols;
@@ -17,7 +18,8 @@ public class IntegerDigitsParser {
 
     public String groupIntegerDigits(String integerDigits, int groupingSize) {
         if (integerDigits.length() > groupingSize) {
-            String localizedGroupSep = (String) numberSymbols.get(PatternKeys.GROUP);
+            String localizedGroupSep = (String) JSONUtils.getFromJSONObject(numberSymbols, PatternKeys.GROUP);
+            // String localizedGroupSep = (String) numberSymbols.get(PatternKeys.GROUP);
             String reverseNumStr = new StringBuilder(integerDigits).reverse().toString();
             StringBuilder groupedReverseNumStr = new StringBuilder(reverseNumStr);
             int index;

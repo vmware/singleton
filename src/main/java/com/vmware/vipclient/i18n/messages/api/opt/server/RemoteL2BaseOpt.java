@@ -9,6 +9,8 @@ import com.vmware.vipclient.i18n.base.cache.FormatCacheItem;
 import com.vmware.vipclient.i18n.messages.api.opt.BaseOpt;
 import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
+import com.vmware.vipclient.i18n.util.JSONUtils;
+
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,7 +42,7 @@ public class RemoteL2BaseOpt extends BaseOpt{
 		try {
 			JSONObject respBody = new JSONObject(responseBody);
 			if (respBody != null && isSuccess(getResponseCode(respBody))) {
-				return respBody.get(ConstantsKeys.DATA);
+				return JSONUtils.getFromJSONObject(respBody, ConstantsKeys.DATA);
 			}
 		} catch (Exception e) {
 			logger.error(e.getMessage());

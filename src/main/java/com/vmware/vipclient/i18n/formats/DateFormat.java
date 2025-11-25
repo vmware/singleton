@@ -16,6 +16,7 @@ import com.vmware.vipclient.i18n.base.BaseFormat;
 import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
+import com.vmware.vipclient.i18n.util.JSONUtils;
 
 public class DateFormat extends BaseFormat {
     private Logger logger = LoggerFactory.getLogger(DateFormat.class);
@@ -54,12 +55,16 @@ public class DateFormat extends BaseFormat {
         try {
             retJson = new JSONObject(retJsonStr);
             if (retJson != null) {
-                JSONObject dataJson = (JSONObject) retJson
-                        .get(ConstantsKeys.DATA);
+                JSONObject dataJson = (JSONObject) JSONUtils.getFromJSONObject(retJson, ConstantsKeys.DATA);
+                // JSONObject dataJson = (JSONObject) retJson
+                //        .get(ConstantsKeys.DATA);
                 if (dataJson != null) {
-                    format = dataJson.get(ConstantsKeys.FORMATTED_DATE) == null ? ""
-                            : dataJson.get(ConstantsKeys.FORMATTED_DATE)
+                    format = JSONUtils.getFromJSONObject(dataJson, ConstantsKeys.FORMATTED_DATE) == null ? ""
+                            : JSONUtils.getFromJSONObject(dataJson, ConstantsKeys.FORMATTED_DATE)
                                     .toString();
+                    // format = dataJson.get(ConstantsKeys.FORMATTED_DATE) == null ? ""
+                    //        : dataJson.get(ConstantsKeys.FORMATTED_DATE)
+                    //                .toString();
                 }
             }
         } catch (JSONException e) {
