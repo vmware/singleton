@@ -12,6 +12,8 @@ import com.vmware.vipclient.i18n.messages.api.opt.PatternOpt;
 import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
+import com.vmware.vipclient.i18n.util.JSONUtils;
+
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -74,7 +76,7 @@ public class RemotePatternOpt extends RemoteL2BaseOpt implements PatternOpt{
         Map<String, Object> categoriesObj = null;
         JSONObject dataObj = (JSONObject) getDataFromResponse(responseBody);
         if (dataObj != null && dataObj instanceof JSONObject) {
-            categoriesObj = ((JSONObject) dataObj.get(PatternKeys.CATEGORIES)).toMap();
+            categoriesObj = ((JSONObject) JSONUtils.getFromJSONObject(dataObj, PatternKeys.CATEGORIES)).toMap();
         }
         return categoriesObj;
     }

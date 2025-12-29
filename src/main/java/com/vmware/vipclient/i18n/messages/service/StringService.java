@@ -75,8 +75,8 @@ public class StringService extends BaseService{
             CacheService c = new CacheService(dto);
             Map<String, String> dataMap = new HashMap<>();
             for (JSONObject jo : sources) {
-                dataMap.put((String) jo.get(ConstantsKeys.KEY),
-                        jo.get(ConstantsKeys.SOURCE) == null ? "" : (String) jo.get(ConstantsKeys.SOURCE));
+                dataMap.put((String) JSONUtils.getFromJSONObject(jo, ConstantsKeys.KEY),
+                        JSONUtils.getFromJSONObject(jo, ConstantsKeys.SOURCE) == null ? "" : (String) JSONUtils.getFromJSONObject(jo, ConstantsKeys.SOURCE));
             }
             
             c.updateCacheOfComponent(new MessageCacheItem(dataMap));

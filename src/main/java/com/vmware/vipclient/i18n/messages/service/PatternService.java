@@ -9,6 +9,7 @@ import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.base.cache.PatternCacheItem;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.util.FormatUtils;
+import com.vmware.vipclient.i18n.util.JSONUtils;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -27,7 +28,7 @@ public class PatternService {
     public JSONObject getPatternsByCategory(String locale, String category) {
         PatternCacheItem cacheItem = getPatternsByLocale(locale);
         JSONObject patterns = new JSONObject(cacheItem.getCachedData());
-        return (JSONObject) patterns.get(category);
+        return (JSONObject) JSONUtils.getFromJSONObject(patterns, category);
     }
 
     public JSONObject getPatterns(String locale) {

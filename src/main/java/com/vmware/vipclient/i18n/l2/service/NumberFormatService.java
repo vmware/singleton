@@ -11,6 +11,8 @@ import com.vmware.vipclient.i18n.l2.common.PatternCategory;
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
 import com.vmware.vipclient.i18n.l2.text.NumberFormat;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
+import com.vmware.vipclient.i18n.util.JSONUtils;
+
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -57,7 +59,8 @@ public class NumberFormatService {
                 validateCurrencyCode(currencyCode);
                 numberFormatData = getCurrencyRelatedData(localeFormatData, currencyCode);
             } else {
-                numberFormatData = (JSONObject) localeFormatData.get(PatternCategory.NUMBERS.toString());
+                numberFormatData = (JSONObject) JSONUtils.getFromJSONObject(localeFormatData, PatternCategory.NUMBERS.toString());
+                // numberFormatData = (JSONObject) localeFormatData.get(PatternCategory.NUMBERS.toString());
             }
             if (numberFormatData == null) {
                 // return (String) value;
@@ -66,15 +69,19 @@ public class NumberFormatService {
             NumberFormat numberFormat = NumberFormat.getInstance(numberFormatData, style);
             formatNumber = numberFormat.format(value, fractionSize);
             if (style == NumberFormat.PERCENTSTYLE) {
-                String percentSymbol = (String) ((JSONObject) numberFormatData.get(PatternKeys.NUMBERSYMBOLS))
-                        .get(PatternKeys.PERCENTSIGN);
+                String percentSymbol = (String) JSONUtils.getFromJSONObject(((JSONObject) JSONUtils.getFromJSONObject(numberFormatData, PatternKeys.NUMBERSYMBOLS))
+                        , PatternKeys.PERCENTSIGN);
+                //String percentSymbol = (String) ((JSONObject) numberFormatData.get(PatternKeys.NUMBERSYMBOLS))
+                //        .get(PatternKeys.PERCENTSIGN);
                 formatNumber = formatNumber.replace(String.valueOf(ConstantChars.PERCENTSIGN), percentSymbol);
             } else if (style == NumberFormat.CURRENCYSTYLE) {
-                JSONObject currencyData = (JSONObject) numberFormatData.get(PatternKeys.CURRENCY);
+                JSONObject currencyData = (JSONObject) JSONUtils.getFromJSONObject(numberFormatData, PatternKeys.CURRENCY);
+                // JSONObject currencyData = (JSONObject) numberFormatData.get(PatternKeys.CURRENCY);
                 // String narrowCurrencySymbol = (String) currencyData.get(PatternKeys.NARROWCURRENCYSYMBOL);
                 // String currencySymbol = narrowCurrencySymbol != null? narrowCurrencySymbol : (String)
                 // currencyData.get(PatternKeys.CURRENCYSYMBOL);
-                String currencySymbol = (String) currencyData.get(PatternKeys.CURRENCYSYMBOL);
+                String currencySymbol = (String) JSONUtils.getFromJSONObject(currencyData, PatternKeys.CURRENCYSYMBOL);
+                // String currencySymbol = (String) currencyData.get(PatternKeys.CURRENCYSYMBOL);
                 formatNumber = formatNumber.replace(String.valueOf(ConstantChars.CURRENCY_SIGN),
                         currencySymbol);
             }
@@ -113,7 +120,8 @@ public class NumberFormatService {
             }
             numberFormatData = getCurrencyRelatedData(localeFormatData, actualCurrencyCode);
         } else {
-            numberFormatData = (JSONObject) localeFormatData.get(PatternCategory.NUMBERS.toString());
+            numberFormatData = (JSONObject) JSONUtils.getFromJSONObject(localeFormatData, PatternCategory.NUMBERS.toString());
+            // numberFormatData = (JSONObject) localeFormatData.get(PatternCategory.NUMBERS.toString());
         }
         if (numberFormatData == null) {
             // return (String) value;
@@ -122,15 +130,19 @@ public class NumberFormatService {
         NumberFormat numberFormat = NumberFormat.getInstance(numberFormatData, style);
         formatNumber = numberFormat.format(value, fractionSize);
         if (style == NumberFormat.PERCENTSTYLE) {
-            String percentSymbol = (String) ((JSONObject) numberFormatData.get(PatternKeys.NUMBERSYMBOLS))
-                    .get(PatternKeys.PERCENTSIGN);
+            String percentSymbol = (String) JSONUtils.getFromJSONObject(((JSONObject) JSONUtils.getFromJSONObject(numberFormatData, PatternKeys.NUMBERSYMBOLS))
+                    ,PatternKeys.PERCENTSIGN);
+            // String percentSymbol = (String) ((JSONObject) numberFormatData.get(PatternKeys.NUMBERSYMBOLS))
+            //        .get(PatternKeys.PERCENTSIGN);
             formatNumber = formatNumber.replace(String.valueOf(ConstantChars.PERCENTSIGN), percentSymbol);
         } else if (style == NumberFormat.CURRENCYSTYLE) {
-            JSONObject currencyData = (JSONObject) numberFormatData.get(PatternKeys.CURRENCY);
+            JSONObject currencyData = (JSONObject) JSONUtils.getFromJSONObject(numberFormatData, PatternKeys.CURRENCY);
+            // JSONObject currencyData = (JSONObject) numberFormatData.get(PatternKeys.CURRENCY);
             // String narrowCurrencySymbol = (String) currencyData.get(PatternKeys.NARROWCURRENCYSYMBOL);
             // String currencySymbol = narrowCurrencySymbol != null? narrowCurrencySymbol : (String)
             // currencyData.get(PatternKeys.CURRENCYSYMBOL);
-            String currencySymbol = (String) currencyData.get(PatternKeys.CURRENCYSYMBOL);
+            String currencySymbol = (String) JSONUtils.getFromJSONObject(currencyData, PatternKeys.CURRENCYSYMBOL);
+            // String currencySymbol = (String) currencyData.get(PatternKeys.CURRENCYSYMBOL);
             formatNumber = formatNumber.replace(String.valueOf(ConstantChars.CURRENCY_SIGN),
                     currencySymbol);
         }
@@ -139,17 +151,24 @@ public class NumberFormatService {
 
     private JSONObject getCurrencyRelatedData(JSONObject allCategoriesData, String currencyCode) {
         JSONObject currencyFormatData = new JSONObject();
-        JSONObject numberFormatData = (JSONObject) allCategoriesData.get(PatternCategory.NUMBERS.toString());
-        JSONObject currencyData = (JSONObject) ((JSONObject) allCategoriesData.get(PatternKeys.CURRENCIES))
-                .get(currencyCode);
+        JSONObject numberFormatData = (JSONObject) JSONUtils.getFromJSONObject(allCategoriesData, PatternCategory.NUMBERS.toString());
+        JSONObject currencyData = (JSONObject) JSONUtils.getFromJSONObject(((JSONObject) JSONUtils.getFromJSONObject(allCategoriesData, PatternKeys.CURRENCIES))
+                , currencyCode);
+        // JSONObject numberFormatData = (JSONObject) allCategoriesData.get(PatternCategory.NUMBERS.toString());
+        // JSONObject currencyData = (JSONObject) ((JSONObject) allCategoriesData.get(PatternKeys.CURRENCIES))
+        //        .get(currencyCode);
         if (currencyData == null) {
             throw new IllegalArgumentException("Unsupported currency code " + currencyCode + ".");
         }
-        JSONObject currencySupplementalData = (JSONObject) ((JSONObject) allCategoriesData
-                .get(PatternCategory.SUPPLEMENTAL.toString())).get(PatternKeys.CURRENCIES);
+        JSONObject currencySupplementalData = (JSONObject) JSONUtils.getFromJSONObject(((JSONObject) JSONUtils.getFromJSONObject(allCategoriesData
+                , PatternCategory.SUPPLEMENTAL.toString())), PatternKeys.CURRENCIES);
+        //JSONObject currencySupplementalData = (JSONObject) ((JSONObject) allCategoriesData
+        //        .get(PatternCategory.SUPPLEMENTAL.toString())).get(PatternKeys.CURRENCIES);
         JSONObject fractionData = null;
         try {
-        	fractionData = (JSONObject) ((JSONObject) currencySupplementalData.get(PatternKeys.FRACTIONS)).get(currencyCode);
+            fractionData = (JSONObject) JSONUtils.getFromJSONObject(((JSONObject) JSONUtils.getFromJSONObject(currencySupplementalData,
+                PatternKeys.FRACTIONS)), currencyCode);
+        	// fractionData = (JSONObject) ((JSONObject) currencySupplementalData.get(PatternKeys.FRACTIONS)).get(currencyCode);
         } catch (org.json.JSONException e) {
         	logger.info("NumberFormatService - Can't find fractionData, null will be set");
         }               

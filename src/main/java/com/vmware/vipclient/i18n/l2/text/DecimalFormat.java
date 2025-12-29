@@ -16,6 +16,7 @@ import com.vmware.vipclient.i18n.l2.common.ConstantChars;
 import com.vmware.vipclient.i18n.l2.common.PatternCategory;
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
 import com.vmware.vipclient.i18n.l2.number.parser.IntegerDigitsParser;
+import com.vmware.vipclient.i18n.util.JSONUtils;
 
 public class DecimalFormat extends NumberFormat {
     Logger             logger = LoggerFactory.getLogger(DecimalFormat.class);
@@ -43,19 +44,26 @@ public class DecimalFormat extends NumberFormat {
     public DecimalFormat(JSONObject formatData, int style) {
         JSONObject numberFormats;
         if (style == NumberFormat.CURRENCYSTYLE) {
-            this.numberSymbols = (JSONObject) ((JSONObject) formatData.get(PatternCategory.NUMBERS.toString()))
-                    .get(PatternKeys.NUMBERSYMBOLS);
-            numberFormats = (JSONObject) ((JSONObject) formatData.get(PatternCategory.NUMBERS.toString()))
-                    .get(PatternKeys.NUMBERFORMATS);
+            this.numberSymbols = (JSONObject) JSONUtils.getFromJSONObject(((JSONObject) JSONUtils.getFromJSONObject(formatData, PatternCategory.NUMBERS.toString()))
+                    , PatternKeys.NUMBERSYMBOLS);
+            numberFormats = (JSONObject) JSONUtils.getFromJSONObject(((JSONObject) JSONUtils.getFromJSONObject(formatData, PatternCategory.NUMBERS.toString()))
+                    , PatternKeys.NUMBERFORMATS);
+            // this.numberSymbols = (JSONObject) ((JSONObject) formatData.get(PatternCategory.NUMBERS.toString()))
+            //         .get(PatternKeys.NUMBERSYMBOLS);
+            // numberFormats = (JSONObject) ((JSONObject) formatData.get(PatternCategory.NUMBERS.toString()))
+            //         .get(PatternKeys.NUMBERFORMATS);
             this.fractionData = null;
             try {
-            	this.fractionData = (JSONObject) formatData.get(PatternKeys.FRACTION);
+            	this.fractionData = (JSONObject) JSONUtils.getFromJSONObject(formatData, PatternKeys.FRACTION);
+                // this.fractionData = (JSONObject) formatData.get(PatternKeys.FRACTION);
             } catch (org.json.JSONException e) {
             	logger.info("Can't find fractionData, null will be set");
             }
         } else {
-            this.numberSymbols = (JSONObject) formatData.get(PatternKeys.NUMBERSYMBOLS);
-            numberFormats = (JSONObject) formatData.get(PatternKeys.NUMBERFORMATS);
+            this.numberSymbols = (JSONObject) JSONUtils.getFromJSONObject(formatData, PatternKeys.NUMBERSYMBOLS);
+            numberFormats = (JSONObject) JSONUtils.getFromJSONObject(formatData, PatternKeys.NUMBERFORMATS);
+            // this.numberSymbols = (JSONObject) formatData.get(PatternKeys.NUMBERSYMBOLS);
+            // numberFormats = (JSONObject) formatData.get(PatternKeys.NUMBERFORMATS);
         }
         this.pattern = getPattern(numberFormats, style);
         this.style = style;
@@ -273,7 +281,8 @@ public class DecimalFormat extends NumberFormat {
         IntegerDigitsParser parser = new IntegerDigitsParser(numberSymbols);
         String groupedIntegerDigits = parser.groupIntegerDigits(numArray[0], patternInfo.getGroupingSize());
         localizedNumStr.append(groupedIntegerDigits);
-        String localizedDecimalSep = (String) numberSymbols.get(PatternKeys.DECIMAL);
+        String localizedDecimalSep = (String) JSONUtils.getFromJSONObject(numberSymbols, PatternKeys.DECIMAL);
+        // String localizedDecimalSep = (String) numberSymbols.get(PatternKeys.DECIMAL);
         if (numArray.length > 1) {
             localizedNumStr.append(localizedDecimalSep).append(numArray[1]);
         }
@@ -287,13 +296,15 @@ public class DecimalFormat extends NumberFormat {
 
     private void adjustFraction4Currency(NumberPatternInfo patternInfo) {
         if (fractionData != null) {
-            int round = Integer.parseInt((String) this.fractionData.get(PatternKeys._ROUNDING));
+            int round = Integer.parseInt((String) JSONUtils.getFromJSONObject(this.fractionData, PatternKeys._ROUNDING));
+            // int round = Integer.parseInt((String) this.fractionData.get(PatternKeys._ROUNDING));
             /*
              * if(round != 0){
              * patternInfo.setRound();
              * }
              */
-            int digits = Integer.parseInt((String) this.fractionData.get(PatternKeys._DIGITS));
+            int digits = Integer.parseInt((String) JSONUtils.getFromJSONObject(this.fractionData, PatternKeys._DIGITS));
+            // int digits = Integer.parseInt((String) this.fractionData.get(PatternKeys._DIGITS));
             int oldMinDigits = patternInfo.getMinimumFractionDigits();
             if (oldMinDigits == patternInfo.getMaximumFractionDigits()) {
                 patternInfo.setMinimumFractionDigits(digits);

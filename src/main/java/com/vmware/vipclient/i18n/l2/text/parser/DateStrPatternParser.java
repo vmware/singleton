@@ -6,6 +6,8 @@ package com.vmware.vipclient.i18n.l2.text.parser;
 
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
 import com.vmware.vipclient.i18n.l2.text.PatternItem;
+import com.vmware.vipclient.i18n.util.JSONUtils;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -25,31 +27,31 @@ public class DateStrPatternParser implements PatternParser {
                 || String.valueOf(item.getType()).indexOf("L") != -1) {// monthsFormat
             switch (item.getLength()) {
             case 3:
-                formatData = (JSONArray) formatObj.get(PatternKeys.ABBREVIATED);
+                formatData = (JSONArray) JSONUtils.getFromJSONObject(formatObj, PatternKeys.ABBREVIATED);
                 break;
             case 4:
-                formatData = (JSONArray) formatObj.get(PatternKeys.WIDE);
+                formatData = (JSONArray) JSONUtils.getFromJSONObject(formatObj, PatternKeys.WIDE);
                 break;
             case 5:
-                formatData = (JSONArray) formatObj.get(PatternKeys.NARROW);
+                formatData = (JSONArray) JSONUtils.getFromJSONObject(formatObj, PatternKeys.NARROW);
                 break;
             default:
 
             }
         } else if (String.valueOf(item.getType()).indexOf("E") != -1) {// daysFormat
-            formatObj = (JSONObject) formatObj.get("daysFormat");
+            formatObj = (JSONObject) JSONUtils.getFromJSONObject(formatObj, "daysFormat");
             switch (item.getLength()) {
             case 4:
-                formatData = (JSONArray) formatObj.get(PatternKeys.WIDE);
+                formatData = (JSONArray) JSONUtils.getFromJSONObject(formatObj, PatternKeys.WIDE);
                 break;
             case 5:
-                formatData = (JSONArray) formatObj.get(PatternKeys.NARROW);
+                formatData = (JSONArray) JSONUtils.getFromJSONObject(formatObj, PatternKeys.NARROW);
                 break;
             case 6:
-                formatData = (JSONArray) formatObj.get(PatternKeys.SHORT);
+                formatData = (JSONArray) JSONUtils.getFromJSONObject(formatObj, PatternKeys.SHORT);
                 break;
             default:
-                formatData = (JSONArray) formatObj.get(PatternKeys.ABBREVIATED);
+                formatData = (JSONArray) JSONUtils.getFromJSONObject(formatObj, PatternKeys.ABBREVIATED);
             }
             value = value - 1;// Since the day index in Calendar starts from 1, but that in format data starts from 0, hence value need reduce one
         }

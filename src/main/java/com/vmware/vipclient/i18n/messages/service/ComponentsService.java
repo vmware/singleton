@@ -16,6 +16,7 @@ import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 import com.vmware.vipclient.i18n.util.FormatUtils;
+import com.vmware.vipclient.i18n.util.JSONUtils;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -92,8 +93,8 @@ public class ComponentsService {
         MessageCacheItem cacheItem = new MessageCacheItem();
         JSONObject data = opt.queryFromServer(componentsToQuery, localesToQuery, cacheItem);
         if(data != null) {
-            final JSONArray bundles = (JSONArray) data.get(ConstantsKeys.BUNDLES);
-            final JSONArray localesFromServer = (JSONArray) data.get(ConstantsKeys.LOCALES);
+            final JSONArray bundles = (JSONArray) JSONUtils.getFromJSONObject(data, ConstantsKeys.BUNDLES);
+            final JSONArray localesFromServer = (JSONArray) JSONUtils.getFromJSONObject(data, ConstantsKeys.LOCALES);
             final Map<String, String> localeMap = this.makeLocaleMap(localesToQuery, localesFromServer.toList().stream()
             	    .map(obj -> obj == null ? null : obj.toString())
             	    .collect(Collectors.toList()));
@@ -104,13 +105,13 @@ public class ComponentsService {
             final Iterator<?> iter = bundles.iterator();
             while (iter.hasNext()) {
                 final JSONObject bundle = (JSONObject) iter.next();
-                final String locale = localeMap.get((String) bundle.get(ConstantsKeys.LOCALE));
-                final String comp = (String) bundle.get(ConstantsKeys.COMPONENT);
+                final String locale = localeMap.get((String) JSONUtils.getFromJSONObject(bundle, ConstantsKeys.LOCALE));
+                final String comp = (String) JSONUtils.getFromJSONObject(bundle, ConstantsKeys.COMPONENT);
                 JSONObject messages = null;
                 try {
-                    Object object = bundle.get(ConstantsKeys.MESSAGES);
+                    Object object = JSONUtils.getFromJSONObject(bundle, ConstantsKeys.MESSAGES);
                     if ( object instanceof JSONObject) {
-                        messages = (JSONObject) bundle.get(ConstantsKeys.MESSAGES);
+                        messages = (JSONObject) JSONUtils.getFromJSONObject(bundle, ConstantsKeys.MESSAGES);
                     }
                 } catch (JSONException e) {
                 	logger.info("can't get messages, null will be set");

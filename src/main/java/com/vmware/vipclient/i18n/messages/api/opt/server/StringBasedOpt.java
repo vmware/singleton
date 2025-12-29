@@ -22,6 +22,8 @@ import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
+import com.vmware.vipclient.i18n.util.JSONUtils;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -55,7 +57,7 @@ public class StringBasedOpt extends BaseOpt implements Opt, KeyBasedOpt {
     public String getString() {
         JSONObject jo = this.getComponentMessages();
         String k = dto.getKey();
-        Object v = jo.get(k);
+        Object v = JSONUtils.getFromJSONObject(jo, k);
         return (v == null ? "" : (String) v);
     }
 
@@ -146,7 +148,7 @@ public class StringBasedOpt extends BaseOpt implements Opt, KeyBasedOpt {
                         Map<String,String> messages = new HashMap<>();
                         for(Object obj : dataArray){
                             JSONObject keyTranslationObj = (JSONObject) obj;
-                            messages.put((String) keyTranslationObj.get(ConstantsKeys.VERSION), (String) keyTranslationObj.get(ConstantsKeys.TRANSLATION));
+                            messages.put((String) JSONUtils.getFromJSONObject(keyTranslationObj, ConstantsKeys.VERSION), (String) JSONUtils.getFromJSONObject(keyTranslationObj, ConstantsKeys.TRANSLATION));
                         }
                         if (messages != null) {
                             cacheItem.setCacheItem(messages, etag, timestamp, maxAgeMillis);

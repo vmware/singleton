@@ -11,6 +11,7 @@ import org.json.JSONObject;
 
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
 import com.vmware.vipclient.i18n.l2.text.PatternItem;
+import com.vmware.vipclient.i18n.util.JSONUtils;
 
 public class EraPatternParser implements PatternParser {
 
@@ -29,13 +30,13 @@ public class EraPatternParser implements PatternParser {
         JSONArray erasData = null;
         switch (item.getLength()) {
         case 4:
-            erasData = (JSONArray) erasFormat.get(PatternKeys.WIDE);
+            erasData = (JSONArray) JSONUtils.getFromJSONObject(erasFormat, PatternKeys.WIDE);
             break;
         case 5:
-            erasData = (JSONArray) erasFormat.get(PatternKeys.NARROW);
+            erasData = (JSONArray) JSONUtils.getFromJSONObject(erasFormat, PatternKeys.NARROW);
             break;
         default:
-            erasData = (JSONArray) erasFormat.get(PatternKeys.ABBREVIATED);
+            erasData = (JSONArray) JSONUtils.getFromJSONObject(erasFormat, PatternKeys.ABBREVIATED);
         }
         return erasData.get(era).toString();
     }

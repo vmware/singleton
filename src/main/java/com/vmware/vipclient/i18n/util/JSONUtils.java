@@ -50,4 +50,13 @@ public class JSONUtils {
     public static boolean isEmpty(String json) {
         return json == null || "".equals(json) || "{}".equals(json);
     }
+
+    public static Object getFromJSONObject(JSONObject jsonObj, String key) {
+        try {
+            return jsonObj.get(key);
+        } catch (JSONException e) {
+            logger.warn(e.getMessage());
+            return null;
+        } 
+    }
 }

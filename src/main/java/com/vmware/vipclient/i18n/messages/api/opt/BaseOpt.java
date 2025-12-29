@@ -7,6 +7,7 @@ package com.vmware.vipclient.i18n.messages.api.opt;
 import org.json.JSONObject;
 
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
+import com.vmware.vipclient.i18n.util.JSONUtils;
 
 public class BaseOpt {
     protected String     responseStr;
@@ -20,8 +21,8 @@ public class BaseOpt {
         try {
             JSONObject responseObj = new JSONObject(responseStr);
             if (responseObj != null) {
-                JSONObject dataObj = (JSONObject) responseObj.get(ConstantsKeys.DATA);
-                msgsObj = dataObj.get(node);
+                JSONObject dataObj = (JSONObject) JSONUtils.getFromJSONObject(responseObj, ConstantsKeys.DATA);
+                msgsObj = JSONUtils.getFromJSONObject(dataObj, node);
                 return msgsObj;
             }
         } catch (Exception e) {
@@ -44,11 +45,11 @@ public class BaseOpt {
         try {
             JSONObject responseObj = new JSONObject(responseStr);
             if (responseObj != null) {
-                Object obj = responseObj.get(ConstantsKeys.RESPONSE);
+                Object obj = JSONUtils.getFromJSONObject(responseObj, ConstantsKeys.RESPONSE);
                 if (obj != null && !obj.toString().equalsIgnoreCase("")) {
                     JSONObject dataObj = (JSONObject) obj;
                     if (dataObj != null) {
-                        msgObject = dataObj.get(node);
+                        msgObject = JSONUtils.getFromJSONObject(dataObj, node);
                     }
                 }
             }
@@ -64,23 +65,23 @@ public class BaseOpt {
     }
 
     public Object getDataPart(JSONObject obj) {
-        return obj.get(ConstantsKeys.DATA);
+        return JSONUtils.getFromJSONObject(obj, ConstantsKeys.DATA);
     }
     
     public String getLocale(JSONObject obj) {
-    	return (String) ((JSONObject)getDataPart(obj)).get(ConstantsKeys.LOCALE);
+    	return (String) JSONUtils.getFromJSONObject(((JSONObject)getDataPart(obj)), ConstantsKeys.LOCALE);
     }
 
     public JSONObject getResponsePart(JSONObject obj) {
-        return ((JSONObject) obj.get(ConstantsKeys.RESPONSE));
+        return ((JSONObject) JSONUtils.getFromJSONObject(obj, ConstantsKeys.RESPONSE));
     }
 
     public int getResponseCode(JSONObject obj) {
-        return Integer.parseInt(getResponsePart(obj).get(ConstantsKeys.CODE).toString());
+        return Integer.parseInt(JSONUtils.getFromJSONObject(getResponsePart(obj), ConstantsKeys.CODE).toString());
     }
     
     public String getResponseMessage(JSONObject obj) {
-        return (String) getResponsePart(obj).get(ConstantsKeys.MESSAGE);
+        return (String) JSONUtils.getFromJSONObject(getResponsePart(obj), ConstantsKeys.MESSAGE);
     }
 
     public boolean isSuccess(int statusCode) {
