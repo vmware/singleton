@@ -47,13 +47,13 @@ Package the client library
 npm pack
 ```
 
-The library will be packaged in the same directory (eg. singleton-i18n-js-core-sdk-server-0.5.7.tgz)
+The library will be packaged in the same directory (eg. singleton-i18n-js-core-sdk-server-0.5.9.tgz)
 
 Import the library in your ES2015 application
 
 ```
 cd <root path of your app>
-npm install <path-to-location-of-library-in-previous-step/singleton-i18n-js-core-sdk-server-0.5.7.tgz>
+npm install <path-to-location-of-library-in-previous-step/singleton-i18n-js-core-sdk-server-0.5.9.tgz>
 ```
 
 Configure your main module file :

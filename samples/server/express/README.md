@@ -7,7 +7,7 @@
 
 - Build the Singleton [JS client library](https://github.com/vmware/singleton/tree/g11n-js-client). The JS client library's location is preconfigured in this sample app's package.json. Change as needed.
 ```
-"@singleton-i18n/js-core-sdk-server": "file:../../../singleton-i18n-js-core-sdk-server-0.5.7.tgz"
+"@singleton-i18n/js-core-sdk-server": "file:../../../singleton-i18n-js-core-sdk-server-0.5.9.tgz"
 ```
 
 ## Install 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 VMware, Inc.
+ * Copyright 2019-2026 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 import { Store } from '../cache';
@@ -85,7 +85,9 @@ export class L10nService {
         if (this.sourceData && this.sourceData[key]) {
             return this.sourceData && this.sourceData[key];
         }
-        this.logger.error('No English found for key: ' + key + ' in sourceBundle');
+        if (typeof window !== "undefined" && typeof window.localStorage !== "undefined" && window.localStorage.getItem("enable_localization_debug") === "true") {
+            this.logger.error('No English found for key: ' + key + ' in sourceBundle');
+        }
         return key;
     }
     /**
