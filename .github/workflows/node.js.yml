@@ -57,12 +57,12 @@ jobs:
     if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [18.x]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
@@ -86,34 +86,34 @@ jobs:
       security-events: write
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [18.x]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Create cache folder
         run: |
           mkdir -p /home/runner/.npm
         continue-on-error: true
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v2
+        uses: github/codeql-action/init@v3
         with:
           languages: javascript
       - name: Autobuild
-        uses: github/codeql-action/autobuild@v2
+        uses: github/codeql-action/autobuild@v3
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v2
+        uses: github/codeql-action/analyze@v3
 
   codacy-analysis-cli:
     name: Codacy Analysis CLI
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@main
+        uses: actions/checkout@v4
       - name: Run Codacy Analysis CLI
         uses: codacy/codacy-analysis-cli-action@master
         with:
@@ -125,10 +125,11 @@ jobs:
           # This will handover control about PR rejection to the GitHub side
           max-allowed-issues: 2147483647
       # Upload the SARIF file generated in the previous step
-      - name: Upload SARIF results file
-        uses: github/codeql-action/upload-sarif@main
-        with:
-          sarif_file: results.sarif
+      # - name: Upload SARIF results file
+        # uses: github/codeql-action/upload-sarif@v4
+        # with:
+          # sarif_file: results.sarif
+          #category: codacy-javascript
 
   smoke-test:
     name: Smoke Test
@@ -137,7 +138,7 @@ jobs:
     if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [18.x]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -147,7 +148,7 @@ jobs:
           distribution: 'adopt'
           java-version: '17'
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
@@ -164,7 +165,7 @@ jobs:
           cp -a devops/autotest/client/jscoresdk/resources/bundles/JSCoreSDKTest service/g11n-ws/vip-manager-i18n/src/main/resources/l10n/bundles/
           cd $GITHUB_WORKSPACE/service/g11n-ws && ./gradlew build -x test
           cp $GITHUB_WORKSPACE/devops/deploy/i18n-service/Dockerfile $GITHUB_WORKSPACE/service/publish/
-          cd $GITHUB_WORKSPACE/service/publish && mv singleton-[0-9\.]*.jar i18n-service.jar
+          cd $GITHUB_WORKSPACE/service/publish && mv singleton-0.1.0.jar i18n-service.jar
           docker build -t singleton .
           docker run -d -p 8090:8090 -p 8091:8091 --name singleton singleton
           docker ps
