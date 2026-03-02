@@ -7,4 +7,4 @@ ADD i18n-service.jar app.jar
 EXPOSE 8090
 EXPOSE 8091
 
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java","-XX:-UseContainerSupport", "-jar","/app.jar"]

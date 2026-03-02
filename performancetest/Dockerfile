@@ -8,4 +8,4 @@ COPY l10n l10n
 EXPOSE 8090
 EXPOSE 8091
 
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java","-XX:-UseContainerSupport", "-jar","/app.jar"]
