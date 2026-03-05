@@ -67,7 +67,7 @@ subprojects{
     	snakeyam="2.0"
     	jjwtVersion="0.9.1"
     	hibernateJpa21Api = "1.0.2.Final"
-    	log4j2Version="2.18.0"
+    	log4j2Version="2.25.3"
     	slf4jVersion="1.7.32"
     	esapiVersion="2.6.2.0"
 
@@ -86,5 +86,21 @@ subprojects{
 
    tasks.withType(JavaCompile) {
        options.encoding = "UTF-8"
+    }
+
+    // CVE-2025-68161: force log4j2 >= 2.25.3 via Spring dependency-management plugin BOM override
+    plugins.withId('io.spring.dependency-management') {
+        dependencyManagement {
+            dependencies {
+                dependencySet(group: 'org.apache.logging.log4j', version: "$log4j2Version") {
+                    entry 'log4j-api'
+                    entry 'log4j-core'
+                    entry 'log4j-slf4j2-impl'
+                    entry 'log4j-jul'
+                    entry 'log4j-web'
+                    entry 'log4j-layout-template-json'
+                }
+            }
+        }
     }
 }
