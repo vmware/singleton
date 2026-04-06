@@ -11,8 +11,7 @@ Gem::Specification.new do |s|
   s.homepage = 'https://github.com/vmware/singleton'
   s.summary = 'Singleton Ruby client'
 
-  require 'rake'
-  s.files         = FileList['lib/**/*.rb', 'bin/*'].to_a
+  s.files         = Dir['lib/**/*.rb', 'bin/*'].to_a
   s.executables   = s.files.grep(%r{^bin/}).map { |f| File.basename(f) }
   s.require_paths = ['lib']
 
