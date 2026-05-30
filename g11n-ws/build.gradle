@@ -48,27 +48,27 @@ subprojects{
     ext {
         projectVersion = '0.0.1-SNAPSHOT'
         httpclient='4.5.13'
-        jacksonVersion = '2.18.6'
+        jacksonVersion = '2.18.7'
         springdocVersion='2.8.8'
         tomcatVersion= '10.1.55'
         springWebMvcVersion= '6.2.18'
 
-    	ehCacheVersion = '3.10.8'
+    	ehCacheVersion = '3.10.9'
     	cacheApiVersion='1.1.1'
     	hsqlVersion = '2.3.3'
     	junitVersion = '4.13.2'
     	jsonSimpleVersion = '1.1.1'
     	commonsCollectionsVersion = '3.2.2'
     	commonsLangVersion = '3.19.0'
-    	commonsIoVersion = '2.17.0'
-    	commonsCodecVersion='1.15'
+    	commonsIoVersion = '2.18.0'
+    	commonsCodecVersion='1.18.0'
 
     	guavaVersion="32.1.2-jre"
-    	snakeyam="2.0"
+    	snakeyam="2.6"
     	jjwtVersion="0.9.1"
     	hibernateJpa21Api = "1.0.2.Final"
     	log4j2Version="2.25.4"
-    	slf4jVersion="1.7.32"
+    	slf4jVersion="2.0.18"
     	esapiVersion="2.6.2.0"
 
     	postgresqlVersion = "42.1.4"
@@ -100,6 +100,7 @@ subprojects{
                     entry 'log4j-web'
                     entry 'log4j-layout-template-json'
                 }
+                dependency "org.slf4j:slf4j-api:$slf4jVersion"
             }
         }
     }
