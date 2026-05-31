@@ -1,4 +1,4 @@
-//Copyright 2019-2025 VMware, Inc.
+//Copyright 2019-2026 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java-library'
 apply plugin: 'org.springframework.boot'
@@ -26,6 +26,7 @@ dependencies {
     implementation ("com.amazonaws:aws-java-sdk-s3:$awsS3Version")
     implementation ("com.amazonaws:aws-java-sdk-sts:$awsS3Version")
     implementation ("com.amazonaws:aws-java-sdk-iam:$awsS3Version")
+	implementation ("joda-time:joda-time:$jodaTimeVersion")
 
 }
 

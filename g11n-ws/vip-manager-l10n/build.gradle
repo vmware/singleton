@@ -1,4 +1,4 @@
-//Copyright 2019-2025 VMware, Inc.
+//Copyright 2019-2026 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java-library'
 apply plugin: 'org.springframework.boot'
@@ -51,7 +51,7 @@ dependencies {
     implementation("org.yaml:snakeyaml:$snakeyam")
     implementation("io.jsonwebtoken:jjwt:$jjwtVersion")
     implementation("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$hibernateJpa21Api")
-    implementation('com.nimbusds:nimbus-jose-jwt:9.37.3')
+    implementation("com.nimbusds:nimbus-jose-jwt:$nimbusJoseJwtVersion")
 
 
     //swagger UI -START  

@@ -47,7 +47,7 @@ subprojects{
 
     ext {
         projectVersion = '0.0.1-SNAPSHOT'
-        httpclient='4.5.13'
+        httpclient='4.5.14'
         jacksonVersion = '2.18.7'
         springdocVersion='2.8.8'
         tomcatVersion= '10.1.55'
@@ -70,14 +70,16 @@ subprojects{
     	log4j2Version="2.25.4"
     	slf4jVersion="2.0.18"
     	esapiVersion="2.6.2.0"
+		nimbusJoseJwtVersion="10.1"
 
     	postgresqlVersion = "42.1.4"
     	druidVersion = "1.1.8"
-    	awsS3Version = "1.12.741"
-        gcpGcsVersion = "26.70.0"
+    	awsS3Version = "1.12.797"
+        gcpGcsVersion = "26.83.0"
         grpcVersion = "1.76.0"
         swaggerVersion = "3.0.0"
         icu4jVersion = "77.1"
+		jodaTimeVersion = "2.13.1"
 
     	buildRelease = 'beta'
     	remoteServer = ""

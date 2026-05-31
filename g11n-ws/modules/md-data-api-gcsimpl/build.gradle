@@ -1,4 +1,4 @@
-//Copyright 2019-2025 VMware, Inc.
+//Copyright 2019-2026 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java-library'
 apply plugin: 'org.springframework.boot'
@@ -26,7 +26,11 @@ dependencies {
     compileOnly("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
     implementation platform("com.google.cloud:libraries-bom:$gcpGcsVersion")
 	implementation platform("io.grpc:grpc-bom:$grpcVersion")
-    implementation("com.google.cloud:google-cloud-storage")
+    implementation("com.google.cloud:google-cloud-storage") {
+        exclude group: 'com.fasterxml.jackson.dataformat', module: 'jackson-dataformat-xml'
+        exclude group: 'com.fasterxml.woodstox', module: 'woodstox-core'
+        exclude group: 'org.codehaus.woodstox', module: 'stax2-api'
+    }
 
 }
 
