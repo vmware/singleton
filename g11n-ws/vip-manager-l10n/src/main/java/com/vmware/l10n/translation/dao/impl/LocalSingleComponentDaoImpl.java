@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.translation.dao.impl;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
-import org.json.simple.parser.ParseException;
+import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -95,7 +95,7 @@ public class LocalSingleComponentDaoImpl implements SingleComponentDao {
             caseComponentMessagesDTO.setVersion(componentMessagesDTO.getVersion());
 
             caseComponentMessagesDTO.setStatus(componentMessagesDTO.getStatus());
-        } catch (ParseException e){
+        } catch (JSONException e){
         	throw new L10nAPIException("Parse json failed.", e);
         }
         ComponentMessagesDTO msgDTO = new ComponentMessagesDTO();

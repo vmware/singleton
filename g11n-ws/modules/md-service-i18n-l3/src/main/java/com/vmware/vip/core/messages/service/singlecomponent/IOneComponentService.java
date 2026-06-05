@@ -1,10 +1,10 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.messages.service.singlecomponent;
 
-import org.json.simple.parser.ParseException;
+import org.json.JSONException;
 
 import com.vmware.vip.core.messages.exception.L3APIException;
 import com.vmware.vip.messages.data.dao.exception.DataException;
@@ -38,6 +38,6 @@ public interface IOneComponentService {
 	 * @throws DataException
 	 */
 	public ComponentMessagesDTO getTranslationFromDisk(
-			ComponentMessagesDTO componentMessagesDTO) throws ParseException,
+			ComponentMessagesDTO componentMessagesDTO) throws JSONException,
 			DataException;
 }

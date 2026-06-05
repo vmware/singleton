@@ -1,12 +1,12 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.common.l10n.source.dto;
 
 import java.io.Serializable;
 
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
 
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.utils.LocaleUtils;
@@ -46,6 +46,6 @@ public class ComponentBaseDTO extends SourceBaseDTO implements Serializable{
 		jo.put(ConstantsKeys.PRODUCTNAME, this.getProductName());
 		jo.put(ConstantsKeys.VERSION, this.getVersion());
 		jo.put(ConstantsKeys.COMPONENT, this.getComponent());
-		return jo.toJSONString();
+		return jo.toString();
 	}
 }

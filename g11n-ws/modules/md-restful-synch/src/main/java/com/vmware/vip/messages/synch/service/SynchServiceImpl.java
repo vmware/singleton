@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.messages.synch.service;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.vmware.vip.common.cache.SingletonCache;
-import org.json.simple.parser.ParseException;
+import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +49,7 @@ public class SynchServiceImpl implements SynchService{
 				// TODO Auto-generated catch block
 				logger.error(e.getMessage(), e);
 				fileResult = null;
-			} catch (ParseException e) {
+			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				logger.error(e.getMessage(), e);
 				fileResult = null;
@@ -77,7 +77,7 @@ public class SynchServiceImpl implements SynchService{
 
 
 	public File updateTranslation(ComponentMessagesDTO componentMessagesDTO)
-			throws DataException, ParseException, VIPCacheException {
+			throws DataException, JSONException, VIPCacheException {
 		String key = CachedKeyGetter.getOneCompnentCachedKey(componentMessagesDTO);
 		File updateFile;
 		ComponentMessagesDTO result =  singletonCache.getCachedObject(CacheName.ONECOMPONENT, key, ComponentMessagesDTO.class);

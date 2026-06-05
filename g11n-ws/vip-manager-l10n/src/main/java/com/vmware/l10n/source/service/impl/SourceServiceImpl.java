@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.source.service.impl;
@@ -109,7 +109,7 @@ public class SourceServiceImpl implements SourceService {
 	
     @SuppressWarnings("unchecked")
 	private void updateStringSource(ComponentSourceDTO comp, String key, String source, String comment, String sourceFormat) {
-    	   MapUtil.updateKeyValue(comp.getMessages(), key, source);
+    	   MapUtil.updateKeyValue(comp.getMessages().toMap(), key, source);
 			if (!StringUtils.isEmpty(comment)) {
 				comp.setComments(key, comment);
 			}
@@ -129,6 +129,7 @@ public class SourceServiceImpl implements SourceService {
 		if (!StringUtils.isEmpty(sourceFormat)) {
 			comp.setSourceFormats(key, sourceFormat);
 		}
+		System.out.println("comp.message=" + comp.getMessages().toString());
 		PREPARE_MAP.put(catcheKey, comp);
 	}
 	

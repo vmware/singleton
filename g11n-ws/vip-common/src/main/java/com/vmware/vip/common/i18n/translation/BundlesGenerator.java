@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.common.i18n.translation;
@@ -14,9 +14,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ParseException;
+import org.json.JSONObject;
+import org.json.JSONException;
 
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsFile;
@@ -44,13 +43,12 @@ public class BundlesGenerator {
      */
     public void handleRemoteRusult(String remoteRusult) {
         MultiComponentsDTO baseTranslationDTO = TranslationUtil.getBaseTranslationDTO(remoteRusult);
-        List bundles = baseTranslationDTO.getBundles();
+        List bundles = baseTranslationDTO.getBundles().toList();
         Iterator<?> it = bundles.iterator();
         String jsonFilePathDir = this.getJsonPath(baseTranslationDTO);
         while (it.hasNext()) {
             try {
-                JSONObject bundleObj = (JSONObject) JSONValue.parseWithException(it.next()
-                        .toString());
+                JSONObject bundleObj = new JSONObject(it.next().toString());
                 String component = (String) bundleObj.get(ConstantsKeys.COMPONENT);
                 List<String> locales = baseTranslationDTO.getLocales();
                 String componentPath = jsonFilePathDir + ConstantsChar.BACKSLASH + component;
@@ -62,7 +60,7 @@ public class BundlesGenerator {
                                     + TranslationUtil.genernateJsonLocalizedFileName(tLocale),
                             component, tLocale, (JSONObject) bundleObj.get(tLocale));
                 }
-            } catch (ParseException e) {
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
@@ -108,7 +106,7 @@ public class BundlesGenerator {
             out = new FileOutputStream(f);
             write = new OutputStreamWriter(out, ConstantsUnicode.UTF8);
             writer = new BufferedWriter(write);
-            writer.write(json.toJSONString());
+            writer.write(json.toString());
         } catch (IOException e) {
             e.printStackTrace();
         } finally {

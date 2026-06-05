@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.v2.translation;
@@ -69,8 +69,8 @@ public class TranslationProductComponentKeyAPITest {
 		 String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, multKeyGetUrl1);
 	        @SuppressWarnings("unchecked")
 	        Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
-	        long code = (long) dataMap.get("code");
-	        Assert.assertTrue(code==200L);
+	        int code = (int) dataMap.get("code");
+	        Assert.assertTrue(code==200);
 	 }
 
 	 
@@ -79,8 +79,8 @@ public class TranslationProductComponentKeyAPITest {
 		 String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, multKeyGetUrl2);
 	        @SuppressWarnings("unchecked")
 	        Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
-	        long code = (long) dataMap.get("code");
-	        Assert.assertTrue(code==207L);
+	        int code = (int) dataMap.get("code");
+	        Assert.assertTrue(code==207);
 	 }
 	 
 	 @Test
@@ -88,8 +88,8 @@ public class TranslationProductComponentKeyAPITest {
 		 String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, multKeyGetUrl3);
 	        @SuppressWarnings("unchecked")
 	        Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
-	        long code = (long) dataMap.get("code");
-	        Assert.assertTrue(code==404L);
+	        int code = (int) dataMap.get("code");
+	        Assert.assertTrue(code==404);
 	 }
 	 
 	 
@@ -98,8 +98,8 @@ public class TranslationProductComponentKeyAPITest {
 		 String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, multKeyGetUrl4);
 	        @SuppressWarnings("unchecked")
 	        Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
-	        long code = (long) dataMap.get("code");
-	        Assert.assertTrue(code==200L);
+	        int code = (int) dataMap.get("code");
+	        Assert.assertTrue(code==200);
 	 }
 	 
 	 @Test
@@ -107,8 +107,8 @@ public class TranslationProductComponentKeyAPITest {
 		 String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, keyGetUrl1);
 	        @SuppressWarnings("unchecked")
 	        Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
-	        long code = (long) dataMap.get("code");
-	        Assert.assertTrue(code==200L);
+	        int code = (int) dataMap.get("code");
+	        Assert.assertTrue(code==200);
 	 }
 	 
 	 @Test
@@ -116,7 +116,7 @@ public class TranslationProductComponentKeyAPITest {
 		 String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, keyGetUrl2);
 	        @SuppressWarnings("unchecked")
 	        Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
-	        long code = (long) dataMap.get("code");
-	        Assert.assertTrue(code==200L);
+	        int code = (int) dataMap.get("code");
+	        Assert.assertTrue(code==200);
 	 }
 }

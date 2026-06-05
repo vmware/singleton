@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.common.utils;
@@ -22,6 +22,7 @@ import com.vmware.vip.common.exceptions.VIPResourceOperationException;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.l10n.source.util.IOUtil;
 import com.vmware.vip.common.l10n.source.util.PathUtil;
+import org.json.JSONObject;
 
 public class SortJSONUtils {
 
@@ -50,7 +51,10 @@ public class SortJSONUtils {
       Map<String, Object> json = new HashMap<String, Object>();
       json.put(ConstantsKeys.COMPONENT, singleComponentDTO.getComponent());
       json.put(ConstantsKeys.lOCALE, singleComponentDTO.getLocale());
-      json.put(ConstantsKeys.MESSAGES, singleComponentDTO.getMessages());
+      json.put(ConstantsKeys.MESSAGES,  singleComponentDTO.getMessages());
+      if (singleComponentDTO.getMessages() instanceof JSONObject) {
+          json.put(ConstantsKeys.MESSAGES, ((JSONObject) singleComponentDTO.getMessages()).toMap());
+      }
       OutputStreamWriter write = null;
       BufferedWriter writer = null;
       FileOutputStream outputStream = null;

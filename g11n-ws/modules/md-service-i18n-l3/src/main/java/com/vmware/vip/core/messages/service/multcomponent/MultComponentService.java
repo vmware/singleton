@@ -1,15 +1,14 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.messages.service.multcomponent;
 
 import java.util.List;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +47,7 @@ public class MultComponentService implements IMultComponentService {
 		TranslationDTO result = null;
 		try {
 			result = this.getTranslation(translationDTO);
-		} catch (ParseException e) {
+		} catch (JSONException e) {
 			LOGGER.error(e.getMessage(), e);
 			throw new L3APIException(ConstantsKeys.FATA_ERROR + "Parse error when get translation for "
 					+ translationDTO.getProductName() + ConstantsChar.BACKSLASH + translationDTO.getVersion(), e);
@@ -70,7 +69,7 @@ public class MultComponentService implements IMultComponentService {
 	}
 
 	@SuppressWarnings({ "unchecked" })
-	private TranslationDTO getTranslation(TranslationDTO translationDTO) throws ParseException, DataException {
+	private TranslationDTO getTranslation(TranslationDTO translationDTO) throws JSONException, DataException {
 		List<String> locales = translationDTO.getLocales();
 		List<String> components = translationDTO.getComponents();
 		List<String> bundles = multipleComponentsDao.get2JsonStrs(translationDTO.getProductName(),
@@ -81,8 +80,8 @@ public class MultComponentService implements IMultComponentService {
 			if (s.equalsIgnoreCase("")) {
 				continue;
 			}
-			JSONObject jo = (JSONObject) new JSONParser().parse(s);
-			ja.add(jo);
+			JSONObject jo = new JSONObject(s);
+			ja.put(jo);
 		}
 		translationDTO.setBundles(ja);
 		return translationDTO;

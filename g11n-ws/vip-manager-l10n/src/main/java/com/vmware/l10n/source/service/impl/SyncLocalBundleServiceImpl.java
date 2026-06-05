@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.source.service.impl;
@@ -80,12 +80,12 @@ public class SyncLocalBundleServiceImpl implements SyncLocalBundleService {
 	@Override
 	public synchronized void mergeSourceToLocalBundle() {
 		
-		LOGGER.debug("--Synchronize the updated source to local--");
+		LOGGER.info("--Synchronize the updated source to local--");
 		List<File> queueFiles = DiskQueueUtils.listSourceQueueFile(basePath);
 		if (queueFiles == null) {
 			return;
 		}
-		LOGGER.debug("the source cache file size---{}", queueFiles.size());
+		LOGGER.info("the source cache file size---{}", queueFiles.size());
 		for (File quefile : queueFiles) {
 			try {
 				Map<String, ComponentSourceDTO> mapObj = DiskQueueUtils.getQueueFile2Obj(quefile);

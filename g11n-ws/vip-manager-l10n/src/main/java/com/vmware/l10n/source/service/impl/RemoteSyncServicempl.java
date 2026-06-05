@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.source.service.impl;
@@ -9,7 +9,7 @@ import com.vmware.l10n.source.dto.GRMResponseDTO;
 import com.vmware.l10n.source.service.SourceService;
 import com.vmware.l10n.utils.MapUtil;
 import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -83,7 +83,7 @@ public class RemoteSyncServicempl implements RemoteSyncService {
 					componentSourceDTO.getComments());
 			requestParam.put(ConstantsKeys.CONTENT_TYPES,
 					componentSourceDTO.getSourceFormats());
-			pushFlag = sendToRemote(url.toString(), requestParam);
+			pushFlag = sendToRemote(url.toString(), requestParam.toMap());
 		}
 		if (!pushFlag) {
 			throw new L10nAPIException("Error occur when send to remote ["

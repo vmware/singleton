@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.utils;
@@ -80,6 +80,7 @@ public class DiskQueueUtils {
       
       if(file.exists()) {
     	  String resultFileName = tempFileName.replace("tmp_", SourceStr);
+    	  System.out.println("resultFileName=" + resultFileName);
     	  File resultFile = new File(resultFileName);
     	  if(file.renameTo(resultFile)) {
     		  return resultFile;
@@ -137,9 +138,10 @@ public class DiskQueueUtils {
      */
     public static Map <String, ComponentSourceDTO> getQueueFile2Obj(File file) throws IOException {
     	ObjectMapper objectMapper = new ObjectMapper();
-      
+        System.out.println("file=" + file);
 		@SuppressWarnings("unchecked")
 		Map<String, Object>  resultMap = objectMapper.readValue(file, Map.class);
+		System.out.println("resultMap=" + resultMap.toString());
 		Map<String, ComponentSourceDTO> result =  new HashMap<String, ComponentSourceDTO>();
         for(Entry<String, Object> entry: resultMap.entrySet()) {
         	ComponentSourceDTO dto = objectMapper.convertValue(entry.getValue(), ComponentSourceDTO.class);
@@ -171,6 +173,7 @@ public class DiskQueueUtils {
      * @param prefix
      */
     public static void moveFile2ExceptPath(String basePath, File source, String prefix){
+    	System.out.println("moveFile2ExceptPath=" + source);
     	String targetFileName = basePath+L10N_TMP_EXCEP_PATH+source.getName().replace(SourceStr, SourceStr+prefix+ConstantsChar.UNDERLINE);
     	File file = new File(targetFileName);
     	try {

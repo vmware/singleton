@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 
@@ -54,8 +54,8 @@ public class ImageAPITest {
             String json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET, countryFlagDefaultSucc);
             @SuppressWarnings("unchecked")
             Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
-            long code = (long) dataMap.get("code");
-            Assert.assertTrue(code==200L);
+            int code = (int) dataMap.get("code");
+            Assert.assertTrue(code==200);
 
     }
 
@@ -65,8 +65,8 @@ public class ImageAPITest {
         String json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET, countryFlagScaleSucc);
         @SuppressWarnings("unchecked")
         Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
-        long code = (long) dataMap.get("code");
-        Assert.assertTrue(code==200L);
+        int code = (int) dataMap.get("code");
+        Assert.assertTrue(code==200);
 
     }
 
@@ -76,8 +76,8 @@ public class ImageAPITest {
         String json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET, countryFlagRegionErr);
         @SuppressWarnings("unchecked")
         Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
-        long code = (long) dataMap.get("code");
-        Assert.assertTrue(code==400L);
+        int code = (int) dataMap.get("code");
+        Assert.assertTrue(code==400);
 
     }
 
@@ -87,8 +87,8 @@ public class ImageAPITest {
         String json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET,countryFlagScaleErr);
         @SuppressWarnings("unchecked")
         Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
-        long code = (long) dataMap.get("code");
-        Assert.assertTrue(code==400L);
+        int code = (int) dataMap.get("code");
+        Assert.assertTrue(code==400);
 
     }
 
@@ -110,8 +110,8 @@ public class ImageAPITest {
         String json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET,countryFlagIMageTypeErr);
         @SuppressWarnings("unchecked")
         Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json);
-        long code = (long) dataMap.get("code");
-        Assert.assertTrue(code==400L);
+        int code = (int) dataMap.get("code");
+        Assert.assertTrue(code==400);
 
     }
 

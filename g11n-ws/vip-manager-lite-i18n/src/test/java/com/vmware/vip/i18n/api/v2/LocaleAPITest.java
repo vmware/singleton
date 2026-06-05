@@ -1,10 +1,10 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.v2;
 
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.List;
 
 import org.junit.Assert;
@@ -44,7 +44,7 @@ public class LocaleAPITest {
 	@Test
 	public void testRegionListAPI() throws Exception {
 		String json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET, REGION_LIST_API_URI);
-		List<LinkedHashMap<String, Object>> list = (List<LinkedHashMap<String, Object>>) JSONUtils.getMapFromJson(json).get("data");
+		List<HashMap<String, Object>> list = (List<HashMap<String, Object>>) JSONUtils.getMapFromJson(json).get("data");
 		for (int i = 0; i < list.size(); i++) {
 			Assert.assertNotNull(list.get(i).get("language"));
 			Assert.assertNotNull(list.get(i).get("territories"));

@@ -1,10 +1,10 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.common.i18n.dto;
 
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
 
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.utils.LocaleUtils;
@@ -95,6 +95,6 @@ public class StringBasedDTO extends BaseDTO {
         jo.put(ConstantsKeys.TRANSLATION, this.getTranslation());
         jo.put(ConstantsKeys.KEY, this.getKey());
         jo.put(ConstantsKeys.COMPONENT, this.getComponent());
-        return jo.toJSONString();
+        return jo.toString();
     }
 }
