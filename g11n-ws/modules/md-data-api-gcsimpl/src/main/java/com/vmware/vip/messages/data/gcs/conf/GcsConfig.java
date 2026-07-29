@@ -1,5 +1,5 @@
 /**
- * Copyright 2019-2024 VMware, Inc.
+ * Copyright 2019-2026 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.messages.data.gcs.conf;
@@ -36,6 +36,16 @@ public class GcsConfig {
     
     @Value("${allow.list.path.bucketName:}")
     private String allowListBucketName;
+
+    /**
+     * the chunk size in bytes of the gcs read channel, default 64K
+     */
+    @Value("${gcs.chunkSize:65536}")
+    private int chunkSize;
+
+    public int getChunkSize() {
+        return chunkSize;
+    }
 
     public String getProjectId() {
         return projectId;

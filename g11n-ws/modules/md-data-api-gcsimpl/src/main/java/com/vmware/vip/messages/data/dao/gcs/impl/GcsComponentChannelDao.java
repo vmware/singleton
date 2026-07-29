@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2024 VMware, Inc.
+ * Copyright 2019-2026 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.messages.data.dao.gcs.impl;
@@ -53,6 +53,7 @@ public class GcsComponentChannelDao implements IComponentChannelDao {
                 Blob blob = gcsClient.getGcsStorage().get(blobId);
                 if (blob != null) {
                 	ReadChannel readChannel = blob.reader();
+                	readChannel.setChunkSize(config.getChunkSize());
                 	InputStream is = Channels.newInputStream(readChannel);
                     resultChannels.add(new ResultMessageChannel(component, locale, Channels.newChannel(is)));           
                 }
