@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2024 VMware, Inc.
+ * Copyright 2019-2026 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.except;
@@ -18,6 +18,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -67,6 +68,10 @@ public class ExceptionHandle {
 			logger.error("====== HTTP Exception =======");
 			logger.error(e.getMessage());
 			response.setResponse(new Response(APIResponseStatus.INTERNAL_SERVER_ERROR.getCode(), e.getMessage()));
+		} else if (e instanceof HttpMessageNotReadableException) {
+			logger.error("====== HttpMessageNotReadableException =======");
+			logger.error(e.getMessage());
+			response.setResponse(new Response(APIResponseStatus.BAD_REQUEST.getCode(), "Required request body is missing"));
 		} else {
 			response.setResponse(new Response(APIResponseStatus.UNKNOWN_ERROR.getCode(), e.getMessage()));
 			String errorStr = MessageFormat.format("unknown error: {0}" ,e.getMessage());
