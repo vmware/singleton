@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2026 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.login;
@@ -19,8 +19,6 @@ import javax.naming.directory.SearchResult;
 import javax.naming.ldap.InitialLdapContext;
 import javax.naming.ldap.LdapContext;
 
-import org.owasp.esapi.Encoder;
-import org.owasp.esapi.reference.DefaultEncoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +30,25 @@ public class LdapAuthenticator {
 
 	@Autowired
 	private VipAuthConfig authConfig;
-	
+
+	/**
+	 * Escape a value for safe inclusion in an LDAP search filter per RFC 4515,
+	 * to prevent LDAP filter injection.
+	 */
+	private static String escapeForLdapFilter(String input) {
+		StringBuilder sb = new StringBuilder();
+		for (char c : input.toCharArray()) {
+			switch (c) {
+				case '\\': sb.append("\\5c"); break;
+				case '*':  sb.append("\\2a"); break;
+				case '(':  sb.append("\\28"); break;
+				case ')':  sb.append("\\29"); break;
+				case '\0': sb.append("\\00"); break;
+				default:   sb.append(c);
+			}
+		}
+		return sb.toString();
+	}
 
 	private Map<String, Object> authenticate(String user, String pass){
 
@@ -56,8 +72,7 @@ public class LdapAuthenticator {
 		LdapContext ctxGC = null;
 		try{
 			ctxGC = new InitialLdapContext(env, null);
-			  Encoder encoder = DefaultEncoder.getInstance();
-			  String safeNme = encoder.encodeForLDAP(user);
+			  String safeNme = escapeForLdapFilter(user);
 			  String safeFilter = String.format(searchFilter, safeNme);
 			  NamingEnumeration<SearchResult> answer = ctxGC.search(authConfig.getSearchbase(), safeFilter,  searchCtls);
 			  
