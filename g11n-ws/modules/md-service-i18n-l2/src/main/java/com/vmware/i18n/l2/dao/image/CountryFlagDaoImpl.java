@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2026 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.l2.dao.image;
@@ -33,7 +33,14 @@ import java.util.zip.ZipInputStream;
 @Repository
 public class CountryFlagDaoImpl implements ICountryFlagDao {
     private static Logger logger = LoggerFactory.getLogger(CountryFlagDaoImpl.class);
-    private static String basePath = ConstantsKeys.IMAGE + File.separator + ConstantsKeys.FLAGS + File.separator;
+    private static String basePath = getImageRoot() + File.separator + ConstantsKeys.FLAGS + File.separator;
+
+    private static String getImageRoot() {
+        String userDir = System.getProperty("user.dir");
+        return (userDir != null && !userDir.isEmpty())
+                ? userDir + File.separator + ConstantsKeys.IMAGE
+                : ConstantsKeys.IMAGE;
+    }
 
     @PostConstruct
     protected void initZipCountryFlagPattern() {
@@ -78,7 +85,7 @@ public class CountryFlagDaoImpl implements ICountryFlagDao {
 
     private void writeCountryFlagResult(String sourcePathStr, String fileContent, String newFileNameSuffix) throws IOException {
 
-        String pathStr = ConstantsKeys.IMAGE + sourcePathStr;
+        String pathStr = getImageRoot() + sourcePathStr;
         pathStr = pathStr.replaceAll(ConstantsChar.BACKSLASH, Matcher.quoteReplacement(File.separator));
         pathStr = pathStr.replaceAll(ConstantsFile.FILE_TYPE_SVG, newFileNameSuffix);
         File file = new File(pathStr);
