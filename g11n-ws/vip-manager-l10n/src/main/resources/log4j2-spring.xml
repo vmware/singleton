@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-Copyright 2019-2022 VMware, Inc.
+Copyright 2019-2026 VMware, Inc.
 SPDX-License-Identifier: EPL-2.0
 -->
 <Configuration status="OFF">
 	<Properties>
 		<property name="application_name">VIP</property>
 		<property name="module_name">L10n</property>
-		<property name="log_path">${sys:app.log.home:-./logs}/l10n</property>
+		<property name="log_path">${sys:app.log.home:-${sys:user.dir}/logs}/l10n</property>
 	</Properties>
 	<Appenders>
 		<Console name="Console" target="SYSTEM_OUT">
