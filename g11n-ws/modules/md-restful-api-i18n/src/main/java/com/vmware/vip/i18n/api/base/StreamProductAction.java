@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2026 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.base;
@@ -16,6 +16,8 @@ import com.vmware.vip.messages.data.dao.model.ResultMessageChannel;
 import org.apache.commons.lang3.StringUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import jakarta.servlet.http.HttpServletResponse;
@@ -33,6 +35,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class StreamProductAction extends TranslationProductAction {
+    private static Logger logger = LoggerFactory.getLogger(StreamProductAction.class);
     private static byte[] byteComm = (ConstantsChar.COMMA + "\r\n").getBytes();
 
     @Autowired
@@ -176,6 +179,15 @@ public class StreamProductAction extends TranslationProductAction {
             } else {
                 buf.put(byteComm);
             }
+            if (logger.isDebugEnabled()) {
+                Runtime runtime = Runtime.getRuntime();
+                long maxMemory = runtime.maxMemory();       // -Xmx configuration limit
+                long totalMemory = runtime.totalMemory();   // Currently allocated to the JVM
+                long freeMemory = runtime.freeMemory();     // Unused portion of total allocated memory
+                long usedMemory = totalMemory - freeMemory; // Memory actively holding objects
+                logger.debug("FreeMemory: {}, UsedMemory: {}, TotalMemory: {}", freeMemory, usedMemory, totalMemory);
+            }
+
             transferTo(readChannels.get(idx).getReadableByteChannel(), wbc, buf);
         }
     }
