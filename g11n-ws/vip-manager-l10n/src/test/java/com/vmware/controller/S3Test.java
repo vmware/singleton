@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.controller;
@@ -10,9 +10,9 @@ import com.vmware.l10n.source.dao.SourceDao;
 import com.vmware.l10n.translation.dao.SingleComponentDao;
 import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+import org.json.JSONException;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -146,9 +146,12 @@ public class S3Test {
 	
 				JSONObject obj;
 				try {
-					obj = (JSONObject) new JSONParser().parse(new FileReader(filePath.toString()));
+					obj = new JSONObject(new JSONTokener(new FileReader(filePath.toString())));
+					System.out.println("filePath=" + filePath.toString());
+					System.out.println("obj=" + obj.toString());
+					System.out.println("messages=" + obj.get("messages").toString());
 					dto.setMessages(obj.get("messages"));
-				} catch (IOException | ParseException e) {
+				} catch (IOException | JSONException e) {
 					logger.error(e.getMessage(), e);
 				}
 	

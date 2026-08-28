@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.common.i18n.translation;
@@ -7,10 +7,9 @@ package com.vmware.vip.common.i18n.translation;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ParseException;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONException;
 
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsFile;
@@ -127,8 +126,8 @@ public class TranslationUtil {
     public static MultiComponentsDTO getBaseTranslationDTO(String jsonStr) {
         JSONObject genreJsonObject = null;
         try {
-            genreJsonObject = (JSONObject) JSONValue.parseWithException(jsonStr);
-        } catch (ParseException e) {
+            genreJsonObject = new JSONObject(jsonStr);
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         if (genreJsonObject == null) {
@@ -140,7 +139,7 @@ public class TranslationUtil {
         baseTranslationDTO.setVersion((String) genreJsonObject.get(ConstantsKeys.VERSION));
         baseTranslationDTO.setLocales((List) genreJsonObject.get(ConstantsKeys.lOCALES));
         baseTranslationDTO.setComponents((List) genreJsonObject.get(ConstantsKeys.COMPONENTS));
-        baseTranslationDTO.setBundles((JSONArray)JSONValue.parse(bundleStr));
+        baseTranslationDTO.setBundles(new JSONArray(bundleStr));
         return baseTranslationDTO;
     }
 
@@ -153,8 +152,8 @@ public class TranslationUtil {
     public static SingleComponentDTO getBaseComponentMessagesDTO(String jsonStr) {
         JSONObject genreJsonObject = null;
         try {
-            genreJsonObject = (JSONObject) JSONValue.parseWithException(jsonStr);
-        } catch (ParseException e) {
+            genreJsonObject = new JSONObject(jsonStr);
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         if (genreJsonObject == null) {
@@ -166,8 +165,7 @@ public class TranslationUtil {
         baseComponentMessagesDTO
                 .setComponent((String) genreJsonObject.get(ConstantsKeys.COMPONENT));
         baseComponentMessagesDTO.setLocale((String) genreJsonObject.get(ConstantsKeys.lOCALE));
-        baseComponentMessagesDTO.setMessages(JSONValue.toJSONString(genreJsonObject
-                .get(ConstantsKeys.MESSAGES)));
+        baseComponentMessagesDTO.setMessages(((JSONObject) genreJsonObject.get(ConstantsKeys.MESSAGES)).toString());
         return baseComponentMessagesDTO;
     }
 }

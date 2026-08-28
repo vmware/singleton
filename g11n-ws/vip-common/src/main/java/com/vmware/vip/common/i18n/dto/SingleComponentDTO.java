@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.common.i18n.dto;
@@ -11,11 +11,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ContainerFactory;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import org.json.JSONObject;
+import org.json.JSONException;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -97,7 +94,7 @@ public class SingleComponentDTO extends BaseDTO  implements Serializable{
        jo.put(ConstantsKeys.COMPONENT, this.getComponent());
        jo.put(ConstantsKeys.lOCALE, this.getLocale());
        jo.put(ConstantsKeys.BUNDLES, this.getMessages());
-       return jo.toJSONString();
+       return jo.toString();
    }
 
    public String toString() {
@@ -119,9 +116,9 @@ public class SingleComponentDTO extends BaseDTO  implements Serializable{
     * @param jsonStr One JSON string can convert to a SingleComponentDTO object
     * @return SingleComponentDTO
     */
-   public static SingleComponentDTO getSingleComponentDTO(String jsonStr) throws ParseException {
+   public static SingleComponentDTO getSingleComponentDTO(String jsonStr) throws JSONException {
        JSONObject genreJsonObject = null;
-       genreJsonObject = (JSONObject) JSONValue.parseWithException(jsonStr);
+       genreJsonObject = new JSONObject(jsonStr);
        if (genreJsonObject == null) {
            return null;
        }
@@ -142,12 +139,10 @@ public class SingleComponentDTO extends BaseDTO  implements Serializable{
     */
    @SuppressWarnings("unchecked")
    public static SingleComponentDTO getSingleComponentDTOWithLinkedMessages(String jsonStr)
-           throws ParseException {
-       JSONParser parser = new JSONParser();
-       ContainerFactory containerFactory = getContainerFactory();
+           throws JSONException {
        Map<String, Object> messages = new LinkedHashMap<String, Object>();
        Map<String, Object> bundle = null;
-       bundle = (Map<String, Object>) parser.parse(jsonStr, containerFactory);
+       bundle = (Map<String, Object>) (new JSONObject(jsonStr)).toMap();
        if (bundle == null) {
            return null;
        }
@@ -158,18 +153,5 @@ public class SingleComponentDTO extends BaseDTO  implements Serializable{
        messages = (Map<String, Object>) bundle.get(ConstantsKeys.MESSAGES);
        baseComponentMessagesDTO.setMessages(messages);
        return baseComponentMessagesDTO;
-   }
-
-   private static ContainerFactory getContainerFactory() {
-       ContainerFactory containerFactory = new ContainerFactory() {
-           public List<Object> creatArrayContainer() {
-               return new LinkedList<Object>();
-           }
-
-           public Map<String, Object> createObjectContainer() {
-               return new LinkedHashMap<String, Object>();
-           }
-       };
-       return containerFactory;
    }
 }

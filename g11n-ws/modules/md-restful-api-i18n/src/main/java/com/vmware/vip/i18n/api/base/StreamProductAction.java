@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.base;
@@ -14,8 +14,8 @@ import com.vmware.vip.core.messages.service.multcomponent.TranslationDTO;
 import com.vmware.vip.core.messages.service.product.IProductService;
 import com.vmware.vip.messages.data.dao.model.ResultMessageChannel;
 import org.apache.commons.lang3.StringUtils;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import jakarta.servlet.http.HttpServletResponse;
@@ -193,13 +193,13 @@ public class StreamProductAction extends TranslationProductAction {
         resp.setContentType(ConstantsKeys.CONTENT_TYPE_JSON);
         WritableByteChannel wbc = Channels.newChannel(resp.getOutputStream());
 
-        boolean isPartContent = writeResponseHeader(reqVersion.equals(versionStr), components.size() * locales.size(), result.size(), wbc, sr);
+        boolean isPartContent = writeResponseHeader(reqVersion.equals(versionStr), components.size() * locales.size(), result.toList().size(), wbc, sr);
         List<JSONObject> resultList = formatResultBundles(components, locales, result, isPartContent);
-        wbc.write(ByteBuffer.wrap(resultList.get(0).toJSONString().getBytes()));
+        wbc.write(ByteBuffer.wrap(resultList.get(0).toString().getBytes()));
         ByteBuffer buf = ByteBuffer.wrap(byteComm);
         for (int i =1; i<resultList.size(); i++){
             wbc.write(buf);
-            wbc.write(ByteBuffer.wrap(resultList.get(0).toJSONString().getBytes()));
+            wbc.write(ByteBuffer.wrap(resultList.get(0).toString().getBytes()));
             ((Buffer) buf).rewind();
         }
         wbc.write(sr.getEndBytes());
@@ -214,18 +214,18 @@ public class StreamProductAction extends TranslationProductAction {
                 }
             }
         }else {
-            Iterator<JSONObject> objectIterator =  result.iterator();
+            Iterator<Object> objectIterator =  result.iterator();
             while(objectIterator.hasNext()) {
-                resultList.add(objectIterator.next());
+                resultList.add((JSONObject) objectIterator.next());
             }
         }
         return resultList;
     }
     private JSONObject addNullBundle(String component, String locale, JSONArray result){
 
-        Iterator<JSONObject> objectIterator =  result.iterator();
+        Iterator<Object> objectIterator =  result.iterator();
         while(objectIterator.hasNext()) {
-            JSONObject object = objectIterator.next();
+            JSONObject object = (JSONObject) objectIterator.next();
             String fileLocale = (String) object.get(ConstantsKeys.lOCALE);
             String fileComponent = (String) object.get(ConstantsKeys.COMPONENT);
             if(locale.equals(fileLocale)&& component.equals(fileComponent)) {
@@ -235,7 +235,7 @@ public class StreamProductAction extends TranslationProductAction {
         JSONObject nullObj = new JSONObject();
         nullObj.put("locale", locale);
         nullObj.put("component", component);
-        nullObj.put("messages", null);
+        // nullObj.put("messages", null);
         return nullObj;
     }
 

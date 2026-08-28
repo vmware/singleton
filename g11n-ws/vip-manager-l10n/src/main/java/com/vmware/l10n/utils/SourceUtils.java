@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.utils;
@@ -9,9 +9,8 @@ import java.util.Map;
 
 import com.vmware.l10n.record.model.RecordModel;
 import com.vmware.vip.common.constants.ConstantsChar;
-import org.json.simple.parser.ContainerFactory;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import org.json.JSONObject;
+import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -65,21 +64,27 @@ public class SourceUtils {
 		ComponentMessagesDTO componentMessagesDTO = new ComponentMessagesDTO();
 		BeanUtils.copyProperties(cachedComponentSourceDTO, componentMessagesDTO);
 		if (!StringUtils.isEmpty(componentJSON)) {
-			JSONParser parser = new JSONParser();
-			ContainerFactory containerFactory = MapUtil.getContainerFactory();
 			Map<String, Object> messages;
 			Map<String, Object> bundle = null;
 			try {
-				bundle = (Map<String, Object>) parser.parse(componentJSON,
-						containerFactory);
-			} catch (ParseException e) {
+				bundle = new JSONObject(componentJSON).toMap();
+			} catch (JSONException e) {
 				logger.error(e.getMessage(), e);
 				
 			}
 			if (bundle != null && !bundle.isEmpty()) {
 				messages = (Map<String, Object>) bundle.get(ConstantsKeys.MESSAGES);
-				Iterator<Map.Entry<String, Object>> it = ((Map<String, Object>)cachedComponentSourceDTO
-						.getMessages()).entrySet().iterator();
+				Iterator<Map.Entry<String, Object>> it = null;
+				if (cachedComponentSourceDTO.getMessages() instanceof JSONObject) {
+					System.out.println("messages is JSONObject");
+				    it = (((JSONObject) cachedComponentSourceDTO
+						.getMessages()).toMap()).entrySet().iterator();
+				} else {
+					System.out.println("messages is Map object");
+					it = ((Map<String, Object>) cachedComponentSourceDTO
+							.getMessages()).entrySet().iterator();
+				}
+				System.out.println("messages=" + messages.toString());
 				boolean isChanged = false ;
 				while (it.hasNext()) {
 					Map.Entry<String, Object> entry = it.next();

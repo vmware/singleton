@@ -13,7 +13,7 @@ configurations {
 dependencies {
     api project(":vip-common")
     api project(":md-service-i18n-l3")
-    api("com.vmware.singleton:singleton-i18n-patterns-core:+")
+    api("com.vmware.singleton:singleton-i18n-patterns-core:0.5.17.+")
     api("com.ibm.icu:icu4j:$icu4jVersion")
     compileOnly("org.springframework:spring-context")
     compileOnly("org.springframework.boot:spring-boot-starter-data-jpa")

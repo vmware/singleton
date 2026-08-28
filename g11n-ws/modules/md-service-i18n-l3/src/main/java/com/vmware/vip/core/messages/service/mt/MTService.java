@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.messages.service.mt;
@@ -20,7 +20,7 @@ import com.vmware.vip.messages.data.dao.exception.DataException;
 import com.vmware.vip.messages.data.dao.exception.MTException;
 import com.vmware.vip.messages.mt.MTConfig;
 import com.vmware.vip.messages.mt.MTFactory;
-import org.json.simple.parser.ParseException;
+import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -126,7 +126,7 @@ public class MTService implements IMTService {
 					e.printStackTrace();
 				}
 			}
-		} catch (ParseException | DataException | MTException
+		} catch (JSONException | DataException | MTException
 				| VIPCacheException e) {
 			
 			LOGGER.error(e.getMessage(), e);

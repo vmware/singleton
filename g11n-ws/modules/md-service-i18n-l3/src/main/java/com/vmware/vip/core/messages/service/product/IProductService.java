@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.messages.service.product;
@@ -7,7 +7,7 @@ package com.vmware.vip.core.messages.service.product;
 import java.util.List;
 import java.util.Map;
 
-import org.json.simple.parser.ParseException;
+import org.json.JSONException;
 
 import com.vmware.vip.common.exceptions.VIPCacheException;
 import com.vmware.vip.common.i18n.dto.DropVersionDTO;
@@ -41,7 +41,7 @@ public interface IProductService {
     public List<TranslationDTO> updateBatchTranslation(List<ComponentMessagesDTO> componentMessagesDTOList) throws L3APIException;
     
     public boolean updateTranslation(ComponentMessagesDTO componentMessagesDTO)
-			throws DataException, ParseException, VIPCacheException;
+			throws DataException, JSONException, VIPCacheException;
 
     /**
      * Get supported language list

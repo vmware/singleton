@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.v1.common;
@@ -7,9 +7,8 @@ package com.vmware.vip.i18n.api.v1.common;
 import java.io.IOException;
 import java.util.Map;
 
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ParseException;
+import org.json.JSONObject;
+import org.json.JSONException;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -24,8 +23,7 @@ public class ResponseUtil {
         if (responseStr == null || responseStr.equalsIgnoreCase(""))
             return msgObject;
         try {
-            JSONObject responseObj = (JSONObject) JSONValue
-                    .parseWithException(responseStr);
+            JSONObject responseObj = new JSONObject(responseStr);
             if (responseObj != null) {
                 JSONObject dataObj = (JSONObject) responseObj
                         .get(ConstantsForTest.DATA);
@@ -33,7 +31,7 @@ public class ResponseUtil {
                     msgObject = dataObj.get(node);
                 }
             }
-        } catch (ParseException e) {
+        } catch (JSONException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.test.i18n;
@@ -10,8 +10,8 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ParseException;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -62,7 +62,7 @@ public class I18nUtilTest {
 			for(int i=0;i<languageArray.length;i++) {
 				String regions = PatternUtil.getRegionFromLib(languageArray[i]);
 				Map<String, Object> genreJsonObject = null;
-				genreJsonObject = (Map<String, Object>) JSONValue.parseWithException(regions);
+				genreJsonObject = new JSONObject(regions).toMap();
 				Map<String, Object> territoriesObject = (Map<String, Object>) JSONValue.parseWithException(genreJsonObject.get("territories").toString());
 				if (languageArray[i].equals("zh")) {
 					Assert.assertEquals("zh", genreJsonObject.get("language"));
@@ -103,7 +103,7 @@ public class I18nUtilTest {
 				}
 
 			}	
-		} catch (ParseException e) {
+		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 	}

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.utils;
@@ -36,8 +36,12 @@ public class TestDiskQueueUtils {
 		
 		try {
 			File file = DiskQueueUtils.createQueueFile(prepareMap, basePath);
+			System.out.println("prepareMap=" + prepareMap);
 			DiskQueueUtils.moveFile2ExceptPath(basePath, file, "locale");
 			List<File> exepQueueFiles = DiskQueueUtils.listExceptQueueFile(basePath);
+			System.out.println("basePath=" + basePath);
+			System.out.println("exepQueueFiles=" + exepQueueFiles);
+			System.out.println("exepQueueFiles.size()=" + exepQueueFiles.size());
 	        Assert.isTrue(exepQueueFiles.size() == 1);
 	        
 			for(File delFile : exepQueueFiles) {

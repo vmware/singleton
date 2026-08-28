@@ -1,10 +1,10 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2025 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.v1.translation;
 
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,7 +37,7 @@ public class TranslationSourceAPITest {
         JSONObject requestBody=new JSONObject();
         requestBody.put("source", "For more information about EVC modes and EVC modes supported in an ESX release, please refer to VMware KB 1003212");
         String responseStr=RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.POST,
-                ConstantsForTest.CreateSourceAPIURI,requestBody.toJSONString());
+                ConstantsForTest.CreateSourceAPIURI,requestBody.toString());
         int businessCode=ResponseUtil.getResponseCode(responseStr);
         Assert.assertTrue(businessCode==200);
     }

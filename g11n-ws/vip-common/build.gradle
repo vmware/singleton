@@ -12,7 +12,7 @@ dependencies {
     implementation("commons-io:commons-io:$commonsIoVersion")
     implementation("commons-codec:commons-codec:$commonsCodecVersion")
     implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
-    implementation("com.googlecode.json-simple:json-simple:$jsonSimpleVersion"){
+    implementation("org.json:json:$jsonVersion"){
           exclude group: 'junit'
     }
     compileOnly("org.slf4j:slf4j-api:$slf4jVersion")
