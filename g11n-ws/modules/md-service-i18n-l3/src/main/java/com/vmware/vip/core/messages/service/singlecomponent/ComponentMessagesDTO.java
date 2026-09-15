@@ -6,7 +6,7 @@ package com.vmware.vip.core.messages.service.singlecomponent;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 

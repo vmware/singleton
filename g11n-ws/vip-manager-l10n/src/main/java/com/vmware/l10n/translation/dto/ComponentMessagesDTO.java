@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 
 /**
  * Data Object for Component

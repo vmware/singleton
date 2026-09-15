@@ -16,8 +16,9 @@ import org.junit.runners.MethodSorters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.resttestclient.autoconfigure.AutoConfigureTestRestTemplate;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.resttestclient.TestRestTemplate;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
@@ -33,6 +34,7 @@ import com.vmware.vip.api.domain.DbResponseStatus;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = DBTestAPP.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@AutoConfigureTestRestTemplate
 @ActiveProfiles(resolver = ProfilesResolver.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)  
 public class VipDBTestProductRegister {

@@ -12,6 +12,6 @@ public class Constants {
     public static final String SOURCE = "source";
     public static final String COMMENT_FOR_SOURCE = "commentForSource";
     public static final String EXPECTRESULT = "{\"status\":{\"code\":200,\"message\":\"OK\",\"serverTime\":\"\"}}";
-    public static final String UPDATETRANSLATIONEXPECTRESULT = "{\"response\":{\"code\":200,\"message\":\"OK\",\"serverTime\":\"\"},\"signature\":\"\",\"data\":null}";
+    public static final String UPDATETRANSLATIONEXPECTRESULT = "{\"data\":null,\"response\":{\"code\":200,\"message\":\"OK\",\"serverTime\":\"\"},\"signature\":\"\"}";
     public static final String UPDATETRANSLATIONAPIREQUESTBODY = "{\"data\": {\"productName\": \"vCG\",\"pseudo\": true,\"translation\": [{\"component\": \"cim\",\"locale\": \"zh_CN\",\"messages\": {\"name\": \"name\"}}],\"version\": \"1.0.0\"},\"requester\": \"GRM\"}";
 }

@@ -11,7 +11,7 @@ import org.apache.tomcat.util.net.SSLHostConfig;
 import org.apache.tomcat.util.net.SSLHostConfigCertificate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.web.embedded.tomcat.TomcatConnectorCustomizer;
+import org.springframework.boot.tomcat.TomcatConnectorCustomizer;
 
 import com.vmware.vip.common.constants.ConstantsTomcat;
 

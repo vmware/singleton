@@ -10,8 +10,8 @@ import org.apache.tomcat.util.buf.EncodedSolidusHandling;
 import org.apache.tomcat.util.net.SSLHostConfig;
 import org.apache.tomcat.util.net.SSLHostConfigCertificate;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
-import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
+import org.springframework.boot.tomcat.servlet.TomcatServletWebServerFactory;
+import org.springframework.boot.web.server.servlet.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -36,9 +36,9 @@ public class TomcatConfig {
 		tomcat.addConnectorCustomizers(new VIPTomcatConnectionCustomizer(serverProperties, compression, compressionMinSize));
 		if (serverProperties.getServerScheme().equalsIgnoreCase(ConstantsTomcat.HTTP_HTTPS) ||
 				serverProperties.getServerScheme().equalsIgnoreCase(ConstantsTomcat.HTTPS_HTTP)) {
-			tomcat.addAdditionalTomcatConnectors(initiateHttpsConnector(serverProperties));
+			tomcat.addAdditionalConnectors(initiateHttpsConnector(serverProperties));
 		}
-		for( Connector connector :tomcat.getAdditionalTomcatConnectors()){
+		for( Connector connector :tomcat.getAdditionalConnectors()){
 			connector.setAllowBackslash(true);
 			connector.setEncodedSolidusHandling(EncodedSolidusHandling.DECODE.getValue());
 

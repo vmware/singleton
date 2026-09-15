@@ -22,7 +22,7 @@ dependencies {
 
     implementation("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
     implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
-    implementation("com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion")
+    implementation("com.fasterxml.jackson.core:jackson-annotations:$jacksonAnnotationsVersion")
 
     implementation('com.alibaba:fastjson:2.0.32')
     implementation("org.apache.commons:commons-lang3:$commonsLangVersion")
@@ -34,7 +34,6 @@ bootJar {
     archiveBaseName = 'vip-manager-l10n-agent'
     version =  "$branchName"
     archiveClassifier = "$buildNumber"
-    loaderImplementation = org.springframework.boot.loader.tools.LoaderImplementation.CLASSIC
 }
 
 jar {

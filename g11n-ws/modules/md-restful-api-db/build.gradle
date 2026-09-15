@@ -32,6 +32,7 @@ dependencies {
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-api:$springdocVersion")
     //swagger UI -END
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.boot:spring-boot-resttestclient")
     testImplementation ("junit:junit:$junitVersion")
 }
 
