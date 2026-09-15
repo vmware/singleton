@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2026 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.translation.dto;
@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 
 /**
  * Data Object for Component
