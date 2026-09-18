@@ -1,4 +1,4 @@
-//Copyright 2019-2025 VMware, Inc.
+//Copyright 2019-2026 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java-library'
 apply plugin: 'org.springframework.boot'
@@ -48,7 +48,7 @@ dependencies {
 
     implementation("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
     implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
-    implementation("com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion")
+    implementation("com.fasterxml.jackson.core:jackson-annotations:$jacksonAnnotationVersion")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$jacksonVersion")
     implementation("com.fasterxml.jackson.module:jackson-module-parameter-names:$jacksonVersion")
@@ -67,7 +67,7 @@ dependencies {
             requireCapability('org.ehcache:ehcache-jakarta')
         }
     }
-    implementation 'org.glassfish.jaxb:jaxb-runtime:4.0.4'
+    implementation 'org.glassfish.jaxb:jaxb-runtime:4.0.9'
 
     implementation("com.google.guava:guava:$guavaVersion")
     implementation("com.ibm.icu:icu4j:$icu4jVersion")
