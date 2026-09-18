@@ -23,7 +23,7 @@ public class PathUtil {
     private static HashMap<String, String> map;
 
     /*
-     * Define a map contains special chars, and these chars will be used to fileter the file path
+     * Define a map contains special chars, and these chars will be used to filter the file path
      */
     static{
         map = new HashMap<String, String>();
@@ -64,12 +64,12 @@ public class PathUtil {
     }
 
     /**
-     * Get the translation files's absolute path of the specified product or all products in local
+     * Get the translation files' absolute path of the specified product or all products in local
      * Git repository according to the project's absolute path
      * 
      * @param projectPath this project's absolute path
      * @param sourceBaseDTO the object contains product name and version
-     * @return the translation files's absolute path in local Git repository
+     * @return the translation files' absolute path in local Git repository
      */
     public static String getGitRepoBundlesDiskPath(SourceBaseDTO sourceBaseDTO,String jenkinsJobName) {
         String sourcePath = PathUtil.getSourceBasePath() + File.separator + jenkinsJobName + File.separator
@@ -81,9 +81,9 @@ public class PathUtil {
     }
 
 	/**
-	 * Get the translation files's absolute base path
+	 * Get the translation files' absolute base path
 	 *
-	 * @return the translation files's absolute base path in local Git
+	 * @return the translation files' absolute base path in local Git
 	 *         repository
 	 */
 	private static String getSourceBasePath() {
@@ -94,12 +94,12 @@ public class PathUtil {
 	}
 
     /**
-     * Get the translation files's absolute path of the specified product or all products in
+     * Get the translation files' absolute path of the specified product or all products in
      * vI18nManager project according to the project's absolute path
      * 
      * @param projectPath this project's absolute path
      * @param sourceBaseDTO the object contains product name and version
-     * @return the translation files's absolute path in vI18nManager project
+     * @return the translation files' absolute path in vI18nManager project
      */
     public static String getManagerBundlesDiskPath(SourceBaseDTO sourceBaseDTO) {
         String targetPath = PathUtil.getTargetBasePath() + File.separator + "g11n-ws" + File.separator
@@ -112,11 +112,11 @@ public class PathUtil {
     }
 
 	/**
-	 * Get the translation files's absolute path of the specified product or all
+	 * Get the translation files' absolute path of the specified product or all
 	 * products in vIPJavaClient project according to the project's absolute path
 	 * @param projectPath this project's absolute path
 	 * @param sourceBaseDTO the object contains product name and version
-	 * @return the translation files's absolute path in vIPJavaClient project
+	 * @return the translation files' absolute path in vIPJavaClient project
 	 */
 	public static String getJavaClientBundlesDiskPath(SourceBaseDTO sourceBaseDTO) {
 		String targetPath = PathUtil.getTargetBasePath() + File.separator + "g11n-ws" + File.separator
@@ -130,9 +130,9 @@ public class PathUtil {
 	}
 
 	/**
-	 * Get the translation files's absolute base path
+	 * Get the translation files' absolute base path
 	 *
-	 * @return the translation files's absolute base path in vI18nManager project
+	 * @return the translation files' absolute base path in vI18nManager project
 	 *
 	 */
 	private static String getTargetBasePath() {
