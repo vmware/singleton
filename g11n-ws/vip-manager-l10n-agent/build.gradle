@@ -1,4 +1,4 @@
-//Copyright 2019-2025 VMware, Inc.
+//Copyright 2019-2026 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java-library'
 apply plugin: 'org.springframework.boot'
@@ -22,7 +22,7 @@ dependencies {
 
     implementation("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
     implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
-    implementation("com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion")
+    implementation("com.fasterxml.jackson.core:jackson-annotations:$jacksonAnnotationVersion")
 
     implementation('com.alibaba:fastjson:2.0.32')
     implementation("org.apache.commons:commons-lang3:$commonsLangVersion")
