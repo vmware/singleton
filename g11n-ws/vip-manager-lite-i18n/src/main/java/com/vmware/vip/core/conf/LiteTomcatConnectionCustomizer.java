@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2026 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.conf;
@@ -11,7 +11,7 @@ import org.apache.tomcat.util.net.SSLHostConfig;
 import org.apache.tomcat.util.net.SSLHostConfigCertificate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.web.embedded.tomcat.TomcatConnectorCustomizer;
+import org.springframework.boot.tomcat.TomcatConnectorCustomizer;
 
 import com.vmware.vip.common.constants.ConstantsTomcat;
 

@@ -58,9 +58,10 @@ dependencies {
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
     }
 
+    implementation("org.springframework.boot:spring-boot-tomcat")
     implementation("org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion")
     implementation("org.apache.tomcat:tomcat-annotations-api:$tomcatVersion")
-    implementation("org.springframework:spring-webmvc:$springWebMvcVersion")
+    implementation("org.springframework.boot:spring-boot-jackson2")
 
     implementation("org.ehcache:ehcache:$ehCacheVersion") {
         capabilities {
@@ -72,7 +73,7 @@ dependencies {
     implementation("com.google.guava:guava:$guavaVersion")
     implementation("com.ibm.icu:icu4j:$icu4jVersion")
     implementation("org.yaml:snakeyaml:$snakeyam")
-    implementation("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$hibernateJpa21Api")
+    implementation("jakarta.persistence:jakarta.persistence-api:$jakartaPersistenceVersion")
 
 
     implementation ('org.springframework.boot:spring-boot-starter-actuator')
@@ -123,8 +124,9 @@ bootJar.doFirst {
 
 bootJar{
   archiveClassifier = 'boot'
-  enabled = true  
-  loaderImplementation = org.springframework.boot.loader.tools.LoaderImplementation.CLASSIC
+  enabled = true
+  // patterns-core builds jar: URLs by hand and can't parse Boot 4's nested: URLs; unpack it at runtime
+  requiresUnpack '**/singleton-i18n-patterns-core-*.jar'
 }
 
 jar {

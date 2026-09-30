@@ -1,12 +1,12 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2026 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.boot.web.server.servlet.context.ServletComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2026 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.conf;
@@ -10,8 +10,8 @@ import org.apache.tomcat.util.buf.EncodedSolidusHandling;
 import org.apache.tomcat.util.net.SSLHostConfig;
 import org.apache.tomcat.util.net.SSLHostConfigCertificate;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
-import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
+import org.springframework.boot.tomcat.servlet.TomcatServletWebServerFactory;
+import org.springframework.boot.web.server.servlet.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -33,12 +33,15 @@ public class TomcatConfig {
 	@Bean
 	public ServletWebServerFactory servletContainer(ServerProperties serverProperties) {
 		TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
+		// Tomcat 11 defaults this to true, which finishes the response after a forward and drops
+		// the body buffered by ShallowEtagHeaderFilter; keep the Tomcat 10 behavior
+		tomcat.addContextCustomizers(context -> context.setSuspendWrappedResponseAfterForward(false));
 		tomcat.addConnectorCustomizers(new VIPTomcatConnectionCustomizer(serverProperties, compression, compressionMinSize));
 		if (serverProperties.getServerScheme().equalsIgnoreCase(ConstantsTomcat.HTTP_HTTPS) ||
 				serverProperties.getServerScheme().equalsIgnoreCase(ConstantsTomcat.HTTPS_HTTP)) {
-			tomcat.addAdditionalTomcatConnectors(initiateHttpsConnector(serverProperties));
+			tomcat.addAdditionalConnectors(initiateHttpsConnector(serverProperties));
 		}
-		for( Connector connector :tomcat.getAdditionalTomcatConnectors()){
+		for( Connector connector :tomcat.getAdditionalConnectors()){
 			connector.setAllowBackslash(true);
 			connector.setEncodedSolidusHandling(EncodedSolidusHandling.DECODE.getValue());
 
