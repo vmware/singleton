@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2026 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.utils;
@@ -51,6 +51,8 @@ public class LocalJSONReader {
         try {
             if (jarPath.startsWith("file:") && jarPath.lastIndexOf(".jar!") > 0) {// run in a jar
                 path = "jar:" + jarPath + filePath;
+            } else if (jarPath.startsWith("nested:")) { // run in a Spring Boot 4 nested jar
+                path = "jar:" + (jarPath.endsWith("!/") ? jarPath : jarPath + "!/") + filePath;
             } else { // run in a jar of jar
                 path = "jar:file:" + jarPath + "!/" + filePath;
             }
