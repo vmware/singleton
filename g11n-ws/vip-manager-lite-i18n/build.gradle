@@ -125,8 +125,6 @@ bootJar.doFirst {
 bootJar{
   archiveClassifier = 'boot'
   enabled = true
-  // patterns-core builds jar: URLs by hand and can't parse Boot 4's nested: URLs; unpack it at runtime
-  requiresUnpack '**/singleton-i18n-patterns-core-*.jar'
 }
 
 jar {

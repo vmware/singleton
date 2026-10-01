@@ -184,8 +184,6 @@ bootJar {
     from ("${baseOutputDir}/html5") {
         into 'static/i18n/docs'
     }
-    // patterns-core builds jar: URLs by hand and can't parse Boot 4's nested: URLs; unpack it at runtime
-    requiresUnpack '**/singleton-i18n-patterns-core-*.jar'
 }
 
 bootJar.doLast {
