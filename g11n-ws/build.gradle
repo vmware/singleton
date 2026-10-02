@@ -43,12 +43,13 @@ allprojects{
 
 subprojects{
 
-
+    // Jackson 3 (tools.jackson), managed by the Spring Boot BOM; 3.1.7 fixes CVE-2026-91777
+    ext['jackson-bom.version'] = '3.1.7'
 
     ext {
         projectVersion = '0.0.1-SNAPSHOT'
         httpclient='4.5.14'
-        jacksonVersion = '2.21.6'
+        jacksonVersion = '2.21.7'
         jacksonAnnotationVersion = '2.21'
         springdocVersion='3.1.1'
         tomcatVersion= '11.0.26'
@@ -67,7 +68,7 @@ subprojects{
     	snakeyam="2.6"
     	jjwtVersion="0.9.1"
     	jakartaPersistenceVersion = "3.2.0"
-    	log4j2Version="2.26.0"
+    	log4j2Version="2.26.1"
     	slf4jVersion="2.0.18"
 		nimbusJoseJwtVersion="10.1"
 
