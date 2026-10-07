@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2026 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.Interceptor;
@@ -30,8 +30,13 @@ public class APICrossDomainInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		String originHeader = request.getHeader("Origin");
-		if (allowOrigin.contains("*") || allowOrigin.contains(originHeader)) {
-			response.setHeader("Access-Control-Allow-Origin", originHeader == null ? "" : originHeader);
+		if (allowOrigin.contains("*")) {
+			response.setHeader("Access-Control-Allow-Origin", "*");
+			response.setHeader("Access-Control-Allow-Methods", allowMethods);
+			response.setHeader("Access-Control-Allow-Headers", allowHeaders);
+			response.setHeader("Access-Control-Max-Age", maxAge);
+		} else if (allowOrigin.contains(originHeader)) {
+			response.setHeader("Access-Control-Allow-Origin", originHeader);
 			response.setHeader("Access-Control-Allow-Methods", allowMethods);
 			response.setHeader("Access-Control-Allow-Headers", allowHeaders);
 			response.setHeader("Access-Control-Allow-Credentials", allowCredentials);
