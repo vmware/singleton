@@ -121,10 +121,10 @@ public class LocalSingleComponentDaoImpl implements SingleComponentDao {
 				+ ResourceFilePathGetter.getLocalizedJSONFileName(componentMessagesDTO.getLocale());
 		File targetFile = new File(basePath + filepath);
 		if (targetFile.exists()) {
-			LOGGER.info("The bunlde file path {}{} is found, update the bundle file.", basePath, filepath );
+			LOGGER.info("The bundle file path {}{} is found, update the bundle file.", basePath, filepath );
 			try {
 				SortJSONUtils.writeJSONObjectToJSONFile(basePath + filepath, componentMessagesDTO);
-				LOGGER.info("The bunlde file {}{} have updated sucessfully", basePath, filepath);
+				LOGGER.info("The bundle file {}{} has been updated successfully", basePath, filepath);
 				return true;
 			} catch (VIPResourceOperationException e) {
 				
@@ -132,11 +132,11 @@ public class LocalSingleComponentDaoImpl implements SingleComponentDao {
 				return false;
 			}
 		} else {
-			LOGGER.info("The bunlde file path {}{} is not found, cascade create the dir,add new bundle file ", basePath, filepath);
+			LOGGER.info("The bundle file path {}{} is not found, cascade create the dir,add new bundle file ", basePath, filepath);
 			try {
 				FileUtils.write(targetFile, "","UTF-8",true);
 				SortJSONUtils.writeJSONObjectToJSONFile(basePath + filepath, componentMessagesDTO);
-				LOGGER.info("The bunlde file {}{} have updated sucessfully", basePath, filepath);
+				LOGGER.info("The bundle file {}{} has been updated successfully", basePath, filepath);
 			} catch (Exception e) {
 				LOGGER.error(e.getMessage(), e);
 				return false;
