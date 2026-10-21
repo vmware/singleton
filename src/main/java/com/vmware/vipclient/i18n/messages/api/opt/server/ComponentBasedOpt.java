@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2025 VMware, Inc.
+ * Copyright 2019-2026 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.messages.api.opt.server;
@@ -8,7 +8,6 @@ import java.net.HttpURLConnection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
@@ -19,6 +18,7 @@ import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
+import com.vmware.vipclient.i18n.util.JSONUtils;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -62,9 +62,7 @@ public class ComponentBasedOpt extends BaseOpt implements Opt, MessageOpt {
 		        // JSONObject respObj = (JSONObject) JSONValue.parse((String) response.get(URLUtils.BODY));
 		        try {
 	        		if (getResponseCode(respObj) == 200) {
-	        			Map<String,Object> objMap = this.getMsgsJson(response).toMap();
-				        Map<String,String> messages = objMap.entrySet().stream()
-				        	     .collect(Collectors.toMap(Map.Entry::getKey, e -> (String)e.getValue()));
+				        Map<String,String> messages = JSONUtils.toStringMap(this.getMsgsJson(response));
 				        if (messages != null) {
 				        	cacheItem.setCacheItem(messages, etag, timestamp, maxAgeMillis);
 				        }
