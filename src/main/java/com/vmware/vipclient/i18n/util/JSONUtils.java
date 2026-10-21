@@ -1,10 +1,11 @@
 /*
- * Copyright 2019-2025 VMware, Inc.
+ * Copyright 2019-2026 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.util;
 
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -51,12 +52,29 @@ public class JSONUtils {
         return json == null || "".equals(json) || "{}".equals(json);
     }
 
+    /**
+     * Get the value of the key, return null if the key is missing or its value is JSON null.
+     */
     public static Object getFromJSONObject(JSONObject jsonObj, String key) {
-        try {
-            return jsonObj.get(key);
-        } catch (JSONException e) {
-            logger.warn(e.getMessage());
+        if (jsonObj == null) {
             return null;
-        } 
+        }
+        Object value = jsonObj.opt(key);
+        return JSONObject.NULL.equals(value) ? null : value;
+    }
+
+    /**
+     * Convert a JSONObject to Map<String, String>, JSON null values are converted to null.
+     */
+    public static Map<String, String> toStringMap(JSONObject jsonObj) {
+        if (jsonObj == null) {
+            return null;
+        }
+        Map<String, String> result = new HashMap<String, String>();
+        for (String key : jsonObj.keySet()) {
+            Object value = jsonObj.opt(key);
+            result.put(key, JSONObject.NULL.equals(value) ? null : value.toString());
+        }
+        return result;
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2025 VMware, Inc.
+ * Copyright 2019-2026 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.messages.service;
@@ -122,13 +122,12 @@ public class ComponentsService {
                     final MessagesDTO dto = new MessagesDTO();
                     dto.setComponent(comp);
                     dto.setLocale(locale);
-                    new CacheService(dto).addCacheOfComponent(new MessageCacheItem(messages.toMap().entrySet().stream()
-                    	     .collect(Collectors.toMap(Map.Entry::getKey, e -> (String)e.getValue())), null,
+                    final Map<String, String> messagesMap = JSONUtils.toStringMap(messages);
+                    new CacheService(dto).addCacheOfComponent(new MessageCacheItem(messagesMap, null,
                             cacheItem.getTimestamp(), cacheItem.getMaxAgeMillis()));
 
                     // update map to return.
-                    dataMap.get(locale).put(comp, messages.toMap().entrySet().stream()
-                    	     .collect(Collectors.toMap(Map.Entry::getKey, e -> (String)e.getValue())));
+                    dataMap.get(locale).put(comp, messagesMap);
                 } else {
                     localesToFallback.add(locale);
                     componentsToFallback.add(comp);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2025 VMware, Inc.
+ * Copyright 2019-2026 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.messages.api.opt.local;
@@ -21,7 +21,6 @@ import org.slf4j.LoggerFactory;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localeAliasesMap;
 import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localePathMap;
@@ -74,8 +73,7 @@ public class LocalLocaleOpt implements LocaleOpt{
 			JSONObject languagesData = new JSONObject(languagesJsonStr);
 			if (languagesData != null) {
 				logger.debug("Found the languages' names from local bundle for locale [{}].\n", locale);
-				return ((JSONObject) JSONUtils.getFromJSONObject(languagesData, PatternKeys.LANGUAGES)).toMap().entrySet().stream()
-					     .collect(Collectors.toMap(Map.Entry::getKey, e -> (String)e.getValue()));
+				return JSONUtils.toStringMap((JSONObject) JSONUtils.getFromJSONObject(languagesData, PatternKeys.LANGUAGES));
 			}else{
 				logger.warn("Didn't find the languages' names from local bundle for locale [{}].\n", locale);
 			}

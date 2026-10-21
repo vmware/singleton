@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2025 VMware, Inc.
+ * Copyright 2019-2026 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.messages.api.opt.local;
@@ -24,7 +24,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class LocalMessagesOpt implements Opt, MessageOpt {
 
@@ -49,8 +48,7 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
 		try {
 			is = getInputStream();
 			JSONObject jsonObject = new JSONObject(new JSONTokener(new InputStreamReader(is, "UTF-8")));
-			Map<String, String> messages = ((JSONObject) JSONUtils.getFromJSONObject(jsonObject, "messages")).toMap().entrySet().stream()
-				     .collect(Collectors.toMap(Map.Entry::getKey, e -> (String)e.getValue()));
+			Map<String, String> messages = JSONUtils.toStringMap((JSONObject) JSONUtils.getFromJSONObject(jsonObject, "messages"));
 			cacheItem.setCacheItem(messages, null, System.currentTimeMillis(), null);
 		} catch (Exception e) {
 			String msg = "Failed to get offline messages for product: " + dto.getProductID() + " " + dto.getVersion() +
