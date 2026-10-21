@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2026 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.messages.api.opt.server;
@@ -12,6 +12,8 @@ import com.vmware.vipclient.i18n.messages.api.url.V2URL;
 import com.vmware.vipclient.i18n.messages.dto.LocaleDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.JSONUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -114,9 +116,13 @@ public class RemoteLocaleOpt extends RemoteL2BaseOpt implements LocaleOpt{
     }
 
     private Map<String, String> getTerritoriesFromResponse(String responseBody){
-        List<Map<String, Object>> dataNode = (List<Map<String, Object>>) getDataFromResponse(responseBody);
-        if (dataNode != null && !dataNode.isEmpty()) {
-            Map<String, Object> regionMap = dataNode.get(0);
+        Object data = getDataFromResponse(responseBody);
+        if (!(data instanceof JSONArray)) {
+            return null;
+        }
+        List<Object> dataNode = ((JSONArray) data).toList();
+        if (!dataNode.isEmpty()) {
+            Map<String, Object> regionMap = (Map<String, Object>) dataNode.get(0);
             if(regionMap != null) {
                 return (Map<String, String>) regionMap.get(ConstantsKeys.TERRITORIES);
             }
@@ -125,8 +131,12 @@ public class RemoteLocaleOpt extends RemoteL2BaseOpt implements LocaleOpt{
     }
 
     private Map<String, String> getLanguagesFromResponse(String responseBody){
-        Map<String, Object> dataNode = (Map<String, Object>) getDataFromResponse(responseBody);
-        if (dataNode == null || dataNode.isEmpty()) {
+        Object data = getDataFromResponse(responseBody);
+        if (!(data instanceof JSONObject)) {
+            return null;
+        }
+        Map<String, Object> dataNode = ((JSONObject) data).toMap();
+        if (dataNode.isEmpty()) {
             return null;
         }
         Map<String, String> dispMap = null;
