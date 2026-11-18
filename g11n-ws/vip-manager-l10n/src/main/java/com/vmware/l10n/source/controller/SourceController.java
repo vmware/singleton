@@ -59,11 +59,11 @@ public class SourceController {
 	 * @param component
 	 *            Component name of product
 	 * @param key
-	 *            The unique identify for source in component's resource file
+	 *            The unique identifier for source in component's resource file
 	 * @param version
 	 *            Product version
 	 * @param source
-	 *            The english string which need translate
+	 *            The english string which needs to be translated
 	 * @param commentForSource
 	 *            The comment for source
 	 * @param req
