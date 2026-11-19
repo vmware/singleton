@@ -17,7 +17,7 @@ dependencies {
     api project(":md-restful-api")
     api project(":md-service-i18n-l3")
     compileOnly("org.apache.httpcomponents:httpclient:$httpclient")
-    api("com.alibaba:fastjson:1.2.51")
+    api("com.alibaba:fastjson:$fastjsonVersion")
     implementation("com.googlecode.json-simple:json-simple:$jsonSimpleVersion"){
         exclude group: 'junit'
     }

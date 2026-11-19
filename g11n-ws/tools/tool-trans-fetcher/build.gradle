@@ -8,8 +8,12 @@ configurations {
 }
 
 dependencies {
-    implementation("org.quartz-scheduler:quartz:2.2.2")
-    implementation("org.quartz-scheduler:quartz-jobs:2.2.2")
+    implementation("org.quartz-scheduler:quartz:$quartzVersion")
+    implementation("org.quartz-scheduler:quartz-jobs:$quartzVersion") {
+        // quartz-jobs pulls the EOL log4j 1.x binding (CVE-2019-17571, CVE-2022-23305, CVE-2021-4104)
+        exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+        exclude group: 'log4j', module: 'log4j'
+    }
     implementation("commons-io:commons-io:$commonsIoVersion")
     implementation("org.apache.commons:commons-lang3:$commonsLangVersion")
     implementation project(":vip-common")

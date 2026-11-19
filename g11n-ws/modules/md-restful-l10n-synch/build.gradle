@@ -19,7 +19,8 @@ dependencies {
     implementation project(":md-restful-api")
     compileOnly("org.springframework.boot:spring-boot-starter-web")
     compileOnly ('org.springframework.boot:spring-boot-starter-log4j2')
-    api group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '4.11.8.201904181247-r'
+    api("org.eclipse.jgit:org.eclipse.jgit:$jgitVersion")
+    api("org.eclipse.jgit:org.eclipse.jgit.ssh.jsch:$jgitVersion")
 }
 
 bootJar {
