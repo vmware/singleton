@@ -29,7 +29,7 @@ dependencies {
 
 	implementation("com.nimbusds:nimbus-jose-jwt:$nimbusJoseJwtVersion")
 
-    compileOnly("commons-fileupload:commons-fileupload:1.5")
+    compileOnly("commons-fileupload:commons-fileupload:$commonsFileUploadVersion")
     compileOnly("io.jsonwebtoken:jjwt:$jjwtVersion")
     compileOnly("org.apache.commons:commons-lang3:$commonsLangVersion")
     compileOnly("org.springdoc:springdoc-openapi-starter-webmvc-api:$springdocVersion")

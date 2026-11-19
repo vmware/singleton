@@ -47,6 +47,10 @@ subprojects{
     ext['jackson-bom.version'] = '3.1.7'
     // OpenTelemetry (via google-cloud-storage), managed by the Spring Boot BOM; 1.67.0 fixes CVE-2026-118259
     ext['opentelemetry.version'] = '1.67.0'
+    // Jackson 2 and Tomcat are pinned by the Spring Boot BOM below the patched releases.
+    ext['jackson-2-bom.version'] = '2.21.7' // CVE-2026-89425, CVE-2026-89407, CVE-2026-91777, CVE-2026-91776
+    ext['tomcat.version'] = '11.0.26' // CVE-2026-65905, CVE-2026-65637, CVE-2026-65182, CVE-2026-68525
+    ext['postgresql.version'] = '42.7.14' // CVE-2024-1597, CVE-2022-26520, CVE-2020-13692, CVE-2022-31197, CVE-2022-21724
 
     ext {
         projectVersion = '0.0.1-SNAPSHOT'
@@ -74,7 +78,12 @@ subprojects{
     	slf4jVersion="2.0.18"
 		nimbusJoseJwtVersion="10.1"
 
-    	postgresqlVersion = "42.1.4"
+    	postgresqlVersion = "42.7.14" // CVE-2024-1597, CVE-2022-26520, CVE-2020-13692, CVE-2022-31197, CVE-2022-21724
+        jgitVersion = "5.13.5.202508271544-r" // CVE-2023-4759, CVE-2025-4949
+        fastjsonVersion = "2.0.66" // CVE-2022-25845; fastjson 1.2.x has no fix for CVE-2026-16723
+        quartzVersion = "2.5.2" // CVE-2019-13990
+        jythonVersion = "2.7.4" // CVE-2013-2027
+        commonsFileUploadVersion = "1.6.0" // CVE-2025-48976
     	druidVersion = "1.1.8"
     	awsS3Version = "1.12.797"
         gcpGcsVersion = "26.88.0"
@@ -109,12 +118,48 @@ subprojects{
         }
     }
 
-    // CVE-2026-102554: force guava >= 33.7.2 (google libraries-bom pins 33.6.0-jre)
+    // Force patched versions when a BOM or transitive dependency still requests a vulnerable release.
     configurations.configureEach {
         resolutionStrategy.eachDependency { details ->
-            if (details.requested.group == 'com.google.guava' && details.requested.name == 'guava') {
+            def g = details.requested.group
+            def n = details.requested.name
+            def v = details.requested.version
+            if (g == 'com.google.guava' && n == 'guava') {
                 details.useVersion guavaVersion
                 details.because 'CVE-2026-102554'
+            } else if (g == 'com.fasterxml.jackson.core' && (n == 'jackson-core' || n == 'jackson-databind') && v != jacksonVersion) {
+                details.useVersion jacksonVersion
+                details.because 'CVE-2026-89425, CVE-2026-89407, CVE-2026-91777, CVE-2026-83557, CVE-2026-68497, CVE-2026-19032, CVE-2026-91776'
+            } else if ((g == 'com.fasterxml.jackson.dataformat' || g == 'com.fasterxml.jackson.datatype' || g == 'com.fasterxml.jackson.module') && v != jacksonVersion) {
+                details.useVersion jacksonVersion
+                details.because 'CVE-2026-91777, CVE-2026-91776'
+            } else if (g == 'commons-io' && n == 'commons-io' && v != commonsIoVersion) {
+                details.useVersion commonsIoVersion
+                details.because 'CVE-2024-47554, CVE-2021-29425'
+            } else if (g == 'org.apache.httpcomponents' && n == 'httpclient' && v != httpclient) {
+                details.useVersion httpclient
+                details.because 'CVE-2020-13956'
+            } else if ((g == 'org.apache.tomcat' || g == 'org.apache.tomcat.embed') && v != null && v.startsWith('11.') && v != tomcatVersion) {
+                details.useVersion tomcatVersion
+                details.because 'CVE-2026-65905, CVE-2026-65637, CVE-2026-65182, CVE-2026-68525'
+            } else if (g == 'org.postgresql' && n == 'postgresql' && v != postgresqlVersion) {
+                details.useVersion postgresqlVersion
+                details.because 'CVE-2024-1597, CVE-2022-26520, CVE-2020-13692, CVE-2022-31197, CVE-2022-21724'
+            } else if (g == 'com.alibaba' && n == 'fastjson' && v != null && v.startsWith('1.')) {
+                details.useVersion fastjsonVersion
+                details.because 'CVE-2022-25845, CVE-2026-16723'
+            } else if (g == 'org.eclipse.jgit' && v != jgitVersion) {
+                details.useVersion jgitVersion
+                details.because 'CVE-2023-4759, CVE-2025-4949'
+            } else if (g == 'org.quartz-scheduler' && (n == 'quartz' || n == 'quartz-jobs') && v != quartzVersion) {
+                details.useVersion quartzVersion
+                details.because 'CVE-2019-13990'
+            } else if (g == 'org.python' && n == 'jython-standalone' && v != jythonVersion) {
+                details.useVersion jythonVersion
+                details.because 'CVE-2013-2027'
+            } else if (g == 'commons-fileupload' && n == 'commons-fileupload' && v != commonsFileUploadVersion) {
+                details.useVersion commonsFileUploadVersion
+                details.because 'CVE-2025-48976'
             }
         }
     }
