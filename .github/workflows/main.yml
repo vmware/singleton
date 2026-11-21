@@ -4,13 +4,13 @@ on: [pull_request, push]
 jobs:
   pre-process:
     name: Pre-process
-    uses: vmware/singleton/.github/workflows/pre-process.yml@devops
+    uses: ./.github/workflows/pre-process.yml
 
   check-header:
     name: Check Header
     needs: pre-process
     if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
-    uses: vmware/singleton/.github/workflows/check.yml@devops
+    uses: ./.github/workflows/check.yml
 
   unit-test:
     name: Unit Test
@@ -19,7 +19,7 @@ jobs:
     if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v7
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
@@ -56,7 +56,7 @@ jobs:
       security-events: write
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v7
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
@@ -76,7 +76,7 @@ jobs:
     if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v7
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
@@ -113,7 +113,7 @@ jobs:
     if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v7
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
