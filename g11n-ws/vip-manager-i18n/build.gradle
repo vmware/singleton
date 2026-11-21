@@ -6,13 +6,15 @@ apply plugin: 'io.spring.dependency-management'
 //apply plugin: 'war'
 
 description = 'singleton server'
-archivesBaseName = 'singleton'
+base.archivesName = 'singleton'
 configurations {
 	bootJar
     war
     providedRuntime
    // remove default logger
-    all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    configureEach {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
 }
 
 sourceSets {
@@ -119,7 +121,7 @@ task fetchTranslationForTest(type: JavaExec, dependsOn: classes) {
     if (project.hasProperty('productVersion')) {
         args(project.getProperty('productVersion'))
     }
-    main = 'com.vmware.vip.i18n.api.v1.common.GitTranslationFetcherMainForTest'
+    mainClass = 'com.vmware.vip.i18n.api.v1.common.GitTranslationFetcherMainForTest'
     classpath = sourceSets.test.runtimeClasspath
 }
 
@@ -224,7 +226,7 @@ task testFetchedTranslation(type: JavaExec, dependsOn: classes) {
     if (project.hasProperty('productVersion')) {
         args(project.getProperty('productVersion'))
     }
-    main = 'com.vmware.vip.i18n.api.v1.common.TranslationFetcherTest'
+    mainClass = 'com.vmware.vip.i18n.api.v1.common.TranslationFetcherTest'
     classpath = sourceSets.test.runtimeClasspath
 }
 
@@ -278,7 +280,7 @@ jacocoTestReport {
         xml.required = true
         csv.required = false
         html.required = false
-        xml.destination file("${buildDir}/reports/jacoco.xml")
+        xml.outputLocation = file("${buildDir}/reports/jacoco.xml")
     }
 }
 

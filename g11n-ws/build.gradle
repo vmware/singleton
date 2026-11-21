@@ -31,7 +31,10 @@ allprojects{
 
 
     group = 'com.vmware'
-    sourceCompatibility = '17'
+    java {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
 
 
     repositories {
@@ -90,6 +93,11 @@ subprojects{
 
    tasks.withType(JavaCompile) {
        options.encoding = "UTF-8"
+    }
+
+    tasks.withType(Test).configureEach {
+        // Gradle 9 fails the task when test sources exist but no tests are discovered.
+        failOnNoDiscoveredTests = false
     }
 
     // CVE-2025-68161: force log4j2 >= 2.25.3 via Spring dependency-management plugin BOM override

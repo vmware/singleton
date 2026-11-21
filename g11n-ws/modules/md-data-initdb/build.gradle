@@ -1,4 +1,4 @@
-//Copyright 2019-2023 VMware, Inc.
+//Copyright 2019-2026 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 buildscript {
   repositories {
@@ -18,7 +18,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'com.bmuschko.docker-remote-api'
 
-archivesBaseName = 'md-data-initdb'
+base.archivesName = 'md-data-initdb'
   
 eclipse {
   //if you want parts of paths in resulting file to be replaced by variables (files):
@@ -94,7 +94,9 @@ repositories {
 configurations {
    providedRuntime
    // remove default logger
-   all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+   configureEach {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
 }
 
 dependencies {

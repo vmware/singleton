@@ -1,11 +1,11 @@
-//Copyright 2019-2023 VMware, Inc.
+//Copyright 2019-2026 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java'
-archivesBaseName = 'md-restful-api'
+base.archivesName = 'md-restful-api'
 
 jar {
     manifest {
-        attributes 'Implementation-Title': "$archivesBaseName",
+        attributes 'Implementation-Title': base.archivesName.get(),
                    'Implementation-Version': version
     }
 }

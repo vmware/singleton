@@ -5,13 +5,15 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 description = 'singleton lite manager'
 
-archivesBaseName = 'singleton-lite'
+base.archivesName = 'singleton-lite'
 
 configurations {
 	bootJar
     providedRuntime
    // remove default logger
-   all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+   configureEach {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
 }
  // default encoding is utf-8
 [compileJava,compileTestJava,javadoc]*.options*.encoding = 'UTF-8'
@@ -140,7 +142,7 @@ jacocoTestReport {
         xml.required = true
         csv.required = false
         html.required = false
-        xml.destination file("${buildDir}/reports/jacoco.xml")
+        xml.outputLocation = file("${buildDir}/reports/jacoco.xml")
     }
 }
 
