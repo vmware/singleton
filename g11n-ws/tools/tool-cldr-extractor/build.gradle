@@ -1,4 +1,4 @@
-//Copyright 2019-2022 VMware, Inc.
+//Copyright 2019-2026 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java'
 
@@ -18,15 +18,14 @@ configurations {
 }
 
 jar {
-    baseName = "i18n-patterns-core"
-    version = "$projectVersion"
-    classifier = ''
+    archiveBaseName = "i18n-patterns-core"
+    archiveVersion = "$projectVersion"
+    archiveClassifier = ''
     exclude('**/cldr/data/*')
 }
 
 repositories {
     mavenLocal()
-    jcenter()
     mavenCentral()
 }
 
@@ -35,12 +34,14 @@ dependencies {
     implementation('com.googlecode.json-simple:json-simple:1.1.1'){
           exclude group: 'junit'
     }
-    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.6.1'
-    implementation group: 'commons-io', name: 'commons-io', version: '2.4'
-    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.26'
-    testImplementation group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.26'
-    testImplementation group: 'log4j', name: 'log4j', version: '1.2.17'
-	  testImplementation group: 'junit', name: 'junit', version: '4.+'
+    // 2.12.6.1 is affected by CVE-2022-42003, CVE-2022-42004, CVE-2026-91777, CVE-2026-91776 and others
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.21.7'
+    // 2.4 is affected by CVE-2021-29425 and CVE-2024-47554
+    implementation group: 'commons-io', name: 'commons-io', version: '2.22.0'
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.36'
+    // log4j 1.2.17 is EOL (CVE-2019-17571, CVE-2021-4104, CVE-2022-23302, CVE-2022-23305, CVE-2022-23307, CVE-2023-26464)
+    runtimeOnly group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.36'
+	  testImplementation group: 'junit', name: 'junit', version: '4.13.2'
 
 }
 
@@ -68,21 +69,21 @@ task copyResources(type: Copy) {
 processTestResources.dependsOn copyResources
 
 task download(type: JavaExec, dependsOn: classes){
-	main 'com.vmware.i18n.PatternParseMain'
+	mainClass = 'com.vmware.i18n.PatternParseMain'
 	classpath sourceSets.main.runtimeClasspath
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
-    baseName = "i18n-patterns-core"
-    version = "$projectVersion"
-    classifier = 'sources'
+    archiveBaseName = "i18n-patterns-core"
+    archiveVersion = "$projectVersion"
+    archiveClassifier = 'sources'
     from sourceSets.main.allJava
 }
  
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    baseName = "i18n-patterns-core"
-    version = "$projectVersion"
-    classifier = 'javadoc'
+    archiveBaseName = "i18n-patterns-core"
+    archiveVersion = "$projectVersion"
+    archiveClassifier = 'javadoc'
     from javadoc.destinationDir
 }
  
