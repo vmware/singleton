@@ -1,5 +1,5 @@
 /**
- * Copyright 2019-2024 VMware, Inc.
+ * Copyright 2019-2026 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.common.utils;
@@ -62,7 +62,9 @@ public class RsaCryptUtils {
 	}
 
 	/**
-	 * get public key string from file
+	 * get public key string from file.
+	 * PEM armor lines and whitespace are omitted so only the base64 body is returned.
+	 * The body must already be X.509 SubjectPublicKeyInfo; PKCS#1 is not converted.
 	 * 
 	 * @param inputStream
 	 * @return
@@ -72,13 +74,24 @@ public class RsaCryptUtils {
 		try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
 			String input;
 			while ((input = br.readLine()) != null) {
-				sb.append(input);
+				String line = input.trim();
+				if (line.isEmpty() || isPemArmor(line)) {
+					continue;
+				}
+				sb.append(line.replaceAll("\\s", ""));
 			}
 			return sb.toString();
 		} catch (Exception e) {
 			return null;
 		}
 
+	}
+
+	/**
+	 * PEM boundary lines are valid base64 and would corrupt the key bytes.
+	 */
+	private static boolean isPemArmor(String line) {
+		return line.startsWith("-----BEGIN ") || line.startsWith("-----END ");
 	}
 
 }

@@ -1,4 +1,4 @@
-//Copyright 2019-2025 VMware, Inc.
+//Copyright 2019-2026 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java'
 description = 'common tools module'
@@ -18,7 +18,8 @@ dependencies {
     compileOnly("org.slf4j:slf4j-api:$slf4jVersion")
     compileOnly("org.ehcache:ehcache:$ehCacheVersion")
     compileOnly("javax.cache:cache-api:$cacheApiVersion")
-    
+
+    testImplementation("junit:junit:$junitVersion")
 }
 
 jar {
