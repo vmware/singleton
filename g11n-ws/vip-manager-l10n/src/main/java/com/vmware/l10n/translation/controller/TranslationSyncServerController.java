@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2026 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.translation.controller;
@@ -76,6 +76,7 @@ public class TranslationSyncServerController {
     @RequestMapping(value = L10NAPIV1.UPDATE_TRANSLATION_L10N, method = RequestMethod.POST, produces = { API.API_CHARSET })
     @ResponseStatus(HttpStatus.OK)
     public APIResponseDTO updateTranslation(
+            @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "UpdateTranslationDTO")
             @RequestBody UpdateTranslationDTO updateTranslationDTO,
             @PathVariable(APIParamName.PRODUCT_NAME) String productName,
             @PathVariable(APIParamName.VERSION) String version, HttpServletRequest request) throws ValidationException {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2026 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.v1.translation;
@@ -71,6 +71,7 @@ public class TranslationSourceAPI extends TranslationSourceAction {
 			@PathVariable(APIParamName.PRODUCT_NAME) String productName,
 			@RequestParam(value = APIParamName.VERSION) String version,
 			@PathVariable(APIParamName.COMPONENT) String component,
+			@io.swagger.v3.oas.annotations.parameters.RequestBody(description = "source")
 			@RequestBody String source,
 			@RequestParam(value = APIParamName.SOURCE_FORMAT, required = false) String sourceFormat,
 			@RequestParam(value = APIParamName.LOCALE, required = false) String locale,
