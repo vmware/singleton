@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2026 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.l2.service.pattern;
@@ -175,11 +175,16 @@ public class PatternServiceImpl implements IPatternService {
 		}
 
 		// fix issue: https://github.com/vmware/singleton/issues/311
+		// Blank localeID only when the language and region combination is invalid.
+		// A valid combination keeps the CLDR locale id already on the pattern map, or the
+		// requested language when that language is itself the valid combination (en-US with region US).
 		if (!Collections.disjoint(categoryList, specialCategories)) {
 			if (Collections.disjoint(categoryList, otherCategories)) {
 				patternMap.put(ConstantsKeys.LOCALEID, language);
-			} else if (!language.equals(localeDataDTO.getLocale())) {
+			} else if (!localeDataDTO.isDisplayLocaleID() || CommonUtil.isEmpty(localeDataDTO.getLocale())) {
 				patternMap.put(ConstantsKeys.LOCALEID, "");
+			} else if (requestedLanguageIsValidCombination(language, region, localeDataDTO.getLocale())) {
+				patternMap.put(ConstantsKeys.LOCALEID, language);
 			}
 		}
 
@@ -187,6 +192,34 @@ public class PatternServiceImpl implements IPatternService {
 		patternMap.put(ConstantsKeys.REGION, region);
 		patternMap.put(ConstantsKeys.CATEGORIES, categoriesMap);
 		return patternMap;
+	}
+
+	/**
+	 * The requested language is the valid combination when it already contains the region
+	 * and removing that region yields the resolved CLDR locale. en-US with region US
+	 * resolves to en, and the locale id to keep is en-US.
+	 */
+	private boolean requestedLanguageIsValidCombination(String language, String region, String resolvedLocale) {
+		if (CommonUtil.isEmpty(language) || CommonUtil.isEmpty(region) || CommonUtil.isEmpty(resolvedLocale)) {
+			return false;
+		}
+		String[] parts = language.split("-");
+		if (parts.length < 2) {
+			return false;
+		}
+		StringBuilder withoutRegion = new StringBuilder();
+		boolean foundRegion = false;
+		for (String part : parts) {
+			if (part.equalsIgnoreCase(region)) {
+				foundRegion = true;
+				continue;
+			}
+			if (withoutRegion.length() > 0) {
+				withoutRegion.append('-');
+			}
+			withoutRegion.append(part);
+		}
+		return foundRegion && resolvedLocale.equalsIgnoreCase(withoutRegion.toString());
 	}
 
 	private void supplyDependentCategories(List<String> categoryList){
