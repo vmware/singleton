@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 VMware, Inc.
+ * Copyright 2019-2026 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.fetcher.common.FileUtils;
@@ -23,10 +23,14 @@ import com.vmware.vip.fetcher.common.dto.OrderedProperties;
 public class OrderedPropertiesUtils {
     public static OrderedProperties loadFromStream(String fileName) {
         OrderedProperties p = new OrderedProperties();
-        InputStream inputStream = PropertiesFileUtil.class.getClassLoader().getResourceAsStream(
-                fileName);
-        try {
-            p.load(new InputStreamReader(inputStream, ConstantsUnicode.UTF8));
+        try (InputStream inputStream = PropertiesFileUtil.class.getClassLoader().getResourceAsStream(
+                fileName)) {
+            if (inputStream == null) {
+                return p;
+            }
+            try (InputStreamReader reader = new InputStreamReader(inputStream, ConstantsUnicode.UTF8)) {
+                p.load(reader);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -35,10 +39,9 @@ public class OrderedPropertiesUtils {
 
     public static OrderedProperties loadFromFile(String fileName) {
         OrderedProperties p = new OrderedProperties();
-
-        try {
-          
-            p.load(new InputStreamReader(new FileInputStream(fileName), ConstantsUnicode.UTF8));
+        try (InputStream inputStream = new FileInputStream(fileName);
+                InputStreamReader reader = new InputStreamReader(inputStream, ConstantsUnicode.UTF8)) {
+            p.load(reader);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -47,9 +50,9 @@ public class OrderedPropertiesUtils {
 
     public static OrderedProperties loadFromURL(String url) {
         OrderedProperties pro = new OrderedProperties();
-        try {
-            InputStream inputStream = HTTPRequester.createConnection(new URL(url)).getInputStream();
-            pro.load(new InputStreamReader(inputStream, ConstantsUnicode.UTF8));
+        try (InputStream inputStream = HTTPRequester.createConnection(new URL(url)).getInputStream();
+                InputStreamReader reader = new InputStreamReader(inputStream, ConstantsUnicode.UTF8)) {
+            pro.load(reader);
         } catch (MalformedURLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
