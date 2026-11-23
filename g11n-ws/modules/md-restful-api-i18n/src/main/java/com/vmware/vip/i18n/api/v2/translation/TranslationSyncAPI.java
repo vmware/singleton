@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2026 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.v2.translation;
@@ -55,6 +55,7 @@ public class TranslationSyncAPI extends TranslationSyncAction {
 	@RequestMapping(value = APIV2.PRODUCT_TRANSLATION_PUT, method = RequestMethod.PUT, produces = { API.API_CHARSET })
 	@ResponseStatus(HttpStatus.OK)
 	public APIResponseDTO updateTranslation(
+			@io.swagger.v3.oas.annotations.parameters.RequestBody(description = "UpdateTranslationDTO")
 			@RequestBody UpdateTranslationDTO updateTranslationDTO,
 			@PathVariable(APIParamName.PRODUCT_NAME) String productName,
 			@PathVariable(APIParamName.VERSION) String version,
