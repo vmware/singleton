@@ -1,8 +1,9 @@
-//Copyright 2019-2022 VMware, Inc.
+//Copyright 2019-2026 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 package com.vmware.l10n.utils;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 import org.slf4j.Logger;
@@ -109,13 +110,18 @@ public class S3Util {
 				try {
 			    
 				    VersionListing versionListing = s3Client.getS3Client().listVersions(lvr);
-				    String getVersionId = versionListing.getVersionSummaries().get(0).getVersionId();
-				    int size = versionListing.getVersionSummaries().size();
-				   
-				    if (size == 1 && putVersionId.equals(getVersionId)) {
-						return true;
-					}
-					logger.warn("putVersiongId:{}, getVersionId：{}", putVersionId, getVersionId);
+				    List<S3VersionSummary> summaries = versionListing.getVersionSummaries();
+				    if (summaries != null && !summaries.isEmpty()) {
+					    String getVersionId = summaries.get(0).getVersionId();
+					    int size = summaries.size();
+					   
+					    if (size == 1 && putVersionId.equals(getVersionId)) {
+							return true;
+						}
+						logger.warn("putVersiongId:{}, getVersionId：{}", putVersionId, getVersionId);
+						// Drop only the version this caller just wrote.
+						s3Client.getS3Client().deleteVersion(config.getBucketName(), this.key, putVersionId);
+				    }
 				} catch (AmazonS3Exception e) {
 					logger.error(e.getMessage(), e);
 				}
