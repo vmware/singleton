@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 VMware, Inc.
+ * Copyright 2019-2026 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.v1.formatting.date;
@@ -66,7 +66,14 @@ public class FormattingDateAPI extends BaseAction{
             @Parameter(name = APIParamName.PATTERN, required = true, description = APIParamValue.PATTERN) @RequestParam(value = APIParamName.PATTERN, required = true) String pattern,
             HttpServletRequest request) throws Exception{
         DateDTO dateDTO = new DateDTO();
-        String formattedDate = dateFormatService.formatDate(locale, Long.parseLong(longDate),
+        long timestamp;
+        try {
+            timestamp = Long.parseLong(longDate);
+        } catch (NumberFormatException e) {
+            return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(),
+                    "longDate must be a millisecond Unix timestamp", null);
+        }
+        String formattedDate = dateFormatService.formatDate(locale, timestamp,
                 pattern);
         dateDTO.setLongDate(longDate);
         dateDTO.setformattedDate(formattedDate);
