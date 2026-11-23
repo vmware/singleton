@@ -1,4 +1,4 @@
-//Copyright 2019-2025 VMware, Inc.
+//Copyright 2019-2026 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java-library'
 apply plugin: 'io.spring.dependency-management'
@@ -20,6 +20,9 @@ dependencies {
     compileOnly("org.slf4j:slf4j-api:$slf4jVersion")
     compileOnly("org.apache.commons:commons-lang3:$commonsLangVersion")
 
+    testImplementation("junit:junit:$junitVersion")
+    testImplementation("org.slf4j:slf4j-api:$slf4jVersion")
+    testImplementation("org.springframework:spring-core")
 }
 
 bootJar {
